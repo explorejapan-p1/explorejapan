@@ -12,6 +12,7 @@ import {
 } from '@/data/facility-schema';
 import {MIMA, MIMA_PLACE_PHOTO} from '@/data/mima';
 import {
+  TRAVEL_ACCESSED,
   TRAVEL_ALL,
   TRAVEL_COUNTS,
   TRAVEL_DINING,
@@ -374,7 +375,7 @@ export function MimaFacilityLookup({
             <a href={TRAVEL_SOURCES.dining}>飲食</a>・<a href={TRAVEL_SOURCES.stay}>宿泊</a>
             は美馬観光ビューローの公開案内です（
             <a href={TRAVEL_SOURCES.cityStay}>市の観光サイト</a>
-            から）。凍結オープンデータパックにはありません。
+            から、{TRAVEL_ACCESSED} 閲覧）。凍結オープンデータパックにはありません。
           </>
         ) : (
           <>
@@ -382,7 +383,7 @@ export function MimaFacilityLookup({
             <a href={TRAVEL_SOURCES.stay}>lodging</a> are public listings from the
             Mima Tourism Bureau (via the{' '}
             <a href={TRAVEL_SOURCES.cityStay}>city tourism site</a>
-            ). They are not in the frozen open-data pack.
+            , accessed {TRAVEL_ACCESSED}). They are not in the frozen open-data pack.
           </>
         )}
       </p>
@@ -412,16 +413,22 @@ export function MimaFacilityLookup({
       </form>
 
       <div className="lookup-toolbar lookup-toolbar-rest" role="group" aria-label={t('tally')}>
-        <a
-          className={chipClass(filter === 'all')}
-          href={chipHref('all', query, locale)}
-          data-category="all"
-        >
-          <ChipLabel id="all" />
-          <span className="count-chip"> {EXPECTED_ROW_COUNT}</span>
-        </a>
+        {(['dining', 'stay', 'tourism', 'cultural_property', 'all'] as const).map((cat) => {
+          const n = chipCount(cat);
+          return (
+            <a
+              key={cat}
+              className={chipClass(filter === cat)}
+              href={chipHref(cat, query, locale)}
+              data-category={cat}
+            >
+              <ChipLabel id={cat} />
+              <span className="count-chip"> {n}</span>
+            </a>
+          );
+        })}
         {LOOKUP_CATEGORIES.filter(
-          (cat) => !PACK_TRAVEL.has(cat) && EXPECTED_CATEGORY_COUNTS[cat] !== 0
+          (cat) => !PACK_TRAVEL.has(cat) && EXPECTED_CATEGORY_COUNTS[cat] > 0
         ).map((cat) => {
           const n = EXPECTED_CATEGORY_COUNTS[cat];
           return (
