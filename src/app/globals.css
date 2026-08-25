@@ -241,7 +241,7 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
   stroke-width: 2;
 }
 
-.lookup .gap-board { margin-top: 1.6rem; }
+.lookup .gap-board { margin-top: 1.15rem; }
 .gap-board {
   display: flex;
   flex-direction: row;
@@ -269,7 +269,7 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
   display: inline;
   font-size: 0.95rem;
   line-height: 1.2;
-  font-weight: 700;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.02em;
 }
@@ -423,8 +423,10 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
 #mima-place-results details:last-child {
   border-bottom: none;
 }
-#mima-place-results .note {
-  padding: 0.55rem 0.85rem;
+#mima-place-results > .note {
+  margin: 0;
+  padding: 0.28rem 0.85rem;
+  line-height: 1.4;
 }
 .place-row {
   width: 100%;
@@ -443,7 +445,7 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
 .place-row:hover { background: #efe8d8; }
 .place-row.is-open { background: #efe0c8; }
 .place-name { font-weight: 700; font-size: 1.04rem; }
-.place-cat { color: var(--muted); font-size: 0.86rem; }
+.place-cat { color: var(--muted); font-size: 0.8rem; font-weight: 400; }
 .place-sub { color: var(--muted); font-size: 0.82rem; font-weight: 400; width: 100%; }
 .more-btn {
   font: inherit;
