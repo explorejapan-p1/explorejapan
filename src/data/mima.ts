@@ -75,6 +75,20 @@ export const MIMA = {
   }
 } as const;
 
+
+export const MIMA_PLACE_PHOTO = {
+  src: '/media/wakimachi-minami-machi-20250828.jpg',
+  commons: 'https://commons.wikimedia.org/wiki/File:Wakimati_minamimati_20250828_2.jpg',
+  license: 'CC0 1.0',
+  licenseUrl: 'https://creativecommons.org/publicdomain/zero/1.0/',
+  author: 'Araiyasushige',
+  authorUrl: 'https://commons.wikimedia.org/wiki/User:Araiyasushige',
+  taken: '2025-08-28',
+  accessed: '2026-08-26',
+  altJa: '脇町南町（うだつの町並み）',
+  altEn: 'Wakimachi Minami-machi (Udatsu townscape)'
+} as const;
+
 export const N03_CITATION = {
   productJa:
     '「国土数値情報（行政区域データ）」（国土交通省）を加工して作成',

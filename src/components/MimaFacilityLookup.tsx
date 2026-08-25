@@ -14,6 +14,7 @@ import {
   type FacilityRow,
   type MimaOfficialMap
 } from '@/data/facility-schema';
+import {MIMA_PLACE_PHOTO} from '@/data/mima';
 
 const EMERGENCY: ReadonlySet<FacilityCategory> = new Set([
   'shelter',
@@ -309,6 +310,14 @@ export function MimaFacilityLookup({locale, gaps, map}: Props) {
         })}
       </div>
       <div className="hero-fold">
+        <figure className="hero-photo">
+          <img
+            src={MIMA_PLACE_PHOTO.src}
+            width={1920}
+            height={1163}
+            alt={locale === 'ja' ? MIMA_PLACE_PHOTO.altJa : MIMA_PLACE_PHOTO.altEn}
+          />
+        </figure>
         <div className="hero-map">
           <svg
             className="official-scatter"
@@ -347,33 +356,15 @@ export function MimaFacilityLookup({locale, gaps, map}: Props) {
             ))}
           </svg>
         </div>
-        <ul className="gap-board" aria-label={t('gapBoardLabel')}>
-          <li className="gap-cell" data-gap="geo">
-            <span className="n">
-              {gaps.geo}/{gaps.total}
-            </span>
-            <span className="d">{t('gapGeo')}</span>
-          </li>
-          <li className="gap-cell" data-gap="hours">
-            <span className="n">
-              {gaps.hours}/{gaps.total}
-            </span>
-            <span className="d">{t('gapHours')}</span>
-          </li>
-          <li className="gap-cell is-miss" data-gap="address">
-            <span className="n">{gaps.missingAddress}</span>
-            <span className="d">{t('gapAddress')}</span>
-          </li>
-          <li className="gap-cell is-miss" data-gap="phone">
-            <span className="n">{gaps.missingPhone}</span>
-            <span className="d">{t('gapPhone')}</span>
-          </li>
-          <li className="gap-cell is-zero" data-gap="gtfs">
-            <span className="n">{gaps.gtfs}</span>
-            <span className="d">{t('gapGtfs')}</span>
-          </li>
-        </ul>
       </div>
+      <p className="photo-cite">
+        {t('photoCite')}{' '}
+        <a href={MIMA_PLACE_PHOTO.commons}>Wikimedia Commons</a>
+        {' / '}
+        <a href={MIMA_PLACE_PHOTO.licenseUrl}>{MIMA_PLACE_PHOTO.license}</a>
+        {' / '}
+        <a href={MIMA_PLACE_PHOTO.authorUrl}>{MIMA_PLACE_PHOTO.author}</a>
+      </p>
 
       <h2 id="mima-lookup-heading">{t('heading')}</h2>
       <p>
@@ -421,7 +412,34 @@ export function MimaFacilityLookup({locale, gaps, map}: Props) {
         })}
       </div>
 
-      <p className="lede">{t('lede')}</p>
+        <ul className="gap-board" aria-label={t('gapBoardLabel')}>
+          <li className="gap-cell" data-gap="geo">
+            <span className="n">
+              {gaps.geo}/{gaps.total}
+            </span>
+            <span className="d">{t('gapGeo')}</span>
+          </li>
+          <li className="gap-cell" data-gap="hours">
+            <span className="n">
+              {gaps.hours}/{gaps.total}
+            </span>
+            <span className="d">{t('gapHours')}</span>
+          </li>
+          <li className="gap-cell is-miss" data-gap="address">
+            <span className="n">{gaps.missingAddress}</span>
+            <span className="d">{t('gapAddress')}</span>
+          </li>
+          <li className="gap-cell is-miss" data-gap="phone">
+            <span className="n">{gaps.missingPhone}</span>
+            <span className="d">{t('gapPhone')}</span>
+          </li>
+          <li className="gap-cell is-zero" data-gap="gtfs">
+            <span className="n">{gaps.gtfs}</span>
+            <span className="d">{t('gapGtfs')}</span>
+          </li>
+        </ul>
+
+            <p className="lede">{t('lede')}</p>
 
       <div className="map-meta">
         <p className="map-gap-copy">{t('mapGap', {n: missingGeo})}</p>
