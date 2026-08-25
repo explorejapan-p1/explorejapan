@@ -18,7 +18,7 @@ body {
   line-height: 1.65;
 }
 a { color: var(--leaf); }
-a:focus-visible, button:focus-visible, .shape:focus-visible {
+a:focus-visible, button:focus-visible, .shape:focus-visible, input:focus-visible {
   outline: 3px solid var(--mima);
   outline-offset: 2px;
 }
@@ -102,195 +102,76 @@ h2 { font-size: 1.2rem; margin: 1.75rem 0 0.5rem; }
   .header-row { flex-direction: column; }
 }
 
-.lookup-section {
-  margin: 2.25rem 0 2.75rem;
-  padding: 1.2rem 1.1rem 1.4rem;
-  background: #fffdf8;
-  border: 1px solid var(--line);
-}
-.lookup-section h2 {
-  margin-top: 0;
-  margin-bottom: 0.4rem;
-  padding-bottom: 0.3rem;
-  border-bottom: 2px solid var(--mima);
-  display: inline-block;
-}
-.lookup-section .lede {
-  max-width: 42rem;
-}
-.lookup {
-  margin-top: 1rem;
-}
+.lookup { margin-top: 0.5rem; }
 .lookup-toolbar {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  background: linear-gradient(#fffdf8 80%, rgba(255, 253, 248, 0.92));
-  padding: 0.15rem 0 0.7rem;
-}
-.lookup-chips {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
+  margin: 0.75rem 0;
 }
-.lookup-chip {
+.chip {
   font: inherit;
-  font-size: 0.82rem;
-  line-height: 1.2;
+  font-size: 0.85rem;
   border: 1px solid var(--line);
-  background: var(--paper);
+  background: #fffdf8;
   color: var(--ink);
-  padding: 0.38rem 0.7rem;
-  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
   cursor: pointer;
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.35rem;
 }
-.lookup-chip.is-emergency {
-  border-color: #e2b89a;
-}
-.lookup-chip.is-on {
-  background: var(--leaf);
+.chip.is-active {
+  background: var(--leaf-2);
   border-color: var(--leaf);
-  color: var(--paper);
+  font-weight: 700;
 }
-.lookup-chip.is-emergency.is-on {
+.chip.is-empty { color: var(--muted); }
+.chip:hover { border-color: var(--leaf); }
+.lookup-search {
+  width: min(28rem, 100%);
+  font: inherit;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--line);
+  background: #fffdf8;
+}
+.place-group { margin-top: 1.25rem; }
+.place-group h3 { margin: 0 0 0.5rem; font-size: 1.05rem; }
+.place-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.place-card {
+  border: 1px solid var(--line);
+  background: #fffdf8;
+  padding: 0.75rem 0.9rem;
+}
+.place-card h4 { margin: 0 0 0.35rem; font-size: 1.02rem; }
+.attr-row { font-size: 0.9rem; margin: 0.15rem 0; }
+.attr-label {
+  display: inline-block;
+  min-width: 7rem;
+  color: var(--muted);
+  margin-right: 0.4rem;
+}
+.missing { color: var(--warn); font-size: 0.85rem; }
+.license-cc, .license-city { font-weight: 700; }
+.count-chip { color: var(--muted); font-size: 0.8em; font-weight: 400; }
+
+.lookup h2 {
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid var(--mima);
+  display: inline-block;
+}
+.lookup .lede { max-width: 42rem; }
+.chip { border-radius: 999px; padding: 0.32rem 0.7rem; }
+.chip.is-emergency { border-color: #e2b89a; }
+.chip.is-active.is-emergency {
   background: var(--mima);
   border-color: var(--mima);
   color: var(--paper);
 }
-.lookup-chip-count {
-  font-size: 0.75rem;
-  opacity: 0.85;
-  font-variant-numeric: tabular-nums;
-}
-.lookup-search-row {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  margin: 0.85rem 0 0.4rem;
-}
-.lookup-search-row label {
-  font-size: 0.85rem;
-  font-weight: 700;
-}
-.lookup-search {
-  width: 100%;
-  font: inherit;
-  padding: 0.55rem 0.75rem;
-  border: 1px solid var(--line);
-  background: var(--paper);
-  color: var(--ink);
-  border-radius: 2px;
-}
-.lookup-meta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.4rem 1rem;
-  margin: 0.35rem 0 0.5rem;
-}
-.lookup-count {
-  margin: 0;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-}
-.lookup-count-label {
-  color: var(--muted);
-  font-weight: 500;
-}
-.lookup-tally {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem 0.85rem;
-  color: var(--muted);
-  font-size: 0.8rem;
-}
-.lookup-empty {
-  margin: 1rem 0 0;
-  color: var(--warn);
-}
-.lookup-grid {
-  list-style: none;
-  margin: 0.9rem 0 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
-  gap: 0.85rem;
-}
-.facility-card {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-left: 3px solid var(--leaf-2);
-  padding: 0.85rem 0.95rem 1rem;
-}
-.facility-card.is-emergency {
-  border-left-color: var(--mima);
-}
-.facility-card h3 {
-  margin: 0.1rem 0 0;
-  font-size: 1.05rem;
-  line-height: 1.35;
-}
-.facility-cat {
-  margin: 0;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: var(--leaf);
-}
-.facility-cat.is-emergency {
-  color: var(--mima);
-}
-.facility-reading {
-  margin: 0 0 0.25rem;
-  color: var(--muted);
-  font-size: 0.8rem;
-}
-.facility-dl {
-  margin: 0.4rem 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.28rem;
-}
-.facility-field {
-  display: grid;
-  grid-template-columns: 3.6rem 1fr;
-  gap: 0.4rem;
-  font-size: 0.85rem;
-  align-items: start;
-}
-.facility-field dt {
-  color: var(--muted);
-  font-weight: 500;
-}
-.facility-field dd {
-  margin: 0;
-  overflow-wrap: anywhere;
-}
-.gap {
-  color: var(--warn);
-  font-size: 0.85rem;
-}
-.license-short {
-  font-weight: 700;
-}
-.license-short.is-cc {
-  color: var(--leaf);
-}
-.license-short.is-city {
-  color: var(--ink);
-}
-@media (max-width: 800px) {
-  .lookup-chips { gap: 0.35rem; }
-  .lookup-chip { font-size: 0.8rem; }
-  .lookup-grid { grid-template-columns: 1fr; }
-}
+.place-card { border-left: 3px solid var(--leaf-2); }
+.place-card.is-emergency { border-left-color: var(--mima); }
+.license-cc { color: var(--leaf); }
+.lookup-search:focus { border-color: var(--leaf); }

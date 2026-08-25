@@ -1,9 +1,10 @@
-import {getTranslations, setRequestLocale} from 'next-intl/server';
+import {setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
-import {FacilityLookup} from '@/components/FacilityLookup';
+import {MimaFacilityLookup} from '@/components/MimaFacilityLookup';
 import {VideoSlot} from '@/components/VideoSlot';
+import {EXPECTED_ROW_COUNT, type FacilityRow} from '@/data/facility-schema';
 import {MIMA, SITE_URL} from '@/data/mima';
-import {FACILITIES, TOTAL} from '@/lib/mima-facilities';
+import {MIMA_FACILITIES} from '@/data/mima-facilities';
 import {PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {
   MUNICIPALITY_BY_SLUG,
@@ -36,7 +37,7 @@ export async function generateMetadata({params}: Props) {
   };
 }
 
-function JsonLd({locale}: {locale: string}) {
+function JsonLd({locale, facilities}: {locale: string; facilities: readonly FacilityRow[]}) {
   const isJa = locale === 'ja';
   const url = `${SITE_URL}${pagePath(locale, 'tokushima/mima')}`;
   const data = {
@@ -103,30 +104,33 @@ function JsonLd({locale}: {locale: string}) {
       },
       {
         '@type': 'ItemList',
-        name: isJa ? '美馬市の施設（凍結パック 515件）' : 'Mima City facilities (frozen pack, 515)',
-        numberOfItems: TOTAL,
-        itemListElement: FACILITIES.map((facility, index) => {
+        numberOfItems: EXPECTED_ROW_COUNT,
+        itemListElement: facilities.map((row, index) => {
           const item: {
+            '@type': 'Place';
             name: string;
-            address?: string;
             url?: string;
+            address?: string;
             geo?: {
               '@type': 'GeoCoordinates';
               latitude: number;
               longitude: number;
             };
-          } = {name: facility.name_ja};
-          if (facility.address !== null) {
-            item.address = facility.address;
+          } = {
+            '@type': 'Place',
+            name: row.name_ja
+          };
+          if (row.official_url) {
+            item.url = row.official_url;
           }
-          if (facility.official_url !== null) {
-            item.url = facility.official_url;
+          if (row.address) {
+            item.address = row.address;
           }
-          if (facility.lat !== null && facility.lon !== null) {
+          if (row.lat !== null && row.lon !== null) {
             item.geo = {
               '@type': 'GeoCoordinates',
-              latitude: facility.lat,
-              longitude: facility.lon
+              latitude: row.lat,
+              longitude: row.lon
             };
           }
           return {
@@ -154,8 +158,6 @@ export default async function MunicipalityPage({params}: Props) {
   setRequestLocale(locale);
   const pref = PREFECTURE_BY_SLUG.get('tokushima')!;
   const isJa = locale === 'ja';
-  const lookupLocale = locale === 'en' ? 'en' : 'ja';
-  const tLookup = await getTranslations('lookup');
 
   if (muni.slug !== 'mima') {
     return (
@@ -185,7 +187,7 @@ export default async function MunicipalityPage({params}: Props) {
   const p = MIMA.population;
   return (
     <>
-      <JsonLd locale={locale} />
+      <JsonLd locale={locale} facilities={MIMA_FACILITIES} />
       <nav className="crumbs">
         <Link href="/">{isJa ? '全国' : 'Japan'}</Link>
         <span> / </span>
@@ -325,6 +327,8 @@ export default async function MunicipalityPage({params}: Props) {
           : `Households: register ${p.juki.households.toLocaleString('en-US')} vs census preliminary ${p.census2025.households.toLocaleString('en-US')}. Figures accessed ${MIMA.sources.accessed}.`}
       </p>
 
+      <MimaFacilityLookup locale={locale} rows={MIMA_FACILITIES} />
+
       <h2>{isJa ? '市役所' : 'City hall'}</h2>
       <p>
         <a href={MIMA.sources.hall}>{isJa ? '庁舎案内' : 'Hall guide'}</a>
@@ -333,14 +337,6 @@ export default async function MunicipalityPage({params}: Props) {
         {' · '}
         <a href={MIMA.sources.shisei}>{isJa ? '市勢要覧 2025' : 'Statistical pamphlet 2025'}</a>
       </p>
-
-      <section className="lookup-section" aria-labelledby="lookup-heading">
-        <h2 id="lookup-heading">{tLookup('heading')}</h2>
-        <p className="lede">{tLookup('lede')}</p>
-        <p className="note">{tLookup('coverage')}</p>
-        <p className="note">{tLookup('licenseNote')}</p>
-        <FacilityLookup locale={lookupLocale} facilities={FACILITIES} />
-      </section>
 
       <VideoSlot locale={locale} />
     </>

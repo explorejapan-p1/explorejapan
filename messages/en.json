@@ -48,7 +48,13 @@
       "childcare": "Childcare",
       "care": "Care",
       "wifi": "Public Wi-Fi",
-      "public_facility": "Public facilities"
-    }
+      "public_facility": "Public facilities",
+      "gtfs_stop": "Transit stops (GTFS)"
+    },
+    "unpublished": " (unpublished)",
+    "unpublishedNote": "This category is unpublished. We did not invent rows.",
+    "category": "Category",
+    "reading": "Reading",
+    "accessed": "Accessed"
   }
 }

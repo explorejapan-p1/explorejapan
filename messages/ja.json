@@ -48,7 +48,13 @@
       "childcare": "保育",
       "care": "介護",
       "wifi": "公衆無線LAN",
-      "public_facility": "公共施設"
-    }
+      "public_facility": "公共施設",
+      "gtfs_stop": "停留所（GTFS）"
+    },
+    "unpublished": "（未公開）",
+    "unpublishedNote": "この区分は未公開です。行を作っていません。",
+    "category": "区分",
+    "reading": "読み",
+    "accessed": "取得日"
   }
 }
