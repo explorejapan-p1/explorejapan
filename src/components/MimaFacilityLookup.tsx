@@ -43,6 +43,28 @@ function isBlank(value: string | null): boolean {
   return value === null || value.trim() === '';
 }
 
+function placementFromHours(hours: string | null): string | null {
+  if (hours === null) return null;
+  const marker = '設置位置:';
+  const index = hours.indexOf(marker);
+  if (index === -1) return null;
+  const text = hours.slice(index + marker.length);
+  return text === '' ? null : text;
+}
+
+function displayPlacement(hours: string | null): string | null {
+  const raw = placementFromHours(hours);
+  if (raw === null) return null;
+  const cleaned = raw.replaceAll('_x000d_', '').replace(/[\r\n]+/g, '').trim();
+  return cleaned === '' ? null : cleaned;
+}
+
+function readingMismatchHit(row: FacilityRow, q: string): boolean {
+  if (q === '') return false;
+  if (row.name_ja.toLowerCase().includes(q)) return false;
+  return row.reading !== null && row.reading.toLowerCase().includes(q);
+}
+
 function chipHref(next: FilterId, q: string, locale: string, id?: string): string {
   const path = `/${locale}/tokushima/mima`;
   const parts: string[] = [];
@@ -346,17 +368,30 @@ export function MimaFacilityLookup({
             {visible.length === 0 && !(filter !== 'all' && EXPECTED_CATEGORY_COUNTS[filter] === 0) ? (
               <p className="note">{t('empty')}</p>
             ) : null}
-            {shown.map((row) => (
+            {shown.map((row) => {
+              const placement = displayPlacement(row.hours);
+              const yomiMismatch = readingMismatchHit(row, q);
+              return (
                 <details key={row.id} open={openId === row.id}>
                   <summary className="place-row">
                     <span className="place-name">{row.name_ja}</span>
                     <span className="place-cat">
                       <ChipLabel id={row.category} />
                     </span>
+                    {placement ? <span className="place-sub">{placement}</span> : null}
+                    {yomiMismatch ? (
+                      <span className="place-sub">
+                        {t('reading')} {row.reading}
+                      </span>
+                    ) : null}
+                    {yomiMismatch ? (
+                      <span className="place-sub">{t('readingPackNote')}</span>
+                    ) : null}
                   </summary>
                   <PlaceCard row={row} />
                 </details>
-            ))}
+              );
+            })}
           </>
         ) : null}
       </div>

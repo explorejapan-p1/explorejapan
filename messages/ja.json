@@ -73,6 +73,7 @@
     "unpublishedNote": "この区分は未掲載です。",
     "category": "区分",
     "reading": "読み",
+    "readingPackNote": "読みはパックの値です。",
     "accessed": "取得日",
     "mapCiteN03": "「国土数値情報（行政区域データ）」（国土交通省）を加工して作成"
   }
