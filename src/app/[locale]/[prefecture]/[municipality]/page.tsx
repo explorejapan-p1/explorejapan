@@ -4,10 +4,12 @@ import {MimaFacilityLookup} from '@/components/MimaFacilityLookup';
 import {
   EXPECTED_GEO_COUNT,
   EXPECTED_ROW_COUNT,
+  LOOKUP_CATEGORIES,
+  type FacilityCategory,
   type FacilityRow
 } from '@/data/facility-schema';
 import {MIMA, SITE_URL} from '@/data/mima';
-import {facilityGapBoard, officialGeoRows, officialPackRows} from '@/data/mima-facilities';
+import {MIMA_FACILITIES, facilityGapBoard, officialGeoRows, officialPackRows} from '@/data/mima-facilities';
 import {PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {
   MUNICIPALITY_BY_SLUG,
@@ -20,6 +22,7 @@ import {hreflangMetadata, pagePath} from '@/lib/seo';
 
 type Props = {
   params: Promise<{locale: string; prefecture: string; municipality: string}>;
+  searchParams: Promise<{c?: string; q?: string; id?: string}>;
 };
 
 export function generateStaticParams() {
@@ -173,8 +176,9 @@ function JsonLd({locale}: {locale: string}) {
   );
 }
 
-export default async function MunicipalityPage({params}: Props) {
+export default async function MunicipalityPage({params, searchParams}: Props) {
   const {locale, prefecture, municipality} = await params;
+  const resolvedSearch = await searchParams;
   if (prefecture !== 'tokushima') notFound();
   const muni = MUNICIPALITY_BY_SLUG.get(municipality);
   if (!muni) notFound();
@@ -214,6 +218,18 @@ export default async function MunicipalityPage({params}: Props) {
     throw new Error(`official xy ${officialXy.length} != ${EXPECTED_GEO_COUNT}`);
   }
   const officialMap = projectMimaOfficialMap(officialXy);
+  const packRows = MIMA_FACILITIES;
+  if (packRows.length !== EXPECTED_ROW_COUNT) {
+    throw new Error(`pack rows ${packRows.length} != ${EXPECTED_ROW_COUNT}`);
+  }
+
+  const c = resolvedSearch.c;
+  const q = (resolvedSearch.q ?? '').trim();
+  const openId = resolvedSearch.id ?? null;
+  const filter: 'all' | FacilityCategory = LOOKUP_CATEGORIES.includes(c as FacilityCategory)
+    ? (c as FacilityCategory)
+    : 'all';
+  const engaged = (c !== undefined && c !== '') || q !== '';
 
   return (
     <>
@@ -225,7 +241,16 @@ export default async function MunicipalityPage({params}: Props) {
         <span> / </span>
         <span>{isJa ? MIMA.nameJa : MIMA.nameEn}</span>
       </nav>
-      <MimaFacilityLookup locale={locale} gaps={gaps} map={officialMap} />
+      <MimaFacilityLookup
+        locale={locale}
+        gaps={gaps}
+        map={officialMap}
+        rows={packRows}
+        filter={filter}
+        query={q}
+        engaged={engaged}
+        openId={openId}
+      />
 
       <table className="facts">
         <tbody>

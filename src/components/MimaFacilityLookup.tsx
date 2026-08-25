@@ -1,13 +1,9 @@
-'use client';
-
-import {useMemo, useState} from 'react';
 import {useTranslations} from 'next-intl';
 import {
   EXPECTED_CATEGORY_COUNTS,
   EXPECTED_GEO_COUNT,
   EXPECTED_ROW_COUNT,
   LOOKUP_CATEGORIES,
-  LOOKUP_PAGE_SIZE,
   licenseKind,
   type FacilityCategory,
   type FacilityGapBoard,
@@ -30,18 +26,31 @@ const EMERGENCY_CHIPS = [
   'hospital'
 ] as const satisfies readonly FacilityCategory[];
 
+type FilterId = 'all' | FacilityCategory;
 
 type Props = {
   locale: string;
   gaps: FacilityGapBoard;
   map: MimaOfficialMap;
+  rows: readonly FacilityRow[];
+  filter: FilterId;
+  query: string;
+  engaged: boolean;
+  openId: string | null;
 };
-
-type FilterId = 'all' | FacilityCategory;
-type CatalogState = 'idle' | 'loading' | 'ready' | 'error';
 
 function isBlank(value: string | null): boolean {
   return value === null || value.trim() === '';
+}
+
+function chipHref(next: FilterId, q: string, locale: string, id?: string): string {
+  const path = `/${locale}/tokushima/mima`;
+  const parts: string[] = [];
+  if (next !== 'all') parts.push(`c=${encodeURIComponent(next)}`);
+  if (q) parts.push(`q=${encodeURIComponent(q)}`);
+  if (id) parts.push(`id=${encodeURIComponent(id)}`);
+  const qs = parts.length ? `?${parts.join('&')}` : '';
+  return `${path}${qs}#mima-place-results`;
 }
 
 function Gap() {
@@ -159,115 +168,45 @@ function PlaceCard({row}: {row: FacilityRow}) {
   );
 }
 
-function parseCatalog(data: unknown): FacilityRow[] {
-  if (typeof data !== 'object' || data === null) {
-    throw new Error('catalog');
-  }
-  const total = Reflect.get(data, 'total');
-  const facilities = Reflect.get(data, 'facilities');
-  if (total !== EXPECTED_ROW_COUNT || !Array.isArray(facilities)) {
-    throw new Error('catalog');
-  }
-  if (facilities.length !== EXPECTED_ROW_COUNT) {
-    throw new Error('catalog');
-  }
-  return facilities as FacilityRow[];
+function chipClass(active: boolean, extra = ''): string {
+  return ['chip', active ? 'is-active' : '', extra].filter(Boolean).join(' ');
 }
 
-export function MimaFacilityLookup({locale, gaps, map}: Props) {
+export function MimaFacilityLookup({
+  locale,
+  gaps,
+  map,
+  rows,
+  filter,
+  query,
+  engaged,
+  openId
+}: Props) {
   const t = useTranslations('lookup');
-  const [filter, setFilter] = useState<FilterId>('all');
-  const [query, setQuery] = useState('');
-  const [engaged, setEngaged] = useState(false);
-  const [catalog, setCatalog] = useState<FacilityRow[] | null>(null);
-  const [catalogState, setCatalogState] = useState<CatalogState>('idle');
-  const [expandedId, setExpandedId] = useState<string | null>(null);
-  const [limit, setLimit] = useState(LOOKUP_PAGE_SIZE);
-  const [pinnedId, setPinnedId] = useState<string | null>(null);
 
-  const legendCats = useMemo(() => {
-    const seen = new Set<FacilityCategory>();
-    const ordered: FacilityCategory[] = [];
-    for (const point of map.points) {
-      if (seen.has(point.category)) continue;
-      seen.add(point.category);
-      ordered.push(point.category);
-    }
-    return ordered;
-  }, [map.points]);
+  const legendCats: FacilityCategory[] = [];
+  const seen = new Set<FacilityCategory>();
+  for (const point of map.points) {
+    if (seen.has(point.category)) continue;
+    seen.add(point.category);
+    legendCats.push(point.category);
+  }
 
   const missingGeo = gaps.total - gaps.geo;
 
-  async function ensureCatalog(): Promise<FacilityRow[] | null> {
-    if (catalog) return catalog;
-    if (catalogState === 'loading') return null;
-    setCatalogState('loading');
-    try {
-      const res = await fetch('/api/mima/facilities', {
-        headers: {Accept: 'application/json'}
-      });
-      if (!res.ok) throw new Error('catalog');
-      const rows = parseCatalog(await res.json());
-      setCatalog(rows);
-      setCatalogState('ready');
-      return rows;
-    } catch {
-      setCatalogState('error');
-      return null;
-    }
-  }
-
-  async function engageChip(next: FilterId) {
-    setFilter(next);
-    setEngaged(true);
-    setPinnedId(null);
-    setExpandedId(null);
-    setLimit(LOOKUP_PAGE_SIZE);
-    await ensureCatalog();
-  }
-
-  async function engageSearch(value: string) {
-    setQuery(value);
-    if (value.trim() === '') {
-      return;
-    }
-    setEngaged(true);
-    setPinnedId(null);
-    setExpandedId(null);
-    setLimit(LOOKUP_PAGE_SIZE);
-    await ensureCatalog();
-  }
-
-  async function engageMap(id: string, category: FacilityCategory) {
-    setEngaged(true);
-    setFilter(category);
-    setQuery('');
-    setPinnedId(id);
-    setExpandedId(id);
-    setLimit(LOOKUP_PAGE_SIZE);
-    const list = document.getElementById('mima-place-results');
-    list?.scrollIntoView({block: 'nearest'});
-    await ensureCatalog();
-  }
-
-  const visible = useMemo(() => {
-    if (!catalog) return [];
-    const q = query.trim().toLowerCase();
-    const filtered = catalog.filter((row) => {
-      if (filter !== 'all' && row.category !== filter) return false;
-      if (q === '') return true;
-      if (row.name_ja.toLowerCase().includes(q)) return true;
-      if (row.reading && row.reading.toLowerCase().includes(q)) return true;
-      return false;
-    });
-    if (!pinnedId) return filtered;
-    const pinned = filtered.find((row) => row.id === pinnedId);
-    if (!pinned) return filtered;
-    return [pinned, ...filtered.filter((row) => row.id !== pinnedId)];
-  }, [catalog, filter, query, pinnedId]);
-
-  const shown = engaged ? visible.slice(0, limit) : [];
-  const canMore = engaged && visible.length > shown.length;
+  const q = query.trim().toLowerCase();
+  const filtered = rows.filter((row) => {
+    if (filter !== 'all' && row.category !== filter) return false;
+    if (q === '') return true;
+    if (row.name_ja.toLowerCase().includes(q)) return true;
+    if (row.reading && row.reading.toLowerCase().includes(q)) return true;
+    return false;
+  });
+  const pinned = openId ? filtered.find((row) => row.id === openId) : undefined;
+  const visible = pinned
+    ? [pinned, ...filtered.filter((row) => row.id !== openId)]
+    : filtered;
+  const shown = engaged ? visible : [];
 
   return (
     <section className="lookup" aria-labelledby="mima-lookup-heading" lang={locale}>
@@ -280,40 +219,26 @@ export function MimaFacilityLookup({locale, gaps, map}: Props) {
           {locale === 'ja' ? 'うだつの町並みと、穴吹川。' : 'Udatsu townscape, and the Anabuki River.'}
         </p>
       <div className="lookup-toolbar" role="group" aria-label={t('filters')}>
-        <button
-          type="button"
-          className={filter === 'all' && engaged ? 'chip is-active' : 'chip'}
-          aria-pressed={filter === 'all' && engaged}
+        <a
+          className={chipClass(engaged && filter === 'all')}
+          href={chipHref('all', query, locale)}
           data-category="all"
-          onClick={() => {
-            void engageChip('all');
-          }}
         >
           <ChipLabel id="all" />
           <span className="count-chip"> {EXPECTED_ROW_COUNT}</span>
-        </button>
+        </a>
         {EMERGENCY_CHIPS.map((cat) => {
           const n = EXPECTED_CATEGORY_COUNTS[cat];
           return (
-            <button
+            <a
               key={cat}
-              type="button"
-              className={[
-                'chip',
-                engaged && filter === cat ? 'is-active' : '',
-                'is-emergency'
-              ]
-                .filter(Boolean)
-                .join(' ')}
-              aria-pressed={engaged && filter === cat}
+              className={chipClass(engaged && filter === cat, 'is-emergency')}
+              href={chipHref(cat, query, locale)}
               data-category={cat}
-              onClick={() => {
-                void engageChip(cat);
-              }}
             >
               <ChipLabel id={cat} />
               <span className="count-chip"> {n}</span>
-            </button>
+            </a>
           );
         })}
       </div>
@@ -350,80 +275,62 @@ export function MimaFacilityLookup({locale, gaps, map}: Props) {
                 data-category={point.category}
                 transform={`translate(${point.x} ${point.y})`}
               >
-                <circle
-                  className={dotClass(point.category) + (expandedId === point.id ? ' is-active' : '')}
-                  r={expandedId === point.id ? 5.5 : 4}
-                  tabIndex={0}
-                  role="button"
-                  aria-label={point.name_ja}
-                  onClick={() => {
-                    void engageMap(point.id, point.category);
-                  }}
-                  onKeyDown={(event) => {
-                    if (event.key === 'Enter' || event.key === ' ') {
-                      event.preventDefault();
-                      void engageMap(point.id, point.category);
-                    }
-                  }}
-                >
-                  <title>{point.name_ja}</title>
-                </circle>
+                <a href={chipHref(point.category, '', locale, point.id)}>
+                  <circle
+                    className={dotClass(point.category) + (openId === point.id ? ' is-active' : '')}
+                    r={openId === point.id ? 5.5 : 4}
+                    aria-label={point.name_ja}
+                  >
+                    <title>{point.name_ja}</title>
+                  </circle>
+                </a>
               </g>
             ))}
           </svg>
         </div>
       </div>
       <h2 id="mima-lookup-heading">{t('heading')}</h2>
-      <div className="lookup-search-row">
+      <form
+        className="lookup-search-row"
+        method="get"
+        action={`/${locale}/tokushima/mima`}
+      >
+        {filter !== 'all' ? <input type="hidden" name="c" value={filter} /> : null}
         <label htmlFor="mima-place-search">{t('searchLabel')}</label>
         <input
           id="mima-place-search"
           className="lookup-search"
           type="search"
-          value={query}
-          onChange={(event) => {
-            void engageSearch(event.target.value);
-          }}
+          name="q"
+          defaultValue={query}
           placeholder={t('searchPlaceholder')}
           spellCheck={false}
           autoComplete="off"
         />
-      </div>
+      </form>
 
       <div className="lookup-toolbar lookup-toolbar-rest" role="group" aria-label={t('tally')}>
-        {LOOKUP_CATEGORIES.filter((cat) => !EMERGENCY.has(cat)).map((cat) => {
+        {LOOKUP_CATEGORIES.filter(
+          (cat) => !EMERGENCY.has(cat) && EXPECTED_CATEGORY_COUNTS[cat] !== 0
+        ).map((cat) => {
           const n = EXPECTED_CATEGORY_COUNTS[cat];
-          const unpublished = n === 0;
           return (
-            <button
+            <a
               key={cat}
-              type="button"
-              className={[
-                'chip',
-                engaged && filter === cat ? 'is-active' : '',
-                unpublished ? 'is-empty' : ''
-              ]
-                .filter(Boolean)
-                .join(' ')}
-              aria-pressed={engaged && filter === cat}
+              className={chipClass(engaged && filter === cat)}
+              href={chipHref(cat, query, locale)}
               data-category={cat}
-              onClick={() => {
-                void engageChip(cat);
-              }}
             >
               <ChipLabel id={cat} />
-              {unpublished ? t('unpublished') : null}
               <span className="count-chip"> {n}</span>
-            </button>
+            </a>
           );
         })}
       </div>
 
       <div id="mima-place-results">
         {!engaged ? <p className="note">{t('idleHint')}</p> : null}
-        {engaged && catalogState === 'loading' ? <p className="note">{t('loading')}</p> : null}
-        {engaged && catalogState === 'error' ? <p className="note">{t('loadError')}</p> : null}
-        {engaged && catalog ? (
+        {engaged ? (
           <>
             <p className="note" aria-live="polite">
               {t('visibleLabel')} {t('visible', {n: visible.length})}
@@ -434,41 +341,22 @@ export function MimaFacilityLookup({locale, gaps, map}: Props) {
             {visible.length === 0 && !(filter !== 'all' && EXPECTED_CATEGORY_COUNTS[filter] === 0) ? (
               <p className="note">{t('empty')}</p>
             ) : null}
-            {shown.length > 0 ? (
-              <ul className="compact-list">
-                {shown.map((row) => {
-                  const open = expandedId === row.id;
-                  const hasGeo = row.lat !== null && row.lon !== null;
-                  return (
-                    <li key={row.id}>
-                      <button
-                        type="button"
-                        className={open ? 'place-row is-open' : 'place-row'}
-                        aria-expanded={open}
-                        onClick={() => setExpandedId(open ? null : row.id)}
-                      >
-                        <span className="place-name">{row.name_ja}</span>
-                        <span className="place-cat">
-                          <ChipLabel id={row.category} />
-                        </span>
-                        {hasGeo ? null : <span className="mark">{t('markGeo')}</span>}
-                        {isBlank(row.hours) ? <span className="mark">{t('markHours')}</span> : null}
-                      </button>
-                      {open ? <PlaceCard row={row} /> : null}
-                    </li>
-                  );
-                })}
-              </ul>
-            ) : null}
-            {canMore ? (
-              <button
-                type="button"
-                className="more-btn"
-                onClick={() => setLimit((n) => n + LOOKUP_PAGE_SIZE)}
-              >
-                {t('more')}
-              </button>
-            ) : null}
+            {shown.map((row) => {
+              const hasGeo = row.lat !== null && row.lon !== null;
+              return (
+                <details key={row.id} open={openId === row.id}>
+                  <summary className="place-row">
+                    <span className="place-name">{row.name_ja}</span>
+                    <span className="place-cat">
+                      <ChipLabel id={row.category} />
+                    </span>
+                    {hasGeo ? null : <span className="mark">{t('markGeo')}</span>}
+                    {isBlank(row.hours) ? <span className="mark">{t('markHours')}</span> : null}
+                  </summary>
+                  <PlaceCard row={row} />
+                </details>
+              );
+            })}
           </>
         ) : null}
       </div>
