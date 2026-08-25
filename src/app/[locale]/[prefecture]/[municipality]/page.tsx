@@ -1,7 +1,9 @@
 import {setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
+import {MimaFacilityLookup} from '@/components/MimaFacilityLookup';
 import {VideoSlot} from '@/components/VideoSlot';
 import {MIMA, SITE_URL} from '@/data/mima';
+import {MIMA_FACILITIES} from '@/data/mima-facilities';
 import {PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {
   MUNICIPALITY_BY_SLUG,
@@ -285,6 +287,8 @@ export default async function MunicipalityPage({params}: Props) {
           ? `世帯数は台帳 ${p.juki.households.toLocaleString('ja-JP')} と国勢調査速報 ${p.census2025.households.toLocaleString('ja-JP')} を別掲。数字のアクセス日は ${MIMA.sources.accessed}。`
           : `Households: register ${p.juki.households.toLocaleString('en-US')} vs census preliminary ${p.census2025.households.toLocaleString('en-US')}. Figures accessed ${MIMA.sources.accessed}.`}
       </p>
+
+      <MimaFacilityLookup locale={locale} rows={MIMA_FACILITIES} />
 
       <h2>{isJa ? '市役所' : 'City hall'}</h2>
       <p>
