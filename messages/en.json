@@ -13,5 +13,42 @@
   },
   "muni": {
     "coming": "This municipality page is coming soon. Only Mima City has a full listing in v0."
+  },
+  "lookup": {
+    "heading": "Look up a place",
+    "lede": "You can look up 515 places from the frozen pack. Shelters, emergency sites, AEDs, and hospitals come first. An empty address or missing coordinates means the open data didn't list them. We didn't invent a facility to fill the hole. If you live here and spot a miss, that's the list doing its job.",
+    "coverage": "This is the frozen 515-row pack for Mima City (JIS 36207). Tourism 116, cultural property 110, care 80, AED 72, shelters 45, emergency sites 40, hospitals 23, childcare 16, public Wi-Fi 9, public facilities 4. No GTFS stop was invented.",
+    "licenseNote": "Licenses split by row. CC BY 4.0 follows Tokushima Our Open Data terms. A city-site listing is a fact copied from city.mima.lg.jp. It is not under the open-data license.",
+    "searchLabel": "Search by name",
+    "searchPlaceholder": "Name or reading (try Miraisu, Waki)",
+    "visible": "{n} / 515",
+    "visibleLabel": "Showing",
+    "gap": "Not in the open data",
+    "licenseOpendata": "CC BY 4.0 · Our Open Data",
+    "licenseCity": "City-site listing",
+    "license": "License",
+    "address": "Address",
+    "phone": "Phone",
+    "hours": "Hours",
+    "official": "Official",
+    "source": "Source",
+    "sourceLink": "Open source",
+    "geo": "Coords",
+    "empty": "Nothing matches. Switch a chip or shorten the search.",
+    "filters": "Category",
+    "tally": "Counts by category (so a miss is visible)",
+    "chips": {
+      "all": "All",
+      "shelter": "Shelters",
+      "emergency_evacuation_site": "Evacuation sites",
+      "aed": "AED",
+      "hospital": "Hospitals",
+      "tourism": "Tourism",
+      "cultural_property": "Cultural property",
+      "childcare": "Childcare",
+      "care": "Care",
+      "wifi": "Public Wi-Fi",
+      "public_facility": "Public facilities"
+    }
   }
 }

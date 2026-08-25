@@ -13,5 +13,42 @@
   },
   "muni": {
     "coming": "この市町村のページは準備中です。現在本文があるのは美馬市だけです。"
+  },
+  "lookup": {
+    "heading": "施設を探す",
+    "lede": "凍結パックから、いま探せる施設は515件です。避難所、緊急避難場所、AED、病院を先に出しています。住所や座標が空の行は、公開データに載っていません。こちらで施設を足していません。足りない名前に気づける一覧です。",
+    "coverage": "美馬市（JIS 36207）の凍結パックは515件です。観光116、文化財110、介護80、AED 72、避難所45、緊急避難場所40、医療機関23、保育16、公衆無線LAN 9、公共施設4。GTFSの停留所は作っていません。",
+    "licenseNote": "行のライセンスは二つに分かれます。CC BY 4.0 は徳島県 Our Open Data の利用規約です。「市公式サイト掲載情報」は市のページに載っていた事実の転記で、オープンデータ許諾ではありません。",
+    "searchLabel": "施設名で探す",
+    "searchPlaceholder": "施設名や読み（例: ミライズ、脇町）",
+    "visible": "{n} / 515",
+    "visibleLabel": "表示",
+    "gap": "未掲載",
+    "licenseOpendata": "CC BY 4.0 · Our Open Data",
+    "licenseCity": "市公式サイト掲載情報",
+    "license": "ライセンス",
+    "address": "住所",
+    "phone": "電話",
+    "hours": "時間",
+    "official": "公式",
+    "source": "出典",
+    "sourceLink": "出典を開く",
+    "geo": "座標",
+    "empty": "この条件では0件です。チップを変えるか、検索を短くしてください。",
+    "filters": "種別",
+    "tally": "種別ごとの件数（欠けに気づく用）",
+    "chips": {
+      "all": "すべて",
+      "shelter": "避難所",
+      "emergency_evacuation_site": "緊急避難場所",
+      "aed": "AED",
+      "hospital": "医療機関",
+      "tourism": "観光",
+      "cultural_property": "文化財",
+      "childcare": "保育",
+      "care": "介護",
+      "wifi": "公衆無線LAN",
+      "public_facility": "公共施設"
+    }
   }
 }
