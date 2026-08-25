@@ -1,7 +1,6 @@
 import {setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {MimaFacilityLookup} from '@/components/MimaFacilityLookup';
-import {VideoSlot} from '@/components/VideoSlot';
 import {
   EXPECTED_GEO_COUNT,
   EXPECTED_ROW_COUNT,
@@ -369,7 +368,6 @@ export default async function MunicipalityPage({params}: Props) {
         <a href={MIMA.sources.shisei}>{isJa ? '市勢要覧 2025' : 'Statistical pamphlet 2025'}</a>
       </p>
 
-      <VideoSlot locale={locale} />
     </>
   );
 }

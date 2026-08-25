@@ -330,8 +330,6 @@ export function MimaFacilityLookup({locale, gaps, map}: Props) {
       </div>
 
       <h2 id="mima-lookup-heading">{t('heading')}</h2>
-      <p className="lede">{t('lede')}</p>
-
       <p>
         <label htmlFor="mima-place-search">{t('searchLabel')}</label>
       </p>
@@ -390,6 +388,8 @@ export function MimaFacilityLookup({locale, gaps, map}: Props) {
           );
         })}
       </div>
+
+      <p className="lede">{t('lede')}</p>
 
       <div className="map-meta">
         <p className="map-gap-copy">{t('mapGap', {n: missingGeo})}</p>
