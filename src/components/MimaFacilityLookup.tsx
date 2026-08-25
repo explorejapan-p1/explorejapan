@@ -22,6 +22,14 @@ const EMERGENCY: ReadonlySet<FacilityCategory> = new Set([
   'hospital'
 ]);
 
+const EMERGENCY_CHIPS = [
+  'shelter',
+  'emergency_evacuation_site',
+  'aed',
+  'hospital'
+] as const satisfies readonly FacilityCategory[];
+
+
 type Props = {
   locale: string;
   gaps: FacilityGapBoard;
@@ -359,10 +367,8 @@ export function MimaFacilityLookup({locale, gaps, map}: Props) {
           <ChipLabel id="all" />
           <span className="count-chip"> {EXPECTED_ROW_COUNT}</span>
         </button>
-        {LOOKUP_CATEGORIES.map((cat) => {
+        {EMERGENCY_CHIPS.map((cat) => {
           const n = EXPECTED_CATEGORY_COUNTS[cat];
-          const unpublished = n === 0;
-          const emergency = EMERGENCY.has(cat);
           return (
             <button
               key={cat}
@@ -370,8 +376,34 @@ export function MimaFacilityLookup({locale, gaps, map}: Props) {
               className={[
                 'chip',
                 engaged && filter === cat ? 'is-active' : '',
-                unpublished ? 'is-empty' : '',
-                emergency ? 'is-emergency' : ''
+                'is-emergency'
+              ]
+                .filter(Boolean)
+                .join(' ')}
+              aria-pressed={engaged && filter === cat}
+              data-category={cat}
+              onClick={() => {
+                void engageChip(cat);
+              }}
+            >
+              <ChipLabel id={cat} />
+              <span className="count-chip"> {n}</span>
+            </button>
+          );
+        })}
+      </div>
+      <div className="lookup-toolbar lookup-toolbar-rest" role="group" aria-label={t('tally')}>
+        {LOOKUP_CATEGORIES.filter((cat) => !EMERGENCY.has(cat)).map((cat) => {
+          const n = EXPECTED_CATEGORY_COUNTS[cat];
+          const unpublished = n === 0;
+          return (
+            <button
+              key={cat}
+              type="button"
+              className={[
+                'chip',
+                engaged && filter === cat ? 'is-active' : '',
+                unpublished ? 'is-empty' : ''
               ]
                 .filter(Boolean)
                 .join(' ')}

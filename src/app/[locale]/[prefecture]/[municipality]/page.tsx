@@ -228,8 +228,8 @@ export default async function MunicipalityPage({params}: Props) {
       <h1>{isJa ? `${MIMA.nameJa}（${MIMA.prefectureJa}）` : `${MIMA.nameEn}, ${MIMA.prefectureEn}`}</h1>
       <p className="lede">
         {isJa
-          ? `${MIMA.catchphrase}。地図は公式座標がある ${EXPECTED_GEO_COUNT} 件だけです。`
-          : `${MIMA.catchphrase}. The map shows the ${EXPECTED_GEO_COUNT} official coordinates only.`}
+          ? `地図は公式座標がある ${EXPECTED_GEO_COUNT} 件。`
+          : `Map shows the ${EXPECTED_GEO_COUNT} official coordinates.`}
       </p>
 
       <MimaFacilityLookup locale={locale} gaps={gaps} map={officialMap} />
