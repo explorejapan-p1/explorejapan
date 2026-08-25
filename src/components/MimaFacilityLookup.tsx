@@ -19,12 +19,12 @@ const EMERGENCY: ReadonlySet<FacilityCategory> = new Set([
   'hospital'
 ]);
 
-const EMERGENCY_CHIPS = [
-  'shelter',
-  'emergency_evacuation_site',
-  'aed',
-  'hospital'
+const TRAVEL_CHIPS = [
+  'tourism',
+  'cultural_property'
 ] as const satisfies readonly FacilityCategory[];
+
+const TRAVEL: ReadonlySet<FacilityCategory> = new Set(TRAVEL_CHIPS);
 
 type FilterId = 'all' | FacilityCategory;
 
@@ -248,6 +248,7 @@ export function MimaFacilityLookup({
         <p className="lede">
           {locale === 'ja' ? 'うだつの町並みと、穴吹川。' : 'Udatsu townscape, and the Anabuki River.'}
         </p>
+        <p className="lede travel-gap">{t('travelGap')}</p>
       <div className="lookup-toolbar" role="group" aria-label={t('filters')}>
         <a
           className={chipClass(engaged && filter === 'all')}
@@ -257,12 +258,12 @@ export function MimaFacilityLookup({
           <ChipLabel id="all" />
           <span className="count-chip"> {EXPECTED_ROW_COUNT}</span>
         </a>
-        {EMERGENCY_CHIPS.map((cat) => {
+        {TRAVEL_CHIPS.map((cat) => {
           const n = EXPECTED_CATEGORY_COUNTS[cat];
           return (
             <a
               key={cat}
-              className={chipClass(engaged && filter === cat, 'is-emergency')}
+              className={chipClass(engaged && filter === cat)}
               href={chipHref(cat, query, locale)}
               data-category={cat}
             >
@@ -346,13 +347,16 @@ export function MimaFacilityLookup({
 
       <div className="lookup-toolbar lookup-toolbar-rest" role="group" aria-label={t('tally')}>
         {LOOKUP_CATEGORIES.filter(
-          (cat) => !EMERGENCY.has(cat) && EXPECTED_CATEGORY_COUNTS[cat] !== 0
+          (cat) => !TRAVEL.has(cat) && EXPECTED_CATEGORY_COUNTS[cat] !== 0
         ).map((cat) => {
           const n = EXPECTED_CATEGORY_COUNTS[cat];
           return (
             <a
               key={cat}
-              className={chipClass(engaged && filter === cat)}
+              className={chipClass(
+                engaged && filter === cat,
+                EMERGENCY.has(cat) ? 'is-emergency' : ''
+              )}
               href={chipHref(cat, query, locale)}
               data-category={cat}
             >

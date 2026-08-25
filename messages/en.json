@@ -17,6 +17,7 @@
   "lookup": {
     "heading": "Find a place",
     "lede": "If hours or an address is missing, the cell stays blank.",
+    "travelGap": "This pack has no restaurants, lodgings, or shops.",
     "coverage": "Mima City (JIS 36207), 515 rows. Tourism 116, cultural property 110, care 80, AED 72, shelters 45, emergency sites 40, hospitals 23, childcare 16, public Wi-Fi 9, public facilities 4. GTFS stops: 0, unpublished.",
     "licenseNote": "Licenses split by row. CC BY 4.0 follows Tokushima Our Open Data. A city-site listing is a fact from city.mima.lg.jp, not under that license.",
     "searchLabel": "Search by name",

@@ -150,6 +150,14 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
   margin: 0 0 0.5rem;
   font-size: 1rem;
 }
+.travel-gap {
+  margin: 0 0 0.4rem;
+  font-size: 0.92rem;
+}
+.hero-copy .lede.travel-gap {
+  margin: 0 0 0.4rem;
+  font-size: 0.92rem;
+}
 .hero-copy .lookup-toolbar {
   margin: 0;
   flex-wrap: nowrap;
@@ -354,6 +362,7 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
   align-items: stretch;
   border: 1px solid var(--line);
   background: #fffdf8;
+  transition: border-color 180ms ease;
 }
 .search-field:focus-within { border-color: var(--leaf); }
 .lookup-search {
@@ -367,12 +376,14 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
 }
 .search-go {
   font: inherit;
+  font-weight: 600;
   border: 0;
   border-left: 1px solid var(--line);
   background: #fffdf8;
   color: var(--leaf);
   padding: 0 1rem;
   cursor: pointer;
+  transition: background 180ms ease;
 }
 .search-go:hover { background: var(--leaf-2); }
 .compact-list {
@@ -381,9 +392,19 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
   padding: 0;
   border-top: 1px solid var(--line);
 }
+#mima-place-results {
+  border: 1px solid var(--line);
+  background: #fffdf8;
+}
 #mima-place-results details {
   border-bottom: 1px solid var(--line);
   background: #fffdf8;
+}
+#mima-place-results details:last-child {
+  border-bottom: none;
+}
+#mima-place-results .note {
+  padding: 0.55rem 0.85rem;
 }
 .place-row {
   width: 100%;
@@ -391,7 +412,7 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
   font: inherit;
   background: #fffdf8;
   border: 0;
-  padding: 0.72rem 0.4rem;
+  padding: 0.85rem;
   cursor: pointer;
   display: flex;
   flex-wrap: wrap;
@@ -414,13 +435,17 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
   cursor: pointer;
 }
 .more-btn:hover { background: var(--leaf-2); }
+@keyframes lookup-card-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 .place-card {
   border: 1px solid var(--line);
   background: #fffdf8;
   padding: 1rem 1.1rem;
   margin: 0.4rem 0 0.85rem;
   border-left: 3px solid var(--leaf-2);
-  transition: opacity 180ms ease;
+  animation: lookup-card-in 180ms ease-out;
 }
 .place-card.is-emergency { border-left-color: var(--mima); }
 .place-card h4 { margin: 0 0 0.4rem; font-size: 1.08rem; }
