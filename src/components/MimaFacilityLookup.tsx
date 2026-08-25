@@ -173,27 +173,9 @@ function PlaceCard({row}: {row: FacilityRow}) {
       className={emergency ? 'place-card is-emergency' : 'place-card'}
       data-category={row.category}
     >
-      <h4>{row.name_ja}</h4>
-      <p className="attr-row">
-        <span className="attr-label">{t('category')}</span>
-        <span>
-          <ChipLabel id={row.category} />
-        </span>
-      </p>
-      <TextField label={t('reading')} value={row.reading} />
       <TextField label={t('address')} value={row.address} />
       <TextField label={t('phone')} value={row.phone} />
       <TextField label={t('hours')} value={row.hours} />
-      <p className="attr-row">
-        <span className="attr-label">{t('geo')}</span>
-        {hasGeo ? (
-          <span>
-            {row.lat}, {row.lon}
-          </span>
-        ) : (
-          <Gap />
-        )}
-      </p>
       <p className="attr-row">
         <span className="attr-label">{t('official')}</span>
         {row.official_url && !isBlank(row.official_url) ? (
@@ -202,41 +184,46 @@ function PlaceCard({row}: {row: FacilityRow}) {
           <Gap />
         )}
       </p>
-      <p className="attr-row">
-        <span className="attr-label">{t('source')}</span>
+      {!isBlank(row.reading) ? (
+        <TextField label={t('reading')} value={row.reading} />
+      ) : null}
+      {hasGeo ? (
+        <p className="muted">
+          {row.lat}, {row.lon}
+        </p>
+      ) : (
+        <p className="attr-row">
+          <span className="attr-label">{t('geo')}</span>
+          <Gap />
+        </p>
+      )}
+      <footer className="place-card-meta">
         <a href={row.source_url}>{row.source_url}</a>
-      </p>
-      <p className="attr-row">
-        <span className="attr-label">{t('license')}</span>
+        {' · '}
         <span className={kind === 'cc_by_open_data' ? 'license-cc' : 'license-city'}>
           {kind === 'cc_by_open_data' ? t('licenseOpendata') : t('licenseCity')}
         </span>
-      </p>
-      <p className="attr-row sources">{row.license}</p>
-      <p className="attr-row">
-        <span className="attr-label">{t('accessed')}</span>
-        <span>{row.accessed}</span>
-      </p>
+        {' · '}
+        {row.license}
+        {' · '}
+        {row.accessed}
+      </footer>
     </article>
   );
 }
 
-/** Travel layer only: name, address if any, phone if any, source, accessed. No invented hours/geo. */
+/** Travel layer only: address if any, phone if any, source, accessed. No invented hours/geo. */
 function TravelPlaceCard({row}: {row: TravelRow}) {
   const t = useTranslations('lookup');
   return (
     <article className="place-card place-card-lite" data-category={row.category}>
-      <h4>{row.name_ja}</h4>
       {row.address ? <TextField label={t('address')} value={row.address} /> : null}
       {row.phone ? <TextField label={t('phone')} value={row.phone} /> : null}
-      <p className="attr-row">
-        <span className="attr-label">{t('source')}</span>
+      <footer className="place-card-meta">
         <a href={row.source_url}>{row.source_url}</a>
-      </p>
-      <p className="attr-row">
-        <span className="attr-label">{t('accessed')}</span>
-        <span>{row.accessed}</span>
-      </p>
+        {' · '}
+        {row.accessed}
+      </footer>
     </article>
   );
 }
