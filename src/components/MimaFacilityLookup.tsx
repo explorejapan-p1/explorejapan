@@ -217,11 +217,19 @@ export function MimaFacilityLookup({
   const missingGeo = gaps.total - gaps.geo;
 
   const q = query.trim().toLowerCase();
+  const nameHitExists =
+    q !== '' && rows.some((row) => row.name_ja.toLowerCase().includes(q));
   const filtered = rows.filter((row) => {
     if (filter !== 'all' && row.category !== filter) return false;
     if (q === '') return true;
     if (row.name_ja.toLowerCase().includes(q)) return true;
-    if (row.reading && row.reading.toLowerCase().includes(q)) return true;
+    if (
+      row.reading &&
+      row.reading.toLowerCase().includes(q) &&
+      !nameHitExists
+    ) {
+      return true;
+    }
     return false;
   });
   const pinned = openId ? filtered.find((row) => row.id === openId) : undefined;
@@ -381,7 +389,7 @@ export function MimaFacilityLookup({
                     {placement ? <span className="place-sub">{placement}</span> : null}
                     {yomiMismatch ? (
                       <span className="place-sub">
-                        {t('reading')} {row.reading}
+                        {t('reading')}: {row.reading}
                       </span>
                     ) : null}
                     {yomiMismatch ? (
