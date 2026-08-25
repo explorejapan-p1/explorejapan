@@ -8,7 +8,7 @@ import {
   type FacilityRow
 } from '@/data/facility-schema';
 import {MIMA, SITE_URL} from '@/data/mima';
-import {MIMA_FACILITIES, facilityGapBoard, officialGeoRows} from '@/data/mima-facilities';
+import {facilityGapBoard, officialGeoRows, officialPackRows} from '@/data/mima-facilities';
 import {PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {
   MUNICIPALITY_BY_SLUG,
@@ -42,9 +42,42 @@ export async function generateMetadata({params}: Props) {
   };
 }
 
-function JsonLd({locale, facilities}: {locale: string; facilities: readonly FacilityRow[]}) {
+function packPlace(row: FacilityRow) {
+  const item: {
+    '@type': 'Place';
+    name: string;
+    url?: string;
+    address?: string;
+    geo?: {
+      '@type': 'GeoCoordinates';
+      latitude: number;
+      longitude: number;
+    };
+  } = {
+    '@type': 'Place',
+    name: row.name_ja
+  };
+  if (row.official_url) {
+    item.url = row.official_url;
+  }
+  if (row.address) {
+    item.address = row.address;
+  }
+  if (row.lat !== null && row.lon !== null) {
+    item.geo = {
+      '@type': 'GeoCoordinates',
+      latitude: row.lat,
+      longitude: row.lon
+    };
+  }
+  return item;
+}
+
+function JsonLd({locale}: {locale: string}) {
   const isJa = locale === 'ja';
   const url = `${SITE_URL}${pagePath(locale, 'tokushima/mima')}`;
+  const packUrl = `${SITE_URL}/api/mima/facilities`;
+  const officialRows = officialPackRows();
   const data = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -82,7 +115,8 @@ function JsonLd({locale, facilities}: {locale: string; facilities: readonly Faci
         url,
         inLanguage: locale,
         name: isJa ? MIMA.nameJa : MIMA.nameEn,
-        isPartOf: {name: isJa ? '日本の農村ディレクトリ' : 'Rural Japan Directory'}
+        isPartOf: {name: isJa ? '日本の農村ディレクトリ' : 'Rural Japan Directory'},
+        relatedLink: packUrl
       },
       {
         '@type': 'BreadcrumbList',
@@ -110,40 +144,25 @@ function JsonLd({locale, facilities}: {locale: string; facilities: readonly Faci
       {
         '@type': 'ItemList',
         numberOfItems: EXPECTED_ROW_COUNT,
-        itemListElement: facilities.map((row, index) => {
-          const item: {
-            '@type': 'Place';
-            name: string;
-            url?: string;
-            address?: string;
-            geo?: {
-              '@type': 'GeoCoordinates';
-              latitude: number;
-              longitude: number;
-            };
-          } = {
-            '@type': 'Place',
-            name: row.name_ja
-          };
-          if (row.official_url) {
-            item.url = row.official_url;
-          }
-          if (row.address) {
-            item.address = row.address;
-          }
-          if (row.lat !== null && row.lon !== null) {
-            item.geo = {
-              '@type': 'GeoCoordinates',
-              latitude: row.lat,
-              longitude: row.lon
-            };
-          }
-          return {
-            '@type': 'ListItem',
-            position: index + 1,
-            item
-          };
-        })
+        additionalProperty: {
+          '@type': 'PropertyValue',
+          name: 'fullPack',
+          url: packUrl
+        },
+        itemListElement: officialRows.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: packPlace(row)
+        }))
+      },
+      {
+        '@type': 'DataDownload',
+        name: isJa ? '美馬市施設パック（全515件）' : 'Mima City facilities pack (all 515 rows)',
+        contentUrl: packUrl,
+        encodingFormat: 'application/json',
+        description: isJa
+          ? '公式座標がある61件のみHTMLに載せる。全件はAPIから取得。'
+          : 'HTML inlines the 61 official-xy rows only. Full pack is this API.'
       }
     ]
   };
@@ -199,7 +218,7 @@ export default async function MunicipalityPage({params}: Props) {
 
   return (
     <>
-      <JsonLd locale={locale} facilities={MIMA_FACILITIES} />
+      <JsonLd locale={locale} />
       <nav className="crumbs">
         <Link href="/">{isJa ? '全国' : 'Japan'}</Link>
         <span> / </span>

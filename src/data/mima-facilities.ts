@@ -175,11 +175,17 @@ export function facilityGapBoard(
   return tallyGaps(rows);
 }
 
+export function officialPackRows(
+  rows: readonly FacilityRow[] = MIMA_FACILITIES
+): FacilityRow[] {
+  return rows.filter((row) => row.lat !== null && row.lon !== null);
+}
+
 export function officialGeoRows(
   rows: readonly FacilityRow[] = MIMA_FACILITIES
 ): OfficialMapPoint[] {
   const out: OfficialMapPoint[] = [];
-  for (const row of rows) {
+  for (const row of officialPackRows(rows)) {
     if (row.lat === null || row.lon === null) continue;
     out.push({
       id: row.id,
