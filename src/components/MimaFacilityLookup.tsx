@@ -147,21 +147,21 @@ export function MimaFacilityLookup({locale, rows}: Props) {
 
   return (
     <section className="lookup" aria-labelledby="mima-lookup-heading">
-      <h2 id="mima-lookup-heading">{isJa ? '場所を探す' : 'Find a place'}</h2>
+      <h2 id="mima-lookup-heading">{isJa ? '施設を探す' : 'Look up a place'}</h2>
       <p>
         {isJa
-          ? `${EXPECTED_ROW_COUNT} 件。JIS ${MIMA_PACK_JIS} の凍結パックだけを使います。`
-          : `${EXPECTED_ROW_COUNT} places. Frozen pack for JIS ${MIMA_PACK_JIS} only.`}
+          ? `いま探せる施設は ${EXPECTED_ROW_COUNT} 件です。JIS ${MIMA_PACK_JIS} の凍結パックだけを使います。`
+          : `${EXPECTED_ROW_COUNT} places you can look up. Frozen pack for JIS ${MIMA_PACK_JIS} only.`}
       </p>
       <p className="note">
         {isJa
           ? '避難所、緊急避難場所、AED、病院、観光などを名前で絞ります。同じ場所が複数の区分に出ることがあります。行は分けたままです。'
-          : "Filter shelters, emergency evacuation sites, AEDs, hospitals, and tourism by name. The same site can show up in more than one category. Rows stay separate."}
+          : 'Filter shelters, emergency evacuation sites, AEDs, hospitals, and tourism by name. The same site can show up in more than one category. Rows stay separate.'}
       </p>
       <p className="note">
         {isJa
-          ? '欠けている項目は未掲載と出します。緯度経度は推測しません。'
-          : "Missing fields say not published. We don't guess lat/lon."}
+          ? '欠けている項目は未掲載と出します。緯度経度は推測しません。施設を足していません。'
+          : "Missing fields say not published. We don't guess lat/lon. We didn't invent a facility to fill a hole."}
       </p>
       <p className="note" data-gap-geo={`${geoCount}/${EXPECTED_ROW_COUNT}`}>
         {isJa

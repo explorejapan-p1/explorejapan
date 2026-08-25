@@ -2,6 +2,7 @@ import {setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {MimaFacilityLookup} from '@/components/MimaFacilityLookup';
 import {VideoSlot} from '@/components/VideoSlot';
+import {EXPECTED_ROW_COUNT, type FacilityRow} from '@/data/facility-schema';
 import {MIMA, SITE_URL} from '@/data/mima';
 import {MIMA_FACILITIES} from '@/data/mima-facilities';
 import {PREFECTURE_BY_SLUG} from '@/data/prefectures';
@@ -36,7 +37,7 @@ export async function generateMetadata({params}: Props) {
   };
 }
 
-function JsonLd({locale}: {locale: string}) {
+function JsonLd({locale, facilities}: {locale: string; facilities: readonly FacilityRow[]}) {
   const isJa = locale === 'ja';
   const url = `${SITE_URL}${pagePath(locale, 'tokushima/mima')}`;
   const data = {
@@ -100,6 +101,44 @@ function JsonLd({locale}: {locale: string}) {
             item: url
           }
         ]
+      },
+      {
+        '@type': 'ItemList',
+        numberOfItems: EXPECTED_ROW_COUNT,
+        itemListElement: facilities.map((row, index) => {
+          const item: {
+            '@type': 'Place';
+            name: string;
+            url?: string;
+            address?: string;
+            geo?: {
+              '@type': 'GeoCoordinates';
+              latitude: number;
+              longitude: number;
+            };
+          } = {
+            '@type': 'Place',
+            name: row.name_ja
+          };
+          if (row.official_url) {
+            item.url = row.official_url;
+          }
+          if (row.address) {
+            item.address = row.address;
+          }
+          if (row.lat !== null && row.lon !== null) {
+            item.geo = {
+              '@type': 'GeoCoordinates',
+              latitude: row.lat,
+              longitude: row.lon
+            };
+          }
+          return {
+            '@type': 'ListItem',
+            position: index + 1,
+            item
+          };
+        })
       }
     ]
   };
@@ -148,7 +187,7 @@ export default async function MunicipalityPage({params}: Props) {
   const p = MIMA.population;
   return (
     <>
-      <JsonLd locale={locale} />
+      <JsonLd locale={locale} facilities={MIMA_FACILITIES} />
       <nav className="crumbs">
         <Link href="/">{isJa ? '全国' : 'Japan'}</Link>
         <span> / </span>
