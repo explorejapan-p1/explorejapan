@@ -4,12 +4,11 @@ import {MimaFacilityLookup} from '@/components/MimaFacilityLookup';
 import {
   EXPECTED_GEO_COUNT,
   EXPECTED_ROW_COUNT,
-  LOOKUP_CATEGORIES,
-  type FacilityCategory,
   type FacilityRow
 } from '@/data/facility-schema';
 import {MIMA, SITE_URL} from '@/data/mima';
 import {MIMA_FACILITIES, facilityGapBoard, officialGeoRows, officialPackRows} from '@/data/mima-facilities';
+import {resolveMimaFilter} from '@/data/mima-travel';
 import {PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {
   MUNICIPALITY_BY_SLUG,
@@ -226,10 +225,9 @@ export default async function MunicipalityPage({params, searchParams}: Props) {
   const c = resolvedSearch.c;
   const q = (resolvedSearch.q ?? '').trim();
   const openId = resolvedSearch.id ?? null;
-  const filter: 'all' | FacilityCategory = LOOKUP_CATEGORIES.includes(c as FacilityCategory)
-    ? (c as FacilityCategory)
-    : 'all';
-  const engaged = (c !== undefined && c !== '') || q !== '';
+  // no c and no q → dining (travel-first restaurants); q without c → all (pack name-wins)
+  const filter = resolveMimaFilter(c, q);
+  const engaged = true;
 
   return (
     <>

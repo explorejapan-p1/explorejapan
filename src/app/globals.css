@@ -128,7 +128,7 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
 .hero-fold {
   display: block;
   position: relative;
-  margin: 0.4rem 0 3.5rem;
+  margin: 0.4rem 0 0.85rem;
 }
 .hero-copy {
   position: absolute;
@@ -150,17 +150,17 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
   margin: 0 0 0.5rem;
   font-size: 1rem;
 }
-.travel-gap {
-  margin: 0 0 0.4rem;
+.travel-cite {
+  margin: 0 0 0.85rem;
   font-size: 0.92rem;
+  color: var(--muted);
+  line-height: 1.55;
+  max-width: 46rem;
 }
-.hero-copy .lede.travel-gap {
-  margin: 0 0 0.4rem;
-  font-size: 0.92rem;
-}
+.travel-cite a { color: var(--leaf); }
 .hero-copy .lookup-toolbar {
   margin: 0;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   overflow: visible;
   gap: 0.28rem;
 }
@@ -388,10 +388,23 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
 .search-go:hover { background: var(--leaf-2); }
 .compact-list {
   list-style: none;
-  margin: 0.75rem 0 0;
+  margin: 0;
   padding: 0;
   border-top: 1px solid var(--line);
 }
+.compact-list li {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid var(--line);
+}
+.place-card-lite {
+  margin: 0;
+  border: 0;
+  border-left: 0;
+  padding: 0.75rem 0.85rem;
+  animation: none;
+}
+.place-card-lite h4 { margin: 0 0 0.28rem; }
 #mima-place-results {
   border: 1px solid var(--line);
   background: #fffdf8;

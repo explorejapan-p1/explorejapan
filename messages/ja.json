@@ -17,7 +17,6 @@
   "lookup": {
     "heading": "施設を探す",
     "lede": "時間も住所も、パックに無い行は空欄のままです。",
-    "travelGap": "飲食も宿も店も、このパックには無い。",
     "coverage": "美馬市（JIS 36207）515件。観光116、文化財110、介護80、AED 72、避難所45、緊急避難場所40、医療機関23、保育16、公衆無線LAN 9、公共施設4。GTFSの停留所は0件（未掲載）。",
     "licenseNote": "行のライセンスは二つ。CC BY 4.0 は徳島県 Our Open Data の利用規約。「市公式サイト掲載情報」は市ページの事実の転記で、オープンデータ許諾ではありません。",
     "searchLabel": "施設名で探す",
@@ -62,6 +61,8 @@
       "emergency_evacuation_site": "緊急避難場所",
       "aed": "AED",
       "hospital": "医療機関",
+      "dining": "飲食",
+      "stay": "宿泊",
       "tourism": "観光",
       "cultural_property": "文化財",
       "childcare": "保育",
@@ -76,6 +77,8 @@
     "reading": "読み",
     "readingPackNote": "読みはパックの値です。",
     "accessed": "取得日",
-    "mapCiteN03": "「国土数値情報（行政区域データ）」（国土交通省）を加工して作成"
+    "mapCiteN03": "「国土数値情報（行政区域データ）」（国土交通省）を加工して作成",
+    "travelCite": "<dining>飲食</dining>・<stay>宿泊</stay>は美馬観光ビューローの公開案内です（<city>市の観光サイト</city>から）。凍結オープンデータパックにはありません。",
+    "visibleTravel": "{n}"
   }
 }

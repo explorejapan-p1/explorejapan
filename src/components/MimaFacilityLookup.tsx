@@ -11,6 +11,16 @@ import {
   type MimaOfficialMap
 } from '@/data/facility-schema';
 import {MIMA, MIMA_PLACE_PHOTO} from '@/data/mima';
+import {
+  TRAVEL_ALL,
+  TRAVEL_COUNTS,
+  TRAVEL_DINING,
+  TRAVEL_SOURCES,
+  TRAVEL_STAY,
+  isTravelFilter,
+  type FilterId,
+  type TravelRow
+} from '@/data/mima-travel';
 
 const EMERGENCY: ReadonlySet<FacilityCategory> = new Set([
   'shelter',
@@ -19,14 +29,12 @@ const EMERGENCY: ReadonlySet<FacilityCategory> = new Set([
   'hospital'
 ]);
 
-const TRAVEL_CHIPS = [
+const HERO_CHIPS = ['dining', 'stay', 'tourism', 'cultural_property'] as const;
+
+const PACK_TRAVEL: ReadonlySet<FacilityCategory> = new Set([
   'tourism',
   'cultural_property'
-] as const satisfies readonly FacilityCategory[];
-
-const TRAVEL: ReadonlySet<FacilityCategory> = new Set(TRAVEL_CHIPS);
-
-type FilterId = 'all' | FacilityCategory;
+]);
 
 type Props = {
   locale: string;
@@ -67,12 +75,21 @@ function readingMismatchHit(row: FacilityRow, q: string): boolean {
 
 function chipHref(next: FilterId, q: string, locale: string, id?: string): string {
   const path = `/${locale}/tokushima/mima`;
+  if (next === 'dining' && !q && !id) return path;
   const parts: string[] = [];
-  if (next !== 'all') parts.push(`c=${encodeURIComponent(next)}`);
+  if (next === 'all') parts.push('c=all');
+  else parts.push(`c=${encodeURIComponent(next)}`);
   if (q) parts.push(`q=${encodeURIComponent(q)}`);
   if (id) parts.push(`id=${encodeURIComponent(id)}`);
   const qs = parts.length ? `?${parts.join('&')}` : '';
   return `${path}${qs}#mima-place-results`;
+}
+
+function chipCount(id: FilterId): number {
+  if (id === 'dining') return TRAVEL_COUNTS.dining;
+  if (id === 'stay') return TRAVEL_COUNTS.stay;
+  if (id === 'all') return EXPECTED_ROW_COUNT;
+  return EXPECTED_CATEGORY_COUNTS[id];
 }
 
 function Gap() {
@@ -122,6 +139,10 @@ function ChipLabel({id}: {id: FilterId}) {
       return t('chips.public_facility');
     case 'gtfs_stop':
       return t('chips.gtfs_stop');
+    case 'dining':
+      return t('chips.dining');
+    case 'stay':
+      return t('chips.stay');
   }
 }
 
@@ -190,6 +211,26 @@ function PlaceCard({row}: {row: FacilityRow}) {
   );
 }
 
+/** Travel layer only: name, address if any, phone if any, source, accessed. No invented hours/geo. */
+function TravelPlaceCard({row}: {row: TravelRow}) {
+  const t = useTranslations('lookup');
+  return (
+    <article className="place-card place-card-lite" data-category={row.category}>
+      <h4>{row.name_ja}</h4>
+      {row.address ? <TextField label={t('address')} value={row.address} /> : null}
+      {row.phone ? <TextField label={t('phone')} value={row.phone} /> : null}
+      <p className="attr-row">
+        <span className="attr-label">{t('source')}</span>
+        <a href={row.source_url}>{row.source_url}</a>
+      </p>
+      <p className="attr-row">
+        <span className="attr-label">{t('accessed')}</span>
+        <span>{row.accessed}</span>
+      </p>
+    </article>
+  );
+}
+
 function chipClass(active: boolean, extra = ''): string {
   return ['chip', active ? 'is-active' : '', extra].filter(Boolean).join(' ');
 }
@@ -219,24 +260,40 @@ export function MimaFacilityLookup({
   const q = query.trim().toLowerCase();
   const nameHitExists =
     q !== '' && rows.some((row) => row.name_ja.toLowerCase().includes(q));
-  const filtered = rows.filter((row) => {
-    if (filter !== 'all' && row.category !== filter) return false;
-    if (q === '') return true;
-    if (row.name_ja.toLowerCase().includes(q)) return true;
-    if (
-      row.reading &&
-      row.reading.toLowerCase().includes(q) &&
-      !nameHitExists
-    ) {
-      return true;
-    }
-    return false;
-  });
+  const travelLayer = isTravelFilter(filter);
+  const travelPool =
+    filter === 'dining' ? TRAVEL_DINING : filter === 'stay' ? TRAVEL_STAY : TRAVEL_ALL;
+  const travelHits =
+    q === ''
+      ? travelLayer
+        ? [...travelPool]
+        : []
+      : travelPool.filter((row) => row.name_ja.toLowerCase().includes(q));
+  // Dining/stay without q is travel-only. A search still hits the pack (name-wins).
+  const includePack = q !== '' || !travelLayer;
+  const filtered = includePack
+    ? rows.filter((row) => {
+        if (!travelLayer && filter !== 'all' && row.category !== filter) return false;
+        if (q === '') return true;
+        if (row.name_ja.toLowerCase().includes(q)) return true;
+        if (
+          row.reading &&
+          row.reading.toLowerCase().includes(q) &&
+          !nameHitExists
+        ) {
+          return true;
+        }
+        return false;
+      })
+    : [];
   const pinned = openId ? filtered.find((row) => row.id === openId) : undefined;
   const visible = pinned
     ? [pinned, ...filtered.filter((row) => row.id !== openId)]
     : filtered;
   const shown = engaged ? visible : [];
+  const listCount = travelHits.length + visible.length;
+  const packUnpublished =
+    !travelLayer && filter !== 'all' && EXPECTED_CATEGORY_COUNTS[filter] === 0;
 
   return (
     <section className="lookup" aria-labelledby="mima-lookup-heading" lang={locale}>
@@ -248,22 +305,13 @@ export function MimaFacilityLookup({
         <p className="lede">
           {locale === 'ja' ? 'うだつの町並みと、穴吹川。' : 'Udatsu townscape, and the Anabuki River.'}
         </p>
-        <p className="lede travel-gap">{t('travelGap')}</p>
       <div className="lookup-toolbar" role="group" aria-label={t('filters')}>
-        <a
-          className={chipClass(engaged && filter === 'all')}
-          href={chipHref('all', query, locale)}
-          data-category="all"
-        >
-          <ChipLabel id="all" />
-          <span className="count-chip"> {EXPECTED_ROW_COUNT}</span>
-        </a>
-        {TRAVEL_CHIPS.map((cat) => {
-          const n = EXPECTED_CATEGORY_COUNTS[cat];
+        {HERO_CHIPS.map((cat) => {
+          const n = chipCount(cat);
           return (
             <a
               key={cat}
-              className={chipClass(engaged && filter === cat)}
+              className={chipClass(filter === cat)}
               href={chipHref(cat, query, locale)}
               data-category={cat}
             >
@@ -320,6 +368,24 @@ export function MimaFacilityLookup({
           </svg>
         </div>
       </div>
+      <p className="travel-cite">
+        {locale === 'ja' ? (
+          <>
+            <a href={TRAVEL_SOURCES.dining}>飲食</a>・<a href={TRAVEL_SOURCES.stay}>宿泊</a>
+            は美馬観光ビューローの公開案内です（
+            <a href={TRAVEL_SOURCES.cityStay}>市の観光サイト</a>
+            から）。凍結オープンデータパックにはありません。
+          </>
+        ) : (
+          <>
+            <a href={TRAVEL_SOURCES.dining}>Dining</a> and{' '}
+            <a href={TRAVEL_SOURCES.stay}>lodging</a> are public listings from the
+            Mima Tourism Bureau (via the{' '}
+            <a href={TRAVEL_SOURCES.cityStay}>city tourism site</a>
+            ). They are not in the frozen open-data pack.
+          </>
+        )}
+      </p>
       <h2 id="mima-lookup-heading">{t('heading')}</h2>
       <form
         className="lookup-search-row"
@@ -346,15 +412,23 @@ export function MimaFacilityLookup({
       </form>
 
       <div className="lookup-toolbar lookup-toolbar-rest" role="group" aria-label={t('tally')}>
+        <a
+          className={chipClass(filter === 'all')}
+          href={chipHref('all', query, locale)}
+          data-category="all"
+        >
+          <ChipLabel id="all" />
+          <span className="count-chip"> {EXPECTED_ROW_COUNT}</span>
+        </a>
         {LOOKUP_CATEGORIES.filter(
-          (cat) => !TRAVEL.has(cat) && EXPECTED_CATEGORY_COUNTS[cat] !== 0
+          (cat) => !PACK_TRAVEL.has(cat) && EXPECTED_CATEGORY_COUNTS[cat] !== 0
         ).map((cat) => {
           const n = EXPECTED_CATEGORY_COUNTS[cat];
           return (
             <a
               key={cat}
               className={chipClass(
-                engaged && filter === cat,
+                filter === cat,
                 EMERGENCY.has(cat) ? 'is-emergency' : ''
               )}
               href={chipHref(cat, query, locale)}
@@ -372,14 +446,25 @@ export function MimaFacilityLookup({
         {engaged ? (
           <>
             <p className="note" aria-live="polite">
-              {t('visibleLabel')} {t('visible', {n: visible.length})}
+              {t('visibleLabel')}{' '}
+              {travelLayer && q === ''
+                ? t('visibleTravel', {n: listCount})
+                : t('visible', {n: listCount})}
             </p>
-            {filter !== 'all' && EXPECTED_CATEGORY_COUNTS[filter] === 0 ? (
-              <p className="note">{t('unpublishedNote')}</p>
-            ) : null}
-            {visible.length === 0 && !(filter !== 'all' && EXPECTED_CATEGORY_COUNTS[filter] === 0) ? (
+            {packUnpublished ? <p className="note">{t('unpublishedNote')}</p> : null}
+            {listCount === 0 && !packUnpublished ? (
               <p className="note">{t('empty')}</p>
             ) : null}
+            {travelHits.map((row) => (
+              <details key={row.id}>
+                <summary className="place-row">
+                  <span className="place-name">{row.name_ja}</span>
+                  {row.address ? <span className="place-sub">{row.address}</span> : null}
+                  {row.phone ? <span className="place-sub">{row.phone}</span> : null}
+                </summary>
+                <TravelPlaceCard row={row} />
+              </details>
+            ))}
             {shown.map((row) => {
               const placement = displayPlacement(row.hours);
               const yomiMismatch = readingMismatchHit(row, q);
