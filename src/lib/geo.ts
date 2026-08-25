@@ -43,8 +43,8 @@ export type RenderedMap = {
 };
 
 const DERIVED_DIR = path.join(process.cwd(), 'data', 'derived');
-const SCATTER_WIDTH = 640;
-const SCATTER_HEIGHT = 400;
+const SCATTER_WIDTH = 880;
+const SCATTER_HEIGHT = 320;
 
 function readTopo(filename: string): Topology | null {
   const file = path.join(DERIVED_DIR, filename);
@@ -255,8 +255,8 @@ export function projectMimaOfficialMap(points: readonly OfficialMapPoint[]): Mim
     if (mima) {
       projection = geoMercator().fitExtent(
         [
-          [20, 16],
-          [width - 20, height - 16]
+          [28, 18],
+          [width - 28, height - 18]
         ],
         mima
       );

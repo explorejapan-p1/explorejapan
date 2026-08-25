@@ -262,103 +262,75 @@ export function MimaFacilityLookup({locale, gaps, map}: Props) {
 
   return (
     <section className="lookup" aria-labelledby="mima-lookup-heading" lang={locale}>
+      <div className="hero-fold">
+        <div className="hero-map">
+          <svg
+            className="official-scatter"
+            viewBox={map.viewBox}
+            role="img"
+            aria-label={t('mapLabel')}
+            data-official-xy={EXPECTED_GEO_COUNT}
+          >
+            <path className="mima-outline" d={map.outline} />
+            {map.points.map((point) => (
+              <g
+                key={point.id}
+                data-place-id={point.id}
+                data-category={point.category}
+                transform={`translate(${point.x} ${point.y})`}
+              >
+                <circle
+                  className={dotClass(point.category) + (expandedId === point.id ? ' is-active' : '')}
+                  r={expandedId === point.id ? 5.5 : 4}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={point.name_ja}
+                  onClick={() => {
+                    void engageMap(point.id, point.category);
+                  }}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                      event.preventDefault();
+                      void engageMap(point.id, point.category);
+                    }
+                  }}
+                >
+                  <title>{point.name_ja}</title>
+                </circle>
+              </g>
+            ))}
+          </svg>
+        </div>
+        <ul className="gap-board" aria-label={t('gapBoardLabel')}>
+          <li className="gap-cell" data-gap="geo">
+            <span className="n">
+              {gaps.geo}/{gaps.total}
+            </span>
+            <span className="d">{t('gapGeo')}</span>
+          </li>
+          <li className="gap-cell" data-gap="hours">
+            <span className="n">
+              {gaps.hours}/{gaps.total}
+            </span>
+            <span className="d">{t('gapHours')}</span>
+          </li>
+          <li className="gap-cell is-miss" data-gap="address">
+            <span className="n">{gaps.missingAddress}</span>
+            <span className="d">{t('gapAddress')}</span>
+          </li>
+          <li className="gap-cell is-miss" data-gap="phone">
+            <span className="n">{gaps.missingPhone}</span>
+            <span className="d">{t('gapPhone')}</span>
+          </li>
+          <li className="gap-cell is-zero" data-gap="gtfs">
+            <span className="n">{gaps.gtfs}</span>
+            <span className="d">{t('gapGtfs')}</span>
+          </li>
+        </ul>
+      </div>
+
       <h2 id="mima-lookup-heading">{t('heading')}</h2>
       <p className="lede">{t('lede')}</p>
-
-      <ul className="gap-board" aria-label={t('gapBoardLabel')}>
-        <li className="gap-cell" data-gap="geo">
-          <span className="n">
-            {gaps.geo}/{gaps.total}
-          </span>
-          <span className="d">{t('gapGeo')}</span>
-        </li>
-        <li className="gap-cell" data-gap="hours">
-          <span className="n">
-            {gaps.hours}/{gaps.total}
-          </span>
-          <span className="d">{t('gapHours')}</span>
-        </li>
-        <li className="gap-cell is-miss" data-gap="address">
-          <span className="n">{gaps.missingAddress}</span>
-          <span className="d">{t('gapAddress')}</span>
-        </li>
-        <li className="gap-cell is-miss" data-gap="phone">
-          <span className="n">{gaps.missingPhone}</span>
-          <span className="d">{t('gapPhone')}</span>
-        </li>
-        <li className="gap-cell is-zero" data-gap="gtfs">
-          <span className="n">{gaps.gtfs}</span>
-          <span className="d">{t('gapGtfs')}</span>
-        </li>
-      </ul>
-
-      <p className="tally">{t('coverage')}</p>
-      <p className="note">{t('licenseNote')}</p>
-
-      <div className="lookup-hero">
-        <svg
-          className="official-scatter"
-          viewBox={map.viewBox}
-          role="img"
-          aria-label={t('mapLabel')}
-          data-official-xy={EXPECTED_GEO_COUNT}
-        >
-          <path className="mima-outline" d={map.outline} />
-          {map.points.map((point) => (
-            <g
-              key={point.id}
-              data-place-id={point.id}
-              data-category={point.category}
-              transform={`translate(${point.x} ${point.y})`}
-            >
-              <circle
-                className={dotClass(point.category) + (expandedId === point.id ? ' is-active' : '')}
-                r={expandedId === point.id ? 5.5 : 4}
-                tabIndex={0}
-                role="button"
-                aria-label={point.name_ja}
-                onClick={() => {
-                  void engageMap(point.id, point.category);
-                }}
-                onKeyDown={(event) => {
-                  if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault();
-                    void engageMap(point.id, point.category);
-                  }
-                }}
-              >
-                <title>{point.name_ja}</title>
-              </circle>
-            </g>
-          ))}
-        </svg>
-        <div className="map-copy">
-          <p className="map-gap-copy">{t('mapGap', {n: missingGeo})}</p>
-          <p className="note">{t('mapHonest')}</p>
-          <ul className="map-legend">
-            {legendCats.map((cat) => (
-              <li key={cat}>
-                <span className={'swatch ' + dotClass(cat)} />
-                <ChipLabel id={cat} />
-              </li>
-            ))}
-          </ul>
-          <footer className="geo-cite">
-            <p>
-              <span className="geo-cite-label">{t('citeLabel')}</span>
-              {t('mapCitePack')}
-            </p>
-            {map.outlineSource === 'n03' ? (
-              <p>
-                {t('mapCiteN03')}（
-                <a href="https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N03-2026.html">N03-20260101</a> / CC BY 4.0）
-              </p>
-            ) : (
-              <p className="note">{t('mapCiteBbox')}</p>
-            )}
-          </footer>
-        </div>
-      </div>
 
       <p>
         <label htmlFor="mima-place-search">{t('searchLabel')}</label>
@@ -418,6 +390,36 @@ export function MimaFacilityLookup({locale, gaps, map}: Props) {
           );
         })}
       </div>
+
+      <div className="map-meta">
+        <p className="map-gap-copy">{t('mapGap', {n: missingGeo})}</p>
+        <p className="note">{t('mapHonest')}</p>
+        <ul className="map-legend">
+          {legendCats.map((cat) => (
+            <li key={cat}>
+              <span className={'swatch ' + dotClass(cat)} />
+              <ChipLabel id={cat} />
+            </li>
+          ))}
+        </ul>
+        <footer className="geo-cite">
+          <p>
+            <span className="geo-cite-label">{t('citeLabel')}</span>
+            {t('mapCitePack')}
+          </p>
+          {map.outlineSource === 'n03' ? (
+            <p>
+              {t('mapCiteN03')}（
+              <a href="https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N03-2026.html">N03-20260101</a> / CC BY 4.0）
+            </p>
+          ) : (
+            <p className="note">{t('mapCiteBbox')}</p>
+          )}
+        </footer>
+      </div>
+
+      <p className="tally">{t('coverage')}</p>
+      <p className="note">{t('licenseNote')}</p>
 
       <div id="mima-place-results">
         {!engaged ? <p className="note">{t('idleHint')}</p> : null}
