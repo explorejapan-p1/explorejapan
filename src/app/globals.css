@@ -118,7 +118,31 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
 .hero-fold {
   display: block;
   position: relative;
-  margin: 0 0 5.5rem;
+  margin: 0.4rem 0 3.5rem;
+}
+.hero-copy {
+  position: absolute;
+  z-index: 2;
+  top: 0.7rem;
+  left: 0.7rem;
+  right: 11.2rem;
+  max-width: 28rem;
+  padding: 0.7rem 0.85rem 0.8rem;
+  background: rgba(246, 241, 230, 0.9);
+}
+.hero-copy h1 {
+  font-size: 2.15rem;
+  line-height: 1.15;
+  margin: 0 0 0.2rem;
+}
+.hero-copy .lede {
+  color: var(--ink);
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+.hero-copy .lookup-toolbar {
+  margin: 0;
+  flex-wrap: wrap;
 }
 .hero-photo {
   margin: 0;
@@ -130,7 +154,7 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
 }
 .hero-photo img {
   width: 100%;
-  height: min(24rem, 52vh);
+  height: min(32rem, 78vh);
   object-fit: cover;
   display: block;
 }

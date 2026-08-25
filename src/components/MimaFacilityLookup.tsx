@@ -14,7 +14,7 @@ import {
   type FacilityRow,
   type MimaOfficialMap
 } from '@/data/facility-schema';
-import {MIMA_PLACE_PHOTO} from '@/data/mima';
+import {MIMA, MIMA_PLACE_PHOTO} from '@/data/mima';
 
 const EMERGENCY: ReadonlySet<FacilityCategory> = new Set([
   'shelter',
@@ -271,6 +271,14 @@ export function MimaFacilityLookup({locale, gaps, map}: Props) {
 
   return (
     <section className="lookup" aria-labelledby="mima-lookup-heading" lang={locale}>
+      <div className="hero-fold">
+      <div className="hero-copy">
+        <h1>
+          {locale === 'ja' ? `${MIMA.nameJa}（${MIMA.prefectureJa}）` : `${MIMA.nameEn}, ${MIMA.prefectureEn}`}
+        </h1>
+        <p className="lede">
+          {locale === 'ja' ? 'うだつの町並みと、穴吹川。' : 'Udatsu townscape, and the Anabuki River.'}
+        </p>
       <div className="lookup-toolbar" role="group" aria-label={t('filters')}>
         <button
           type="button"
@@ -309,7 +317,7 @@ export function MimaFacilityLookup({locale, gaps, map}: Props) {
           );
         })}
       </div>
-      <div className="hero-fold">
+      </div>
         <figure className="hero-photo">
           <img
             src={MIMA_PLACE_PHOTO.src}
