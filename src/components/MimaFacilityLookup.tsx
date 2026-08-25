@@ -270,6 +270,44 @@ export function MimaFacilityLookup({locale, gaps, map}: Props) {
 
   return (
     <section className="lookup" aria-labelledby="mima-lookup-heading" lang={locale}>
+      <div className="lookup-toolbar" role="group" aria-label={t('filters')}>
+        <button
+          type="button"
+          className={filter === 'all' && engaged ? 'chip is-active' : 'chip'}
+          aria-pressed={filter === 'all' && engaged}
+          data-category="all"
+          onClick={() => {
+            void engageChip('all');
+          }}
+        >
+          <ChipLabel id="all" />
+          <span className="count-chip"> {EXPECTED_ROW_COUNT}</span>
+        </button>
+        {EMERGENCY_CHIPS.map((cat) => {
+          const n = EXPECTED_CATEGORY_COUNTS[cat];
+          return (
+            <button
+              key={cat}
+              type="button"
+              className={[
+                'chip',
+                engaged && filter === cat ? 'is-active' : '',
+                'is-emergency'
+              ]
+                .filter(Boolean)
+                .join(' ')}
+              aria-pressed={engaged && filter === cat}
+              data-category={cat}
+              onClick={() => {
+                void engageChip(cat);
+              }}
+            >
+              <ChipLabel id={cat} />
+              <span className="count-chip"> {n}</span>
+            </button>
+          );
+        })}
+      </div>
       <div className="hero-fold">
         <div className="hero-map">
           <svg
@@ -354,44 +392,6 @@ export function MimaFacilityLookup({locale, gaps, map}: Props) {
         autoComplete="off"
       />
 
-      <div className="lookup-toolbar" role="group" aria-label={t('filters')}>
-        <button
-          type="button"
-          className={filter === 'all' && engaged ? 'chip is-active' : 'chip'}
-          aria-pressed={filter === 'all' && engaged}
-          data-category="all"
-          onClick={() => {
-            void engageChip('all');
-          }}
-        >
-          <ChipLabel id="all" />
-          <span className="count-chip"> {EXPECTED_ROW_COUNT}</span>
-        </button>
-        {EMERGENCY_CHIPS.map((cat) => {
-          const n = EXPECTED_CATEGORY_COUNTS[cat];
-          return (
-            <button
-              key={cat}
-              type="button"
-              className={[
-                'chip',
-                engaged && filter === cat ? 'is-active' : '',
-                'is-emergency'
-              ]
-                .filter(Boolean)
-                .join(' ')}
-              aria-pressed={engaged && filter === cat}
-              data-category={cat}
-              onClick={() => {
-                void engageChip(cat);
-              }}
-            >
-              <ChipLabel id={cat} />
-              <span className="count-chip"> {n}</span>
-            </button>
-          );
-        })}
-      </div>
       <div className="lookup-toolbar lookup-toolbar-rest" role="group" aria-label={t('tally')}>
         {LOOKUP_CATEGORIES.filter((cat) => !EMERGENCY.has(cat)).map((cat) => {
           const n = EXPECTED_CATEGORY_COUNTS[cat];
