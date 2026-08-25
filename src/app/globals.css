@@ -110,7 +110,14 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
 .coming { padding: 1rem; background: #fffdf8; border: 1px solid var(--line); }
 @media (max-width: 800px) {
   .map-grid { grid-template-columns: 1fr; }
-  .header-row { flex-direction: column; }
+  .header-row {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  .wordmark { font-size: 0.98rem; white-space: nowrap; }
+  .lang-switch { flex-shrink: 0; white-space: nowrap; }
   h1 { font-size: 1.75rem; }
 }
 
