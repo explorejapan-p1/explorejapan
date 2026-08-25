@@ -225,7 +225,7 @@ export default async function MunicipalityPage({params, searchParams}: Props) {
   const c = resolvedSearch.c;
   const q = (resolvedSearch.q ?? '').trim();
   const openId = resolvedSearch.id ?? null;
-  // no c and no q → dining (travel-first restaurants); q without c → all (pack name-wins)
+  // no c and no q → sights; q without c → all (pack name-wins plus travel names)
   const filter = resolveMimaFilter(c, q);
   const engaged = true;
 

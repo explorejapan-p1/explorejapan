@@ -9,7 +9,11 @@
  * accessed 2026-08-26
  */
 
-import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
+import {
+  EXPECTED_CATEGORY_COUNTS,
+  LOOKUP_CATEGORIES,
+  type FacilityCategory
+} from './facility-schema';
 
 export const TRAVEL_ACCESSED = '2026-08-26' as const;
 
@@ -22,7 +26,28 @@ export const TRAVEL_SOURCES = {
 export const TRAVEL_KINDS = ['dining', 'stay'] as const;
 export type TravelKind = (typeof TRAVEL_KINDS)[number];
 
-export type FilterId = 'all' | FacilityCategory | TravelKind;
+export const TOP_CHIPS = ['sights', 'stay', 'dining', 'commerce', 'infra'] as const;
+export type TopChip = (typeof TOP_CHIPS)[number];
+
+/** Pack categories folded into 観光名所. Per-row place-cat stays 観光 / 文化財. */
+export const SIGHTS_CATEGORIES = [
+  'tourism',
+  'cultural_property'
+] as const satisfies readonly FacilityCategory[];
+
+/** Civic pack cats only. gtfs_stop is not infra. */
+export const INFRA_CATEGORIES = [
+  'shelter',
+  'emergency_evacuation_site',
+  'aed',
+  'hospital',
+  'wifi',
+  'public_facility',
+  'care',
+  'childcare'
+] as const satisfies readonly FacilityCategory[];
+
+export type FilterId = 'all' | FacilityCategory | TravelKind | 'sights' | 'commerce' | 'infra';
 
 export type TravelRow = {
   id: string;
@@ -145,11 +170,73 @@ function isPackCategory(value: string | undefined): value is FacilityCategory {
   return LOOKUP_CATEGORIES.some((cat) => cat === value);
 }
 
-/** no c and no q → dining; q without c → all (pack name-wins plus travel names). */
+const INFRA_SET: ReadonlySet<string> = new Set(INFRA_CATEGORIES);
+const SIGHTS_SET: ReadonlySet<string> = new Set(SIGHTS_CATEGORIES);
+
+export function isInfraCategory(
+  value: string
+): value is (typeof INFRA_CATEGORIES)[number] {
+  return INFRA_SET.has(value);
+}
+
+export function isSightsCategory(
+  value: string
+): value is (typeof SIGHTS_CATEGORIES)[number] {
+  return SIGHTS_SET.has(value);
+}
+
+export const TOP_CHIP_COUNTS = {
+  sights:
+    EXPECTED_CATEGORY_COUNTS.tourism + EXPECTED_CATEGORY_COUNTS.cultural_property,
+  stay: TRAVEL_COUNTS.stay,
+  dining: TRAVEL_COUNTS.dining,
+  commerce: 0,
+  infra: INFRA_CATEGORIES.reduce(
+    (sum, cat) => sum + EXPECTED_CATEGORY_COUNTS[cat],
+    0
+  )
+} as const satisfies Record<TopChip, number>;
+
+/** Map pack category to the visible top chip for hrefs. */
+export function topChipForCategory(category: FacilityCategory): FilterId {
+  if (isSightsCategory(category)) return 'sights';
+  if (isInfraCategory(category)) return 'infra';
+  return category;
+}
+
+export function packRowMatchesFilter(
+  category: FacilityCategory,
+  filter: FilterId
+): boolean {
+  if (filter === 'all') return true;
+  if (filter === 'sights') return isSightsCategory(category);
+  if (filter === 'infra') return isInfraCategory(category);
+  if (filter === 'commerce' || isTravelFilter(filter)) return false;
+  return category === filter;
+}
+
+/**
+ * no c, no q → sights.
+ * c in sights|stay|dining|commerce|infra → that.
+ * legacy c=tourism or cultural_property → sights.
+ * legacy civic pack cats → infra.
+ * c=all still allowed internally for search.
+ * q without c → all (search-all).
+ */
 export function resolveMimaFilter(c: string | undefined, q: string): FilterId {
-  if (c === 'dining' || c === 'stay') return c;
+  if (
+    c === 'sights' ||
+    c === 'stay' ||
+    c === 'dining' ||
+    c === 'commerce' ||
+    c === 'infra'
+  ) {
+    return c;
+  }
   if (c === 'all') return 'all';
+  if (c === 'tourism' || c === 'cultural_property') return 'sights';
+  if (c !== undefined && isInfraCategory(c)) return 'infra';
   if (isPackCategory(c)) return c;
   if (q.trim() !== '') return 'all';
-  return 'dining';
+  return 'sights';
 }
