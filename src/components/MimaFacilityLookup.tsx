@@ -374,21 +374,21 @@ export function MimaFacilityLookup({locale, gaps, map}: Props) {
         </div>
       </div>
       <h2 id="mima-lookup-heading">{t('heading')}</h2>
-      <p>
+      <div className="lookup-search-row">
         <label htmlFor="mima-place-search">{t('searchLabel')}</label>
-      </p>
-      <input
-        id="mima-place-search"
-        className="lookup-search"
-        type="search"
-        value={query}
-        onChange={(event) => {
-          void engageSearch(event.target.value);
-        }}
-        placeholder={t('searchPlaceholder')}
-        spellCheck={false}
-        autoComplete="off"
-      />
+        <input
+          id="mima-place-search"
+          className="lookup-search"
+          type="search"
+          value={query}
+          onChange={(event) => {
+            void engageSearch(event.target.value);
+          }}
+          placeholder={t('searchPlaceholder')}
+          spellCheck={false}
+          autoComplete="off"
+        />
+      </div>
 
       <div className="lookup-toolbar lookup-toolbar-rest" role="group" aria-label={t('tally')}>
         {LOOKUP_CATEGORIES.filter((cat) => !EMERGENCY.has(cat)).map((cat) => {
@@ -418,65 +418,6 @@ export function MimaFacilityLookup({locale, gaps, map}: Props) {
           );
         })}
       </div>
-
-        <ul className="gap-board" aria-label={t('gapBoardLabel')}>
-          <li className="gap-cell" data-gap="geo">
-            <span className="n">
-              {gaps.geo}/{gaps.total}
-            </span>
-            <span className="d">{t('gapGeo')}</span>
-          </li>
-          <li className="gap-cell" data-gap="hours">
-            <span className="n">
-              {gaps.hours}/{gaps.total}
-            </span>
-            <span className="d">{t('gapHours')}</span>
-          </li>
-          <li className="gap-cell is-miss" data-gap="address">
-            <span className="n">{gaps.missingAddress}</span>
-            <span className="d">{t('gapAddress')}</span>
-          </li>
-          <li className="gap-cell is-miss" data-gap="phone">
-            <span className="n">{gaps.missingPhone}</span>
-            <span className="d">{t('gapPhone')}</span>
-          </li>
-          <li className="gap-cell is-zero" data-gap="gtfs">
-            <span className="n">{gaps.gtfs}</span>
-            <span className="d">{t('gapGtfs')}</span>
-          </li>
-        </ul>
-
-            <p className="lede">{t('lede')}</p>
-
-      <div className="map-meta">
-        <p className="map-gap-copy">{t('mapGap', {n: missingGeo})}</p>
-        <p className="note">{t('mapHonest')}</p>
-        <ul className="map-legend">
-          {legendCats.map((cat) => (
-            <li key={cat}>
-              <span className={'swatch ' + dotClass(cat)} />
-              <ChipLabel id={cat} />
-            </li>
-          ))}
-        </ul>
-        <footer className="geo-cite">
-          <p>
-            <span className="geo-cite-label">{t('citeLabel')}</span>
-            {t('mapCitePack')}
-          </p>
-          {map.outlineSource === 'n03' ? (
-            <p>
-              {t('mapCiteN03')}（
-              <a href="https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N03-2026.html">N03-20260101</a> / CC BY 4.0）
-            </p>
-          ) : (
-            <p className="note">{t('mapCiteBbox')}</p>
-          )}
-        </footer>
-      </div>
-
-      <p className="tally">{t('coverage')}</p>
-      <p className="note">{t('licenseNote')}</p>
 
       <div id="mima-place-results">
         {!engaged ? <p className="note">{t('idleHint')}</p> : null}
@@ -531,6 +472,62 @@ export function MimaFacilityLookup({locale, gaps, map}: Props) {
           </>
         ) : null}
       </div>
+      <ul className="gap-board" aria-label={t('gapBoardLabel')}>
+          <li className="gap-cell" data-gap="geo">
+            <span className="n">
+              {gaps.geo}/{gaps.total}
+            </span>
+            <span className="d">{t('gapGeo')}</span>
+          </li>
+          <li className="gap-cell" data-gap="hours">
+            <span className="n">
+              {gaps.hours}/{gaps.total}
+            </span>
+            <span className="d">{t('gapHours')}</span>
+          </li>
+          <li className="gap-cell is-miss" data-gap="address">
+            <span className="n">{gaps.missingAddress}</span>
+            <span className="d">{t('gapAddress')}</span>
+          </li>
+          <li className="gap-cell is-miss" data-gap="phone">
+            <span className="n">{gaps.missingPhone}</span>
+            <span className="d">{t('gapPhone')}</span>
+          </li>
+          <li className="gap-cell is-zero" data-gap="gtfs">
+            <span className="n">{gaps.gtfs}</span>
+            <span className="d">{t('gapGtfs')}</span>
+          </li>
+        </ul>
+
+      <div className="map-meta">
+        <p className="map-gap-copy">{t('mapGap', {n: missingGeo})}</p>
+        <p className="note">{t('mapHonest')}</p>
+        <ul className="map-legend">
+          {legendCats.map((cat) => (
+            <li key={cat}>
+              <span className={'swatch ' + dotClass(cat)} />
+              <ChipLabel id={cat} />
+            </li>
+          ))}
+        </ul>
+        <footer className="geo-cite">
+          <p>
+            <span className="geo-cite-label">{t('citeLabel')}</span>
+            {t('mapCitePack')}
+          </p>
+          {map.outlineSource === 'n03' ? (
+            <p>
+              {t('mapCiteN03')}（
+              <a href="https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N03-2026.html">N03-20260101</a> / CC BY 4.0）
+            </p>
+          ) : (
+            <p className="note">{t('mapCiteBbox')}</p>
+          )}
+        </footer>
+      </div>
+
+      <p className="tally">{t('coverage')}</p>
+      <p className="note">{t('licenseNote')}</p>
     </section>
   );
 }
