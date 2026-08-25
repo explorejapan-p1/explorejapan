@@ -1,5 +1,6 @@
 import type {Metadata} from 'next';
 import {hasLocale, NextIntlClientProvider} from 'next-intl';
+import {inter, notoSansJp} from '@/app/fonts';
 import {getMessages, setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {SiteChrome} from '@/components/SiteChrome';
@@ -40,7 +41,7 @@ export default async function LocaleLayout({children, params}: Props) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className={`${notoSansJp.variable} ${inter.variable}`}>
       <body>
         <NextIntlClientProvider messages={messages}>
           <SiteChrome locale={locale}>{children}</SiteChrome>

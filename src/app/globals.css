@@ -11,8 +11,18 @@
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
+html[lang="ja"] {
+  -webkit-locale: "ja";
+}
+html[lang="ja"] body {
+  font-family: var(--font-ja), "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
+  font-language-override: "JAN";
+  font-feature-settings: "locl" 1;
+}
+html[lang="en"] body {
+  font-family: var(--font-en), var(--font-ja), system-ui, sans-serif;
+}
 body {
-  font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
   background: var(--paper);
   color: var(--ink);
   line-height: 1.7;
@@ -393,6 +403,7 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
 .place-row.is-open { background: #efe0c8; }
 .place-name { font-weight: 700; font-size: 1.04rem; }
 .place-cat { color: var(--muted); font-size: 0.86rem; }
+.place-sub { color: var(--muted); font-size: 0.82rem; font-weight: 400; width: 100%; }
 .more-btn {
   font: inherit;
   margin-top: 0.85rem;
