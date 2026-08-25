@@ -579,4 +579,7 @@ details[open] > summary.place-row::after { transform: rotate(90deg); }
   .attr-label {
     min-width: 4.5rem;
   }
+  .lookup-toolbar-rest {
+    display: none;
+  }
 }
