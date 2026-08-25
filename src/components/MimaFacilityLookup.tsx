@@ -317,6 +317,14 @@ export function MimaFacilityLookup({locale, gaps, map}: Props) {
             height={1163}
             alt={locale === 'ja' ? MIMA_PLACE_PHOTO.altJa : MIMA_PLACE_PHOTO.altEn}
           />
+          <figcaption className="photo-cite">
+            {t('photoCite')}{' '}
+            <a href={MIMA_PLACE_PHOTO.commons}>Wikimedia Commons</a>
+            {' / '}
+            <a href={MIMA_PLACE_PHOTO.licenseUrl}>{MIMA_PLACE_PHOTO.license}</a>
+            {' / '}
+            <a href={MIMA_PLACE_PHOTO.authorUrl}>{MIMA_PLACE_PHOTO.author}</a>
+          </figcaption>
         </figure>
         <div className="hero-map">
           <svg
@@ -357,15 +365,6 @@ export function MimaFacilityLookup({locale, gaps, map}: Props) {
           </svg>
         </div>
       </div>
-      <p className="photo-cite">
-        {t('photoCite')}{' '}
-        <a href={MIMA_PLACE_PHOTO.commons}>Wikimedia Commons</a>
-        {' / '}
-        <a href={MIMA_PLACE_PHOTO.licenseUrl}>{MIMA_PLACE_PHOTO.license}</a>
-        {' / '}
-        <a href={MIMA_PLACE_PHOTO.authorUrl}>{MIMA_PLACE_PHOTO.author}</a>
-      </p>
-
       <h2 id="mima-lookup-heading">{t('heading')}</h2>
       <p>
         <label htmlFor="mima-place-search">{t('searchLabel')}</label>
