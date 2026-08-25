@@ -198,7 +198,7 @@ function PlaceCard({row}: {row: FacilityRow}) {
         </p>
       )}
       <footer className="place-card-meta">
-        <a href={row.source_url}>{row.source_url}</a>
+        <a href={row.source_url}>{t('source')}</a>
         {' · '}
         <span className={kind === 'cc_by_open_data' ? 'license-cc' : 'license-city'}>
           {kind === 'cc_by_open_data' ? t('licenseOpendata') : t('licenseCity')}
@@ -220,7 +220,7 @@ function TravelPlaceCard({row}: {row: TravelRow}) {
       {row.address ? <TextField label={t('address')} value={row.address} /> : null}
       {row.phone ? <TextField label={t('phone')} value={row.phone} /> : null}
       <footer className="place-card-meta">
-        <a href={row.source_url}>{row.source_url}</a>
+        <a href={row.source_url}>{t('source')}</a>
         {' · '}
         {row.accessed}
       </footer>
