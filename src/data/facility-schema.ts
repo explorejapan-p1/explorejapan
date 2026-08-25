@@ -97,3 +97,43 @@ export const CATEGORY_LABEL = {
 export function licenseKind(license: string): LicenseKind {
   return license.startsWith('CC BY') ? 'cc_by_open_data' : 'city_site';
 }
+
+export const EXPECTED_GEO_COUNT = 61;
+export const EXPECTED_HOURS_COUNT = 178;
+export const EXPECTED_MISSING_ADDRESS = 110;
+export const EXPECTED_MISSING_PHONE = 374;
+export const LOOKUP_PAGE_SIZE = 12;
+
+export type OfficialMapPoint = {
+  id: string;
+  name_ja: string;
+  category: FacilityCategory;
+  lat: number;
+  lon: number;
+};
+
+export type FacilityGapBoard = {
+  total: number;
+  geo: number;
+  hours: number;
+  missingAddress: number;
+  missingPhone: number;
+  gtfs: number;
+};
+
+export type MimaOfficialMapPoint = {
+  id: string;
+  name_ja: string;
+  category: FacilityCategory;
+  x: number;
+  y: number;
+};
+
+export type MimaOfficialMap = {
+  viewBox: string;
+  width: number;
+  height: number;
+  outline: string;
+  outlineSource: 'n03' | 'bbox';
+  points: MimaOfficialMapPoint[];
+};

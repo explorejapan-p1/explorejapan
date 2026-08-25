@@ -2,12 +2,18 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {
   EXPECTED_CATEGORY_COUNTS,
+  EXPECTED_GEO_COUNT,
+  EXPECTED_HOURS_COUNT,
+  EXPECTED_MISSING_ADDRESS,
+  EXPECTED_MISSING_PHONE,
   EXPECTED_ROW_COUNT,
   FACILITY_CATEGORIES,
   MIMA_PACK_JIS,
   PACK_ACCESSED,
   type FacilityCategory,
-  type FacilityRow
+  type FacilityGapBoard,
+  type FacilityRow,
+  type OfficialMapPoint
 } from './facility-schema';
 
 const PACK_PATH = path.join(process.cwd(), 'data', 'frozen', 'mima-facilities.jsonl');
@@ -98,6 +104,33 @@ function emptyCounts(): Record<FacilityCategory, number> {
   };
 }
 
+function isBlank(value: string | null): boolean {
+  return value === null || value.trim() === '';
+}
+
+function tallyGaps(rows: readonly FacilityRow[]): FacilityGapBoard {
+  let geo = 0;
+  let hours = 0;
+  let missingAddress = 0;
+  let missingPhone = 0;
+  let gtfs = 0;
+  for (const row of rows) {
+    if (row.lat !== null && row.lon !== null) geo += 1;
+    if (!isBlank(row.hours)) hours += 1;
+    if (isBlank(row.address)) missingAddress += 1;
+    if (isBlank(row.phone)) missingPhone += 1;
+    if (row.category === 'gtfs_stop') gtfs += 1;
+  }
+  return {
+    total: rows.length,
+    geo,
+    hours,
+    missingAddress,
+    missingPhone,
+    gtfs
+  };
+}
+
 function loadMimaFacilities(): readonly FacilityRow[] {
   const text = fs.readFileSync(PACK_PATH, 'utf8');
   const rows: FacilityRow[] = [];
@@ -118,7 +151,43 @@ function loadMimaFacilities(): readonly FacilityRow[] {
       throw new Error(`mima pack ${cat} ${counts[cat]} != ${EXPECTED_CATEGORY_COUNTS[cat]}`);
     }
   }
+  const gaps = tallyGaps(rows);
+  if (gaps.geo !== EXPECTED_GEO_COUNT) {
+    throw new Error(`mima pack geo ${gaps.geo} != ${EXPECTED_GEO_COUNT}`);
+  }
+  if (gaps.hours !== EXPECTED_HOURS_COUNT) {
+    throw new Error(`mima pack hours ${gaps.hours} != ${EXPECTED_HOURS_COUNT}`);
+  }
+  if (gaps.missingAddress !== EXPECTED_MISSING_ADDRESS) {
+    throw new Error(`mima pack address gaps ${gaps.missingAddress} != ${EXPECTED_MISSING_ADDRESS}`);
+  }
+  if (gaps.missingPhone !== EXPECTED_MISSING_PHONE) {
+    throw new Error(`mima pack phone gaps ${gaps.missingPhone} != ${EXPECTED_MISSING_PHONE}`);
+  }
   return rows;
 }
 
 export const MIMA_FACILITIES: readonly FacilityRow[] = loadMimaFacilities();
+
+export function facilityGapBoard(
+  rows: readonly FacilityRow[] = MIMA_FACILITIES
+): FacilityGapBoard {
+  return tallyGaps(rows);
+}
+
+export function officialGeoRows(
+  rows: readonly FacilityRow[] = MIMA_FACILITIES
+): OfficialMapPoint[] {
+  const out: OfficialMapPoint[] = [];
+  for (const row of rows) {
+    if (row.lat === null || row.lon === null) continue;
+    out.push({
+      id: row.id,
+      name_ja: row.name_ja,
+      category: row.category,
+      lat: row.lat,
+      lon: row.lon
+    });
+  }
+  return out;
+}

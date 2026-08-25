@@ -3,11 +3,16 @@
 import {useMemo, useState} from 'react';
 import {useTranslations} from 'next-intl';
 import {
+  EXPECTED_CATEGORY_COUNTS,
+  EXPECTED_GEO_COUNT,
   EXPECTED_ROW_COUNT,
   LOOKUP_CATEGORIES,
+  LOOKUP_PAGE_SIZE,
   licenseKind,
   type FacilityCategory,
-  type FacilityRow
+  type FacilityGapBoard,
+  type FacilityRow,
+  type MimaOfficialMap
 } from '@/data/facility-schema';
 
 const EMERGENCY: ReadonlySet<FacilityCategory> = new Set([
@@ -19,10 +24,12 @@ const EMERGENCY: ReadonlySet<FacilityCategory> = new Set([
 
 type Props = {
   locale: string;
-  rows: readonly FacilityRow[];
+  gaps: FacilityGapBoard;
+  map: MimaOfficialMap;
 };
 
 type FilterId = 'all' | FacilityCategory;
+type CatalogState = 'idle' | 'loading' | 'ready' | 'error';
 
 function isBlank(value: string | null): boolean {
   return value === null || value.trim() === '';
@@ -78,6 +85,13 @@ function ChipLabel({id}: {id: FilterId}) {
   }
 }
 
+function dotClass(category: FacilityCategory): string {
+  if (category === 'emergency_evacuation_site') return 'map-dot is-emergency';
+  if (category === 'childcare') return 'map-dot is-childcare';
+  if (category === 'tourism') return 'map-dot is-tourism';
+  return 'map-dot';
+}
+
 function PlaceCard({row}: {row: FacilityRow}) {
   const t = useTranslations('lookup');
   const kind = licenseKind(row.license);
@@ -86,7 +100,6 @@ function PlaceCard({row}: {row: FacilityRow}) {
   return (
     <article
       className={emergency ? 'place-card is-emergency' : 'place-card'}
-      data-place-id={row.id}
       data-category={row.category}
     >
       <h4>{row.name_ja}</h4>
@@ -137,92 +150,214 @@ function PlaceCard({row}: {row: FacilityRow}) {
   );
 }
 
-export function MimaFacilityLookup({locale, rows}: Props) {
+function parseCatalog(data: unknown): FacilityRow[] {
+  if (typeof data !== 'object' || data === null) {
+    throw new Error('catalog');
+  }
+  const total = Reflect.get(data, 'total');
+  const facilities = Reflect.get(data, 'facilities');
+  if (total !== EXPECTED_ROW_COUNT || !Array.isArray(facilities)) {
+    throw new Error('catalog');
+  }
+  if (facilities.length !== EXPECTED_ROW_COUNT) {
+    throw new Error('catalog');
+  }
+  return facilities as FacilityRow[];
+}
+
+export function MimaFacilityLookup({locale, gaps, map}: Props) {
   const t = useTranslations('lookup');
   const [filter, setFilter] = useState<FilterId>('all');
   const [query, setQuery] = useState('');
+  const [engaged, setEngaged] = useState(false);
+  const [catalog, setCatalog] = useState<FacilityRow[] | null>(null);
+  const [catalogState, setCatalogState] = useState<CatalogState>('idle');
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [limit, setLimit] = useState(LOOKUP_PAGE_SIZE);
+  const [pinnedId, setPinnedId] = useState<string | null>(null);
 
-  const counts = useMemo(() => {
-    const next: Record<FacilityCategory, number> = {
-      tourism: 0,
-      cultural_property: 0,
-      care: 0,
-      aed: 0,
-      shelter: 0,
-      emergency_evacuation_site: 0,
-      hospital: 0,
-      childcare: 0,
-      wifi: 0,
-      public_facility: 0,
-      gtfs_stop: 0
-    };
-    for (const row of rows) next[row.category] += 1;
-    return next;
-  }, [rows]);
+  const legendCats = useMemo(() => {
+    const seen = new Set<FacilityCategory>();
+    const ordered: FacilityCategory[] = [];
+    for (const point of map.points) {
+      if (seen.has(point.category)) continue;
+      seen.add(point.category);
+      ordered.push(point.category);
+    }
+    return ordered;
+  }, [map.points]);
 
-  const geoCount = useMemo(
-    () => rows.filter((row) => row.lat !== null && row.lon !== null).length,
-    [rows]
-  );
+  const missingGeo = gaps.total - gaps.geo;
+
+  async function ensureCatalog(): Promise<FacilityRow[] | null> {
+    if (catalog) return catalog;
+    if (catalogState === 'loading') return null;
+    setCatalogState('loading');
+    try {
+      const res = await fetch('/api/mima/facilities', {
+        headers: {Accept: 'application/json'}
+      });
+      if (!res.ok) throw new Error('catalog');
+      const rows = parseCatalog(await res.json());
+      setCatalog(rows);
+      setCatalogState('ready');
+      return rows;
+    } catch {
+      setCatalogState('error');
+      return null;
+    }
+  }
+
+  async function engageChip(next: FilterId) {
+    setFilter(next);
+    setEngaged(true);
+    setPinnedId(null);
+    setExpandedId(null);
+    setLimit(LOOKUP_PAGE_SIZE);
+    await ensureCatalog();
+  }
+
+  async function engageSearch(value: string) {
+    setQuery(value);
+    if (value.trim() === '') {
+      return;
+    }
+    setEngaged(true);
+    setPinnedId(null);
+    setExpandedId(null);
+    setLimit(LOOKUP_PAGE_SIZE);
+    await ensureCatalog();
+  }
+
+  async function engageMap(id: string, category: FacilityCategory) {
+    setEngaged(true);
+    setFilter(category);
+    setQuery('');
+    setPinnedId(id);
+    setExpandedId(id);
+    setLimit(LOOKUP_PAGE_SIZE);
+    const list = document.getElementById('mima-place-results');
+    list?.scrollIntoView({block: 'nearest'});
+    await ensureCatalog();
+  }
+
   const visible = useMemo(() => {
+    if (!catalog) return [];
     const q = query.trim().toLowerCase();
-    return rows.filter((row) => {
+    const filtered = catalog.filter((row) => {
       if (filter !== 'all' && row.category !== filter) return false;
       if (q === '') return true;
       if (row.name_ja.toLowerCase().includes(q)) return true;
       if (row.reading && row.reading.toLowerCase().includes(q)) return true;
       return false;
     });
-  }, [rows, filter, query]);
+    if (!pinnedId) return filtered;
+    const pinned = filtered.find((row) => row.id === pinnedId);
+    if (!pinned) return filtered;
+    return [pinned, ...filtered.filter((row) => row.id !== pinnedId)];
+  }, [catalog, filter, query, pinnedId]);
 
-  const groups = LOOKUP_CATEGORIES.filter((cat) => filter === 'all' || filter === cat);
+  const shown = engaged ? visible.slice(0, limit) : [];
+  const canMore = engaged && visible.length > shown.length;
 
   return (
     <section className="lookup" aria-labelledby="mima-lookup-heading" lang={locale}>
       <h2 id="mima-lookup-heading">{t('heading')}</h2>
       <p className="lede">{t('lede')}</p>
-      <p className="note" data-gap-geo={`${geoCount}/${EXPECTED_ROW_COUNT}`}>
-        {t('coverage')}
-      </p>
+
+      <ul className="gap-board" aria-label={t('gapBoardLabel')}>
+        <li className="gap-cell" data-gap="geo">
+          <span className="n">
+            {gaps.geo}/{gaps.total}
+          </span>
+          <span className="d">{t('gapGeo')}</span>
+        </li>
+        <li className="gap-cell" data-gap="hours">
+          <span className="n">
+            {gaps.hours}/{gaps.total}
+          </span>
+          <span className="d">{t('gapHours')}</span>
+        </li>
+        <li className="gap-cell is-miss" data-gap="address">
+          <span className="n">{gaps.missingAddress}</span>
+          <span className="d">{t('gapAddress')}</span>
+        </li>
+        <li className="gap-cell is-miss" data-gap="phone">
+          <span className="n">{gaps.missingPhone}</span>
+          <span className="d">{t('gapPhone')}</span>
+        </li>
+        <li className="gap-cell is-zero" data-gap="gtfs">
+          <span className="n">{gaps.gtfs}</span>
+          <span className="d">{t('gapGtfs')}</span>
+        </li>
+      </ul>
+
+      <p className="tally">{t('coverage')}</p>
       <p className="note">{t('licenseNote')}</p>
 
-      <div className="lookup-toolbar" role="group" aria-label={t('filters')}>
-        <button
-          type="button"
-          className={filter === 'all' ? 'chip is-active' : 'chip'}
-          aria-pressed={filter === 'all'}
-          data-category="all"
-          onClick={() => setFilter('all')}
+      <div className="lookup-hero">
+        <svg
+          className="official-scatter"
+          viewBox={map.viewBox}
+          role="img"
+          aria-label={t('mapLabel')}
+          data-official-xy={EXPECTED_GEO_COUNT}
         >
-          <ChipLabel id="all" />
-          <span className="count-chip"> {EXPECTED_ROW_COUNT}</span>
-        </button>
-        {LOOKUP_CATEGORIES.map((cat) => {
-          const n = counts[cat];
-          const unpublished = n === 0;
-          const emergency = EMERGENCY.has(cat);
-          return (
-            <button
-              key={cat}
-              type="button"
-              className={[
-                'chip',
-                filter === cat ? 'is-active' : '',
-                unpublished ? 'is-empty' : '',
-                emergency ? 'is-emergency' : ''
-              ]
-                .filter(Boolean)
-                .join(' ')}
-              aria-pressed={filter === cat}
-              data-category={cat}
-              onClick={() => setFilter(cat)}
+          <path className="mima-outline" d={map.outline} />
+          {map.points.map((point) => (
+            <g
+              key={point.id}
+              data-place-id={point.id}
+              data-category={point.category}
+              transform={`translate(${point.x} ${point.y})`}
             >
-              <ChipLabel id={cat} />
-              {unpublished ? t('unpublished') : null}
-              <span className="count-chip"> {n}</span>
-            </button>
-          );
-        })}
+              <circle
+                className={dotClass(point.category) + (expandedId === point.id ? ' is-active' : '')}
+                r={expandedId === point.id ? 5.5 : 4}
+                tabIndex={0}
+                role="button"
+                aria-label={point.name_ja}
+                onClick={() => {
+                  void engageMap(point.id, point.category);
+                }}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    void engageMap(point.id, point.category);
+                  }
+                }}
+              >
+                <title>{point.name_ja}</title>
+              </circle>
+            </g>
+          ))}
+        </svg>
+        <div className="map-copy">
+          <p className="map-gap-copy">{t('mapGap', {n: missingGeo})}</p>
+          <p className="note">{t('mapHonest')}</p>
+          <ul className="map-legend">
+            {legendCats.map((cat) => (
+              <li key={cat}>
+                <span className={'swatch ' + dotClass(cat)} />
+                <ChipLabel id={cat} />
+              </li>
+            ))}
+          </ul>
+          <footer className="geo-cite">
+            <p>
+              <span className="geo-cite-label">{t('citeLabel')}</span>
+              {t('mapCitePack')}
+            </p>
+            {map.outlineSource === 'n03' ? (
+              <p>
+                {t('mapCiteN03')}（
+                <a href="https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N03-2026.html">N03-20260101</a> / CC BY 4.0）
+              </p>
+            ) : (
+              <p className="note">{t('mapCiteBbox')}</p>
+            )}
+          </footer>
+        </div>
       </div>
 
       <p>
@@ -233,40 +368,110 @@ export function MimaFacilityLookup({locale, rows}: Props) {
         className="lookup-search"
         type="search"
         value={query}
-        onChange={(event) => setQuery(event.target.value)}
+        onChange={(event) => {
+          void engageSearch(event.target.value);
+        }}
         placeholder={t('searchPlaceholder')}
         spellCheck={false}
         autoComplete="off"
       />
-      <p className="note" aria-live="polite">
-        {t('visibleLabel')} {t('visible', {n: visible.length})}
-      </p>
 
-      {groups.map((cat) => {
-        const groupRows = visible.filter((row) => row.category === cat);
-        const unpublished = counts[cat] === 0;
-        return (
-          <section key={cat} className="place-group" data-category={cat}>
-            <h3>
+      <div className="lookup-toolbar" role="group" aria-label={t('filters')}>
+        <button
+          type="button"
+          className={filter === 'all' && engaged ? 'chip is-active' : 'chip'}
+          aria-pressed={filter === 'all' && engaged}
+          data-category="all"
+          onClick={() => {
+            void engageChip('all');
+          }}
+        >
+          <ChipLabel id="all" />
+          <span className="count-chip"> {EXPECTED_ROW_COUNT}</span>
+        </button>
+        {LOOKUP_CATEGORIES.map((cat) => {
+          const n = EXPECTED_CATEGORY_COUNTS[cat];
+          const unpublished = n === 0;
+          const emergency = EMERGENCY.has(cat);
+          return (
+            <button
+              key={cat}
+              type="button"
+              className={[
+                'chip',
+                engaged && filter === cat ? 'is-active' : '',
+                unpublished ? 'is-empty' : '',
+                emergency ? 'is-emergency' : ''
+              ]
+                .filter(Boolean)
+                .join(' ')}
+              aria-pressed={engaged && filter === cat}
+              data-category={cat}
+              onClick={() => {
+                void engageChip(cat);
+              }}
+            >
               <ChipLabel id={cat} />
-              <span className="count-chip"> {groupRows.length}</span>
-            </h3>
-            {unpublished ? <p className="note">{t('unpublishedNote')}</p> : null}
-            {groupRows.length === 0 && !unpublished ? (
+              {unpublished ? t('unpublished') : null}
+              <span className="count-chip"> {n}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      <div id="mima-place-results">
+        {!engaged ? <p className="note">{t('idleHint')}</p> : null}
+        {engaged && catalogState === 'loading' ? <p className="note">{t('loading')}</p> : null}
+        {engaged && catalogState === 'error' ? <p className="note">{t('loadError')}</p> : null}
+        {engaged && catalog ? (
+          <>
+            <p className="note" aria-live="polite">
+              {t('visibleLabel')} {t('visible', {n: visible.length})}
+            </p>
+            {filter !== 'all' && EXPECTED_CATEGORY_COUNTS[filter] === 0 ? (
+              <p className="note">{t('unpublishedNote')}</p>
+            ) : null}
+            {visible.length === 0 && !(filter !== 'all' && EXPECTED_CATEGORY_COUNTS[filter] === 0) ? (
               <p className="note">{t('empty')}</p>
             ) : null}
-            {groupRows.length > 0 ? (
-              <ul className="place-list">
-                {groupRows.map((row) => (
-                  <li key={row.id}>
-                    <PlaceCard row={row} />
-                  </li>
-                ))}
+            {shown.length > 0 ? (
+              <ul className="compact-list">
+                {shown.map((row) => {
+                  const open = expandedId === row.id;
+                  const hasGeo = row.lat !== null && row.lon !== null;
+                  return (
+                    <li key={row.id}>
+                      <button
+                        type="button"
+                        className={open ? 'place-row is-open' : 'place-row'}
+                        aria-expanded={open}
+                        onClick={() => setExpandedId(open ? null : row.id)}
+                      >
+                        <span className="place-name">{row.name_ja}</span>
+                        <span className="place-cat">
+                          <ChipLabel id={row.category} />
+                        </span>
+                        {hasGeo ? null : <span className="mark">{t('markGeo')}</span>}
+                        {isBlank(row.hours) ? <span className="mark">{t('markHours')}</span> : null}
+                      </button>
+                      {open ? <PlaceCard row={row} /> : null}
+                    </li>
+                  );
+                })}
               </ul>
             ) : null}
-          </section>
-        );
-      })}
+            {canMore ? (
+              <button
+                type="button"
+                className="more-btn"
+                onClick={() => setLimit((n) => n + LOOKUP_PAGE_SIZE)}
+              >
+                {t('more')}
+              </button>
+            ) : null}
+          </>
+        ) : null}
+      </div>
     </section>
   );
 }

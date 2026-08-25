@@ -2,9 +2,13 @@ import {setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {MimaFacilityLookup} from '@/components/MimaFacilityLookup';
 import {VideoSlot} from '@/components/VideoSlot';
-import {EXPECTED_ROW_COUNT, type FacilityRow} from '@/data/facility-schema';
+import {
+  EXPECTED_GEO_COUNT,
+  EXPECTED_ROW_COUNT,
+  type FacilityRow
+} from '@/data/facility-schema';
 import {MIMA, SITE_URL} from '@/data/mima';
-import {MIMA_FACILITIES} from '@/data/mima-facilities';
+import {MIMA_FACILITIES, facilityGapBoard, officialGeoRows} from '@/data/mima-facilities';
 import {PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {
   MUNICIPALITY_BY_SLUG,
@@ -12,6 +16,7 @@ import {
 } from '@/data/tokushima-municipalities';
 import {Link} from '@/i18n/navigation';
 import type {AppLocale} from '@/i18n/routing';
+import {projectMimaOfficialMap} from '@/lib/geo';
 import {hreflangMetadata, pagePath} from '@/lib/seo';
 
 type Props = {
@@ -185,6 +190,13 @@ export default async function MunicipalityPage({params}: Props) {
   }
 
   const p = MIMA.population;
+  const gaps = facilityGapBoard();
+  const officialXy = officialGeoRows();
+  if (officialXy.length !== EXPECTED_GEO_COUNT) {
+    throw new Error(`official xy ${officialXy.length} != ${EXPECTED_GEO_COUNT}`);
+  }
+  const officialMap = projectMimaOfficialMap(officialXy);
+
   return (
     <>
       <JsonLd locale={locale} facilities={MIMA_FACILITIES} />
@@ -198,9 +210,11 @@ export default async function MunicipalityPage({params}: Props) {
       <h1>{isJa ? `${MIMA.nameJa}（${MIMA.prefectureJa}）` : `${MIMA.nameEn}, ${MIMA.prefectureEn}`}</h1>
       <p className="lede">
         {isJa
-          ? `${MIMA.catchphrase} · 読み ${MIMA.reading}`
-          : `${MIMA.catchphrase} · reading ${MIMA.reading}`}
+          ? `${MIMA.catchphrase}。読みは${MIMA.reading}。面積 ${MIMA.areaKm2} km²。下の地図は公式座標がある ${EXPECTED_GEO_COUNT} 件だけです。`
+          : `${MIMA.catchphrase}. Reading ${MIMA.reading}. ${MIMA.areaKm2} km². The map below only plots the ${EXPECTED_GEO_COUNT} official coordinates.`}
       </p>
+
+      <MimaFacilityLookup locale={locale} gaps={gaps} map={officialMap} />
 
       <table className="facts">
         <tbody>
@@ -300,7 +314,7 @@ export default async function MunicipalityPage({params}: Props) {
           <tr>
             <td>{isJa ? p.pamphlet.labelJa : p.pamphlet.labelEn}</td>
             <td>{p.pamphlet.value.toLocaleString('ja-JP')}</td>
-            <td>—</td>
+            <td>{isJa ? '未掲載' : 'Not in the open data'}</td>
             <td>
               {p.pamphlet.asOf}（{p.pamphlet.asOfJa}）
             </td>
@@ -311,7 +325,7 @@ export default async function MunicipalityPage({params}: Props) {
           <tr>
             <td>{isJa ? p.census2020.labelJa : p.census2020.labelEn}</td>
             <td>{p.census2020.value.toLocaleString('ja-JP')}</td>
-            <td>—</td>
+            <td>{isJa ? '未掲載' : 'Not in the open data'}</td>
             <td>
               {p.census2020.asOf}（{p.census2020.asOfJa}）
             </td>
@@ -326,8 +340,6 @@ export default async function MunicipalityPage({params}: Props) {
           ? `世帯数は台帳 ${p.juki.households.toLocaleString('ja-JP')} と国勢調査速報 ${p.census2025.households.toLocaleString('ja-JP')} を別掲。数字のアクセス日は ${MIMA.sources.accessed}。`
           : `Households: register ${p.juki.households.toLocaleString('en-US')} vs census preliminary ${p.census2025.households.toLocaleString('en-US')}. Figures accessed ${MIMA.sources.accessed}.`}
       </p>
-
-      <MimaFacilityLookup locale={locale} rows={MIMA_FACILITIES} />
 
       <h2>{isJa ? '市役所' : 'City hall'}</h2>
       <p>

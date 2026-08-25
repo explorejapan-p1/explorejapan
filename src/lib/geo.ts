@@ -5,6 +5,11 @@ import path from 'node:path';
 import {feature} from 'topojson-client';
 import type {GeometryCollection, Topology} from 'topojson-specification';
 import {
+  MIMA_PACK_JIS,
+  type MimaOfficialMap,
+  type OfficialMapPoint
+} from '@/data/facility-schema';
+import {
   JAPAN_SCHEMATIC,
   JAPAN_VIEWBOX,
   TOKUSHIMA_SCHEMATIC,
@@ -38,6 +43,8 @@ export type RenderedMap = {
 };
 
 const DERIVED_DIR = path.join(process.cwd(), 'data', 'derived');
+const SCATTER_WIDTH = 640;
+const SCATTER_HEIGHT = 400;
 
 function readTopo(filename: string): Topology | null {
   const file = path.join(DERIVED_DIR, filename);
@@ -216,4 +223,87 @@ export function loadTokushimaMap(): RenderedMap {
 
 export function prefectureCount(): number {
   return PREFECTURES.length;
+}
+
+export function projectMimaOfficialMap(points: readonly OfficialMapPoint[]): MimaOfficialMap {
+  if (points.length === 0) {
+    throw new Error('official xy scatter needs at least one pack coordinate');
+  }
+  const width = SCATTER_WIDTH;
+  const height = SCATTER_HEIGHT;
+  const pointFc: FeatureCollection = {
+    type: 'FeatureCollection',
+    features: points.map((p) => ({
+      type: 'Feature',
+      properties: {id: p.id},
+      geometry: {type: 'Point', coordinates: [p.lon, p.lat]}
+    }))
+  };
+
+  let projection = geoMercator();
+  let outline = '';
+  let outlineSource: MimaOfficialMap['outlineSource'] = 'bbox';
+
+  const topo = readTopo('tokushima-municipalities.topojson');
+  if (topo) {
+    const fc = asCollection(topo);
+    const mima = fc.features.find((f) => {
+      const p = propsOf(f as Feature<Geometry, Record<string, string | undefined>>);
+      const jis = String(p.jis ?? p.N03_007 ?? '');
+      return jis === MIMA_PACK_JIS || String(p.slug ?? '') === 'mima';
+    });
+    if (mima) {
+      projection = geoMercator().fitExtent(
+        [
+          [20, 16],
+          [width - 20, height - 16]
+        ],
+        mima
+      );
+      const drawn = geoPath(projection)(mima) ?? '';
+      if (drawn) {
+        outline = drawn;
+        outlineSource = 'n03';
+      }
+    }
+  }
+
+  if (!outline) {
+    projection = geoMercator().fitExtent(
+      [
+        [36, 28],
+        [width - 36, height - 28]
+      ],
+      pointFc
+    );
+    const bounds = geoPath(projection).bounds(pointFc);
+    const pad = 18;
+    const x0 = bounds[0][0] - pad;
+    const y0 = bounds[0][1] - pad;
+    const x1 = bounds[1][0] + pad;
+    const y1 = bounds[1][1] + pad;
+    outline = `M${x0} ${y0}H${x1}V${y1}H${x0}Z`;
+    outlineSource = 'bbox';
+  }
+
+  return {
+    viewBox: `0 0 ${width} ${height}`,
+    width,
+    height,
+    outline,
+    outlineSource,
+    points: points.map((p) => {
+      const xy = projection([p.lon, p.lat]);
+      if (!xy) {
+        throw new Error(`official xy did not project: ${p.id}`);
+      }
+      return {
+        id: p.id,
+        name_ja: p.name_ja,
+        category: p.category,
+        x: xy[0],
+        y: xy[1]
+      };
+    })
+  };
 }
