@@ -463,6 +463,8 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
 .place-card.is-emergency { border-left-color: var(--mima); }
 .place-card h4 { margin: 0 0 0.4rem; font-size: 1.08rem; }
 .attr-row { font-size: 0.92rem; margin: 0.18rem 0; }
+.place-card a,
+.attr-row a { overflow-wrap: anywhere; }
 .attr-label {
   display: inline-block;
   min-width: 7rem;
@@ -489,3 +491,85 @@ summary.place-row::after {
 }
 details[open] > summary.place-row { background: #efe0c8; }
 details[open] > summary.place-row::after { transform: rotate(90deg); }
+
+@media (max-width: 800px) {
+  .hold-banner {
+    font-size: 0.72rem;
+    line-height: 1.35;
+    padding: 0.28rem 0.85rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .hero-copy {
+    top: 0.4rem;
+    left: 0.4rem;
+    right: 0.4rem;
+    padding: 0.4rem 0.5rem 0.45rem;
+  }
+  .hero-copy h1 {
+    font-size: 1.28rem;
+    line-height: 1.2;
+    margin: 0 0 0.08rem;
+  }
+  .hero-copy .lede {
+    font-size: 0.82rem;
+    margin: 0 0 0.28rem;
+  }
+  .hero-copy .lookup-toolbar,
+  .lookup-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: visible;
+    overflow-x: visible;
+    gap: 0.28rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .hero-copy .lookup-toolbar::-webkit-scrollbar,
+  .lookup-toolbar::-webkit-scrollbar {
+    display: none;
+    height: 0;
+    width: 0;
+  }
+  a.chip,
+  .chip,
+  .hero-copy .chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.45rem 0.7rem;
+    white-space: nowrap;
+    flex: 0 0 auto;
+  }
+  .hero-photo img {
+    height: min(22rem, 58vh);
+  }
+  .photo-cite {
+    position: static;
+    left: auto;
+    bottom: auto;
+    max-width: 100%;
+    margin: 0;
+    padding: 0.32rem 0.5rem;
+    font-size: 0.68rem;
+    line-height: 1.4;
+    white-space: normal;
+  }
+  .hero-map {
+    width: 6.4rem;
+    max-height: 5.4rem;
+    right: 0.35rem;
+    bottom: auto;
+    top: calc(min(22rem, 58vh) - 5.4rem - 0.35rem);
+  }
+  .official-scatter {
+    max-height: 5.4rem;
+  }
+  .lookup-search {
+    font-size: 16px;
+  }
+  .attr-label {
+    min-width: 4.5rem;
+  }
+}

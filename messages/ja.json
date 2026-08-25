@@ -20,7 +20,7 @@
     "coverage": "美馬市（JIS 36207）515件。観光116、文化財110、介護80、AED 72、避難所45、緊急避難場所40、医療機関23、保育16、公衆無線LAN 9、公共施設4。GTFSの停留所は0件（未掲載）。",
     "licenseNote": "行のライセンスは二つ。CC BY 4.0 は徳島県 Our Open Data の利用規約。「市公式サイト掲載情報」は市ページの事実の転記で、オープンデータ許諾ではありません。",
     "searchLabel": "施設名で探す",
-    "searchPlaceholder": "施設名や読み（例: ミライズ、脇町）",
+    "searchPlaceholder": "例: ミライズ、脇町",
     "searchGo": "探す",
     "visible": "{n} / 515",
     "visibleLabel": "該当",
