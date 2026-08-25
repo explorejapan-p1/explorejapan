@@ -21,6 +21,7 @@
     "licenseNote": "行のライセンスは二つ。CC BY 4.0 は徳島県 Our Open Data の利用規約。「市公式サイト掲載情報」は市ページの事実の転記で、オープンデータ許諾ではありません。",
     "searchLabel": "施設名で探す",
     "searchPlaceholder": "施設名や読み（例: ミライズ、脇町）",
+    "searchGo": "探す",
     "visible": "{n} / 515",
     "visibleLabel": "該当",
     "gap": "未掲載",

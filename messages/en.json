@@ -21,6 +21,7 @@
     "licenseNote": "Licenses split by row. CC BY 4.0 follows Tokushima Our Open Data. A city-site listing is a fact from city.mima.lg.jp, not under that license.",
     "searchLabel": "Search by name",
     "searchPlaceholder": "Name or reading (try Miraisu, Waki)",
+    "searchGo": "Search",
     "visible": "{n} / 515",
     "visibleLabel": "Matches",
     "gap": "Not in the open data",

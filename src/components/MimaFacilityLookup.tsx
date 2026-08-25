@@ -297,16 +297,21 @@ export function MimaFacilityLookup({
       >
         {filter !== 'all' ? <input type="hidden" name="c" value={filter} /> : null}
         <label htmlFor="mima-place-search">{t('searchLabel')}</label>
-        <input
-          id="mima-place-search"
-          className="lookup-search"
-          type="search"
-          name="q"
-          defaultValue={query}
-          placeholder={t('searchPlaceholder')}
-          spellCheck={false}
-          autoComplete="off"
-        />
+        <div className="search-field">
+          <input
+            id="mima-place-search"
+            className="lookup-search"
+            type="search"
+            name="q"
+            defaultValue={query}
+            placeholder={t('searchPlaceholder')}
+            spellCheck={false}
+            autoComplete="off"
+          />
+          <button type="submit" className="search-go">
+            {t('searchGo')}
+          </button>
+        </div>
       </form>
 
       <div className="lookup-toolbar lookup-toolbar-rest" role="group" aria-label={t('tally')}>
@@ -341,22 +346,17 @@ export function MimaFacilityLookup({
             {visible.length === 0 && !(filter !== 'all' && EXPECTED_CATEGORY_COUNTS[filter] === 0) ? (
               <p className="note">{t('empty')}</p>
             ) : null}
-            {shown.map((row) => {
-              const hasGeo = row.lat !== null && row.lon !== null;
-              return (
+            {shown.map((row) => (
                 <details key={row.id} open={openId === row.id}>
                   <summary className="place-row">
                     <span className="place-name">{row.name_ja}</span>
                     <span className="place-cat">
                       <ChipLabel id={row.category} />
                     </span>
-                    {hasGeo ? null : <span className="mark">{t('markGeo')}</span>}
-                    {isBlank(row.hours) ? <span className="mark">{t('markHours')}</span> : null}
                   </summary>
                   <PlaceCard row={row} />
                 </details>
-              );
-            })}
+            ))}
           </>
         ) : null}
       </div>

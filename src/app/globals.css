@@ -339,20 +339,41 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
   color: var(--muted);
   margin: 0 0 0.28rem;
 }
-.lookup-search {
-  width: 100%;
-  font: inherit;
-  font-size: 1.05rem;
-  padding: 0.55rem 0.75rem;
+.search-field {
+  display: flex;
+  align-items: stretch;
   border: 1px solid var(--line);
   background: #fffdf8;
 }
-.lookup-search:focus { border-color: var(--leaf); }
+.search-field:focus-within { border-color: var(--leaf); }
+.lookup-search {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  flex: 1;
+  font: inherit;
+  font-size: 1.05rem;
+  padding: 0.7rem 0.85rem;
+}
+.search-go {
+  font: inherit;
+  border: 0;
+  border-left: 1px solid var(--line);
+  background: #fffdf8;
+  color: var(--leaf);
+  padding: 0 1rem;
+  cursor: pointer;
+}
+.search-go:hover { background: var(--leaf-2); }
 .compact-list {
   list-style: none;
   margin: 0.75rem 0 0;
   padding: 0;
   border-top: 1px solid var(--line);
+}
+#mima-place-results details {
+  border-bottom: 1px solid var(--line);
+  background: #fffdf8;
 }
 .place-row {
   width: 100%;
@@ -360,25 +381,18 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
   font: inherit;
   background: #fffdf8;
   border: 0;
-  border-bottom: 1px solid var(--line);
   padding: 0.72rem 0.4rem;
   cursor: pointer;
   display: flex;
   flex-wrap: wrap;
   gap: 0.3rem 0.7rem;
   align-items: baseline;
+  transition: background 180ms ease;
 }
 .place-row:hover { background: #efe8d8; }
 .place-row.is-open { background: #efe0c8; }
 .place-name { font-weight: 700; font-size: 1.04rem; }
 .place-cat { color: var(--muted); font-size: 0.86rem; }
-.mark {
-  font-size: 0.74rem;
-  color: var(--warn);
-  border: 1px solid #e2b89a;
-  padding: 0.02rem 0.38rem;
-  border-radius: 999px;
-}
 .more-btn {
   font: inherit;
   margin-top: 0.85rem;
@@ -395,6 +409,7 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
   padding: 1rem 1.1rem;
   margin: 0.4rem 0 0.85rem;
   border-left: 3px solid var(--leaf-2);
+  transition: opacity 180ms ease;
 }
 .place-card.is-emergency { border-left-color: var(--mima); }
 .place-card h4 { margin: 0 0 0.4rem; font-size: 1.08rem; }
@@ -416,4 +431,12 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
 a.chip { text-decoration: none; color: inherit; display: inline-block; }
 summary.place-row { list-style: none; }
 summary.place-row::-webkit-details-marker { display: none; }
+summary.place-row::after {
+  content: "›";
+  color: var(--muted);
+  margin-left: auto;
+  display: inline-block;
+  transition: transform 180ms ease;
+}
 details[open] > summary.place-row { background: #efe0c8; }
+details[open] > summary.place-row::after { transform: rotate(90deg); }
