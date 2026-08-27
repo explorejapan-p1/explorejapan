@@ -4,7 +4,9 @@ import type {AppLocale} from '@/i18n/routing';
 
 export const SITE_NAME_JA = '日本全国市町村紹介';
 export const SITE_NAME_EN = 'Japan Municipalities Guide';
-export const ORG_NAME = 'Lunatic Godo Kaisha';
+export const BRAND_NAME_JA = '冒険日本';
+export const BRAND_NAME_EN = 'BokenJapan';
+export const ORG_NAME = '冒険日本';
 
 export function siteOrigin(): string {
   return SITE_URL.replace(/\/+$/, '');
@@ -56,6 +58,7 @@ export function shareMetadata(opts: ShareOpts): Metadata {
   const img = photoAbs(opts.image);
   const alt = loc === 'ja' ? opts.image.altJa : opts.image.altEn;
   const name = siteName(loc);
+  const brand = loc === 'en' ? BRAND_NAME_EN : BRAND_NAME_JA;
   const index = opts.index !== false;
   return {
     title: opts.title,
@@ -71,7 +74,7 @@ export function shareMetadata(opts: ShareOpts): Metadata {
     },
     openGraph: {
       type: opts.ogType ?? 'website',
-      siteName: name,
+      siteName: brand,
       locale: loc === 'en' ? 'en_US' : 'ja_JP',
       alternateLocale: loc === 'en' ? ['ja_JP'] : ['en_US'],
       title: opts.title,
