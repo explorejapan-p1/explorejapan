@@ -11,7 +11,7 @@ export function JapanMap({locale, overlay}: Props) {
   const isJa = locale === 'ja';
 
   return (
-    <>
+    <div className="home-map">
       <div className="map-block">
         <div className="map-viewport">
           {map.source === 'placeholder' ? (
@@ -25,7 +25,11 @@ export function JapanMap({locale, overlay}: Props) {
             className="choropleth"
             viewBox={map.viewBox}
             role="img"
-            aria-label={isJa ? '日本の都道府県地図' : 'Map of Japan prefectures'}
+            aria-label={
+              isJa
+                ? '日本の都道府県地図。県をクリックすると市町村一覧へ。'
+                : 'Map of Japan. Click a prefecture for its municipality list.'
+            }
             preserveAspectRatio="xMidYMid slice"
           >
             {map.shapes.map((s) => (
@@ -58,6 +62,6 @@ export function JapanMap({locale, overlay}: Props) {
           </ol>
         </nav>
       </details>
-    </>
+    </div>
   );
 }
