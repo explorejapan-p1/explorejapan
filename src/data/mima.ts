@@ -157,6 +157,59 @@ const MIKI_PHOTO = {
   altEn: 'Miki Residence, Koyadaira, Mima'
 } as const satisfies MimaPlacePhoto;
 
+const BLUE_VILLA_PHOTO = {
+  src: '/explorejapan/media/blue-villa-anabuki-20210725.jpg',
+  commons: 'https://commons.wikimedia.org/wiki/File:Blue_Villa_Anabuki.jpeg',
+  license: 'CC0 1.0',
+  licenseUrl: 'https://creativecommons.org/publicdomain/zero/1.0/',
+  author: 'Sorrysorry',
+  authorUrl: 'https://commons.wikimedia.org/wiki/User:Sorrysorry',
+  taken: '2021-07-25',
+  accessed: '2026-08-27',
+  altJa: 'ブルーヴィラあなぶき（美馬市穴吹町口山）',
+  altEn: 'Blue Villa Anabuki, Kuchiyama, Anabuki, Mima'
+} as const satisfies MimaPlacePhoto;
+
+const TAOKA_PHOTO = {
+  src: '/explorejapan/media/kappo-ryokan-taoka-202208.jpg',
+  commons: 'https://commons.wikimedia.org/wiki/File:Kappo_Ryokan_Taoka_ac_(1).jpg',
+  license: 'CC BY-SA 4.0',
+  licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
+  author: 'Asturio Cantabrio',
+  authorUrl: 'https://commons.wikimedia.org/wiki/User:Asturio_Cantabrio',
+  taken: '2022-08',
+  accessed: '2026-08-27',
+  altJa: '割烹旅館田岡（美馬市脇町）',
+  altEn: 'Kappo Ryokan Taoka, Wakimachi, Mima'
+} as const satisfies MimaPlacePhoto;
+
+const TSURUGI_YU_PHOTO = {
+  src: '/explorejapan/media/tsurugi-no-yu-ozakura-20091207.jpg',
+  commons:
+    'https://commons.wikimedia.org/wiki/File:Tsurugi_no_yu_(onsen),_Mima_City,_Koyadaira.JPG',
+  license: 'CC BY 3.0',
+  licenseUrl: 'https://creativecommons.org/licenses/by/3.0/',
+  author: 'Brianmima',
+  authorUrl: 'https://commons.wikimedia.org/wiki/User:Brianmima',
+  taken: '2009-12-07',
+  accessed: '2026-08-27',
+  altJa: 'つるぎの湯 大桜（美馬市木屋平）',
+  altEn: 'Tsurugi-no-yu Ozakura onsen, Koyadaira, Mima'
+} as const satisfies MimaPlacePhoto;
+
+const TSURUGISAN_HUTTE_PHOTO = {
+  src: '/explorejapan/media/tsurugisan-chojo-hutte-20060727.jpg',
+  commons: 'https://commons.wikimedia.org/wiki/File:TSURUGISAN-CHOJO-HUTTE.JPG',
+  license: 'CC BY 3.0',
+  licenseUrl: 'https://creativecommons.org/licenses/by/3.0/',
+  author: 'Bergmann',
+  authorUrl: 'https://commons.wikimedia.org/wiki/User:Bergmann',
+  taken: '2006-07-27',
+  accessed: '2026-08-27',
+  altJa: '剣山頂上ヒュッテ（美馬市）',
+  altEn: 'Tsurugisan Chojo Hutte, Mima'
+} as const satisfies MimaPlacePhoto;
+
 /** Exact pack name_ja → verified Commons/official file. Placeholders stay if absent. */
 export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   'うだつの町並み': MIMA_PLACE_PHOTO,
@@ -164,7 +217,11 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   '吉野川、藍、うだつ': YOSHINOGAWA_PHOTO,
   '名馬「池月」伝説': IKEZUKI_PHOTO,
   '三木家住宅': MIKI_PHOTO,
-  '三木家住宅（みきけじゅうたく） 〔国指定重要文化財〕': MIKI_PHOTO
+  '三木家住宅（みきけじゅうたく） 〔国指定重要文化財〕': MIKI_PHOTO,
+  'ブルーヴィラあなぶき': BLUE_VILLA_PHOTO,
+  '割烹旅館田岡': TAOKA_PHOTO,
+  'つるぎの湯 大桜': TSURUGI_YU_PHOTO,
+  '剣山頂上ヒュッテ': TSURUGISAN_HUTTE_PHOTO
 };
 
 export const N03_CITATION = {
