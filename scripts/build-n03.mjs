@@ -174,6 +174,13 @@ function main() {
   runMapshaper([japanGj, '-o', 'format=topojson', japanTopo]);
   console.log('wrote', japanTopo);
 
+  const lite = spawnSync(process.execPath, [path.join(__dirname, 'build-n03-lite.mjs')], {
+    stdio: 'inherit'
+  });
+  if (lite.status !== 0) {
+    throw new Error('lite N03 simplify failed');
+  }
+
   const citation = {
     source: 'MLIT National Land Numerical Information N03 2026',
     url: PRODUCT,

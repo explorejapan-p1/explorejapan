@@ -5,9 +5,10 @@
   "description": "Rural Japan Directory (unpublished v0)",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && cp public/404.html out/404.html && cp public/index.html out/index.html && cp public/.nojekyll out/.nojekyll",
+    "build": "node scripts/build-n03-lite.mjs && next build && cp public/404.html out/404.html && cp public/index.html out/index.html && cp public/.nojekyll out/.nojekyll",
     "start": "next start",
-    "geo:n03": "node scripts/build-n03.mjs"
+    "geo:n03": "node scripts/build-n03.mjs",
+    "geo:n03-lite": "node scripts/build-n03-lite.mjs"
   },
   "engines": {
     "node": ">=20"

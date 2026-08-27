@@ -77,7 +77,7 @@ function schematicPath(b: SchematicBlock): string {
 }
 
 export function loadJapanMap(): RenderedMap {
-  const topo = readTopo('japan-prefectures.topojson');
+  const topo = readTopo('japan-prefectures-lite.topojson');
   if (topo) {
     const fc = asCollection(topo);
     const mainland: Feature[] = [];
@@ -98,7 +98,7 @@ export function loadJapanMap(): RenderedMap {
       ],
       mainlandFc
     );
-    const path = geoPath(projection);
+    const path = geoPath(projection).digits(1);
     const shapes: RenderedShape[] = [];
     for (const f of mainland) {
       shapes.push(shapeFromPrefFeature(f, path));
@@ -112,7 +112,7 @@ export function loadJapanMap(): RenderedMap {
         ],
         okiFc
       );
-      const okiPath = geoPath(okiProj);
+      const okiPath = geoPath(okiProj).digits(1);
       for (const f of okinawa) {
         shapes.push(shapeFromPrefFeature(f, okiPath));
       }
