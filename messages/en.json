@@ -98,6 +98,8 @@
     "foldCiteExperience": "Experience: only names confirmed on the city tourism map.",
     "emptyOnsen": "No onsen name confirmed on the city tourism map. We do not invent names.",
     "emptyExperience": "No experience name confirmed on the city tourism map. We do not invent names.",
+    "emptyShopping": "No shopping listings. We do not invent names.",
+    "emptyCommerce": "No business listings. We do not invent names.",
     "scoreNone": "No public score in our data.",
     "photoPending": "Photo coming soon",
     "gapFold": "Open data (coordinates, gaps)"

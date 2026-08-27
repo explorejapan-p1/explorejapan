@@ -564,7 +564,15 @@ export function MimaFacilityLookup({
       ) : null}
 
       <div id="mima-place-results" className="place-grid-wrap">
-        {engaged && foldCards.length === 0 ? <p className="note">{t('empty')}</p> : null}
+        {engaged && foldCards.length === 0 ? (
+          <p className="note">
+            {filter === 'shopping'
+              ? t('emptyShopping')
+              : filter === 'commerce'
+                ? t('emptyCommerce')
+                : t('empty')}
+          </p>
+        ) : null}
         <div className="place-grid">
           {foldCards.map((row, index) => (
             <FacilityCard
