@@ -7,35 +7,39 @@
  * Stay: https://mimakankou.or.jp/hoteltop/
  * City lodging index: https://www.city.mima.lg.jp/kanko/tomaru/
  * accessed 2026-08-26
+ *
+ * Onsen / experience: ONLY the named tourism-pack rows. Never the AED clone.
  */
 
-import {
-  EXPECTED_CATEGORY_COUNTS,
-  LOOKUP_CATEGORIES,
-  type FacilityCategory
-} from './facility-schema';
+import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
+import {MIMA_PLACE_PHOTO} from './mima';
 
 export const TRAVEL_ACCESSED = '2026-08-26' as const;
 
 export const TRAVEL_SOURCES = {
   dining: 'https://mimakankou.or.jp/gourmet/',
   stay: 'https://mimakankou.or.jp/hoteltop/',
-  cityStay: 'https://www.city.mima.lg.jp/kanko/tomaru/'
+  cityStay: 'https://www.city.mima.lg.jp/kanko/tomaru/',
+  onsen: 'https://www.city.mima.lg.jp/kanko/map/list/4041.html',
+  experience: 'https://www.city.mima.lg.jp/kanko/map/list/11492.html'
 } as const;
 
 export const TRAVEL_KINDS = ['dining', 'stay'] as const;
 export type TravelKind = (typeof TRAVEL_KINDS)[number];
 
-export const TOP_CHIPS = ['sights', 'stay', 'dining', 'commerce', 'infra'] as const;
+export const TOP_CHIPS = ['sights', 'dining', 'stay', 'onsen', 'experience'] as const;
 export type TopChip = (typeof TOP_CHIPS)[number];
 
-/** Pack categories folded into 観光名所. Per-row place-cat stays 観光 / 文化財. */
+/** First-screen photo cards. Remaining sights go behind さらに表示. */
+export const TRAVEL_CARD_FOLD = 10;
+
+/** Pack categories folded into 見る. Per-row place-cat stays 観光 / 文化財. */
 export const SIGHTS_CATEGORIES = [
   'tourism',
   'cultural_property'
 ] as const satisfies readonly FacilityCategory[];
 
-/** Civic pack cats only. gtfs_stop is not infra. */
+/** Civic pack cats only. gtfs_stop is not infra. Hidden from the traveler fold. */
 export const INFRA_CATEGORIES = [
   'shelter',
   'emergency_evacuation_site',
@@ -47,7 +51,15 @@ export const INFRA_CATEGORIES = [
   'childcare'
 ] as const satisfies readonly FacilityCategory[];
 
-export type FilterId = 'all' | FacilityCategory | TravelKind | 'sights' | 'commerce' | 'infra';
+export type FilterId =
+  | 'all'
+  | FacilityCategory
+  | TravelKind
+  | 'sights'
+  | 'commerce'
+  | 'infra'
+  | 'onsen'
+  | 'experience';
 
 export type TravelRow = {
   id: string;
@@ -63,6 +75,13 @@ export const TRAVEL_COUNTS = {
   dining: 12,
   stay: 7
 } as const satisfies Record<TravelKind, number>;
+
+/** Exact tourism-pack names. Do not broaden. */
+export const ONSEN_PACK_NAME = 'つるぎの湯 大桜' as const;
+export const EXPERIENCE_PACK_NAME = '美馬市伝統工芸体験館 美来工房' as const;
+export const UDATSU_PACK_NAME = 'うだつの町並み' as const;
+export const YOSHIDA_PACK_NAME = '吉田家住宅' as const;
+export const CENTER_PACK_NAME = '美馬市観光交流センター' as const;
 
 function dining(id: string, name_ja: string): TravelRow {
   return {
@@ -186,40 +205,192 @@ export function isSightsCategory(
 }
 
 export const TOP_CHIP_COUNTS = {
-  sights:
-    EXPECTED_CATEGORY_COUNTS.tourism + EXPECTED_CATEGORY_COUNTS.cultural_property,
-  stay: TRAVEL_COUNTS.stay,
   dining: TRAVEL_COUNTS.dining,
-  commerce: 0,
-  infra: INFRA_CATEGORIES.reduce(
-    (sum, cat) => sum + EXPECTED_CATEGORY_COUNTS[cat],
-    0
-  )
-} as const satisfies Record<TopChip, number>;
+  stay: TRAVEL_COUNTS.stay,
+  onsen: 1,
+  experience: 1
+} as const;
+
+export function isTravelerChip(filter: FilterId): filter is TopChip {
+  return (TOP_CHIPS as readonly string[]).includes(filter);
+}
+
+/** Tourism/cultural only. AED つるぎの湯 clone is not onsen. */
+export function isOnsenPackRow(row: {
+  category: string;
+  name_ja: string;
+}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') {
+    return false;
+  }
+  return row.name_ja === ONSEN_PACK_NAME;
+}
+
+/** Tourism/cultural only. Do not invent extra workshops. */
+export function isExperiencePackRow(row: {
+  category: string;
+  name_ja: string;
+}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') {
+    return false;
+  }
+  return row.name_ja === EXPERIENCE_PACK_NAME;
+}
+
+export function isUdatsuFamily(name: string): boolean {
+  if (name.includes('交流センター')) return false;
+  return name === UDATSU_PACK_NAME || name.includes('脇町南町');
+}
+
+export function isYoshidaFamily(name: string): boolean {
+  return name === YOSHIDA_PACK_NAME;
+}
+
+export function isCenterFamily(name: string): boolean {
+  return name.includes(CENTER_PACK_NAME);
+}
+
+export function sightPhoto(nameJa: string): {
+  src: string;
+  altJa: string;
+  altEn: string;
+} | null {
+  if (!isUdatsuFamily(nameJa)) return null;
+  return {
+    src: MIMA_PLACE_PHOTO.src,
+    altJa: MIMA_PLACE_PHOTO.altJa,
+    altEn: MIMA_PLACE_PHOTO.altEn
+  };
+}
+
+type Rankable = {
+  id: string;
+  name_ja: string;
+  category: string;
+  lat: number | null;
+  lon: number | null;
+};
+
+/**
+ * Display order for 見る. Rank #1–#10 is this order, not a score.
+ * 1 うだつの町並み, 2 吉田家住宅 (one xy listing), 3 美馬市観光交流センター,
+ * then other tourism, then cultural. Onsen/experience/family dupes omitted.
+ */
+export function rankSeeRows<T extends Rankable>(rows: readonly T[]): T[] {
+  const sights = rows.filter(
+    (row) =>
+      isSightsCategory(row.category) &&
+      !isOnsenPackRow(row) &&
+      !isExperiencePackRow(row)
+  );
+
+  function take(pred: (row: T) => boolean, preferGeo = false): T | undefined {
+    const hits = sights.filter(pred);
+    if (preferGeo) {
+      const geo = hits.find((row) => row.lat !== null && row.lon !== null);
+      if (geo) return geo;
+    }
+    return hits[0];
+  }
+
+  const pin1 =
+    take((row) => row.name_ja === UDATSU_PACK_NAME) ??
+    take((row) => isUdatsuFamily(row.name_ja));
+  const pin2 = take((row) => isYoshidaFamily(row.name_ja), true);
+  const pin3 =
+    take((row) => row.name_ja === CENTER_PACK_NAME) ??
+    take((row) => isCenterFamily(row.name_ja), true);
+
+  const pinned = [pin1, pin2, pin3].filter((row): row is T => row !== undefined);
+  const used = new Set(pinned.map((row) => row.id));
+  const skipUdatsu = pinned.some((row) => isUdatsuFamily(row.name_ja));
+  const skipYoshida = pinned.some((row) => isYoshidaFamily(row.name_ja));
+  const skipCenter = pinned.some((row) => isCenterFamily(row.name_ja));
+
+  const restTourism: T[] = [];
+  const restCultural: T[] = [];
+  for (const row of sights) {
+    if (used.has(row.id)) continue;
+    if (skipUdatsu && isUdatsuFamily(row.name_ja)) continue;
+    if (skipYoshida && isYoshidaFamily(row.name_ja)) continue;
+    if (skipCenter && isCenterFamily(row.name_ja)) continue;
+    if (row.category === 'tourism') restTourism.push(row);
+    else restCultural.push(row);
+  }
+  return [...pinned, ...restTourism, ...restCultural];
+}
+
+/** One line from sourced fields only. No invented blurbs. */
+export function sourcedHook(
+  row: {name_ja: string; address: string | null; category: string},
+  locale: string
+): string {
+  if (isUdatsuFamily(row.name_ja)) {
+    return locale === 'ja' ? MIMA_PLACE_PHOTO.altJa : MIMA_PLACE_PHOTO.altEn;
+  }
+  if (row.address && row.address.trim() !== '') return row.address;
+  if (row.category === 'dining') {
+    return locale === 'ja' ? '美馬観光ビューロー 飲食案内' : 'Mima Tourism Bureau dining list';
+  }
+  if (row.category === 'stay') {
+    return locale === 'ja' ? '美馬観光ビューロー 宿泊案内' : 'Mima Tourism Bureau lodging list';
+  }
+  if (row.category === 'tourism') {
+    return locale === 'ja' ? '市の観光マップ' : 'City tourism map';
+  }
+  if (row.category === 'cultural_property') {
+    return locale === 'ja' ? '文化財（オープンデータ）' : 'Cultural property (open data)';
+  }
+  return '';
+}
 
 /** Map pack category to the visible top chip for hrefs. */
 export function topChipForCategory(category: FacilityCategory): FilterId {
   if (isSightsCategory(category)) return 'sights';
-  if (isInfraCategory(category)) return 'infra';
+  if (isInfraCategory(category)) return 'sights';
   return category;
+}
+
+export function topChipForRow(row: {
+  category: string;
+  name_ja: string;
+}): FilterId {
+  if (isOnsenPackRow(row)) return 'onsen';
+  if (isExperiencePackRow(row)) return 'experience';
+  if (isSightsCategory(row.category)) return 'sights';
+  if (isInfraCategory(row.category)) return 'sights';
+  return row.category as FilterId;
 }
 
 export function packRowMatchesFilter(
   category: FacilityCategory,
-  filter: FilterId
+  filter: FilterId,
+  nameJa = ''
 ): boolean {
   if (filter === 'all') return true;
-  if (filter === 'sights') return isSightsCategory(category);
+  if (filter === 'sights') {
+    return (
+      isSightsCategory(category) &&
+      !isOnsenPackRow({category, name_ja: nameJa}) &&
+      !isExperiencePackRow({category, name_ja: nameJa})
+    );
+  }
   if (filter === 'infra') return isInfraCategory(category);
+  if (filter === 'onsen') {
+    return isOnsenPackRow({category, name_ja: nameJa});
+  }
+  if (filter === 'experience') {
+    return isExperiencePackRow({category, name_ja: nameJa});
+  }
   if (filter === 'commerce' || isTravelFilter(filter)) return false;
   return category === filter;
 }
 
 /**
  * no c, no q → sights.
- * c in sights|stay|dining|commerce|infra → that.
- * legacy c=tourism or cultural_property → sights.
- * legacy civic pack cats → infra.
+ * c in sights|dining|stay|onsen|experience → that.
+ * legacy tourism/cultural → sights.
+ * legacy civic / commerce / infra → sights (no infrastructure dump on the fold).
  * c=all still allowed internally for search.
  * q without c → all (search-all).
  */
@@ -228,14 +399,15 @@ export function resolveMimaFilter(c: string | undefined, q: string): FilterId {
     c === 'sights' ||
     c === 'stay' ||
     c === 'dining' ||
-    c === 'commerce' ||
-    c === 'infra'
+    c === 'onsen' ||
+    c === 'experience'
   ) {
     return c;
   }
   if (c === 'all') return 'all';
   if (c === 'tourism' || c === 'cultural_property') return 'sights';
-  if (c !== undefined && isInfraCategory(c)) return 'infra';
+  if (c === 'commerce' || c === 'infra') return 'sights';
+  if (c !== undefined && isInfraCategory(c)) return 'sights';
   if (isPackCategory(c)) return c;
   if (q.trim() !== '') return 'all';
   return 'sights';

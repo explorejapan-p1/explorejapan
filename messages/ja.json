@@ -61,9 +61,9 @@
       "emergency_evacuation_site": "緊急避難場所",
       "aed": "AED",
       "hospital": "医療機関",
-      "dining": "飲食",
-      "stay": "宿泊",
-      "sights": "観光名所",
+      "dining": "食べる",
+      "stay": "泊まる",
+      "sights": "見る",
       "commerce": "商業",
       "infra": "インフラ",
       "tourism": "観光",
@@ -72,7 +72,9 @@
       "care": "介護",
       "wifi": "公衆無線LAN",
       "public_facility": "公共施設",
-      "gtfs_stop": "停留所（GTFS）"
+      "gtfs_stop": "停留所（GTFS）",
+      "onsen": "温泉",
+      "experience": "体験"
     },
     "unpublished": "（未掲載）",
     "unpublishedNote": "この区分は未掲載です。",
@@ -82,6 +84,18 @@
     "accessed": "取得日",
     "mapCiteN03": "「国土数値情報（行政区域データ）」（国土交通省）を加工して作成",
     "travelCite": "<dining>飲食</dining>・<stay>宿泊</stay>は美馬観光ビューローの公開案内です（<city>市の観光サイト</city>から）。凍結オープンデータパックにはありません。",
-    "visibleTravel": "{n}"
+    "visibleTravel": "{n}",
+    "unrated": "未評価",
+    "listOrder": "ビューロー掲載順",
+    "morePlaces": "そのほか {n}件",
+    "sheetClose": "閉じる",
+    "searchToggle": "探す",
+    "foldCiteDining": "飲食12件は美馬観光ビューローの公開案内です。",
+    "foldCiteStay": "宿泊7件は美馬観光ビューローの公開案内です。",
+    "foldCiteOnsen": "温泉は市の観光マップで名前を確認できたものだけです。",
+    "foldCiteExperience": "体験は市の観光マップで名前を確認できたものだけです。",
+    "emptyOnsen": "市の観光マップから確認できた温泉はありません。名前は発明しません。",
+    "emptyExperience": "市の観光マップから確認できた体験はありません。名前は発明しません。",
+    "scoreNone": "公開の点数はありません。"
   }
 }
