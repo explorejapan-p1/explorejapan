@@ -11,35 +11,37 @@ export function JapanMap({locale, overlay}: Props) {
   const isJa = locale === 'ja';
 
   return (
-    <div className="map-block">
-      <div className="map-viewport">
-        {map.source === 'placeholder' ? (
-          <p className="map-banner" role="status">
-            {isJa
-              ? 'プレースホルダ地図（N03 形状ではない）'
-              : 'Placeholder map (not N03 geometry)'}
-          </p>
-        ) : null}
-        <svg
-          className="choropleth"
-          viewBox={map.viewBox}
-          role="img"
-          aria-label={isJa ? '日本の都道府県地図' : 'Map of Japan prefectures'}
-          preserveAspectRatio="xMidYMid meet"
-        >
-          {map.shapes.map((s) => (
-            <a
-              key={s.slug}
-              href={`${BASE_PATH}/${locale}/${s.slug}/`}
-              className={s.slug === 'tokushima' ? 'shape is-tokushima' : 'shape'}
-            >
-              <title>{isJa ? s.nameJa : s.nameEn}</title>
-              <path d={s.d} />
-            </a>
-          ))}
-        </svg>
-        {overlay ? <p className="home-line">{overlay}</p> : null}
-        <GeoCitation source={map.source} locale={locale} variant="tiny" />
+    <>
+      <div className="map-block">
+        <div className="map-viewport">
+          {map.source === 'placeholder' ? (
+            <p className="map-banner" role="status">
+              {isJa
+                ? 'プレースホルダ地図（N03 形状ではない）'
+                : 'Placeholder map (not N03 geometry)'}
+            </p>
+          ) : null}
+          <svg
+            className="choropleth"
+            viewBox={map.viewBox}
+            role="img"
+            aria-label={isJa ? '日本の都道府県地図' : 'Map of Japan prefectures'}
+            preserveAspectRatio="xMidYMid slice"
+          >
+            {map.shapes.map((s) => (
+              <a
+                key={s.slug}
+                href={`${BASE_PATH}/${locale}/${s.slug}/`}
+                className={s.slug === 'tokushima' ? 'shape is-tokushima' : 'shape'}
+              >
+                <title>{isJa ? s.nameJa : s.nameEn}</title>
+                <path d={s.d} />
+              </a>
+            ))}
+          </svg>
+          {overlay ? <p className="home-line">{overlay}</p> : null}
+          <GeoCitation source={map.source} locale={locale} variant="tiny" />
+        </div>
       </div>
       <details className="name-list-fold">
         <summary>{isJa ? '都道府県' : 'Prefectures'}</summary>
@@ -56,6 +58,6 @@ export function JapanMap({locale, overlay}: Props) {
           </ol>
         </nav>
       </details>
-    </div>
+    </>
   );
 }
