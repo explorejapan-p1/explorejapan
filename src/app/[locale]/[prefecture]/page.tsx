@@ -6,7 +6,9 @@ import {PREFECTURES, PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
 import {Link} from '@/i18n/navigation';
 import {type AppLocale} from '@/i18n/routing';
-import {hreflangMetadata} from '@/lib/seo';
+import {JsonLd} from '@/components/JsonLd';
+import {prefectureGraph} from '@/lib/jsonld';
+import {shareMetadata} from '@/lib/seo';
 
 type Props = {params: Promise<{locale: string; prefecture: string}>};
 
@@ -20,10 +22,21 @@ export async function generateMetadata({params}: Props) {
   if (!pref) return {};
   const loc = (locale === 'en' ? 'en' : 'ja') as AppLocale;
   const name = loc === 'ja' ? pref.nameJa : pref.nameEn;
-  return {
+  const live = pref.slug === 'tokushima';
+  return shareMetadata({
+    locale: loc,
+    rest: pref.slug,
     title: name,
-    ...hreflangMetadata(loc, pref.slug)
-  };
+    description: live
+      ? loc === 'ja'
+        ? '徳島県の市町村。第1号は美馬市。'
+        : 'Municipalities in Tokushima. First listing: Mima City.'
+      : loc === 'ja'
+        ? 'この県の市町村ページは準備中です。'
+        : 'This prefecture layer is not wired yet.',
+    image: MIMA_PLACE_PHOTO,
+    index: live
+  });
 }
 
 export default async function PrefecturePage({params}: Props) {
@@ -36,8 +49,10 @@ export default async function PrefecturePage({params}: Props) {
   const name = isJa ? pref.nameJa : pref.nameEn;
   const mimaHref = `${BASE_PATH}/${locale}/${MIMA.prefectureSlug}/${MIMA.slug}/`;
 
+  const loc = (locale === 'en' ? 'en' : 'ja') as AppLocale;
   return (
     <div className="pref-stage">
+      <JsonLd data={prefectureGraph(loc, pref.slug, name)} />
       <nav className="crumbs">
         <Link href="/">{isJa ? '全国' : 'Japan'}</Link>
         <span aria-hidden="true"> / </span>

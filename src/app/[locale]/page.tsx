@@ -1,8 +1,10 @@
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {JapanMap} from '@/components/JapanMap';
+import {JsonLd} from '@/components/JsonLd';
 import {BASE_PATH, MIMA, MIMA_PLACE_PHOTO} from '@/data/mima';
 import {routing, type AppLocale} from '@/i18n/routing';
-import {hreflangMetadata} from '@/lib/seo';
+import {homeGraph} from '@/lib/jsonld';
+import {shareMetadata} from '@/lib/seo';
 
 type Props = {params: Promise<{locale: string}>};
 
@@ -14,10 +16,16 @@ export async function generateMetadata({params}: Props) {
   const {locale} = await params;
   const loc = (locale === 'en' ? 'en' : 'ja') as AppLocale;
   const t = await getTranslations({locale: loc, namespace: 'home'});
-  return {
+  return shareMetadata({
+    locale: loc,
     title: t('h1'),
-    ...hreflangMetadata(loc)
-  };
+    description:
+      loc === 'ja'
+        ? '徳島県美馬市から始める、日本の市町村案内。'
+        : 'A Japan municipalities guide, starting with Mima City, Tokushima.',
+    image: MIMA_PLACE_PHOTO,
+    index: true
+  });
 }
 
 export default async function HomePage({params}: Props) {
@@ -25,10 +33,12 @@ export default async function HomePage({params}: Props) {
   setRequestLocale(locale);
   const t = await getTranslations('home');
   const isJa = locale === 'ja';
+  const loc = (locale === 'en' ? 'en' : 'ja') as AppLocale;
   const cityHref = `${BASE_PATH}/${locale}/${MIMA.prefectureSlug}/${MIMA.slug}/`;
 
   return (
     <div className="home-stage" data-home="">
+      <JsonLd data={homeGraph(loc)} />
       <h1 className="sr-only">{t('h1')}</h1>
       <div className="home-split">
         <a className="home-featured" href={cityHref}>

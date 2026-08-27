@@ -29,8 +29,8 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
       template: isJa ? '%s · 日本全国市町村紹介' : '%s · Japan Municipalities Guide'
     },
     description: isJa
-      ? '未公開。第1号は徳島県美馬市。'
-      : 'Unpublished. First listing: Mima City, Tokushima.',
+      ? '徳島県美馬市から始める、日本の市町村案内。'
+      : 'A Japan municipalities guide, starting with Mima City, Tokushima.',
     ...hreflangMetadata(locale === 'en' ? 'en' : 'ja'),
     robots: {
       index: true,

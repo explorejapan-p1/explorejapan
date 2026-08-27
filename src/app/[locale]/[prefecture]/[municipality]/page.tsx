@@ -3,11 +3,10 @@ import {notFound} from 'next/navigation';
 import {MimaFacilityLookup} from '@/components/MimaFacilityLookup';
 import {
   EXPECTED_GEO_COUNT,
-  EXPECTED_ROW_COUNT,
-  type FacilityRow
+  EXPECTED_ROW_COUNT
 } from '@/data/facility-schema';
-import {MIMA, SITE_URL} from '@/data/mima';
-import {MIMA_FACILITIES, facilityGapBoard, officialGeoRows, officialPackRows} from '@/data/mima-facilities';
+import {MIMA, MIMA_PLACE_PHOTO} from '@/data/mima';
+import {MIMA_FACILITIES, facilityGapBoard, officialGeoRows} from '@/data/mima-facilities';
 import {resolveMimaFilter} from '@/data/mima-travel';
 import {PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {
@@ -17,7 +16,9 @@ import {
 import {Link} from '@/i18n/navigation';
 import type {AppLocale} from '@/i18n/routing';
 import {projectMimaOfficialMap} from '@/lib/geo';
-import {hreflangMetadata, pagePath} from '@/lib/seo';
+import {JsonLd} from '@/components/JsonLd';
+import {mimaGraph} from '@/lib/jsonld';
+import {shareMetadata} from '@/lib/seo';
 
 type Props = {
   params: Promise<{locale: string; prefecture: string; municipality: string}>;
@@ -35,131 +36,22 @@ export async function generateMetadata({params}: Props) {
   const muni = MUNICIPALITY_BY_SLUG.get(municipality);
   if (prefecture !== 'tokushima' || !muni) return {};
   const loc = (locale === 'en' ? 'en' : 'ja') as AppLocale;
-  const title = loc === 'ja' ? muni.nameJa : `${muni.nameEn}${muni.slug === 'mima' ? ' City' : ''}`;
-  return {
+  const live = muni.slug === 'mima';
+  const title = loc === 'ja' ? muni.nameJa : `${muni.nameEn}${live ? ' City' : ''}`;
+  return shareMetadata({
+    locale: loc,
+    rest: `tokushima/${muni.slug}`,
     title,
-    ...hreflangMetadata(loc, `tokushima/${muni.slug}`)
-  };
-}
-
-function packPlace(row: FacilityRow) {
-  const item: {
-    '@type': 'Place';
-    name: string;
-    url?: string;
-    address?: string;
-    geo?: {
-      '@type': 'GeoCoordinates';
-      latitude: number;
-      longitude: number;
-    };
-  } = {
-    '@type': 'Place',
-    name: row.name_ja
-  };
-  if (row.official_url) {
-    item.url = row.official_url;
-  }
-  if (row.address) {
-    item.address = row.address;
-  }
-  if (row.lat !== null && row.lon !== null) {
-    item.geo = {
-      '@type': 'GeoCoordinates',
-      latitude: row.lat,
-      longitude: row.lon
-    };
-  }
-  return item;
-}
-
-function JsonLd({locale}: {locale: string}) {
-  const isJa = locale === 'ja';
-  const origin = SITE_URL.replace(/\/+$/, '');
-  const url = `${origin}${pagePath(locale, 'tokushima/mima')}`;
-  const sourcedTourism = MIMA_FACILITIES.filter(
-    (row) => row.category === 'tourism' && row.source_url.trim() !== ''
-  );
-  const officialRows = officialPackRows().filter((row) => row.source_url.trim() !== '');
-  const placeType =
-    sourcedTourism.length > 0 ? ['Place', 'City', 'TouristDestination'] : ['Place', 'City'];
-  const data = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': placeType,
-        name: isJa ? MIMA.nameJa : MIMA.nameEn,
-        alternateName: isJa ? MIMA.nameEn : MIMA.nameJa,
-        identifier: MIMA.jis,
-        sameAs: MIMA.sameAs,
-        url,
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: isJa
-            ? '穴吹町穴吹字九反地5番地'
-            : '5 Kutanchi, Anabuki, Anabuki-cho',
-          addressLocality: isJa ? MIMA.nameJa : MIMA.nameEn,
-          addressRegion: '徳島県',
-          postalCode: MIMA.hall.postalCode,
-          addressCountry: 'JP'
-        },
-        containedInPlace: {
-          '@type': 'AdministrativeArea',
-          name: isJa ? '徳島県' : 'Tokushima Prefecture'
-        }
-      },
-      {
-        '@type': 'WebPage',
-        '@id': url,
-        url,
-        inLanguage: locale,
-        name: isJa ? MIMA.nameJa : MIMA.nameEn,
-        isPartOf: {
-          '@type': 'WebSite',
-          name: isJa ? '日本全国市町村紹介' : 'Japan Municipalities Guide',
-          publisher: {'@type': 'Organization', name: 'Lunatic Godo Kaisha'}
-        }
-      },
-      {
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-          {
-            '@type': 'ListItem',
-            position: 1,
-            name: isJa ? '全国' : 'Japan',
-            item: `${origin}${pagePath(locale)}`
-          },
-          {
-            '@type': 'ListItem',
-            position: 2,
-            name: isJa ? '徳島県' : 'Tokushima',
-            item: `${origin}${pagePath(locale, 'tokushima')}`
-          },
-          {
-            '@type': 'ListItem',
-            position: 3,
-            name: isJa ? MIMA.nameJa : MIMA.nameEn,
-            item: url
-          }
-        ]
-      },
-      {
-        '@type': 'ItemList',
-        numberOfItems: officialRows.length,
-        itemListElement: officialRows.map((row, index) => ({
-          '@type': 'ListItem',
-          position: index + 1,
-          item: packPlace(row)
-        }))
-      }
-    ]
-  };
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{__html: JSON.stringify(data)}}
-    />
-  );
+    description: live
+      ? loc === 'ja'
+        ? '四国のまほろば 美馬市。うだつの町並み、食、宿。'
+        : 'Mima City, Tokushima — Udatsu townscape, food, and stays.'
+      : loc === 'ja'
+        ? 'この市町村のページは準備中です。'
+        : 'This municipality page is coming soon.',
+    image: MIMA_PLACE_PHOTO,
+    index: live
+  });
 }
 
 export default async function MunicipalityPage({params}: Props) {
@@ -216,7 +108,7 @@ export default async function MunicipalityPage({params}: Props) {
 
   return (
     <>
-      <JsonLd locale={locale} />
+      <JsonLd data={mimaGraph(locale === "en" ? "en" : "ja")} />
       <nav className="crumbs">
         <Link href="/">{isJa ? '全国' : 'Japan'}</Link>
         <span> / </span>

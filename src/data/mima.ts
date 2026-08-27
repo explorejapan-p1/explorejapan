@@ -383,6 +383,12 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'Tsurugi-no-yu Ozakura bath, Koyadaira, Mima',
     'https://www.city.mima.lg.jp/kanko/map/list/4041.html'
   ),
+  '美馬市伝統工芸体験館 美来工房': cityPhoto(
+    'mirai-koubou-activity.jpg',
+    '美馬市伝統工芸体験館 美来工房 和傘づくり（美馬市）',
+    'Mirai Kobo traditional umbrella workshop, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11492.html'
+  ),
   '剣山頂上ヒュッテ': TSURUGISAN_HUTTE_PHOTO,
   'ADLIV': bureauPhoto(
     'adliv.jpg',

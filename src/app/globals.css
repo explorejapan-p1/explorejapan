@@ -974,3 +974,8 @@ a.chip { text-decoration: none; color: inherit; }
     padding: 0.55rem 0.8rem;
   }
 }
+
+.place-page { margin-top: 0.8rem; max-width: 44rem; }
+.place-page .card-photo { border-radius: var(--radius); overflow: hidden; background: var(--well); }
+.place-page .card-photo img { width: 100%; height: auto; display: block; }
+.place-page h1 { font-size: 1.7rem; margin: 0.7rem 0 0.2rem; }
