@@ -96,6 +96,8 @@
     "foldCiteStay": "7 lodging names from the Mima Tourism Bureau list.",
     "foldCiteOnsen": "Onsen: only names confirmed on the city tourism map.",
     "foldCiteExperience": "Experience: only names confirmed on the city tourism map.",
+    "foldCiteShopping": "Shopping names from the bureau Udatsu map and the city roadside-station page.",
+    "foldCiteCommerce": "Business names from the bureau Udatsu townscape map.",
     "emptyOnsen": "No onsen name confirmed on the city tourism map. We do not invent names.",
     "emptyExperience": "No experience name confirmed on the city tourism map. We do not invent names.",
     "emptyShopping": "No shopping listings. We do not invent names.",

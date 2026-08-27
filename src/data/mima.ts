@@ -1146,6 +1146,68 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '舞中島（美馬市）',
     '舞中島, Mima',
     'https://www.city.mima.lg.jp/kanko/map/list/4095.html'
+  ),
+  '道の駅藍ランドうだつ 藍蔵': bureauPhoto(
+    'ailand-udatsu-aigura.jpg',
+    '2021',
+    '道の駅藍ランドうだつ 藍蔵（美馬市脇町）',
+    'Ailand Udatsu Aigura souvenir shop, Wakimachi, Mima',
+    'https://mimakankou.or.jp/udatsusyuhenzu/aigura/'
+  ),
+  '阿波踊り竹人形の里 時代屋': bureauPhoto(
+    'jidaiya.jpg',
+    '2020',
+    '阿波踊り竹人形の里 時代屋（美馬市脇町）',
+    'Jidaiya bamboo-doll shop, Wakimachi, Mima',
+    'https://mimakankou.or.jp/udatsusyuhenzu/jidaiya/'
+  ),
+  '野崎呉服店': bureauPhoto(
+    'nozaki-gofukuten.jpg',
+    '2020',
+    '野崎呉服店（美馬市脇町）',
+    'Nozaki kimono shop, Wakimachi, Mima',
+    'https://mimakankou.or.jp/udatsusyuhenzu/nozakigohukuten/'
+  ),
+  '西野商店こうじ部': bureauPhoto(
+    'nishino-shouten-koji.jpg',
+    '2022',
+    '西野商店こうじ部（美馬市脇町）',
+    'Nishino Shoten koji shop, Wakimachi, Mima',
+    'https://mimakankou.or.jp/udatsusyuhenzu/nishinosyouten/'
+  ),
+  'うだつ上がる': bureauPhoto(
+    'udatsu-agaru.jpg',
+    '2022',
+    'うだつ上がる（美馬市脇町）',
+    'Udatsu Agaru shop complex, Wakimachi, Mima',
+    'https://mimakankou.or.jp/udatsusyuhenzu/udatsuagaru/'
+  ),
+  '藍染工房': bureauPhoto(
+    'aizome-koubou.jpg',
+    '2022',
+    '藍染工房（美馬市脇町）',
+    'Aizome koubou indigo workshop shop, Wakimachi, Mima',
+    'https://mimakankou.or.jp/udatsusyuhenzu/aizomekoubou/'
+  ),
+  '道の駅 みまの里': cityPhoto(
+    'michi-no-eki-mima-no-sato.jpg',
+    '道の駅 みまの里（美馬市美馬町）',
+    'Michi-no-eki Mima no Sato, Mima-cho, Mima',
+    'https://www.city.mima.lg.jp/gyosei/docs/30046.html'
+  ),
+  '正木酒店': bureauPhoto(
+    'masaki-saketen.jpg',
+    '2020',
+    '正木酒店（美馬市脇町）',
+    'Masaki saketen liquor shop, Wakimachi, Mima',
+    'https://mimakankou.or.jp/udatsusyuhenzu/masakisaketen/'
+  ),
+  '小川鮮魚店': bureauPhoto(
+    'ogawa-sengyoten.jpg',
+    '2020',
+    '小川鮮魚店（美馬市脇町）',
+    'Ogawa sengyoten fish shop, Wakimachi, Mima',
+    'https://mimakankou.or.jp/udatsusyuhenzu/ogawasengyoten/'
   )
 };
 

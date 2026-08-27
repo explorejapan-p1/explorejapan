@@ -1,12 +1,13 @@
 /**
- * Dining and lodging listed by Mima Tourism Bureau.
+ * Dining, lodging, shopping, and commerce from official Mima pages only.
  * Names, addresses, and phones are copied from the public pages only.
- * Not in the frozen 515-row pack. Do not invent extra names or dining addresses.
+ * Not in the frozen 515-row pack. Do not invent extra names.
  *
  * Dining: https://mimakankou.or.jp/gourmet/
  * Stay: https://mimakankou.or.jp/hoteltop/
  * City lodging index: https://www.city.mima.lg.jp/kanko/tomaru/
- * accessed 2026-08-26
+ * Shopping/commerce: bureau うだつの町並み周辺図 nested shop pages + city 道の駅 みまの里
+ * accessed dining/stay 2026-08-26; shopping/commerce 2026-08-27
  *
  * Onsen / experience: ONLY the named tourism-pack rows. Never the AED clone.
  */
@@ -21,10 +22,13 @@ export const TRAVEL_SOURCES = {
   stay: 'https://mimakankou.or.jp/hoteltop/',
   cityStay: 'https://www.city.mima.lg.jp/kanko/tomaru/',
   onsen: 'https://www.city.mima.lg.jp/kanko/map/list/4041.html',
-  experience: 'https://www.city.mima.lg.jp/kanko/map/list/11492.html'
+  experience: 'https://www.city.mima.lg.jp/kanko/map/list/11492.html',
+  shoppingMap: 'https://mimakankou.or.jp/udatsusyuhenzu/',
+  shoppingTenpo: 'https://mimakankou.or.jp/event/udatsunomachinamitenpo/',
+  cityMimaNoSato: 'https://www.city.mima.lg.jp/gyosei/docs/30046.html'
 } as const;
 
-export const TRAVEL_KINDS = ['dining', 'stay'] as const;
+export const TRAVEL_KINDS = ['dining', 'stay', 'shopping', 'commerce'] as const;
 export type TravelKind = (typeof TRAVEL_KINDS)[number];
 
 export const TOP_CHIPS = ['stay', 'dining', 'onsen', 'experience', 'sights', 'shopping', 'commerce'] as const;
@@ -69,12 +73,14 @@ export type TravelRow = {
   address: string | null;
   phone: string | null;
   source_url: string;
-  accessed: typeof TRAVEL_ACCESSED;
+  accessed: string;
 };
 
 export const TRAVEL_COUNTS = {
   dining: 12,
-  stay: 7
+  stay: 7,
+  shopping: 7,
+  commerce: 2
 } as const satisfies Record<TravelKind, number>;
 
 /** Exact tourism-pack names. Do not broaden. */
@@ -110,6 +116,27 @@ function stay(
     phone,
     source_url: TRAVEL_SOURCES.stay,
     accessed: TRAVEL_ACCESSED
+  };
+}
+
+const SHOP_ACCESSED = '2026-08-27' as const;
+
+function shopRow(
+  id: string,
+  name_ja: string,
+  category: 'shopping' | 'commerce',
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category,
+    address,
+    phone,
+    source_url,
+    accessed: SHOP_ACCESSED
   };
 }
 
@@ -173,11 +200,92 @@ export const TRAVEL_STAY: readonly TravelRow[] = [
   )
 ];
 
-export const TRAVEL_ALL: readonly TravelRow[] = [...TRAVEL_DINING, ...TRAVEL_STAY];
+export const TRAVEL_SHOPPING: readonly TravelRow[] = [
+  shopRow(
+    'mima-shopping-01',
+    '道の駅藍ランドうだつ 藍蔵',
+    'shopping',
+    '美馬市脇町大字脇町55',
+    '0883-53-2333',
+    'https://mimakankou.or.jp/udatsusyuhenzu/aigura/'
+  ),
+  shopRow(
+    'mima-shopping-02',
+    '阿波踊り竹人形の里 時代屋',
+    'shopping',
+    '美馬市脇町大字脇町124',
+    '0883-53-1015',
+    'https://mimakankou.or.jp/udatsusyuhenzu/jidaiya/'
+  ),
+  shopRow(
+    'mima-shopping-03',
+    '野崎呉服店',
+    'shopping',
+    '美馬市脇町大字脇町20',
+    '0883-52-2101',
+    'https://mimakankou.or.jp/udatsusyuhenzu/nozakigohukuten/'
+  ),
+  shopRow(
+    'mima-shopping-04',
+    '西野商店こうじ部',
+    'shopping',
+    '美馬市脇町大字脇町14',
+    '0883-52-1511',
+    'https://mimakankou.or.jp/udatsusyuhenzu/nishinosyouten/'
+  ),
+  // 要確認: mixed 雑貨店・古着屋・書店・カフェ. No phone on the 出典 page.
+  shopRow(
+    'mima-shopping-05',
+    'うだつ上がる',
+    'shopping',
+    '美馬市脇町大字脇町156',
+    null,
+    'https://mimakankou.or.jp/udatsusyuhenzu/udatsuagaru/'
+  ),
+  // 要確認: map page TEL 090-3188-3711; event page TEL 0883-52-5168. Store map-page phone only.
+  shopRow(
+    'mima-shopping-06',
+    '藍染工房',
+    'shopping',
+    '美馬市脇町大字脇町45-1',
+    '090-3188-3711',
+    'https://mimakankou.or.jp/udatsusyuhenzu/aizomekoubou/'
+  ),
+  shopRow(
+    'mima-shopping-07',
+    '道の駅 みまの里',
+    'shopping',
+    '徳島県美馬市美馬町字願勝寺72番地',
+    '0883-63-3837',
+    'https://www.city.mima.lg.jp/gyosei/docs/30046.html'
+  )
+];
 
-/** First ship: pills only. No invented shop or business listings. */
-export const TRAVEL_SHOPPING: readonly TravelRow[] = [];
-export const TRAVEL_COMMERCE: readonly TravelRow[] = [];
+export const TRAVEL_COMMERCE: readonly TravelRow[] = [
+  shopRow(
+    'mima-commerce-01',
+    '正木酒店',
+    'commerce',
+    '美馬市脇町大字脇町153-2',
+    '0883-52-1552',
+    'https://mimakankou.or.jp/udatsusyuhenzu/masakisaketen/'
+  ),
+  shopRow(
+    'mima-commerce-02',
+    '小川鮮魚店',
+    'commerce',
+    '美馬市脇町大字脇町35-3',
+    '0883-52-2179',
+    'https://mimakankou.or.jp/udatsusyuhenzu/ogawasengyoten/'
+  )
+];
+
+export const TRAVEL_ALL: readonly TravelRow[] = [
+  ...TRAVEL_DINING,
+  ...TRAVEL_STAY,
+  ...TRAVEL_SHOPPING,
+  ...TRAVEL_COMMERCE
+];
 
 if (TRAVEL_DINING.length !== TRAVEL_COUNTS.dining) {
   throw new Error(`mima dining ${TRAVEL_DINING.length} != ${TRAVEL_COUNTS.dining}`);
@@ -185,9 +293,20 @@ if (TRAVEL_DINING.length !== TRAVEL_COUNTS.dining) {
 if (TRAVEL_STAY.length !== TRAVEL_COUNTS.stay) {
   throw new Error(`mima stay ${TRAVEL_STAY.length} != ${TRAVEL_COUNTS.stay}`);
 }
+if (TRAVEL_SHOPPING.length !== TRAVEL_COUNTS.shopping) {
+  throw new Error(`mima shopping ${TRAVEL_SHOPPING.length} != ${TRAVEL_COUNTS.shopping}`);
+}
+if (TRAVEL_COMMERCE.length !== TRAVEL_COUNTS.commerce) {
+  throw new Error(`mima commerce ${TRAVEL_COMMERCE.length} != ${TRAVEL_COUNTS.commerce}`);
+}
 
 export function isTravelFilter(filter: FilterId): filter is TravelKind {
-  return filter === 'dining' || filter === 'stay';
+  return (
+    filter === 'dining' ||
+    filter === 'stay' ||
+    filter === 'shopping' ||
+    filter === 'commerce'
+  );
 }
 
 function isPackCategory(value: string | undefined): value is FacilityCategory {
@@ -212,6 +331,8 @@ export function isSightsCategory(
 export const TOP_CHIP_COUNTS = {
   dining: TRAVEL_COUNTS.dining,
   stay: TRAVEL_COUNTS.stay,
+  shopping: TRAVEL_COUNTS.shopping,
+  commerce: TRAVEL_COUNTS.commerce,
   onsen: 1,
   experience: 1
 } as const;
@@ -333,6 +454,12 @@ export function sourcedHook(
   }
   if (row.category === 'stay') {
     return locale === 'ja' ? '美馬観光ビューロー 宿泊案内' : 'Mima Tourism Bureau lodging list';
+  }
+  if (row.category === 'shopping') {
+    return locale === 'ja' ? '美馬観光ビューロー 買物案内' : 'Mima Tourism Bureau shopping list';
+  }
+  if (row.category === 'commerce') {
+    return locale === 'ja' ? '美馬観光ビューロー 商業案内' : 'Mima Tourism Bureau shop list';
   }
   if (row.category === 'tourism') {
     return locale === 'ja' ? '市の観光マップ' : 'City tourism map';

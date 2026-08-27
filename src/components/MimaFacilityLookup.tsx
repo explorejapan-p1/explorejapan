@@ -375,8 +375,7 @@ export function MimaFacilityLookup({
   const searching = q !== '';
   const nameHitExists =
     searching && displayRows.some((row) => row.name_ja.toLowerCase().includes(q));
-  const travelLayer =
-    isTravelFilter(filter) || filter === 'shopping' || filter === 'commerce';
+  const travelLayer = isTravelFilter(filter);
 
   const travelHits = searching
     ? TRAVEL_ALL.filter((row) => row.name_ja.toLowerCase().includes(q))
@@ -600,6 +599,7 @@ export function MimaFacilityLookup({
             <>
               <a href={TRAVEL_SOURCES.dining}>飲食</a>・<a href={TRAVEL_SOURCES.stay}>宿泊</a>
               は美馬観光ビューロー（{TRAVEL_ACCESSED}）。
+              <a href={TRAVEL_SOURCES.shoppingMap}>買物</a>・商業はうだつの町並み周辺図（2026-08-27）。
               <a href={TRAVEL_SOURCES.onsen}>温泉</a>・<a href={TRAVEL_SOURCES.experience}>体験</a>
               は市の観光マップ。点数は持ちません。
             </>
@@ -607,7 +607,9 @@ export function MimaFacilityLookup({
             <>
               <a href={TRAVEL_SOURCES.dining}>Dining</a> and{' '}
               <a href={TRAVEL_SOURCES.stay}>lodging</a> from the Mima Tourism Bureau (
-              {TRAVEL_ACCESSED}). <a href={TRAVEL_SOURCES.onsen}>Onsen</a> and{' '}
+              {TRAVEL_ACCESSED}). <a href={TRAVEL_SOURCES.shoppingMap}>Shopping</a> and commerce
+              from the Udatsu townscape map (2026-08-27).{' '}
+              <a href={TRAVEL_SOURCES.onsen}>Onsen</a> and{' '}
               <a href={TRAVEL_SOURCES.experience}>experience</a> from the city tourism map. No
               public scores.
             </>
