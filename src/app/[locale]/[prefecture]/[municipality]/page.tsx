@@ -208,7 +208,7 @@ export default async function MunicipalityPage({params}: Props) {
     throw new Error(`pack rows ${packRows.length} != ${EXPECTED_ROW_COUNT}`);
   }
 
-  // Static export cannot SSR query strings. First HTML paint = 見る.
+  // Static export cannot SSR query strings. First HTML paint = 宿泊.
   // MimaFacilityLookup reads c/q/id from window.location.search after mount.
   const filter = resolveMimaFilter(undefined, '');
   const engaged = true;

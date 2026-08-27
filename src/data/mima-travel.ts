@@ -27,13 +27,13 @@ export const TRAVEL_SOURCES = {
 export const TRAVEL_KINDS = ['dining', 'stay'] as const;
 export type TravelKind = (typeof TRAVEL_KINDS)[number];
 
-export const TOP_CHIPS = ['sights', 'dining', 'stay', 'onsen', 'experience'] as const;
+export const TOP_CHIPS = ['stay', 'dining', 'onsen', 'experience', 'sights'] as const;
 export type TopChip = (typeof TOP_CHIPS)[number];
 
 /** First-screen photo cards. Remaining sights go behind さらに表示. */
 export const TRAVEL_CARD_FOLD = 10;
 
-/** Pack categories folded into 見る. Per-row place-cat stays 観光 / 文化財. */
+/** Pack categories folded into 観光. Per-row place-cat stays 観光 / 文化財. */
 export const SIGHTS_CATEGORIES = [
   'tourism',
   'cultural_property'
@@ -266,7 +266,7 @@ type Rankable = {
 };
 
 /**
- * Display order for 見る. Rank #1–#10 is this order, not a score.
+ * Editorial order for 観光. Rank #1–#10 is this order until first-party traffic+search counts exist, not a public-review score.
  * 1 うだつの町並み, 2 吉田家住宅 (one xy listing), 3 美馬市観光交流センター,
  * then other tourism, then cultural. Onsen/experience/family dupes omitted.
  */
@@ -381,9 +381,9 @@ export function packRowMatchesFilter(
 }
 
 /**
- * no c, no q → sights.
+ * no c, no q → stay (default chip 宿泊).
  * c in sights|dining|stay|onsen|experience → that.
- * legacy tourism/cultural → sights.
+ * legacy c=sights still opens 観光; tourism/cultural → sights.
  * legacy civic / commerce / infra → sights (no infrastructure dump on the fold).
  * c=all still allowed internally for search.
  * q without c → all (search-all).
@@ -404,5 +404,5 @@ export function resolveMimaFilter(c: string | undefined, q: string): FilterId {
   if (c !== undefined && isInfraCategory(c)) return 'sights';
   if (isPackCategory(c)) return c;
   if (q.trim() !== '') return 'all';
-  return 'sights';
+  return 'stay';
 }

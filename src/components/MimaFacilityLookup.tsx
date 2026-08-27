@@ -32,6 +32,14 @@ import {
   type FilterId,
   type TravelRow
 } from '@/data/mima-travel';
+import {
+  rankByOurTraffic,
+  recordFacilitySearch,
+  recordFacilityView,
+  searchesById,
+  viewsById,
+  type CountMap
+} from '@/lib/traffic-log';
 
 type Props = {
   locale: string;
@@ -89,9 +97,9 @@ function dedupeMapPoints(
 
 function chipHref(next: FilterId, q: string, locale: string, id?: string): string {
   const path = `${BASE_PATH}/${locale}/tokushima/mima/`;
-  if (next === 'sights' && !q && !id) return path;
+  if (next === 'stay' && !q && !id) return path;
   const parts: string[] = [];
-  if (next !== 'sights') parts.push(`c=${encodeURIComponent(next)}`);
+  if (next !== 'stay') parts.push(`c=${encodeURIComponent(next)}`);
   if (q) parts.push(`q=${encodeURIComponent(q)}`);
   if (id) parts.push(`id=${encodeURIComponent(id)}`);
   const qs = parts.length ? `?${parts.join('&')}` : '';
@@ -318,6 +326,10 @@ export function MimaFacilityLookup({
   const [openId, setOpenId] = useState(initialOpenId);
   const [searchOpen, setSearchOpen] = useState(initialQuery.trim() !== '');
   const [showAll, setShowAll] = useState(false);
+  const [traffic, setTraffic] = useState<{views: CountMap; searches: CountMap}>({
+    views: {},
+    searches: {}
+  });
 
   function applyFromLocation() {
     const params = new URLSearchParams(window.location.search);
@@ -334,6 +346,10 @@ export function MimaFacilityLookup({
     applyFromLocation();
     window.addEventListener('popstate', applyFromLocation);
     return () => window.removeEventListener('popstate', applyFromLocation);
+  }, []);
+
+  useEffect(() => {
+    setTraffic({views: viewsById(), searches: searchesById()});
   }, []);
 
   const displayRows = dedupeDisplayRows(rows);
@@ -387,11 +403,17 @@ export function MimaFacilityLookup({
   const orderedPack =
     !searching && filter === 'sights' ? rankSeeRows(filteredPack) : filteredPack;
 
-  const cards: CardRow[] = searching
+  const editorialCards: CardRow[] = searching
     ? [...travelHits, ...orderedPack]
     : travelLayer
       ? travelHits
       : orderedPack;
+
+  // Chip lists: our traffic, then our name searches, then editorial index.
+  // Search results stay name-filter order. Counts all 0 → editorial proxy.
+  const cards = searching
+    ? editorialCards
+    : rankByOurTraffic(editorialCards, traffic.views, traffic.searches);
 
   const foldCap = searching || showAll ? cards.length : TRAVEL_CARD_FOLD;
   const foldCards = cards.slice(0, foldCap);
@@ -417,13 +439,14 @@ export function MimaFacilityLookup({
   }
 
   function openCard(id: string) {
-    const href = chipHref(filter === 'all' ? 'sights' : filter, query, locale, id);
+    const href = chipHref(filter === 'all' ? 'stay' : filter, query, locale, id);
     window.history.pushState({}, '', href);
     setOpenId(id);
+    setTraffic((prev) => ({...prev, views: recordFacilityView(id)}));
   }
 
   function closeSheet() {
-    const href = chipHref(filter === 'all' ? 'sights' : filter, query, locale);
+    const href = chipHref(filter === 'all' ? 'stay' : filter, query, locale);
     window.history.pushState({}, '', href);
     setOpenId(null);
   }
@@ -493,8 +516,18 @@ export function MimaFacilityLookup({
           className="lookup-search-row"
           method="get"
           action={`${BASE_PATH}/${locale}/tokushima/mima/`}
+          onSubmit={(event) => {
+            const fd = new FormData(event.currentTarget);
+            const submitted = String(fd.get('q') ?? '').trim();
+            if (submitted) {
+              setTraffic((prev) => ({
+                ...prev,
+                searches: recordFacilitySearch(submitted, [...TRAVEL_ALL, ...displayRows])
+              }));
+            }
+          }}
         >
-          {filter !== 'sights' && filter !== 'all' ? (
+          {filter !== 'stay' && filter !== 'all' ? (
             <input type="hidden" name="c" value={filter} />
           ) : null}
           <label htmlFor="mima-place-search" className="sr-only">
@@ -528,7 +561,7 @@ export function MimaFacilityLookup({
               row={row}
               locale={locale}
               rank={searching ? null : index + 1}
-              href={chipHref(filter === 'all' ? 'sights' : filter, query, locale, row.id)}
+              href={chipHref(filter === 'all' ? 'stay' : filter, query, locale, row.id)}
               onOpen={openCard}
             />
           ))}
