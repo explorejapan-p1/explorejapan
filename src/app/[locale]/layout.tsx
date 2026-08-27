@@ -33,9 +33,8 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
       : 'Unpublished rural Japan directory. First listing: Mima City, Tokushima.',
     ...hreflangMetadata(locale === 'en' ? 'en' : 'ja'),
     robots: {
-      index: false,
-      follow: false,
-      nocache: true
+      index: true,
+      follow: true
     }
   };
 }

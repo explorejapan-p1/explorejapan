@@ -13,8 +13,8 @@ export function SiteChrome({locale, children}: Props) {
       <header className="site-header">
         <p className="hold-banner">
           {isJa
-            ? '未公開 v0 · インデックスしません · SNS / 広告なし'
-            : 'Unpublished v0 · noindex · no SNS or ads'}
+            ? 'SNS / 広告なし'
+            : 'No SNS or ads'}
         </p>
         <div className="header-row">
           <Link href="/" className="wordmark">

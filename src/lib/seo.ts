@@ -17,7 +17,7 @@ export function hreflangMetadata(locale: AppLocale, rest = ''): Pick<Metadata, '
   const en = `${origin}${pagePath('en', rest)}`;
   const self = locale === 'en' ? en : ja;
   return {
-    robots: {index: false, follow: false, nocache: true},
+    robots: {index: true, follow: true},
     alternates: {
       canonical: self,
       languages: {
