@@ -1,5 +1,6 @@
 'use client';
 
+import {useSelectedLayoutSegments} from 'next/navigation';
 import {Link, usePathname} from '@/i18n/navigation';
 import {LocaleSwitcher} from './LocaleSwitcher';
 
@@ -11,10 +12,16 @@ type Props = {
 
 export function SiteChrome({locale, children, variant}: Props) {
   const pathname = usePathname();
-  const isHome = variant ? variant === 'home' : pathname === '/';
+  const segments = useSelectedLayoutSegments();
+  const pathIsHome = pathname === '/' && segments.length === 0;
+  const isHome = variant === 'home' || (variant !== 'page' && pathIsHome);
   const isJa = locale === 'ja';
   return (
-    <div className={isHome ? 'shell shell-home' : 'shell'} data-variant={isHome ? 'home' : 'page'}>
+    <div
+      className={isHome ? 'shell shell-home' : 'shell'}
+      data-home={isHome ? '' : undefined}
+      data-variant={isHome ? 'home' : 'page'}
+    >
       <header className="site-header">
         {isHome ? null : (
           <p className="hold-banner">{isJa ? 'SNS / 広告なし' : 'No SNS or ads'}</p>

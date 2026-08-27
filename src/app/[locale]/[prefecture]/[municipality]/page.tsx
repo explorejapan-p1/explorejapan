@@ -1,4 +1,4 @@
-import {setRequestLocale} from 'next-intl/server';
+import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {MimaFacilityLookup} from '@/components/MimaFacilityLookup';
 import {
@@ -212,6 +212,7 @@ export default async function MunicipalityPage({params}: Props) {
   // MimaFacilityLookup reads c/q/id from window.location.search after mount.
   const filter = resolveMimaFilter(undefined, '');
   const engaged = true;
+  const tMuni = await getTranslations('muni');
 
   return (
     <>
@@ -235,7 +236,7 @@ export default async function MunicipalityPage({params}: Props) {
       />
 
       <details className="facts-fold">
-        <summary>{isJa ? '市の資料' : 'City facts'}</summary>
+        <summary>{tMuni('factsFold')}</summary>
       <table className="facts">
         <tbody>
           <tr>
