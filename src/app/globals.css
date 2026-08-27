@@ -757,6 +757,7 @@ a.chip { text-decoration: none; color: inherit; }
   .home-line {
     left: 0.9rem;
     bottom: 3.1rem;
+    font-size: 1.45rem;
     max-width: calc(100vw - 1.8rem);
   }
   .home-stage .geo-cite,

@@ -43,6 +43,7 @@ export type RenderedMap = {
 };
 
 const DERIVED_DIR = path.join(process.cwd(), 'data', 'derived');
+const JAPAN_MAP_LITE_JSON = path.join(process.cwd(), 'src', 'data', 'japan-map-lite.json');
 const SCATTER_WIDTH = 880;
 const SCATTER_HEIGHT = 320;
 
@@ -76,9 +77,52 @@ function schematicPath(b: SchematicBlock): string {
   return `M${b.x} ${b.y}h${b.w}v${b.h}h${-b.w}z`;
 }
 
-export function loadJapanMap(): RenderedMap {
+type JapanMapLiteFile = {
+  source?: string;
+  viewBox?: string;
+  width?: number;
+  height?: number;
+  shapes?: Array<{slug: string; jis: string; nameJa: string; nameEn: string; d: string}>;
+};
+
+function withPrefStatus(shapes: RenderedShape[]): RenderedShape[] {
+  return shapes.map((s) => ({
+    ...s,
+    status: s.slug === 'tokushima' ? 'ready' : 'rolling-out'
+  }));
+}
+
+function readJapanMapLiteJson(): RenderedMap | null {
+  if (!fs.existsSync(JAPAN_MAP_LITE_JSON)) return null;
+  try {
+    const raw = JSON.parse(fs.readFileSync(JAPAN_MAP_LITE_JSON, 'utf8')) as JapanMapLiteFile;
+    if (raw.source !== 'n03' || typeof raw.viewBox !== 'string') return null;
+    if (typeof raw.width !== 'number' || typeof raw.height !== 'number') return null;
+    if (!Array.isArray(raw.shapes) || raw.shapes.length !== 47) return null;
+    if (!raw.shapes.some((s) => s.slug === 'tokushima' && s.d)) return null;
+    return {
+      source: 'n03',
+      viewBox: raw.viewBox,
+      width: raw.width,
+      height: raw.height,
+      shapes: withPrefStatus(
+        raw.shapes.map((s) => ({
+          slug: s.slug,
+          jis: s.jis,
+          nameJa: s.nameJa,
+          nameEn: s.nameEn,
+          d: s.d
+        }))
+      )
+    };
+  } catch {
+    return null;
+  }
+}
+
+function loadJapanMapFromLiteTopo(): RenderedMap | null {
   const topo = readTopo('japan-prefectures-lite.topojson');
-  if (topo) {
+  if (!topo) return null;
     const fc = asCollection(topo);
     const mainland: Feature[] = [];
     const okinawa: Feature[] = [];
@@ -117,14 +161,22 @@ export function loadJapanMap(): RenderedMap {
         shapes.push(shapeFromPrefFeature(f, okiPath));
       }
     }
+    const kept = shapes.filter((s) => s.d.length > 0);
+    if (kept.length !== 47 || !kept.some((s) => s.slug === 'tokushima')) return null;
     return {
       source: 'n03',
       viewBox: `0 0 ${width} ${height}`,
       width,
       height,
-      shapes: shapes.filter((s) => s.d.length > 0)
+      shapes: withPrefStatus(kept)
     };
-  }
+}
+
+export function loadJapanMap(): RenderedMap {
+  const fromJson = readJapanMapLiteJson();
+  if (fromJson) return fromJson;
+  const fromTopo = loadJapanMapFromLiteTopo();
+  if (fromTopo) return fromTopo;
 
   return {
     source: 'placeholder',
