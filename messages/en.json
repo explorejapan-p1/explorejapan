@@ -12,7 +12,8 @@
     "back": "Back to the national map"
   },
   "muni": {
-    "coming": "This municipality page is coming soon. Only Mima City has a full listing in v0."
+    "coming": "This municipality page is coming soon. Only Mima City has a full listing in v0.",
+    "factsFold": "City facts"
   },
   "lookup": {
     "heading": "Find a place",
@@ -96,6 +97,7 @@
     "foldCiteExperience": "Experience: only names confirmed on the city tourism map.",
     "emptyOnsen": "No onsen name confirmed on the city tourism map. We do not invent names.",
     "emptyExperience": "No experience name confirmed on the city tourism map. We do not invent names.",
-    "scoreNone": "No public score in our data."
+    "scoreNone": "No public score in our data.",
+    "gapFold": "Open data (coordinates, gaps)"
   }
 }

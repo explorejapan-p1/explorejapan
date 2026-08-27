@@ -234,6 +234,8 @@ export default async function MunicipalityPage({params}: Props) {
         openId={null}
       />
 
+      <details className="facts-fold">
+        <summary>{isJa ? '市の資料' : 'City facts'}</summary>
       <table className="facts">
         <tbody>
           <tr>
@@ -367,6 +369,7 @@ export default async function MunicipalityPage({params}: Props) {
         {' · '}
         <a href={MIMA.sources.shisei}>{isJa ? '市勢要覧 2025' : 'Statistical pamphlet 2025'}</a>
       </p>
+      </details>
 
     </>
   );

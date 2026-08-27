@@ -533,6 +533,8 @@ export function MimaFacilityLookup({
             </>
           )}
         </p>
+        <details className="facts-fold">
+          <summary>{t('gapFold')}</summary>
         <ul className="gap-board" aria-label={t('gapBoardLabel')}>
           <li className="gap-cell" data-gap="geo">
             <span className="n">
@@ -616,6 +618,7 @@ export function MimaFacilityLookup({
         </div>
         <p className="tally">{t('coverage')}</p>
         <p className="note">{t('licenseNote')}</p>
+        </details>
       </footer>
     </section>
   );

@@ -4,9 +4,9 @@ import {Link} from '@/i18n/navigation';
 import {loadJapanMap} from '@/lib/geo';
 import {GeoCitation} from './GeoCitation';
 
-type Props = {locale: string};
+type Props = {locale: string; overlay?: string};
 
-export function JapanMap({locale}: Props) {
+export function JapanMap({locale, overlay}: Props) {
   const map = loadJapanMap();
   const isJa = locale === 'ja';
 
@@ -16,8 +16,8 @@ export function JapanMap({locale}: Props) {
         {map.source === 'placeholder' ? (
           <p className="map-banner" role="status">
             {isJa
-              ? 'プレースホルダ地図（N03 形状ではない）· 47 都道府県はすべてドリルできます'
-              : 'Placeholder map (not N03 geometry) · all 47 prefectures drill'}
+              ? 'プレースホルダ地図（N03 形状ではない）'
+              : 'Placeholder map (not N03 geometry)'}
           </p>
         ) : null}
         <svg
@@ -38,7 +38,8 @@ export function JapanMap({locale}: Props) {
             </a>
           ))}
         </svg>
-        <GeoCitation source={map.source} locale={locale} />
+        {overlay ? <p className="home-line">{overlay}</p> : null}
+        <GeoCitation source={map.source} locale={locale} variant="tiny" />
       </div>
       <details className="name-list-fold">
         <summary>{isJa ? '都道府県' : 'Prefectures'}</summary>
@@ -48,9 +49,7 @@ export function JapanMap({locale}: Props) {
               <li key={p.slug}>
                 <Link href={`/${p.slug}`}>{isJa ? p.nameJa : p.nameEn}</Link>
                 {p.slug !== 'tokushima' ? (
-                  <span className="muted">
-                    {isJa ? '（準備中）' : ' (rolling out)'}
-                  </span>
+                  <span className="muted">{isJa ? '（準備中）' : ' (rolling out)'}</span>
                 ) : null}
               </li>
             ))}

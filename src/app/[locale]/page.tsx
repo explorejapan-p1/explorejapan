@@ -27,8 +27,7 @@ export default async function HomePage({params}: Props) {
   return (
     <div className="home-stage" data-home="">
       <h1 className="sr-only">{t('h1')}</h1>
-      <p className="home-line">{t('line')}</p>
-      <JapanMap locale={locale} />
+      <JapanMap locale={locale} overlay={t('line')} />
     </div>
   );
 }

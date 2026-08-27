@@ -3,10 +3,27 @@ import {N03_CITATION} from '@/data/mima';
 type Props = {
   source: 'n03' | 'placeholder';
   locale: string;
+  variant?: 'default' | 'tiny';
 };
 
-export function GeoCitation({source, locale}: Props) {
+export function GeoCitation({source, locale, variant = 'default'}: Props) {
   const isJa = locale === 'ja';
+  if (variant === 'tiny') {
+    return (
+      <footer className="geo-cite geo-cite-tiny">
+        <p>
+          <span className="geo-cite-label">{isJa ? '出典' : 'Source'}</span>
+          {isJa ? '国土数値情報（行政区域）' : 'NLNI Administrative Zones'}{' '}
+          <a href={N03_CITATION.url} title={N03_CITATION.gsiNote}>
+            {N03_CITATION.vintage}
+          </a>
+          {' / '}
+          {N03_CITATION.license}
+          {source === 'placeholder' ? (isJa ? ' · プレースホルダ' : ' · placeholder') : null}
+        </p>
+      </footer>
+    );
+  }
   return (
     <footer className="geo-cite">
       <p>

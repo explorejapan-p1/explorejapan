@@ -14,28 +14,28 @@ export function SiteChrome({locale, children, variant}: Props) {
   const isHome = variant ? variant === 'home' : pathname === '/';
   const isJa = locale === 'ja';
   return (
-    <div className="shell" data-home={isHome ? '' : undefined} data-variant={isHome ? 'home' : 'page'}>
+    <div className={isHome ? 'shell shell-home' : 'shell'} data-variant={isHome ? 'home' : 'page'}>
       <header className="site-header">
         {isHome ? null : (
-          <p className="hold-banner">
-            {isJa ? 'SNS / 広告なし' : 'No SNS or ads'}
-          </p>
+          <p className="hold-banner">{isJa ? 'SNS / 広告なし' : 'No SNS or ads'}</p>
         )}
         <div className="header-row">
-          <Link href="/" className="wordmark">
+          <Link href="/" className={isHome ? 'wordmark wordmark-tiny' : 'wordmark'}>
             {isJa ? '日本の農村ディレクトリ' : 'Rural Japan Directory'}
           </Link>
           <LocaleSwitcher compact={isHome} />
         </div>
       </header>
       <main>{children}</main>
-      <footer className="site-footer">
-        <p>
-          {isJa
-            ? 'Project 1 · 美馬市から始める地方ディレクトリ。公開・DNS・派生地形データの再配布は別ゲート。'
-            : 'Project 1 · a rural directory starting with Mima City. Public DNS and redistributing derived geo are gated.'}
-        </p>
-      </footer>
+      {isHome ? null : (
+        <footer className="site-footer">
+          <p>
+            {isJa
+              ? 'Project 1 · 美馬市から始める地方ディレクトリ。公開・DNS・派生地形データの再配布は別ゲート。'
+              : 'Project 1 · a rural directory starting with Mima City. Public DNS and redistributing derived geo are gated.'}
+          </p>
+        </footer>
+      )}
     </div>
   );
 }
