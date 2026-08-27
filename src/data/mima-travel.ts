@@ -12,7 +12,7 @@
  */
 
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
-import {MIMA_PLACE_PHOTO} from './mima';
+import {MIMA_PLACE_PHOTO, MIMA_SIGHT_PHOTOS, type MimaPlacePhoto} from './mima';
 
 export const TRAVEL_ACCESSED = '2026-08-26' as const;
 
@@ -250,17 +250,11 @@ export function isCenterFamily(name: string): boolean {
   return name.includes(CENTER_PACK_NAME);
 }
 
-export function sightPhoto(nameJa: string): {
-  src: string;
-  altJa: string;
-  altEn: string;
-} | null {
-  if (!isUdatsuFamily(nameJa)) return null;
-  return {
-    src: MIMA_PLACE_PHOTO.src,
-    altJa: MIMA_PLACE_PHOTO.altJa,
-    altEn: MIMA_PLACE_PHOTO.altEn
-  };
+export function sightPhoto(nameJa: string): MimaPlacePhoto | null {
+  const mapped = MIMA_SIGHT_PHOTOS[nameJa];
+  if (mapped) return mapped;
+  if (isUdatsuFamily(nameJa)) return MIMA_PLACE_PHOTO;
+  return null;
 }
 
 type Rankable = {

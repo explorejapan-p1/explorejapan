@@ -179,12 +179,17 @@ function FacilityCard({
       >
         <div className={photo ? 'card-photo' : 'card-photo is-well'}>
           {photo ? (
-            <img
-              src={photo.src}
-              alt={locale === 'ja' ? photo.altJa : photo.altEn}
-              width={640}
-              height={400}
-            />
+            <>
+              <img
+                src={photo.src}
+                alt={locale === 'ja' ? photo.altJa : photo.altEn}
+                width={640}
+                height={400}
+              />
+              <span className="card-photo-cite">
+                {photo.author} / {photo.license}
+              </span>
+            </>
           ) : (
             <span className="card-well" aria-hidden="true">
               <span className="card-well-name">{row.name_ja}</span>
@@ -214,6 +219,7 @@ function DetailSheet({
   const t = useTranslations('lookup');
   const pack = isPackRow(row) ? row : null;
   const kind = pack ? licenseKind(pack.license) : null;
+  const photo = sightPhoto(row.name_ja);
   return (
     <div className="sheet-backdrop" onClick={onClose}>
       <div
@@ -228,6 +234,18 @@ function DetailSheet({
         </button>
         <h2 id="mima-sheet-title">{row.name_ja}</h2>
         <p className="card-score">{t('unrated')}</p>
+        {photo ? (
+          <p className="attr-row">
+            <span className="attr-label">{t('citeLabel')}</span>
+            <span>
+              <a href={photo.commons}>Wikimedia Commons</a>
+              {' / '}
+              <a href={photo.licenseUrl}>{photo.license}</a>
+              {' / '}
+              <a href={photo.authorUrl}>{photo.author}</a>
+            </span>
+          </p>
+        ) : null}
         {!isBlank(row.address) ? (
           <p className="attr-row">
             <span className="attr-label">{t('address')}</span>

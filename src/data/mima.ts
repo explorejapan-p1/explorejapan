@@ -76,6 +76,19 @@ export const MIMA = {
 } as const;
 
 
+export type MimaPlacePhoto = {
+  src: string;
+  commons: string;
+  license: string;
+  licenseUrl: string;
+  author: string;
+  authorUrl: string;
+  taken: string;
+  accessed: string;
+  altJa: string;
+  altEn: string;
+};
+
 export const MIMA_PLACE_PHOTO = {
   src: '/explorejapan/media/wakimachi-minami-machi-20250828.jpg',
   commons: 'https://commons.wikimedia.org/wiki/File:Wakimati_minamimati_20250828_2.jpg',
@@ -87,7 +100,72 @@ export const MIMA_PLACE_PHOTO = {
   accessed: '2026-08-26',
   altJa: '脇町南町（うだつの町並み）',
   altEn: 'Wakimachi Minami-machi (Udatsu townscape)'
-} as const;
+} as const satisfies MimaPlacePhoto;
+
+const YOSHIDA_PHOTO = {
+  src: '/explorejapan/media/yoshida-ke-jutaku-20121212.jpg',
+  commons: 'https://commons.wikimedia.org/wiki/File:吉田家住宅.jpg',
+  license: 'CC BY-SA 3.0',
+  licenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0/',
+  author: 'バリーさん',
+  authorUrl: 'https://commons.wikimedia.org/wiki/User:バリーさん',
+  taken: '2012-12-12',
+  accessed: '2026-08-27',
+  altJa: '吉田家住宅（美馬市脇町）',
+  altEn: 'Yoshida House, Wakimachi, Mima'
+} as const satisfies MimaPlacePhoto;
+
+const YOSHINOGAWA_PHOTO = {
+  src: '/explorejapan/media/yoshinogawa-anabuki-mima-20080226.jpg',
+  commons:
+    'https://commons.wikimedia.org/wiki/File:Rivieren_de_Yoshino_en_Anabuki_in_Mima,_Tokushima,_Japan.jpg',
+  license: 'CC BY-SA 3.0',
+  licenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0/',
+  author: 'Mima City Hall',
+  authorUrl: 'https://www.city.mima.lg.jp/',
+  taken: '2008-02-26',
+  accessed: '2026-08-27',
+  altJa: '吉野川と穴吹川（美馬市）',
+  altEn: 'Yoshino and Anabuki rivers in Mima'
+} as const satisfies MimaPlacePhoto;
+
+
+const IKEZUKI_PHOTO = {
+  src: '/explorejapan/media/ikezuki-park-mima-20091129.jpg',
+  commons:
+    'https://commons.wikimedia.org/wiki/File:Ikezuki_Park,_Mima_Town,_Mima_City,_Tokushima,_Japan.JPG',
+  license: 'CC BY 3.0',
+  licenseUrl: 'https://creativecommons.org/licenses/by/3.0/',
+  author: 'Brianmima',
+  authorUrl: 'https://commons.wikimedia.org/wiki/User:Brianmima',
+  taken: '2009-11-29',
+  accessed: '2026-08-27',
+  altJa: '池月公園（美馬市美馬町）',
+  altEn: 'Ikezuki Park, Mima Town, Mima'
+} as const satisfies MimaPlacePhoto;
+
+const MIKI_PHOTO = {
+  src: '/explorejapan/media/miki-ke-jutaku-koyadaira-20091207.jpg',
+  commons: 'https://commons.wikimedia.org/wiki/File:Miki_Residence,_Mima_City,_Koyadaira.JPG',
+  license: 'CC BY 3.0',
+  licenseUrl: 'https://creativecommons.org/licenses/by/3.0/',
+  author: 'Brianmima',
+  authorUrl: 'https://commons.wikimedia.org/wiki/User:Brianmima',
+  taken: '2009-12-07',
+  accessed: '2026-08-27',
+  altJa: '三木家住宅（美馬市木屋平）',
+  altEn: 'Miki Residence, Koyadaira, Mima'
+} as const satisfies MimaPlacePhoto;
+
+/** Exact pack name_ja → verified Commons/official file. Placeholders stay if absent. */
+export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
+  'うだつの町並み': MIMA_PLACE_PHOTO,
+  '吉田家住宅': YOSHIDA_PHOTO,
+  '吉野川、藍、うだつ': YOSHINOGAWA_PHOTO,
+  '名馬「池月」伝説': IKEZUKI_PHOTO,
+  '三木家住宅': MIKI_PHOTO,
+  '三木家住宅（みきけじゅうたく） 〔国指定重要文化財〕': MIKI_PHOTO
+};
 
 export const N03_CITATION = {
   productJa:
