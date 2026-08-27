@@ -234,6 +234,27 @@ function bureauPhoto(
   };
 }
 
+
+function cityPhoto(
+  file: string,
+  altJa: string,
+  altEn: string,
+  page: string
+): MimaPlacePhoto {
+  return {
+    src: `/explorejapan/media/${file}`,
+    commons: page,
+    license: '出典',
+    licenseUrl: page,
+    author: '美馬市',
+    authorUrl: page,
+    taken: '2026',
+    accessed: '2026-08-27',
+    altJa,
+    altEn
+  };
+}
+
 export function isCommonsPhoto(photo: MimaPlacePhoto): boolean {
   return photo.commons.includes('wikimedia.org');
 }
@@ -361,6 +382,558 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'Paysage Moriguchi（美馬市脇町）',
     'Paysage Moriguchi, Wakimachi, Mima',
     HOTEL_PAGE
+  ),
+  '樺太開拓の志士・岡本監輔': cityPhoto(
+    'mima-kanko-11490.jpg',
+    '樺太開拓の志士・岡本監輔（美馬市）',
+    '樺太開拓の志士・岡本監輔, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11490.html'
+  ),
+  '三木家資料館': cityPhoto(
+    'mima-kanko-11496.jpg',
+    '三木家資料館（美馬市）',
+    '三木家資料館, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11496.html'
+  ),
+  '民俗資料館（休館中）': cityPhoto(
+    'mima-kanko-11498.jpg',
+    '民俗資料館（休館中）（美馬市）',
+    '民俗資料館（休館中）, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11498.html'
+  ),
+  '天神ザクラ・世の中ザクラ': cityPhoto(
+    'mima-kanko-11501.jpg',
+    '天神ザクラ・世の中ザクラ（美馬市）',
+    '天神ザクラ・世の中ザクラ, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11501.html'
+  ),
+  '白人神社': cityPhoto(
+    'mima-kanko-11502.jpg',
+    '白人神社（美馬市）',
+    '白人神社, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11502.html'
+  ),
+  '神明神社': cityPhoto(
+    'mima-kanko-11503.jpg',
+    '神明神社（美馬市）',
+    '神明神社, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11503.html'
+  ),
+  '三島古墳群': cityPhoto(
+    'mima-kanko-11504.jpg',
+    '三島古墳群（美馬市）',
+    '三島古墳群, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11504.html'
+  ),
+  '本楽寺': cityPhoto(
+    'mima-kanko-11505.jpg',
+    '本楽寺（美馬市）',
+    '本楽寺, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11505.html'
+  ),
+  '美馬市観光交流センター': cityPhoto(
+    'mima-kanko-11508.jpg',
+    '美馬市観光交流センター（美馬市）',
+    '美馬市観光交流センター, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11508.html'
+  ),
+  '美馬市観光交流センター（うだつの町並み）': cityPhoto(
+    'mima-kanko-11508.jpg',
+    '美馬市観光交流センター（うだつの町並み）（美馬市）',
+    '美馬市観光交流センター（うだつの町並み）, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11508.html'
+  ),
+  'デ・レイケの堰堤／デ・レイケ公園': cityPhoto(
+    'mima-kanko-11509.jpg',
+    'デ・レイケの堰堤／デ・レイケ公園（美馬市）',
+    'デ・レイケの堰堤／デ・レイケ公園, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11509.html'
+  ),
+  '最明寺': cityPhoto(
+    'mima-kanko-11510.jpg',
+    '最明寺（美馬市）',
+    '最明寺, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11510.html'
+  ),
+  'あんみつ館': cityPhoto(
+    'mima-kanko-11512.jpg',
+    'あんみつ館（美馬市）',
+    'あんみつ館, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11512.html'
+  ),
+  '三味線もちつき': cityPhoto(
+    'mima-kanko-11514.jpg',
+    '三味線もちつき（美馬市）',
+    '三味線もちつき, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11514.html'
+  ),
+  '「うだつ」があがった建物': cityPhoto(
+    'mima-kanko-11518.jpg',
+    '「うだつ」があがった建物（美馬市）',
+    '「うだつ」があがった建物, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11518.html'
+  ),
+  '寺町': cityPhoto(
+    'mima-kanko-11519.jpg',
+    '寺町（美馬市）',
+    '寺町, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11519.html'
+  ),
+  '寺町 - 常念寺': cityPhoto(
+    'mima-kanko-11520.jpg',
+    '寺町 - 常念寺（美馬市）',
+    '寺町 - 常念寺, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11520.html'
+  ),
+  '寺町 - 安楽寺': cityPhoto(
+    'mima-kanko-11521.jpg',
+    '寺町 - 安楽寺（美馬市）',
+    '寺町 - 安楽寺, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11521.html'
+  ),
+  '寺町 - 願勝寺': cityPhoto(
+    'mima-kanko-11522.jpg',
+    '寺町 - 願勝寺（美馬市）',
+    '寺町 - 願勝寺, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11522.html'
+  ),
+  '寺町 - 西教寺': cityPhoto(
+    'mima-kanko-11523.jpg',
+    '寺町 - 西教寺（美馬市）',
+    '寺町 - 西教寺, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11523.html'
+  ),
+  '寺町 - 林照寺': cityPhoto(
+    'mima-kanko-11524.jpg',
+    '寺町 - 林照寺（美馬市）',
+    '寺町 - 林照寺, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11524.html'
+  ),
+  '段の塚穴': cityPhoto(
+    'mima-kanko-11525.jpg',
+    '段の塚穴（美馬市）',
+    '段の塚穴, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11525.html'
+  ),
+  '郡里廃寺跡': cityPhoto(
+    'mima-kanko-11527.jpg',
+    '郡里廃寺跡（美馬市）',
+    '郡里廃寺跡, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11527.html'
+  ),
+  '青木家住宅': cityPhoto(
+    'mima-kanko-11530.jpg',
+    '青木家住宅（美馬市）',
+    '青木家住宅, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11530.html'
+  ),
+  '伊射奈美神社': cityPhoto(
+    'mima-kanko-11531.jpg',
+    '伊射奈美神社（美馬市）',
+    '伊射奈美神社, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11531.html'
+  ),
+  '川井のエドヒガンザクラ': cityPhoto(
+    'mima-kanko-11532.jpg',
+    '川井のエドヒガンザクラ（美馬市）',
+    '川井のエドヒガンザクラ, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11532.html'
+  ),
+  '脇町劇場': cityPhoto(
+    'mima-kanko-11536.jpg',
+    '脇町劇場（美馬市）',
+    '脇町劇場, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11536.html'
+  ),
+  '美馬市穴吹川観光駐車場': cityPhoto(
+    'mima-kanko-11539.jpg',
+    '美馬市穴吹川観光駐車場（美馬市）',
+    '美馬市穴吹川観光駐車場, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11539.html'
+  ),
+  '美村総合交流促進施設「美村BASE」': cityPhoto(
+    'mima-kanko-1427600.jpg',
+    '美村総合交流促進施設「美村BASE」（美馬市）',
+    '美村総合交流促進施設「美村BASE」, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/1427600.html'
+  ),
+  '重清八幡神社': cityPhoto(
+    'mima-kanko-1824550.jpg',
+    '重清八幡神社（美馬市）',
+    '重清八幡神社, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/1824550.html'
+  ),
+  '三頭神社': cityPhoto(
+    'mima-kanko-1825569.jpg',
+    '三頭神社（美馬市）',
+    '三頭神社, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/1825569.html'
+  ),
+  '倭大國魂神社': cityPhoto(
+    'mima-kanko-1825570.jpg',
+    '倭大國魂神社（美馬市）',
+    '倭大國魂神社, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/1825570.html'
+  ),
+  '剣山': cityPhoto(
+    'mima-kanko-2759010.jpg',
+    '剣山（美馬市）',
+    '剣山, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/2759010.html'
+  ),
+  '旧長岡家住宅': cityPhoto(
+    'mima-kanko-33687.jpg',
+    '旧長岡家住宅（美馬市）',
+    '旧長岡家住宅, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/33687.html'
+  ),
+  '吉野川': cityPhoto(
+    'mima-kanko-3982.jpg',
+    '吉野川（美馬市）',
+    '吉野川, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/3982.html'
+  ),
+  '四国三郎の郷': cityPhoto(
+    'mima-kanko-3983.jpg',
+    '四国三郎の郷（美馬市）',
+    '四国三郎の郷, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/3983.html'
+  ),
+  '清流穴吹川': cityPhoto(
+    'mima-kanko-3984.jpg',
+    '清流穴吹川（美馬市）',
+    '清流穴吹川, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/3984.html'
+  ),
+  'ブルーベリー狩り': cityPhoto(
+    'mima-kanko-3985.jpg',
+    'ブルーベリー狩り（美馬市）',
+    'ブルーベリー狩り, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/3985.html'
+  ),
+  'ブルーベリー狩り - 穴吹／仕出原ブルーベリー観光農園': cityPhoto(
+    'mima-kanko-3986.jpg',
+    'ブルーベリー狩り - 穴吹／仕出原ブルーベリー観光農園（美馬市）',
+    'ブルーベリー狩り - 穴吹／仕出原ブルーベリー観光農園, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/3986.html'
+  ),
+  'ブルーベリー狩り - 脇町／ベリーベリーファームわきまち': cityPhoto(
+    'mima-kanko-3987.jpg',
+    'ブルーベリー狩り - 脇町／ベリーベリーファームわきまち（美馬市）',
+    'ブルーベリー狩り - 脇町／ベリーベリーファームわきまち, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/3987.html'
+  ),
+  'リバーサイドしでの家': cityPhoto(
+    'mima-kanko-3989.jpg',
+    'リバーサイドしでの家（美馬市）',
+    'リバーサイドしでの家, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/3989.html'
+  ),
+  '水辺の楽校中鳥川公園': cityPhoto(
+    'mima-kanko-3991.jpg',
+    '水辺の楽校中鳥川公園（美馬市）',
+    '水辺の楽校中鳥川公園, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/3991.html'
+  ),
+  'ボートレース鳴門 オラレ美馬': cityPhoto(
+    'mima-kanko-3992.jpg',
+    'ボートレース鳴門 オラレ美馬（美馬市）',
+    'ボートレース鳴門 オラレ美馬, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/3992.html'
+  ),
+  '美馬スカイスポーツ': cityPhoto(
+    'mima-kanko-3993.jpg',
+    '美馬スカイスポーツ（美馬市）',
+    '美馬スカイスポーツ, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/3993.html'
+  ),
+  '美馬モーターランド': cityPhoto(
+    'mima-kanko-3994.jpg',
+    '美馬モーターランド（美馬市）',
+    '美馬モーターランド, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/3994.html'
+  ),
+  '中尾山高原': cityPhoto(
+    'mima-kanko-3995.jpg',
+    '中尾山高原（美馬市）',
+    '中尾山高原, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/3995.html'
+  ),
+  '交流会館「ブルーヴィラ穴吹」': cityPhoto(
+    'mima-kanko-3997.jpg',
+    '交流会館「ブルーヴィラ穴吹」（美馬市）',
+    '交流会館「ブルーヴィラ穴吹」, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/3997.html'
+  ),
+  '清流の郷 ブルーヴィラあなぶき': cityPhoto(
+    'mima-kanko-3997.jpg',
+    '清流の郷 ブルーヴィラあなぶき（美馬市）',
+    '清流の郷 ブルーヴィラあなぶき, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/3997.html'
+  ),
+  'コテージ清流の郷': cityPhoto(
+    'mima-kanko-4038.jpg',
+    'コテージ清流の郷（美馬市）',
+    'コテージ清流の郷, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4038.html'
+  ),
+  '市営 一の森ヒュッテ': cityPhoto(
+    'mima-kanko-4042.jpg',
+    '市営 一の森ヒュッテ（美馬市）',
+    '市営 一の森ヒュッテ, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4042.html'
+  ),
+  '段の塚穴（だんのつかあな） 〔国指定史跡〕': cityPhoto(
+    'mima-kanko-4043.jpg',
+    '段の塚穴（だんのつかあな） 〔国指定史跡〕（美馬市）',
+    '段の塚穴（だんのつかあな） 〔国指定史跡〕, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4043.html'
+  ),
+  '郡里廃寺跡（こおざとはいじあと） 〔国指定史跡〕': cityPhoto(
+    'mima-kanko-4044.jpg',
+    '郡里廃寺跡（こおざとはいじあと） 〔国指定史跡〕（美馬市）',
+    '郡里廃寺跡（こおざとはいじあと） 〔国指定史跡〕, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4044.html'
+  ),
+  '木造毘沙門天立像（もくぞうびしゃもんてんりゅうぞう） 〔国指定重要文化財〕': cityPhoto(
+    'mima-kanko-4045.jpg',
+    '木造毘沙門天立像（もくぞうびしゃもんてんりゅうぞう） 〔国指定重要文化財〕（美馬市）',
+    '木造毘沙門天立像（もくぞうびしゃもんてんりゅうぞう） 〔国指定重要文化財〕, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4045.html'
+  ),
+  '旧長岡家住宅（きゅうながおかけじゅうたく） 〔国指定重要文化財〕': cityPhoto(
+    'mima-kanko-4047.jpg',
+    '旧長岡家住宅（きゅうながおかけじゅうたく） 〔国指定重要文化財〕（美馬市）',
+    '旧長岡家住宅（きゅうながおかけじゅうたく） 〔国指定重要文化財〕, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4047.html'
+  ),
+  '大谷川堰堤（おおたにがわえんてい） 〔国登録有形文化財〕': cityPhoto(
+    'mima-kanko-4049.jpg',
+    '大谷川堰堤（おおたにがわえんてい） 〔国登録有形文化財〕（美馬市）',
+    '大谷川堰堤（おおたにがわえんてい） 〔国登録有形文化財〕, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4049.html'
+  ),
+  '青木家住宅（あおきけじゅうたく） 〔国登録有形文化財〕': cityPhoto(
+    'mima-kanko-4050.jpg',
+    '青木家住宅（あおきけじゅうたく） 〔国登録有形文化財〕（美馬市）',
+    '青木家住宅（あおきけじゅうたく） 〔国登録有形文化財〕, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4050.html'
+  ),
+  '旅館たおか（りょかんたおか） 〔国登録有形文化財〕': cityPhoto(
+    'mima-kanko-4051.jpg',
+    '旅館たおか（りょかんたおか） 〔国登録有形文化財〕（美馬市）',
+    '旅館たおか（りょかんたおか） 〔国登録有形文化財〕, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4051.html'
+  ),
+  '鎌村家住宅（かまむらけじゅうたく） 〔国登録有形文化財〕': cityPhoto(
+    'mima-kanko-4052.jpg',
+    '鎌村家住宅（かまむらけじゅうたく） 〔国登録有形文化財〕（美馬市）',
+    '鎌村家住宅（かまむらけじゅうたく） 〔国登録有形文化財〕, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4052.html'
+  ),
+  '西教寺（さいきょうじ）〔国登録有形文化財〕': cityPhoto(
+    'mima-kanko-4053.jpg',
+    '西教寺（さいきょうじ）〔国登録有形文化財〕（美馬市）',
+    '西教寺（さいきょうじ）〔国登録有形文化財〕, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4053.html'
+  ),
+  '願勝寺（がんしょうじ） 〔国登録有形文化財〕': cityPhoto(
+    'mima-kanko-4054.jpg',
+    '願勝寺（がんしょうじ） 〔国登録有形文化財〕（美馬市）',
+    '願勝寺（がんしょうじ） 〔国登録有形文化財〕, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4054.html'
+  ),
+  '安楽寺（あんらくじ） 〔国登録有形文化財〕': cityPhoto(
+    'mima-kanko-4055.jpg',
+    '安楽寺（あんらくじ） 〔国登録有形文化財〕（美馬市）',
+    '安楽寺（あんらくじ） 〔国登録有形文化財〕, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4055.html'
+  ),
+  '滝の宮経塚': cityPhoto(
+    'mima-kanko-4056.jpg',
+    '滝の宮経塚（美馬市）',
+    '滝の宮経塚, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4056.html'
+  ),
+  '滝の宮経塚出土品': cityPhoto(
+    'mima-kanko-4057.jpg',
+    '滝の宮経塚出土品（美馬市）',
+    '滝の宮経塚出土品, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4057.html'
+  ),
+  '野村八幡古墳': cityPhoto(
+    'mima-kanko-4058.jpg',
+    '野村八幡古墳（美馬市）',
+    '野村八幡古墳, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4058.html'
+  ),
+  '願勝寺庭園': cityPhoto(
+    'mima-kanko-4059.jpg',
+    '願勝寺庭園（美馬市）',
+    '願勝寺庭園, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4059.html'
+  ),
+  '別所の大クス': cityPhoto(
+    'mima-kanko-4060.jpg',
+    '別所の大クス（美馬市）',
+    '別所の大クス, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4060.html'
+  ),
+  '川井のエドヒガン': cityPhoto(
+    'mima-kanko-4061.jpg',
+    '川井のエドヒガン（美馬市）',
+    '川井のエドヒガン, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4061.html'
+  ),
+  '八幡の大杉': cityPhoto(
+    'mima-kanko-4062.jpg',
+    '八幡の大杉（美馬市）',
+    '八幡の大杉, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4062.html'
+  ),
+  '内田のエドヒガン': cityPhoto(
+    'mima-kanko-4063.jpg',
+    '内田のエドヒガン（美馬市）',
+    '内田のエドヒガン, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4063.html'
+  ),
+  '内田のヤマザクラ': cityPhoto(
+    'mima-kanko-4064.jpg',
+    '内田のヤマザクラ（美馬市）',
+    '内田のヤマザクラ, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4064.html'
+  ),
+  '絹本著色聖衆来迎図': cityPhoto(
+    'mima-kanko-4065.jpg',
+    '絹本著色聖衆来迎図（美馬市）',
+    '絹本著色聖衆来迎図, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4065.html'
+  ),
+  '地蔵来迎図': cityPhoto(
+    'mima-kanko-4066.jpg',
+    '地蔵来迎図（美馬市）',
+    '地蔵来迎図, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4066.html'
+  ),
+  '木造阿弥陀如来坐像': cityPhoto(
+    'mima-kanko-4067.jpg',
+    '木造阿弥陀如来坐像（美馬市）',
+    '木造阿弥陀如来坐像, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4067.html'
+  ),
+  '拝東古墳': cityPhoto(
+    'mima-kanko-4068.jpg',
+    '拝東古墳（美馬市）',
+    '拝東古墳, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4068.html'
+  ),
+  '拝中古墳': cityPhoto(
+    'mima-kanko-4069.jpg',
+    '拝中古墳（美馬市）',
+    '拝中古墳, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4069.html'
+  ),
+  '三島古墳群1号墳': cityPhoto(
+    'mima-kanko-4071.jpg',
+    '三島古墳群1号墳（美馬市）',
+    '三島古墳群1号墳, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4071.html'
+  ),
+  '三島古墳群2号墳': cityPhoto(
+    'mima-kanko-4072.jpg',
+    '三島古墳群2号墳（美馬市）',
+    '三島古墳群2号墳, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4072.html'
+  ),
+  '三島古墳群3号墳': cityPhoto(
+    'mima-kanko-4073.jpg',
+    '三島古墳群3号墳（美馬市）',
+    '三島古墳群3号墳, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4073.html'
+  ),
+  '尾山古墳': cityPhoto(
+    'mima-kanko-4074.jpg',
+    '尾山古墳（美馬市）',
+    '尾山古墳, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4074.html'
+  ),
+  '重清城跡': cityPhoto(
+    'mima-kanko-4075.jpg',
+    '重清城跡（美馬市）',
+    '重清城跡, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4075.html'
+  ),
+  '稲田墓所': cityPhoto(
+    'mima-kanko-4076.jpg',
+    '稲田墓所（美馬市）',
+    '稲田墓所, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4076.html'
+  ),
+  '石尾神社': cityPhoto(
+    'mima-kanko-4078.jpg',
+    '石尾神社（美馬市）',
+    '石尾神社, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4078.html'
+  ),
+  '東林寺庭園': cityPhoto(
+    'mima-kanko-4079.jpg',
+    '東林寺庭園（美馬市）',
+    '東林寺庭園, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4079.html'
+  ),
+  'カスミサンショウウオの生息地': cityPhoto(
+    'mima-kanko-4080.jpg',
+    'カスミサンショウウオの生息地（美馬市）',
+    'カスミサンショウウオの生息地, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4080.html'
+  ),
+  '中山路のイチョウ': cityPhoto(
+    'mima-kanko-4081.jpg',
+    '中山路のイチョウ（美馬市）',
+    '中山路のイチョウ, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4081.html'
+  ),
+  '荒川衝上': cityPhoto(
+    'mima-kanko-4083.jpg',
+    '荒川衝上（美馬市）',
+    '荒川衝上, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4083.html'
+  ),
+  '東林寺山門': cityPhoto(
+    'mima-kanko-4085.jpg',
+    '東林寺山門（美馬市）',
+    '東林寺山門, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4085.html'
+  ),
+  '貞真寺山門': cityPhoto(
+    'mima-kanko-4086.jpg',
+    '貞真寺山門（美馬市）',
+    '貞真寺山門, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4086.html'
+  ),
+  '小星大師堂': cityPhoto(
+    'mima-kanko-4087.jpg',
+    '小星大師堂（美馬市）',
+    '小星大師堂, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4087.html'
+  ),
+  '藤若家住宅': cityPhoto(
+    'mima-kanko-4088.jpg',
+    '藤若家住宅（美馬市）',
+    '藤若家住宅, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4088.html'
+  ),
+  '脇城跡': cityPhoto(
+    'mima-kanko-4094.jpg',
+    '脇城跡（美馬市）',
+    '脇城跡, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4094.html'
+  ),
+  '舞中島': cityPhoto(
+    'mima-kanko-4095.jpg',
+    '舞中島（美馬市）',
+    '舞中島, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4095.html'
   )
 };
 
