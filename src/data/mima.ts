@@ -196,20 +196,6 @@ const TSURUGI_YU_PHOTO = {
   altJa: 'つるぎの湯 大桜（美馬市木屋平）',
   altEn: 'Tsurugi-no-yu Ozakura onsen, Koyadaira, Mima'
 } as const satisfies MimaPlacePhoto;
-
-const TSURUGISAN_HUTTE_PHOTO = {
-  src: '/explorejapan/media/tsurugisan-chojo-hutte-20060727.jpg',
-  commons: 'https://commons.wikimedia.org/wiki/File:TSURUGISAN-CHOJO-HUTTE.JPG',
-  license: 'CC BY 3.0',
-  licenseUrl: 'https://creativecommons.org/licenses/by/3.0/',
-  author: 'Bergmann',
-  authorUrl: 'https://commons.wikimedia.org/wiki/User:Bergmann',
-  taken: '2006-07-27',
-  accessed: '2026-08-27',
-  altJa: '剣山頂上ヒュッテ（美馬市）',
-  altEn: 'Tsurugisan Chojo Hutte, Mima'
-} as const satisfies MimaPlacePhoto;
-
 /** Exact pack name_ja → verified Commons/official file. Placeholders stay if absent. */
 export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   'うだつの町並み': MIMA_PLACE_PHOTO,
@@ -221,7 +207,6 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   'ブルーヴィラあなぶき': BLUE_VILLA_PHOTO,
   '割烹旅館田岡': TAOKA_PHOTO,
   'つるぎの湯 大桜': TSURUGI_YU_PHOTO,
-  '剣山頂上ヒュッテ': TSURUGISAN_HUTTE_PHOTO
 };
 
 export const N03_CITATION = {
