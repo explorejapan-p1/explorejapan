@@ -413,12 +413,6 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '白人神社, Mima',
     'https://www.city.mima.lg.jp/kanko/map/list/11502.html'
   ),
-  '神明神社': cityPhoto(
-    'mima-kanko-11503.jpg',
-    '神明神社（美馬市）',
-    '神明神社, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/11503.html'
-  ),
   '三島古墳群': cityPhoto(
     'mima-kanko-11504.jpg',
     '三島古墳群（美馬市）',
