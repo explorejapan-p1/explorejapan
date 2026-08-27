@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="robots" content="noindex, nofollow" />
-    <meta http-equiv="refresh" content="0; url=./ja/tokushima/mima/" />
-    <title>美馬市 · 日本の農村ディレクトリ</title>
-  </head>
-  <body>
-    <p><a href="./ja/tokushima/mima/">美馬市 / Mima City</a></p>
-  </body>
+<head>
+<meta charset="utf-8" />
+<meta name="robots" content="index, follow" />
+<title>日本の農村ディレクトリ</title>
+<script>
+(function () {
+  var langs = (navigator.languages && navigator.languages.length)
+    ? navigator.languages
+    : [navigator.language || 'ja'];
+  var loc = 'ja';
+  for (var i = 0; i < langs.length; i++) {
+    var tag = String(langs[i] || '').toLowerCase();
+    if (tag.indexOf('ja') === 0) { loc = 'ja'; break; }
+    if (tag.indexOf('en') === 0) { loc = 'en'; break; }
+  }
+  location.replace('./' + loc + '/');
+})();
+</script>
+</head>
+<body>
+<p><a href="./ja/">日本語</a> · <a href="./en/">English</a></p>
+</body>
 </html>
