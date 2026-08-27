@@ -98,6 +98,7 @@
     "emptyOnsen": "No onsen name confirmed on the city tourism map. We do not invent names.",
     "emptyExperience": "No experience name confirmed on the city tourism map. We do not invent names.",
     "scoreNone": "No public score in our data.",
+    "photoPending": "Photo coming soon",
     "gapFold": "Open data (coordinates, gaps)"
   }
 }

@@ -310,12 +310,16 @@ a.chip { text-decoration: none; color: inherit; }
   object-fit: cover;
   display: block;
 }
+.card-photo.is-well {
+  background: #eeeae4;
+}
 .card-photo.is-well .card-well {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
-  background:
-    radial-gradient(120% 80% at 50% 40%, #2a2a2a 0%, var(--well) 70%);
+  background: #eeeae4;
 }
 .card-rank {
   position: absolute;
@@ -572,8 +576,14 @@ a.chip { text-decoration: none; color: inherit; }
 @media (max-width: 620px) {
   .place-grid { grid-template-columns: 1fr; }
 }
-.card-photo.is-well .card-well{display:flex;align-items:flex-end;width:100%;height:100%;}
-.card-well-name{color:#f3f3f3;font-weight:700;font-size:1.08rem;line-height:1.25;padding:0.9rem 0.95rem;}
+.card-well-name {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  padding: 0.9rem 0.95rem;
+  letter-spacing: 0.04em;
+}
 
 /* Homepage 2026 map — hit .shell-home AND LIVE data-home. Mima chrome unchanged. */
 .shell-home,

@@ -210,7 +210,35 @@ const TSURUGISAN_HUTTE_PHOTO = {
   altEn: 'Tsurugisan Chojo Hutte, Mima'
 } as const satisfies MimaPlacePhoto;
 
-/** Exact pack name_ja → verified Commons/official file. Placeholders stay if absent. */
+const GOURMET_PAGE = 'https://mimakankou.or.jp/gourmet/';
+const HOTEL_PAGE = 'https://mimakankou.or.jp/hoteltop/';
+
+function bureauPhoto(
+  file: string,
+  taken: string,
+  altJa: string,
+  altEn: string,
+  page: string
+): MimaPlacePhoto {
+  return {
+    src: `/explorejapan/media/${file}`,
+    commons: page,
+    license: '出典',
+    licenseUrl: page,
+    author: '美馬観光ビューロー',
+    authorUrl: page,
+    taken,
+    accessed: '2026-08-27',
+    altJa,
+    altEn
+  };
+}
+
+export function isCommonsPhoto(photo: MimaPlacePhoto): boolean {
+  return photo.commons.includes('wikimedia.org');
+}
+
+/** Exact pack/travel name_ja → verified Commons or bureau file. Placeholders stay if absent. */
 export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   'うだつの町並み': MIMA_PLACE_PHOTO,
   '吉田家住宅': YOSHIDA_PHOTO,
@@ -220,8 +248,120 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   '三木家住宅（みきけじゅうたく） 〔国指定重要文化財〕': MIKI_PHOTO,
   'ブルーヴィラあなぶき': BLUE_VILLA_PHOTO,
   '割烹旅館田岡': TAOKA_PHOTO,
+  'うだつ emon 茶房': bureauPhoto(
+    'udatsu-emon-sabo.jpg',
+    '2020',
+    'うだつ emon 茶房（美馬市）',
+    'Udatsu emon sabo cafe, Mima',
+    GOURMET_PAGE
+  ),
+  'Cafe角屋': bureauPhoto(
+    'cafe-kadoya.jpg',
+    '2022',
+    'Cafe角屋（美馬市）',
+    'Cafe Kadoya, Mima',
+    GOURMET_PAGE
+  ),
+  '茶里庵(さりあん）': bureauPhoto(
+    'sarian.jpg',
+    '2020',
+    '茶里庵(さりあん）（美馬市）',
+    'Sarian restaurant, Mima',
+    GOURMET_PAGE
+  ),
+  '二代目 天竜': bureauPhoto(
+    'nidaime-tenryu.jpg',
+    '2026',
+    '二代目 天竜（美馬市）',
+    'Nidaime Tenryu ramen, Mima',
+    GOURMET_PAGE
+  ),
+  'プランタン': bureauPhoto(
+    'plantan.jpg',
+    '2021',
+    'プランタン（美馬市）',
+    'Plantan cafe, Mima',
+    GOURMET_PAGE
+  ),
+  'PUNTA': bureauPhoto(
+    'punta.jpg',
+    '2021',
+    'PUNTA（美馬市）',
+    'PUNTA Italian restaurant, Mima',
+    GOURMET_PAGE
+  ),
+  '四季料理 森友': bureauPhoto(
+    'shiki-moritomo.jpg',
+    '2021',
+    '四季料理 森友（美馬市）',
+    'Shiki ryori Moritomo, Mima',
+    GOURMET_PAGE
+  ),
+  '皿そば楽庵': bureauPhoto(
+    'sara-soba-raku-an.jpg',
+    '2022',
+    '皿そば楽庵（美馬市）',
+    'Sara-soba Raku-an, Mima',
+    GOURMET_PAGE
+  ),
+  '道の駅 藍蔵': bureauPhoto(
+    'michi-no-eki-aizo.jpg',
+    '2020',
+    '道の駅 藍蔵（美馬市）',
+    'Michi-no-eki Aizo, Mima',
+    GOURMET_PAGE
+  ),
+  '和ぁさん家': bureauPhoto(
+    'waasan-ya.jpg',
+    '2024',
+    '和ぁさん家（美馬市）',
+    'Waasan-ya, Mima',
+    GOURMET_PAGE
+  ),
   'つるぎの湯 大桜': TSURUGI_YU_PHOTO,
-  '剣山頂上ヒュッテ': TSURUGISAN_HUTTE_PHOTO
+  '剣山頂上ヒュッテ': TSURUGISAN_HUTTE_PHOTO,
+  'ADLIV': bureauPhoto(
+    'adliv.jpg',
+    '2021',
+    'ADLIV（美馬市脇町）',
+    'ADLIV lodging, Wakimachi, Mima',
+    HOTEL_PAGE
+  ),
+  'オートキャンプ場 四国三郎の郷': bureauPhoto(
+    'shikoku-saburo-no-sato.jpg',
+    '2020',
+    'オートキャンプ場 四国三郎の郷（美馬市）',
+    'Shikoku Saburo no Sato auto campground, Mima',
+    HOTEL_PAGE
+  ),
+  '清月屋敷': bureauPhoto(
+    'seigetsu-yashiki.jpg',
+    '2021',
+    '清月屋敷（美馬市穴吹町）',
+    'Seigetsu Yashiki, Anabuki, Mima',
+    HOTEL_PAGE
+  ),
+  'ビジネスホテル稲田苑': bureauPhoto(
+    'business-hotel-inadaen.jpg',
+    '2020',
+    'ビジネスホテル稲田苑（美馬市脇町）',
+    'Business Hotel Inadaen, Wakimachi, Mima',
+    HOTEL_PAGE
+  ),
+  'ビジネスホテルマツカ': bureauPhoto(
+    'business-hotel-matsuka.jpg',
+    '2020',
+    'ビジネスホテルマツカ（美馬市脇町）',
+    'Business Hotel Matsuka, Wakimachi, Mima',
+    HOTEL_PAGE
+  ),
+  'Paysage Moriguchi': bureauPhoto(
+    'paysage-moriguchi.jpg',
+    '2021',
+    'Paysage Moriguchi（美馬市脇町）',
+    'Paysage Moriguchi, Wakimachi, Mima',
+    HOTEL_PAGE
+  )
 };
 
 export const N03_CITATION = {

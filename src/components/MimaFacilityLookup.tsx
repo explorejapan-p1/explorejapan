@@ -10,7 +10,7 @@ import {
   type FacilityRow,
   type MimaOfficialMap
 } from '@/data/facility-schema';
-import {BASE_PATH, MIMA, MIMA_PLACE_PHOTO} from '@/data/mima';
+import {BASE_PATH, MIMA, MIMA_PLACE_PHOTO, isCommonsPhoto} from '@/data/mima';
 import {
   TOP_CHIPS,
   TOP_CHIP_COUNTS,
@@ -191,8 +191,8 @@ function FacilityCard({
               </span>
             </>
           ) : (
-            <span className="card-well" aria-hidden="true">
-              <span className="card-well-name">{row.name_ja}</span>
+            <span className="card-well">
+              <span className="card-well-name">{t('photoPending')}</span>
             </span>
           )}
           {rank !== null ? <span className="card-rank">#{rank}</span> : null}
@@ -238,11 +238,21 @@ function DetailSheet({
           <p className="attr-row">
             <span className="attr-label">{t('citeLabel')}</span>
             <span>
-              <a href={photo.commons}>Wikimedia Commons</a>
-              {' / '}
-              <a href={photo.licenseUrl}>{photo.license}</a>
-              {' / '}
-              <a href={photo.authorUrl}>{photo.author}</a>
+              {isCommonsPhoto(photo) ? (
+                <>
+                  <a href={photo.commons}>Wikimedia Commons</a>
+                  {' / '}
+                  <a href={photo.licenseUrl}>{photo.license}</a>
+                  {' / '}
+                  <a href={photo.authorUrl}>{photo.author}</a>
+                </>
+              ) : (
+                <>
+                  <a href={photo.authorUrl}>{photo.author}</a>
+                  {' / '}
+                  <a href={photo.licenseUrl}>{photo.license}</a>
+                </>
+              )}
             </span>
           </p>
         ) : null}
