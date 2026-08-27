@@ -116,7 +116,7 @@ function JsonLd({locale}: {locale: string}) {
         name: isJa ? MIMA.nameJa : MIMA.nameEn,
         isPartOf: {
           '@type': 'WebSite',
-          name: isJa ? '日本の農村ディレクトリ' : 'Rural Japan Directory',
+          name: isJa ? '日本全国市町村紹介' : 'Japan Municipalities Guide',
           publisher: {'@type': 'Organization', name: 'Lunatic Godo Kaisha'}
         }
       },

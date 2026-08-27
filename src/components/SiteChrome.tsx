@@ -28,7 +28,7 @@ export function SiteChrome({locale, children, variant}: Props) {
         )}
         <div className="header-row">
           <Link href="/" className={isHome ? 'wordmark wordmark-tiny' : 'wordmark'}>
-            {isJa ? '日本の農村ディレクトリ' : 'Rural Japan Directory'}
+            {isJa ? '日本全国市町村紹介' : 'Japan Municipalities Guide'}
           </Link>
           <LocaleSwitcher compact={isHome} />
         </div>
@@ -38,8 +38,8 @@ export function SiteChrome({locale, children, variant}: Props) {
         <footer className="site-footer">
           <p>
             {isJa
-              ? 'Project 1 · 美馬市から始める地方ディレクトリ。公開・DNS・派生地形データの再配布は別ゲート。'
-              : 'Project 1 · a rural directory starting with Mima City. Public DNS and redistributing derived geo are gated.'}
+              ? 'Project 1 · 美馬市から始める市町村紹介。公開・DNS・派生地形データの再配布は別ゲート。'
+              : 'Project 1 · a municipalities guide starting with Mima City. Public DNS and redistributing derived geo are gated.'}
           </p>
         </footer>
       )}

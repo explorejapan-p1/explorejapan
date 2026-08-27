@@ -25,12 +25,12 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
   return {
     metadataBase: new URL(SITE_URL.replace(/\/+$/, '') + '/'),
     title: {
-      default: isJa ? '日本の農村ディレクトリ' : 'Rural Japan Directory',
-      template: isJa ? '%s · 日本の農村ディレクトリ' : '%s · Rural Japan Directory'
+      default: isJa ? '日本全国市町村紹介' : 'Japan Municipalities Guide',
+      template: isJa ? '%s · 日本全国市町村紹介' : '%s · Japan Municipalities Guide'
     },
     description: isJa
-      ? '未公開の農村ディレクトリ。第1号は徳島県美馬市。'
-      : 'Unpublished rural Japan directory. First listing: Mima City, Tokushima.',
+      ? '未公開。第1号は徳島県美馬市。'
+      : 'Unpublished. First listing: Mima City, Tokushima.',
     ...hreflangMetadata(locale === 'en' ? 'en' : 'ja'),
     robots: {
       index: true,
