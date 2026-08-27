@@ -223,7 +223,7 @@ function bureauPhoto(
   return {
     src: `/explorejapan/media/${file}`,
     commons: page,
-    license: '出典',
+    license: page.includes('/gourmet/') ? 'gourmet page' : 'hoteltop page',
     licenseUrl: page,
     author: '美馬観光ビューロー',
     authorUrl: page,
