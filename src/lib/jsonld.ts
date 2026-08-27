@@ -8,6 +8,7 @@ import {
 } from '@/lib/listings';
 import {
   ORG_NAME,
+  ORG_NAME_JA,
   canonicalUrl,
   photoAbs,
   siteName,
@@ -19,6 +20,7 @@ function org() {
     '@type': 'Organization',
     '@id': `${siteOrigin()}/#org`,
     name: ORG_NAME,
+    alternateName: ORG_NAME_JA,
     url: `${siteOrigin()}/`
   };
 }

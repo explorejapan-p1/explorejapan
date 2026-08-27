@@ -6,7 +6,8 @@ export const SITE_NAME_JA = '日本全国市町村紹介';
 export const SITE_NAME_EN = 'Japan Municipalities Guide';
 export const BRAND_NAME_JA = '冒険日本';
 export const BRAND_NAME_EN = 'BokenJapan';
-export const ORG_NAME = '冒険日本';
+export const ORG_NAME = 'BokenJapan';
+export const ORG_NAME_JA = '冒険日本';
 
 export function siteOrigin(): string {
   return SITE_URL.replace(/\/+$/, '');
