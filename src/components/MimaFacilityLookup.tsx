@@ -1,3 +1,6 @@
+'use client';
+
+import {useEffect, useState} from 'react';
 import {useTranslations} from 'next-intl';
 import {
   EXPECTED_CATEGORY_COUNTS,
@@ -9,7 +12,7 @@ import {
   type FacilityRow,
   type MimaOfficialMap
 } from '@/data/facility-schema';
-import {MIMA, MIMA_PLACE_PHOTO} from '@/data/mima';
+import {BASE_PATH, MIMA, MIMA_PLACE_PHOTO} from '@/data/mima';
 import {
   TOP_CHIPS,
   TOP_CHIP_COUNTS,
@@ -20,6 +23,7 @@ import {
   TRAVEL_STAY,
   isTravelFilter,
   packRowMatchesFilter,
+  resolveMimaFilter,
   topChipForCategory,
   type FilterId,
   type TravelRow
@@ -70,8 +74,46 @@ function readingMismatchHit(row: FacilityRow, q: string): boolean {
   return row.reading !== null && row.reading.toLowerCase().includes(q);
 }
 
+/** Display-only. Pack stays 515. Key: name_ja + lat/lon or name_ja + source_url. */
+function displayDedupeKey(row: FacilityRow): string {
+  if (row.lat !== null && row.lon !== null) {
+    return `${row.name_ja}|${row.lat}|${row.lon}`;
+  }
+  return `${row.name_ja}|${row.source_url}`;
+}
+
+function dedupeDisplayRows(rows: readonly FacilityRow[]): FacilityRow[] {
+  const seen = new Set<string>();
+  const out: FacilityRow[] = [];
+  for (const row of rows) {
+    const key = displayDedupeKey(row);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(row);
+  }
+  return out;
+}
+
+function dedupeMapPoints(
+  points: MimaOfficialMap['points']
+): MimaOfficialMap['points'] {
+  const seen = new Set<string>();
+  const out: MimaOfficialMap['points'] = [];
+  for (const point of points) {
+    const key = `${point.name_ja}|${point.x}|${point.y}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(point);
+  }
+  return out;
+}
+
+function isClosedVisit(row: FacilityRow): boolean {
+  return row.name_ja.includes('休館中');
+}
+
 function chipHref(next: FilterId, q: string, locale: string, id?: string): string {
-  const path = `/${locale}/tokushima/mima`;
+  const path = `${BASE_PATH}/${locale}/tokushima/mima/`;
   if (next === 'sights' && !q && !id) return path;
   const parts: string[] = [];
   if (next === 'all') parts.push('c=all');
@@ -237,16 +279,37 @@ export function MimaFacilityLookup({
   gaps,
   map,
   rows,
-  filter,
-  query,
+  filter: initialFilter,
+  query: initialQuery,
   engaged,
-  openId
+  openId: initialOpenId
 }: Props) {
   const t = useTranslations('lookup');
+  const [filter, setFilter] = useState(initialFilter);
+  const [query, setQuery] = useState(initialQuery);
+  const [openId, setOpenId] = useState(initialOpenId);
+
+  useEffect(() => {
+    function applyFromLocation() {
+      const params = new URLSearchParams(window.location.search);
+      const c = params.get('c') ?? undefined;
+      const q = (params.get('q') ?? '').trim();
+      const id = params.get('id');
+      setFilter(resolveMimaFilter(c, q));
+      setQuery(q);
+      setOpenId(id && id !== '' ? id : null);
+    }
+    applyFromLocation();
+    window.addEventListener('popstate', applyFromLocation);
+    return () => window.removeEventListener('popstate', applyFromLocation);
+  }, []);
+
+  const displayRows = dedupeDisplayRows(rows);
+  const displayPoints = dedupeMapPoints(map.points);
 
   const legendCats: FacilityCategory[] = [];
   const seen = new Set<FacilityCategory>();
-  for (const point of map.points) {
+  for (const point of displayPoints) {
     if (seen.has(point.category)) continue;
     seen.add(point.category);
     legendCats.push(point.category);
@@ -257,7 +320,7 @@ export function MimaFacilityLookup({
   const q = query.trim().toLowerCase();
   const searching = q !== '';
   const nameHitExists =
-    searching && rows.some((row) => row.name_ja.toLowerCase().includes(q));
+    searching && displayRows.some((row) => row.name_ja.toLowerCase().includes(q));
   const travelLayer = isTravelFilter(filter);
   // q set: ignore chip filter (pack name-wins + travel names). Chip chrome may stay.
   const travelHits = searching
@@ -269,7 +332,7 @@ export function MimaFacilityLookup({
       : [];
   const includePack = searching || (!travelLayer && filter !== 'commerce');
   const filtered = includePack
-    ? rows.filter((row) => {
+    ? displayRows.filter((row) => {
         if (!searching && !packRowMatchesFilter(row.category, filter)) return false;
         if (q === '') return true;
         if (row.name_ja.toLowerCase().includes(q)) return true;
@@ -350,7 +413,7 @@ export function MimaFacilityLookup({
             data-official-xy={EXPECTED_GEO_COUNT}
           >
             <path className="mima-outline" d={map.outline} />
-            {map.points.map((point) => (
+            {displayPoints.map((point) => (
               <g
                 key={point.id}
                 data-place-id={point.id}
@@ -393,13 +456,14 @@ export function MimaFacilityLookup({
       <form
         className="lookup-search-row"
         method="get"
-        action={`/${locale}/tokushima/mima`}
+        action={`${BASE_PATH}/${locale}/tokushima/mima/`}
       >
         {filter !== 'all' ? <input type="hidden" name="c" value={filter} /> : null}
         <label htmlFor="mima-place-search">{t('searchLabel')}</label>
         <div className="search-field">
           <input
             id="mima-place-search"
+            key={query}
             className="lookup-search"
             type="search"
             name="q"
@@ -458,9 +522,14 @@ export function MimaFacilityLookup({
             {shown.map((row) => {
               const placement = displayPlacement(row.hours);
               const yomiMismatch = readingMismatchHit(row, q);
+              const closed = isClosedVisit(row);
               return (
-                <details key={row.id} open={openId === row.id}>
-                  <summary className="place-row">
+                <details
+                  key={row.id}
+                  open={!closed && openId === row.id}
+                  data-closed={closed ? 'true' : undefined}
+                >
+                  <summary className={closed ? 'place-row is-closed' : 'place-row'}>
                     <span className="place-name">{row.name_ja}</span>
                     <span className="place-cat">
                       <ChipLabel id={row.category} />

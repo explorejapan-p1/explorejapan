@@ -3,7 +3,9 @@ import {hasLocale, NextIntlClientProvider} from 'next-intl';
 import {inter, notoSansJp} from '@/app/fonts';
 import {getMessages, setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
+import {FirstPartyTrafficLog} from '@/components/FirstPartyTrafficLog';
 import {SiteChrome} from '@/components/SiteChrome';
+import {SITE_URL} from '@/data/mima';
 import {routing} from '@/i18n/routing';
 import {hreflangMetadata} from '@/lib/seo';
 import '../globals.css';
@@ -21,6 +23,7 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
   const {locale} = await params;
   const isJa = locale === 'ja';
   return {
+    metadataBase: new URL(SITE_URL.replace(/\/+$/, '') + '/'),
     title: {
       default: isJa ? '日本の農村ディレクトリ' : 'Rural Japan Directory',
       template: isJa ? '%s · 日本の農村ディレクトリ' : '%s · Rural Japan Directory'
@@ -28,7 +31,12 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
     description: isJa
       ? '未公開の農村ディレクトリ。第1号は徳島県美馬市。'
       : 'Unpublished rural Japan directory. First listing: Mima City, Tokushima.',
-    ...hreflangMetadata(locale === 'en' ? 'en' : 'ja')
+    ...hreflangMetadata(locale === 'en' ? 'en' : 'ja'),
+    robots: {
+      index: false,
+      follow: false,
+      nocache: true
+    }
   };
 }
 
@@ -44,6 +52,7 @@ export default async function LocaleLayout({children, params}: Props) {
     <html lang={locale} className={`${notoSansJp.variable} ${inter.variable}`}>
       <body>
         <NextIntlClientProvider messages={messages}>
+          <FirstPartyTrafficLog />
           <SiteChrome locale={locale}>{children}</SiteChrome>
         </NextIntlClientProvider>
       </body>

@@ -77,7 +77,7 @@ export const MIMA = {
 
 
 export const MIMA_PLACE_PHOTO = {
-  src: '/media/wakimachi-minami-machi-20250828.jpg',
+  src: '/explorejapan/media/wakimachi-minami-machi-20250828.jpg',
   commons: 'https://commons.wikimedia.org/wiki/File:Wakimati_minamimati_20250828_2.jpg',
   license: 'CC0 1.0',
   licenseUrl: 'https://creativecommons.org/publicdomain/zero/1.0/',
@@ -101,4 +101,5 @@ export const N03_CITATION = {
     '測量法に基づく国土地理院長承認（複製）R 7JHf 351。二次利用には国土地理院への申請が必要な場合があります。'
 } as const;
 
-export const SITE_URL = process.env.SITE_URL ?? 'http://localhost:3000';
+export const BASE_PATH = '/explorejapan';
+export const SITE_URL = process.env.SITE_URL ?? 'https://explorejapan-p1.github.io/explorejapan';

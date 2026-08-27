@@ -1,3 +1,4 @@
+import {BASE_PATH} from '@/data/mima';
 import {PREFECTURES} from '@/data/prefectures';
 import {Link} from '@/i18n/navigation';
 import {loadJapanMap} from '@/lib/geo';
@@ -28,7 +29,7 @@ export function JapanMap({locale}: Props) {
           {map.shapes.map((s) => (
             <a
               key={s.slug}
-              href={`/${locale}/${s.slug}`}
+              href={`${BASE_PATH}/${locale}/${s.slug}/`}
               className={s.slug === 'tokushima' ? 'shape is-tokushima' : 'shape'}
             >
               <title>{isJa ? s.nameJa : s.nameEn}</title>

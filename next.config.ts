@@ -4,16 +4,13 @@ import type { NextConfig } from 'next';
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 const nextConfig: NextConfig = {
+  output: 'export',
+  basePath: '/explorejapan',
+  assetPrefix: '/explorejapan',
+  trailingSlash: true,
+  images: { unoptimized: true },
   reactStrictMode: true,
-  poweredByHeader: false,
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }]
-      }
-    ];
-  }
+  poweredByHeader: false
 };
 
 export default withNextIntl(nextConfig);

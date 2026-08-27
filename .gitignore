@@ -9,3 +9,7 @@ tsconfig.tsbuildinfo
 .env*
 data/raw/
 tmp-*.pl
+
+# local no-send offer log (never commit)
+data/website-offer-log.json
+data/website-offer-log.jsonl

@@ -21,7 +21,6 @@ import {hreflangMetadata, pagePath} from '@/lib/seo';
 
 type Props = {
   params: Promise<{locale: string; prefecture: string; municipality: string}>;
-  searchParams: Promise<{c?: string; q?: string; id?: string}>;
 };
 
 export function generateStaticParams() {
@@ -76,32 +75,31 @@ function packPlace(row: FacilityRow) {
 
 function JsonLd({locale}: {locale: string}) {
   const isJa = locale === 'ja';
-  const url = `${SITE_URL}${pagePath(locale, 'tokushima/mima')}`;
-  const packUrl = `${SITE_URL}/api/mima/facilities`;
-  const officialRows = officialPackRows();
+  const origin = SITE_URL.replace(/\/+$/, '');
+  const url = `${origin}${pagePath(locale, 'tokushima/mima')}`;
+  const sourcedTourism = MIMA_FACILITIES.filter(
+    (row) => row.category === 'tourism' && row.source_url.trim() !== ''
+  );
+  const officialRows = officialPackRows().filter((row) => row.source_url.trim() !== '');
+  const placeType =
+    sourcedTourism.length > 0 ? ['Place', 'City', 'TouristDestination'] : ['Place', 'City'];
   const data = {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': ['Place', 'City'],
+        '@type': placeType,
         name: isJa ? MIMA.nameJa : MIMA.nameEn,
         alternateName: isJa ? MIMA.nameEn : MIMA.nameJa,
-        identifier: [MIMA.jis, MIMA.jlis],
+        identifier: MIMA.jis,
         sameAs: MIMA.sameAs,
         url,
-        hasMap: url,
-        geo: {
-          '@type': 'GeoCoordinates',
-          latitude: 34.053,
-          longitude: 134.044
-        },
         address: {
           '@type': 'PostalAddress',
           streetAddress: isJa
             ? '穴吹町穴吹字九反地5番地'
             : '5 Kutanchi, Anabuki, Anabuki-cho',
           addressLocality: isJa ? MIMA.nameJa : MIMA.nameEn,
-          addressRegion: isJa ? '徳島県' : 'Tokushima',
+          addressRegion: '徳島県',
           postalCode: MIMA.hall.postalCode,
           addressCountry: 'JP'
         },
@@ -116,8 +114,11 @@ function JsonLd({locale}: {locale: string}) {
         url,
         inLanguage: locale,
         name: isJa ? MIMA.nameJa : MIMA.nameEn,
-        isPartOf: {name: isJa ? '日本の農村ディレクトリ' : 'Rural Japan Directory'},
-        relatedLink: packUrl
+        isPartOf: {
+          '@type': 'WebSite',
+          name: isJa ? '日本の農村ディレクトリ' : 'Rural Japan Directory',
+          publisher: {'@type': 'Organization', name: 'Lunatic Godo Kaisha'}
+        }
       },
       {
         '@type': 'BreadcrumbList',
@@ -126,13 +127,13 @@ function JsonLd({locale}: {locale: string}) {
             '@type': 'ListItem',
             position: 1,
             name: isJa ? '全国' : 'Japan',
-            item: `${SITE_URL}${pagePath(locale)}`
+            item: `${origin}${pagePath(locale)}`
           },
           {
             '@type': 'ListItem',
             position: 2,
             name: isJa ? '徳島県' : 'Tokushima',
-            item: `${SITE_URL}${pagePath(locale, 'tokushima')}`
+            item: `${origin}${pagePath(locale, 'tokushima')}`
           },
           {
             '@type': 'ListItem',
@@ -144,26 +145,12 @@ function JsonLd({locale}: {locale: string}) {
       },
       {
         '@type': 'ItemList',
-        numberOfItems: EXPECTED_ROW_COUNT,
-        additionalProperty: {
-          '@type': 'PropertyValue',
-          name: 'fullPack',
-          url: packUrl
-        },
+        numberOfItems: officialRows.length,
         itemListElement: officialRows.map((row, index) => ({
           '@type': 'ListItem',
           position: index + 1,
           item: packPlace(row)
         }))
-      },
-      {
-        '@type': 'DataDownload',
-        name: isJa ? '美馬市施設パック（全515件）' : 'Mima City facilities pack (all 515 rows)',
-        contentUrl: packUrl,
-        encodingFormat: 'application/json',
-        description: isJa
-          ? '公式座標がある61件のみHTMLに載せる。全件はAPIから取得。'
-          : 'HTML inlines the 61 official-xy rows only. Full pack is this API.'
       }
     ]
   };
@@ -175,9 +162,8 @@ function JsonLd({locale}: {locale: string}) {
   );
 }
 
-export default async function MunicipalityPage({params, searchParams}: Props) {
+export default async function MunicipalityPage({params}: Props) {
   const {locale, prefecture, municipality} = await params;
-  const resolvedSearch = await searchParams;
   if (prefecture !== 'tokushima') notFound();
   const muni = MUNICIPALITY_BY_SLUG.get(municipality);
   if (!muni) notFound();
@@ -222,11 +208,9 @@ export default async function MunicipalityPage({params, searchParams}: Props) {
     throw new Error(`pack rows ${packRows.length} != ${EXPECTED_ROW_COUNT}`);
   }
 
-  const c = resolvedSearch.c;
-  const q = (resolvedSearch.q ?? '').trim();
-  const openId = resolvedSearch.id ?? null;
-  // no c and no q → sights; q without c → all (pack name-wins plus travel names)
-  const filter = resolveMimaFilter(c, q);
+  // Static export cannot SSR query strings. First HTML paint = 観光名所.
+  // MimaFacilityLookup reads c/q/id from window.location.search after mount.
+  const filter = resolveMimaFilter(undefined, '');
   const engaged = true;
 
   return (
@@ -245,9 +229,9 @@ export default async function MunicipalityPage({params, searchParams}: Props) {
         map={officialMap}
         rows={packRows}
         filter={filter}
-        query={q}
+        query=""
         engaged={engaged}
-        openId={openId}
+        openId={null}
       />
 
       <table className="facts">

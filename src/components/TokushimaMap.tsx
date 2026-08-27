@@ -1,3 +1,4 @@
+import {BASE_PATH} from '@/data/mima';
 import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
 import {Link} from '@/i18n/navigation';
 import {loadTokushimaMap} from '@/lib/geo';
@@ -28,7 +29,7 @@ export function TokushimaMap({locale}: Props) {
           {map.shapes.map((s) => (
             <a
               key={s.slug}
-              href={`/${locale}/tokushima/${s.slug}`}
+              href={`${BASE_PATH}/${locale}/tokushima/${s.slug}/`}
               className={s.slug === 'mima' ? 'shape is-mima' : 'shape'}
             >
               <title>{isJa ? s.nameJa : s.nameEn}</title>
