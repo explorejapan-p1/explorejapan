@@ -92,6 +92,200 @@ function withPrefStatus(shapes: RenderedShape[]): RenderedShape[] {
   }));
 }
 
+function round1(n: number): number {
+  return Math.round(n * 10) / 10;
+}
+
+const PATH_CMD = /([MLZmlz])|(-?\d*\.?\d+(?:e[-+]?\d+)?)/g;
+/** Landscape cover used by the homepage pixel gate (slice will match this). */
+const COVER_ASPECT = 1440 / 900;
+
+type BBox = {minX: number; minY: number; maxX: number; maxY: number};
+
+function pathSegments(d: string): Array<[[number, number], [number, number]]> {
+  const segs: Array<[[number, number], [number, number]]> = [];
+  let x = 0;
+  let y = 0;
+  let sx = 0;
+  let sy = 0;
+  let cmd = '';
+  const args: number[] = [];
+  const flush = () => {
+    if (!cmd) return;
+    let i = 0;
+    const c = cmd.toUpperCase();
+    while (true) {
+      if (c === 'M') {
+        if (i + 1 >= args.length) break;
+        x = args[i++];
+        y = args[i++];
+        sx = x;
+        sy = y;
+        cmd = cmd === 'M' ? 'L' : 'l';
+      } else if (c === 'L') {
+        if (i + 1 >= args.length) break;
+        const nx = args[i++];
+        const ny = args[i++];
+        segs.push([
+          [x, y],
+          [nx, ny]
+        ]);
+        x = nx;
+        y = ny;
+      } else if (c === 'Z') {
+        segs.push([
+          [x, y],
+          [sx, sy]
+        ]);
+        x = sx;
+        y = sy;
+        break;
+      } else {
+        break;
+      }
+    }
+    args.length = 0;
+  };
+  PATH_CMD.lastIndex = 0;
+  let m: RegExpExecArray | null;
+  while ((m = PATH_CMD.exec(d))) {
+    if (m[1]) {
+      flush();
+      cmd = m[1];
+      if (cmd === 'Z' || cmd === 'z') flush();
+    } else if (m[2]) {
+      args.push(Number(m[2]));
+    }
+  }
+  flush();
+  return segs;
+}
+
+function sampleSegments(segs: Array<[[number, number], [number, number]]>): Array<[number, number]> {
+  const pts: Array<[number, number]> = [];
+  for (const [a, b] of segs) {
+    const len = Math.hypot(b[0] - a[0], b[1] - a[1]);
+    const steps = Math.max(1, Math.ceil(len * 2));
+    for (let s = 0; s <= steps; s++) {
+      const t = s / steps;
+      pts.push([a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]);
+    }
+  }
+  return pts;
+}
+
+function bboxOf(pts: Array<[number, number]>): BBox | null {
+  if (pts.length === 0) return null;
+  let minX = Infinity;
+  let minY = Infinity;
+  let maxX = -Infinity;
+  let maxY = -Infinity;
+  for (const [x, y] of pts) {
+    if (x < minX) minX = x;
+    if (y < minY) minY = y;
+    if (x > maxX) maxX = x;
+    if (y > maxY) maxY = y;
+  }
+  return {minX, minY, maxX, maxY};
+}
+
+function formatViewBox(b: BBox, pad: number): string | null {
+  const x = round1(b.minX - pad);
+  const y = round1(b.minY - pad);
+  const w = round1(b.maxX + pad - x);
+  const h = round1(b.maxY + pad - y);
+  if (w <= 0 || h <= 0) return null;
+  return `${x} ${y} ${w} ${h}`;
+}
+
+function mainlandCoverWindow(
+  pts: Array<[number, number]>,
+  toku: BBox
+): BBox | null {
+  let minY = Infinity;
+  let maxY = -Infinity;
+  for (const p of pts) {
+    if (p[1] < minY) minY = p[1];
+    if (p[1] > maxY) maxY = p[1];
+  }
+  const y0 = Math.floor(minY);
+  const y1 = Math.ceil(maxY);
+  const n = y1 - y0 + 1;
+  if (n <= 2) return null;
+  const rowMin = new Float64Array(n);
+  const rowMax = new Float64Array(n);
+  rowMin.fill(Infinity);
+  rowMax.fill(-Infinity);
+  for (const [x, y] of pts) {
+    const i = Math.round(y) - y0;
+    if (i < 0 || i >= n) continue;
+    if (x < rowMin[i]) rowMin[i] = x;
+    if (x > rowMax[i]) rowMax[i] = x;
+  }
+
+  let best: BBox | null = null;
+  let bestW = -1;
+  let bestErr = Infinity;
+  const topMax = Math.floor(toku.minY);
+  const botMin = Math.ceil(toku.maxY);
+  for (let top = y0; top <= topMax; top++) {
+    let xmin = Infinity;
+    let xmax = -Infinity;
+    for (let y = top; y <= y1; y++) {
+      const i = y - y0;
+      if (rowMin[i] < xmin) xmin = rowMin[i];
+      if (rowMax[i] > xmax) xmax = rowMax[i];
+      if (y < botMin) continue;
+      const w = xmax - xmin;
+      const h = y - top;
+      if (w <= 1 || h <= 1) continue;
+      if (xmin > toku.minX || xmax < toku.maxX) continue;
+      const aspect = w / h;
+      if (aspect > COVER_ASPECT + 0.002) continue;
+      if (aspect < COVER_ASPECT - 0.03) continue;
+      const err = Math.abs(aspect - COVER_ASPECT);
+      if (w > bestW + 0.05 || (Math.abs(w - bestW) <= 0.05 && err < bestErr)) {
+        bestW = w;
+        bestErr = err;
+        best = {minX: xmin, minY: top, maxX: xmax, maxY: y};
+      }
+    }
+  }
+  return best;
+}
+
+/** Homepage cover viewBox from path `d` coords. Okinawa inset excluded. */
+export function coverViewBox(shapes: Array<{slug: string; d: string}>, pad = 0): string | null {
+  const mainlandPts: Array<[number, number]> = [];
+  let toku: BBox | null = null;
+  for (const s of shapes) {
+    if (s.slug === 'okinawa') continue;
+    const pts = sampleSegments(pathSegments(s.d));
+    if (pts.length === 0) continue;
+    mainlandPts.push(...pts);
+    if (s.slug === 'tokushima') toku = bboxOf(pts);
+  }
+  if (toku) {
+    const fitted = mainlandCoverWindow(mainlandPts, toku);
+    if (fitted) return formatViewBox(fitted, pad);
+  }
+  const fallback = bboxOf(mainlandPts);
+  if (!fallback) return null;
+  return formatViewBox(fallback, pad);
+}
+
+function withCoverViewBox(map: RenderedMap): RenderedMap {
+  const vb = coverViewBox(map.shapes, 0);
+  if (!vb) return map;
+  const parts = vb.split(' ').map(Number);
+  return {
+    ...map,
+    viewBox: vb,
+    width: parts[2] ?? map.width,
+    height: parts[3] ?? map.height
+  };
+}
+
 function readJapanMapLiteJson(): RenderedMap | null {
   if (!fs.existsSync(JAPAN_MAP_LITE_JSON)) return null;
   try {
@@ -174,9 +368,9 @@ function loadJapanMapFromLiteTopo(): RenderedMap | null {
 
 export function loadJapanMap(): RenderedMap {
   const fromJson = readJapanMapLiteJson();
-  if (fromJson) return fromJson;
+  if (fromJson) return withCoverViewBox(fromJson);
   const fromTopo = loadJapanMapFromLiteTopo();
-  if (fromTopo) return fromTopo;
+  if (fromTopo) return withCoverViewBox(fromTopo);
 
   return {
     source: 'placeholder',
