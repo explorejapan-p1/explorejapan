@@ -255,6 +255,32 @@ function cityPhoto(
   };
 }
 
+
+function wikiPhoto(
+  file: string,
+  commons: string,
+  license: string,
+  licenseUrl: string,
+  author: string,
+  authorUrl: string,
+  taken: string,
+  altJa: string,
+  altEn: string
+): MimaPlacePhoto {
+  return {
+    src: `/explorejapan/media/${file}`,
+    commons,
+    license,
+    licenseUrl,
+    author,
+    authorUrl,
+    taken,
+    accessed: '2026-08-27',
+    altJa,
+    altEn
+  };
+}
+
 export function isCommonsPhoto(photo: MimaPlacePhoto): boolean {
   return photo.commons.includes('wikimedia.org');
 }
@@ -383,18 +409,6 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'Paysage Moriguchi, Wakimachi, Mima',
     HOTEL_PAGE
   ),
-  '樺太開拓の志士・岡本監輔': cityPhoto(
-    'mima-kanko-11490.jpg',
-    '樺太開拓の志士・岡本監輔（美馬市）',
-    '樺太開拓の志士・岡本監輔, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/11490.html'
-  ),
-  '三木家資料館': cityPhoto(
-    'mima-kanko-11496.jpg',
-    '三木家資料館（美馬市）',
-    '三木家資料館, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/11496.html'
-  ),
   '民俗資料館（休館中）': cityPhoto(
     'mima-kanko-11498.jpg',
     '民俗資料館（休館中）（美馬市）',
@@ -419,35 +433,38 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '三島古墳群, Mima',
     'https://www.city.mima.lg.jp/kanko/map/list/11504.html'
   ),
-  '本楽寺': cityPhoto(
-    'mima-kanko-11505.jpg',
-    '本楽寺（美馬市）',
-    '本楽寺, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/11505.html'
+  '本楽寺': wikiPhoto(
+    'honrakuji-mima-20211006.jpg',
+    'https://commons.wikimedia.org/wiki/File:Honrakuji.jpeg',
+    'CC0 1.0',
+    'https://creativecommons.org/publicdomain/zero/1.0/',
+    'Sorrysorry',
+    'https://commons.wikimedia.org/wiki/User:Sorrysorry',
+    '2021-10-06',
+    '本楽寺（美馬市穴吹町三島）',
+    'Honrakuji temple, Anabuki Mishima, Mima'
   ),
-  '美馬市観光交流センター': cityPhoto(
-    'mima-kanko-11508.jpg',
-    '美馬市観光交流センター（美馬市）',
-    '美馬市観光交流センター, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/11508.html'
+  'デ・レイケの堰堤／デ・レイケ公園': wikiPhoto(
+    'de-rijke-dam-mima-20080710.jpg',
+    'https://commons.wikimedia.org/wiki/File:De_Rijke_Dam_in_Mima_City,_Tokushima,_Japan.jpg',
+    'CC BY-SA 3.0',
+    'https://creativecommons.org/licenses/by-sa/3.0/',
+    'Mima City Hall',
+    'https://www.city.mima.lg.jp/',
+    '2008-07-10',
+    'デ・レイケの堰堤（美馬市）',
+    'De Rijke dam, Mima'
   ),
-  '美馬市観光交流センター（うだつの町並み）': cityPhoto(
-    'mima-kanko-11508.jpg',
-    '美馬市観光交流センター（うだつの町並み）（美馬市）',
-    '美馬市観光交流センター（うだつの町並み）, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/11508.html'
-  ),
-  'デ・レイケの堰堤／デ・レイケ公園': cityPhoto(
-    'mima-kanko-11509.jpg',
-    'デ・レイケの堰堤／デ・レイケ公園（美馬市）',
-    'デ・レイケの堰堤／デ・レイケ公園, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/11509.html'
-  ),
-  '最明寺': cityPhoto(
-    'mima-kanko-11510.jpg',
+  '最明寺': wikiPhoto(
+    'saimyo-temple-mima-20080730.jpg',
+    'https://commons.wikimedia.org/wiki/File:Saimyō_Temple.JPG',
+    'CC BY-SA 3.0',
+    'https://creativecommons.org/licenses/by-sa/3.0/',
+    'Johan Hoenselaar',
+    'https://commons.wikimedia.org/wiki/User:Johan_Hoenselaar',
+    '2008-07-30',
     '最明寺（美馬市）',
-    '最明寺, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/11510.html'
+    'Saimyoji temple, Mima'
   ),
   'あんみつ館': cityPhoto(
     'mima-kanko-11512.jpg',
@@ -461,12 +478,6 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '三味線もちつき, Mima',
     'https://www.city.mima.lg.jp/kanko/map/list/11514.html'
   ),
-  '「うだつ」があがった建物': cityPhoto(
-    'mima-kanko-11518.jpg',
-    '「うだつ」があがった建物（美馬市）',
-    '「うだつ」があがった建物, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/11518.html'
-  ),
   '寺町': cityPhoto(
     'mima-kanko-11519.jpg',
     '寺町（美馬市）',
@@ -479,29 +490,49 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '寺町 - 常念寺, Mima',
     'https://www.city.mima.lg.jp/kanko/map/list/11520.html'
   ),
-  '寺町 - 安楽寺': cityPhoto(
-    'mima-kanko-11521.jpg',
-    '寺町 - 安楽寺（美馬市）',
-    '寺町 - 安楽寺, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/11521.html'
+  '寺町 - 安楽寺': wikiPhoto(
+    'anraku-ji-mima-20120827.jpg',
+    'https://commons.wikimedia.org/wiki/File:Anraku_Tempel.jpg',
+    'CC BY-SA 3.0',
+    'https://creativecommons.org/licenses/by-sa/3.0/',
+    'Johan Hoenselaar',
+    'https://commons.wikimedia.org/wiki/User:Johan_Hoenselaar',
+    '2012-08-27',
+    '安楽寺（美馬市）',
+    'Anrakuji temple, Mima'
   ),
-  '寺町 - 願勝寺': cityPhoto(
-    'mima-kanko-11522.jpg',
-    '寺町 - 願勝寺（美馬市）',
-    '寺町 - 願勝寺, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/11522.html'
+  '寺町 - 願勝寺': wikiPhoto(
+    'gansho-ji-mima-20080321.jpg',
+    'https://commons.wikimedia.org/wiki/File:Gansho_Tempel_in_Mima.jpg',
+    'CC BY-SA 3.0',
+    'https://creativecommons.org/licenses/by-sa/3.0/',
+    'Johan Hoenselaar',
+    'https://commons.wikimedia.org/wiki/User:Johan_Hoenselaar',
+    '2008-03-21',
+    '願勝寺（美馬市寺町）',
+    'Ganshoji temple, Mima'
   ),
-  '寺町 - 西教寺': cityPhoto(
-    'mima-kanko-11523.jpg',
-    '寺町 - 西教寺（美馬市）',
-    '寺町 - 西教寺, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/11523.html'
+  '寺町 - 西教寺': wikiPhoto(
+    'saikyo-ji-mima.jpg',
+    'https://commons.wikimedia.org/wiki/File:Saikyō_Tempel.jpg',
+    'CC BY-SA 3.0',
+    'https://creativecommons.org/licenses/by-sa/3.0/',
+    'Johan Hoenselaar',
+    'https://commons.wikimedia.org/wiki/User:Johan_Hoenselaar',
+    '2012-08-27',
+    '西教寺（美馬市）',
+    'Saikyoji temple, Mima'
   ),
-  '寺町 - 林照寺': cityPhoto(
-    'mima-kanko-11524.jpg',
-    '寺町 - 林照寺（美馬市）',
-    '寺町 - 林照寺, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/11524.html'
+  '寺町 - 林照寺': wikiPhoto(
+    'rinsho-ji-mima-20220107.jpg',
+    'https://commons.wikimedia.org/wiki/File:林照寺.jpeg',
+    'CC0 1.0',
+    'https://creativecommons.org/publicdomain/zero/1.0/',
+    'Sorrysorry',
+    'https://commons.wikimedia.org/wiki/User:Sorrysorry',
+    '2022-01-07',
+    '林照寺（美馬市美馬町）',
+    'Rinshoji temple, Mima'
   ),
   '段の塚穴': cityPhoto(
     'mima-kanko-11525.jpg',
@@ -515,11 +546,16 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '郡里廃寺跡, Mima',
     'https://www.city.mima.lg.jp/kanko/map/list/11527.html'
   ),
-  '青木家住宅': cityPhoto(
-    'mima-kanko-11530.jpg',
-    '青木家住宅（美馬市）',
-    '青木家住宅, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/11530.html'
+  '青木家住宅': wikiPhoto(
+    'aoki-residence-mima-20091202.jpg',
+    'https://commons.wikimedia.org/wiki/File:Aoki_Residence,_Mima_Town,_Mima_City,_Tokushima.JPG',
+    'CC BY 3.0',
+    'https://creativecommons.org/licenses/by/3.0/',
+    'Brianmima',
+    'https://commons.wikimedia.org/wiki/User:Brianmima',
+    '2009-12-02',
+    '青木家住宅（美馬市美馬町）',
+    'Aoki Residence, Mima'
   ),
   '伊射奈美神社': cityPhoto(
     'mima-kanko-11531.jpg',
@@ -533,11 +569,16 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '川井のエドヒガンザクラ, Mima',
     'https://www.city.mima.lg.jp/kanko/map/list/11532.html'
   ),
-  '脇町劇場': cityPhoto(
-    'mima-kanko-11536.jpg',
-    '脇町劇場（美馬市）',
-    '脇町劇場, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/11536.html'
+  '脇町劇場': wikiPhoto(
+    'wakimachi-gekijo-mima-20070210.jpg',
+    'https://commons.wikimedia.org/wiki/File:Wakimachi_gekijou.jpg',
+    'CC BY 3.0',
+    'https://creativecommons.org/licenses/by/3.0/',
+    'Snap55',
+    'https://commons.wikimedia.org/wiki/User:Snap55',
+    '2007-02-10',
+    '脇町劇場（徳島県美馬市）',
+    'Wakimachi Theater, Mima'
   ),
   '美馬市穴吹川観光駐車場': cityPhoto(
     'mima-kanko-11539.jpg',
@@ -575,17 +616,27 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '剣山, Mima',
     'https://www.city.mima.lg.jp/kanko/map/list/2759010.html'
   ),
-  '旧長岡家住宅': cityPhoto(
-    'mima-kanko-33687.jpg',
+  '旧長岡家住宅': wikiPhoto(
+    'nagaoka-ke-jutaku-mima-20250828.jpg',
+    'https://commons.wikimedia.org/wiki/File:Nagaokake_zyutaku_20250828_1.jpg',
+    'CC0 1.0',
+    'https://creativecommons.org/publicdomain/zero/1.0/',
+    'Araiyasushige',
+    'https://commons.wikimedia.org/wiki/User:Araiyasushige',
+    '2025-08-28',
     '旧長岡家住宅（美馬市）',
-    '旧長岡家住宅, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/33687.html'
+    'Old Nagaoka House, Mima'
   ),
-  '吉野川': cityPhoto(
-    'mima-kanko-3982.jpg',
+  '吉野川': wikiPhoto(
+    'yoshino-gawa-anabuki-bridge.jpg',
+    'https://commons.wikimedia.org/wiki/File:Yoshino_River_and_Anabuki_Bridge_ac.jpg',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0/',
+    'Asturio Cantabrio',
+    'https://commons.wikimedia.org/wiki/User:Asturio_Cantabrio',
+    '2022-08',
     '吉野川（美馬市）',
-    '吉野川, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/3982.html'
+    'Yoshino River, Mima'
   ),
   '四国三郎の郷': cityPhoto(
     'mima-kanko-3983.jpg',
@@ -593,11 +644,16 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '四国三郎の郷, Mima',
     'https://www.city.mima.lg.jp/kanko/map/list/3983.html'
   ),
-  '清流穴吹川': cityPhoto(
-    'mima-kanko-3984.jpg',
-    '清流穴吹川（美馬市）',
-    '清流穴吹川, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/3984.html'
+  '清流穴吹川': wikiPhoto(
+    'anabuki-river-mima-20080403.jpg',
+    'https://commons.wikimedia.org/wiki/File:Anabuki_River.jpg',
+    'CC BY-SA 3.0',
+    'https://creativecommons.org/licenses/by-sa/3.0/',
+    'Johan Hoenselaar',
+    'https://commons.wikimedia.org/wiki/User:Johan_Hoenselaar',
+    '2008-04-03',
+    '穴吹川（美馬市）',
+    'Anabuki River, Mima'
   ),
   'ブルーベリー狩り': cityPhoto(
     'mima-kanko-3985.jpg',
@@ -653,23 +709,18 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '中尾山高原, Mima',
     'https://www.city.mima.lg.jp/kanko/map/list/3995.html'
   ),
-  '交流会館「ブルーヴィラ穴吹」': cityPhoto(
-    'mima-kanko-3997.jpg',
-    '交流会館「ブルーヴィラ穴吹」（美馬市）',
-    '交流会館「ブルーヴィラ穴吹」, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/3997.html'
-  ),
-  '清流の郷 ブルーヴィラあなぶき': cityPhoto(
-    'mima-kanko-3997.jpg',
-    '清流の郷 ブルーヴィラあなぶき（美馬市）',
-    '清流の郷 ブルーヴィラあなぶき, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/3997.html'
-  ),
-  'コテージ清流の郷': cityPhoto(
-    'mima-kanko-4038.jpg',
+  '交流会館「ブルーヴィラ穴吹」': BLUE_VILLA_PHOTO,
+  '清流の郷 ブルーヴィラあなぶき': BLUE_VILLA_PHOTO,
+  'コテージ清流の郷': wikiPhoto(
+    'koteeji-seiryu-no-sato-20080911.jpg',
+    'https://commons.wikimedia.org/wiki/File:Koteeji_Seiryū-no-sato.jpg',
+    'CC BY-SA 3.0',
+    'https://creativecommons.org/licenses/by-sa/3.0/',
+    'Johan Hoenselaar',
+    'https://commons.wikimedia.org/wiki/User:Johan_Hoenselaar',
+    '2008-09-11',
     'コテージ清流の郷（美馬市）',
-    'コテージ清流の郷, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/4038.html'
+    'Seiryu-no-sato cottages, Mima'
   ),
   '市営 一の森ヒュッテ': cityPhoto(
     'mima-kanko-4042.jpg',
@@ -695,53 +746,78 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '木造毘沙門天立像（もくぞうびしゃもんてんりゅうぞう） 〔国指定重要文化財〕, Mima',
     'https://www.city.mima.lg.jp/kanko/map/list/4045.html'
   ),
-  '旧長岡家住宅（きゅうながおかけじゅうたく） 〔国指定重要文化財〕': cityPhoto(
-    'mima-kanko-4047.jpg',
-    '旧長岡家住宅（きゅうながおかけじゅうたく） 〔国指定重要文化財〕（美馬市）',
-    '旧長岡家住宅（きゅうながおかけじゅうたく） 〔国指定重要文化財〕, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/4047.html'
+  '旧長岡家住宅（きゅうながおかけじゅうたく） 〔国指定重要文化財〕': wikiPhoto(
+    'nagaoka-ke-jutaku-mima-20250828.jpg',
+    'https://commons.wikimedia.org/wiki/File:Nagaokake_zyutaku_20250828_1.jpg',
+    'CC0 1.0',
+    'https://creativecommons.org/publicdomain/zero/1.0/',
+    'Araiyasushige',
+    'https://commons.wikimedia.org/wiki/User:Araiyasushige',
+    '2025-08-28',
+    '旧長岡家住宅（美馬市）',
+    'Old Nagaoka House, Mima'
   ),
-  '大谷川堰堤（おおたにがわえんてい） 〔国登録有形文化財〕': cityPhoto(
-    'mima-kanko-4049.jpg',
-    '大谷川堰堤（おおたにがわえんてい） 〔国登録有形文化財〕（美馬市）',
-    '大谷川堰堤（おおたにがわえんてい） 〔国登録有形文化財〕, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/4049.html'
+  '大谷川堰堤（おおたにがわえんてい） 〔国登録有形文化財〕': wikiPhoto(
+    'de-rijke-dam-mima-20080710.jpg',
+    'https://commons.wikimedia.org/wiki/File:De_Rijke_Dam_in_Mima_City,_Tokushima,_Japan.jpg',
+    'CC BY-SA 3.0',
+    'https://creativecommons.org/licenses/by-sa/3.0/',
+    'Mima City Hall',
+    'https://www.city.mima.lg.jp/',
+    '2008-07-10',
+    '大谷川堰堤（美馬市）',
+    'Otani-gawa dam (De Rijke), Mima'
   ),
-  '青木家住宅（あおきけじゅうたく） 〔国登録有形文化財〕': cityPhoto(
-    'mima-kanko-4050.jpg',
-    '青木家住宅（あおきけじゅうたく） 〔国登録有形文化財〕（美馬市）',
-    '青木家住宅（あおきけじゅうたく） 〔国登録有形文化財〕, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/4050.html'
+  '青木家住宅（あおきけじゅうたく） 〔国登録有形文化財〕': wikiPhoto(
+    'aoki-residence-mima-20091202.jpg',
+    'https://commons.wikimedia.org/wiki/File:Aoki_Residence,_Mima_Town,_Mima_City,_Tokushima.JPG',
+    'CC BY 3.0',
+    'https://creativecommons.org/licenses/by/3.0/',
+    'Brianmima',
+    'https://commons.wikimedia.org/wiki/User:Brianmima',
+    '2009-12-02',
+    '青木家住宅（美馬市美馬町）',
+    'Aoki Residence, Mima'
   ),
-  '旅館たおか（りょかんたおか） 〔国登録有形文化財〕': cityPhoto(
-    'mima-kanko-4051.jpg',
-    '旅館たおか（りょかんたおか） 〔国登録有形文化財〕（美馬市）',
-    '旅館たおか（りょかんたおか） 〔国登録有形文化財〕, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/4051.html'
-  ),
+  '旅館たおか（りょかんたおか） 〔国登録有形文化財〕': TAOKA_PHOTO,
   '鎌村家住宅（かまむらけじゅうたく） 〔国登録有形文化財〕': cityPhoto(
     'mima-kanko-4052.jpg',
     '鎌村家住宅（かまむらけじゅうたく） 〔国登録有形文化財〕（美馬市）',
     '鎌村家住宅（かまむらけじゅうたく） 〔国登録有形文化財〕, Mima',
     'https://www.city.mima.lg.jp/kanko/map/list/4052.html'
   ),
-  '西教寺（さいきょうじ）〔国登録有形文化財〕': cityPhoto(
-    'mima-kanko-4053.jpg',
-    '西教寺（さいきょうじ）〔国登録有形文化財〕（美馬市）',
-    '西教寺（さいきょうじ）〔国登録有形文化財〕, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/4053.html'
+  '西教寺（さいきょうじ）〔国登録有形文化財〕': wikiPhoto(
+    'saikyo-ji-mima.jpg',
+    'https://commons.wikimedia.org/wiki/File:Saikyō_Tempel.jpg',
+    'CC BY-SA 3.0',
+    'https://creativecommons.org/licenses/by-sa/3.0/',
+    'Johan Hoenselaar',
+    'https://commons.wikimedia.org/wiki/User:Johan_Hoenselaar',
+    '2012-08-27',
+    '西教寺（美馬市）',
+    'Saikyoji temple, Mima'
   ),
-  '願勝寺（がんしょうじ） 〔国登録有形文化財〕': cityPhoto(
-    'mima-kanko-4054.jpg',
-    '願勝寺（がんしょうじ） 〔国登録有形文化財〕（美馬市）',
-    '願勝寺（がんしょうじ） 〔国登録有形文化財〕, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/4054.html'
+  '願勝寺（がんしょうじ） 〔国登録有形文化財〕': wikiPhoto(
+    'gansho-ji-mima-20080321.jpg',
+    'https://commons.wikimedia.org/wiki/File:Gansho_Tempel_in_Mima.jpg',
+    'CC BY-SA 3.0',
+    'https://creativecommons.org/licenses/by-sa/3.0/',
+    'Johan Hoenselaar',
+    'https://commons.wikimedia.org/wiki/User:Johan_Hoenselaar',
+    '2008-03-21',
+    '願勝寺（美馬市寺町）',
+    'Ganshoji temple, Mima'
   ),
-  '安楽寺（あんらくじ） 〔国登録有形文化財〕': cityPhoto(
-    'mima-kanko-4055.jpg',
-    '安楽寺（あんらくじ） 〔国登録有形文化財〕（美馬市）',
-    '安楽寺（あんらくじ） 〔国登録有形文化財〕, Mima',
-    'https://www.city.mima.lg.jp/kanko/map/list/4055.html'
+  '安楽寺（あんらくじ） 〔国登録有形文化財〕': wikiPhoto(
+    'anraku-ji-mima-20120827.jpg',
+    'https://commons.wikimedia.org/wiki/File:Anraku_Tempel.jpg',
+    'CC BY-SA 3.0',
+    'https://creativecommons.org/licenses/by-sa/3.0/',
+    'Johan Hoenselaar',
+    'https://commons.wikimedia.org/wiki/User:Johan_Hoenselaar',
+    '2012-08-27',
+    '安楽寺（美馬市）',
+    'Anrakuji temple, Mima'
   ),
   '滝の宮経塚': cityPhoto(
     'mima-kanko-4056.jpg',
@@ -923,6 +999,107 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '脇城跡, Mima',
     'https://www.city.mima.lg.jp/kanko/map/list/4094.html'
   ),
+
+  '落久保の屋台': wikiPhoto(
+    'ochikubo-yatai-wakimachi-20220726.jpg',
+    'https://commons.wikimedia.org/wiki/File:Wakimati20220726_7.jpg',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0/',
+    'Dokudami',
+    'https://commons.wikimedia.org/wiki/User:Dokudami',
+    '2022-07-26',
+    '落久保の屋台（美馬市脇町）',
+    'Ochikubo festival float, Wakimachi, Mima'
+  ),
+  '将棋名人 小野五平': cityPhoto(
+    'ono-gohei.jpg',
+    '将棋名人 小野五平（美馬市）',
+    'Shogi master Ono Gohei, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/385363.html'
+  ),
+  '八幡の大スギ': cityPhoto(
+    'mima-kanko-4062.jpg',
+    '八幡の大スギ（美馬市）',
+    'Hachiman no osugi cedar, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4062.html'
+  ),
+  '貞眞寺山門': cityPhoto(
+    'mima-kanko-4086.jpg',
+    '貞眞寺山門（美馬市）',
+    'Teishinji sanmon gate, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4086.html'
+  ),
+  '三島古墳群１号': cityPhoto(
+    'mima-kanko-4071.jpg',
+    '三島古墳群１号（美馬市）',
+    'Mishima kofun group mound 1, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4071.html'
+  ),
+  '三島古墳群２号': cityPhoto(
+    'mima-kanko-4072.jpg',
+    '三島古墳群２号（美馬市）',
+    'Mishima kofun group mound 2, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4072.html'
+  ),
+  '三島古墳群３号': cityPhoto(
+    'mima-kanko-4073.jpg',
+    '三島古墳群３号（美馬市）',
+    'Mishima kofun group mound 3, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4073.html'
+  ),
+  '木造毘沙門天立像': cityPhoto(
+    'mima-kanko-4045.jpg',
+    '木造毘沙門天立像（美馬市）',
+    'Wooden Bishamonten statue, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4045.html'
+  ),
+  '聖衆来迎図': cityPhoto(
+    'mima-kanko-4065.jpg',
+    '聖衆来迎図（美馬市）',
+    'Shoju raigo painting, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4065.html'
+  ),
+  '三味線もちつき（北崎組）（井内組）（うだつ）': cityPhoto(
+    'mima-kanko-11514.jpg',
+    '三味線もちつき（美馬市）',
+    'Shamisen mochi-tsuki, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11514.html'
+  ),
+  '大谷川堰堤': wikiPhoto(
+    'de-rijke-dam-mima-20080710.jpg',
+    'https://commons.wikimedia.org/wiki/File:De_Rijke_Dam_in_Mima_City,_Tokushima,_Japan.jpg',
+    'CC BY-SA 3.0',
+    'https://creativecommons.org/licenses/by-sa/3.0/',
+    'Mima City Hall',
+    'https://www.city.mima.lg.jp/',
+    '2008-07-10',
+    '大谷川堰堤（美馬市）',
+    'Otani-gawa dam (De Rijke), Mima'
+  ),
+  '青木家住宅主屋': wikiPhoto(
+    'aoki-residence-mima-20091202.jpg',
+    'https://commons.wikimedia.org/wiki/File:Aoki_Residence,_Mima_Town,_Mima_City,_Tokushima.JPG',
+    'CC BY 3.0',
+    'https://creativecommons.org/licenses/by/3.0/',
+    'Brianmima',
+    'https://commons.wikimedia.org/wiki/User:Brianmima',
+    '2009-12-02',
+    '青木家住宅主屋（美馬市美馬町）',
+    'Aoki Residence main house, Mima'
+  ),
+  '西教寺本堂': wikiPhoto(
+    'saikyo-ji-mima.jpg',
+    'https://commons.wikimedia.org/wiki/File:Saikyō_Tempel.jpg',
+    'CC BY-SA 3.0',
+    'https://creativecommons.org/licenses/by-sa/3.0/',
+    'Johan Hoenselaar',
+    'https://commons.wikimedia.org/wiki/User:Johan_Hoenselaar',
+    '2012-08-27',
+    '西教寺本堂（美馬市）',
+    'Saikyoji hondo, Mima'
+  ),
+  '旅館たおか主屋': TAOKA_PHOTO,
+
   '舞中島': cityPhoto(
     'mima-kanko-4095.jpg',
     '舞中島（美馬市）',
