@@ -113,6 +113,8 @@ function stay(
 }
 
 export const TRAVEL_DINING: readonly TravelRow[] = [
+  dining('mima-dining-11', '割烹旅館田岡'),
+  dining('mima-dining-12', 'ブルーヴィラあなぶき'),
   dining('mima-dining-01', 'うだつ emon 茶房'),
   dining('mima-dining-02', 'Cafe角屋'),
   dining('mima-dining-03', '茶里庵(さりあん）'),
@@ -122,12 +124,16 @@ export const TRAVEL_DINING: readonly TravelRow[] = [
   dining('mima-dining-07', '四季料理 森友'),
   dining('mima-dining-08', '皿そば楽庵'),
   dining('mima-dining-09', '道の駅 藍蔵'),
-  dining('mima-dining-10', '和ぁさん家'),
-  dining('mima-dining-11', '割烹旅館田岡'),
-  dining('mima-dining-12', 'ブルーヴィラあなぶき')
+  dining('mima-dining-10', '和ぁさん家')
 ];
 
 export const TRAVEL_STAY: readonly TravelRow[] = [
+  stay(
+    'mima-stay-04',
+    '剣山頂上ヒュッテ',
+    '美馬市木屋平字川井カケ570',
+    '080-2997-8482'
+  ),
   stay(
     'mima-stay-01',
     'ADLIV',
@@ -145,12 +151,6 @@ export const TRAVEL_STAY: readonly TravelRow[] = [
     '清月屋敷',
     '美馬市穴吹町穴吹市ノ下100-6',
     '0883-53-7733'
-  ),
-  stay(
-    'mima-stay-04',
-    '剣山頂上ヒュッテ',
-    '美馬市木屋平字川井カケ570',
-    '080-2997-8482'
   ),
   stay(
     'mima-stay-05',
