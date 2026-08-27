@@ -17,7 +17,9 @@ import {
   TRAVEL_ACCESSED,
   TRAVEL_ALL,
   TRAVEL_CARD_FOLD,
+  TRAVEL_COMMERCE,
   TRAVEL_DINING,
+  TRAVEL_SHOPPING,
   TRAVEL_SOURCES,
   TRAVEL_STAY,
   isExperiencePackRow,
@@ -141,6 +143,8 @@ function ChipLabel({id}: {id: FilterId}) {
       return t('chips.sights');
     case 'commerce':
       return t('chips.commerce');
+    case 'shopping':
+      return t('chips.shopping');
     case 'infra':
       return t('chips.infra');
     case 'onsen':
@@ -371,7 +375,8 @@ export function MimaFacilityLookup({
   const searching = q !== '';
   const nameHitExists =
     searching && displayRows.some((row) => row.name_ja.toLowerCase().includes(q));
-  const travelLayer = isTravelFilter(filter);
+  const travelLayer =
+    isTravelFilter(filter) || filter === 'shopping' || filter === 'commerce';
 
   const travelHits = searching
     ? TRAVEL_ALL.filter((row) => row.name_ja.toLowerCase().includes(q))
@@ -379,7 +384,11 @@ export function MimaFacilityLookup({
       ? [...TRAVEL_DINING]
       : filter === 'stay'
         ? [...TRAVEL_STAY]
-        : [];
+        : filter === 'shopping'
+          ? [...TRAVEL_SHOPPING]
+          : filter === 'commerce'
+            ? [...TRAVEL_COMMERCE]
+            : [];
 
   const includePack = searching || !travelLayer;
   const filteredPack = includePack
@@ -430,6 +439,8 @@ export function MimaFacilityLookup({
     if (id === 'sights') return rankedSee.length;
     if (id === 'onsen') return onsenRows.length;
     if (id === 'experience') return experienceRows.length;
+    if (id === 'shopping') return TRAVEL_SHOPPING.length;
+    if (id === 'commerce') return TRAVEL_COMMERCE.length;
     return TOP_CHIP_COUNTS[id];
   }
 

@@ -27,7 +27,7 @@ export const TRAVEL_SOURCES = {
 export const TRAVEL_KINDS = ['dining', 'stay'] as const;
 export type TravelKind = (typeof TRAVEL_KINDS)[number];
 
-export const TOP_CHIPS = ['stay', 'dining', 'onsen', 'experience', 'sights'] as const;
+export const TOP_CHIPS = ['stay', 'dining', 'onsen', 'experience', 'sights', 'shopping', 'commerce'] as const;
 export type TopChip = (typeof TOP_CHIPS)[number];
 
 /** First-screen photo cards. Remaining sights go behind さらに表示. */
@@ -56,6 +56,7 @@ export type FilterId =
   | FacilityCategory
   | TravelKind
   | 'sights'
+  | 'shopping'
   | 'commerce'
   | 'infra'
   | 'onsen'
@@ -173,6 +174,10 @@ export const TRAVEL_STAY: readonly TravelRow[] = [
 ];
 
 export const TRAVEL_ALL: readonly TravelRow[] = [...TRAVEL_DINING, ...TRAVEL_STAY];
+
+/** First ship: pills only. No invented shop or business listings. */
+export const TRAVEL_SHOPPING: readonly TravelRow[] = [];
+export const TRAVEL_COMMERCE: readonly TravelRow[] = [];
 
 if (TRAVEL_DINING.length !== TRAVEL_COUNTS.dining) {
   throw new Error(`mima dining ${TRAVEL_DINING.length} != ${TRAVEL_COUNTS.dining}`);
@@ -376,15 +381,16 @@ export function packRowMatchesFilter(
   if (filter === 'experience') {
     return isExperiencePackRow({category, name_ja: nameJa});
   }
-  if (filter === 'commerce' || isTravelFilter(filter)) return false;
+  if (filter === 'shopping' || filter === 'commerce' || isTravelFilter(filter)) return false;
   return category === filter;
 }
 
 /**
  * no c, no q → stay (default chip 宿泊).
- * c in sights|dining|stay|onsen|experience → that.
+ * c in sights|dining|stay|onsen|experience|shopping|commerce → that.
  * legacy c=sights still opens 観光; tourism/cultural → sights.
- * legacy civic / commerce / infra → sights (no infrastructure dump on the fold).
+ * legacy civic / infra → sights (no infrastructure dump on the fold).
+ * c=shopping stays shopping; c=commerce stays commerce (not remapped to sights).
  * c=all still allowed internally for search.
  * q without c → all (search-all).
  */
@@ -394,13 +400,15 @@ export function resolveMimaFilter(c: string | undefined, q: string): FilterId {
     c === 'stay' ||
     c === 'dining' ||
     c === 'onsen' ||
-    c === 'experience'
+    c === 'experience' ||
+    c === 'shopping' ||
+    c === 'commerce'
   ) {
     return c;
   }
   if (c === 'all') return 'all';
   if (c === 'tourism' || c === 'cultural_property') return 'sights';
-  if (c === 'commerce' || c === 'infra') return 'sights';
+  if (c === 'infra') return 'sights';
   if (c !== undefined && isInfraCategory(c)) return 'sights';
   if (isPackCategory(c)) return c;
   if (q.trim() !== '') return 'all';
