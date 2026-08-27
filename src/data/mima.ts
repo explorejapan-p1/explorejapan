@@ -293,8 +293,20 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   '名馬「池月」伝説': IKEZUKI_PHOTO,
   '三木家住宅': MIKI_PHOTO,
   '三木家住宅（みきけじゅうたく） 〔国指定重要文化財〕': MIKI_PHOTO,
-  'ブルーヴィラあなぶき': BLUE_VILLA_PHOTO,
-  '割烹旅館田岡': TAOKA_PHOTO,
+  'ブルーヴィラあなぶき': bureauPhoto(
+    'blue-villa-anabuki-dish.jpg',
+    '2024',
+    'ブルーヴィラあなぶき 阿波尾鶏の天丼（美馬市）',
+    'Blue Villa Anabuki tendon set, Mima',
+    GOURMET_PAGE
+  ),
+  '割烹旅館田岡': bureauPhoto(
+    'kappo-ryokan-taoka-dish.jpg',
+    '2024',
+    '割烹旅館田岡 田岡御膳（美馬市）',
+    'Kappo Ryokan Taoka celebratory meal, Mima',
+    GOURMET_PAGE
+  ),
   'うだつ emon 茶房': bureauPhoto(
     'udatsu-emon-sabo.jpg',
     '2020',
@@ -365,7 +377,12 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'Waasan-ya, Mima',
     GOURMET_PAGE
   ),
-  'つるぎの湯 大桜': TSURUGI_YU_PHOTO,
+  'つるぎの湯 大桜': cityPhoto(
+    'tsurugi-no-yu-bath.jpg',
+    'つるぎの湯 大桜 浴室（美馬市木屋平）',
+    'Tsurugi-no-yu Ozakura bath, Koyadaira, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/4041.html'
+  ),
   '剣山頂上ヒュッテ': TSURUGISAN_HUTTE_PHOTO,
   'ADLIV': bureauPhoto(
     'adliv.jpg',
@@ -408,6 +425,30 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'Paysage Moriguchi（美馬市脇町）',
     'Paysage Moriguchi, Wakimachi, Mima',
     HOTEL_PAGE
+  ),
+  '樺太開拓の志士・岡本監輔': cityPhoto(
+    'mima-kanko-11490.jpg',
+    '樺太開拓の志士・岡本監輔（美馬市）',
+    '樺太開拓の志士・岡本監輔, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11490.html'
+  ),
+  '三木家資料館': cityPhoto(
+    'mima-kanko-11496.jpg',
+    '三木家資料館（美馬市）',
+    '三木家資料館, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11496.html'
+  ),
+  '美馬市観光交流センター': cityPhoto(
+    'mima-kanko-11508.jpg',
+    '美馬市観光交流センター（美馬市）',
+    '美馬市観光交流センター, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11508.html'
+  ),
+  '美馬市観光交流センター（うだつの町並み）': cityPhoto(
+    'mima-kanko-11508.jpg',
+    '美馬市観光交流センター（うだつの町並み）（美馬市）',
+    '美馬市観光交流センター（うだつの町並み）, Mima',
+    'https://www.city.mima.lg.jp/kanko/map/list/11508.html'
   ),
   '民俗資料館（休館中）': cityPhoto(
     'mima-kanko-11498.jpg',
