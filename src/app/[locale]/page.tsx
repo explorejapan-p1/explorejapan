@@ -1,6 +1,5 @@
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {JapanMap} from '@/components/JapanMap';
-import {VideoSlot} from '@/components/VideoSlot';
 import {routing, type AppLocale} from '@/i18n/routing';
 import {hreflangMetadata} from '@/lib/seo';
 
@@ -26,11 +25,10 @@ export default async function HomePage({params}: Props) {
   const t = await getTranslations('home');
 
   return (
-    <>
-      <h1>{t('h1')}</h1>
-      <p className="lede">{t('lede')}</p>
+    <div className="home-stage" data-home="">
+      <h1 className="sr-only">{t('h1')}</h1>
+      <p className="home-line">{t('line')}</p>
       <JapanMap locale={locale} />
-      <VideoSlot locale={locale} />
-    </>
+    </div>
   );
 }

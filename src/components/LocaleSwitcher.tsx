@@ -3,7 +3,11 @@
 import {useLocale} from 'next-intl';
 import {usePathname, useRouter} from '@/i18n/navigation';
 
-export function LocaleSwitcher() {
+type Props = {
+  compact?: boolean;
+};
+
+export function LocaleSwitcher({compact = false}: Props) {
   const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
@@ -13,23 +17,25 @@ export function LocaleSwitcher() {
   }
 
   return (
-    <nav className="lang-switch" aria-label="Language">
+    <nav className={compact ? 'lang-switch is-compact' : 'lang-switch'} aria-label="Language">
       <button
         type="button"
         className={locale === 'ja' ? 'is-active' : undefined}
         aria-current={locale === 'ja' ? 'true' : undefined}
+        aria-label="日本語"
         onClick={() => switchTo('ja')}
       >
-        日本語
+        {compact ? 'JA' : '日本語'}
       </button>
       <span aria-hidden="true">·</span>
       <button
         type="button"
         className={locale === 'en' ? 'is-active' : undefined}
         aria-current={locale === 'en' ? 'true' : undefined}
+        aria-label="English"
         onClick={() => switchTo('en')}
       >
-        English
+        {compact ? 'EN' : 'English'}
       </button>
     </nav>
   );

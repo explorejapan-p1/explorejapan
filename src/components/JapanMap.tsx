@@ -12,19 +12,20 @@ export function JapanMap({locale}: Props) {
 
   return (
     <div className="map-block">
-      {map.source === 'placeholder' ? (
-        <p className="map-banner" role="status">
-          {isJa
-            ? 'プレースホルダ地図（N03 形状ではない）· 47 都道府県はすべてドリルできます'
-            : 'Placeholder map (not N03 geometry) · all 47 prefectures drill'}
-        </p>
-      ) : null}
-      <div className="map-grid">
+      <div className="map-viewport">
+        {map.source === 'placeholder' ? (
+          <p className="map-banner" role="status">
+            {isJa
+              ? 'プレースホルダ地図（N03 形状ではない）· 47 都道府県はすべてドリルできます'
+              : 'Placeholder map (not N03 geometry) · all 47 prefectures drill'}
+          </p>
+        ) : null}
         <svg
           className="choropleth"
           viewBox={map.viewBox}
           role="img"
           aria-label={isJa ? '日本の都道府県地図' : 'Map of Japan prefectures'}
+          preserveAspectRatio="xMidYMid meet"
         >
           {map.shapes.map((s) => (
             <a
@@ -37,6 +38,10 @@ export function JapanMap({locale}: Props) {
             </a>
           ))}
         </svg>
+        <GeoCitation source={map.source} locale={locale} />
+      </div>
+      <details className="name-list-fold">
+        <summary>{isJa ? '都道府県' : 'Prefectures'}</summary>
         <nav className="name-list" aria-label={isJa ? '都道府県一覧' : 'Prefecture list'}>
           <ol>
             {PREFECTURES.map((p) => (
@@ -51,8 +56,7 @@ export function JapanMap({locale}: Props) {
             ))}
           </ol>
         </nav>
-      </div>
-      <GeoCitation source={map.source} locale={locale} />
+      </details>
     </div>
   );
 }

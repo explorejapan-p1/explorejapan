@@ -5,7 +5,7 @@
   },
   "home": {
     "h1": "Rural Japan Directory",
-    "lede": "Prefecture to municipality. The first listing is Mima City, Tokushima."
+    "line": "First listing: Mima."
   },
   "pref": {
     "rolling": "The municipality layer for this prefecture is not wired yet. Start from Tokushima.",

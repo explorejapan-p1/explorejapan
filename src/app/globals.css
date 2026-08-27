@@ -560,3 +560,168 @@ a.chip { text-decoration: none; color: inherit; }
 }
 .card-photo.is-well .card-well{display:flex;align-items:flex-end;width:100%;height:100%;}
 .card-well-name{color:#f3f3f3;font-weight:700;font-size:1.08rem;line-height:1.25;padding:0.9rem 0.95rem;}
+
+/* Homepage 2026 map stage — scoped; Mima chrome stays document+hero */
+.shell[data-home],
+.shell:has([data-home]) {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  position: relative;
+}
+.shell:has([data-home]) .site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 6;
+  pointer-events: none;
+}
+.shell:has([data-home]) .header-row {
+  border-bottom: 0;
+  padding: 0.8rem 1.1rem;
+  align-items: center;
+  pointer-events: none;
+}
+.shell:has([data-home]) .wordmark,
+.shell:has([data-home]) .lang-switch {
+  pointer-events: auto;
+}
+.shell:has([data-home]) .wordmark {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+.shell:has([data-home]) .lang-switch {
+  font-size: 11px;
+}
+.shell:has([data-home]) .lang-switch button {
+  font-size: 11px;
+  padding: 0.15rem 0.1rem;
+  color: var(--muted);
+}
+.shell:has([data-home]) .lang-switch .is-active {
+  color: var(--ink);
+}
+.shell:has([data-home]) .hold-banner {
+  display: none;
+}
+.shell:has([data-home]) .site-footer {
+  font-size: 11px;
+  line-height: 1.4;
+  margin: 0;
+  padding: 0.45rem 1.1rem 1.15rem;
+  border-top: 0;
+  color: var(--muted);
+}
+.shell:has([data-home]) .site-footer p {
+  margin: 0;
+}
+
+.home-stage {
+  position: relative;
+  min-height: 100vh;
+  background: var(--paper);
+}
+.home-line {
+  position: absolute;
+  z-index: 5;
+  left: 1.15rem;
+  bottom: 2.55rem;
+  margin: 0;
+  max-width: min(22rem, calc(100vw - 8rem));
+  font-size: clamp(1.55rem, 4.1vw, 2.65rem);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.12;
+  color: var(--ink);
+  pointer-events: none;
+}
+.home-stage .map-viewport {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: var(--paper);
+}
+.home-stage .choropleth {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: transparent;
+  border: 0;
+}
+.home-stage .shape {
+  fill: #e6e6e6;
+  stroke: #fff;
+  stroke-width: 1.1;
+  cursor: pointer;
+}
+.home-stage .shape:hover { fill: #cfcfcf; }
+.home-stage .shape.is-tokushima {
+  fill: var(--ink);
+  stroke: #fff;
+}
+.home-stage .shape.is-tokushima:hover { fill: #000; }
+.home-stage .map-banner {
+  position: absolute;
+  top: 2.6rem;
+  left: 1.1rem;
+  z-index: 4;
+  margin: 0;
+  font-size: 11px;
+  background: transparent;
+  color: var(--muted);
+  padding: 0;
+}
+.home-stage .geo-cite {
+  position: absolute;
+  left: 1.15rem;
+  right: 7.5rem;
+  bottom: 0.4rem;
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.35;
+  color: var(--muted);
+  z-index: 4;
+}
+.home-stage .geo-cite p { margin: 0.08rem 0; }
+.home-stage .geo-cite-label {
+  font-weight: 600;
+  margin-right: 0.35rem;
+  color: var(--muted);
+}
+.home-stage .geo-cite-note { font-size: 11px; }
+.home-stage .name-list-fold {
+  margin: 0.35rem 1.15rem 0.2rem;
+  font-size: 11px;
+  color: var(--muted);
+}
+.home-stage .name-list-fold summary {
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  padding: 0.35rem 0;
+}
+.home-stage .name-list {
+  max-height: 18rem;
+  margin-top: 0.4rem;
+  font-size: 0.92rem;
+}
+
+@media (max-width: 800px) {
+  .home-line {
+    left: 0.9rem;
+    bottom: 3.1rem;
+    font-size: 1.45rem;
+    max-width: calc(100vw - 1.8rem);
+  }
+  .home-stage .geo-cite {
+    left: 0.9rem;
+    right: 0.9rem;
+    bottom: 0.35rem;
+  }
+  .shell:has([data-home]) .header-row {
+    padding: 0.7rem 0.9rem;
+  }
+}
