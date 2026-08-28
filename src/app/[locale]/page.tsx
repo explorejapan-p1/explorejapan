@@ -4,7 +4,7 @@ import {JsonLd} from '@/components/JsonLd';
 import {BASE_PATH, MIMA, MIMA_PLACE_PHOTO} from '@/data/mima';
 import {routing, type AppLocale} from '@/i18n/routing';
 import {homeGraph} from '@/lib/jsonld';
-import {shareMetadata} from '@/lib/seo';
+import {BRAND_OG_PHOTO, shareMetadata} from '@/lib/seo';
 
 type Props = {params: Promise<{locale: string}>};
 
@@ -23,7 +23,7 @@ export async function generateMetadata({params}: Props) {
       loc === 'ja'
         ? '徳島県美馬市から始める、日本の市町村案内。'
         : 'A Japan municipalities guide, starting with Mima City, Tokushima.',
-    image: MIMA_PLACE_PHOTO,
+    image: BRAND_OG_PHOTO,
     index: true
   });
 }

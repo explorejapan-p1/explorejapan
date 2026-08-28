@@ -3,6 +3,7 @@
 import {useSelectedLayoutSegments} from 'next/navigation';
 import {Link, usePathname} from '@/i18n/navigation';
 import {LocaleSwitcher} from './LocaleSwitcher';
+import {BRAND_LOCKUP_SRC, BRAND_NAME_EN, BRAND_NAME_JA} from '@/lib/brand';
 
 type Props = {
   locale: string;
@@ -16,6 +17,7 @@ export function SiteChrome({locale, children, variant}: Props) {
   const pathIsHome = pathname === '/' && segments.length === 0;
   const isHome = variant === 'home' || (variant !== 'page' && pathIsHome);
   const isJa = locale === 'ja';
+  const brand = isJa ? `${BRAND_NAME_JA} ${BRAND_NAME_EN}` : `${BRAND_NAME_EN} ${BRAND_NAME_JA}`;
   return (
     <div
       className={isHome ? 'shell shell-home' : 'shell'}
@@ -23,12 +25,14 @@ export function SiteChrome({locale, children, variant}: Props) {
       data-variant={isHome ? 'home' : 'page'}
     >
       <header className="site-header">
-        {isHome ? null : (
-          <p className="hold-banner">{isJa ? 'SNS / 広告なし' : 'No SNS or ads'}</p>
-        )}
         <div className="header-row">
-          <Link href="/" className={isHome ? 'wordmark wordmark-tiny' : 'wordmark'}>
-            {isJa ? '日本全国市町村紹介' : 'Japan Municipalities Guide'}
+          <Link href="/" className="brand-lockup" aria-label={brand}>
+            <img
+              src={BRAND_LOCKUP_SRC}
+              alt={brand}
+              width={1024}
+              height={1024}
+            />
           </Link>
           <LocaleSwitcher compact={isHome} />
         </div>
@@ -36,10 +40,13 @@ export function SiteChrome({locale, children, variant}: Props) {
       <main>{children}</main>
       {isHome ? null : (
         <footer className="site-footer">
+          <p className="footer-brand">
+            <img src={BRAND_LOCKUP_SRC} alt={brand} width={1024} height={1024} />
+          </p>
           <p>
             {isJa
-              ? 'Project 1 · 美馬市から始める市町村紹介。公開・DNS・派生地形データの再配布は別ゲート。'
-              : 'Project 1 · a municipalities guide starting with Mima City. Public DNS and redistributing derived geo are gated.'}
+              ? '美馬市から始める、日本の市町村案内。'
+              : 'A Japan municipalities guide, starting with Mima City.'}
           </p>
         </footer>
       )}

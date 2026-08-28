@@ -1,13 +1,23 @@
 import type {Metadata} from 'next';
 import {MIMA_PLACE_PHOTO, SITE_URL, type MimaPlacePhoto} from '@/data/mima';
 import type {AppLocale} from '@/i18n/routing';
+import {
+  BRAND_NAME_EN,
+  BRAND_NAME_JA,
+  BRAND_OG_SRC
+} from '@/lib/brand';
 
-export const SITE_NAME_JA = '日本全国市町村紹介';
-export const SITE_NAME_EN = 'Japan Municipalities Guide';
-export const BRAND_NAME_JA = '冒険日本';
-export const BRAND_NAME_EN = 'BokenJapan';
-export const ORG_NAME = 'BokenJapan';
-export const ORG_NAME_JA = '冒険日本';
+export {BRAND_NAME_EN, BRAND_NAME_JA};
+export const SITE_NAME_JA = BRAND_NAME_JA;
+export const SITE_NAME_EN = BRAND_NAME_EN;
+export const ORG_NAME = BRAND_NAME_EN;
+export const ORG_NAME_JA = BRAND_NAME_JA;
+
+export const BRAND_OG_PHOTO: Pick<MimaPlacePhoto, 'src' | 'altJa' | 'altEn'> = {
+  src: BRAND_OG_SRC,
+  altJa: '冒険日本 BokenJapan',
+  altEn: 'BokenJapan 冒険日本'
+};
 
 export function siteOrigin(): string {
   return SITE_URL.replace(/\/+$/, '');
@@ -28,7 +38,7 @@ export function absoluteMediaUrl(src: string): string {
   return `${host}${src.startsWith('/') ? src : `/${src}`}`;
 }
 
-export function photoAbs(photo: MimaPlacePhoto): string {
+export function photoAbs(photo: {src: string}): string {
   return absoluteMediaUrl(photo.src);
 }
 
@@ -40,12 +50,14 @@ export function defaultHero(): MimaPlacePhoto {
   return MIMA_PLACE_PHOTO;
 }
 
+export type ShareImage = Pick<MimaPlacePhoto, 'src' | 'altJa' | 'altEn'>;
+
 export type ShareOpts = {
   locale: AppLocale;
   rest?: string;
   title: string;
   description: string;
-  image: MimaPlacePhoto;
+  image: ShareImage;
   ogType?: 'website' | 'article';
   index?: boolean;
 };

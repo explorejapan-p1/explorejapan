@@ -1,3 +1,5 @@
+![BokenJapan / 冒険日本](public/brand/lockup.png)
+
 # Rural Japan Directory (unpublished v0)
 
 Scaffold on https://github.com/explorejapan-p1/explorejapan only.

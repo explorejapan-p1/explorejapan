@@ -6,9 +6,11 @@ import {
   schemaType,
   type PublicListing
 } from '@/lib/listings';
+import {BRAND_LOCKUP_SRC} from '@/lib/brand';
 import {
   ORG_NAME,
   ORG_NAME_JA,
+  absoluteMediaUrl,
   canonicalUrl,
   photoAbs,
   siteName,
@@ -21,7 +23,12 @@ function org() {
     '@id': `${siteOrigin()}/#org`,
     name: ORG_NAME,
     alternateName: ORG_NAME_JA,
-    url: `${siteOrigin()}/`
+    url: `${siteOrigin()}/`,
+    logo: {
+      '@type': 'ImageObject',
+      url: absoluteMediaUrl(BRAND_LOCKUP_SRC),
+      contentUrl: absoluteMediaUrl(BRAND_LOCKUP_SRC)
+    }
   };
 }
 
