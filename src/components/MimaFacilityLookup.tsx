@@ -424,9 +424,15 @@ export function MimaFacilityLookup({
     ? editorialCards
     : rankByOurTraffic(editorialCards, traffic.views, traffic.searches);
 
-  const foldCap = searching || showAll ? cards.length : TRAVEL_CARD_FOLD;
-  const foldCards = cards.slice(0, foldCap);
-  const restCount = cards.length - foldCards.length;
+  // Tsurugi visual grid is photo-only. Search still returns pack rows without photos.
+  const gridCards =
+    searching || town.slug !== 'tsurugi'
+      ? cards
+      : cards.filter((row) => h.sightPhoto(row.name_ja) !== null);
+
+  const foldCap = searching || showAll ? gridCards.length : TRAVEL_CARD_FOLD;
+  const foldCards = gridCards.slice(0, foldCap);
+  const restCount = gridCards.length - foldCards.length;
 
   const sheetRow =
     openId === null
@@ -436,13 +442,16 @@ export function MimaFacilityLookup({
         town.travelAll.find((row) => row.id === openId);
 
   function chipCount(id: (typeof TOP_CHIPS)[number]): number {
-    if (id === 'sights') return rankedSee.length;
-    if (id === 'onsen') return onsenRows.length;
-    if (id === 'experience') return experienceRows.length;
-    if (id === 'stay') return stayPackRows.length + town.travelStay.length;
-    if (id === 'dining') return town.travelDining.length;
-    if (id === 'shopping') return town.travelShopping.length;
-    if (id === 'commerce') return town.travelCommerce.length;
+    const photoOnly = town.slug === 'tsurugi';
+    const withPhoto = (rows: readonly CardRow[]) =>
+      photoOnly ? rows.filter((row) => h.sightPhoto(row.name_ja) !== null).length : rows.length;
+    if (id === 'sights') return withPhoto(rankedSee);
+    if (id === 'onsen') return withPhoto(onsenRows);
+    if (id === 'experience') return withPhoto(experienceRows);
+    if (id === 'stay') return withPhoto([...stayPackRows, ...town.travelStay]);
+    if (id === 'dining') return withPhoto(town.travelDining);
+    if (id === 'shopping') return withPhoto(town.travelShopping);
+    if (id === 'commerce') return withPhoto(town.travelCommerce);
     return TOP_CHIP_COUNTS[id];
   }
 
@@ -622,16 +631,20 @@ export function MimaFacilityLookup({
           ) : locale === 'ja' ? (
             <>
               <a href={TSURUGI_TRAVEL_SOURCES.stayList}>宿泊</a>は町の宿泊施設案内（パック掲載＋
-              {TSURUGI_TRAVEL_ACCESSED} の公式ページ）。飲食・体験・買物・商業の公式一覧は未掲載のため0件。
+              {TSURUGI_TRAVEL_ACCESSED} の公式ページ）。
+              飲食は道の駅レストラン・食べログ公開店ページ・商工会会員ページ（{TSURUGI_TRAVEL_ACCESSED}）。
+              体験・買物・商業の公式一覧は未掲載のため0件。
               <a href={TSURUGI_TRAVEL_SOURCES.onsen}>温泉</a>は町の観光案内で名前を確認できたもの。
-              点数は持ちません。
+              カードは出典写真があるものだけ。点数は持ちません。
             </>
           ) : (
             <>
               <a href={TSURUGI_TRAVEL_SOURCES.stayList}>Lodging</a> from the town lodging list
-              (pack rows plus the official page of {TSURUGI_TRAVEL_ACCESSED}). Dining, experience,
-              shopping, and commerce stay at 0 — no official list. <a href={TSURUGI_TRAVEL_SOURCES.onsen}>Onsen</a>{' '}
-              from the town tourism pages. No public scores.
+              (pack rows plus the official page of {TSURUGI_TRAVEL_ACCESSED}). Dining from the
+              roadside-station restaurant, Tabelog shop pages, and chamber member pages (
+              {TSURUGI_TRAVEL_ACCESSED}). Experience, shopping, and commerce stay at 0 — no official
+              list. <a href={TSURUGI_TRAVEL_SOURCES.onsen}>Onsen</a> from the town tourism pages.
+              Cards show only listings with a sourced photo. No public scores.
             </>
           )}
         </p>

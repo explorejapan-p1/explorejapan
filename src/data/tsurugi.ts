@@ -59,6 +59,47 @@ function wikiPhoto(
   };
 }
 
+function townPhoto(
+  file: string,
+  altJa: string,
+  altEn: string,
+  page: string
+): MimaPlacePhoto {
+  return {
+    src: `/explorejapan/media/${file}`,
+    commons: page,
+    license: '出典',
+    licenseUrl: page,
+    author: 'つるぎ町',
+    authorUrl: page,
+    taken: '2026',
+    accessed: '2026-08-28',
+    altJa,
+    altEn
+  };
+}
+
+function sourcePhoto(
+  file: string,
+  altJa: string,
+  altEn: string,
+  page: string,
+  author: string
+): MimaPlacePhoto {
+  return {
+    src: `/explorejapan/media/${file}`,
+    commons: page,
+    license: '出典',
+    licenseUrl: page,
+    author,
+    authorUrl: page,
+    taken: '2026',
+    accessed: '2026-08-28',
+    altJa,
+    altEn
+  };
+}
+
 export const TSURUGI_PLACE_PHOTO = wikiPhoto(
   'niso-udatsu-machinami.jpg',
   'https://commons.wikimedia.org/wiki/File:Niso-Udatsu-no-Machinami_ac_(1).jpg',
@@ -107,10 +148,97 @@ const TSURUGISAN_PHOTO = wikiPhoto(
   'Mount Tsurugi, Tokushima'
 );
 
+const YUYUKAN_REST = 'https://yuyukan.jp/restaurant/';
+const TABELOG_FURUTA = 'https://tabelog.com/tokushima/A3603/A360302/36007977/';
+const TABELOG_NOBU = 'https://tabelog.com/tokushima/A3603/A360302/36003271/';
+const TABELOG_INDRA = 'https://tabelog.com/tokushima/A3603/A360302/36002665/';
+const TABELOG_KANEKA = 'https://tabelog.com/tokushima/A3603/A360302/36000680/';
+const NANDEYANEN_PAGE = 'https://r.goope.jp/nandeyanen/';
+const OMAKASE_PAGE = 'https://r.goope.jp/omakase-kitchen/';
+
 /** Exact pack/travel name_ja only. No 美馬 photos. */
 export const TSURUGI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   '二層うだつの町並み': TSURUGI_PLACE_PHOTO,
   '織本屋': ORIMOTOYA_PHOTO,
   'ラ・フォーレつるぎ山': LA_FORET_PHOTO,
-  '剣山': TSURUGISAN_PHOTO
+  '剣山': TSURUGISAN_PHOTO,
+  'つるぎの宿 岩戸': townPhoto(
+    'tsurugi-no-yado-iwato.jpg',
+    'つるぎの宿 岩戸（つるぎ町一宇）',
+    'Tsurugi-no-yado Iwato, Ichiū, Tsurugi',
+    'https://www.town.tokushima-tsurugi.lg.jp/docs/3491.html'
+  ),
+  '剣山木綿麻温泉（つるぎさんゆうまおんせん）': townPhoto(
+    'tsurugisan-yuma-roten.jpg',
+    '剣山木綿麻温泉の露天風呂（つるぎ町貞光）',
+    'Tsurugisan Yuma Onsen outdoor bath, Sadamitsu, Tsurugi',
+    'https://www.town.tokushima-tsurugi.lg.jp/docs/3467.html'
+  ),
+  '於安パーク': townPhoto(
+    'oan-park.jpg',
+    '於安パーク（つるぎ町半田）',
+    'Oan Park, Handa, Tsurugi',
+    'https://www.town.tokushima-tsurugi.lg.jp/docs/3457.html'
+  ),
+  '巨樹の里': townPhoto(
+    'kyoju-no-sato-tochi.jpg',
+    '巨樹の里・桑平のトチノキ（つるぎ町）',
+    'Giant horse-chestnut in Kyoju-no-sato, Tsurugi',
+    'https://www.town.tokushima-tsurugi.lg.jp/docs/3456.html'
+  ),
+  '桜づつみイルミネーション': townPhoto(
+    'sakura-zutsumi-illumi.jpg',
+    '桜づつみイルミネーション（つるぎ町貞光）',
+    'Sakura-zutsumi illumination, Sadamitsu, Tsurugi',
+    'https://www.town.tokushima-tsurugi.lg.jp/docs/3457.html'
+  ),
+  '道の駅 貞光ゆうゆう館': sourcePhoto(
+    'sadamitsu-yuyukan-somen.jpg',
+    '道の駅 貞光ゆうゆう館の半田手延べそうめん（つるぎ町貞光）',
+    'Handa somen at Michi-no-eki Sadamitsu Yuyukan, Tsurugi',
+    YUYUKAN_REST,
+    '道の駅 貞光ゆうゆう館'
+  ),
+  'ふるた食堂': sourcePhoto(
+    'furuta-shokudo.jpg',
+    'ふるた食堂のうどん（つるぎ町半田）',
+    'Udon noodles at Furuta Shokudo, Handa, Tsurugi',
+    TABELOG_FURUTA,
+    '食べログ'
+  ),
+  '純手打ちうどん のぶ': sourcePhoto(
+    'udon-nobu.jpg',
+    '純手打ちうどん のぶの肉うどん（つるぎ町貞光）',
+    'Niku udon at Jun Teuchi Udon Nobu, Sadamitsu, Tsurugi',
+    TABELOG_NOBU,
+    '食べログ'
+  ),
+  'インドラ': sourcePhoto(
+    'indra-curry.jpg',
+    'インドラのカツカレー（つるぎ町貞光）',
+    'Katsu curry at Indra, Sadamitsu, Tsurugi',
+    TABELOG_INDRA,
+    '食べログ'
+  ),
+  'めん処 かねか': sourcePhoto(
+    'men-dokoro-kaneka.jpg',
+    'めん処 かねかのざるうどん（つるぎ町貞光）',
+    'Zaru udon at Men-dokoro Kaneka, Sadamitsu, Tsurugi',
+    TABELOG_KANEKA,
+    '食べログ'
+  ),
+  'おまかせキッチン': sourcePhoto(
+    'omakase-kitchen.jpg',
+    'おまかせキッチンの弁当（つるぎ町）',
+    'Bento from Omakase Kitchen, Tsurugi',
+    OMAKASE_PAGE,
+    'おまかせキッチン'
+  ),
+  'お好み焼　なんでやねん': sourcePhoto(
+    'nandeyanen-okonomiyaki.jpg',
+    'お好み焼　なんでやねんのお好み焼（つるぎ町半田）',
+    'Okonomiyaki at Nandeyanen, Handa, Tsurugi',
+    NANDEYANEN_PAGE,
+    'お好み焼　なんでやねん'
+  )
 };

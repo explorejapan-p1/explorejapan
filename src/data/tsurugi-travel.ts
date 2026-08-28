@@ -21,7 +21,10 @@ export const TSURUGI_TRAVEL_SOURCES = {
   stayStay: 'https://www.town.tokushima-tsurugi.lg.jp/docs/3458.html',
   play: 'https://www.town.tokushima-tsurugi.lg.jp/docs/3457.html',
   nature: 'https://www.town.tokushima-tsurugi.lg.jp/docs/3456.html',
-  onsen: 'https://www.town.tokushima-tsurugi.lg.jp/docs/3467.html'
+  onsen: 'https://www.town.tokushima-tsurugi.lg.jp/docs/3467.html',
+  yuyukanRest: 'https://yuyukan.jp/restaurant/',
+  shokokaiDining: 'https://r.goope.jp/tsci3600/shokokai/member/1/',
+  tabelogTown: 'https://tabelog.com/tokushima/C36468/rstLst/'
 } as const;
 
 /** Exact tourism-pack names shown on 宿泊, not 観光. */
@@ -102,7 +105,76 @@ export const TSURUGI_TRAVEL_STAY: readonly TravelRow[] = [
   )
 ];
 
-export const TSURUGI_TRAVEL_DINING: readonly TravelRow[] = [];
+function dining(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'dining',
+    address,
+    phone,
+    source_url,
+    accessed: TSURUGI_TRAVEL_ACCESSED
+  };
+}
+
+export const TSURUGI_TRAVEL_DINING: readonly TravelRow[] = [
+  dining(
+    'tsurugi-dining-01',
+    '道の駅 貞光ゆうゆう館',
+    '徳島県美馬郡つるぎ町貞光字大須賀11-1',
+    '0883-62-5000',
+    'https://yuyukan.jp/restaurant/'
+  ),
+  dining(
+    'tsurugi-dining-02',
+    'ふるた食堂',
+    '徳島県美馬郡つるぎ町半田日開野273-5',
+    '0883-65-0240',
+    'https://tabelog.com/tokushima/A3603/A360302/36007977/'
+  ),
+  dining(
+    'tsurugi-dining-03',
+    '純手打ちうどん のぶ',
+    '徳島県美馬郡つるぎ町貞光字大須賀42-8',
+    null,
+    'https://tabelog.com/tokushima/A3603/A360302/36003271/'
+  ),
+  dining(
+    'tsurugi-dining-04',
+    'インドラ',
+    '徳島県美馬郡つるぎ町貞光太田西286-2',
+    '0883-62-3268',
+    'https://tabelog.com/tokushima/A3603/A360302/36002665/'
+  ),
+  dining(
+    'tsurugi-dining-05',
+    'めん処 かねか',
+    '徳島県美馬郡つるぎ町貞光太田東161',
+    '0883-62-4844',
+    'https://tabelog.com/tokushima/A3603/A360302/36000680/'
+  ),
+  dining(
+    'tsurugi-dining-06',
+    'お好み焼　なんでやねん',
+    '徳島県美馬郡つるぎ町半田字小野294-4',
+    null,
+    'https://r.goope.jp/nandeyanen/'
+  ),
+  // 要確認: 商工会会員ページに店名のみ。住所・電話は掲載なし。
+  dining(
+    'tsurugi-dining-07',
+    'おまかせキッチン',
+    null,
+    null,
+    'https://r.goope.jp/omakase-kitchen/'
+  )
+];
 export const TSURUGI_TRAVEL_SHOPPING: readonly TravelRow[] = [];
 export const TSURUGI_TRAVEL_COMMERCE: readonly TravelRow[] = [];
 
@@ -187,6 +259,9 @@ export function tsurugiSourcedHook(
   locale: string
 ): string {
   if (row.address && row.address.trim() !== '') return row.address;
+  if (row.category === 'dining') {
+    return locale === 'ja' ? 'つるぎ町 飲食案内' : 'Tsurugi Town dining list';
+  }
   if (row.category === 'stay') {
     return locale === 'ja' ? 'つるぎ町 宿泊案内' : 'Tsurugi Town lodging list';
   }
