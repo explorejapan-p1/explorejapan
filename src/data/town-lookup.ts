@@ -55,6 +55,23 @@ import {
   MIYOSHI_TRAVEL_STAY
 } from './miyoshi-travel';
 
+import {
+  TOKUSHIMA_CITY,
+  TOKUSHIMA_CITY_PLACE_PHOTO,
+  TOKUSHIMA_CITY_FACILITIES,
+  TOKUSHIMA_CITY_EXPECTED_GEO_COUNT,
+  TOKUSHIMA_CITY_EXPECTED_ROW_COUNT
+} from './tokushima-city';
+import {
+  TOKUSHIMA_CITY_TRAVEL_ACCESSED,
+  TOKUSHIMA_CITY_TRAVEL_ALL,
+  TOKUSHIMA_CITY_TRAVEL_COMMERCE,
+  TOKUSHIMA_CITY_TRAVEL_DINING,
+  TOKUSHIMA_CITY_TRAVEL_SHOPPING,
+  TOKUSHIMA_CITY_TRAVEL_SOURCES,
+  TOKUSHIMA_CITY_TRAVEL_STAY
+} from './tokushima-city-travel';
+
 export type {LookupTown, ReadySlug} from './lookup-town';
 export {isReadySlug} from './lookup-town';
 
@@ -196,11 +213,47 @@ export const MIYOSHI_LOOKUP: LookupTown = {
   licenseSiteEn: 'City-site listing'
 };
 
+
+export const TOKUSHIMA_CITY_LOOKUP: LookupTown = {
+  slug: 'tokushima',
+  jis: TOKUSHIMA_CITY.jis,
+  nameJa: TOKUSHIMA_CITY.nameJa,
+  nameEn: TOKUSHIMA_CITY.nameEn,
+  heroPhoto: TOKUSHIMA_CITY_PLACE_PHOTO,
+  photoCiteJa:
+    '写真は新町川から臨む眉山。新幹線、2020-06-07、CC BY-SA 4.0。File:Mount Bizan from Shimmachi River 20200607.jpg。',
+  photoCiteEn:
+    'Photo: Mount Bizan from the Shinmachi River. 新幹線, 7 Jun 2020, CC BY-SA 4.0. File:Mount Bizan from Shimmachi River 20200607.jpg.',
+  rows: TOKUSHIMA_CITY_FACILITIES,
+  expectedGeo: TOKUSHIMA_CITY_EXPECTED_GEO_COUNT,
+  expectedRows: TOKUSHIMA_CITY_EXPECTED_ROW_COUNT,
+  travelDining: TOKUSHIMA_CITY_TRAVEL_DINING,
+  travelStay: TOKUSHIMA_CITY_TRAVEL_STAY,
+  travelShopping: TOKUSHIMA_CITY_TRAVEL_SHOPPING,
+  travelCommerce: TOKUSHIMA_CITY_TRAVEL_COMMERCE,
+  travelAll: TOKUSHIMA_CITY_TRAVEL_ALL,
+  coverageJa:
+    '徳島市（JIS 36201）観光5件（出典写真がある施設のみ）。オープンデータ凍結パックは未掲載。AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。',
+  coverageEn:
+    'Tokushima City (JIS 36201), 5 tourism rows with sourced photos. No frozen open-data pack. AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished.',
+  mapLabelJa: '徳島市の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Tokushima City',
+  mapCitePackJa: '点は市ページ掲載施設のWikipedia座標5件（accessed 2026-08-28）。',
+  mapCitePackEn: 'Points: 5 Wikipedia coordinates for city-page facilities (accessed 2026-08-28).',
+  licenseNoteJa:
+    '行のライセンスは市公式サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.tokushima.tokushima.jp, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
 const BY_SLUG: Record<ReadySlug, LookupTown> = {
   mima: MIMA_LOOKUP,
   tsurugi: TSURUGI_LOOKUP,
   yoshinogawa: YOSHINOGAWA_LOOKUP,
-  miyoshi: MIYOSHI_LOOKUP
+  miyoshi: MIYOSHI_LOOKUP,
+  tokushima: TOKUSHIMA_CITY_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
@@ -208,4 +261,4 @@ export function lookupTown(slug: string): LookupTown | null {
   return BY_SLUG[slug];
 }
 
-export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES};
+export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES};

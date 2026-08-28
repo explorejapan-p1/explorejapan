@@ -2,7 +2,7 @@ import type {FacilityRow} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import type {TravelRow} from './mima-travel';
 
-export type ReadySlug = 'mima' | 'tsurugi' | 'yoshinogawa' | 'miyoshi';
+export type ReadySlug = 'mima' | 'tsurugi' | 'yoshinogawa' | 'miyoshi' | 'tokushima';
 
 export type Rankable = {
   id: string;
@@ -42,5 +42,5 @@ export type LookupTown = {
 };
 
 export function isReadySlug(slug: string): slug is ReadySlug {
-  return slug === 'mima' || slug === 'tsurugi' || slug === 'yoshinogawa' || slug === 'miyoshi';
+  return slug === 'mima' || slug === 'tsurugi' || slug === 'yoshinogawa' || slug === 'miyoshi' || slug === 'tokushima';
 }

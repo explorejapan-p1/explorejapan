@@ -31,6 +31,13 @@ import {
   miyoshiSightPhoto
 } from '@/data/miyoshi-travel';
 
+import {
+  isTokushimaCityOnsenPackRow,
+  isTokushimaCityStayPackRow,
+  rankTokushimaCitySeeRows,
+  tokushimaCitySightPhoto
+} from '@/data/tokushima-city-travel';
+
 export type ListingKind = TravelKind | 'onsen' | 'experience' | 'sights';
 
 export type PublicListing = {
@@ -231,11 +238,47 @@ function miyoshiListings(): PublicListing[] {
   return out;
 }
 
+
+function tokushimaCityListings(): PublicListing[] {
+  const town = lookupTown('tokushima')!;
+  const out: PublicListing[] = town.travelAll.map((row) =>
+    fromTravel(row, 'tokushima', tokushimaCitySightPhoto(row.name_ja))
+  );
+  const seen = new Set<string>();
+  const pack: FacilityRow[] = [];
+  for (const row of town.rows) {
+    if (
+      !isTokushimaCityOnsenPackRow(row) &&
+      !isTokushimaCityStayPackRow(row) &&
+      !isSightsCategory(row.category)
+    ) {
+      continue;
+    }
+    const key = packDedupeKey(row);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    pack.push(row);
+  }
+  const ranked = rankTokushimaCitySeeRows(pack);
+  const onsen = pack.filter(isTokushimaCityOnsenPackRow);
+  const stay = pack.filter(isTokushimaCityStayPackRow);
+  for (const row of [...stay, ...onsen, ...ranked]) {
+    const kind: ListingKind = isTokushimaCityOnsenPackRow(row)
+      ? 'onsen'
+      : isTokushimaCityStayPackRow(row)
+        ? 'stay'
+        : 'sights';
+    out.push(fromPack(row, 'tokushima', kind, tokushimaCitySightPhoto(row.name_ja)));
+  }
+  return out;
+}
+
 const CACHE: Record<ReadySlug, PublicListing[]> = {
   mima: mimaListings(),
   tsurugi: tsurugiListings(),
   yoshinogawa: yoshinogawaListings(),
-  miyoshi: miyoshiListings()
+  miyoshi: miyoshiListings(),
+  tokushima: tokushimaCityListings()
 };
 
 export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {
@@ -243,7 +286,7 @@ export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {
 }
 
 export function allPublicListings(): PublicListing[] {
-  return [...CACHE.mima, ...CACHE.tsurugi, ...CACHE.yoshinogawa, ...CACHE.miyoshi];
+  return [...CACHE.mima, ...CACHE.tsurugi, ...CACHE.yoshinogawa, ...CACHE.miyoshi, ...CACHE.tokushima];
 }
 
 export function liveListings(slug?: ReadySlug): PublicListing[] {

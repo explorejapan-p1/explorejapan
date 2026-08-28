@@ -47,6 +47,18 @@ import {
   resolveMiyoshiFilter
 } from './miyoshi-travel';
 
+import {
+  isTokushimaCityExperiencePackRow,
+  isTokushimaCityOnsenPackRow,
+  isTokushimaCityStayPackRow,
+  tokushimaCityPackRowMatchesFilter,
+  tokushimaCitySightPhoto,
+  tokushimaCitySourcedHook,
+  tokushimaCityTopChipForRow,
+  rankTokushimaCitySeeRows,
+  resolveTokushimaCityFilter
+} from './tokushima-city-travel';
+
 function neverStay(_row: {category: string; name_ja: string}): boolean {
   return false;
 }
@@ -119,9 +131,23 @@ const MIYOSHI_HELPERS: LookupHelpers = {
   resolveFilter: resolveMiyoshiFilter
 };
 
+
+const TOKUSHIMA_CITY_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isTokushimaCityOnsenPackRow,
+  isExperiencePackRow: isTokushimaCityExperiencePackRow,
+  isStayPackRow: isTokushimaCityStayPackRow,
+  packRowMatchesFilter: tokushimaCityPackRowMatchesFilter,
+  rankSeeRows: rankTokushimaCitySeeRows,
+  sightPhoto: tokushimaCitySightPhoto,
+  sourcedHook: tokushimaCitySourcedHook,
+  topChipForRow: tokushimaCityTopChipForRow,
+  resolveFilter: resolveTokushimaCityFilter
+};
+
 export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'tsurugi') return TSURUGI_HELPERS;
   if (slug === 'yoshinogawa') return YOSHINOGAWA_HELPERS;
   if (slug === 'miyoshi') return MIYOSHI_HELPERS;
+  if (slug === 'tokushima') return TOKUSHIMA_CITY_HELPERS;
   return MIMA_HELPERS;
 }

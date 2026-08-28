@@ -13,7 +13,7 @@ export type Municipality = {
  * Mima is 36207. 36206 is 阿波市 — never mix.
  */
 export const TOKUSHIMA_MUNICIPALITIES: Municipality[] = [
-  {jis: '36201', slug: 'tokushima', nameJa: '徳島市', nameEn: 'Tokushima', status: 'coming-soon'},
+  {jis: '36201', slug: 'tokushima', nameJa: '徳島市', nameEn: 'Tokushima', status: 'ready'},
   {jis: '36202', slug: 'naruto', nameJa: '鳴門市', nameEn: 'Naruto', status: 'coming-soon'},
   {jis: '36203', slug: 'komatsushima', nameJa: '小松島市', nameEn: 'Komatsushima', status: 'coming-soon'},
   {jis: '36204', slug: 'anan', nameJa: '阿南市', nameEn: 'Anan', status: 'coming-soon'},
