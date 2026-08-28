@@ -23,6 +23,7 @@ import {
 import type {LookupTown} from '@/data/lookup-town';
 import {townHelpers} from '@/data/lookup-helpers';
 import {TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES} from '@/data/tsurugi-travel';
+import {YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES} from '@/data/yoshinogawa-travel';
 import {
   rankByOurTraffic,
   recordFacilitySearch,
@@ -424,9 +425,10 @@ export function MimaFacilityLookup({
     ? editorialCards
     : rankByOurTraffic(editorialCards, traffic.views, traffic.searches);
 
-  // Tsurugi visual grid is photo-only. Search still returns pack rows without photos.
+  // Photo-only visual grid for tsurugi and yoshinogawa. Mima still shows 写真準備中 wells.
+  const photoOnly = town.slug !== 'mima';
   const gridCards =
-    searching || town.slug !== 'tsurugi'
+    searching || !photoOnly
       ? cards
       : cards.filter((row) => h.sightPhoto(row.name_ja) !== null);
 
@@ -442,7 +444,7 @@ export function MimaFacilityLookup({
         town.travelAll.find((row) => row.id === openId);
 
   function chipCount(id: (typeof TOP_CHIPS)[number]): number {
-    const photoOnly = town.slug === 'tsurugi';
+    const photoOnly = town.slug !== 'mima';
     const withPhoto = (rows: readonly CardRow[]) =>
       photoOnly ? rows.filter((row) => h.sightPhoto(row.name_ja) !== null).length : rows.length;
     if (id === 'sights') return withPhoto(rankedSee);
@@ -626,6 +628,25 @@ export function MimaFacilityLookup({
                 <a href={TRAVEL_SOURCES.onsen}>Onsen</a> and{' '}
                 <a href={TRAVEL_SOURCES.experience}>experience</a> from the city tourism map. No
                 public scores.
+              </>
+            )
+          ) : town.slug === 'yoshinogawa' ? (
+            locale === 'ja' ? (
+              <>
+                <a href={YOSHINOGAWA_TRAVEL_SOURCES.stayList}>宿泊</a>は市の宿泊施設案内（
+                {YOSHINOGAWA_TRAVEL_ACCESSED} の公式ページ）。
+                飲食は食べログ公開店ページ（{YOSHINOGAWA_TRAVEL_ACCESSED}）。単一出典は要確認。
+                体験・買物・商業の公式一覧は未掲載のため0件。
+                温泉は市の観光案内で名前を確認できたもの。
+                カードは出典写真があるものだけ。点数は持ちません。
+              </>
+            ) : (
+              <>
+                <a href={YOSHINOGAWA_TRAVEL_SOURCES.stayList}>Lodging</a> from the city lodging list
+                (official page of {YOSHINOGAWA_TRAVEL_ACCESSED}). Dining from Tabelog shop pages (
+                {YOSHINOGAWA_TRAVEL_ACCESSED}); a single source is flagged 要確認. Experience, shopping,
+                and commerce stay at 0 — no official list. Onsen from the city tourism pages.
+                Cards show only listings with a sourced photo. No public scores.
               </>
             )
           ) : locale === 'ja' ? (

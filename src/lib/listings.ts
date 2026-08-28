@@ -17,6 +17,12 @@ import {
   rankTsurugiSeeRows,
   tsurugiSightPhoto
 } from '@/data/tsurugi-travel';
+import {
+  isYoshinogawaOnsenPackRow,
+  isYoshinogawaStayPackRow,
+  rankYoshinogawaSeeRows,
+  yoshinogawaSightPhoto
+} from '@/data/yoshinogawa-travel';
 
 export type ListingKind = TravelKind | 'onsen' | 'experience' | 'sights';
 
@@ -148,9 +154,45 @@ function tsurugiListings(): PublicListing[] {
   return out;
 }
 
+
+function yoshinogawaListings(): PublicListing[] {
+  const town = lookupTown('yoshinogawa')!;
+  const out: PublicListing[] = town.travelAll.map((row) =>
+    fromTravel(row, 'yoshinogawa', yoshinogawaSightPhoto(row.name_ja))
+  );
+  const seen = new Set<string>();
+  const pack: FacilityRow[] = [];
+  for (const row of town.rows) {
+    if (
+      !isYoshinogawaOnsenPackRow(row) &&
+      !isYoshinogawaStayPackRow(row) &&
+      !isSightsCategory(row.category)
+    ) {
+      continue;
+    }
+    const key = packDedupeKey(row);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    pack.push(row);
+  }
+  const ranked = rankYoshinogawaSeeRows(pack);
+  const onsen = pack.filter(isYoshinogawaOnsenPackRow);
+  const stay = pack.filter(isYoshinogawaStayPackRow);
+  for (const row of [...stay, ...onsen, ...ranked]) {
+    const kind: ListingKind = isYoshinogawaOnsenPackRow(row)
+      ? 'onsen'
+      : isYoshinogawaStayPackRow(row)
+        ? 'stay'
+        : 'sights';
+    out.push(fromPack(row, 'yoshinogawa', kind, yoshinogawaSightPhoto(row.name_ja)));
+  }
+  return out;
+}
+
 const CACHE: Record<ReadySlug, PublicListing[]> = {
   mima: mimaListings(),
-  tsurugi: tsurugiListings()
+  tsurugi: tsurugiListings(),
+  yoshinogawa: yoshinogawaListings()
 };
 
 export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {
@@ -158,7 +200,7 @@ export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {
 }
 
 export function allPublicListings(): PublicListing[] {
-  return [...CACHE.mima, ...CACHE.tsurugi];
+  return [...CACHE.mima, ...CACHE.tsurugi, ...CACHE.yoshinogawa];
 }
 
 export function liveListings(slug?: ReadySlug): PublicListing[] {

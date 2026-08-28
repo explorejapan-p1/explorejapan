@@ -2,7 +2,9 @@ import {
   EXPECTED_GEO_COUNT,
   EXPECTED_ROW_COUNT,
   TSURUGI_EXPECTED_GEO_COUNT,
-  TSURUGI_EXPECTED_ROW_COUNT
+  TSURUGI_EXPECTED_ROW_COUNT,
+  YOSHINOGAWA_EXPECTED_GEO_COUNT,
+  YOSHINOGAWA_EXPECTED_ROW_COUNT
 } from './facility-schema';
 import {MIMA, MIMA_PLACE_PHOTO} from './mima';
 import {MIMA_FACILITIES} from './mima-facilities';
@@ -27,6 +29,17 @@ import {
   TSURUGI_TRAVEL_SOURCES,
   TSURUGI_TRAVEL_STAY
 } from './tsurugi-travel';
+import {YOSHINOGAWA, YOSHINOGAWA_PLACE_PHOTO} from './yoshinogawa';
+import {YOSHINOGAWA_FACILITIES} from './yoshinogawa-facilities';
+import {
+  YOSHINOGAWA_TRAVEL_ACCESSED,
+  YOSHINOGAWA_TRAVEL_ALL,
+  YOSHINOGAWA_TRAVEL_COMMERCE,
+  YOSHINOGAWA_TRAVEL_DINING,
+  YOSHINOGAWA_TRAVEL_SHOPPING,
+  YOSHINOGAWA_TRAVEL_SOURCES,
+  YOSHINOGAWA_TRAVEL_STAY
+} from './yoshinogawa-travel';
 
 export type {LookupTown, ReadySlug} from './lookup-town';
 export {isReadySlug} from './lookup-town';
@@ -99,9 +112,45 @@ export const TSURUGI_LOOKUP: LookupTown = {
   licenseSiteEn: 'Town-site listing'
 };
 
+
+export const YOSHINOGAWA_LOOKUP: LookupTown = {
+  slug: 'yoshinogawa',
+  jis: YOSHINOGAWA.jis,
+  nameJa: YOSHINOGAWA.nameJa,
+  nameEn: YOSHINOGAWA.nameEn,
+  heroPhoto: YOSHINOGAWA_PLACE_PHOTO,
+  photoCiteJa:
+    '写真は川島城。Dokudami、2022-05-27、CC BY-SA 4.0。',
+  photoCiteEn:
+    'Photo: Kawashima Castle. Dokudami, 27 May 2022, CC BY-SA 4.0.',
+  rows: YOSHINOGAWA_FACILITIES,
+  expectedGeo: YOSHINOGAWA_EXPECTED_GEO_COUNT,
+  expectedRows: YOSHINOGAWA_EXPECTED_ROW_COUNT,
+  travelDining: YOSHINOGAWA_TRAVEL_DINING,
+  travelStay: YOSHINOGAWA_TRAVEL_STAY,
+  travelShopping: YOSHINOGAWA_TRAVEL_SHOPPING,
+  travelCommerce: YOSHINOGAWA_TRAVEL_COMMERCE,
+  travelAll: YOSHINOGAWA_TRAVEL_ALL,
+  coverageJa:
+    '吉野川市（JIS 36205）335件。観光38、文化財77、避難所96、緊急避難場所48、公共施設21、保育26、GTFS停留所29。AED・医療機関・介護・Wi-Fiは0件（未掲載）。',
+  coverageEn:
+    'Yoshinogawa City (JIS 36205), 335 rows. Tourism 38, cultural property 77, shelters 96, emergency sites 48, public facilities 21, childcare 26, GTFS stops 29. AED, hospitals, care, Wi-Fi: 0, unpublished.',
+  mapLabelJa: '吉野川市の公式座標29件',
+  mapLabelEn: '29 official coordinates in Yoshinogawa City',
+  mapCitePackJa: '点は凍結パックの公式座標29件（accessed 2026-08-25）。',
+  mapCitePackEn: 'Points: 29 official coordinates from the frozen pack (accessed 2026-08-25).',
+  licenseNoteJa:
+    '行のライセンスは二つ。CC BY 4.0 は徳島県 Our Open Data の利用規約。「市公式サイト掲載情報」は市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Licenses split by row. CC BY 4.0 follows Tokushima Our Open Data. A city-site listing is a fact from city.yoshinogawa.lg.jp, not under that license.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
 const BY_SLUG: Record<ReadySlug, LookupTown> = {
   mima: MIMA_LOOKUP,
-  tsurugi: TSURUGI_LOOKUP
+  tsurugi: TSURUGI_LOOKUP,
+  yoshinogawa: YOSHINOGAWA_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
@@ -109,4 +158,4 @@ export function lookupTown(slug: string): LookupTown | null {
   return BY_SLUG[slug];
 }
 
-export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES};
+export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES};

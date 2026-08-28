@@ -3,6 +3,7 @@ import {notFound} from 'next/navigation';
 import {TokushimaMap} from '@/components/TokushimaMap';
 import {MIMA, MIMA_PLACE_PHOTO, BASE_PATH} from '@/data/mima';
 import {TSURUGI_PLACE_PHOTO} from '@/data/tsurugi';
+import {YOSHINOGAWA_PLACE_PHOTO} from '@/data/yoshinogawa';
 import {PREFECTURES, PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
 import {Link} from '@/i18n/navigation';
@@ -30,8 +31,8 @@ export async function generateMetadata({params}: Props) {
     title: name,
     description: live
       ? loc === 'ja'
-        ? '徳島県の市町村。美馬市とつるぎ町。'
-        : 'Municipalities in Tokushima. Listings: Mima City and Tsurugi Town.'
+        ? '徳島県の市町村。美馬市とつるぎ町と吉野川市。'
+        : 'Municipalities in Tokushima. Listings: Mima City, Tsurugi Town, and Yoshinogawa City.'
       : loc === 'ja'
         ? 'この県の市町村ページは準備中です。'
         : 'This prefecture layer is not wired yet.',
@@ -65,7 +66,12 @@ export default async function PrefecturePage({params}: Props) {
           <ul className="muni-cards">
             {TOKUSHIMA_MUNICIPALITIES.map((m) => {
               const live = m.status === 'ready';
-              const photo = m.slug === 'tsurugi' ? TSURUGI_PLACE_PHOTO : MIMA_PLACE_PHOTO;
+              const photo =
+                m.slug === 'tsurugi'
+                  ? TSURUGI_PLACE_PHOTO
+                  : m.slug === 'yoshinogawa'
+                    ? YOSHINOGAWA_PLACE_PHOTO
+                    : MIMA_PLACE_PHOTO;
               const href = `${BASE_PATH}/${locale}/tokushima/${m.slug}/`;
               return (
                 <li key={m.slug} className={live ? 'muni-card is-live' : 'muni-card is-hold'}>

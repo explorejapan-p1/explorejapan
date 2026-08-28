@@ -23,6 +23,17 @@ import {
   tsurugiSourcedHook,
   tsurugiTopChipForRow
 } from './tsurugi-travel';
+import {
+  isYoshinogawaExperiencePackRow,
+  isYoshinogawaOnsenPackRow,
+  isYoshinogawaStayPackRow,
+  rankYoshinogawaSeeRows,
+  resolveYoshinogawaFilter,
+  yoshinogawaPackRowMatchesFilter,
+  yoshinogawaSightPhoto,
+  yoshinogawaSourcedHook,
+  yoshinogawaTopChipForRow
+} from './yoshinogawa-travel';
 
 function neverStay(_row: {category: string; name_ja: string}): boolean {
   return false;
@@ -71,6 +82,20 @@ const TSURUGI_HELPERS: LookupHelpers = {
   resolveFilter: resolveTsurugiFilter
 };
 
+const YOSHINOGAWA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isYoshinogawaOnsenPackRow,
+  isExperiencePackRow: isYoshinogawaExperiencePackRow,
+  isStayPackRow: isYoshinogawaStayPackRow,
+  packRowMatchesFilter: yoshinogawaPackRowMatchesFilter,
+  rankSeeRows: rankYoshinogawaSeeRows,
+  sightPhoto: yoshinogawaSightPhoto,
+  sourcedHook: yoshinogawaSourcedHook,
+  topChipForRow: yoshinogawaTopChipForRow,
+  resolveFilter: resolveYoshinogawaFilter
+};
+
 export function townHelpers(slug: ReadySlug): LookupHelpers {
-  return slug === 'tsurugi' ? TSURUGI_HELPERS : MIMA_HELPERS;
+  if (slug === 'tsurugi') return TSURUGI_HELPERS;
+  if (slug === 'yoshinogawa') return YOSHINOGAWA_HELPERS;
+  return MIMA_HELPERS;
 }

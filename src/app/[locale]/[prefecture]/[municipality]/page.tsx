@@ -6,6 +6,7 @@ import {facilityGapBoard, officialGeoRows} from '@/data/mima-facilities';
 import {townHelpers} from '@/data/lookup-helpers';
 import {lookupTown} from '@/data/town-lookup';
 import {TSURUGI, TSURUGI_PLACE_PHOTO} from '@/data/tsurugi';
+import {YOSHINOGAWA, YOSHINOGAWA_PLACE_PHOTO} from '@/data/yoshinogawa';
 import {PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {
   MUNICIPALITY_BY_SLUG,
@@ -15,7 +16,7 @@ import {Link} from '@/i18n/navigation';
 import type {AppLocale} from '@/i18n/routing';
 import {projectMimaOfficialMap} from '@/lib/geo';
 import {JsonLd} from '@/components/JsonLd';
-import {mimaGraph, tsurugiGraph} from '@/lib/jsonld';
+import {mimaGraph, tsurugiGraph, yoshinogawaGraph} from '@/lib/jsonld';
 import {shareMetadata} from '@/lib/seo';
 
 type Props = {
@@ -41,15 +42,24 @@ export async function generateMetadata({params}: Props) {
       : muni.slug === 'mima' && live
         ? `${muni.nameEn} City`
         : muni.nameEn;
-  const image = muni.slug === 'tsurugi' ? TSURUGI_PLACE_PHOTO : MIMA_PLACE_PHOTO;
+  const image =
+    muni.slug === 'tsurugi'
+      ? TSURUGI_PLACE_PHOTO
+      : muni.slug === 'yoshinogawa'
+        ? YOSHINOGAWA_PLACE_PHOTO
+        : MIMA_PLACE_PHOTO;
   const description = live
     ? muni.slug === 'tsurugi'
       ? loc === 'ja'
         ? 'つるぎ町。二層うだつの町並み、剣山、宿。'
         : 'Tsurugi Town, Tokushima — two-storey udatsu townscape, Mount Tsurugi, stays.'
-      : loc === 'ja'
-        ? '四国のまほろば 美馬市。うだつの町並み、食、宿。'
-        : 'Mima City, Tokushima — Udatsu townscape, food, and stays.'
+      : muni.slug === 'yoshinogawa'
+        ? loc === 'ja'
+          ? '吉野川市。川島城、藤井寺、鴨島の宿。'
+          : 'Yoshinogawa City, Tokushima — Kawashima Castle, Fujii-dera, Kamojima stays.'
+        : loc === 'ja'
+          ? '四国のまほろば 美馬市。うだつの町並み、食、宿。'
+          : 'Mima City, Tokushima — Udatsu townscape, food, and stays.'
     : loc === 'ja'
       ? 'この市町村のページは準備中です。'
       : 'This municipality page is coming soon.';
@@ -86,13 +96,15 @@ export default async function MunicipalityPage({params}: Props) {
         <div className="coming">
           <p>
             {isJa
-              ? 'この市町村のページは準備中です。現在本文があるのは美馬市とつるぎ町です。'
-              : 'This municipality page is coming soon. Mima City and Tsurugi Town have full listings in v0.'}
+              ? 'この市町村のページは準備中です。現在本文があるのは美馬市・つるぎ町・吉野川市です。'
+              : 'This municipality page is coming soon. Mima City, Tsurugi Town, and Yoshinogawa City have full listings in v0.'}
           </p>
           <p>
             <Link href="/tokushima/mima">{isJa ? '美馬市へ' : 'Go to Mima City'}</Link>
             {' · '}
             <Link href="/tokushima/tsurugi">{isJa ? 'つるぎ町へ' : 'Go to Tsurugi Town'}</Link>
+            {' · '}
+            <Link href="/tokushima/yoshinogawa">{isJa ? '吉野川市へ' : 'Go to Yoshinogawa City'}</Link>
           </p>
         </div>
       </>
@@ -122,7 +134,7 @@ export default async function MunicipalityPage({params}: Props) {
 
   return (
     <>
-      <JsonLd data={town.slug === 'tsurugi' ? tsurugiGraph(graphLocale) : mimaGraph(graphLocale)} />
+      <JsonLd data={town.slug === 'tsurugi' ? tsurugiGraph(graphLocale) : town.slug === 'yoshinogawa' ? yoshinogawaGraph(graphLocale) : mimaGraph(graphLocale)} />
       <nav className="crumbs">
         <Link href="/">{isJa ? '全国' : 'Japan'}</Link>
         <span> / </span>
@@ -142,7 +154,55 @@ export default async function MunicipalityPage({params}: Props) {
         openId={null}
       />
 
-      {town.slug === 'tsurugi' ? (
+      {town.slug === 'yoshinogawa' ? (
+      <details className="facts-fold">
+        <summary>{isJa ? '市の資料' : 'City facts'}</summary>
+      <table className="facts">
+        <tbody>
+          <tr>
+            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <td>
+              {YOSHINOGAWA.nameJa} / {YOSHINOGAWA.nameEn}（{YOSHINOGAWA.reading}）
+            </td>
+          </tr>
+          <tr>
+            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <td>
+              <Link href="/tokushima">{isJa ? YOSHINOGAWA.prefectureJa : YOSHINOGAWA.prefectureEn}</Link>
+            </td>
+          </tr>
+          <tr>
+            <th>JIS / N03_007</th>
+            <td>
+              <strong>{YOSHINOGAWA.jis}</strong>
+            </td>
+          </tr>
+          <tr>
+            <th>J-LIS</th>
+            <td>{YOSHINOGAWA.jlis}</td>
+          </tr>
+          <tr>
+            <th>{isJa ? '市役所' : 'City hall'}</th>
+            <td>
+              〒{YOSHINOGAWA.hall.postalCode} {isJa ? YOSHINOGAWA.hall.addressJa : YOSHINOGAWA.hall.addressEn}
+              <br />
+              {YOSHINOGAWA.hall.phone} · <a href={YOSHINOGAWA.sameAs}>sameAs {YOSHINOGAWA.sameAs}</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        <a href={YOSHINOGAWA.sources.hall}>{isJa ? '連絡先一覧' : 'Contact list'}</a>
+        {' · '}
+        <a href={YOSHINOGAWA.sources.home}>{isJa ? '市ホームページ' : 'City homepage'}</a>
+      </p>
+      <p className="note">
+        {isJa
+          ? `数字のアクセス日は ${YOSHINOGAWA.sources.accessed}。人口は未掲載（出典ページを混ぜません）。`
+          : `Figures accessed ${YOSHINOGAWA.sources.accessed}. Population is unpublished (universes are not mixed).`}
+      </p>
+      </details>
+      ) : town.slug === 'tsurugi' ? (
       <details className="facts-fold">
         <summary>{isJa ? '町の資料' : 'Town facts'}</summary>
       <table className="facts">

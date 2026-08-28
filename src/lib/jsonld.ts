@@ -1,5 +1,6 @@
 import {MIMA, MIMA_PLACE_PHOTO} from '@/data/mima';
 import {TSURUGI, TSURUGI_PLACE_PHOTO} from '@/data/tsurugi';
+import {YOSHINOGAWA, YOSHINOGAWA_PLACE_PHOTO} from '@/data/yoshinogawa';
 import type {AppLocale} from '@/i18n/routing';
 import {
   featuredListings,
@@ -58,6 +59,19 @@ function geo(lat: number | null, lon: number | null) {
   };
 }
 
+
+function localityJa(slug: string): string {
+  if (slug === 'tsurugi') return TSURUGI.nameJa;
+  if (slug === 'yoshinogawa') return YOSHINOGAWA.nameJa;
+  return MIMA.nameJa;
+}
+
+function localityEn(slug: string): string {
+  if (slug === 'tsurugi') return TSURUGI.nameEn;
+  if (slug === 'yoshinogawa') return YOSHINOGAWA.nameEn;
+  return MIMA.nameEn;
+}
+
 function compact(obj: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   for (const [key, value] of Object.entries(obj)) {
@@ -79,7 +93,7 @@ export function listingNode(listing: PublicListing, locale: AppLocale) {
     name: listing.nameJa,
     url,
     image: listing.photo ? photoAbs(listing.photo) : undefined,
-    address: postal(listing.address, locale, listing.slug === 'tsurugi' ? 'つるぎ町' : MIMA.nameJa, listing.slug === 'tsurugi' ? 'Tsurugi' : MIMA.nameEn),
+    address: postal(listing.address, locale, localityJa(listing.slug), localityEn(listing.slug)),
     telephone: listing.phone ?? undefined,
     openingHours: listing.hours ?? undefined,
     geo: geo(listing.lat, listing.lon),
@@ -331,6 +345,84 @@ export function tsurugiGraph(locale: AppLocale) {
   };
 }
 
+
+export function yoshinogawaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'tokushima/yoshinogawa');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('yoshinogawa');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['City', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? YOSHINOGAWA.nameJa : YOSHINOGAWA.nameEn,
+        alternateName: isJa ? YOSHINOGAWA.nameEn : YOSHINOGAWA.nameJa,
+        identifier: YOSHINOGAWA.jis,
+        url,
+        image: photoAbs(YOSHINOGAWA_PLACE_PHOTO),
+        sameAs: [YOSHINOGAWA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa
+            ? '鴨島町鴨島115番地1'
+            : '115-1 Kamojima, Kamojima-cho',
+          addressLocality: isJa ? YOSHINOGAWA.nameJa : YOSHINOGAWA.nameEn,
+          addressRegion: isJa ? YOSHINOGAWA.prefectureJa : YOSHINOGAWA.prefectureEn,
+          postalCode: YOSHINOGAWA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? YOSHINOGAWA.prefectureJa : YOSHINOGAWA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? YOSHINOGAWA.nameJa : YOSHINOGAWA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: isJa ? '全国' : 'Japan',
+            item: canonicalUrl(locale)
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: isJa ? YOSHINOGAWA.prefectureJa : YOSHINOGAWA.prefectureEn,
+            item: canonicalUrl(locale, 'tokushima')
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: isJa ? YOSHINOGAWA.nameJa : YOSHINOGAWA.nameEn,
+            item: url
+          }
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '吉野川市の案内' : 'Places in Yoshinogawa',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
 export function placeGraph(listing: PublicListing, locale: AppLocale) {
   const url = canonicalUrl(locale, listingRest(listing.id, listing.slug));
   const origin = siteOrigin();
@@ -365,13 +457,7 @@ export function placeGraph(listing: PublicListing, locale: AppLocale) {
           {
             '@type': 'ListItem',
             position: 3,
-            name: isJa
-              ? listing.slug === 'tsurugi'
-                ? 'つるぎ町'
-                : MIMA.nameJa
-              : listing.slug === 'tsurugi'
-                ? 'Tsurugi'
-                : MIMA.nameEn,
+            name: isJa ? localityJa(listing.slug) : localityEn(listing.slug),
             item: canonicalUrl(locale, `tokushima/${listing.slug}`)
           },
           {

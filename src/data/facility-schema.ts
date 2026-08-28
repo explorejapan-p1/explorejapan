@@ -66,6 +66,27 @@ export const TSURUGI_EXPECTED_CATEGORY_COUNTS = {
   gtfs_stop: 120
 } as const satisfies Record<FacilityCategory, number>;
 
+
+export const YOSHINOGAWA_PACK_JIS = '36205';
+export const YOSHINOGAWA_EXPECTED_ROW_COUNT = 335;
+export const YOSHINOGAWA_EXPECTED_GEO_COUNT = 29;
+export const YOSHINOGAWA_EXPECTED_HOURS_COUNT = 108;
+export const YOSHINOGAWA_EXPECTED_MISSING_ADDRESS = 112;
+export const YOSHINOGAWA_EXPECTED_MISSING_PHONE = 286;
+export const YOSHINOGAWA_EXPECTED_CATEGORY_COUNTS = {
+  tourism: 38,
+  cultural_property: 77,
+  care: 0,
+  aed: 0,
+  shelter: 96,
+  emergency_evacuation_site: 48,
+  hospital: 0,
+  childcare: 26,
+  wifi: 0,
+  public_facility: 21,
+  gtfs_stop: 29
+} as const satisfies Record<FacilityCategory, number>;
+
 export type FacilityRow = {
   id: string;
   jis: string;

@@ -1,0 +1,47 @@
+1:"$Sreact.fragment"
+3:I[77105,["/explorejapan/_next/static/chunks/2zcf2stjfzdta.js","/explorejapan/_next/static/chunks/3yr1wzf1p44wg.js"],"default"]
+4:I[97367,["/explorejapan/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
+5:"$Sreact.suspense"
+9:I[97367,["/explorejapan/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
+a:I[97367,["/explorejapan/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
+:HL["/explorejapan/media/kawashima-jinja.jpg","image"]
+2:T594,{"@context":"https://schema.org","@graph":[{"@type":"TouristAttraction","@id":"https://explorejapan-p1.github.io/explorejapan/en/tokushima/yoshinogawa/p/36205-tourism-kawashima-jinja/#place","name":"川島神社","url":"https://explorejapan-p1.github.io/explorejapan/en/tokushima/yoshinogawa/p/36205-tourism-kawashima-jinja/","image":"https://explorejapan-p1.github.io/explorejapan/media/kawashima-jinja.jpg","sameAs":["https://www.city.yoshinogawa.lg.jp/docs/2010101500123/"]},{"@type":"WebPage","@id":"https://explorejapan-p1.github.io/explorejapan/en/tokushima/yoshinogawa/p/36205-tourism-kawashima-jinja/","url":"https://explorejapan-p1.github.io/explorejapan/en/tokushima/yoshinogawa/p/36205-tourism-kawashima-jinja/","name":"川島神社","inLanguage":"en","isPartOf":{"@id":"https://explorejapan-p1.github.io/explorejapan/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Japan","item":"https://explorejapan-p1.github.io/explorejapan/en/"},{"@type":"ListItem","position":2,"name":"Tokushima","item":"https://explorejapan-p1.github.io/explorejapan/en/tokushima/"},{"@type":"ListItem","position":3,"name":"Yoshinogawa","item":"https://explorejapan-p1.github.io/explorejapan/en/tokushima/yoshinogawa/"},{"@type":"ListItem","position":4,"name":"川島神社","item":"https://explorejapan-p1.github.io/explorejapan/en/tokushima/yoshinogawa/p/36205-tourism-kawashima-jinja/"}]}]}8:X
+20:X
+20:C
+0:{"buildId":"kh5LuKLdewmhI06r0wV9f","data":[{"rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","nav",null,{"className":"crumbs","children":[["$","$L3",null,{"href":"/en","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Japan"}],["$","span",null,{"children":" / "}],["$","$L3",null,{"href":"/en/tokushima","localeCookie":"$0:data:0:rsc:props:children:0:1:props:children:0:props:localeCookie","children":"Tokushima"}],["$","span",null,{"children":" / "}],["$","$L3",null,{"href":"/en/tokushima/yoshinogawa","localeCookie":"$0:data:0:rsc:props:children:0:1:props:children:0:props:localeCookie","children":"Yoshinogawa"}],["$","span",null,{"children":" / "}],["$","span",null,{"children":"川島神社"}]]}],["$","article",null,{"className":"place-page","children":[["$","div",null,{"className":"card-photo","children":[["$","img",null,{"src":"/explorejapan/media/kawashima-jinja.jpg","alt":"Kawashima Shrine, Kawashima-cho, Yoshinogawa","width":1200,"height":800}],["$","span",null,{"className":"card-photo-cite","children":["Sorrysorry"," / ","Public domain"]}]]}],["$","h1",null,{"children":"川島神社"}],["$","p",null,{"className":"card-score","children":"Unrated"}],null,null,null,["$","p",null,{"className":"place-card-meta","children":[["$","a",null,{"href":"https://www.city.yoshinogawa.lg.jp/docs/2010101500123/","children":"Source"}]," · ","2026-08-25"]}]]}]],null,["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"isPartial":"$@7","staleTime":"$8","varyParams":null},{"rsc":["$","$1","h",{"children":[null,["$","$L9",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$La",null,{"children":["$","$5",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"川島神社 · BokenJapan"}],["$","meta","1",{"name":"description","content":"川島神社 in Yoshinogawa City. Sourced listing only."}],["$","meta","2",{"name":"robots","content":"index, follow"}],["$","link","3",{"rel":"canonical","href":"https://explorejapan-p1.github.io/explorejapan/en/tokushima/yoshinogawa/p/36205-tourism-kawashima-jinja/"}],["$","link","4",{"rel":"alternate","hrefLang":"ja","href":"https://explorejapan-p1.github.io/explorejapan/ja/tokushima/yoshinogawa/p/36205-tourism-kawashima-jinja/"}],["$","link","5",{"rel":"alternate","hrefLang":"en","href":"https://explorejapan-p1.github.io/explorejapan/en/tokushima/yoshinogawa/p/36205-tourism-kawashima-jinja/"}],["$","link","6",{"rel":"alternate","hrefLang":"x-default","href":"https://explorejapan-p1.github.io/explorejapan/ja/tokushima/yoshinogawa/p/36205-tourism-kawashima-jinja/"}],"$Lb","$Lc","$Ld","$Le","$Lf","$L10","$L11","$L12","$L13","$L14","$L15","$L16","$L17","$L18","$L19","$L1a","$L1b"]}]}]}],"$L1c"]}],"isPartial":"$@1d","staleTime":"$8","varyParams":null},{"rsc":"$L1e","isPartial":"$@1f","staleTime":"$8","varyParams":"$20"},{"rsc":"$L21","isPartial":"$@22","staleTime":"$8","varyParams":"$20"},{"rsc":"$L23","isPartial":"$@24","staleTime":"$8","varyParams":"$20"},{"rsc":"$L25","isPartial":"$@26","staleTime":"$8","varyParams":"$20"}],"isUpgradeableISRFallback":false,"a":"$@27","rootVaryParams":null,"needsRuntimeRequest":"$@28"}
+29:I[27201,["/explorejapan/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
+2a:I[39756,["/explorejapan/_next/static/chunks/3fntmmi971322.js"],"default"]
+2b:I[37457,["/explorejapan/_next/static/chunks/3fntmmi971322.js"],"default"]
+6:null
+b:["$","meta","7",{"property":"og:title","content":"川島神社"}]
+c:["$","meta","8",{"property":"og:description","content":"川島神社 in Yoshinogawa City. Sourced listing only."}]
+d:["$","meta","9",{"property":"og:url","content":"https://explorejapan-p1.github.io/explorejapan/en/tokushima/yoshinogawa/p/36205-tourism-kawashima-jinja/"}]
+e:["$","meta","10",{"property":"og:site_name","content":"BokenJapan"}]
+f:["$","meta","11",{"property":"og:locale","content":"en_US"}]
+10:["$","meta","12",{"property":"og:image","content":"https://explorejapan-p1.github.io/explorejapan/media/kawashima-jinja.jpg"}]
+11:["$","meta","13",{"property":"og:image:alt","content":"Kawashima Shrine, Kawashima-cho, Yoshinogawa"}]
+12:["$","meta","14",{"property":"og:locale:alternate","content":"ja_JP"}]
+13:["$","meta","15",{"property":"og:type","content":"article"}]
+14:["$","meta","16",{"name":"twitter:card","content":"summary_large_image"}]
+15:["$","meta","17",{"name":"twitter:title","content":"川島神社"}]
+16:["$","meta","18",{"name":"twitter:description","content":"川島神社 in Yoshinogawa City. Sourced listing only."}]
+17:["$","meta","19",{"name":"twitter:image","content":"https://explorejapan-p1.github.io/explorejapan/media/kawashima-jinja.jpg"}]
+18:["$","link","20",{"rel":"icon","href":"/favicon.ico"}]
+19:["$","link","21",{"rel":"icon","href":"/favicon-32.png","sizes":"32x32","type":"image/png"}]
+1a:["$","link","22",{"rel":"apple-touch-icon","href":"/apple-touch-icon.png","sizes":"180x180"}]
+1b:["$","$L29","23",{}]
+1c:["$","meta",null,{"name":"next-size-adjust","content":""}]
+1e:["$","$1","c",{"children":[null,["$","$L2a",null,{"parallelRouterKey":"children","template":["$","$L2b",null,{}]}]]}]
+21:["$","$1","c",{"children":[null,["$","$L2a",null,{"parallelRouterKey":"children","template":["$","$L2b",null,{}]}]]}]
+23:["$","$1","c",{"children":[null,["$","$L2a",null,{"parallelRouterKey":"children","template":["$","$L2b",null,{}]}]]}]
+25:["$","$1","c",{"children":[null,["$","$L2a",null,{"parallelRouterKey":"children","template":["$","$L2b",null,{}]}]]}]
+28:true
+8:300
+8:C
+27:0
+1d:"$undefined"
+1f:"$undefined"
+22:"$undefined"
+24:"$undefined"
+26:"$undefined"
+7:"$undefined"
