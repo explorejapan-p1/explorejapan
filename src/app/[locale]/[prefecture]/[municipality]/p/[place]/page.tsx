@@ -3,6 +3,7 @@ import {JsonLd} from '@/components/JsonLd';
 import {MIMA} from '@/data/mima';
 import {TSURUGI} from '@/data/tsurugi';
 import {YOSHINOGAWA} from '@/data/yoshinogawa';
+import {MIYOSHI} from '@/data/miyoshi';
 import {isReadySlug} from '@/data/town-lookup';
 import {PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {Link} from '@/i18n/navigation';
@@ -42,13 +43,17 @@ export async function generateMetadata({params}: Props) {
       ? 'つるぎ町'
       : municipality === 'yoshinogawa'
         ? '吉野川市'
-        : '美馬市';
+        : municipality === 'miyoshi'
+          ? '三好市'
+          : '美馬市';
   const townEn =
     municipality === 'tsurugi'
       ? 'Tsurugi Town'
       : municipality === 'yoshinogawa'
         ? 'Yoshinogawa City'
-        : 'Mima City';
+        : municipality === 'miyoshi'
+          ? 'Miyoshi City'
+          : 'Mima City';
   const description =
     loc === 'ja'
       ? `${listing.nameJa}（${townJa}）。出典のある案内のみ。`
@@ -78,13 +83,17 @@ export default async function PlacePage({params}: Props) {
       ? TSURUGI.nameJa
       : municipality === 'yoshinogawa'
         ? YOSHINOGAWA.nameJa
-        : MIMA.nameJa;
+        : municipality === 'miyoshi'
+          ? MIYOSHI.nameJa
+          : MIMA.nameJa;
   const townNameEn =
     municipality === 'tsurugi'
       ? TSURUGI.nameEn
       : municipality === 'yoshinogawa'
         ? YOSHINOGAWA.nameEn
-        : MIMA.nameEn;
+        : municipality === 'miyoshi'
+          ? MIYOSHI.nameEn
+          : MIMA.nameEn;
   return (
     <>
       <JsonLd data={placeGraph(listing, loc)} />

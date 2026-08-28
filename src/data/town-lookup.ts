@@ -4,7 +4,9 @@ import {
   TSURUGI_EXPECTED_GEO_COUNT,
   TSURUGI_EXPECTED_ROW_COUNT,
   YOSHINOGAWA_EXPECTED_GEO_COUNT,
-  YOSHINOGAWA_EXPECTED_ROW_COUNT
+  YOSHINOGAWA_EXPECTED_ROW_COUNT,
+  MIYOSHI_EXPECTED_GEO_COUNT,
+  MIYOSHI_EXPECTED_ROW_COUNT
 } from './facility-schema';
 import {MIMA, MIMA_PLACE_PHOTO} from './mima';
 import {MIMA_FACILITIES} from './mima-facilities';
@@ -40,6 +42,18 @@ import {
   YOSHINOGAWA_TRAVEL_SOURCES,
   YOSHINOGAWA_TRAVEL_STAY
 } from './yoshinogawa-travel';
+
+import {MIYOSHI, MIYOSHI_PLACE_PHOTO} from './miyoshi';
+import {MIYOSHI_FACILITIES} from './miyoshi-facilities';
+import {
+  MIYOSHI_TRAVEL_ACCESSED,
+  MIYOSHI_TRAVEL_ALL,
+  MIYOSHI_TRAVEL_COMMERCE,
+  MIYOSHI_TRAVEL_DINING,
+  MIYOSHI_TRAVEL_SHOPPING,
+  MIYOSHI_TRAVEL_SOURCES,
+  MIYOSHI_TRAVEL_STAY
+} from './miyoshi-travel';
 
 export type {LookupTown, ReadySlug} from './lookup-town';
 export {isReadySlug} from './lookup-town';
@@ -147,10 +161,46 @@ export const YOSHINOGAWA_LOOKUP: LookupTown = {
   licenseSiteEn: 'City-site listing'
 };
 
+
+export const MIYOSHI_LOOKUP: LookupTown = {
+  slug: 'miyoshi',
+  jis: MIYOSHI.jis,
+  nameJa: MIYOSHI.nameJa,
+  nameEn: MIYOSHI.nameEn,
+  heroPhoto: MIYOSHI_PLACE_PHOTO,
+  photoCiteJa:
+    '写真は大歩危・小歩危。Motokoka、2010-09-25、CC BY-SA 4.0。File:Oboke and Koboke Valley 03.jpg。',
+  photoCiteEn:
+    'Photo: Oboke and Koboke Valleys. Motokoka, 25 Sep 2010, CC BY-SA 4.0. File:Oboke and Koboke Valley 03.jpg.',
+  rows: MIYOSHI_FACILITIES,
+  expectedGeo: MIYOSHI_EXPECTED_GEO_COUNT,
+  expectedRows: MIYOSHI_EXPECTED_ROW_COUNT,
+  travelDining: MIYOSHI_TRAVEL_DINING,
+  travelStay: MIYOSHI_TRAVEL_STAY,
+  travelShopping: MIYOSHI_TRAVEL_SHOPPING,
+  travelCommerce: MIYOSHI_TRAVEL_COMMERCE,
+  travelAll: MIYOSHI_TRAVEL_ALL,
+  coverageJa:
+    '三好市（JIS 36208）1042件。観光221、文化財184、公共施設33、保育32、Wi-Fi 24、GTFS停留所548。AED・医療機関・介護・避難所・緊急避難場所は0件（未掲載）。',
+  coverageEn:
+    'Miyoshi City (JIS 36208), 1042 rows. Tourism 221, cultural property 184, public facilities 33, childcare 32, Wi-Fi 24, GTFS stops 548. AED, hospitals, care, shelters, emergency sites: 0, unpublished.',
+  mapLabelJa: '三好市の公式座標636件',
+  mapLabelEn: '636 official coordinates in Miyoshi City',
+  mapCitePackJa: '点は凍結パックの公式座標636件（accessed 2026-08-25）。',
+  mapCitePackEn: 'Points: 636 official coordinates from the frozen pack (accessed 2026-08-25).',
+  licenseNoteJa:
+    '行のライセンスは二つ。CC BY 4.0 は徳島県 Our Open Data の利用規約。「市公式サイト掲載情報」は市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Licenses split by row. CC BY 4.0 follows Tokushima Our Open Data. A city-site listing is a fact from miyoshi.i-tokushima.jp, not under that license.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
 const BY_SLUG: Record<ReadySlug, LookupTown> = {
   mima: MIMA_LOOKUP,
   tsurugi: TSURUGI_LOOKUP,
-  yoshinogawa: YOSHINOGAWA_LOOKUP
+  yoshinogawa: YOSHINOGAWA_LOOKUP,
+  miyoshi: MIYOSHI_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
@@ -158,4 +208,4 @@ export function lookupTown(slug: string): LookupTown | null {
   return BY_SLUG[slug];
 }
 
-export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES};
+export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES};

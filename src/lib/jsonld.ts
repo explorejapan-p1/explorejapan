@@ -1,6 +1,7 @@
 import {MIMA, MIMA_PLACE_PHOTO} from '@/data/mima';
 import {TSURUGI, TSURUGI_PLACE_PHOTO} from '@/data/tsurugi';
 import {YOSHINOGAWA, YOSHINOGAWA_PLACE_PHOTO} from '@/data/yoshinogawa';
+import {MIYOSHI, MIYOSHI_PLACE_PHOTO} from '@/data/miyoshi';
 import type {AppLocale} from '@/i18n/routing';
 import {
   featuredListings,
@@ -63,12 +64,14 @@ function geo(lat: number | null, lon: number | null) {
 function localityJa(slug: string): string {
   if (slug === 'tsurugi') return TSURUGI.nameJa;
   if (slug === 'yoshinogawa') return YOSHINOGAWA.nameJa;
+  if (slug === 'miyoshi') return MIYOSHI.nameJa;
   return MIMA.nameJa;
 }
 
 function localityEn(slug: string): string {
   if (slug === 'tsurugi') return TSURUGI.nameEn;
   if (slug === 'yoshinogawa') return YOSHINOGAWA.nameEn;
+  if (slug === 'miyoshi') return MIYOSHI.nameEn;
   return MIMA.nameEn;
 }
 
@@ -412,6 +415,84 @@ export function yoshinogawaGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '吉野川市の案内' : 'Places in Yoshinogawa',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+
+export function miyoshiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'tokushima/miyoshi');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('miyoshi');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['City', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? MIYOSHI.nameJa : MIYOSHI.nameEn,
+        alternateName: isJa ? MIYOSHI.nameEn : MIYOSHI.nameJa,
+        identifier: MIYOSHI.jis,
+        url,
+        image: photoAbs(MIYOSHI_PLACE_PHOTO),
+        sameAs: [MIYOSHI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa
+            ? '池田町サラダ1610番地1'
+            : '1610-1 Sarada, Ikeda-cho',
+          addressLocality: isJa ? MIYOSHI.nameJa : MIYOSHI.nameEn,
+          addressRegion: isJa ? MIYOSHI.prefectureJa : MIYOSHI.prefectureEn,
+          postalCode: MIYOSHI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? MIYOSHI.prefectureJa : MIYOSHI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? MIYOSHI.nameJa : MIYOSHI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: isJa ? '全国' : 'Japan',
+            item: canonicalUrl(locale)
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: isJa ? MIYOSHI.prefectureJa : MIYOSHI.prefectureEn,
+            item: canonicalUrl(locale, 'tokushima')
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: isJa ? MIYOSHI.nameJa : MIYOSHI.nameEn,
+            item: url
+          }
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '三好市の案内' : 'Places in Miyoshi',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

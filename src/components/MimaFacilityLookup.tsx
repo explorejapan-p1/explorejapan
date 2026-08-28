@@ -24,6 +24,7 @@ import type {LookupTown} from '@/data/lookup-town';
 import {townHelpers} from '@/data/lookup-helpers';
 import {TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES} from '@/data/tsurugi-travel';
 import {YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES} from '@/data/yoshinogawa-travel';
+import {MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES} from '@/data/miyoshi-travel';
 import {
   rankByOurTraffic,
   recordFacilitySearch,
@@ -425,7 +426,7 @@ export function MimaFacilityLookup({
     ? editorialCards
     : rankByOurTraffic(editorialCards, traffic.views, traffic.searches);
 
-  // Photo-only visual grid for tsurugi and yoshinogawa. Mima still shows 写真準備中 wells.
+  // Photo-only visual grid for tsurugi, yoshinogawa, and miyoshi. Mima still shows 写真準備中 wells.
   const photoOnly = town.slug !== 'mima';
   const gridCards =
     searching || !photoOnly
@@ -647,6 +648,26 @@ export function MimaFacilityLookup({
                 {YOSHINOGAWA_TRAVEL_ACCESSED}); a single source is flagged 要確認. Experience, shopping,
                 and commerce stay at 0 — no official list. Onsen from the city tourism pages.
                 Cards show only listings with a sourced photo. No public scores.
+              </>
+            )
+          ) : town.slug === 'miyoshi' ? (
+            locale === 'ja' ? (
+              <>
+                <a href={MIYOSHI_TRAVEL_SOURCES.stayList}>宿泊</a>は観光協会の宿泊案内と公式客室写真（
+                {MIYOSHI_TRAVEL_ACCESSED}）。
+                <a href={MIYOSHI_TRAVEL_SOURCES.gourmet}>飲食</a>は市＋観光協会の公開店ページ（{MIYOSHI_TRAVEL_ACCESSED}）。
+                体験・買物・商業の公式一覧は未掲載のため0件。
+                <a href={MIYOSHI_TRAVEL_SOURCES.iyaOnsenRoten}>温泉</a>は公式の露天写真があるもの。
+                カードは出典写真があるものだけ。点数は持ちません。
+              </>
+            ) : (
+              <>
+                <a href={MIYOSHI_TRAVEL_SOURCES.stayList}>Lodging</a> from the tourism association
+                lodging list and official guest-room photos ({MIYOSHI_TRAVEL_ACCESSED}).{' '}
+                <a href={MIYOSHI_TRAVEL_SOURCES.gourmet}>Dining</a> from city / association shop pages (
+                {MIYOSHI_TRAVEL_ACCESSED}). Experience, shopping, and commerce stay at 0 — no official
+                list. <a href={MIYOSHI_TRAVEL_SOURCES.iyaOnsenRoten}>Onsen</a> where an official outdoor-bath
+                photo exists. Cards show only listings with a sourced photo. No public scores.
               </>
             )
           ) : locale === 'ja' ? (

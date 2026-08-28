@@ -7,6 +7,7 @@ import {townHelpers} from '@/data/lookup-helpers';
 import {lookupTown} from '@/data/town-lookup';
 import {TSURUGI, TSURUGI_PLACE_PHOTO} from '@/data/tsurugi';
 import {YOSHINOGAWA, YOSHINOGAWA_PLACE_PHOTO} from '@/data/yoshinogawa';
+import {MIYOSHI, MIYOSHI_PLACE_PHOTO} from '@/data/miyoshi';
 import {PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {
   MUNICIPALITY_BY_SLUG,
@@ -16,7 +17,7 @@ import {Link} from '@/i18n/navigation';
 import type {AppLocale} from '@/i18n/routing';
 import {projectMimaOfficialMap} from '@/lib/geo';
 import {JsonLd} from '@/components/JsonLd';
-import {mimaGraph, tsurugiGraph, yoshinogawaGraph} from '@/lib/jsonld';
+import {mimaGraph, tsurugiGraph, yoshinogawaGraph, miyoshiGraph} from '@/lib/jsonld';
 import {shareMetadata} from '@/lib/seo';
 
 type Props = {
@@ -47,7 +48,9 @@ export async function generateMetadata({params}: Props) {
       ? TSURUGI_PLACE_PHOTO
       : muni.slug === 'yoshinogawa'
         ? YOSHINOGAWA_PLACE_PHOTO
-        : MIMA_PLACE_PHOTO;
+        : muni.slug === 'miyoshi'
+          ? MIYOSHI_PLACE_PHOTO
+          : MIMA_PLACE_PHOTO;
   const description = live
     ? muni.slug === 'tsurugi'
       ? loc === 'ja'
@@ -57,9 +60,13 @@ export async function generateMetadata({params}: Props) {
         ? loc === 'ja'
           ? '吉野川市。川島城、藤井寺、鴨島の宿。'
           : 'Yoshinogawa City, Tokushima — Kawashima Castle, Fujii-dera, Kamojima stays.'
-        : loc === 'ja'
-          ? '四国のまほろば 美馬市。うだつの町並み、食、宿。'
-          : 'Mima City, Tokushima — Udatsu townscape, food, and stays.'
+        : muni.slug === 'miyoshi'
+          ? loc === 'ja'
+            ? '三好市。大歩危・小歩危、祖谷、宿。'
+            : 'Miyoshi City, Tokushima — Oboke and Koboke, Iya Valley, stays.'
+          : loc === 'ja'
+            ? '四国のまほろば 美馬市。うだつの町並み、食、宿。'
+            : 'Mima City, Tokushima — Udatsu townscape, food, and stays.'
     : loc === 'ja'
       ? 'この市町村のページは準備中です。'
       : 'This municipality page is coming soon.';
@@ -96,8 +103,8 @@ export default async function MunicipalityPage({params}: Props) {
         <div className="coming">
           <p>
             {isJa
-              ? 'この市町村のページは準備中です。現在本文があるのは美馬市・つるぎ町・吉野川市です。'
-              : 'This municipality page is coming soon. Mima City, Tsurugi Town, and Yoshinogawa City have full listings in v0.'}
+              ? 'この市町村のページは準備中です。現在本文があるのは美馬市・つるぎ町・吉野川市・三好市です。'
+              : 'This municipality page is coming soon. Mima City, Tsurugi Town, Yoshinogawa City, and Miyoshi City have full listings in v0.'}
           </p>
           <p>
             <Link href="/tokushima/mima">{isJa ? '美馬市へ' : 'Go to Mima City'}</Link>
@@ -105,6 +112,8 @@ export default async function MunicipalityPage({params}: Props) {
             <Link href="/tokushima/tsurugi">{isJa ? 'つるぎ町へ' : 'Go to Tsurugi Town'}</Link>
             {' · '}
             <Link href="/tokushima/yoshinogawa">{isJa ? '吉野川市へ' : 'Go to Yoshinogawa City'}</Link>
+            {' · '}
+            <Link href="/tokushima/miyoshi">{isJa ? '三好市へ' : 'Go to Miyoshi City'}</Link>
           </p>
         </div>
       </>
@@ -134,7 +143,7 @@ export default async function MunicipalityPage({params}: Props) {
 
   return (
     <>
-      <JsonLd data={town.slug === 'tsurugi' ? tsurugiGraph(graphLocale) : town.slug === 'yoshinogawa' ? yoshinogawaGraph(graphLocale) : mimaGraph(graphLocale)} />
+      <JsonLd data={town.slug === 'tsurugi' ? tsurugiGraph(graphLocale) : town.slug === 'yoshinogawa' ? yoshinogawaGraph(graphLocale) : town.slug === 'miyoshi' ? miyoshiGraph(graphLocale) : mimaGraph(graphLocale)} />
       <nav className="crumbs">
         <Link href="/">{isJa ? '全国' : 'Japan'}</Link>
         <span> / </span>
@@ -154,7 +163,58 @@ export default async function MunicipalityPage({params}: Props) {
         openId={null}
       />
 
-      {town.slug === 'yoshinogawa' ? (
+      {town.slug === 'miyoshi' ? (
+      <details className="facts-fold">
+        <summary>{isJa ? '市の資料' : 'City facts'}</summary>
+      <table className="facts">
+        <tbody>
+          <tr>
+            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <td>
+              {MIYOSHI.nameJa} / {MIYOSHI.nameEn}（{MIYOSHI.reading}）
+            </td>
+          </tr>
+          <tr>
+            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <td>
+              <Link href="/tokushima">{isJa ? MIYOSHI.prefectureJa : MIYOSHI.prefectureEn}</Link>
+            </td>
+          </tr>
+          <tr>
+            <th>JIS / N03_007</th>
+            <td>
+              <strong>{MIYOSHI.jis}</strong>
+              {isJa ? '（東みよし町 36489 ではない）' : ' (not Higashimiyoshi Town 36489)'}
+            </td>
+          </tr>
+          <tr>
+            <th>J-LIS</th>
+            <td>{MIYOSHI.jlis}</td>
+          </tr>
+          <tr>
+            <th>{isJa ? '市役所' : 'City hall'}</th>
+            <td>
+              〒{MIYOSHI.hall.postalCode} {isJa ? MIYOSHI.hall.addressJa : MIYOSHI.hall.addressEn}
+              <br />
+              {MIYOSHI.hall.phone} · <a href={MIYOSHI.sameAs}>sameAs {MIYOSHI.sameAs}</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        <a href={MIYOSHI.sources.hall}>{isJa ? '庁舎案内' : 'Hall guide'}</a>
+        {' · '}
+        <a href={MIYOSHI.sources.home}>{isJa ? '市ホームページ' : 'City homepage'}</a>
+        {' · '}
+        <a href={MIYOSHI.sources.kanko}>{isJa ? '観光案内' : 'Tourism guide'}</a>
+      </p>
+      <p className="note">
+        {isJa
+          ? `数字のアクセス日は ${MIYOSHI.sources.accessed}。人口は未掲載（出典ページを混ぜません）。`
+          : `Figures accessed ${MIYOSHI.sources.accessed}. Population is unpublished (universes are not mixed).`}
+      </p>
+      </details>
+      ) : town.slug === 'yoshinogawa' ? (
       <details className="facts-fold">
         <summary>{isJa ? '市の資料' : 'City facts'}</summary>
       <table className="facts">

@@ -35,6 +35,18 @@ import {
   yoshinogawaTopChipForRow
 } from './yoshinogawa-travel';
 
+import {
+  isMiyoshiExperiencePackRow,
+  isMiyoshiOnsenPackRow,
+  isMiyoshiStayPackRow,
+  miyoshiPackRowMatchesFilter,
+  miyoshiSightPhoto,
+  miyoshiSourcedHook,
+  miyoshiTopChipForRow,
+  rankMiyoshiSeeRows,
+  resolveMiyoshiFilter
+} from './miyoshi-travel';
+
 function neverStay(_row: {category: string; name_ja: string}): boolean {
   return false;
 }
@@ -94,8 +106,22 @@ const YOSHINOGAWA_HELPERS: LookupHelpers = {
   resolveFilter: resolveYoshinogawaFilter
 };
 
+
+const MIYOSHI_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isMiyoshiOnsenPackRow,
+  isExperiencePackRow: isMiyoshiExperiencePackRow,
+  isStayPackRow: isMiyoshiStayPackRow,
+  packRowMatchesFilter: miyoshiPackRowMatchesFilter,
+  rankSeeRows: rankMiyoshiSeeRows,
+  sightPhoto: miyoshiSightPhoto,
+  sourcedHook: miyoshiSourcedHook,
+  topChipForRow: miyoshiTopChipForRow,
+  resolveFilter: resolveMiyoshiFilter
+};
+
 export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'tsurugi') return TSURUGI_HELPERS;
   if (slug === 'yoshinogawa') return YOSHINOGAWA_HELPERS;
+  if (slug === 'miyoshi') return MIYOSHI_HELPERS;
   return MIMA_HELPERS;
 }

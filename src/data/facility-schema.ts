@@ -87,6 +87,27 @@ export const YOSHINOGAWA_EXPECTED_CATEGORY_COUNTS = {
   gtfs_stop: 29
 } as const satisfies Record<FacilityCategory, number>;
 
+
+export const MIYOSHI_PACK_JIS = '36208';
+export const MIYOSHI_EXPECTED_ROW_COUNT = 1042;
+export const MIYOSHI_EXPECTED_GEO_COUNT = 636;
+export const MIYOSHI_EXPECTED_HOURS_COUNT = 494;
+export const MIYOSHI_EXPECTED_MISSING_ADDRESS = 548;
+export const MIYOSHI_EXPECTED_MISSING_PHONE = 791;
+export const MIYOSHI_EXPECTED_CATEGORY_COUNTS = {
+  tourism: 221,
+  cultural_property: 184,
+  care: 0,
+  aed: 0,
+  shelter: 0,
+  emergency_evacuation_site: 0,
+  hospital: 0,
+  childcare: 32,
+  wifi: 24,
+  public_facility: 33,
+  gtfs_stop: 548
+} as const satisfies Record<FacilityCategory, number>;
+
 export type FacilityRow = {
   id: string;
   jis: string;
