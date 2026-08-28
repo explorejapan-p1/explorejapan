@@ -103,6 +103,7 @@ const TOUR_AJIICHI = 'https://miyoshi-tourism.jp/spot/862/';
 const TOUR_MEN_AWA = 'https://miyoshi-tourism.jp/spot/3861/';
 const IYA_ONSEN_ROTEN = 'https://www.iyaonsen.co.jp/onsen/roten/';
 const MANNAKA_HOTEL = 'https://mannaka.co.jp/hotel';
+const TOUGENKYO = 'https://www.tougenkyo-iya.jp/';
 
 /** Exact pack/travel name_ja only. No 美馬 / つるぎ / 吉野川 photos. No 東みよし町 Files. */
 export const MIYOSHI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
@@ -195,6 +196,17 @@ export const MIYOSHI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '奥祖谷二重かずら橋 女橋（三好市）',
     'Okuiya double kazura bridge, Miyoshi'
   ),
+  '祖谷のかずら橋': wikiPhoto(
+    'iya-kazurabashi.jpg',
+    'https://commons.wikimedia.org/wiki/File:Iya_Kazurabashi-3.jpg',
+    'CC BY 2.0',
+    'https://creativecommons.org/licenses/by/2.0/',
+    'ume-y',
+    'https://www.flickr.com/photos/29989965@N00/',
+    '2011-05-04',
+    '祖谷のかずら橋（三好市西祖谷山村）',
+    'Iya Kazura Bridge, Nishi-Iya, Miyoshi'
+  ),
   '峡谷の湯宿 大歩危峡まんなか': sourcePhoto(
     'mannaka-room.jpg',
     '峡谷の湯宿 大歩危峡まんなかの客室（三好市山城町）',
@@ -202,12 +214,30 @@ export const MIYOSHI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     MANNAKA_HOTEL,
     '峡谷の湯宿 大歩危峡まんなか'
   ),
+  '桃源郷祖谷の山里 茅葺き民家ステイ': sourcePhoto(
+    'tougenkyo-house.jpg',
+    '桃源郷祖谷の山里の民家内観（三好市東祖谷）',
+    'Interior of a Tougenkyo Iya thatched house, Higashi-Iya, Miyoshi',
+    TOUGENKYO,
+    '桃源郷祖谷の山里'
+  ),
   '和の宿 ホテル祖谷温泉': sourcePhoto(
     'iya-onsen-roten.jpg',
     '和の宿 ホテル祖谷温泉の露天風呂（三好市池田町）',
     'Outdoor bath at Hotel Iya Onsen, Ikeda-cho, Miyoshi',
     IYA_ONSEN_ROTEN,
     '和の宿 ホテル祖谷温泉'
+  ),
+  '湯元新祖谷温泉 ホテルかずら橋': wikiPhoto(
+    'shiniya-roten.jpg',
+    'https://commons.wikimedia.org/wiki/File:Shiniya_hot_spring.jpg',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0/',
+    'ブルーノ・プラス',
+    'https://commons.wikimedia.org/wiki/User:%E3%83%96%E3%83%AB%E3%83%BC%E3%83%8E%E3%83%BB%E3%83%97%E3%83%A9%E3%82%B9',
+    '2023-04',
+    '新祖谷温泉の露天風呂（三好市西祖谷山村）',
+    'Outdoor bath at Shin-Iya Onsen, Nishi-Iya, Miyoshi'
   ),
   'お好み焼きつくし': sourcePhoto(
     'okonomiyaki-tsukushi.jpg',

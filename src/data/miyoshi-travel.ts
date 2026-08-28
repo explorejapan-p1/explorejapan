@@ -24,24 +24,26 @@ export const MIYOSHI_TRAVEL_SOURCES = {
   onsen: 'https://miyoshi-tourism.jp/spot/?spot_classification=hot-spring',
   iyaOnsenRoten: 'https://www.iyaonsen.co.jp/onsen/roten/',
   mannakaHotel: 'https://mannaka.co.jp/hotel',
+  tougenkyo: 'https://www.tougenkyo-iya.jp/',
+  shiniyaCommons: 'https://commons.wikimedia.org/wiki/File:Shiniya_hot_spring.jpg',
   tabelogCity: 'https://tabelog.com/tokushima/C36208/rstLst/'
 } as const;
 
 /** Exact tourism-pack names shown on 温泉, not 観光. Bath/roten photo required. */
-export const MIYOSHI_ONSEN_PACK_NAMES = ['和の宿 ホテル祖谷温泉'] as const;
+export const MIYOSHI_ONSEN_PACK_NAMES = ['和の宿 ホテル祖谷温泉', '湯元新祖谷温泉 ホテルかずら橋'] as const;
 
 export const MIYOSHI_ONSEN_PACK_SET: ReadonlySet<string> = new Set(MIYOSHI_ONSEN_PACK_NAMES);
 
 /** Exact tourism-pack names shown on 宿泊, not 観光. Room/bath/view photo required. */
-export const MIYOSHI_STAY_PACK_NAMES = ['峡谷の湯宿 大歩危峡まんなか'] as const;
+export const MIYOSHI_STAY_PACK_NAMES = ['峡谷の湯宿 大歩危峡まんなか', '桃源郷祖谷の山里 茅葺き民家ステイ'] as const;
 
 export const MIYOSHI_STAY_PACK_SET: ReadonlySet<string> = new Set(MIYOSHI_STAY_PACK_NAMES);
 
 export const MIYOSHI_SIGHT_PINS = [
   '大歩危小歩危',
+  '祖谷のかずら橋',
   'うだつの町並み・阿波池田うだつの家たばこ資料館',
-  '落合集落・落合集落展望所',
-  '祖谷渓・小便小僧・ひの字渓谷'
+  '落合集落・落合集落展望所'
 ] as const;
 
 export const MIYOSHI_TRAVEL_STAY: readonly TravelRow[] = [];
@@ -219,10 +221,6 @@ export function miyoshiSourcedHook(
   locale: string
 ): string {
   const addr = row.address && row.address.trim() !== '' ? row.address : '';
-  const phone = row.phone && row.phone.trim() !== '' ? row.phone : '';
-  if (row.category === 'dining' && !addr && !phone) {
-    return locale === 'ja' ? '要確認' : 'Needs confirmation';
-  }
   if (addr) return addr;
   if (row.category === 'dining') {
     return locale === 'ja' ? '三好市 飲食案内' : 'Miyoshi dining list';
