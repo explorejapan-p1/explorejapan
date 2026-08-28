@@ -6,10 +6,18 @@
 <title>日本全国市町村紹介</title>
 <script>
 (function () {
+  var loc = 'ja';
+  try {
+    var stored = localStorage.getItem('explorejapan-locale');
+    if (stored === 'ja' || stored === 'en') {
+      loc = stored;
+      location.replace('./' + loc + '/');
+      return;
+    }
+  } catch (e) {}
   var langs = (navigator.languages && navigator.languages.length)
     ? navigator.languages
     : [navigator.language || 'ja'];
-  var loc = 'ja';
   for (var i = 0; i < langs.length; i++) {
     var tag = String(langs[i] || '').toLowerCase();
     if (tag.indexOf('ja') === 0) { loc = 'ja'; break; }

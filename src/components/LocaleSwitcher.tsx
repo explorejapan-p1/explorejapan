@@ -3,6 +3,8 @@
 import {useLocale} from 'next-intl';
 import {usePathname, useRouter} from '@/i18n/navigation';
 
+const LOCALE_KEY = 'explorejapan-locale';
+
 type Props = {
   compact?: boolean;
 };
@@ -13,6 +15,11 @@ export function LocaleSwitcher({compact = false}: Props) {
   const router = useRouter();
 
   function switchTo(next: 'ja' | 'en') {
+    try {
+      localStorage.setItem(LOCALE_KEY, next);
+    } catch {
+      // private mode / blocked storage — still switch
+    }
     router.replace(pathname, {locale: next});
   }
 
