@@ -471,7 +471,10 @@ export function prefectureCount(): number {
   return PREFECTURES.length;
 }
 
-export function projectMimaOfficialMap(points: readonly OfficialMapPoint[]): MimaOfficialMap {
+export function projectMimaOfficialMap(
+  points: readonly OfficialMapPoint[],
+  jis: string = MIMA_PACK_JIS
+): MimaOfficialMap {
   if (points.length === 0) {
     throw new Error('official xy scatter needs at least one pack coordinate');
   }
@@ -493,20 +496,20 @@ export function projectMimaOfficialMap(points: readonly OfficialMapPoint[]): Mim
   const topo = readTopo('tokushima-municipalities.topojson');
   if (topo) {
     const fc = asCollection(topo);
-    const mima = fc.features.find((f) => {
+    const outlineFeat = fc.features.find((f) => {
       const p = propsOf(f as Feature<Geometry, Record<string, string | undefined>>);
-      const jis = String(p.jis ?? p.N03_007 ?? '');
-      return jis === MIMA_PACK_JIS || String(p.slug ?? '') === 'mima';
+      const featJis = String(p.jis ?? p.N03_007 ?? '');
+      return featJis === jis || (jis === MIMA_PACK_JIS && String(p.slug ?? '') === 'mima');
     });
-    if (mima) {
+    if (outlineFeat) {
       projection = geoMercator().fitExtent(
         [
           [28, 18],
           [width - 28, height - 18]
         ],
-        mima
+        outlineFeat
       );
-      const drawn = geoPath(projection)(mima) ?? '';
+      const drawn = geoPath(projection)(outlineFeat) ?? '';
       if (drawn) {
         outline = drawn;
         outlineSource = 'n03';

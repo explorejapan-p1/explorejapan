@@ -1,6 +1,8 @@
 import {notFound} from 'next/navigation';
 import {JsonLd} from '@/components/JsonLd';
 import {MIMA} from '@/data/mima';
+import {TSURUGI} from '@/data/tsurugi';
+import {isReadySlug} from '@/data/town-lookup';
 import {PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {Link} from '@/i18n/navigation';
 import {routing, type AppLocale} from '@/i18n/routing';
@@ -20,7 +22,7 @@ export function generateStaticParams() {
       out.push({
         locale,
         prefecture: 'tokushima',
-        municipality: 'mima',
+        municipality: row.slug,
         place: row.id
       });
     }
@@ -30,17 +32,19 @@ export function generateStaticParams() {
 
 export async function generateMetadata({params}: Props) {
   const {locale, prefecture, municipality, place} = await params;
-  if (prefecture !== 'tokushima' || municipality !== 'mima') return {};
-  const listing = listingById(place);
+  if (prefecture !== 'tokushima' || !isReadySlug(municipality)) return {};
+  const listing = listingById(place, municipality);
   if (!listing || !listing.photo) return {};
   const loc = (locale === 'en' ? 'en' : 'ja') as AppLocale;
+  const townJa = municipality === 'tsurugi' ? 'つるぎ町' : '美馬市';
+  const townEn = municipality === 'tsurugi' ? 'Tsurugi Town' : 'Mima City';
   const description =
     loc === 'ja'
-      ? `${listing.nameJa}（美馬市）。出典のある案内のみ。`
-      : `${listing.nameJa} in Mima City. Sourced listing only.`;
+      ? `${listing.nameJa}（${townJa}）。出典のある案内のみ。`
+      : `${listing.nameJa} in ${townEn}. Sourced listing only.`;
   return shareMetadata({
     locale: loc,
-    rest: listingRest(listing.id),
+    rest: listingRest(listing.id, listing.slug),
     title: listing.nameJa,
     description,
     image: listing.photo,
@@ -51,13 +55,15 @@ export async function generateMetadata({params}: Props) {
 
 export default async function PlacePage({params}: Props) {
   const {locale, prefecture, municipality, place} = await params;
-  if (prefecture !== 'tokushima' || municipality !== 'mima') notFound();
-  const listing = listingById(place);
+  if (prefecture !== 'tokushima' || !isReadySlug(municipality)) notFound();
+  const listing = listingById(place, municipality);
   if (!listing || !listing.photo) notFound();
   const loc = (locale === 'en' ? 'en' : 'ja') as AppLocale;
   const isJa = loc === 'ja';
   const pref = PREFECTURE_BY_SLUG.get('tokushima')!;
   const photo = listing.photo;
+  const townNameJa = municipality === 'tsurugi' ? TSURUGI.nameJa : MIMA.nameJa;
+  const townNameEn = municipality === 'tsurugi' ? TSURUGI.nameEn : MIMA.nameEn;
   return (
     <>
       <JsonLd data={placeGraph(listing, loc)} />
@@ -66,7 +72,7 @@ export default async function PlacePage({params}: Props) {
         <span> / </span>
         <Link href="/tokushima">{isJa ? pref.nameJa : pref.nameEn}</Link>
         <span> / </span>
-        <Link href="/tokushima/mima">{isJa ? MIMA.nameJa : MIMA.nameEn}</Link>
+        <Link href={`/tokushima/${municipality}`}>{isJa ? townNameJa : townNameEn}</Link>
         <span> / </span>
         <span>{listing.nameJa}</span>
       </nav>

@@ -1,13 +1,11 @@
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {MimaFacilityLookup} from '@/components/MimaFacilityLookup';
-import {
-  EXPECTED_GEO_COUNT,
-  EXPECTED_ROW_COUNT
-} from '@/data/facility-schema';
 import {MIMA, MIMA_PLACE_PHOTO} from '@/data/mima';
-import {MIMA_FACILITIES, facilityGapBoard, officialGeoRows} from '@/data/mima-facilities';
-import {resolveMimaFilter} from '@/data/mima-travel';
+import {facilityGapBoard, officialGeoRows} from '@/data/mima-facilities';
+import {townHelpers} from '@/data/lookup-helpers';
+import {lookupTown} from '@/data/town-lookup';
+import {TSURUGI, TSURUGI_PLACE_PHOTO} from '@/data/tsurugi';
 import {PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {
   MUNICIPALITY_BY_SLUG,
@@ -17,7 +15,7 @@ import {Link} from '@/i18n/navigation';
 import type {AppLocale} from '@/i18n/routing';
 import {projectMimaOfficialMap} from '@/lib/geo';
 import {JsonLd} from '@/components/JsonLd';
-import {mimaGraph} from '@/lib/jsonld';
+import {mimaGraph, tsurugiGraph} from '@/lib/jsonld';
 import {shareMetadata} from '@/lib/seo';
 
 type Props = {
@@ -36,20 +34,31 @@ export async function generateMetadata({params}: Props) {
   const muni = MUNICIPALITY_BY_SLUG.get(municipality);
   if (prefecture !== 'tokushima' || !muni) return {};
   const loc = (locale === 'en' ? 'en' : 'ja') as AppLocale;
-  const live = muni.slug === 'mima';
-  const title = loc === 'ja' ? muni.nameJa : `${muni.nameEn}${live ? ' City' : ''}`;
+  const live = muni.status === 'ready';
+  const title =
+    loc === 'ja'
+      ? muni.nameJa
+      : muni.slug === 'mima' && live
+        ? `${muni.nameEn} City`
+        : muni.nameEn;
+  const image = muni.slug === 'tsurugi' ? TSURUGI_PLACE_PHOTO : MIMA_PLACE_PHOTO;
+  const description = live
+    ? muni.slug === 'tsurugi'
+      ? loc === 'ja'
+        ? 'つるぎ町。二層うだつの町並み、剣山、宿。'
+        : 'Tsurugi Town, Tokushima — two-storey udatsu townscape, Mount Tsurugi, stays.'
+      : loc === 'ja'
+        ? '四国のまほろば 美馬市。うだつの町並み、食、宿。'
+        : 'Mima City, Tokushima — Udatsu townscape, food, and stays.'
+    : loc === 'ja'
+      ? 'この市町村のページは準備中です。'
+      : 'This municipality page is coming soon.';
   return shareMetadata({
     locale: loc,
     rest: `tokushima/${muni.slug}`,
     title,
-    description: live
-      ? loc === 'ja'
-        ? '四国のまほろば 美馬市。うだつの町並み、食、宿。'
-        : 'Mima City, Tokushima — Udatsu townscape, food, and stays.'
-      : loc === 'ja'
-        ? 'この市町村のページは準備中です。'
-        : 'This municipality page is coming soon.',
-    image: MIMA_PLACE_PHOTO,
+    description,
+    image,
     index: live
   });
 }
@@ -63,7 +72,7 @@ export default async function MunicipalityPage({params}: Props) {
   const pref = PREFECTURE_BY_SLUG.get('tokushima')!;
   const isJa = locale === 'ja';
 
-  if (muni.slug !== 'mima') {
+  if (muni.status !== 'ready') {
     return (
       <>
         <nav className="crumbs">
@@ -77,47 +86,53 @@ export default async function MunicipalityPage({params}: Props) {
         <div className="coming">
           <p>
             {isJa
-              ? 'この市町村のページは準備中です。現在本文があるのは美馬市だけです。'
-              : 'This municipality page is coming soon. Only Mima City has a full listing in v0.'}
+              ? 'この市町村のページは準備中です。現在本文があるのは美馬市とつるぎ町です。'
+              : 'This municipality page is coming soon. Mima City and Tsurugi Town have full listings in v0.'}
           </p>
           <p>
             <Link href="/tokushima/mima">{isJa ? '美馬市へ' : 'Go to Mima City'}</Link>
+            {' · '}
+            <Link href="/tokushima/tsurugi">{isJa ? 'つるぎ町へ' : 'Go to Tsurugi Town'}</Link>
           </p>
         </div>
       </>
     );
   }
 
+  const town = lookupTown(muni.slug);
+  if (!town) notFound();
   const p = MIMA.population;
-  const gaps = facilityGapBoard();
-  const officialXy = officialGeoRows();
-  if (officialXy.length !== EXPECTED_GEO_COUNT) {
-    throw new Error(`official xy ${officialXy.length} != ${EXPECTED_GEO_COUNT}`);
+  const packRows = town.rows;
+  const gaps = facilityGapBoard(packRows);
+  const officialXy = officialGeoRows(packRows);
+  if (officialXy.length !== town.expectedGeo) {
+    throw new Error(`official xy ${officialXy.length} != ${town.expectedGeo}`);
   }
-  const officialMap = projectMimaOfficialMap(officialXy);
-  const packRows = MIMA_FACILITIES;
-  if (packRows.length !== EXPECTED_ROW_COUNT) {
-    throw new Error(`pack rows ${packRows.length} != ${EXPECTED_ROW_COUNT}`);
+  if (packRows.length !== town.expectedRows) {
+    throw new Error(`pack rows ${packRows.length} != ${town.expectedRows}`);
   }
+  const officialMap = projectMimaOfficialMap(officialXy, town.jis);
 
   // Static export cannot SSR query strings. First HTML paint = 宿泊.
   // MimaFacilityLookup reads c/q/id from window.location.search after mount.
-  const filter = resolveMimaFilter(undefined, '');
+  const filter = townHelpers(town.slug).resolveFilter(undefined, '');
   const engaged = true;
   const tMuni = await getTranslations('muni');
+  const graphLocale = (locale === 'en' ? 'en' : 'ja') as AppLocale;
 
   return (
     <>
-      <JsonLd data={mimaGraph(locale === "en" ? "en" : "ja")} />
+      <JsonLd data={town.slug === 'tsurugi' ? tsurugiGraph(graphLocale) : mimaGraph(graphLocale)} />
       <nav className="crumbs">
         <Link href="/">{isJa ? '全国' : 'Japan'}</Link>
         <span> / </span>
         <Link href="/tokushima">{isJa ? pref.nameJa : pref.nameEn}</Link>
         <span> / </span>
-        <span>{isJa ? MIMA.nameJa : MIMA.nameEn}</span>
+        <span>{isJa ? town.nameJa : town.nameEn}</span>
       </nav>
       <MimaFacilityLookup
         locale={locale}
+        town={town}
         gaps={gaps}
         map={officialMap}
         rows={packRows}
@@ -127,6 +142,55 @@ export default async function MunicipalityPage({params}: Props) {
         openId={null}
       />
 
+      {town.slug === 'tsurugi' ? (
+      <details className="facts-fold">
+        <summary>{isJa ? '町の資料' : 'Town facts'}</summary>
+      <table className="facts">
+        <tbody>
+          <tr>
+            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <td>
+              {TSURUGI.nameJa} / {TSURUGI.nameEn}（{TSURUGI.reading}）
+            </td>
+          </tr>
+          <tr>
+            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <td>
+              <Link href="/tokushima">{isJa ? TSURUGI.prefectureJa : TSURUGI.prefectureEn}</Link>
+            </td>
+          </tr>
+          <tr>
+            <th>JIS / N03_007</th>
+            <td>
+              <strong>{TSURUGI.jis}</strong>
+            </td>
+          </tr>
+          <tr>
+            <th>J-LIS</th>
+            <td>{TSURUGI.jlis}</td>
+          </tr>
+          <tr>
+            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <td>
+              〒{TSURUGI.hall.postalCode} {isJa ? TSURUGI.hall.addressJa : TSURUGI.hall.addressEn}
+              <br />
+              {TSURUGI.hall.phone} · <a href={TSURUGI.sameAs}>sameAs {TSURUGI.sameAs}</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        <a href={TSURUGI.sources.hall}>{isJa ? '庁舎案内' : 'Hall guide'}</a>
+        {' · '}
+        <a href={TSURUGI.sources.home}>{isJa ? '町ホームページ' : 'Town homepage'}</a>
+      </p>
+      <p className="note">
+        {isJa
+          ? `数字のアクセス日は ${TSURUGI.sources.accessed}。人口は未掲載（出典ページを混ぜません）。`
+          : `Figures accessed ${TSURUGI.sources.accessed}. Population is unpublished (universes are not mixed).`}
+      </p>
+      </details>
+      ) : (
       <details className="facts-fold">
         <summary>{tMuni('factsFold')}</summary>
       <table className="facts">
@@ -263,6 +327,7 @@ export default async function MunicipalityPage({params}: Props) {
         <a href={MIMA.sources.shisei}>{isJa ? '市勢要覧 2025' : 'Statistical pamphlet 2025'}</a>
       </p>
       </details>
+      )}
 
     </>
   );

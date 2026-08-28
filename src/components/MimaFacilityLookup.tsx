@@ -3,37 +3,26 @@
 import {useEffect, useState} from 'react';
 import {useTranslations} from 'next-intl';
 import {
-  EXPECTED_GEO_COUNT,
   licenseKind,
   type FacilityCategory,
   type FacilityGapBoard,
   type FacilityRow,
   type MimaOfficialMap
 } from '@/data/facility-schema';
-import {BASE_PATH, MIMA, MIMA_PLACE_PHOTO, isCommonsPhoto} from '@/data/mima';
+import {BASE_PATH, isCommonsPhoto} from '@/data/mima';
 import {
   TOP_CHIPS,
   TOP_CHIP_COUNTS,
   TRAVEL_ACCESSED,
-  TRAVEL_ALL,
   TRAVEL_CARD_FOLD,
-  TRAVEL_COMMERCE,
-  TRAVEL_DINING,
-  TRAVEL_SHOPPING,
   TRAVEL_SOURCES,
-  TRAVEL_STAY,
-  isExperiencePackRow,
-  isOnsenPackRow,
   isTravelFilter,
-  packRowMatchesFilter,
-  rankSeeRows,
-  resolveMimaFilter,
-  sightPhoto,
-  sourcedHook,
-  topChipForRow,
   type FilterId,
   type TravelRow
 } from '@/data/mima-travel';
+import type {LookupTown} from '@/data/lookup-town';
+import {townHelpers} from '@/data/lookup-helpers';
+import {TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES} from '@/data/tsurugi-travel';
 import {
   rankByOurTraffic,
   recordFacilitySearch,
@@ -45,6 +34,7 @@ import {
 
 type Props = {
   locale: string;
+  town: LookupTown;
   gaps: FacilityGapBoard;
   map: MimaOfficialMap;
   rows: readonly FacilityRow[];
@@ -97,8 +87,8 @@ function dedupeMapPoints(
   return out;
 }
 
-function chipHref(next: FilterId, q: string, locale: string, id?: string): string {
-  const path = `${BASE_PATH}/${locale}/tokushima/mima/`;
+function chipHref(next: FilterId, q: string, locale: string, slug: string, id?: string): string {
+  const path = `${BASE_PATH}/${locale}/tokushima/${slug}/`;
   if (next === 'stay' && !q && !id) return path;
   const parts: string[] = [];
   if (next !== 'stay') parts.push(`c=${encodeURIComponent(next)}`);
@@ -168,17 +158,20 @@ function FacilityCard({
   locale,
   rank,
   href,
-  onOpen
+  onOpen,
+  town
 }: {
   row: CardRow;
   locale: string;
   rank: number | null;
   href: string;
   onOpen: (id: string) => void;
+  town: LookupTown;
 }) {
   const t = useTranslations('lookup');
-  const photo = sightPhoto(row.name_ja);
-  const hook = sourcedHook(row, locale);
+  const h = townHelpers(town.slug);
+  const photo = h.sightPhoto(row.name_ja);
+  const hook = h.sourcedHook(row, locale);
   return (
     <article className="facility-card" data-id={row.id} data-category={row.category}>
       <a
@@ -222,16 +215,19 @@ function FacilityCard({
 function DetailSheet({
   row,
   locale,
-  onClose
+  onClose,
+  town
 }: {
   row: CardRow;
   locale: string;
   onClose: () => void;
+  town: LookupTown;
 }) {
   const t = useTranslations('lookup');
+  const h = townHelpers(town.slug);
   const pack = isPackRow(row) ? row : null;
   const kind = pack ? licenseKind(pack.license) : null;
-  const photo = sightPhoto(row.name_ja);
+  const photo = h.sightPhoto(row.name_ja);
   return (
     <div className="sheet-backdrop" onClick={onClose}>
       <div
@@ -300,7 +296,7 @@ function DetailSheet({
             <>
               {' · '}
               <span className={kind === 'cc_by_open_data' ? 'license-cc' : 'license-city'}>
-                {kind === 'cc_by_open_data' ? t('licenseOpendata') : t('licenseCity')}
+                {kind === 'cc_by_open_data' ? t('licenseOpendata') : locale === 'ja' ? town.licenseSiteJa : town.licenseSiteEn}
               </span>
             </>
           ) : null}
@@ -316,6 +312,7 @@ function chipClass(active: boolean): string {
 
 export function MimaFacilityLookup({
   locale,
+  town,
   gaps,
   map,
   rows,
@@ -325,6 +322,7 @@ export function MimaFacilityLookup({
   openId: initialOpenId
 }: Props) {
   const t = useTranslations('lookup');
+  const h = townHelpers(town.slug);
   const [filter, setFilter] = useState(initialFilter);
   const [query, setQuery] = useState(initialQuery);
   const [openId, setOpenId] = useState(initialOpenId);
@@ -340,7 +338,7 @@ export function MimaFacilityLookup({
     const c = params.get('c') ?? undefined;
     const q = (params.get('q') ?? '').trim();
     const id = params.get('id');
-    setFilter(resolveMimaFilter(c, q));
+    setFilter(h.resolveFilter(c, q));
     setQuery(q);
     setOpenId(id && id !== '' ? id : null);
     if (q) setSearchOpen(true);
@@ -358,9 +356,10 @@ export function MimaFacilityLookup({
 
   const displayRows = dedupeDisplayRows(rows);
   const displayPoints = dedupeMapPoints(map.points);
-  const rankedSee = rankSeeRows(displayRows);
-  const onsenRows = displayRows.filter(isOnsenPackRow);
-  const experienceRows = displayRows.filter(isExperiencePackRow);
+  const rankedSee = h.rankSeeRows(displayRows);
+  const onsenRows = displayRows.filter(h.isOnsenPackRow);
+  const experienceRows = displayRows.filter(h.isExperiencePackRow);
+  const stayPackRows = displayRows.filter(h.isStayPackRow);
 
   const legendCats: FacilityCategory[] = [];
   const seen = new Set<FacilityCategory>();
@@ -378,21 +377,21 @@ export function MimaFacilityLookup({
   const travelLayer = isTravelFilter(filter);
 
   const travelHits = searching
-    ? TRAVEL_ALL.filter((row) => row.name_ja.toLowerCase().includes(q))
+    ? town.travelAll.filter((row) => row.name_ja.toLowerCase().includes(q))
     : filter === 'dining'
-      ? [...TRAVEL_DINING]
+      ? [...town.travelDining]
       : filter === 'stay'
-        ? [...TRAVEL_STAY]
+        ? [...town.travelStay]
         : filter === 'shopping'
-          ? [...TRAVEL_SHOPPING]
+          ? [...town.travelShopping]
           : filter === 'commerce'
-            ? [...TRAVEL_COMMERCE]
+            ? [...town.travelCommerce]
             : [];
 
-  const includePack = searching || !travelLayer;
+  const includePack = searching || !travelLayer || filter === 'stay';
   const filteredPack = includePack
     ? displayRows.filter((row) => {
-        if (!searching && !packRowMatchesFilter(row.category, filter, row.name_ja)) {
+        if (!searching && !h.packRowMatchesFilter(row.category, filter, row.name_ja)) {
           return false;
         }
         if (q === '') return true;
@@ -409,13 +408,15 @@ export function MimaFacilityLookup({
     : [];
 
   const orderedPack =
-    !searching && filter === 'sights' ? rankSeeRows(filteredPack) : filteredPack;
+    !searching && filter === 'sights' ? h.rankSeeRows(filteredPack) : filteredPack;
 
   const editorialCards: CardRow[] = searching
     ? [...travelHits, ...orderedPack]
-    : travelLayer
-      ? travelHits
-      : orderedPack;
+    : filter === 'stay'
+      ? [...stayPackRows, ...travelHits]
+      : travelLayer
+        ? travelHits
+        : orderedPack;
 
   // Chip lists: our traffic, then our name searches, then editorial index.
   // Search results stay name-filter order. Counts all 0 → editorial proxy.
@@ -432,14 +433,16 @@ export function MimaFacilityLookup({
       ? undefined
       : cards.find((row) => row.id === openId) ??
         displayRows.find((row) => row.id === openId) ??
-        TRAVEL_ALL.find((row) => row.id === openId);
+        town.travelAll.find((row) => row.id === openId);
 
   function chipCount(id: (typeof TOP_CHIPS)[number]): number {
     if (id === 'sights') return rankedSee.length;
     if (id === 'onsen') return onsenRows.length;
     if (id === 'experience') return experienceRows.length;
-    if (id === 'shopping') return TRAVEL_SHOPPING.length;
-    if (id === 'commerce') return TRAVEL_COMMERCE.length;
+    if (id === 'stay') return stayPackRows.length + town.travelStay.length;
+    if (id === 'dining') return town.travelDining.length;
+    if (id === 'shopping') return town.travelShopping.length;
+    if (id === 'commerce') return town.travelCommerce.length;
     return TOP_CHIP_COUNTS[id];
   }
 
@@ -449,14 +452,14 @@ export function MimaFacilityLookup({
   }
 
   function openCard(id: string) {
-    const href = chipHref(filter === 'all' ? 'stay' : filter, query, locale, id);
+    const href = chipHref(filter === 'all' ? 'stay' : filter, query, locale, town.slug, id);
     window.history.pushState({}, '', href);
     setOpenId(id);
     setTraffic((prev) => ({...prev, views: recordFacilityView(id)}));
   }
 
   function closeSheet() {
-    const href = chipHref(filter === 'all' ? 'stay' : filter, query, locale);
+    const href = chipHref(filter === 'all' ? 'stay' : filter, query, locale, town.slug);
     window.history.pushState({}, '', href);
     setOpenId(null);
   }
@@ -469,19 +472,19 @@ export function MimaFacilityLookup({
       <div className="hero-fold">
         <figure className="hero-photo">
           <img
-            src={MIMA_PLACE_PHOTO.src}
+            src={town.heroPhoto.src}
             width={1920}
             height={1163}
-            alt={locale === 'ja' ? MIMA_PLACE_PHOTO.altJa : MIMA_PLACE_PHOTO.altEn}
+            alt={locale === 'ja' ? town.heroPhoto.altJa : town.heroPhoto.altEn}
           />
-          <h1 className="hero-title">{locale === 'ja' ? MIMA.nameJa : MIMA.nameEn}</h1>
+          <h1 className="hero-title">{locale === 'ja' ? town.nameJa : town.nameEn}</h1>
           <figcaption className="photo-cite">
-            {t('photoCite')}{' '}
-            <a href={MIMA_PLACE_PHOTO.commons}>Wikimedia Commons</a>
+            {locale === 'ja' ? town.photoCiteJa : town.photoCiteEn}{' '}
+            <a href={town.heroPhoto.commons}>Wikimedia Commons</a>
             {' / '}
-            <a href={MIMA_PLACE_PHOTO.licenseUrl}>{MIMA_PLACE_PHOTO.license}</a>
+            <a href={town.heroPhoto.licenseUrl}>{town.heroPhoto.license}</a>
             {' / '}
-            <a href={MIMA_PLACE_PHOTO.authorUrl}>{MIMA_PLACE_PHOTO.author}</a>
+            <a href={town.heroPhoto.authorUrl}>{town.heroPhoto.author}</a>
           </figcaption>
         </figure>
       </div>
@@ -494,14 +497,14 @@ export function MimaFacilityLookup({
               <a
                 key={cat}
                 className={chipClass(filter === cat && !searching)}
-                href={chipHref(cat, '', locale)}
+                href={chipHref(cat, '', locale, town.slug)}
                 data-category={cat}
                 data-chip={cat}
                 onClick={(event) => {
                   event.preventDefault();
                   setShowAll(false);
                   setQuery('');
-                  go(chipHref(cat, '', locale));
+                  go(chipHref(cat, '', locale, town.slug));
                 }}
               >
                 <ChipLabel id={cat} />
@@ -525,14 +528,14 @@ export function MimaFacilityLookup({
         <form
           className="lookup-search-row"
           method="get"
-          action={`${BASE_PATH}/${locale}/tokushima/mima/`}
+          action={`${BASE_PATH}/${locale}/tokushima/${town.slug}/`}
           onSubmit={(event) => {
             const fd = new FormData(event.currentTarget);
             const submitted = String(fd.get('q') ?? '').trim();
             if (submitted) {
               setTraffic((prev) => ({
                 ...prev,
-                searches: recordFacilitySearch(submitted, [...TRAVEL_ALL, ...displayRows])
+                searches: recordFacilitySearch(submitted, [...town.travelAll, ...displayRows])
               }));
             }
           }}
@@ -579,8 +582,9 @@ export function MimaFacilityLookup({
               row={row}
               locale={locale}
               rank={searching ? null : index + 1}
-              href={chipHref(filter === 'all' ? 'stay' : filter, query, locale, row.id)}
+              href={chipHref(filter === 'all' ? 'stay' : filter, query, locale, town.slug, row.id)}
               onOpen={openCard}
+              town={town}
             />
           ))}
         </div>
@@ -591,27 +595,43 @@ export function MimaFacilityLookup({
         ) : null}
       </div>
 
-      {sheetRow ? <DetailSheet row={sheetRow} locale={locale} onClose={closeSheet} /> : null}
+      {sheetRow ? <DetailSheet row={sheetRow} locale={locale} onClose={closeSheet} town={town} /> : null}
 
       <footer className="lookup-sources">
         <p className="tiny-cite">
-          {locale === 'ja' ? (
+          {town.slug === 'mima' ? (
+            locale === 'ja' ? (
+              <>
+                <a href={TRAVEL_SOURCES.dining}>飲食</a>・<a href={TRAVEL_SOURCES.stay}>宿泊</a>
+                は美馬観光ビューロー（{TRAVEL_ACCESSED}）。
+                <a href={TRAVEL_SOURCES.shoppingMap}>買物</a>・商業はうだつの町並み周辺図（2026-08-27）。
+                <a href={TRAVEL_SOURCES.onsen}>温泉</a>・<a href={TRAVEL_SOURCES.experience}>体験</a>
+                は市の観光マップ。点数は持ちません。
+              </>
+            ) : (
+              <>
+                <a href={TRAVEL_SOURCES.dining}>Dining</a> and{' '}
+                <a href={TRAVEL_SOURCES.stay}>lodging</a> from the Mima Tourism Bureau (
+                {TRAVEL_ACCESSED}). <a href={TRAVEL_SOURCES.shoppingMap}>Shopping</a> and commerce
+                from the Udatsu townscape map (2026-08-27).{' '}
+                <a href={TRAVEL_SOURCES.onsen}>Onsen</a> and{' '}
+                <a href={TRAVEL_SOURCES.experience}>experience</a> from the city tourism map. No
+                public scores.
+              </>
+            )
+          ) : locale === 'ja' ? (
             <>
-              <a href={TRAVEL_SOURCES.dining}>飲食</a>・<a href={TRAVEL_SOURCES.stay}>宿泊</a>
-              は美馬観光ビューロー（{TRAVEL_ACCESSED}）。
-              <a href={TRAVEL_SOURCES.shoppingMap}>買物</a>・商業はうだつの町並み周辺図（2026-08-27）。
-              <a href={TRAVEL_SOURCES.onsen}>温泉</a>・<a href={TRAVEL_SOURCES.experience}>体験</a>
-              は市の観光マップ。点数は持ちません。
+              <a href={TSURUGI_TRAVEL_SOURCES.stayList}>宿泊</a>は町の宿泊施設案内（パック掲載＋
+              {TSURUGI_TRAVEL_ACCESSED} の公式ページ）。飲食・体験・買物・商業の公式一覧は未掲載のため0件。
+              <a href={TSURUGI_TRAVEL_SOURCES.onsen}>温泉</a>は町の観光案内で名前を確認できたもの。
+              点数は持ちません。
             </>
           ) : (
             <>
-              <a href={TRAVEL_SOURCES.dining}>Dining</a> and{' '}
-              <a href={TRAVEL_SOURCES.stay}>lodging</a> from the Mima Tourism Bureau (
-              {TRAVEL_ACCESSED}). <a href={TRAVEL_SOURCES.shoppingMap}>Shopping</a> and commerce
-              from the Udatsu townscape map (2026-08-27).{' '}
-              <a href={TRAVEL_SOURCES.onsen}>Onsen</a> and{' '}
-              <a href={TRAVEL_SOURCES.experience}>experience</a> from the city tourism map. No
-              public scores.
+              <a href={TSURUGI_TRAVEL_SOURCES.stayList}>Lodging</a> from the town lodging list
+              (pack rows plus the official page of {TSURUGI_TRAVEL_ACCESSED}). Dining, experience,
+              shopping, and commerce stay at 0 — no official list. <a href={TSURUGI_TRAVEL_SOURCES.onsen}>Onsen</a>{' '}
+              from the town tourism pages. No public scores.
             </>
           )}
         </p>
@@ -648,8 +668,8 @@ export function MimaFacilityLookup({
             className="official-scatter"
             viewBox={map.viewBox}
             role="img"
-            aria-label={t('mapLabel')}
-            data-official-xy={EXPECTED_GEO_COUNT}
+            aria-label={locale === 'ja' ? town.mapLabelJa : town.mapLabelEn}
+            data-official-xy={town.expectedGeo}
           >
             <path className="mima-outline" d={map.outline} />
             {displayPoints.map((point) => (
@@ -659,7 +679,7 @@ export function MimaFacilityLookup({
                 data-category={point.category}
                 transform={`translate(${point.x} ${point.y})`}
               >
-                <a href={chipHref(topChipForRow(point), '', locale, point.id)}>
+                <a href={chipHref(h.topChipForRow(point), '', locale, town.slug, point.id)}>
                   <circle
                     className={
                       'map-dot' + (openId === point.id ? ' is-active' : '')
@@ -686,7 +706,7 @@ export function MimaFacilityLookup({
           <div className="geo-cite">
             <p>
               <span className="geo-cite-label">{t('citeLabel')}</span>
-              {t('mapCitePack')}
+              {locale === 'ja' ? town.mapCitePackJa : town.mapCitePackEn}
             </p>
             {map.outlineSource === 'n03' ? (
               <p>
@@ -698,8 +718,8 @@ export function MimaFacilityLookup({
             )}
           </div>
         </div>
-        <p className="tally">{t('coverage')}</p>
-        <p className="note">{t('licenseNote')}</p>
+        <p className="tally">{locale === 'ja' ? town.coverageJa : town.coverageEn}</p>
+        <p className="note">{locale === 'ja' ? town.licenseNoteJa : town.licenseNoteEn}</p>
         </details>
       </footer>
     </section>

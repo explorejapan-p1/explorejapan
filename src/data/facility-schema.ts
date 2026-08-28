@@ -46,9 +46,29 @@ export const EXPECTED_ROW_COUNT = 515;
 export const MIMA_PACK_JIS = '36207';
 export const PACK_ACCESSED = '2026-08-25';
 
+export const TSURUGI_PACK_JIS = '36468';
+export const TSURUGI_EXPECTED_ROW_COUNT = 334;
+export const TSURUGI_EXPECTED_GEO_COUNT = 171;
+export const TSURUGI_EXPECTED_HOURS_COUNT = 60;
+export const TSURUGI_EXPECTED_MISSING_ADDRESS = 130;
+export const TSURUGI_EXPECTED_MISSING_PHONE = 249;
+export const TSURUGI_EXPECTED_CATEGORY_COUNTS = {
+  tourism: 27,
+  cultural_property: 97,
+  care: 0,
+  aed: 0,
+  shelter: 19,
+  emergency_evacuation_site: 20,
+  hospital: 0,
+  childcare: 3,
+  wifi: 0,
+  public_facility: 48,
+  gtfs_stop: 120
+} as const satisfies Record<FacilityCategory, number>;
+
 export type FacilityRow = {
   id: string;
-  jis: typeof MIMA_PACK_JIS;
+  jis: string;
   name_ja: string;
   reading: string | null;
   category: FacilityCategory;

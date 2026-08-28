@@ -1,4 +1,5 @@
 import {MIMA, MIMA_PLACE_PHOTO} from '@/data/mima';
+import {TSURUGI, TSURUGI_PLACE_PHOTO} from '@/data/tsurugi';
 import type {AppLocale} from '@/i18n/routing';
 import {
   featuredListings,
@@ -32,12 +33,17 @@ function org() {
   };
 }
 
-function postal(address: string | null, locale: AppLocale) {
+function postal(
+  address: string | null,
+  locale: AppLocale,
+  localityJa: string = MIMA.nameJa,
+  localityEn: string = MIMA.nameEn
+) {
   if (!address) return undefined;
   return {
     '@type': 'PostalAddress',
     streetAddress: address,
-    addressLocality: locale === 'ja' ? MIMA.nameJa : MIMA.nameEn,
+    addressLocality: locale === 'ja' ? localityJa : localityEn,
     addressRegion: locale === 'ja' ? MIMA.prefectureJa : MIMA.prefectureEn,
     addressCountry: 'JP'
   };
@@ -61,7 +67,7 @@ function compact(obj: Record<string, unknown>): Record<string, unknown> {
 }
 
 export function listingNode(listing: PublicListing, locale: AppLocale) {
-  const url = canonicalUrl(locale, listingRest(listing.id));
+  const url = canonicalUrl(locale, listingRest(listing.id, listing.slug));
   const type = schemaType(listing.kind, listing.nameJa);
   const sameAs = [listing.officialUrl, listing.sourceUrl].filter(
     (value, index, arr): value is string =>
@@ -73,7 +79,7 @@ export function listingNode(listing: PublicListing, locale: AppLocale) {
     name: listing.nameJa,
     url,
     image: listing.photo ? photoAbs(listing.photo) : undefined,
-    address: postal(listing.address, locale),
+    address: postal(listing.address, locale, listing.slug === 'tsurugi' ? 'つるぎ町' : MIMA.nameJa, listing.slug === 'tsurugi' ? 'Tsurugi' : MIMA.nameEn),
     telephone: listing.phone ?? undefined,
     openingHours: listing.hours ?? undefined,
     geo: geo(listing.lat, listing.lon),
@@ -247,8 +253,86 @@ export function mimaGraph(locale: AppLocale) {
   };
 }
 
+
+export function tsurugiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'tokushima/tsurugi');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('tsurugi');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? TSURUGI.nameJa : TSURUGI.nameEn,
+        alternateName: isJa ? TSURUGI.nameEn : TSURUGI.nameJa,
+        identifier: TSURUGI.jis,
+        url,
+        image: photoAbs(TSURUGI_PLACE_PHOTO),
+        sameAs: [TSURUGI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa
+            ? '貞光字東浦1番地3'
+            : '1-3 Higashiura, Sadamitsu',
+          addressLocality: isJa ? TSURUGI.nameJa : TSURUGI.nameEn,
+          addressRegion: isJa ? TSURUGI.prefectureJa : TSURUGI.prefectureEn,
+          postalCode: TSURUGI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? TSURUGI.prefectureJa : TSURUGI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? TSURUGI.nameJa : TSURUGI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: isJa ? '全国' : 'Japan',
+            item: canonicalUrl(locale)
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: isJa ? TSURUGI.prefectureJa : TSURUGI.prefectureEn,
+            item: canonicalUrl(locale, 'tokushima')
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: isJa ? TSURUGI.nameJa : TSURUGI.nameEn,
+            item: url
+          }
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? 'つるぎ町の案内' : 'Places in Tsurugi',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
 export function placeGraph(listing: PublicListing, locale: AppLocale) {
-  const url = canonicalUrl(locale, listingRest(listing.id));
+  const url = canonicalUrl(locale, listingRest(listing.id, listing.slug));
   const origin = siteOrigin();
   const isJa = locale === 'ja';
   return {
@@ -281,8 +365,14 @@ export function placeGraph(listing: PublicListing, locale: AppLocale) {
           {
             '@type': 'ListItem',
             position: 3,
-            name: isJa ? MIMA.nameJa : MIMA.nameEn,
-            item: canonicalUrl(locale, 'tokushima/mima')
+            name: isJa
+              ? listing.slug === 'tsurugi'
+                ? 'つるぎ町'
+                : MIMA.nameJa
+              : listing.slug === 'tsurugi'
+                ? 'Tsurugi'
+                : MIMA.nameEn,
+            item: canonicalUrl(locale, `tokushima/${listing.slug}`)
           },
           {
             '@type': 'ListItem',

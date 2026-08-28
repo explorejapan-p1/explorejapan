@@ -1,8 +1,6 @@
 import type {FacilityRow} from '@/data/facility-schema';
 import {type MimaPlacePhoto} from '@/data/mima';
-import {MIMA_FACILITIES} from '@/data/mima-facilities';
 import {
-  TRAVEL_ALL,
   isExperiencePackRow,
   isOnsenPackRow,
   isSightsCategory,
@@ -11,6 +9,14 @@ import {
   type TravelKind,
   type TravelRow
 } from '@/data/mima-travel';
+import type {ReadySlug} from '@/data/lookup-town';
+import {lookupTown} from '@/data/town-lookup';
+import {
+  isTsurugiOnsenPackRow,
+  isTsurugiStayPackRow,
+  rankTsurugiSeeRows,
+  tsurugiSightPhoto
+} from '@/data/tsurugi-travel';
 
 export type ListingKind = TravelKind | 'onsen' | 'experience' | 'sights';
 
@@ -27,6 +33,7 @@ export type PublicListing = {
   officialUrl: string | null;
   accessed: string;
   photo: MimaPlacePhoto | null;
+  slug: ReadySlug;
 };
 
 function packDedupeKey(row: FacilityRow): string {
@@ -36,13 +43,7 @@ function packDedupeKey(row: FacilityRow): string {
   return `${row.name_ja}|${row.source_url}`;
 }
 
-function kindForPack(row: FacilityRow): ListingKind {
-  if (isOnsenPackRow(row)) return 'onsen';
-  if (isExperiencePackRow(row)) return 'experience';
-  return 'sights';
-}
-
-function fromTravel(row: TravelRow): PublicListing {
+function fromTravel(row: TravelRow, slug: ReadySlug, photo: MimaPlacePhoto | null): PublicListing {
   return {
     id: row.id,
     nameJa: row.name_ja,
@@ -55,15 +56,21 @@ function fromTravel(row: TravelRow): PublicListing {
     sourceUrl: row.source_url,
     officialUrl: row.source_url,
     accessed: row.accessed,
-    photo: sightPhoto(row.name_ja)
+    photo,
+    slug
   };
 }
 
-function fromPack(row: FacilityRow): PublicListing {
+function fromPack(
+  row: FacilityRow,
+  slug: ReadySlug,
+  kind: ListingKind,
+  photo: MimaPlacePhoto | null
+): PublicListing {
   return {
     id: row.id,
     nameJa: row.name_ja,
-    kind: kindForPack(row),
+    kind,
     address: row.address,
     phone: row.phone,
     hours: row.hours,
@@ -72,20 +79,20 @@ function fromPack(row: FacilityRow): PublicListing {
     sourceUrl: row.source_url,
     officialUrl: row.official_url,
     accessed: row.accessed,
-    photo: sightPhoto(row.name_ja)
+    photo,
+    slug
   };
 }
 
-export function publicListings(): PublicListing[] {
-  const out: PublicListing[] = TRAVEL_ALL.map(fromTravel);
+function mimaListings(): PublicListing[] {
+  const town = lookupTown('mima')!;
+  const out: PublicListing[] = town.travelAll.map((row) =>
+    fromTravel(row, 'mima', sightPhoto(row.name_ja))
+  );
   const seen = new Set<string>();
   const pack: FacilityRow[] = [];
-  for (const row of MIMA_FACILITIES) {
-    if (
-      !isOnsenPackRow(row) &&
-      !isExperiencePackRow(row) &&
-      !isSightsCategory(row.category)
-    ) {
+  for (const row of town.rows) {
+    if (!isOnsenPackRow(row) && !isExperiencePackRow(row) && !isSightsCategory(row.category)) {
       continue;
     }
     const key = packDedupeKey(row);
@@ -97,21 +104,75 @@ export function publicListings(): PublicListing[] {
   const onsen = pack.filter(isOnsenPackRow);
   const experience = pack.filter(isExperiencePackRow);
   for (const row of [...onsen, ...experience, ...ranked]) {
-    out.push(fromPack(row));
+    const kind: ListingKind = isOnsenPackRow(row)
+      ? 'onsen'
+      : isExperiencePackRow(row)
+        ? 'experience'
+        : 'sights';
+    out.push(fromPack(row, 'mima', kind, sightPhoto(row.name_ja)));
   }
   return out;
 }
 
-export function liveListings(): PublicListing[] {
-  return publicListings().filter((row) => row.photo !== null);
+function tsurugiListings(): PublicListing[] {
+  const town = lookupTown('tsurugi')!;
+  const out: PublicListing[] = town.travelAll.map((row) =>
+    fromTravel(row, 'tsurugi', tsurugiSightPhoto(row.name_ja))
+  );
+  const seen = new Set<string>();
+  const pack: FacilityRow[] = [];
+  for (const row of town.rows) {
+    if (
+      !isTsurugiOnsenPackRow(row) &&
+      !isTsurugiStayPackRow(row) &&
+      !isSightsCategory(row.category)
+    ) {
+      continue;
+    }
+    const key = packDedupeKey(row);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    pack.push(row);
+  }
+  const ranked = rankTsurugiSeeRows(pack);
+  const onsen = pack.filter(isTsurugiOnsenPackRow);
+  const stay = pack.filter(isTsurugiStayPackRow);
+  for (const row of [...stay, ...onsen, ...ranked]) {
+    const kind: ListingKind = isTsurugiOnsenPackRow(row)
+      ? 'onsen'
+      : isTsurugiStayPackRow(row)
+        ? 'stay'
+        : 'sights';
+    out.push(fromPack(row, 'tsurugi', kind, tsurugiSightPhoto(row.name_ja)));
+  }
+  return out;
 }
 
-export function listingById(id: string): PublicListing | undefined {
-  return publicListings().find((row) => row.id === id);
+const CACHE: Record<ReadySlug, PublicListing[]> = {
+  mima: mimaListings(),
+  tsurugi: tsurugiListings()
+};
+
+export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {
+  return CACHE[slug];
 }
 
-export function listingRest(id: string): string {
-  return `tokushima/mima/p/${id}`;
+export function allPublicListings(): PublicListing[] {
+  return [...CACHE.mima, ...CACHE.tsurugi];
+}
+
+export function liveListings(slug?: ReadySlug): PublicListing[] {
+  const rows = slug ? publicListings(slug) : allPublicListings();
+  return rows.filter((row) => row.photo !== null);
+}
+
+export function listingById(id: string, slug?: ReadySlug): PublicListing | undefined {
+  const rows = slug ? publicListings(slug) : allPublicListings();
+  return rows.find((row) => row.id === id);
+}
+
+export function listingRest(id: string, slug: ReadySlug = 'mima'): string {
+  return `tokushima/${slug}/p/${id}`;
 }
 
 export function schemaType(kind: ListingKind, nameJa: string): string {
@@ -124,8 +185,8 @@ export function schemaType(kind: ListingKind, nameJa: string): string {
   return 'TouristAttraction';
 }
 
-export function featuredListings(): PublicListing[] {
-  const all = liveListings();
+export function featuredListings(slug: ReadySlug = 'mima'): PublicListing[] {
+  const all = liveListings(slug);
   const pinKinds: ListingKind[] = [
     'stay',
     'dining',

@@ -35,7 +35,7 @@ export const TOKUSHIMA_MUNICIPALITIES: Municipality[] = [
   {jis: '36403', slug: 'aizumi', nameJa: '藍住町', nameEn: 'Aizumi', status: 'coming-soon'},
   {jis: '36404', slug: 'itano', nameJa: '板野町', nameEn: 'Itano', status: 'coming-soon'},
   {jis: '36405', slug: 'kamiita', nameJa: '上板町', nameEn: 'Kamiita', status: 'coming-soon'},
-  {jis: '36468', slug: 'tsurugi', nameJa: 'つるぎ町', nameEn: 'Tsurugi', status: 'coming-soon'},
+  {jis: '36468', slug: 'tsurugi', nameJa: 'つるぎ町', nameEn: 'Tsurugi', status: 'ready'},
   {jis: '36489', slug: 'higashimiyoshi', nameJa: '東みよし町', nameEn: 'Higashimiyoshi', status: 'coming-soon'}
 ];
 
