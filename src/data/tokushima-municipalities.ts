@@ -24,7 +24,7 @@ export const TOKUSHIMA_MUNICIPALITIES: Municipality[] = [
   {jis: '36301', slug: 'katsuura', nameJa: '勝浦町', nameEn: 'Katsuura', status: 'coming-soon'},
   {jis: '36302', slug: 'kamikatsu', nameJa: '上勝町', nameEn: 'Kamikatsu', status: 'coming-soon'},
   {jis: '36321', slug: 'sanagochi', nameJa: '佐那河内村', nameEn: 'Sanagochi', status: 'coming-soon'},
-  {jis: '36341', slug: 'ishii', nameJa: '石井町', nameEn: 'Ishii', status: 'coming-soon'},
+  {jis: '36341', slug: 'ishii', nameJa: '石井町', nameEn: 'Ishii', status: 'ready'},
   {jis: '36342', slug: 'kamiyama', nameJa: '神山町', nameEn: 'Kamiyama', status: 'coming-soon'},
   {jis: '36368', slug: 'naka', nameJa: '那賀町', nameEn: 'Naka', status: 'coming-soon'},
   {jis: '36383', slug: 'mugi', nameJa: '牟岐町', nameEn: 'Mugi', status: 'coming-soon'},

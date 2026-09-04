@@ -97,6 +97,18 @@ import {
 } from './kitajima-travel';
 
 import {
+  isIshiiExperiencePackRow,
+  isIshiiOnsenPackRow,
+  isIshiiStayPackRow,
+  ishiiPackRowMatchesFilter,
+  ishiiSightPhoto,
+  ishiiSourcedHook,
+  ishiiTopChipForRow,
+  rankIshiiSeeRows,
+  resolveIshiiFilter
+} from './ishii-travel';
+
+import {
   isMatsushigeExperiencePackRow,
   isMatsushigeOnsenPackRow,
   isMatsushigeStayPackRow,
@@ -271,6 +283,19 @@ const NARUTO_HELPERS: LookupHelpers = {
   resolveFilter: resolveNarutoFilter
 };
 
+
+const ISHII_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isIshiiOnsenPackRow,
+  isExperiencePackRow: isIshiiExperiencePackRow,
+  isStayPackRow: isIshiiStayPackRow,
+  packRowMatchesFilter: ishiiPackRowMatchesFilter,
+  rankSeeRows: rankIshiiSeeRows,
+  sightPhoto: ishiiSightPhoto,
+  sourcedHook: ishiiSourcedHook,
+  topChipForRow: ishiiTopChipForRow,
+  resolveFilter: resolveIshiiFilter
+};
+
 export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'tsurugi') return TSURUGI_HELPERS;
   if (slug === 'yoshinogawa') return YOSHINOGAWA_HELPERS;
@@ -281,5 +306,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'kitajima') return KITAJIMA_HELPERS;
   if (slug === 'naruto') return NARUTO_HELPERS;
   if (slug === 'matsushige') return MATSUSHIGE_HELPERS;
+  if (slug === 'ishii') return ISHII_HELPERS;
   return MIMA_HELPERS;
 }

@@ -14,7 +14,9 @@ import {
   KITAJIMA_EXPECTED_GEO_COUNT,
   KITAJIMA_EXPECTED_ROW_COUNT,
   MATSUSHIGE_EXPECTED_GEO_COUNT,
-  MATSUSHIGE_EXPECTED_ROW_COUNT
+  MATSUSHIGE_EXPECTED_ROW_COUNT,
+  ISHII_EXPECTED_GEO_COUNT,
+  ISHII_EXPECTED_ROW_COUNT
 } from './facility-schema';
 import {MIMA, MIMA_PLACE_PHOTO} from './mima';
 import {MIMA_FACILITIES} from './mima-facilities';
@@ -108,6 +110,19 @@ import {
   MATSUSHIGE_TRAVEL_SHOPPING,
   MATSUSHIGE_TRAVEL_STAY
 } from './matsushige-travel';
+
+
+import {ISHII, ISHII_PLACE_PHOTO} from './ishii';
+import {ISHII_FACILITIES} from './ishii-facilities';
+import {
+  ISHII_TRAVEL_ACCESSED,
+  ISHII_TRAVEL_SOURCES,
+  ISHII_TRAVEL_ALL,
+  ISHII_TRAVEL_COMMERCE,
+  ISHII_TRAVEL_DINING,
+  ISHII_TRAVEL_SHOPPING,
+  ISHII_TRAVEL_STAY
+} from './ishii-travel';
 
 import {KITAJIMA, KITAJIMA_PLACE_PHOTO} from './kitajima';
 import {KITAJIMA_FACILITIES} from './kitajima-facilities';
@@ -494,6 +509,41 @@ export const KITAJIMA_LOOKUP: LookupTown = {
   licenseSiteEn: 'Town-site listing'
 };
 
+
+export const ISHII_LOOKUP: LookupTown = {
+  slug: 'ishii',
+  jis: ISHII.jis,
+  nameJa: ISHII.nameJa,
+  nameEn: ISHII.nameEn,
+  heroPhoto: ISHII_PLACE_PHOTO,
+  photoCiteJa:
+    '写真は吉野川第十堰。Tamago915、2005-05-03、CC BY-SA 4.0。File:Yoshinogawa Daijuzeki.jpg。',
+  photoCiteEn:
+    'Photo: Yoshino River Daiju Weir. Tamago915, 3 May 2005, CC BY-SA 4.0. File:Yoshinogawa Daijuzeki.jpg.',
+  rows: ISHII_FACILITIES,
+  expectedGeo: ISHII_EXPECTED_GEO_COUNT,
+  expectedRows: ISHII_EXPECTED_ROW_COUNT,
+  travelDining: ISHII_TRAVEL_DINING,
+  travelStay: ISHII_TRAVEL_STAY,
+  travelShopping: ISHII_TRAVEL_SHOPPING,
+  travelCommerce: ISHII_TRAVEL_COMMERCE,
+  travelAll: ISHII_TRAVEL_ALL,
+  coverageJa:
+    '石井町（JIS 36341）179件。緊急避難場所45、文化財34、AED 26、公共施設23、避難所20、保育20、観光9、介護2。医療機関・Wi-Fi・GTFSは0件（未掲載）。',
+  coverageEn:
+    'Ishii Town (JIS 36341), 179 rows. Emergency sites 45, cultural property 34, AED 26, public facilities 23, shelters 20, childcare 20, tourism 9, care 2. Hospitals, Wi-Fi, GTFS: 0, unpublished.',
+  mapLabelJa: '石井町の公式座標88件',
+  mapLabelEn: '88 official coordinates in Ishii Town',
+  mapCitePackJa: '点は凍結パックの公式座標88件（accessed 2026-08-25）。',
+  mapCitePackEn: 'Points: 88 official coordinates from the frozen pack (accessed 2026-08-25).',
+  licenseNoteJa:
+    '行のライセンスは二つ。CC BY 4.0 は徳島県 Our Open Data の利用規約。「町公式サイト掲載情報」は町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Licenses split by row. CC BY 4.0 follows Tokushima Our Open Data. A town-site listing is a fact from town.ishii.lg.jp, not under that license.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
 const BY_SLUG: Record<ReadySlug, LookupTown> = {
   mima: MIMA_LOOKUP,
   tsurugi: TSURUGI_LOOKUP,
@@ -504,7 +554,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   higashimiyoshi: HIGASHIMIYOSHI_LOOKUP,
   kitajima: KITAJIMA_LOOKUP,
   naruto: NARUTO_LOOKUP,
-  matsushige: MATSUSHIGE_LOOKUP
+  matsushige: MATSUSHIGE_LOOKUP,
+  ishii: ISHII_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
@@ -512,4 +563,4 @@ export function lookupTown(slug: string): LookupTown | null {
   return BY_SLUG[slug];
 }
 
-export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES, AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES, HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES, KITAJIMA_TRAVEL_ACCESSED, KITAJIMA_TRAVEL_SOURCES, NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES, MATSUSHIGE_TRAVEL_ACCESSED, MATSUSHIGE_TRAVEL_SOURCES};
+export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES, AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES, HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES, KITAJIMA_TRAVEL_ACCESSED, KITAJIMA_TRAVEL_SOURCES, NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES, MATSUSHIGE_TRAVEL_ACCESSED, MATSUSHIGE_TRAVEL_SOURCES, ISHII_TRAVEL_ACCESSED, ISHII_TRAVEL_SOURCES};

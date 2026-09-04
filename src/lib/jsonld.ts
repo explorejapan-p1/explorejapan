@@ -6,6 +6,7 @@ import {AWA, AWA_PLACE_PHOTO} from '@/data/awa';
 import {HIGASHIMIYOSHI, HIGASHIMIYOSHI_PLACE_PHOTO} from '@/data/higashimiyoshi';
 import {KITAJIMA, KITAJIMA_PLACE_PHOTO} from '@/data/kitajima';
 import {MATSUSHIGE, MATSUSHIGE_PLACE_PHOTO} from '@/data/matsushige';
+import {ISHII, ISHII_PLACE_PHOTO} from '@/data/ishii';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
@@ -77,6 +78,7 @@ function localityJa(slug: string): string {
   if (slug === 'kitajima') return KITAJIMA.nameJa;
   if (slug === 'naruto') return NARUTO.nameJa;
   if (slug === 'matsushige') return MATSUSHIGE.nameJa;
+  if (slug === 'ishii') return ISHII.nameJa;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameJa;
   return MIMA.nameJa;
 }
@@ -90,6 +92,7 @@ function localityEn(slug: string): string {
   if (slug === 'kitajima') return KITAJIMA.nameEn;
   if (slug === 'naruto') return NARUTO.nameEn;
   if (slug === 'matsushige') return MATSUSHIGE.nameEn;
+  if (slug === 'ishii') return ISHII.nameEn;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameEn;
   return MIMA.nameEn;
 }
@@ -769,6 +772,84 @@ export function matsushigeGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '松茂町の案内' : 'Places in Matsushige Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+
+export function ishiiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'tokushima/ishii');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('ishii');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? ISHII.nameJa : ISHII.nameEn,
+        alternateName: isJa ? ISHII.nameEn : ISHII.nameJa,
+        identifier: ISHII.jis,
+        url,
+        image: photoAbs(ISHII_PLACE_PHOTO),
+        sameAs: [ISHII.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa
+            ? '高川原字高川原121-1'
+            : '121-1 Takagawara, Takagawara',
+          addressLocality: isJa ? ISHII.nameJa : ISHII.nameEn,
+          addressRegion: isJa ? ISHII.prefectureJa : ISHII.prefectureEn,
+          postalCode: ISHII.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? ISHII.prefectureJa : ISHII.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? ISHII.nameJa : ISHII.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: isJa ? '全国' : 'Japan',
+            item: canonicalUrl(locale)
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: isJa ? ISHII.prefectureJa : ISHII.prefectureEn,
+            item: canonicalUrl(locale, 'tokushima')
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: isJa ? ISHII.nameJa : ISHII.nameEn,
+            item: url
+          }
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '石井町の案内' : 'Places in Ishii Town',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

@@ -195,6 +195,29 @@ export const MATSUSHIGE_EXPECTED_CATEGORY_COUNTS = {
   gtfs_stop: 59
 } as const satisfies Record<FacilityCategory, number>;
 
+
+
+export const ISHII_PACK_JIS = '36341';
+export const ISHII_PACK_ACCESSED = '2026-08-25';
+export const ISHII_EXPECTED_ROW_COUNT = 179;
+export const ISHII_EXPECTED_GEO_COUNT = 88;
+export const ISHII_EXPECTED_HOURS_COUNT = 127;
+export const ISHII_EXPECTED_MISSING_ADDRESS = 35;
+export const ISHII_EXPECTED_MISSING_PHONE = 112;
+export const ISHII_EXPECTED_CATEGORY_COUNTS = {
+  tourism: 9,
+  cultural_property: 34,
+  care: 2,
+  aed: 26,
+  shelter: 20,
+  emergency_evacuation_site: 45,
+  hospital: 0,
+  childcare: 20,
+  wifi: 0,
+  public_facility: 23,
+  gtfs_stop: 0
+} as const satisfies Record<FacilityCategory, number>;
+
 export type FacilityRow = {
   id: string;
   jis: string;

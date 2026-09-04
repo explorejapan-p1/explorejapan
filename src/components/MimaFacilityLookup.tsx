@@ -30,6 +30,7 @@ import {AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES} from '@/data/awa-travel';
 import {HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES} from '@/data/higashimiyoshi-travel';
 import {KITAJIMA_TRAVEL_ACCESSED, KITAJIMA_TRAVEL_SOURCES} from '@/data/kitajima-travel';
 import {MATSUSHIGE_TRAVEL_ACCESSED, MATSUSHIGE_TRAVEL_SOURCES} from '@/data/matsushige-travel';
+import {ISHII_TRAVEL_ACCESSED, ISHII_TRAVEL_SOURCES} from '@/data/ishii-travel';
 import {NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES} from '@/data/naruto-travel';
 import {
   rankByOurTraffic,
@@ -733,6 +734,25 @@ export function MimaFacilityLookup({
               </>
             )
 
+
+
+          ) : town.slug === 'ishii' ? (
+            locale === 'ja' ? (
+              <>
+                <a href={ISHII_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ石井町の公開店ページ（
+                {ISHII_TRAVEL_ACCESSED}）。
+                宿泊・温泉は客室・浴場の出典写真が無いため0件。
+                体験・買物・商業の公式一覧は未掲載のため0件。
+                カードは出典写真があるものだけ。点数は持ちません。
+              </>
+            ) : (
+              <>
+                <a href={ISHII_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Ishii Town shop pages (
+                {ISHII_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
+                Experience, shopping, and commerce stay at 0 — no official list.
+                Cards show only listings with a sourced photo. No public scores.
+              </>
+            )
 
           ) : town.slug === 'matsushige' ? (
             locale === 'ja' ? (

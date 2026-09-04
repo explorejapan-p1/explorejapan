@@ -12,6 +12,7 @@ import {AWA, AWA_PLACE_PHOTO} from '@/data/awa';
 import {HIGASHIMIYOSHI, HIGASHIMIYOSHI_PLACE_PHOTO} from '@/data/higashimiyoshi';
 import {KITAJIMA, KITAJIMA_PLACE_PHOTO} from '@/data/kitajima';
 import {MATSUSHIGE, MATSUSHIGE_PLACE_PHOTO} from '@/data/matsushige';
+import {ISHII, ISHII_PLACE_PHOTO} from '@/data/ishii';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {PREFECTURE_BY_SLUG} from '@/data/prefectures';
@@ -23,7 +24,7 @@ import {Link} from '@/i18n/navigation';
 import type {AppLocale} from '@/i18n/routing';
 import {projectMimaOfficialMap} from '@/lib/geo';
 import {JsonLd} from '@/components/JsonLd';
-import {mimaGraph, tsurugiGraph, yoshinogawaGraph, miyoshiGraph, tokushimaCityGraph, awaGraph, higashimiyoshiGraph, kitajimaGraph, narutoGraph, matsushigeGraph} from '@/lib/jsonld';
+import {mimaGraph, tsurugiGraph, yoshinogawaGraph, miyoshiGraph, tokushimaCityGraph, awaGraph, higashimiyoshiGraph, kitajimaGraph, narutoGraph, matsushigeGraph, ishiiGraph} from '@/lib/jsonld';
 import {shareMetadata} from '@/lib/seo';
 
 type Props = {
@@ -73,7 +74,9 @@ export async function generateMetadata({params}: Props) {
                     ? NARUTO_PLACE_PHOTO
                     : muni.slug === 'matsushige'
                       ? MATSUSHIGE_PLACE_PHOTO
-                      : MIMA_PLACE_PHOTO;
+                      : muni.slug === 'ishii'
+                        ? ISHII_PLACE_PHOTO
+                        : MIMA_PLACE_PHOTO;
   const description = live
     ? muni.slug === 'tsurugi'
       ? loc === 'ja'
@@ -111,6 +114,10 @@ export async function generateMetadata({params}: Props) {
                       ? loc === 'ja'
                         ? '松茂町。月見ヶ丘海水浴場、徳島空港。'
                         : 'Matsushige Town, Tokushima — Tsukimigaoka beach, Tokushima Airport.'
+                      : muni.slug === 'ishii'
+                        ? loc === 'ja'
+                          ? '石井町。吉野川第十堰、食。'
+                          : 'Ishii Town, Tokushima — Yoshino River Daiju Weir, food.'
           : loc === 'ja'
             ? '四国のまほろば 美馬市。うだつの町並み、食、宿。'
             : 'Mima City, Tokushima — Udatsu townscape, food, and stays.'
@@ -173,6 +180,7 @@ export default async function MunicipalityPage({params}: Props) {
             <Link href="/tokushima/naruto">{isJa ? '鳴門市へ' : 'Go to Naruto City'}</Link>
             {' · '}
             <Link href="/tokushima/matsushige">{isJa ? '松茂町へ' : 'Go to Matsushige Town'}</Link>
+            <Link href="/tokushima/ishii">{isJa ? '石井町へ' : 'Go to Ishii Town'}</Link>
           </p>
         </div>
       </>
@@ -202,7 +210,7 @@ export default async function MunicipalityPage({params}: Props) {
 
   return (
     <>
-      <JsonLd data={town.slug === 'tokushima' ? tokushimaCityGraph(graphLocale) : town.slug === 'tsurugi' ? tsurugiGraph(graphLocale) : town.slug === 'yoshinogawa' ? yoshinogawaGraph(graphLocale) : town.slug === 'miyoshi' ? miyoshiGraph(graphLocale) : town.slug === 'awa' ? awaGraph(graphLocale) : town.slug === 'higashimiyoshi' ? higashimiyoshiGraph(graphLocale) : town.slug === 'kitajima' ? kitajimaGraph(graphLocale) : town.slug === 'naruto' ? narutoGraph(graphLocale) : town.slug === 'matsushige' ? matsushigeGraph(graphLocale) : mimaGraph(graphLocale)} />
+      <JsonLd data={town.slug === 'tokushima' ? tokushimaCityGraph(graphLocale) : town.slug === 'tsurugi' ? tsurugiGraph(graphLocale) : town.slug === 'yoshinogawa' ? yoshinogawaGraph(graphLocale) : town.slug === 'miyoshi' ? miyoshiGraph(graphLocale) : town.slug === 'awa' ? awaGraph(graphLocale) : town.slug === 'higashimiyoshi' ? higashimiyoshiGraph(graphLocale) : town.slug === 'kitajima' ? kitajimaGraph(graphLocale) : town.slug === 'naruto' ? narutoGraph(graphLocale) : town.slug === 'matsushige' ? matsushigeGraph(graphLocale) : town.slug === 'ishii' ? ishiiGraph(graphLocale) : mimaGraph(graphLocale)} />
       <nav className="crumbs">
         <Link href="/">{isJa ? '全国' : 'Japan'}</Link>
         <span> / </span>
@@ -528,7 +536,58 @@ export default async function MunicipalityPage({params}: Props) {
       </p>
       </details>
 
-      ) : town.slug === 'matsushige' ? (
+      
+      ) : town.slug === 'ishii' ? (
+      <details className="facts-fold">
+        <summary>{isJa ? '町の資料' : 'Town facts'}</summary>
+      <table className="facts">
+        <tbody>
+          <tr>
+            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <td>
+              {ISHII.nameJa} / {ISHII.nameEn}（{ISHII.reading}）
+            </td>
+          </tr>
+          <tr>
+            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <td>
+              <Link href="/tokushima">{isJa ? ISHII.prefectureJa : ISHII.prefectureEn}</Link>
+            </td>
+          </tr>
+          <tr>
+            <th>JIS / N03_007</th>
+            <td>
+              <strong>{ISHII.jis}</strong>
+              {isJa ? '（松茂 36401・北島 36402・藍住 36403 ではない）' : ' (not Matsushige 36401 / Kitajima 36402 / Aizumi 36403)'}
+            </td>
+          </tr>
+          <tr>
+            <th>J-LIS</th>
+            <td>{ISHII.jlis}</td>
+          </tr>
+          <tr>
+            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <td>
+              〒{ISHII.hall.postalCode} {isJa ? ISHII.hall.addressJa : ISHII.hall.addressEn}
+              <br />
+              {ISHII.hall.phone} · <a href={ISHII.sameAs}>sameAs {ISHII.sameAs}</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        <a href={ISHII.sources.hall}>{isJa ? 'お問い合わせ' : 'Contact'}</a>
+        {' · '}
+        <a href={ISHII.sources.home}>{isJa ? '町ホームページ' : 'Town homepage'}</a>
+      </p>
+      <p className="note">
+        {isJa
+          ? `数字のアクセス日は ${ISHII.sources.accessed}。人口は未掲載（出典ページを混ぜません）。`
+          : `Figures accessed ${ISHII.sources.accessed}. Population is unpublished (universes are not mixed).`}
+      </p>
+      </details>
+
+) : town.slug === 'matsushige' ? (
       <details className="facts-fold">
         <summary>{isJa ? '町の資料' : 'Town facts'}</summary>
       <table className="facts">
