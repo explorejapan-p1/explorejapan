@@ -151,6 +151,28 @@ export const HIGASHIMIYOSHI_EXPECTED_CATEGORY_COUNTS = {
   gtfs_stop: 63
 } as const satisfies Record<FacilityCategory, number>;
 
+
+export const KITAJIMA_PACK_JIS = '36402';
+export const KITAJIMA_PACK_ACCESSED = '2026-08-27';
+export const KITAJIMA_EXPECTED_ROW_COUNT = 209;
+export const KITAJIMA_EXPECTED_GEO_COUNT = 116;
+export const KITAJIMA_EXPECTED_HOURS_COUNT = 209;
+export const KITAJIMA_EXPECTED_MISSING_ADDRESS = 0;
+export const KITAJIMA_EXPECTED_MISSING_PHONE = 72;
+export const KITAJIMA_EXPECTED_CATEGORY_COUNTS = {
+  tourism: 2,
+  cultural_property: 28,
+  care: 1,
+  aed: 21,
+  shelter: 31,
+  emergency_evacuation_site: 50,
+  hospital: 29,
+  childcare: 19,
+  wifi: 0,
+  public_facility: 28,
+  gtfs_stop: 0
+} as const satisfies Record<FacilityCategory, number>;
+
 export type FacilityRow = {
   id: string;
   jis: string;

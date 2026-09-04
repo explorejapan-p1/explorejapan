@@ -10,7 +10,9 @@ import {
   AWA_EXPECTED_GEO_COUNT,
   AWA_EXPECTED_ROW_COUNT,
   HIGASHIMIYOSHI_EXPECTED_GEO_COUNT,
-  HIGASHIMIYOSHI_EXPECTED_ROW_COUNT
+  HIGASHIMIYOSHI_EXPECTED_ROW_COUNT,
+  KITAJIMA_EXPECTED_GEO_COUNT,
+  KITAJIMA_EXPECTED_ROW_COUNT
 } from './facility-schema';
 import {MIMA, MIMA_PLACE_PHOTO} from './mima';
 import {MIMA_FACILITIES} from './mima-facilities';
@@ -91,6 +93,18 @@ import {
   HIGASHIMIYOSHI_TRAVEL_SHOPPING,
   HIGASHIMIYOSHI_TRAVEL_STAY
 } from './higashimiyoshi-travel';
+
+import {KITAJIMA, KITAJIMA_PLACE_PHOTO} from './kitajima';
+import {KITAJIMA_FACILITIES} from './kitajima-facilities';
+import {
+  KITAJIMA_TRAVEL_ACCESSED,
+  KITAJIMA_TRAVEL_SOURCES,
+  KITAJIMA_TRAVEL_ALL,
+  KITAJIMA_TRAVEL_COMMERCE,
+  KITAJIMA_TRAVEL_DINING,
+  KITAJIMA_TRAVEL_SHOPPING,
+  KITAJIMA_TRAVEL_STAY
+} from './kitajima-travel';
 import {
   TOKUSHIMA_CITY_TRAVEL_ACCESSED,
   TOKUSHIMA_CITY_TRAVEL_ALL,
@@ -347,6 +361,41 @@ export const HIGASHIMIYOSHI_LOOKUP: LookupTown = {
   licenseSiteEn: 'Town-site listing'
 };
 
+
+export const KITAJIMA_LOOKUP: LookupTown = {
+  slug: 'kitajima',
+  jis: KITAJIMA.jis,
+  nameJa: KITAJIMA.nameJa,
+  nameEn: KITAJIMA.nameEn,
+  heroPhoto: KITAJIMA_PLACE_PHOTO,
+  photoCiteJa:
+    '写真は北島チューリップ公園。タクドラの金太郎、2009-04-08、CC BY 2.1 JP。File:Kitajima Tulip Park 01.jpg。',
+  photoCiteEn:
+    'Photo: Kitajima Tulip Park. タクドラの金太郎, 8 Apr 2009, CC BY 2.1 JP. File:Kitajima Tulip Park 01.jpg.',
+  rows: KITAJIMA_FACILITIES,
+  expectedGeo: KITAJIMA_EXPECTED_GEO_COUNT,
+  expectedRows: KITAJIMA_EXPECTED_ROW_COUNT,
+  travelDining: KITAJIMA_TRAVEL_DINING,
+  travelStay: KITAJIMA_TRAVEL_STAY,
+  travelShopping: KITAJIMA_TRAVEL_SHOPPING,
+  travelCommerce: KITAJIMA_TRAVEL_COMMERCE,
+  travelAll: KITAJIMA_TRAVEL_ALL,
+  coverageJa:
+    '北島町（JIS 36402）209件。緊急避難場所50、避難所31、医療機関29、文化財28、公共施設28、AED 21、保育19、観光2、介護1。Wi-Fi・GTFSは0件（未掲載）。',
+  coverageEn:
+    'Kitajima Town (JIS 36402), 209 rows. Emergency sites 50, shelters 31, hospitals 29, cultural property 28, public facilities 28, AED 21, childcare 19, tourism 2, care 1. Wi-Fi, GTFS: 0, unpublished.',
+  mapLabelJa: '北島町の公式座標116件',
+  mapLabelEn: '116 official coordinates in Kitajima Town',
+  mapCitePackJa: '点は凍結パックの公式座標116件（accessed 2026-08-27）。',
+  mapCitePackEn: 'Points: 116 official coordinates from the frozen pack (accessed 2026-08-27).',
+  licenseNoteJa:
+    '行のライセンスは二つ。CC BY 4.0 は徳島県 Our Open Data の利用規約。「町公式サイト掲載情報」は町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Licenses split by row. CC BY 4.0 follows Tokushima Our Open Data. A town-site listing is a fact from town.kitajima.lg.jp, not under that license.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
 const BY_SLUG: Record<ReadySlug, LookupTown> = {
   mima: MIMA_LOOKUP,
   tsurugi: TSURUGI_LOOKUP,
@@ -354,7 +403,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   miyoshi: MIYOSHI_LOOKUP,
   tokushima: TOKUSHIMA_CITY_LOOKUP,
   awa: AWA_LOOKUP,
-  higashimiyoshi: HIGASHIMIYOSHI_LOOKUP
+  higashimiyoshi: HIGASHIMIYOSHI_LOOKUP,
+  kitajima: KITAJIMA_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
@@ -362,4 +412,4 @@ export function lookupTown(slug: string): LookupTown | null {
   return BY_SLUG[slug];
 }
 
-export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES, AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES, HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES};
+export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES, AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES, HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES, KITAJIMA_TRAVEL_ACCESSED, KITAJIMA_TRAVEL_SOURCES};

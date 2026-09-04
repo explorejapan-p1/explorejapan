@@ -10,6 +10,7 @@ import {YOSHINOGAWA, YOSHINOGAWA_PLACE_PHOTO} from '@/data/yoshinogawa';
 import {MIYOSHI, MIYOSHI_PLACE_PHOTO} from '@/data/miyoshi';
 import {AWA, AWA_PLACE_PHOTO} from '@/data/awa';
 import {HIGASHIMIYOSHI, HIGASHIMIYOSHI_PLACE_PHOTO} from '@/data/higashimiyoshi';
+import {KITAJIMA, KITAJIMA_PLACE_PHOTO} from '@/data/kitajima';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {
@@ -20,7 +21,7 @@ import {Link} from '@/i18n/navigation';
 import type {AppLocale} from '@/i18n/routing';
 import {projectMimaOfficialMap} from '@/lib/geo';
 import {JsonLd} from '@/components/JsonLd';
-import {mimaGraph, tsurugiGraph, yoshinogawaGraph, miyoshiGraph, tokushimaCityGraph, awaGraph, higashimiyoshiGraph} from '@/lib/jsonld';
+import {mimaGraph, tsurugiGraph, yoshinogawaGraph, miyoshiGraph, tokushimaCityGraph, awaGraph, higashimiyoshiGraph, kitajimaGraph} from '@/lib/jsonld';
 import {shareMetadata} from '@/lib/seo';
 
 type Props = {
@@ -62,7 +63,9 @@ export async function generateMetadata({params}: Props) {
               ? AWA_PLACE_PHOTO
               : muni.slug === 'higashimiyoshi'
                 ? HIGASHIMIYOSHI_PLACE_PHOTO
-                : MIMA_PLACE_PHOTO;
+                : muni.slug === 'kitajima'
+                  ? KITAJIMA_PLACE_PHOTO
+                  : MIMA_PLACE_PHOTO;
   const description = live
     ? muni.slug === 'tsurugi'
       ? loc === 'ja'
@@ -88,6 +91,10 @@ export async function generateMetadata({params}: Props) {
                 ? loc === 'ja'
                   ? '東みよし町。加茂の大クス、美濃田の淵、食。'
                   : 'Higashimiyoshi Town, Tokushima — Kamo-no-Ōkusu, Minoda-no-fuchi, food.'
+                : muni.slug === 'kitajima'
+                  ? loc === 'ja'
+                    ? '北島町。北島チューリップ公園、食。'
+                    : 'Kitajima Town, Tokushima — Kitajima Tulip Park, food.'
           : loc === 'ja'
             ? '四国のまほろば 美馬市。うだつの町並み、食、宿。'
             : 'Mima City, Tokushima — Udatsu townscape, food, and stays.'
@@ -127,8 +134,8 @@ export default async function MunicipalityPage({params}: Props) {
         <div className="coming">
           <p>
             {isJa
-              ? 'この市町村のページは準備中です。現在本文があるのは徳島市・美馬市・つるぎ町・吉野川市・三好市・阿波市・東みよし町です。'
-              : 'This municipality page is coming soon. Tokushima City, Mima City, Tsurugi Town, Yoshinogawa City, Miyoshi City, Awa City, and Higashimiyoshi Town have full listings in v0.'}
+              ? 'この市町村のページは準備中です。現在本文があるのは徳島市・美馬市・つるぎ町・吉野川市・三好市・阿波市・東みよし町・北島町です。'
+              : 'This municipality page is coming soon. Tokushima City, Mima City, Tsurugi Town, Yoshinogawa City, Miyoshi City, Awa City, Higashimiyoshi Town, and Kitajima Town have full listings in v0.'}
           </p>
           <p>
             <Link href="/tokushima/tokushima">{isJa ? '徳島市へ' : 'Go to Tokushima City'}</Link>
@@ -144,6 +151,8 @@ export default async function MunicipalityPage({params}: Props) {
             <Link href="/tokushima/awa">{isJa ? '阿波市へ' : 'Go to Awa City'}</Link>
             {' · '}
             <Link href="/tokushima/higashimiyoshi">{isJa ? '東みよし町へ' : 'Go to Higashimiyoshi Town'}</Link>
+            {' · '}
+            <Link href="/tokushima/kitajima">{isJa ? '北島町へ' : 'Go to Kitajima Town'}</Link>
           </p>
         </div>
       </>
@@ -173,7 +182,7 @@ export default async function MunicipalityPage({params}: Props) {
 
   return (
     <>
-      <JsonLd data={town.slug === 'tokushima' ? tokushimaCityGraph(graphLocale) : town.slug === 'tsurugi' ? tsurugiGraph(graphLocale) : town.slug === 'yoshinogawa' ? yoshinogawaGraph(graphLocale) : town.slug === 'miyoshi' ? miyoshiGraph(graphLocale) : town.slug === 'awa' ? awaGraph(graphLocale) : town.slug === 'higashimiyoshi' ? higashimiyoshiGraph(graphLocale) : mimaGraph(graphLocale)} />
+      <JsonLd data={town.slug === 'tokushima' ? tokushimaCityGraph(graphLocale) : town.slug === 'tsurugi' ? tsurugiGraph(graphLocale) : town.slug === 'yoshinogawa' ? yoshinogawaGraph(graphLocale) : town.slug === 'miyoshi' ? miyoshiGraph(graphLocale) : town.slug === 'awa' ? awaGraph(graphLocale) : town.slug === 'higashimiyoshi' ? higashimiyoshiGraph(graphLocale) : town.slug === 'kitajima' ? kitajimaGraph(graphLocale) : mimaGraph(graphLocale)} />
       <nav className="crumbs">
         <Link href="/">{isJa ? '全国' : 'Japan'}</Link>
         <span> / </span>
@@ -444,6 +453,57 @@ export default async function MunicipalityPage({params}: Props) {
         {isJa
           ? `数字のアクセス日は ${HIGASHIMIYOSHI.sources.accessed}。人口は未掲載（出典ページを混ぜません）。`
           : `Figures accessed ${HIGASHIMIYOSHI.sources.accessed}. Population is unpublished (universes are not mixed).`}
+      </p>
+      </details>
+
+
+      ) : town.slug === 'kitajima' ? (
+      <details className="facts-fold">
+        <summary>{isJa ? '町の資料' : 'Town facts'}</summary>
+      <table className="facts">
+        <tbody>
+          <tr>
+            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <td>
+              {KITAJIMA.nameJa} / {KITAJIMA.nameEn}（{KITAJIMA.reading}）
+            </td>
+          </tr>
+          <tr>
+            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <td>
+              <Link href="/tokushima">{isJa ? KITAJIMA.prefectureJa : KITAJIMA.prefectureEn}</Link>
+            </td>
+          </tr>
+          <tr>
+            <th>JIS / N03_007</th>
+            <td>
+              <strong>{KITAJIMA.jis}</strong>
+              {isJa ? '（松茂 36401・藍住 36403 ではない）' : ' (not Matsushige 36401 / Aizumi 36403)'}
+            </td>
+          </tr>
+          <tr>
+            <th>J-LIS</th>
+            <td>{KITAJIMA.jlis}</td>
+          </tr>
+          <tr>
+            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <td>
+              〒{KITAJIMA.hall.postalCode} {isJa ? KITAJIMA.hall.addressJa : KITAJIMA.hall.addressEn}
+              <br />
+              {KITAJIMA.hall.phone} · <a href={KITAJIMA.sameAs}>sameAs {KITAJIMA.sameAs}</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        <a href={KITAJIMA.sources.hall}>{isJa ? '庁舎案内' : 'Hall guide'}</a>
+        {' · '}
+        <a href={KITAJIMA.sources.home}>{isJa ? '町ホームページ' : 'Town homepage'}</a>
+      </p>
+      <p className="note">
+        {isJa
+          ? `数字のアクセス日は ${KITAJIMA.sources.accessed}。人口は未掲載（出典ページを混ぜません）。`
+          : `Figures accessed ${KITAJIMA.sources.accessed}. Population is unpublished (universes are not mixed).`}
       </p>
       </details>
 

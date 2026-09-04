@@ -7,6 +7,7 @@ import {MIYOSHI} from '@/data/miyoshi';
 import {TOKUSHIMA_CITY} from '@/data/tokushima-city';
 import {AWA} from '@/data/awa';
 import {HIGASHIMIYOSHI} from '@/data/higashimiyoshi';
+import {KITAJIMA} from '@/data/kitajima';
 import {isReadySlug} from '@/data/town-lookup';
 import {PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {Link} from '@/i18n/navigation';
@@ -54,7 +55,9 @@ export async function generateMetadata({params}: Props) {
               ? '阿波市'
               : municipality === 'higashimiyoshi'
                 ? '東みよし町'
-                : '美馬市';
+                : municipality === 'kitajima'
+                  ? '北島町'
+                  : '美馬市';
   const townEn =
     municipality === 'tsurugi'
       ? 'Tsurugi Town'
@@ -68,7 +71,9 @@ export async function generateMetadata({params}: Props) {
               ? 'Awa City'
               : municipality === 'higashimiyoshi'
                 ? 'Higashimiyoshi Town'
-                : 'Mima City';
+                : municipality === 'kitajima'
+                  ? 'Kitajima Town'
+                  : 'Mima City';
   const description =
     loc === 'ja'
       ? `${listing.nameJa}（${townJa}）。出典のある案内のみ。`
@@ -106,7 +111,9 @@ export default async function PlacePage({params}: Props) {
               ? AWA.nameJa
               : municipality === 'higashimiyoshi'
                 ? HIGASHIMIYOSHI.nameJa
-                : MIMA.nameJa;
+                : municipality === 'kitajima'
+                  ? KITAJIMA.nameJa
+                  : MIMA.nameJa;
   const townNameEn =
     municipality === 'tsurugi'
       ? TSURUGI.nameEn
@@ -120,7 +127,9 @@ export default async function PlacePage({params}: Props) {
               ? AWA.nameEn
               : municipality === 'higashimiyoshi'
                 ? HIGASHIMIYOSHI.nameEn
-                : MIMA.nameEn;
+                : municipality === 'kitajima'
+                  ? KITAJIMA.nameEn
+                  : MIMA.nameEn;
   return (
     <>
       <JsonLd data={placeGraph(listing, loc)} />
