@@ -5,6 +5,7 @@ import {MIYOSHI, MIYOSHI_PLACE_PHOTO} from '@/data/miyoshi';
 import {AWA, AWA_PLACE_PHOTO} from '@/data/awa';
 import {HIGASHIMIYOSHI, HIGASHIMIYOSHI_PLACE_PHOTO} from '@/data/higashimiyoshi';
 import {KITAJIMA, KITAJIMA_PLACE_PHOTO} from '@/data/kitajima';
+import {MATSUSHIGE, MATSUSHIGE_PLACE_PHOTO} from '@/data/matsushige';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
@@ -75,6 +76,7 @@ function localityJa(slug: string): string {
   if (slug === 'higashimiyoshi') return HIGASHIMIYOSHI.nameJa;
   if (slug === 'kitajima') return KITAJIMA.nameJa;
   if (slug === 'naruto') return NARUTO.nameJa;
+  if (slug === 'matsushige') return MATSUSHIGE.nameJa;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameJa;
   return MIMA.nameJa;
 }
@@ -87,6 +89,7 @@ function localityEn(slug: string): string {
   if (slug === 'higashimiyoshi') return HIGASHIMIYOSHI.nameEn;
   if (slug === 'kitajima') return KITAJIMA.nameEn;
   if (slug === 'naruto') return NARUTO.nameEn;
+  if (slug === 'matsushige') return MATSUSHIGE.nameEn;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameEn;
   return MIMA.nameEn;
 }
@@ -698,6 +701,84 @@ export function higashimiyoshiGraph(locale: AppLocale) {
   };
 }
 
+
+
+export function matsushigeGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'tokushima/matsushige');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('matsushige');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? MATSUSHIGE.nameJa : MATSUSHIGE.nameEn,
+        alternateName: isJa ? MATSUSHIGE.nameEn : MATSUSHIGE.nameJa,
+        identifier: MATSUSHIGE.jis,
+        url,
+        image: photoAbs(MATSUSHIGE_PLACE_PHOTO),
+        sameAs: [MATSUSHIGE.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa
+            ? '広島字東裏30番地'
+            : '30 Higashiura, Hiroshima',
+          addressLocality: isJa ? MATSUSHIGE.nameJa : MATSUSHIGE.nameEn,
+          addressRegion: isJa ? MATSUSHIGE.prefectureJa : MATSUSHIGE.prefectureEn,
+          postalCode: MATSUSHIGE.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? MATSUSHIGE.prefectureJa : MATSUSHIGE.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? MATSUSHIGE.nameJa : MATSUSHIGE.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: isJa ? '全国' : 'Japan',
+            item: canonicalUrl(locale)
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: isJa ? MATSUSHIGE.prefectureJa : MATSUSHIGE.prefectureEn,
+            item: canonicalUrl(locale, 'tokushima')
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: isJa ? MATSUSHIGE.nameJa : MATSUSHIGE.nameEn,
+            item: url
+          }
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '松茂町の案内' : 'Places in Matsushige Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
 
 export function kitajimaGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'tokushima/kitajima');

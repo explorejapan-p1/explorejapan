@@ -12,7 +12,9 @@ import {
   HIGASHIMIYOSHI_EXPECTED_GEO_COUNT,
   HIGASHIMIYOSHI_EXPECTED_ROW_COUNT,
   KITAJIMA_EXPECTED_GEO_COUNT,
-  KITAJIMA_EXPECTED_ROW_COUNT
+  KITAJIMA_EXPECTED_ROW_COUNT,
+  MATSUSHIGE_EXPECTED_GEO_COUNT,
+  MATSUSHIGE_EXPECTED_ROW_COUNT
 } from './facility-schema';
 import {MIMA, MIMA_PLACE_PHOTO} from './mima';
 import {MIMA_FACILITIES} from './mima-facilities';
@@ -93,6 +95,19 @@ import {
   HIGASHIMIYOSHI_TRAVEL_SHOPPING,
   HIGASHIMIYOSHI_TRAVEL_STAY
 } from './higashimiyoshi-travel';
+
+
+import {MATSUSHIGE, MATSUSHIGE_PLACE_PHOTO} from './matsushige';
+import {MATSUSHIGE_FACILITIES} from './matsushige-facilities';
+import {
+  MATSUSHIGE_TRAVEL_ACCESSED,
+  MATSUSHIGE_TRAVEL_SOURCES,
+  MATSUSHIGE_TRAVEL_ALL,
+  MATSUSHIGE_TRAVEL_COMMERCE,
+  MATSUSHIGE_TRAVEL_DINING,
+  MATSUSHIGE_TRAVEL_SHOPPING,
+  MATSUSHIGE_TRAVEL_STAY
+} from './matsushige-travel';
 
 import {KITAJIMA, KITAJIMA_PLACE_PHOTO} from './kitajima';
 import {KITAJIMA_FACILITIES} from './kitajima-facilities';
@@ -410,6 +425,41 @@ export const NARUTO_LOOKUP: LookupTown = {
   licenseSiteEn: 'City-site listing'
 };
 
+
+export const MATSUSHIGE_LOOKUP: LookupTown = {
+  slug: 'matsushige',
+  jis: MATSUSHIGE.jis,
+  nameJa: MATSUSHIGE.nameJa,
+  nameEn: MATSUSHIGE.nameEn,
+  heroPhoto: MATSUSHIGE_PLACE_PHOTO,
+  photoCiteJa:
+    '写真は月見ヶ丘海浜公園。Tamago915、2008-10-13、CC BY-SA 3.0。File:Tsukimigaoka-Kaihin-Koen.jpg。',
+  photoCiteEn:
+    'Photo: Tsukimigaoka Kaihin Koen. Tamago915, 13 Oct 2008, CC BY-SA 3.0. File:Tsukimigaoka-Kaihin-Koen.jpg.',
+  rows: MATSUSHIGE_FACILITIES,
+  expectedGeo: MATSUSHIGE_EXPECTED_GEO_COUNT,
+  expectedRows: MATSUSHIGE_EXPECTED_ROW_COUNT,
+  travelDining: MATSUSHIGE_TRAVEL_DINING,
+  travelStay: MATSUSHIGE_TRAVEL_STAY,
+  travelShopping: MATSUSHIGE_TRAVEL_SHOPPING,
+  travelCommerce: MATSUSHIGE_TRAVEL_COMMERCE,
+  travelAll: MATSUSHIGE_TRAVEL_ALL,
+  coverageJa:
+    '松茂町（JIS 36401）216件。GTFS停留所59、緊急避難場所56、文化財36、公共施設31、避難所15、保育13、観光5、介護1。AED・医療機関・Wi-Fiは0件（未掲載）。',
+  coverageEn:
+    'Matsushige Town (JIS 36401), 216 rows. GTFS stops 59, emergency sites 56, cultural property 36, public facilities 31, shelters 15, childcare 13, tourism 5, care 1. AED, hospitals, Wi-Fi: 0, unpublished.',
+  mapLabelJa: '松茂町の公式座標106件',
+  mapLabelEn: '106 official coordinates in Matsushige Town',
+  mapCitePackJa: '点は凍結パックの公式座標106件（accessed 2026-08-27）。',
+  mapCitePackEn: 'Points: 106 official coordinates from the frozen pack (accessed 2026-08-27).',
+  licenseNoteJa:
+    '行のライセンスは二つ。CC BY 4.0 は徳島県 Our Open Data の利用規約。「町公式サイト掲載情報」は町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Licenses split by row. CC BY 4.0 follows Tokushima Our Open Data. A town-site listing is a fact from town.matsushige.tokushima.jp, not under that license.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
 export const KITAJIMA_LOOKUP: LookupTown = {
   slug: 'kitajima',
   jis: KITAJIMA.jis,
@@ -453,7 +503,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   awa: AWA_LOOKUP,
   higashimiyoshi: HIGASHIMIYOSHI_LOOKUP,
   kitajima: KITAJIMA_LOOKUP,
-  naruto: NARUTO_LOOKUP
+  naruto: NARUTO_LOOKUP,
+  matsushige: MATSUSHIGE_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
@@ -461,4 +512,4 @@ export function lookupTown(slug: string): LookupTown | null {
   return BY_SLUG[slug];
 }
 
-export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES, AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES, HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES, KITAJIMA_TRAVEL_ACCESSED, KITAJIMA_TRAVEL_SOURCES, NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES};
+export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES, AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES, HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES, KITAJIMA_TRAVEL_ACCESSED, KITAJIMA_TRAVEL_SOURCES, NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES, MATSUSHIGE_TRAVEL_ACCESSED, MATSUSHIGE_TRAVEL_SOURCES};

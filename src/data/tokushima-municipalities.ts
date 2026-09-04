@@ -30,7 +30,7 @@ export const TOKUSHIMA_MUNICIPALITIES: Municipality[] = [
   {jis: '36383', slug: 'mugi', nameJa: '牟岐町', nameEn: 'Mugi', status: 'coming-soon'},
   {jis: '36387', slug: 'minami', nameJa: '美波町', nameEn: 'Minami', status: 'coming-soon'},
   {jis: '36388', slug: 'kaiyo', nameJa: '海陽町', nameEn: 'Kaiyo', status: 'coming-soon'},
-  {jis: '36401', slug: 'matsushige', nameJa: '松茂町', nameEn: 'Matsushige', status: 'coming-soon'},
+  {jis: '36401', slug: 'matsushige', nameJa: '松茂町', nameEn: 'Matsushige', status: 'ready'},
   {jis: '36402', slug: 'kitajima', nameJa: '北島町', nameEn: 'Kitajima', status: 'ready'},
   {jis: '36403', slug: 'aizumi', nameJa: '藍住町', nameEn: 'Aizumi', status: 'coming-soon'},
   {jis: '36404', slug: 'itano', nameJa: '板野町', nameEn: 'Itano', status: 'coming-soon'},

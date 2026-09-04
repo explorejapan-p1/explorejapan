@@ -8,6 +8,7 @@ import {MIYOSHI_PLACE_PHOTO} from '@/data/miyoshi';
 import {AWA_PLACE_PHOTO} from '@/data/awa';
 import {HIGASHIMIYOSHI_PLACE_PHOTO} from '@/data/higashimiyoshi';
 import {KITAJIMA_PLACE_PHOTO} from '@/data/kitajima';
+import {MATSUSHIGE_PLACE_PHOTO} from '@/data/matsushige';
 import {NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {PREFECTURES, PREFECTURE_BY_SLUG} from '@/data/prefectures';
@@ -37,8 +38,8 @@ export async function generateMetadata({params}: Props) {
     title: name,
     description: live
       ? loc === 'ja'
-        ? '徳島県の市町村。徳島市・鳴門市・美馬市・つるぎ町・吉野川市・三好市・阿波市・東みよし町・北島町。'
-        : 'Municipalities in Tokushima. Listings: Tokushima City, Naruto City, Mima City, Tsurugi Town, Yoshinogawa City, Miyoshi City, Awa City, Higashimiyoshi Town, and Kitajima Town.'
+        ? '徳島県の市町村。徳島市・鳴門市・美馬市・つるぎ町・吉野川市・三好市・阿波市・東みよし町・北島町・松茂町。'
+        : 'Municipalities in Tokushima. Listings: Tokushima City, Naruto City, Mima City, Tsurugi Town, Yoshinogawa City, Miyoshi City, Awa City, Higashimiyoshi Town, Kitajima Town, and Matsushige Town.'
       : loc === 'ja'
         ? 'この県の市町村ページは準備中です。'
         : 'This prefecture layer is not wired yet.',
@@ -89,7 +90,9 @@ export default async function PrefecturePage({params}: Props) {
                               ? KITAJIMA_PLACE_PHOTO
                               : m.slug === 'naruto'
                                 ? NARUTO_PLACE_PHOTO
-                                : MIMA_PLACE_PHOTO;
+                                : m.slug === 'matsushige'
+                                  ? MATSUSHIGE_PLACE_PHOTO
+                                  : MIMA_PLACE_PHOTO;
               const href = `${BASE_PATH}/${locale}/tokushima/${m.slug}/`;
               return (
                 <li key={m.slug} className={live ? 'muni-card is-live' : 'muni-card is-hold'}>

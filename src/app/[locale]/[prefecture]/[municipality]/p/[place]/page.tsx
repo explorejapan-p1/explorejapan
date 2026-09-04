@@ -8,6 +8,7 @@ import {TOKUSHIMA_CITY} from '@/data/tokushima-city';
 import {AWA} from '@/data/awa';
 import {HIGASHIMIYOSHI} from '@/data/higashimiyoshi';
 import {KITAJIMA} from '@/data/kitajima';
+import {MATSUSHIGE} from '@/data/matsushige';
 import {NARUTO} from '@/data/naruto';
 import {isReadySlug} from '@/data/town-lookup';
 import {PREFECTURE_BY_SLUG} from '@/data/prefectures';
@@ -60,7 +61,9 @@ export async function generateMetadata({params}: Props) {
                   ? '北島町'
                   : municipality === 'naruto'
                     ? '鳴門市'
-                    : '美馬市';
+                    : municipality === 'matsushige'
+                      ? '松茂町'
+                      : '美馬市';
   const townEn =
     municipality === 'tsurugi'
       ? 'Tsurugi Town'
@@ -78,7 +81,9 @@ export async function generateMetadata({params}: Props) {
                   ? 'Kitajima Town'
                   : municipality === 'naruto'
                     ? 'Naruto City'
-                    : 'Mima City';
+                    : municipality === 'matsushige'
+                      ? 'Matsushige Town'
+                      : 'Mima City';
   const description =
     loc === 'ja'
       ? `${listing.nameJa}（${townJa}）。出典のある案内のみ。`
@@ -120,7 +125,9 @@ export default async function PlacePage({params}: Props) {
                   ? KITAJIMA.nameJa
                   : municipality === 'naruto'
                     ? NARUTO.nameJa
-                    : MIMA.nameJa;
+                    : municipality === 'matsushige'
+                      ? MATSUSHIGE.nameJa
+                      : MIMA.nameJa;
   const townNameEn =
     municipality === 'tsurugi'
       ? TSURUGI.nameEn
@@ -138,7 +145,9 @@ export default async function PlacePage({params}: Props) {
                   ? KITAJIMA.nameEn
                   : municipality === 'naruto'
                     ? NARUTO.nameEn
-                    : MIMA.nameEn;
+                    : municipality === 'matsushige'
+                      ? MATSUSHIGE.nameEn
+                      : MIMA.nameEn;
   return (
     <>
       <JsonLd data={placeGraph(listing, loc)} />

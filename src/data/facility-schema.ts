@@ -173,6 +173,28 @@ export const KITAJIMA_EXPECTED_CATEGORY_COUNTS = {
   gtfs_stop: 0
 } as const satisfies Record<FacilityCategory, number>;
 
+
+export const MATSUSHIGE_PACK_JIS = '36401';
+export const MATSUSHIGE_PACK_ACCESSED = '2026-08-27';
+export const MATSUSHIGE_EXPECTED_ROW_COUNT = 216;
+export const MATSUSHIGE_EXPECTED_GEO_COUNT = 106;
+export const MATSUSHIGE_EXPECTED_HOURS_COUNT = 216;
+export const MATSUSHIGE_EXPECTED_MISSING_ADDRESS = 88;
+export const MATSUSHIGE_EXPECTED_MISSING_PHONE = 107;
+export const MATSUSHIGE_EXPECTED_CATEGORY_COUNTS = {
+  tourism: 5,
+  cultural_property: 36,
+  care: 1,
+  aed: 0,
+  shelter: 15,
+  emergency_evacuation_site: 56,
+  hospital: 0,
+  childcare: 13,
+  wifi: 0,
+  public_facility: 31,
+  gtfs_stop: 59
+} as const satisfies Record<FacilityCategory, number>;
+
 export type FacilityRow = {
   id: string;
   jis: string;
