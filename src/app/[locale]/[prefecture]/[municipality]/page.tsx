@@ -157,8 +157,8 @@ export default async function MunicipalityPage({params}: Props) {
         <div className="coming">
           <p>
             {isJa
-              ? 'この市町村のページは準備中です。現在本文があるのは徳島市・鳴門市・美馬市・つるぎ町・吉野川市・三好市・阿波市・東みよし町・北島町・松茂町です。'
-              : 'This municipality page is coming soon. Tokushima City, Naruto City, Mima City, Tsurugi Town, Yoshinogawa City, Miyoshi City, Awa City, Higashimiyoshi Town, Kitajima Town, and Matsushige Town have full listings in v0.'}
+              ? 'この市町村のページは準備中です。現在本文があるのは徳島市・鳴門市・美馬市・つるぎ町・吉野川市・三好市・阿波市・東みよし町・北島町・松茂町・石井町です。'
+              : 'This municipality page is coming soon. Tokushima City, Naruto City, Mima City, Tsurugi Town, Yoshinogawa City, Miyoshi City, Awa City, Higashimiyoshi Town, Kitajima Town, Matsushige Town, and Ishii Town have full listings in v0.'}
           </p>
           <p>
             <Link href="/tokushima/tokushima">{isJa ? '徳島市へ' : 'Go to Tokushima City'}</Link>
@@ -180,6 +180,7 @@ export default async function MunicipalityPage({params}: Props) {
             <Link href="/tokushima/naruto">{isJa ? '鳴門市へ' : 'Go to Naruto City'}</Link>
             {' · '}
             <Link href="/tokushima/matsushige">{isJa ? '松茂町へ' : 'Go to Matsushige Town'}</Link>
+            {' · '}
             <Link href="/tokushima/ishii">{isJa ? '石井町へ' : 'Go to Ishii Town'}</Link>
           </p>
         </div>
