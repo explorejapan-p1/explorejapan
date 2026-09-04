@@ -179,7 +179,7 @@ export const AWA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'Hōrin-ji main hall, Donari-cho, Awa'
   ),
   'Cafe ヨモスガラ': sourcePhoto(
-    'cafe-yomosugara-dish.jpg',
+    'cafe-yomosugara-hamburg.jpg',
     'Cafe ヨモスガラの料理写真',
     'Cafe Yomosugara food photo',
     TABELOG_YOMOSUGARA,
