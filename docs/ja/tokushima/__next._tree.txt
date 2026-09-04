@@ -8,4 +8,5 @@
 :HL["/explorejapan/media/wakimachi-minami-machi-20250828.jpg","image"]
 :HL["/explorejapan/media/oboke-koboke.jpg","image"]
 :HL["/explorejapan/media/niso-udatsu-machinami.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"ja","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"tokushima","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"4cd7yZnc7mgfEZWAMRJq2"}
+:HL["/explorejapan/media/kamo-no-okusu.jpg","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"ja","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"tokushima","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"X9Uw289jtnXd-jAoNbXPG"}

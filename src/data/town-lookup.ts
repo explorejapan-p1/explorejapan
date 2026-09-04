@@ -8,7 +8,9 @@ import {
   MIYOSHI_EXPECTED_GEO_COUNT,
   MIYOSHI_EXPECTED_ROW_COUNT,
   AWA_EXPECTED_GEO_COUNT,
-  AWA_EXPECTED_ROW_COUNT
+  AWA_EXPECTED_ROW_COUNT,
+  HIGASHIMIYOSHI_EXPECTED_GEO_COUNT,
+  HIGASHIMIYOSHI_EXPECTED_ROW_COUNT
 } from './facility-schema';
 import {MIMA, MIMA_PLACE_PHOTO} from './mima';
 import {MIMA_FACILITIES} from './mima-facilities';
@@ -77,6 +79,18 @@ import {
   AWA_TRAVEL_STAY
 } from './awa-travel';
 
+
+import {HIGASHIMIYOSHI, HIGASHIMIYOSHI_PLACE_PHOTO} from './higashimiyoshi';
+import {HIGASHIMIYOSHI_FACILITIES} from './higashimiyoshi-facilities';
+import {
+  HIGASHIMIYOSHI_TRAVEL_ACCESSED,
+  HIGASHIMIYOSHI_TRAVEL_SOURCES,
+  HIGASHIMIYOSHI_TRAVEL_ALL,
+  HIGASHIMIYOSHI_TRAVEL_COMMERCE,
+  HIGASHIMIYOSHI_TRAVEL_DINING,
+  HIGASHIMIYOSHI_TRAVEL_SHOPPING,
+  HIGASHIMIYOSHI_TRAVEL_STAY
+} from './higashimiyoshi-travel';
 import {
   TOKUSHIMA_CITY_TRAVEL_ACCESSED,
   TOKUSHIMA_CITY_TRAVEL_ALL,
@@ -298,13 +312,49 @@ export const AWA_LOOKUP: LookupTown = {
 };
 
 
+
+export const HIGASHIMIYOSHI_LOOKUP: LookupTown = {
+  slug: 'higashimiyoshi',
+  jis: HIGASHIMIYOSHI.jis,
+  nameJa: HIGASHIMIYOSHI.nameJa,
+  nameEn: HIGASHIMIYOSHI.nameEn,
+  heroPhoto: HIGASHIMIYOSHI_PLACE_PHOTO,
+  photoCiteJa:
+    '写真は加茂の大クス。Saigen Jiro、2019-04-28、CC0。File:Kamo-no-Okusu-1.jpg。',
+  photoCiteEn:
+    'Photo: Kamo-no-Ōkusu camphor tree. Saigen Jiro, 28 Apr 2019, CC0. File:Kamo-no-Okusu-1.jpg.',
+  rows: HIGASHIMIYOSHI_FACILITIES,
+  expectedGeo: HIGASHIMIYOSHI_EXPECTED_GEO_COUNT,
+  expectedRows: HIGASHIMIYOSHI_EXPECTED_ROW_COUNT,
+  travelDining: HIGASHIMIYOSHI_TRAVEL_DINING,
+  travelStay: HIGASHIMIYOSHI_TRAVEL_STAY,
+  travelShopping: HIGASHIMIYOSHI_TRAVEL_SHOPPING,
+  travelCommerce: HIGASHIMIYOSHI_TRAVEL_COMMERCE,
+  travelAll: HIGASHIMIYOSHI_TRAVEL_ALL,
+  coverageJa:
+    '東みよし町（JIS 36489）285件。文化財109、GTFS停留所63、公共施設36、緊急避難場所16、医療機関15、避難所13、介護11、観光10、保育9、Wi-Fi 3。AEDは0件（未掲載）。',
+  coverageEn:
+    'Higashimiyoshi Town (JIS 36489), 285 rows. Cultural property 109, GTFS stops 63, public facilities 36, emergency sites 16, hospitals 15, shelters 13, care 11, tourism 10, childcare 9, Wi-Fi 3. AED: 0, unpublished.',
+  mapLabelJa: '東みよし町の公式座標72件',
+  mapLabelEn: '72 official coordinates in Higashimiyoshi Town',
+  mapCitePackJa: '点は凍結パックの公式座標72件（accessed 2026-08-25）。',
+  mapCitePackEn: 'Points: 72 official coordinates from the frozen pack (accessed 2026-08-25).',
+  licenseNoteJa:
+    '行のライセンスは二つ。CC BY 4.0 は徳島県 Our Open Data の利用規約。「町公式サイト掲載情報」は町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Licenses split by row. CC BY 4.0 follows Tokushima Our Open Data. A town-site listing is a fact from town.higashimiyoshi.lg.jp, not under that license.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
 const BY_SLUG: Record<ReadySlug, LookupTown> = {
   mima: MIMA_LOOKUP,
   tsurugi: TSURUGI_LOOKUP,
   yoshinogawa: YOSHINOGAWA_LOOKUP,
   miyoshi: MIYOSHI_LOOKUP,
   tokushima: TOKUSHIMA_CITY_LOOKUP,
-  awa: AWA_LOOKUP
+  awa: AWA_LOOKUP,
+  higashimiyoshi: HIGASHIMIYOSHI_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
@@ -312,4 +362,4 @@ export function lookupTown(slug: string): LookupTown | null {
   return BY_SLUG[slug];
 }
 
-export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES, AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES};
+export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES, AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES, HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES};

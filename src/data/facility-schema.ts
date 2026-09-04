@@ -130,6 +130,27 @@ export const MIYOSHI_EXPECTED_CATEGORY_COUNTS = {
   gtfs_stop: 548
 } as const satisfies Record<FacilityCategory, number>;
 
+
+export const HIGASHIMIYOSHI_PACK_JIS = '36489';
+export const HIGASHIMIYOSHI_EXPECTED_ROW_COUNT = 285;
+export const HIGASHIMIYOSHI_EXPECTED_GEO_COUNT = 72;
+export const HIGASHIMIYOSHI_EXPECTED_HOURS_COUNT = 112;
+export const HIGASHIMIYOSHI_EXPECTED_MISSING_ADDRESS = 178;
+export const HIGASHIMIYOSHI_EXPECTED_MISSING_PHONE = 185;
+export const HIGASHIMIYOSHI_EXPECTED_CATEGORY_COUNTS = {
+  tourism: 10,
+  cultural_property: 109,
+  care: 11,
+  aed: 0,
+  shelter: 13,
+  emergency_evacuation_site: 16,
+  hospital: 15,
+  childcare: 9,
+  wifi: 3,
+  public_facility: 36,
+  gtfs_stop: 63
+} as const satisfies Record<FacilityCategory, number>;
+
 export type FacilityRow = {
   id: string;
   jis: string;

@@ -45,6 +45,13 @@ import {
   awaSightPhoto
 } from '@/data/awa-travel';
 
+import {
+  isHigashimiyoshiOnsenPackRow,
+  isHigashimiyoshiStayPackRow,
+  rankHigashimiyoshiSeeRows,
+  higashimiyoshiSightPhoto
+} from '@/data/higashimiyoshi-travel';
+
 export type ListingKind = TravelKind | 'onsen' | 'experience' | 'sights';
 
 export type PublicListing = {
@@ -281,6 +288,41 @@ function awaListings(): PublicListing[] {
   return out;
 }
 
+
+function higashimiyoshiListings(): PublicListing[] {
+  const town = lookupTown('higashimiyoshi')!;
+  const out: PublicListing[] = town.travelAll.map((row) =>
+    fromTravel(row, 'higashimiyoshi', higashimiyoshiSightPhoto(row.name_ja))
+  );
+  const seen = new Set<string>();
+  const pack: FacilityRow[] = [];
+  for (const row of town.rows) {
+    if (
+      !isHigashimiyoshiOnsenPackRow(row) &&
+      !isHigashimiyoshiStayPackRow(row) &&
+      !isSightsCategory(row.category)
+    ) {
+      continue;
+    }
+    const key = packDedupeKey(row);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    pack.push(row);
+  }
+  const ranked = rankHigashimiyoshiSeeRows(pack);
+  const onsen = pack.filter(isHigashimiyoshiOnsenPackRow);
+  const stay = pack.filter(isHigashimiyoshiStayPackRow);
+  for (const row of [...stay, ...onsen, ...ranked]) {
+    const kind: ListingKind = isHigashimiyoshiOnsenPackRow(row)
+      ? 'onsen'
+      : isHigashimiyoshiStayPackRow(row)
+        ? 'stay'
+        : 'sights';
+    out.push(fromPack(row, 'higashimiyoshi', kind, higashimiyoshiSightPhoto(row.name_ja)));
+  }
+  return out;
+}
+
 function tokushimaCityListings(): PublicListing[] {
   const town = lookupTown('tokushima')!;
   const out: PublicListing[] = town.travelAll.map((row) =>
@@ -321,7 +363,8 @@ const CACHE: Record<ReadySlug, PublicListing[]> = {
   yoshinogawa: yoshinogawaListings(),
   miyoshi: miyoshiListings(),
   tokushima: tokushimaCityListings(),
-  awa: awaListings()
+  awa: awaListings(),
+  higashimiyoshi: higashimiyoshiListings()
 };
 
 export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {
@@ -329,7 +372,7 @@ export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {
 }
 
 export function allPublicListings(): PublicListing[] {
-  return [...CACHE.mima, ...CACHE.tsurugi, ...CACHE.yoshinogawa, ...CACHE.miyoshi, ...CACHE.tokushima, ...CACHE.awa];
+  return [...CACHE.mima, ...CACHE.tsurugi, ...CACHE.yoshinogawa, ...CACHE.miyoshi, ...CACHE.tokushima, ...CACHE.awa, ...CACHE.higashimiyoshi];
 }
 
 export function liveListings(slug?: ReadySlug): PublicListing[] {

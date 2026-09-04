@@ -3,6 +3,7 @@ import {TSURUGI, TSURUGI_PLACE_PHOTO} from '@/data/tsurugi';
 import {YOSHINOGAWA, YOSHINOGAWA_PLACE_PHOTO} from '@/data/yoshinogawa';
 import {MIYOSHI, MIYOSHI_PLACE_PHOTO} from '@/data/miyoshi';
 import {AWA, AWA_PLACE_PHOTO} from '@/data/awa';
+import {HIGASHIMIYOSHI, HIGASHIMIYOSHI_PLACE_PHOTO} from '@/data/higashimiyoshi';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
 import type {AppLocale} from '@/i18n/routing';
@@ -69,6 +70,7 @@ function localityJa(slug: string): string {
   if (slug === 'yoshinogawa') return YOSHINOGAWA.nameJa;
   if (slug === 'miyoshi') return MIYOSHI.nameJa;
   if (slug === 'awa') return AWA.nameJa;
+  if (slug === 'higashimiyoshi') return HIGASHIMIYOSHI.nameJa;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameJa;
   return MIMA.nameJa;
 }
@@ -78,6 +80,7 @@ function localityEn(slug: string): string {
   if (slug === 'yoshinogawa') return YOSHINOGAWA.nameEn;
   if (slug === 'miyoshi') return MIYOSHI.nameEn;
   if (slug === 'awa') return AWA.nameEn;
+  if (slug === 'higashimiyoshi') return HIGASHIMIYOSHI.nameEn;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameEn;
   return MIMA.nameEn;
 }
@@ -599,6 +602,85 @@ export function awaGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '阿波市の案内' : 'Places in Awa',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+
+
+export function higashimiyoshiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'tokushima/higashimiyoshi');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('higashimiyoshi');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? HIGASHIMIYOSHI.nameJa : HIGASHIMIYOSHI.nameEn,
+        alternateName: isJa ? HIGASHIMIYOSHI.nameEn : HIGASHIMIYOSHI.nameJa,
+        identifier: HIGASHIMIYOSHI.jis,
+        url,
+        image: photoAbs(HIGASHIMIYOSHI_PLACE_PHOTO),
+        sameAs: [HIGASHIMIYOSHI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa
+            ? '加茂3360番地'
+            : '3360 Kamo',
+          addressLocality: isJa ? HIGASHIMIYOSHI.nameJa : HIGASHIMIYOSHI.nameEn,
+          addressRegion: isJa ? HIGASHIMIYOSHI.prefectureJa : HIGASHIMIYOSHI.prefectureEn,
+          postalCode: HIGASHIMIYOSHI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? HIGASHIMIYOSHI.prefectureJa : HIGASHIMIYOSHI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? HIGASHIMIYOSHI.nameJa : HIGASHIMIYOSHI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: isJa ? '全国' : 'Japan',
+            item: canonicalUrl(locale)
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: isJa ? HIGASHIMIYOSHI.prefectureJa : HIGASHIMIYOSHI.prefectureEn,
+            item: canonicalUrl(locale, 'tokushima')
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: isJa ? HIGASHIMIYOSHI.nameJa : HIGASHIMIYOSHI.nameEn,
+            item: url
+          }
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '東みよし町の案内' : 'Places in Higashimiyoshi',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',
