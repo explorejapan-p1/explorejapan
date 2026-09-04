@@ -29,6 +29,7 @@ import {TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES} from '@/d
 import {AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES} from '@/data/awa-travel';
 import {HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES} from '@/data/higashimiyoshi-travel';
 import {KITAJIMA_TRAVEL_ACCESSED, KITAJIMA_TRAVEL_SOURCES} from '@/data/kitajima-travel';
+import {NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES} from '@/data/naruto-travel';
 import {
   rankByOurTraffic,
   recordFacilitySearch,
@@ -712,6 +713,24 @@ export function MimaFacilityLookup({
               </>
             )
 
+
+
+          ) : town.slug === 'naruto' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（鳴門の渦潮）。
+                飲食・宿泊・温泉・体験・買物・商業は未掲載のため0件（accessed {NARUTO_TRAVEL_ACCESSED}）。
+                カードは出典写真があるものだけ。点数は持ちません。
+                市公式：<a href={NARUTO_TRAVEL_SOURCES.home}>鳴門市</a> · <a href={NARUTO_TRAVEL_SOURCES.uzunomichi}>渦の道</a>。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Naruto whirlpools).
+                Dining, lodging, onsen, experience, shopping, and commerce stay at 0 — unpublished (accessed {NARUTO_TRAVEL_ACCESSED}).
+                Cards show only listings with a sourced photo. No public scores.
+                City sources: <a href={NARUTO_TRAVEL_SOURCES.home}>Naruto City</a> · <a href={NARUTO_TRAVEL_SOURCES.uzunomichi}>Uzunomichi</a>.
+              </>
+            )
 
           ) : town.slug === 'kitajima' ? (
             locale === 'ja' ? (

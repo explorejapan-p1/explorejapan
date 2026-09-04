@@ -105,6 +105,19 @@ import {
   KITAJIMA_TRAVEL_SHOPPING,
   KITAJIMA_TRAVEL_STAY
 } from './kitajima-travel';
+
+
+import {NARUTO, NARUTO_PLACE_PHOTO, NARUTO_FACILITIES, NARUTO_EXPECTED_GEO_COUNT, NARUTO_EXPECTED_ROW_COUNT} from './naruto';
+import {
+  NARUTO_TRAVEL_ACCESSED,
+  NARUTO_TRAVEL_ALL,
+  NARUTO_TRAVEL_COMMERCE,
+  NARUTO_TRAVEL_DINING,
+  NARUTO_TRAVEL_SHOPPING,
+  NARUTO_TRAVEL_SOURCES,
+  NARUTO_TRAVEL_STAY
+} from './naruto-travel';
+
 import {
   TOKUSHIMA_CITY_TRAVEL_ACCESSED,
   TOKUSHIMA_CITY_TRAVEL_ALL,
@@ -362,6 +375,41 @@ export const HIGASHIMIYOSHI_LOOKUP: LookupTown = {
 };
 
 
+
+export const NARUTO_LOOKUP: LookupTown = {
+  slug: 'naruto',
+  jis: NARUTO.jis,
+  nameJa: NARUTO.nameJa,
+  nameEn: NARUTO.nameEn,
+  heroPhoto: NARUTO_PLACE_PHOTO,
+  photoCiteJa:
+    '写真は渦の道から見た鳴門の渦潮。Kounosu、2010-08-11、CC BY-SA 3.0。File:Naruto Whirlpools from the Uzunomichi.jpg。',
+  photoCiteEn:
+    'Photo: Naruto whirlpools from Uzunomichi. Kounosu, 11 Aug 2010, CC BY-SA 3.0. File:Naruto Whirlpools from the Uzunomichi.jpg.',
+  rows: NARUTO_FACILITIES,
+  expectedGeo: NARUTO_EXPECTED_GEO_COUNT,
+  expectedRows: NARUTO_EXPECTED_ROW_COUNT,
+  travelDining: NARUTO_TRAVEL_DINING,
+  travelStay: NARUTO_TRAVEL_STAY,
+  travelShopping: NARUTO_TRAVEL_SHOPPING,
+  travelCommerce: NARUTO_TRAVEL_COMMERCE,
+  travelAll: NARUTO_TRAVEL_ALL,
+  coverageJa:
+    '鳴門市（JIS 36202）観光1件（出典写真がある施設のみ）。オープンデータ凍結パックは未掲載。AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。飲食・宿泊・温泉・体験・買物・商業は0件（未掲載）。',
+  coverageEn:
+    'Naruto City (JIS 36202), 1 tourism row with a sourced photo. No frozen open-data pack. AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. Dining, stay, onsen, experience, shopping, commerce: 0, unpublished.',
+  mapLabelJa: '鳴門市の出典座標1件',
+  mapLabelEn: '1 sourced coordinate in Naruto City',
+  mapCitePackJa: '点は市・観光ページ掲載施設のWikipedia座標1件（accessed 2026-09-05）。',
+  mapCitePackEn: 'Points: 1 Wikipedia coordinate for a city/tourism-page facility (accessed 2026-09-05).',
+  licenseNoteJa:
+    '行のライセンスは市公式サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.naruto.tokushima.jp, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
 export const KITAJIMA_LOOKUP: LookupTown = {
   slug: 'kitajima',
   jis: KITAJIMA.jis,
@@ -404,7 +452,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   tokushima: TOKUSHIMA_CITY_LOOKUP,
   awa: AWA_LOOKUP,
   higashimiyoshi: HIGASHIMIYOSHI_LOOKUP,
-  kitajima: KITAJIMA_LOOKUP
+  kitajima: KITAJIMA_LOOKUP,
+  naruto: NARUTO_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
@@ -412,4 +461,4 @@ export function lookupTown(slug: string): LookupTown | null {
   return BY_SLUG[slug];
 }
 
-export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES, AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES, HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES, KITAJIMA_TRAVEL_ACCESSED, KITAJIMA_TRAVEL_SOURCES};
+export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES, AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES, HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES, KITAJIMA_TRAVEL_ACCESSED, KITAJIMA_TRAVEL_SOURCES, NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES};

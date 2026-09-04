@@ -8,6 +8,7 @@ import {TOKUSHIMA_CITY} from '@/data/tokushima-city';
 import {AWA} from '@/data/awa';
 import {HIGASHIMIYOSHI} from '@/data/higashimiyoshi';
 import {KITAJIMA} from '@/data/kitajima';
+import {NARUTO} from '@/data/naruto';
 import {isReadySlug} from '@/data/town-lookup';
 import {PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {Link} from '@/i18n/navigation';
@@ -57,7 +58,9 @@ export async function generateMetadata({params}: Props) {
                 ? '東みよし町'
                 : municipality === 'kitajima'
                   ? '北島町'
-                  : '美馬市';
+                  : municipality === 'naruto'
+                    ? '鳴門市'
+                    : '美馬市';
   const townEn =
     municipality === 'tsurugi'
       ? 'Tsurugi Town'
@@ -73,7 +76,9 @@ export async function generateMetadata({params}: Props) {
                 ? 'Higashimiyoshi Town'
                 : municipality === 'kitajima'
                   ? 'Kitajima Town'
-                  : 'Mima City';
+                  : municipality === 'naruto'
+                    ? 'Naruto City'
+                    : 'Mima City';
   const description =
     loc === 'ja'
       ? `${listing.nameJa}（${townJa}）。出典のある案内のみ。`
@@ -113,7 +118,9 @@ export default async function PlacePage({params}: Props) {
                 ? HIGASHIMIYOSHI.nameJa
                 : municipality === 'kitajima'
                   ? KITAJIMA.nameJa
-                  : MIMA.nameJa;
+                  : municipality === 'naruto'
+                    ? NARUTO.nameJa
+                    : MIMA.nameJa;
   const townNameEn =
     municipality === 'tsurugi'
       ? TSURUGI.nameEn
@@ -129,7 +136,9 @@ export default async function PlacePage({params}: Props) {
                 ? HIGASHIMIYOSHI.nameEn
                 : municipality === 'kitajima'
                   ? KITAJIMA.nameEn
-                  : MIMA.nameEn;
+                  : municipality === 'naruto'
+                    ? NARUTO.nameEn
+                    : MIMA.nameEn;
   return (
     <>
       <JsonLd data={placeGraph(listing, loc)} />

@@ -51,6 +51,11 @@
 <priority>0.9</priority>
 </url>
 <url>
+<loc>https://explorejapan-p1.github.io/explorejapan/ja/tokushima/naruto/</loc>
+<changefreq>monthly</changefreq>
+<priority>0.9</priority>
+</url>
+<url>
 <loc>https://explorejapan-p1.github.io/explorejapan/ja/tokushima/mima/p/mima-dining-11/</loc>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
@@ -1506,6 +1511,11 @@
 <priority>0.7</priority>
 </url>
 <url>
+<loc>https://explorejapan-p1.github.io/explorejapan/ja/tokushima/naruto/p/naruto-sight-01/</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
 <loc>https://explorejapan-p1.github.io/explorejapan/en/</loc>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
@@ -1552,6 +1562,11 @@
 </url>
 <url>
 <loc>https://explorejapan-p1.github.io/explorejapan/en/tokushima/kitajima/</loc>
+<changefreq>monthly</changefreq>
+<priority>0.9</priority>
+</url>
+<url>
+<loc>https://explorejapan-p1.github.io/explorejapan/en/tokushima/naruto/</loc>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
@@ -3007,6 +3022,11 @@
 </url>
 <url>
 <loc>https://explorejapan-p1.github.io/explorejapan/en/tokushima/kitajima/p/36402-tourism-tour-tulip-park/</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://explorejapan-p1.github.io/explorejapan/en/tokushima/naruto/p/naruto-sight-01/</loc>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>

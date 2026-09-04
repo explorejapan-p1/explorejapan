@@ -5,6 +5,7 @@ import {MIYOSHI, MIYOSHI_PLACE_PHOTO} from '@/data/miyoshi';
 import {AWA, AWA_PLACE_PHOTO} from '@/data/awa';
 import {HIGASHIMIYOSHI, HIGASHIMIYOSHI_PLACE_PHOTO} from '@/data/higashimiyoshi';
 import {KITAJIMA, KITAJIMA_PLACE_PHOTO} from '@/data/kitajima';
+import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
 import type {AppLocale} from '@/i18n/routing';
@@ -73,6 +74,7 @@ function localityJa(slug: string): string {
   if (slug === 'awa') return AWA.nameJa;
   if (slug === 'higashimiyoshi') return HIGASHIMIYOSHI.nameJa;
   if (slug === 'kitajima') return KITAJIMA.nameJa;
+  if (slug === 'naruto') return NARUTO.nameJa;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameJa;
   return MIMA.nameJa;
 }
@@ -84,6 +86,7 @@ function localityEn(slug: string): string {
   if (slug === 'awa') return AWA.nameEn;
   if (slug === 'higashimiyoshi') return HIGASHIMIYOSHI.nameEn;
   if (slug === 'kitajima') return KITAJIMA.nameEn;
+  if (slug === 'naruto') return NARUTO.nameEn;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameEn;
   return MIMA.nameEn;
 }
@@ -762,6 +765,84 @@ export function kitajimaGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '北島町の案内' : 'Places in Kitajima Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+
+export function narutoGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'tokushima/naruto');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('naruto');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['City', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? NARUTO.nameJa : NARUTO.nameEn,
+        alternateName: isJa ? NARUTO.nameEn : NARUTO.nameJa,
+        identifier: NARUTO.jis,
+        url,
+        image: photoAbs(NARUTO_PLACE_PHOTO),
+        sameAs: [NARUTO.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa
+            ? '撫養町南浜字東浜170番地'
+            : '170 Higashihama, Minamihama, Muya-cho',
+          addressLocality: isJa ? NARUTO.nameJa : NARUTO.nameEn,
+          addressRegion: isJa ? NARUTO.prefectureJa : NARUTO.prefectureEn,
+          postalCode: NARUTO.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? NARUTO.prefectureJa : NARUTO.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? NARUTO.nameJa : NARUTO.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: isJa ? '全国' : 'Japan',
+            item: canonicalUrl(locale)
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: isJa ? NARUTO.prefectureJa : NARUTO.prefectureEn,
+            item: canonicalUrl(locale, 'tokushima')
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: isJa ? NARUTO.nameJa : NARUTO.nameEn,
+            item: url
+          }
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '鳴門市の案内' : 'Places in Naruto City',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',
