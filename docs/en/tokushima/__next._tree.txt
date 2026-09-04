@@ -12,6 +12,7 @@
 :HL["/explorejapan/media/tsukimigaoka-kaihin-koen.jpg","image"]
 :HL["/explorejapan/media/kitajima-tulip-park.jpg","image"]
 :HL["/explorejapan/media/asutamuland-tokushima.jpg","image"]
+:HL["/explorejapan/media/anrakuji-kamiita.jpg","image"]
 :HL["/explorejapan/media/niso-udatsu-machinami.jpg","image"]
 :HL["/explorejapan/media/kamo-no-okusu.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"en","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"tokushima","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"gNdneXF0x0YQtU5y4r06V"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"en","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"tokushima","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"LNMof1OR22pIGDMIA0iwd"}

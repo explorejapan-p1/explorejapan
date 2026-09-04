@@ -121,6 +121,18 @@ import {
 } from './itano-travel';
 
 import {
+  isKamiitaExperiencePackRow,
+  isKamiitaOnsenPackRow,
+  isKamiitaStayPackRow,
+  kamiitaPackRowMatchesFilter,
+  kamiitaSightPhoto,
+  kamiitaSourcedHook,
+  kamiitaTopChipForRow,
+  rankKamiitaSeeRows,
+  resolveKamiitaFilter
+} from './kamiita-travel';
+
+import {
   isMatsushigeExperiencePackRow,
   isMatsushigeOnsenPackRow,
   isMatsushigeStayPackRow,
@@ -321,6 +333,18 @@ const ITANO_HELPERS: LookupHelpers = {
   resolveFilter: resolveItanoFilter
 };
 
+const KAMIITA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isKamiitaOnsenPackRow,
+  isExperiencePackRow: isKamiitaExperiencePackRow,
+  isStayPackRow: isKamiitaStayPackRow,
+  packRowMatchesFilter: kamiitaPackRowMatchesFilter,
+  rankSeeRows: rankKamiitaSeeRows,
+  sightPhoto: kamiitaSightPhoto,
+  sourcedHook: kamiitaSourcedHook,
+  topChipForRow: kamiitaTopChipForRow,
+  resolveFilter: resolveKamiitaFilter
+};
+
 export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'tsurugi') return TSURUGI_HELPERS;
   if (slug === 'yoshinogawa') return YOSHINOGAWA_HELPERS;
@@ -333,5 +357,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'matsushige') return MATSUSHIGE_HELPERS;
   if (slug === 'ishii') return ISHII_HELPERS;
   if (slug === 'itano') return ITANO_HELPERS;
+  if (slug === 'kamiita') return KAMIITA_HELPERS;
   return MIMA_HELPERS;
 }

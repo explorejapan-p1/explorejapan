@@ -8,6 +8,7 @@ import {KITAJIMA, KITAJIMA_PLACE_PHOTO} from '@/data/kitajima';
 import {MATSUSHIGE, MATSUSHIGE_PLACE_PHOTO} from '@/data/matsushige';
 import {ISHII, ISHII_PLACE_PHOTO} from '@/data/ishii';
 import {ITANO, ITANO_PLACE_PHOTO} from '@/data/itano';
+import {KAMIITA, KAMIITA_PLACE_PHOTO} from '@/data/kamiita';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
@@ -81,6 +82,7 @@ function localityJa(slug: string): string {
   if (slug === 'matsushige') return MATSUSHIGE.nameJa;
   if (slug === 'ishii') return ISHII.nameJa;
   if (slug === 'itano') return ITANO.nameJa;
+  if (slug === 'kamiita') return KAMIITA.nameJa;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameJa;
   return MIMA.nameJa;
 }
@@ -96,6 +98,7 @@ function localityEn(slug: string): string {
   if (slug === 'matsushige') return MATSUSHIGE.nameEn;
   if (slug === 'ishii') return ISHII.nameEn;
   if (slug === 'itano') return ITANO.nameEn;
+  if (slug === 'kamiita') return KAMIITA.nameEn;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameEn;
   return MIMA.nameEn;
 }
@@ -931,6 +934,85 @@ export function itanoGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '板野町の案内' : 'Places in Itano Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+
+
+export function kamiitaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'tokushima/kamiita');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('kamiita');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? KAMIITA.nameJa : KAMIITA.nameEn,
+        alternateName: isJa ? KAMIITA.nameEn : KAMIITA.nameJa,
+        identifier: KAMIITA.jis,
+        url,
+        image: photoAbs(KAMIITA_PLACE_PHOTO),
+        sameAs: [KAMIITA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa
+            ? '七條字経塚42'
+            : '42 Kyozuka, Shichijo',
+          addressLocality: isJa ? KAMIITA.nameJa : KAMIITA.nameEn,
+          addressRegion: isJa ? KAMIITA.prefectureJa : KAMIITA.prefectureEn,
+          postalCode: KAMIITA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? KAMIITA.prefectureJa : KAMIITA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? KAMIITA.nameJa : KAMIITA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: isJa ? '全国' : 'Japan',
+            item: canonicalUrl(locale)
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: isJa ? KAMIITA.prefectureJa : KAMIITA.prefectureEn,
+            item: canonicalUrl(locale, 'tokushima')
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: isJa ? KAMIITA.nameJa : KAMIITA.nameEn,
+            item: url
+          }
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '上板町の案内' : 'Places in Kamiita Town',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

@@ -18,7 +18,9 @@ import {
   ISHII_EXPECTED_GEO_COUNT,
   ISHII_EXPECTED_ROW_COUNT,
   ITANO_EXPECTED_GEO_COUNT,
-  ITANO_EXPECTED_ROW_COUNT
+  ITANO_EXPECTED_ROW_COUNT,
+  KAMIITA_EXPECTED_GEO_COUNT,
+  KAMIITA_EXPECTED_ROW_COUNT
 } from './facility-schema';
 import {MIMA, MIMA_PLACE_PHOTO} from './mima';
 import {MIMA_FACILITIES} from './mima-facilities';
@@ -138,6 +140,18 @@ import {
   ITANO_TRAVEL_SOURCES,
   ITANO_TRAVEL_STAY
 } from './itano-travel';
+
+import {KAMIITA, KAMIITA_PLACE_PHOTO} from './kamiita';
+import {KAMIITA_FACILITIES} from './kamiita-facilities';
+import {
+  KAMIITA_TRAVEL_ACCESSED,
+  KAMIITA_TRAVEL_ALL,
+  KAMIITA_TRAVEL_COMMERCE,
+  KAMIITA_TRAVEL_DINING,
+  KAMIITA_TRAVEL_SHOPPING,
+  KAMIITA_TRAVEL_SOURCES,
+  KAMIITA_TRAVEL_STAY
+} from './kamiita-travel';
 
 import {KITAJIMA, KITAJIMA_PLACE_PHOTO} from './kitajima';
 import {KITAJIMA_FACILITIES} from './kitajima-facilities';
@@ -594,6 +608,42 @@ export const ITANO_LOOKUP: LookupTown = {
   licenseSiteEn: 'Town-site listing'
 };
 
+
+export const KAMIITA_LOOKUP: LookupTown = {
+  slug: 'kamiita',
+  jis: KAMIITA.jis,
+  nameJa: KAMIITA.nameJa,
+  nameEn: KAMIITA.nameEn,
+  heroPhoto: KAMIITA_PLACE_PHOTO,
+  photoCiteJa:
+    '写真は安楽寺（四国霊場第六番）。Dokudami、2019-11-19、CC BY-SA 4.0。File:Anrakuji_20191119_01.jpg。',
+  photoCiteEn:
+    'Photo: Anraku-ji (Shikoku pilgrimage temple 6). Dokudami, 19 Nov 2019, CC BY-SA 4.0. File:Anrakuji_20191119_01.jpg.',
+  rows: KAMIITA_FACILITIES,
+  expectedGeo: KAMIITA_EXPECTED_GEO_COUNT,
+  expectedRows: KAMIITA_EXPECTED_ROW_COUNT,
+  travelDining: KAMIITA_TRAVEL_DINING,
+  travelStay: KAMIITA_TRAVEL_STAY,
+  travelShopping: KAMIITA_TRAVEL_SHOPPING,
+  travelCommerce: KAMIITA_TRAVEL_COMMERCE,
+  travelAll: KAMIITA_TRAVEL_ALL,
+  coverageJa:
+    '上板町（JIS 36405）97件。AED 30、文化財14、緊急避難場所13、避難所10、公共施設10、保育10、観光9、介護1。医療機関・Wi-Fi・GTFSは0件（未掲載）。',
+  coverageEn:
+    'Kamiita Town (JIS 36405), 97 rows. AED 30, cultural property 14, emergency sites 13, shelters 10, public facilities 10, childcare 10, tourism 9, care 1. Hospitals, Wi-Fi, GTFS: 0, unpublished.',
+  mapLabelJa: '上板町の公式座標34件',
+  mapLabelEn: '34 official coordinates in Kamiita Town',
+  mapCitePackJa: '点は凍結パックの公式座標34件（accessed 2026-08-25）。',
+  mapCitePackEn: 'Points: 34 official coordinates from the frozen pack (accessed 2026-08-25).',
+  licenseNoteJa:
+    '行のライセンスは二つ。CC BY 4.0 は徳島県 Our Open Data の利用規約。「町公式サイト掲載情報」は町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Licenses split by row. CC BY 4.0 follows Tokushima Our Open Data. A town-site listing is a fact from townkamiita.jp, not under that license.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
+
 const BY_SLUG: Record<ReadySlug, LookupTown> = {
   mima: MIMA_LOOKUP,
   tsurugi: TSURUGI_LOOKUP,
@@ -606,7 +656,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   naruto: NARUTO_LOOKUP,
   matsushige: MATSUSHIGE_LOOKUP,
   ishii: ISHII_LOOKUP,
-  itano: ITANO_LOOKUP
+  itano: ITANO_LOOKUP,
+  kamiita: KAMIITA_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
@@ -614,4 +665,4 @@ export function lookupTown(slug: string): LookupTown | null {
   return BY_SLUG[slug];
 }
 
-export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES, AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES, HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES, KITAJIMA_TRAVEL_ACCESSED, KITAJIMA_TRAVEL_SOURCES, NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES, MATSUSHIGE_TRAVEL_ACCESSED, MATSUSHIGE_TRAVEL_SOURCES, ISHII_TRAVEL_ACCESSED, ISHII_TRAVEL_SOURCES, ITANO_TRAVEL_ACCESSED, ITANO_TRAVEL_SOURCES};
+export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES, AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES, HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES, KITAJIMA_TRAVEL_ACCESSED, KITAJIMA_TRAVEL_SOURCES, NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES, MATSUSHIGE_TRAVEL_ACCESSED, MATSUSHIGE_TRAVEL_SOURCES, ISHII_TRAVEL_ACCESSED, ISHII_TRAVEL_SOURCES, ITANO_TRAVEL_ACCESSED, ITANO_TRAVEL_SOURCES, KAMIITA_TRAVEL_ACCESSED, KAMIITA_TRAVEL_SOURCES};
