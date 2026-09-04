@@ -218,6 +218,29 @@ export const ISHII_EXPECTED_CATEGORY_COUNTS = {
   gtfs_stop: 0
 } as const satisfies Record<FacilityCategory, number>;
 
+
+
+export const ITANO_PACK_JIS = '36404';
+export const ITANO_PACK_ACCESSED = '2026-08-25';
+export const ITANO_EXPECTED_ROW_COUNT = 186;
+export const ITANO_EXPECTED_GEO_COUNT = 9;
+export const ITANO_EXPECTED_HOURS_COUNT = 177;
+export const ITANO_EXPECTED_MISSING_ADDRESS = 2;
+export const ITANO_EXPECTED_MISSING_PHONE = 141;
+export const ITANO_EXPECTED_CATEGORY_COUNTS = {
+  tourism: 8,
+  cultural_property: 45,
+  care: 1,
+  aed: 27,
+  shelter: 43,
+  emergency_evacuation_site: 42,
+  hospital: 0,
+  childcare: 9,
+  wifi: 0,
+  public_facility: 11,
+  gtfs_stop: 0
+} as const satisfies Record<FacilityCategory, number>;
+
 export type FacilityRow = {
   id: string;
   jis: string;

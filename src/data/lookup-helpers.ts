@@ -109,6 +109,18 @@ import {
 } from './ishii-travel';
 
 import {
+  isItanoExperiencePackRow,
+  isItanoOnsenPackRow,
+  isItanoStayPackRow,
+  itanoPackRowMatchesFilter,
+  itanoSightPhoto,
+  itanoSourcedHook,
+  itanoTopChipForRow,
+  rankItanoSeeRows,
+  resolveItanoFilter
+} from './itano-travel';
+
+import {
   isMatsushigeExperiencePackRow,
   isMatsushigeOnsenPackRow,
   isMatsushigeStayPackRow,
@@ -296,6 +308,19 @@ const ISHII_HELPERS: LookupHelpers = {
   resolveFilter: resolveIshiiFilter
 };
 
+
+const ITANO_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isItanoOnsenPackRow,
+  isExperiencePackRow: isItanoExperiencePackRow,
+  isStayPackRow: isItanoStayPackRow,
+  packRowMatchesFilter: itanoPackRowMatchesFilter,
+  rankSeeRows: rankItanoSeeRows,
+  sightPhoto: itanoSightPhoto,
+  sourcedHook: itanoSourcedHook,
+  topChipForRow: itanoTopChipForRow,
+  resolveFilter: resolveItanoFilter
+};
+
 export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'tsurugi') return TSURUGI_HELPERS;
   if (slug === 'yoshinogawa') return YOSHINOGAWA_HELPERS;
@@ -307,5 +332,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'naruto') return NARUTO_HELPERS;
   if (slug === 'matsushige') return MATSUSHIGE_HELPERS;
   if (slug === 'ishii') return ISHII_HELPERS;
+  if (slug === 'itano') return ITANO_HELPERS;
   return MIMA_HELPERS;
 }

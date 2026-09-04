@@ -16,7 +16,9 @@ import {
   MATSUSHIGE_EXPECTED_GEO_COUNT,
   MATSUSHIGE_EXPECTED_ROW_COUNT,
   ISHII_EXPECTED_GEO_COUNT,
-  ISHII_EXPECTED_ROW_COUNT
+  ISHII_EXPECTED_ROW_COUNT,
+  ITANO_EXPECTED_GEO_COUNT,
+  ITANO_EXPECTED_ROW_COUNT
 } from './facility-schema';
 import {MIMA, MIMA_PLACE_PHOTO} from './mima';
 import {MIMA_FACILITIES} from './mima-facilities';
@@ -123,6 +125,19 @@ import {
   ISHII_TRAVEL_SHOPPING,
   ISHII_TRAVEL_STAY
 } from './ishii-travel';
+
+
+import {ITANO, ITANO_PLACE_PHOTO} from './itano';
+import {ITANO_FACILITIES} from './itano-facilities';
+import {
+  ITANO_TRAVEL_ACCESSED,
+  ITANO_TRAVEL_ALL,
+  ITANO_TRAVEL_COMMERCE,
+  ITANO_TRAVEL_DINING,
+  ITANO_TRAVEL_SHOPPING,
+  ITANO_TRAVEL_SOURCES,
+  ITANO_TRAVEL_STAY
+} from './itano-travel';
 
 import {KITAJIMA, KITAJIMA_PLACE_PHOTO} from './kitajima';
 import {KITAJIMA_FACILITIES} from './kitajima-facilities';
@@ -544,6 +559,41 @@ export const ISHII_LOOKUP: LookupTown = {
   licenseSiteEn: 'Town-site listing'
 };
 
+
+export const ITANO_LOOKUP: LookupTown = {
+  slug: 'itano',
+  jis: ITANO.jis,
+  nameJa: ITANO.nameJa,
+  nameEn: ITANO.nameEn,
+  heroPhoto: ITANO_PLACE_PHOTO,
+  photoCiteJa:
+    '写真はあすたむらんど徳島。Sorrysorry、2007-01-06、Public Domain。File:ASUTAMULAND TOKUSHIMA.JPG。',
+  photoCiteEn:
+    'Photo: Asutamu Land Tokushima. Sorrysorry, 6 Jan 2007, Public Domain. File:ASUTAMULAND TOKUSHIMA.JPG.',
+  rows: ITANO_FACILITIES,
+  expectedGeo: ITANO_EXPECTED_GEO_COUNT,
+  expectedRows: ITANO_EXPECTED_ROW_COUNT,
+  travelDining: ITANO_TRAVEL_DINING,
+  travelStay: ITANO_TRAVEL_STAY,
+  travelShopping: ITANO_TRAVEL_SHOPPING,
+  travelCommerce: ITANO_TRAVEL_COMMERCE,
+  travelAll: ITANO_TRAVEL_ALL,
+  coverageJa:
+    '板野町（JIS 36404）186件。文化財45、避難所43、緊急避難場所42、AED 27、公共施設11、保育9、観光8、介護1。医療機関・Wi-Fi・GTFSは0件（未掲載）。',
+  coverageEn:
+    'Itano Town (JIS 36404), 186 rows. Cultural property 45, shelters 43, emergency sites 42, AED 27, public facilities 11, childcare 9, tourism 8, care 1. Hospitals, Wi-Fi, GTFS: 0, unpublished.',
+  mapLabelJa: '板野町の公式座標9件',
+  mapLabelEn: '9 official coordinates in Itano Town',
+  mapCitePackJa: '点は凍結パックの公式座標9件（accessed 2026-08-25）。',
+  mapCitePackEn: 'Points: 9 official coordinates from the frozen pack (accessed 2026-08-25).',
+  licenseNoteJa:
+    '行のライセンスは二つ。CC BY 4.0 は徳島県 Our Open Data の利用規約。「町公式サイト掲載情報」は町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Licenses split by row. CC BY 4.0 follows Tokushima Our Open Data. A town-site listing is a fact from town.itano.tokushima.jp, not under that license.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
 const BY_SLUG: Record<ReadySlug, LookupTown> = {
   mima: MIMA_LOOKUP,
   tsurugi: TSURUGI_LOOKUP,
@@ -555,7 +605,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   kitajima: KITAJIMA_LOOKUP,
   naruto: NARUTO_LOOKUP,
   matsushige: MATSUSHIGE_LOOKUP,
-  ishii: ISHII_LOOKUP
+  ishii: ISHII_LOOKUP,
+  itano: ITANO_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
@@ -563,4 +614,4 @@ export function lookupTown(slug: string): LookupTown | null {
   return BY_SLUG[slug];
 }
 
-export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES, AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES, HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES, KITAJIMA_TRAVEL_ACCESSED, KITAJIMA_TRAVEL_SOURCES, NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES, MATSUSHIGE_TRAVEL_ACCESSED, MATSUSHIGE_TRAVEL_SOURCES, ISHII_TRAVEL_ACCESSED, ISHII_TRAVEL_SOURCES};
+export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES, AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES, HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES, KITAJIMA_TRAVEL_ACCESSED, KITAJIMA_TRAVEL_SOURCES, NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES, MATSUSHIGE_TRAVEL_ACCESSED, MATSUSHIGE_TRAVEL_SOURCES, ISHII_TRAVEL_ACCESSED, ISHII_TRAVEL_SOURCES, ITANO_TRAVEL_ACCESSED, ITANO_TRAVEL_SOURCES};

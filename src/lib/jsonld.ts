@@ -7,6 +7,7 @@ import {HIGASHIMIYOSHI, HIGASHIMIYOSHI_PLACE_PHOTO} from '@/data/higashimiyoshi'
 import {KITAJIMA, KITAJIMA_PLACE_PHOTO} from '@/data/kitajima';
 import {MATSUSHIGE, MATSUSHIGE_PLACE_PHOTO} from '@/data/matsushige';
 import {ISHII, ISHII_PLACE_PHOTO} from '@/data/ishii';
+import {ITANO, ITANO_PLACE_PHOTO} from '@/data/itano';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
@@ -79,6 +80,7 @@ function localityJa(slug: string): string {
   if (slug === 'naruto') return NARUTO.nameJa;
   if (slug === 'matsushige') return MATSUSHIGE.nameJa;
   if (slug === 'ishii') return ISHII.nameJa;
+  if (slug === 'itano') return ITANO.nameJa;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameJa;
   return MIMA.nameJa;
 }
@@ -93,6 +95,7 @@ function localityEn(slug: string): string {
   if (slug === 'naruto') return NARUTO.nameEn;
   if (slug === 'matsushige') return MATSUSHIGE.nameEn;
   if (slug === 'ishii') return ISHII.nameEn;
+  if (slug === 'itano') return ITANO.nameEn;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameEn;
   return MIMA.nameEn;
 }
@@ -860,6 +863,85 @@ export function ishiiGraph(locale: AppLocale) {
     ]
   };
 }
+
+
+export function itanoGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'tokushima/itano');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('itano');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? ITANO.nameJa : ITANO.nameEn,
+        alternateName: isJa ? ITANO.nameEn : ITANO.nameJa,
+        identifier: ITANO.jis,
+        url,
+        image: photoAbs(ITANO_PLACE_PHOTO),
+        sameAs: [ITANO.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa
+            ? '吹田字町南22-2'
+            : '22-2 Minami, Suita',
+          addressLocality: isJa ? ITANO.nameJa : ITANO.nameEn,
+          addressRegion: isJa ? ITANO.prefectureJa : ITANO.prefectureEn,
+          postalCode: ITANO.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? ITANO.prefectureJa : ITANO.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? ITANO.nameJa : ITANO.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: isJa ? '全国' : 'Japan',
+            item: canonicalUrl(locale)
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: isJa ? ITANO.prefectureJa : ITANO.prefectureEn,
+            item: canonicalUrl(locale, 'tokushima')
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: isJa ? ITANO.nameJa : ITANO.nameEn,
+            item: url
+          }
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '板野町の案内' : 'Places in Itano Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
 
 export function kitajimaGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'tokushima/kitajima');
