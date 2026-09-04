@@ -5,15 +5,25 @@ import {canonicalUrl} from '@/lib/seo';
 
 export const dynamic = 'force-static';
 
+/** Ready municipality hubs (美馬・つるぎ・吉野川・三好・徳島市). */
+const READY_HUBS = [
+  'tokushima/tokushima',
+  'tokushima/mima',
+  'tokushima/tsurugi',
+  'tokushima/yoshinogawa',
+  'tokushima/miyoshi'
+] as const;
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = ['', 'tokushima', 'tokushima/mima', 'tokushima/tsurugi', 'tokushima/yoshinogawa', 'tokushima/miyoshi', ...liveListings().map((row) => listingRest(row.id, row.slug))];
+  const paths = ['', 'tokushima', ...READY_HUBS, ...liveListings().map((row) => listingRest(row.id, row.slug))];
+  const hubSet = new Set<string>(READY_HUBS);
   const entries: MetadataRoute.Sitemap = [];
   for (const locale of routing.locales) {
     for (const rest of paths) {
       entries.push({
         url: canonicalUrl(locale, rest),
         changeFrequency: rest === '' ? 'weekly' : 'monthly',
-        priority: rest === '' ? 1 : rest === 'tokushima/mima' || rest === 'tokushima/tsurugi' || rest === 'tokushima/yoshinogawa' || rest === 'tokushima/miyoshi' ? 0.9 : 0.7
+        priority: rest === '' ? 1 : hubSet.has(rest) ? 0.9 : rest === 'tokushima' ? 0.85 : 0.7
       });
     }
   }

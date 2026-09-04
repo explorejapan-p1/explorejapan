@@ -38,12 +38,15 @@ export async function generateMetadata({params}: Props) {
   if (prefecture !== 'tokushima' || !muni) return {};
   const loc = (locale === 'en' ? 'en' : 'ja') as AppLocale;
   const live = muni.status === 'ready';
-  const title =
-    loc === 'ja'
-      ? muni.nameJa
-      : muni.slug === 'mima' && live
-        ? `${muni.nameEn} City`
-        : muni.nameEn;
+  const enTitle =
+    muni.nameJa.endsWith('市')
+      ? `${muni.nameEn} City`
+      : muni.nameJa.endsWith('町')
+        ? `${muni.nameEn} Town`
+        : muni.nameJa.endsWith('村')
+          ? `${muni.nameEn} Village`
+          : muni.nameEn;
+  const title = loc === 'ja' ? muni.nameJa : live ? enTitle : muni.nameEn;
   const image =
     muni.slug === 'tsurugi'
       ? TSURUGI_PLACE_PHOTO

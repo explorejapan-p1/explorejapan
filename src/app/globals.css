@@ -108,8 +108,8 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
 .choropleth { width: 100%; height: auto; background: #f3f3f3; border: 1px solid var(--line); }
 .shape { fill: #d8d8d8; stroke: var(--ink); stroke-width: 0.8; }
 .shape:hover { fill: #bdbdbd; }
-.shape.is-tokushima, .shape.is-mima { fill: #333; stroke: #111; }
-.shape.is-tokushima:hover, .shape.is-mima:hover { fill: #111; }
+.shape.is-tokushima, .shape.is-mima, .shape.is-ready { fill: #333; stroke: #111; }
+.shape.is-tokushima:hover, .shape.is-mima:hover, .shape.is-ready:hover { fill: #111; }
 .name-list { max-height: 36rem; overflow: auto; border: 1px solid var(--line); padding: 0.75rem 1rem; background: #fff; }
 .name-list ol { margin: 0; padding-left: 1.2rem; columns: 1; }
 .muted { color: var(--muted); font-size: 0.85em; }

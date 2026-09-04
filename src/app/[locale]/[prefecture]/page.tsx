@@ -5,6 +5,7 @@ import {MIMA, MIMA_PLACE_PHOTO, BASE_PATH} from '@/data/mima';
 import {TSURUGI_PLACE_PHOTO} from '@/data/tsurugi';
 import {YOSHINOGAWA_PLACE_PHOTO} from '@/data/yoshinogawa';
 import {MIYOSHI_PLACE_PHOTO} from '@/data/miyoshi';
+import {TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {PREFECTURES, PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
 import {Link} from '@/i18n/navigation';
@@ -32,8 +33,8 @@ export async function generateMetadata({params}: Props) {
     title: name,
     description: live
       ? loc === 'ja'
-        ? '徳島県の市町村。美馬市とつるぎ町と吉野川市と三好市。'
-        : 'Municipalities in Tokushima. Listings: Mima City, Tsurugi Town, Yoshinogawa City, and Miyoshi City.'
+        ? '徳島県の市町村。徳島市・美馬市・つるぎ町・吉野川市・三好市。'
+        : 'Municipalities in Tokushima. Listings: Tokushima City, Mima City, Tsurugi Town, Yoshinogawa City, and Miyoshi City.'
       : loc === 'ja'
         ? 'この県の市町村ページは準備中です。'
         : 'This prefecture layer is not wired yet.',
@@ -68,13 +69,15 @@ export default async function PrefecturePage({params}: Props) {
             {TOKUSHIMA_MUNICIPALITIES.map((m) => {
               const live = m.status === 'ready';
               const photo =
-                m.slug === 'tsurugi'
-                  ? TSURUGI_PLACE_PHOTO
-                  : m.slug === 'yoshinogawa'
-                    ? YOSHINOGAWA_PLACE_PHOTO
-                    : m.slug === 'miyoshi'
-                      ? MIYOSHI_PLACE_PHOTO
-                      : MIMA_PLACE_PHOTO;
+                m.slug === 'tokushima'
+                  ? TOKUSHIMA_CITY_PLACE_PHOTO
+                  : m.slug === 'tsurugi'
+                    ? TSURUGI_PLACE_PHOTO
+                    : m.slug === 'yoshinogawa'
+                      ? YOSHINOGAWA_PLACE_PHOTO
+                      : m.slug === 'miyoshi'
+                        ? MIYOSHI_PLACE_PHOTO
+                        : MIMA_PLACE_PHOTO;
               const href = `${BASE_PATH}/${locale}/tokushima/${m.slug}/`;
               return (
                 <li key={m.slug} className={live ? 'muni-card is-live' : 'muni-card is-hold'}>

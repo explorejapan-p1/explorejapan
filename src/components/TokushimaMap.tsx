@@ -15,8 +15,8 @@ export function TokushimaMap({locale}: Props) {
       {map.source === 'placeholder' ? (
         <p className="map-banner" role="status">
           {isJa
-            ? 'プレースホルダ地図（N03 形状ではない）· 美馬市だけ本文ページがあります'
-            : 'Placeholder map (not N03 geometry) · only Mima has a full page'}
+            ? 'プレースホルダ地図（N03 形状ではない）· 本文があるのは徳島市・美馬市・つるぎ町・吉野川市・三好市'
+            : 'Placeholder map (not N03 geometry) · full pages: Tokushima City, Mima, Tsurugi, Yoshinogawa, Miyoshi'}
         </p>
       ) : null}
       <div className="map-grid">
@@ -26,16 +26,20 @@ export function TokushimaMap({locale}: Props) {
           role="img"
           aria-label={isJa ? '徳島県の市町村地図' : 'Map of Tokushima municipalities'}
         >
-          {map.shapes.map((s) => (
+          {map.shapes.map((s) => {
+            const muni = TOKUSHIMA_MUNICIPALITIES.find((m) => m.slug === s.slug);
+            const ready = muni?.status === 'ready';
+            return (
             <a
               key={s.slug}
               href={`${BASE_PATH}/${locale}/tokushima/${s.slug}/`}
-              className={s.slug === 'mima' ? 'shape is-mima' : 'shape'}
+              className={ready ? 'shape is-ready' : 'shape'}
             >
               <title>{isJa ? s.nameJa : s.nameEn}</title>
               <path d={s.d} />
             </a>
-          ))}
+            );
+          })}
         </svg>
         <nav className="name-list" aria-label={isJa ? '市町村一覧' : 'Municipality list'}>
           <ol>

@@ -3,6 +3,7 @@ import {TSURUGI, TSURUGI_PLACE_PHOTO} from '@/data/tsurugi';
 import {YOSHINOGAWA, YOSHINOGAWA_PLACE_PHOTO} from '@/data/yoshinogawa';
 import {MIYOSHI, MIYOSHI_PLACE_PHOTO} from '@/data/miyoshi';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
+import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
 import type {AppLocale} from '@/i18n/routing';
 import {
   featuredListings,
@@ -154,45 +155,65 @@ export function homeGraph(locale: AppLocale) {
 export function prefectureGraph(locale: AppLocale, slug: string, name: string) {
   const url = canonicalUrl(locale, slug);
   const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const ready =
+    slug === 'tokushima'
+      ? TOKUSHIMA_MUNICIPALITIES.filter((m) => m.status === 'ready')
+      : [];
+  const graph: Record<string, unknown>[] = [
+    {
+      '@type': ['CollectionPage', 'AdministrativeArea'],
+      '@id': `${url}#place`,
+      name,
+      url,
+      containedInPlace: {
+        '@type': 'Country',
+        name: isJa ? '日本' : 'Japan'
+      }
+    },
+    {
+      '@type': 'WebPage',
+      '@id': url,
+      url,
+      name,
+      inLanguage: locale,
+      isPartOf: {'@id': `${origin}/#website`}
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: isJa ? '全国' : 'Japan',
+          item: canonicalUrl(locale)
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name,
+          item: url
+        }
+      ]
+    }
+  ];
+  if (ready.length) {
+    graph.push({
+      '@type': 'ItemList',
+      '@id': `${url}#ready-municipalities`,
+      name: isJa ? '掲載中の市町村' : 'Ready municipalities',
+      numberOfItems: ready.length,
+      itemListElement: ready.map((m, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: isJa ? m.nameJa : m.nameEn,
+        url: canonicalUrl(locale, `tokushima/${m.slug}`)
+      }))
+    });
+  }
   return {
     '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': ['CollectionPage', 'AdministrativeArea'],
-        '@id': `${url}#place`,
-        name,
-        url,
-        containedInPlace: {
-          '@type': 'Country',
-          name: locale === 'ja' ? '日本' : 'Japan'
-        }
-      },
-      {
-        '@type': 'WebPage',
-        '@id': url,
-        url,
-        name,
-        inLanguage: locale,
-        isPartOf: {'@id': `${origin}/#website`}
-      },
-      {
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-          {
-            '@type': 'ListItem',
-            position: 1,
-            name: locale === 'ja' ? '全国' : 'Japan',
-            item: canonicalUrl(locale)
-          },
-          {
-            '@type': 'ListItem',
-            position: 2,
-            name,
-            item: url
-          }
-        ]
-      }
-    ]
+    '@graph': graph
   };
 }
 
