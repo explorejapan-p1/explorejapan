@@ -7,7 +7,7 @@ import type {MimaPlacePhoto} from './mima';
 
 export const KITAJIMA = {
   nameJa: '北島町',
-  nameEn: 'Kitajima',
+  nameEn: 'Kitajima Town',
   reading: 'きたじまちょう',
   prefectureJa: '徳島県',
   prefectureEn: 'Tokushima',
@@ -19,13 +19,13 @@ export const KITAJIMA = {
   hall: {
     postalCode: '771-0285',
     addressJa: '徳島県板野郡北島町中村字上地23-1',
-    addressEn: '23-1 Kamiuchi, Nakamura, Kitajima, Itano District, Tokushima 771-0285, Japan',
+    addressEn: '23-1 Kamiichi, Nakamura, Kitajima, Itano District, Tokushima 771-0285, Japan',
     phone: '088-698-9801'
   },
   sources: {
     home: 'https://www.town.kitajima.lg.jp/',
-    hall: 'https://www.town.kitajima.lg.jp/chosei/chosha/',
-    kanko: 'https://www.town.kitajima.lg.jp/kanko/kanko/',
+    hall: 'https://www.town.kitajima.lg.jp/institution/shisetsu/shisetsu1/',
+    kanko: 'https://www.town.kitajima.lg.jp/docs/61.html',
     accessed: '2026-09-05'
   }
 } as const;

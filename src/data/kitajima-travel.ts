@@ -18,8 +18,8 @@ export const KITAJIMA_TRAVEL_ACCESSED = '2026-09-05' as const;
 
 export const KITAJIMA_TRAVEL_SOURCES = {
   home: 'https://www.town.kitajima.lg.jp/',
-  hall: 'https://www.town.kitajima.lg.jp/chosei/chosha/',
-  kanko: 'https://www.town.kitajima.lg.jp/kanko/kanko/',
+  hall: 'https://www.town.kitajima.lg.jp/mobile/chosei/chosha/',
+  kanko: 'https://www.town.kitajima.lg.jp/docs/61.html',
   tabelogCity: 'https://tabelog.com/tokushima/C36402/rstLst/'
 } as const;
 
