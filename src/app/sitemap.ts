@@ -11,7 +11,8 @@ const READY_HUBS = [
   'tokushima/mima',
   'tokushima/tsurugi',
   'tokushima/yoshinogawa',
-  'tokushima/miyoshi'
+  'tokushima/miyoshi',
+  'tokushima/awa'
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

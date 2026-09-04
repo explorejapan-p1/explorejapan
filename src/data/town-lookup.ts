@@ -6,7 +6,9 @@ import {
   YOSHINOGAWA_EXPECTED_GEO_COUNT,
   YOSHINOGAWA_EXPECTED_ROW_COUNT,
   MIYOSHI_EXPECTED_GEO_COUNT,
-  MIYOSHI_EXPECTED_ROW_COUNT
+  MIYOSHI_EXPECTED_ROW_COUNT,
+  AWA_EXPECTED_GEO_COUNT,
+  AWA_EXPECTED_ROW_COUNT
 } from './facility-schema';
 import {MIMA, MIMA_PLACE_PHOTO} from './mima';
 import {MIMA_FACILITIES} from './mima-facilities';
@@ -62,6 +64,19 @@ import {
   TOKUSHIMA_CITY_EXPECTED_GEO_COUNT,
   TOKUSHIMA_CITY_EXPECTED_ROW_COUNT
 } from './tokushima-city';
+
+import {AWA, AWA_PLACE_PHOTO} from './awa';
+import {AWA_FACILITIES} from './awa-facilities';
+import {
+  AWA_TRAVEL_ACCESSED,
+  AWA_TRAVEL_ALL,
+  AWA_TRAVEL_COMMERCE,
+  AWA_TRAVEL_DINING,
+  AWA_TRAVEL_SHOPPING,
+  AWA_TRAVEL_SOURCES,
+  AWA_TRAVEL_STAY
+} from './awa-travel';
+
 import {
   TOKUSHIMA_CITY_TRAVEL_ACCESSED,
   TOKUSHIMA_CITY_TRAVEL_ALL,
@@ -248,12 +263,48 @@ export const TOKUSHIMA_CITY_LOOKUP: LookupTown = {
   licenseSiteEn: 'City-site listing'
 };
 
+export const AWA_LOOKUP: LookupTown = {
+  slug: 'awa',
+  jis: AWA.jis,
+  nameJa: AWA.nameJa,
+  nameEn: AWA.nameEn,
+  heroPhoto: AWA_PLACE_PHOTO,
+  photoCiteJa:
+    '写真は阿波の土柱。Araiyasushige、2022-08-22、CC BY-SA 4.0。File:Awa no dotyuu 20220822 1.jpg。',
+  photoCiteEn:
+    'Photo: Awa-no-Dochū earth pillars. Araiyasushige, 22 Aug 2022, CC BY-SA 4.0. File:Awa no dotyuu 20220822 1.jpg.',
+  rows: AWA_FACILITIES,
+  expectedGeo: AWA_EXPECTED_GEO_COUNT,
+  expectedRows: AWA_EXPECTED_ROW_COUNT,
+  travelDining: AWA_TRAVEL_DINING,
+  travelStay: AWA_TRAVEL_STAY,
+  travelShopping: AWA_TRAVEL_SHOPPING,
+  travelCommerce: AWA_TRAVEL_COMMERCE,
+  travelAll: AWA_TRAVEL_ALL,
+  coverageJa:
+    '阿波市（JIS 36206）307件。公共施設101、AED 52、避難所33、Wi-Fi 33、保育31、観光30、緊急避難場所24、文化財3。医療機関・介護・GTFSは0件（未掲載）。',
+  coverageEn:
+    'Awa City (JIS 36206), 307 rows. Public facilities 101, AED 52, shelters 33, Wi-Fi 33, childcare 31, tourism 30, emergency sites 24, cultural property 3. Hospitals, care, GTFS: 0, unpublished.',
+  mapLabelJa: '阿波市の公式座標171件',
+  mapLabelEn: '171 official coordinates in Awa City',
+  mapCitePackJa: '点は凍結パックの公式座標171件（accessed 2026-08-25）。',
+  mapCitePackEn: 'Points: 171 official coordinates from the frozen pack (accessed 2026-08-25).',
+  licenseNoteJa:
+    '行のライセンスは二つ。CC BY 4.0 は徳島県 Our Open Data の利用規約。「市公式サイト掲載情報」は市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Licenses split by row. CC BY 4.0 follows Tokushima Our Open Data. A city-site listing is a fact from city.awa.lg.jp, not under that license.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
+
 const BY_SLUG: Record<ReadySlug, LookupTown> = {
   mima: MIMA_LOOKUP,
   tsurugi: TSURUGI_LOOKUP,
   yoshinogawa: YOSHINOGAWA_LOOKUP,
   miyoshi: MIYOSHI_LOOKUP,
-  tokushima: TOKUSHIMA_CITY_LOOKUP
+  tokushima: TOKUSHIMA_CITY_LOOKUP,
+  awa: AWA_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
@@ -261,4 +312,4 @@ export function lookupTown(slug: string): LookupTown | null {
   return BY_SLUG[slug];
 }
 
-export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES};
+export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES, AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES};

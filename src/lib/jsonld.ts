@@ -2,6 +2,7 @@ import {MIMA, MIMA_PLACE_PHOTO} from '@/data/mima';
 import {TSURUGI, TSURUGI_PLACE_PHOTO} from '@/data/tsurugi';
 import {YOSHINOGAWA, YOSHINOGAWA_PLACE_PHOTO} from '@/data/yoshinogawa';
 import {MIYOSHI, MIYOSHI_PLACE_PHOTO} from '@/data/miyoshi';
+import {AWA, AWA_PLACE_PHOTO} from '@/data/awa';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
 import type {AppLocale} from '@/i18n/routing';
@@ -67,6 +68,7 @@ function localityJa(slug: string): string {
   if (slug === 'tsurugi') return TSURUGI.nameJa;
   if (slug === 'yoshinogawa') return YOSHINOGAWA.nameJa;
   if (slug === 'miyoshi') return MIYOSHI.nameJa;
+  if (slug === 'awa') return AWA.nameJa;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameJa;
   return MIMA.nameJa;
 }
@@ -75,6 +77,7 @@ function localityEn(slug: string): string {
   if (slug === 'tsurugi') return TSURUGI.nameEn;
   if (slug === 'yoshinogawa') return YOSHINOGAWA.nameEn;
   if (slug === 'miyoshi') return MIYOSHI.nameEn;
+  if (slug === 'awa') return AWA.nameEn;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameEn;
   return MIMA.nameEn;
 }
@@ -528,6 +531,84 @@ export function miyoshiGraph(locale: AppLocale) {
   };
 }
 
+
+
+export function awaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'tokushima/awa');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('awa');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['City', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? AWA.nameJa : AWA.nameEn,
+        alternateName: isJa ? AWA.nameEn : AWA.nameJa,
+        identifier: AWA.jis,
+        url,
+        image: photoAbs(AWA_PLACE_PHOTO),
+        sameAs: [AWA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa
+            ? '市場町切幡字古田201番地1'
+            : '201-1 Furuta, Kirihata, Ichiba-cho',
+          addressLocality: isJa ? AWA.nameJa : AWA.nameEn,
+          addressRegion: isJa ? AWA.prefectureJa : AWA.prefectureEn,
+          postalCode: AWA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? AWA.prefectureJa : AWA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? AWA.nameJa : AWA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: isJa ? '全国' : 'Japan',
+            item: canonicalUrl(locale)
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: isJa ? AWA.prefectureJa : AWA.prefectureEn,
+            item: canonicalUrl(locale, 'tokushima')
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: isJa ? AWA.nameJa : AWA.nameEn,
+            item: url
+          }
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '阿波市の案内' : 'Places in Awa',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
 
 export function tokushimaCityGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'tokushima/tokushima');

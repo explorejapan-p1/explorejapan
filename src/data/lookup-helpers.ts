@@ -47,6 +47,19 @@ import {
   resolveMiyoshiFilter
 } from './miyoshi-travel';
 
+
+import {
+  isAwaExperiencePackRow,
+  isAwaOnsenPackRow,
+  isAwaStayPackRow,
+  awaPackRowMatchesFilter,
+  awaSightPhoto,
+  awaSourcedHook,
+  awaTopChipForRow,
+  rankAwaSeeRows,
+  resolveAwaFilter
+} from './awa-travel';
+
 import {
   isTokushimaCityExperiencePackRow,
   isTokushimaCityOnsenPackRow,
@@ -144,10 +157,24 @@ const TOKUSHIMA_CITY_HELPERS: LookupHelpers = {
   resolveFilter: resolveTokushimaCityFilter
 };
 
+const AWA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isAwaOnsenPackRow,
+  isExperiencePackRow: isAwaExperiencePackRow,
+  isStayPackRow: isAwaStayPackRow,
+  packRowMatchesFilter: awaPackRowMatchesFilter,
+  rankSeeRows: rankAwaSeeRows,
+  sightPhoto: awaSightPhoto,
+  sourcedHook: awaSourcedHook,
+  topChipForRow: awaTopChipForRow,
+  resolveFilter: resolveAwaFilter
+};
+
+
 export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'tsurugi') return TSURUGI_HELPERS;
   if (slug === 'yoshinogawa') return YOSHINOGAWA_HELPERS;
   if (slug === 'miyoshi') return MIYOSHI_HELPERS;
   if (slug === 'tokushima') return TOKUSHIMA_CITY_HELPERS;
+  if (slug === 'awa') return AWA_HELPERS;
   return MIMA_HELPERS;
 }

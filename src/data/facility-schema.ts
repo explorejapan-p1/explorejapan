@@ -88,6 +88,28 @@ export const YOSHINOGAWA_EXPECTED_CATEGORY_COUNTS = {
 } as const satisfies Record<FacilityCategory, number>;
 
 
+
+export const AWA_PACK_JIS = '36206';
+export const AWA_EXPECTED_ROW_COUNT = 307;
+export const AWA_EXPECTED_GEO_COUNT = 171;
+export const AWA_EXPECTED_HOURS_COUNT = 83;
+export const AWA_EXPECTED_MISSING_ADDRESS = 36;
+export const AWA_EXPECTED_MISSING_PHONE = 156;
+export const AWA_EXPECTED_CATEGORY_COUNTS = {
+  tourism: 30,
+  cultural_property: 3,
+  care: 0,
+  aed: 52,
+  shelter: 33,
+  emergency_evacuation_site: 24,
+  hospital: 0,
+  childcare: 31,
+  wifi: 33,
+  public_facility: 101,
+  gtfs_stop: 0
+} as const satisfies Record<FacilityCategory, number>;
+
+
 export const MIYOSHI_PACK_JIS = '36208';
 export const MIYOSHI_EXPECTED_ROW_COUNT = 1042;
 export const MIYOSHI_EXPECTED_GEO_COUNT = 636;

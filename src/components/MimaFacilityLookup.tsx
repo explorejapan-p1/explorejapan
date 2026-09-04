@@ -26,6 +26,7 @@ import {TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES} from '@/data/tsurugi-tr
 import {YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES} from '@/data/yoshinogawa-travel';
 import {MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES} from '@/data/miyoshi-travel';
 import {TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES} from '@/data/tokushima-city-travel';
+import {AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES} from '@/data/awa-travel';
 import {
   rankByOurTraffic,
   recordFacilitySearch,
@@ -427,7 +428,7 @@ export function MimaFacilityLookup({
     ? editorialCards
     : rankByOurTraffic(editorialCards, traffic.views, traffic.searches);
 
-  // Photo-only visual grid for tsurugi, yoshinogawa, miyoshi, and tokushima. Mima still shows 写真準備中 wells.
+  // Photo-only visual grid for tsurugi, yoshinogawa, miyoshi, tokushima, and awa. Mima still shows 写真準備中 wells.
   const photoOnly = town.slug !== 'mima';
   const gridCards =
     searching || !photoOnly
@@ -671,6 +672,25 @@ export function MimaFacilityLookup({
                 photo exists. Cards show only listings with a sourced photo. No public scores.
               </>
             )
+
+          ) : town.slug === 'awa' ? (
+            locale === 'ja' ? (
+              <>
+                <a href={AWA_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ阿波市の公開店ページ（
+                {AWA_TRAVEL_ACCESSED}）。
+                宿泊・温泉は客室・浴場の出典写真が無いため0件。
+                体験・買物・商業の公式一覧は未掲載のため0件。
+                カードは出典写真があるものだけ。点数は持ちません。
+              </>
+            ) : (
+              <>
+                <a href={AWA_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Awa City shop pages (
+                {AWA_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
+                Experience, shopping, and commerce stay at 0 — no official list.
+                Cards show only listings with a sourced photo. No public scores.
+              </>
+            )
+
           ) : town.slug === 'tokushima' ? (
             locale === 'ja' ? (
               <>
