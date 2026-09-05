@@ -28,7 +28,9 @@ import {
   KAMIKATSU_EXPECTED_GEO_COUNT,
   KAMIKATSU_EXPECTED_ROW_COUNT,
   SANAGOCHI_EXPECTED_GEO_COUNT,
-  SANAGOCHI_EXPECTED_ROW_COUNT
+  SANAGOCHI_EXPECTED_ROW_COUNT,
+  NAKA_EXPECTED_GEO_COUNT,
+  NAKA_EXPECTED_ROW_COUNT
 } from './facility-schema';
 import {MIMA, MIMA_PLACE_PHOTO} from './mima';
 import {MIMA_FACILITIES} from './mima-facilities';
@@ -199,7 +201,9 @@ import {
 
 
 import {SANAGOCHI, SANAGOCHI_PLACE_PHOTO} from './sanagochi';
+import {NAKA, NAKA_PLACE_PHOTO} from './naka';
 import {SANAGOCHI_FACILITIES} from './sanagochi-facilities';
+import {NAKA_FACILITIES} from './naka-facilities';
 import {
   SANAGOCHI_TRAVEL_ACCESSED,
   SANAGOCHI_TRAVEL_ALL,
@@ -209,6 +213,13 @@ import {
   SANAGOCHI_TRAVEL_SOURCES,
   SANAGOCHI_TRAVEL_STAY
 } from './sanagochi-travel';
+import {
+  NAKA_TRAVEL_DINING,
+  NAKA_TRAVEL_STAY,
+  NAKA_TRAVEL_SHOPPING,
+  NAKA_TRAVEL_COMMERCE,
+  NAKA_TRAVEL_ALL
+} from './naka-travel';
 
 
 
@@ -845,6 +856,42 @@ export const SANAGOCHI_LOOKUP: LookupTown = {
 };
 
 
+
+export const NAKA_LOOKUP: LookupTown = {
+  slug: 'naka',
+  jis: NAKA.jis,
+  nameJa: NAKA.nameJa,
+  nameEn: NAKA.nameEn,
+  heroPhoto: NAKA_PLACE_PHOTO,
+  photoCiteJa:
+    '写真は高の瀬峡。akiakane、2011、CC BY 3.0。File:高の瀬峡_-_panoramio_-_akiakane.jpg。',
+  photoCiteEn:
+    'Photo: Kōnosekyō gorge. akiakane, 2011, CC BY 3.0. File:高の瀬峡_-_panoramio_-_akiakane.jpg.',
+  rows: NAKA_FACILITIES,
+  expectedGeo: NAKA_EXPECTED_GEO_COUNT,
+  expectedRows: NAKA_EXPECTED_ROW_COUNT,
+  travelDining: NAKA_TRAVEL_DINING,
+  travelStay: NAKA_TRAVEL_STAY,
+  travelShopping: NAKA_TRAVEL_SHOPPING,
+  travelCommerce: NAKA_TRAVEL_COMMERCE,
+  travelAll: NAKA_TRAVEL_ALL,
+  coverageJa:
+    '那賀町（JIS 36368）356件。GTFS停留所99、避難所66、公共施設62、AED46、緊急避難場所29、文化財19、観光11、病院9、介護9、保育6。Wi-Fiは0件（未掲載）。公式座標110件。',
+  coverageEn:
+    'Naka Town (JIS 36368), 356 rows. GTFS stops 99, shelter 66, public facility 62, AED 46, emergency sites 29, cultural property 19, tourism 11, hospital 9, care 9, childcare 6. Wi-Fi: 0, unpublished. Official coordinates: 110.',
+  mapLabelJa: '那賀町の公式座標110件',
+  mapLabelEn: '110 official coordinates in Naka Town',
+  mapCitePackJa: '点は凍結パックの公式座標110件（accessed 2026-08-25）。',
+  mapCitePackEn: 'Points: 110 official coordinates from the frozen pack (accessed 2026-08-25).',
+  licenseNoteJa:
+    '行のライセンスは二つ。CC BY 4.0 は徳島県 Our Open Data の利用規約。「町公式サイト掲載情報」は町・観光ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Licenses split by row. CC BY 4.0 follows Tokushima Our Open Data. A town-site listing is a fact from town.tokushima-naka.lg.jp, not under that license.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
+
 const BY_SLUG: Record<ReadySlug, LookupTown> = {
   mima: MIMA_LOOKUP,
   tsurugi: TSURUGI_LOOKUP,
@@ -862,7 +909,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   kamiyama: KAMIYAMA_LOOKUP,
   katsuura: KATSUURA_LOOKUP,
   kamikatsu: KAMIKATSU_LOOKUP,
-  sanagochi: SANAGOCHI_LOOKUP
+  sanagochi: SANAGOCHI_LOOKUP,
+  naka: NAKA_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

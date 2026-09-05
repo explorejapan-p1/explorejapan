@@ -13,6 +13,7 @@ import {KAMIYAMA, KAMIYAMA_PLACE_PHOTO} from '@/data/kamiyama';
 import {KATSUURA, KATSUURA_PLACE_PHOTO} from '@/data/katsuura';
 import {KAMIKATSU, KAMIKATSU_PLACE_PHOTO} from '@/data/kamikatsu';
 import {SANAGOCHI, SANAGOCHI_PLACE_PHOTO} from '@/data/sanagochi';
+import {NAKA, NAKA_PLACE_PHOTO} from '@/data/naka';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
@@ -91,6 +92,7 @@ function localityJa(slug: string): string {
   if (slug === 'katsuura') return KATSUURA.nameJa;
   if (slug === 'kamikatsu') return KAMIKATSU.nameJa;
   if (slug === 'sanagochi') return SANAGOCHI.nameJa;
+  if (slug === 'naka') return NAKA.nameJa;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameJa;
   return MIMA.nameJa;
 }
@@ -111,6 +113,7 @@ function localityEn(slug: string): string {
   if (slug === 'katsuura') return KATSUURA.nameEn;
   if (slug === 'kamikatsu') return KAMIKATSU.nameEn;
   if (slug === 'sanagochi') return SANAGOCHI.nameEn;
+  if (slug === 'naka') return NAKA.nameEn;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameEn;
   return MIMA.nameEn;
 }
@@ -1259,6 +1262,84 @@ export function sanagochiGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '佐那河内村の案内' : 'Places in Sanagochi Village',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+
+export function nakaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'tokushima/naka');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('naka');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? NAKA.nameJa : NAKA.nameEn,
+        alternateName: isJa ? NAKA.nameEn : NAKA.nameJa,
+        identifier: NAKA.jis,
+        url,
+        image: photoAbs(NAKA_PLACE_PHOTO),
+        sameAs: [NAKA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa
+            ? '和食郷字南川104番地1'
+            : '104-1 Minamigawa, Wajikigo',
+          addressLocality: isJa ? NAKA.nameJa : NAKA.nameEn,
+          addressRegion: isJa ? NAKA.prefectureJa : NAKA.prefectureEn,
+          postalCode: NAKA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? NAKA.prefectureJa : NAKA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? NAKA.nameJa : NAKA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: isJa ? '全国' : 'Japan',
+            item: canonicalUrl(locale)
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: isJa ? NAKA.prefectureJa : NAKA.prefectureEn,
+            item: canonicalUrl(locale, 'tokushima')
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: isJa ? NAKA.nameJa : NAKA.nameEn,
+            item: url
+          }
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '那賀町の案内' : 'Places in Naka Town',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

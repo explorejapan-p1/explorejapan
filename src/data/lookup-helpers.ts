@@ -179,6 +179,17 @@ import {
   sanagochiSourcedHook,
   sanagochiTopChipForRow
 } from './sanagochi-travel';
+import {
+  isNakaExperiencePackRow,
+  isNakaOnsenPackRow,
+  isNakaStayPackRow,
+  nakaPackRowMatchesFilter,
+  nakaSightPhoto,
+  nakaSourcedHook,
+  nakaTopChipForRow,
+  rankNakaSeeRows,
+  resolveNakaFilter
+} from './naka-travel';
 
 import {
   isMatsushigeExperiencePackRow,
@@ -445,6 +456,18 @@ const SANAGOCHI_HELPERS: LookupHelpers = {
   resolveFilter: resolveSanagochiFilter
 };
 
+const NAKA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isNakaOnsenPackRow,
+  isExperiencePackRow: isNakaExperiencePackRow,
+  isStayPackRow: isNakaStayPackRow,
+  packRowMatchesFilter: nakaPackRowMatchesFilter,
+  rankSeeRows: rankNakaSeeRows,
+  sightPhoto: nakaSightPhoto,
+  sourcedHook: nakaSourcedHook,
+  topChipForRow: nakaTopChipForRow,
+  resolveFilter: resolveNakaFilter
+};
+
 export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'tsurugi') return TSURUGI_HELPERS;
   if (slug === 'yoshinogawa') return YOSHINOGAWA_HELPERS;
@@ -462,5 +485,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'katsuura') return KATSUURA_HELPERS;
   if (slug === 'kamikatsu') return KAMIKATSU_HELPERS;
   if (slug === 'sanagochi') return SANAGOCHI_HELPERS;
+  if (slug === 'naka') return NAKA_HELPERS;
   return MIMA_HELPERS;
 }

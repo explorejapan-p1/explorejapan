@@ -37,6 +37,7 @@ import {KAMIYAMA_TRAVEL_ACCESSED, KAMIYAMA_TRAVEL_SOURCES} from '@/data/kamiyama
 import {KATSUURA_TRAVEL_ACCESSED, KATSUURA_TRAVEL_SOURCES} from '@/data/katsuura-travel';
 import {KAMIKATSU_TRAVEL_ACCESSED, KAMIKATSU_TRAVEL_SOURCES} from '@/data/kamikatsu-travel';
 import {SANAGOCHI_TRAVEL_ACCESSED, SANAGOCHI_TRAVEL_SOURCES} from '@/data/sanagochi-travel';
+import {NAKA_TRAVEL_ACCESSED, NAKA_TRAVEL_SOURCES} from '@/data/naka-travel';
 import {NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES} from '@/data/naruto-travel';
 import {
   rankByOurTraffic,
@@ -873,7 +874,28 @@ export function MimaFacilityLookup({
               </>
             )
 
-          ) : town.slug === 'matsushige' ? (
+          
+          ) : town.slug === 'naka' ? (
+            locale === 'ja' ? (
+              <>
+                <a href={NAKA_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ那賀町の公開店ページ（
+                {NAKA_TRAVEL_ACCESSED}）。
+                宿泊・温泉は客室・浴場の出典写真が無いため0件。
+                体験・商業の公式一覧は未掲載のため0件。
+                買物は道の駅など出典写真があるパック行のみ。
+                カードは出典写真があるものだけ。点数は持ちません。
+              </>
+            ) : (
+              <>
+                <a href={NAKA_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Naka Town shop pages (
+                {NAKA_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
+                Experience and commerce stay at 0 — no official list.
+                Shopping shows pack roadside stations with a sourced photo only.
+                Cards show only listings with a sourced photo. No public scores.
+              </>
+            )
+
+) : town.slug === 'matsushige' ? (
             locale === 'ja' ? (
               <>
                 <a href={MATSUSHIGE_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ松茂町の公開店ページ（

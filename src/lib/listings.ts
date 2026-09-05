@@ -113,6 +113,14 @@ import {
   SANAGOCHI_DINING_NAME_SET,
   sanagochiSightPhoto
 } from '@/data/sanagochi-travel';
+import {
+  isNakaOnsenPackRow,
+  isNakaStayPackRow,
+  isNakaShoppingPackRow,
+  NAKA_DINING_NAME_SET,
+  nakaSightPhoto,
+  rankNakaSeeRows
+} from '@/data/naka-travel';
 
 import {
   isMatsushigeOnsenPackRow,
@@ -793,6 +801,43 @@ function sanagochiListings(): PublicListing[] {
   return out;
 }
 
+
+function nakaListings(): PublicListing[] {
+  const town = lookupTown('naka')!;
+  const out: PublicListing[] = town.travelAll.map((row) =>
+    fromTravel(row, 'naka', nakaSightPhoto(row.name_ja))
+  );
+  const seen = new Set<string>();
+  const pack: FacilityRow[] = [];
+  for (const row of town.rows) {
+    if (NAKA_DINING_NAME_SET.has(row.name_ja)) continue;
+    if (
+      !isNakaOnsenPackRow(row) &&
+      !isNakaStayPackRow(row) &&
+      !isNakaShoppingPackRow(row) &&
+      !isSightsCategory(row.category)
+    ) {
+      continue;
+    }
+    const key = packDedupeKey(row);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    pack.push(row);
+  }
+  const ranked = rankNakaSeeRows(pack);
+  const onsen = pack.filter(isNakaOnsenPackRow);
+  const stay = pack.filter(isNakaStayPackRow);
+  for (const row of [...stay, ...onsen, ...ranked]) {
+    const kind: ListingKind = isNakaOnsenPackRow(row)
+      ? 'onsen'
+      : isNakaStayPackRow(row)
+        ? 'stay'
+        : 'sights';
+    out.push(fromPack(row, 'naka', kind, nakaSightPhoto(row.name_ja)));
+  }
+  return out;
+}
+
 const CACHE: Record<ReadySlug, PublicListing[]> = {
   mima: mimaListings(),
   tsurugi: tsurugiListings(),
@@ -810,7 +855,8 @@ const CACHE: Record<ReadySlug, PublicListing[]> = {
   kamiyama: kamiyamaListings(),
   katsuura: katsuuraListings(),
   kamikatsu: kamikatsuListings(),
-  sanagochi: sanagochiListings()
+  sanagochi: sanagochiListings(),
+  naka: nakaListings()
 };
 
 export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {
@@ -818,7 +864,7 @@ export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {
 }
 
 export function allPublicListings(): PublicListing[] {
-  return [...CACHE.mima, ...CACHE.tsurugi, ...CACHE.yoshinogawa, ...CACHE.miyoshi, ...CACHE.tokushima, ...CACHE.awa, ...CACHE.higashimiyoshi, ...CACHE.kitajima, ...CACHE.naruto, ...CACHE.matsushige, ...CACHE.ishii, ...CACHE.itano, ...CACHE.kamiita, ...CACHE.kamiyama, ...CACHE.katsuura, ...CACHE.kamikatsu, ...CACHE.sanagochi];
+  return [...CACHE.mima, ...CACHE.tsurugi, ...CACHE.yoshinogawa, ...CACHE.miyoshi, ...CACHE.tokushima, ...CACHE.awa, ...CACHE.higashimiyoshi, ...CACHE.kitajima, ...CACHE.naruto, ...CACHE.matsushige, ...CACHE.ishii, ...CACHE.itano, ...CACHE.kamiita, ...CACHE.kamiyama, ...CACHE.katsuura, ...CACHE.kamikatsu, ...CACHE.sanagochi, ...CACHE.naka];
 }
 
 export function liveListings(slug?: ReadySlug): PublicListing[] {

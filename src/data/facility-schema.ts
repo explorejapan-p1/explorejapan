@@ -355,6 +355,29 @@ export const SANAGOCHI_EXPECTED_CATEGORY_COUNTS = {
 } as const satisfies Record<FacilityCategory, number>;
 
 
+
+
+export const NAKA_PACK_JIS = '36368';
+export const NAKA_PACK_ACCESSED = '2026-08-25';
+export const NAKA_EXPECTED_ROW_COUNT = 356;
+export const NAKA_EXPECTED_GEO_COUNT = 110;
+export const NAKA_EXPECTED_HOURS_COUNT = 338;
+export const NAKA_EXPECTED_MISSING_ADDRESS = 145;
+export const NAKA_EXPECTED_MISSING_PHONE = 287;
+export const NAKA_EXPECTED_CATEGORY_COUNTS = {
+  tourism: 11,
+  cultural_property: 19,
+  care: 9,
+  aed: 46,
+  shelter: 66,
+  emergency_evacuation_site: 29,
+  hospital: 9,
+  childcare: 6,
+  wifi: 0,
+  public_facility: 62,
+  gtfs_stop: 99
+} as const satisfies Record<FacilityCategory, number>;
+
 export type FacilityRow = {
   id: string;
   jis: string;
