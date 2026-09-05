@@ -24,7 +24,9 @@ import {
   KAMIYAMA_EXPECTED_GEO_COUNT,
   KAMIYAMA_EXPECTED_ROW_COUNT,
   KATSUURA_EXPECTED_GEO_COUNT,
-  KATSUURA_EXPECTED_ROW_COUNT
+  KATSUURA_EXPECTED_ROW_COUNT,
+  KAMIKATSU_EXPECTED_GEO_COUNT,
+  KAMIKATSU_EXPECTED_ROW_COUNT
 } from './facility-schema';
 import {MIMA, MIMA_PLACE_PHOTO} from './mima';
 import {MIMA_FACILITIES} from './mima-facilities';
@@ -180,6 +182,19 @@ import {
   KATSUURA_TRAVEL_SOURCES,
   KATSUURA_TRAVEL_STAY
 } from './katsuura-travel';
+
+import {KAMIKATSU, KAMIKATSU_PLACE_PHOTO} from './kamikatsu';
+import {KAMIKATSU_FACILITIES} from './kamikatsu-facilities';
+import {
+  KAMIKATSU_TRAVEL_ACCESSED,
+  KAMIKATSU_TRAVEL_ALL,
+  KAMIKATSU_TRAVEL_COMMERCE,
+  KAMIKATSU_TRAVEL_DINING,
+  KAMIKATSU_TRAVEL_SHOPPING,
+  KAMIKATSU_TRAVEL_SOURCES,
+  KAMIKATSU_TRAVEL_STAY
+} from './kamikatsu-travel';
+
 
 import {KITAJIMA, KITAJIMA_PLACE_PHOTO} from './kitajima';
 import {KITAJIMA_FACILITIES} from './kitajima-facilities';
@@ -743,6 +758,41 @@ export const KATSUURA_LOOKUP: LookupTown = {
 };
 
 
+export const KAMIKATSU_LOOKUP: LookupTown = {
+  slug: 'kamikatsu',
+  jis: KAMIKATSU.jis,
+  nameJa: KAMIKATSU.nameJa,
+  nameEn: KAMIKATSU.nameEn,
+  heroPhoto: KAMIKATSU_PLACE_PHOTO,
+  photoCiteJa:
+    '写真は樫原の棚田（重要文化的景観）。Indiana jo、2016-04-29、CC BY-SA 4.0。File:樫原の棚田.JPG。',
+  photoCiteEn:
+    'Photo: Kashihara rice terraces (Important Cultural Landscape). Indiana jo, 29 April 2016, CC BY-SA 4.0. File:樫原の棚田.JPG.',
+  rows: KAMIKATSU_FACILITIES,
+  expectedGeo: KAMIKATSU_EXPECTED_GEO_COUNT,
+  expectedRows: KAMIKATSU_EXPECTED_ROW_COUNT,
+  travelDining: KAMIKATSU_TRAVEL_DINING,
+  travelStay: KAMIKATSU_TRAVEL_STAY,
+  travelShopping: KAMIKATSU_TRAVEL_SHOPPING,
+  travelCommerce: KAMIKATSU_TRAVEL_COMMERCE,
+  travelAll: KAMIKATSU_TRAVEL_ALL,
+  coverageJa:
+    '上勝町（JIS 36302）157件。観光62、GTFS停留所64、避難所9、介護7、緊急避難場所5、文化財3、保育3、公共施設2、病院2。AED・Wi-Fiは0件（未掲載）。公式座標74件。',
+  coverageEn:
+    'Kamikatsu Town (JIS 36302), 157 rows. Tourism 62, GTFS stops 64, shelter 9, care 7, emergency sites 5, cultural property 3, childcare 3, public facility 2, hospital 2. AED, Wi-Fi: 0, unpublished. Official coordinates: 74.',
+  mapLabelJa: '上勝町の公式座標74件',
+  mapLabelEn: '74 official coordinates in Kamikatsu Town',
+  mapCitePackJa: '点は凍結パックの公式座標74件（accessed 2026-08-25）。',
+  mapCitePackEn: 'Points: 74 official coordinates from the frozen pack (accessed 2026-08-25).',
+  licenseNoteJa:
+    '行のライセンスは二つ。CC BY 4.0 は徳島県 Our Open Data の利用規約。「町公式サイト掲載情報」は町・観光ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Licenses split by row. CC BY 4.0 follows Tokushima Our Open Data. A town-site listing is a fact from kamikatsu.jp / tourism-kamikatsu.jp, not under that license.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
+
 const BY_SLUG: Record<ReadySlug, LookupTown> = {
   mima: MIMA_LOOKUP,
   tsurugi: TSURUGI_LOOKUP,
@@ -758,7 +808,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   itano: ITANO_LOOKUP,
   kamiita: KAMIITA_LOOKUP,
   kamiyama: KAMIYAMA_LOOKUP,
-  katsuura: KATSUURA_LOOKUP
+  katsuura: KATSUURA_LOOKUP,
+  kamikatsu: KAMIKATSU_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
@@ -766,4 +817,4 @@ export function lookupTown(slug: string): LookupTown | null {
   return BY_SLUG[slug];
 }
 
-export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES, AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES, HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES, KITAJIMA_TRAVEL_ACCESSED, KITAJIMA_TRAVEL_SOURCES, NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES, MATSUSHIGE_TRAVEL_ACCESSED, MATSUSHIGE_TRAVEL_SOURCES, ISHII_TRAVEL_ACCESSED, ISHII_TRAVEL_SOURCES, ITANO_TRAVEL_ACCESSED, ITANO_TRAVEL_SOURCES, KAMIITA_TRAVEL_ACCESSED, KAMIITA_TRAVEL_SOURCES, KAMIYAMA_TRAVEL_ACCESSED, KAMIYAMA_TRAVEL_SOURCES, KATSUURA_TRAVEL_ACCESSED, KATSUURA_TRAVEL_SOURCES};
+export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES, AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES, HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES, KITAJIMA_TRAVEL_ACCESSED, KITAJIMA_TRAVEL_SOURCES, NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES, MATSUSHIGE_TRAVEL_ACCESSED, MATSUSHIGE_TRAVEL_SOURCES, ISHII_TRAVEL_ACCESSED, ISHII_TRAVEL_SOURCES, ITANO_TRAVEL_ACCESSED, ITANO_TRAVEL_SOURCES, KAMIITA_TRAVEL_ACCESSED, KAMIITA_TRAVEL_SOURCES, KAMIYAMA_TRAVEL_ACCESSED, KAMIYAMA_TRAVEL_SOURCES, KATSUURA_TRAVEL_ACCESSED, KATSUURA_TRAVEL_SOURCES, KAMIKATSU_TRAVEL_ACCESSED, KAMIKATSU_TRAVEL_SOURCES};

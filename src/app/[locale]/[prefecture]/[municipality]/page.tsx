@@ -17,6 +17,7 @@ import {ITANO, ITANO_PLACE_PHOTO} from '@/data/itano';
 import {KAMIITA, KAMIITA_PLACE_PHOTO} from '@/data/kamiita';
 import {KAMIYAMA, KAMIYAMA_PLACE_PHOTO} from '@/data/kamiyama';
 import {KATSUURA, KATSUURA_PLACE_PHOTO} from '@/data/katsuura';
+import {KAMIKATSU, KAMIKATSU_PLACE_PHOTO} from '@/data/kamikatsu';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {PREFECTURE_BY_SLUG} from '@/data/prefectures';
@@ -28,7 +29,7 @@ import {Link} from '@/i18n/navigation';
 import type {AppLocale} from '@/i18n/routing';
 import {projectMimaOfficialMap} from '@/lib/geo';
 import {JsonLd} from '@/components/JsonLd';
-import {mimaGraph, tsurugiGraph, yoshinogawaGraph, miyoshiGraph, tokushimaCityGraph, awaGraph, higashimiyoshiGraph, kitajimaGraph, narutoGraph, matsushigeGraph, ishiiGraph, itanoGraph, kamiitaGraph, kamiyamaGraph, katsuuraGraph} from '@/lib/jsonld';
+import {mimaGraph, tsurugiGraph, yoshinogawaGraph, miyoshiGraph, tokushimaCityGraph, awaGraph, higashimiyoshiGraph, kitajimaGraph, narutoGraph, matsushigeGraph, ishiiGraph, itanoGraph, kamiitaGraph, kamiyamaGraph, katsuuraGraph, kamikatsuGraph} from '@/lib/jsonld';
 import {shareMetadata} from '@/lib/seo';
 
 type Props = {
@@ -88,6 +89,8 @@ export async function generateMetadata({params}: Props) {
                               ? KAMIYAMA_PLACE_PHOTO
                               : muni.slug === 'katsuura'
                                 ? KATSUURA_PLACE_PHOTO
+                                : muni.slug === 'kamikatsu'
+                                  ? KAMIKATSU_PLACE_PHOTO
                             : MIMA_PLACE_PHOTO;
   const description = live
     ? muni.slug === 'tsurugi'
@@ -146,6 +149,10 @@ export async function generateMetadata({params}: Props) {
                                 ? loc === 'ja'
                                   ? '勝浦町。鶴林寺、星の岩屋、食。'
                                   : 'Katsuura Town, Tokushima — Kakurin-ji, Hoshi-no-iwaya, food.'
+                                : muni.slug === 'kamikatsu'
+                                  ? loc === 'ja'
+                                    ? '上勝町。樫原の棚田、ゼロ・ウェイスト、食。'
+                                    : 'Kamikatsu Town, Tokushima — Kashihara terraces, zero waste, food.'
           : loc === 'ja'
             ? '四国のまほろば 美馬市。うだつの町並み、食、宿。'
             : 'Mima City, Tokushima — Udatsu townscape, food, and stays.'
@@ -185,8 +192,8 @@ export default async function MunicipalityPage({params}: Props) {
         <div className="coming">
           <p>
             {isJa
-              ? 'この市町村のページは準備中です。現在本文があるのは徳島市・鳴門市・美馬市・つるぎ町・吉野川市・三好市・阿波市・東みよし町・北島町・松茂町・石井町・板野町・上板町・神山町・勝浦町です。'
-              : 'This municipality page is coming soon. Tokushima City, Naruto City, Mima City, Tsurugi Town, Yoshinogawa City, Miyoshi City, Awa City, Higashimiyoshi Town, Kitajima Town, Matsushige Town, Ishii Town, Itano Town, Kamiita Town, Kamiyama Town, and Katsuura Town have full listings in v0.'}
+              ? 'この市町村のページは準備中です。現在本文があるのは徳島市・鳴門市・美馬市・つるぎ町・吉野川市・三好市・阿波市・東みよし町・北島町・松茂町・石井町・板野町・上板町・神山町・勝浦町・上勝町です。'
+              : 'This municipality page is coming soon. Tokushima City, Naruto City, Mima City, Tsurugi Town, Yoshinogawa City, Miyoshi City, Awa City, Higashimiyoshi Town, Kitajima Town, Matsushige Town, Ishii Town, Itano Town, Kamiita Town, Kamiyama Town, Katsuura Town, and Kamikatsu Town have full listings in v0.'}
           </p>
           <p>
             <Link href="/tokushima/tokushima">{isJa ? '徳島市へ' : 'Go to Tokushima City'}</Link>
@@ -218,6 +225,8 @@ export default async function MunicipalityPage({params}: Props) {
             <Link href="/tokushima/kamiyama">{isJa ? '神山町へ' : 'Go to Kamiyama Town'}</Link>
             {' · '}
             <Link href="/tokushima/katsuura">{isJa ? '勝浦町へ' : 'Go to Katsuura Town'}</Link>
+            {' · '}
+            <Link href="/tokushima/kamikatsu">{isJa ? '上勝町へ' : 'Go to Kamikatsu Town'}</Link>
           </p>
         </div>
       </>
@@ -247,7 +256,7 @@ export default async function MunicipalityPage({params}: Props) {
 
   return (
     <>
-      <JsonLd data={town.slug === 'tokushima' ? tokushimaCityGraph(graphLocale) : town.slug === 'tsurugi' ? tsurugiGraph(graphLocale) : town.slug === 'yoshinogawa' ? yoshinogawaGraph(graphLocale) : town.slug === 'miyoshi' ? miyoshiGraph(graphLocale) : town.slug === 'awa' ? awaGraph(graphLocale) : town.slug === 'higashimiyoshi' ? higashimiyoshiGraph(graphLocale) : town.slug === 'kitajima' ? kitajimaGraph(graphLocale) : town.slug === 'naruto' ? narutoGraph(graphLocale) : town.slug === 'matsushige' ? matsushigeGraph(graphLocale) : town.slug === 'ishii' ? ishiiGraph(graphLocale) : town.slug === 'itano' ? itanoGraph(graphLocale) : town.slug === 'kamiita' ? kamiitaGraph(graphLocale) : town.slug === 'kamiyama' ? kamiyamaGraph(graphLocale) : town.slug === 'katsuura' ? katsuuraGraph(graphLocale) : mimaGraph(graphLocale)} />
+      <JsonLd data={town.slug === 'tokushima' ? tokushimaCityGraph(graphLocale) : town.slug === 'tsurugi' ? tsurugiGraph(graphLocale) : town.slug === 'yoshinogawa' ? yoshinogawaGraph(graphLocale) : town.slug === 'miyoshi' ? miyoshiGraph(graphLocale) : town.slug === 'awa' ? awaGraph(graphLocale) : town.slug === 'higashimiyoshi' ? higashimiyoshiGraph(graphLocale) : town.slug === 'kitajima' ? kitajimaGraph(graphLocale) : town.slug === 'naruto' ? narutoGraph(graphLocale) : town.slug === 'matsushige' ? matsushigeGraph(graphLocale) : town.slug === 'ishii' ? ishiiGraph(graphLocale) : town.slug === 'itano' ? itanoGraph(graphLocale) : town.slug === 'kamiita' ? kamiitaGraph(graphLocale) : town.slug === 'kamiyama' ? kamiyamaGraph(graphLocale) : town.slug === 'katsuura' ? katsuuraGraph(graphLocale) : town.slug === 'kamikatsu' ? kamikatsuGraph(graphLocale) : mimaGraph(graphLocale)} />
       <nav className="crumbs">
         <Link href="/">{isJa ? '全国' : 'Japan'}</Link>
         <span> / </span>
@@ -826,6 +835,60 @@ export default async function MunicipalityPage({params}: Props) {
         {isJa
           ? `数字のアクセス日は ${KATSUURA.sources.accessed}。人口は未掲載（出典ページを混ぜません）。`
           : `Figures accessed ${KATSUURA.sources.accessed}. Population is unpublished (universes are not mixed).`}
+      </p>
+      </details>
+
+
+
+) : town.slug === 'kamikatsu' ? (
+      <details className="facts-fold">
+        <summary>{isJa ? '町の資料' : 'Town facts'}</summary>
+      <table className="facts">
+        <tbody>
+          <tr>
+            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <td>
+              {KAMIKATSU.nameJa} / {KAMIKATSU.nameEn}（{KAMIKATSU.reading}）
+            </td>
+          </tr>
+          <tr>
+            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <td>
+              <Link href="/tokushima">{isJa ? KAMIKATSU.prefectureJa : KAMIKATSU.prefectureEn}</Link>
+            </td>
+          </tr>
+          <tr>
+            <th>JIS / N03_007</th>
+            <td>
+              <strong>{KAMIKATSU.jis}</strong>
+              {isJa ? '（勝浦 36301・神山 36342・藍住 36403 ではない）' : ' (not Katsuura 36301 / Kamiyama 36342 / Aizumi 36403)'}
+            </td>
+          </tr>
+          <tr>
+            <th>J-LIS</th>
+            <td>{KAMIKATSU.jlis}</td>
+          </tr>
+          <tr>
+            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <td>
+              〒{KAMIKATSU.hall.postalCode} {isJa ? KAMIKATSU.hall.addressJa : KAMIKATSU.hall.addressEn}
+              <br />
+              {KAMIKATSU.hall.phone} · <a href={KAMIKATSU.sameAs}>sameAs {KAMIKATSU.sameAs}</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        <a href={KAMIKATSU.sources.hall}>{isJa ? 'お問い合わせ' : 'Contact'}</a>
+        {' · '}
+        <a href={KAMIKATSU.sources.home}>{isJa ? '町ホームページ' : 'Town homepage'}</a>
+        {' · '}
+        <a href={KAMIKATSU.sources.kanko}>{isJa ? '観光サイト' : 'Tourism site'}</a>
+      </p>
+      <p className="note">
+        {isJa
+          ? `数字のアクセス日は ${KAMIKATSU.sources.accessed}。人口は未掲載（出典ページを混ぜません）。`
+          : `Figures accessed ${KAMIKATSU.sources.accessed}. Population is unpublished (universes are not mixed).`}
       </p>
       </details>
 

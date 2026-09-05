@@ -11,6 +11,7 @@ import {ITANO, ITANO_PLACE_PHOTO} from '@/data/itano';
 import {KAMIITA, KAMIITA_PLACE_PHOTO} from '@/data/kamiita';
 import {KAMIYAMA, KAMIYAMA_PLACE_PHOTO} from '@/data/kamiyama';
 import {KATSUURA, KATSUURA_PLACE_PHOTO} from '@/data/katsuura';
+import {KAMIKATSU, KAMIKATSU_PLACE_PHOTO} from '@/data/kamikatsu';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
@@ -87,6 +88,7 @@ function localityJa(slug: string): string {
   if (slug === 'kamiita') return KAMIITA.nameJa;
   if (slug === 'kamiyama') return KAMIYAMA.nameJa;
   if (slug === 'katsuura') return KATSUURA.nameJa;
+  if (slug === 'kamikatsu') return KAMIKATSU.nameJa;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameJa;
   return MIMA.nameJa;
 }
@@ -105,6 +107,7 @@ function localityEn(slug: string): string {
   if (slug === 'kamiita') return KAMIITA.nameEn;
   if (slug === 'kamiyama') return KAMIYAMA.nameEn;
   if (slug === 'katsuura') return KATSUURA.nameEn;
+  if (slug === 'kamikatsu') return KAMIKATSU.nameEn;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameEn;
   return MIMA.nameEn;
 }
@@ -1098,6 +1101,84 @@ export function katsuuraGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '勝浦町の案内' : 'Places in Katsuura Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+
+export function kamikatsuGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'tokushima/kamikatsu');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('kamikatsu');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? KAMIKATSU.nameJa : KAMIKATSU.nameEn,
+        alternateName: isJa ? KAMIKATSU.nameEn : KAMIKATSU.nameJa,
+        identifier: KAMIKATSU.jis,
+        url,
+        image: photoAbs(KAMIKATSU_PLACE_PHOTO),
+        sameAs: [KAMIKATSU.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa
+            ? '大字福原字下横峯3-1'
+            : '3-1 Shimoyokominé, Fukuhara',
+          addressLocality: isJa ? KAMIKATSU.nameJa : KAMIKATSU.nameEn,
+          addressRegion: isJa ? KAMIKATSU.prefectureJa : KAMIKATSU.prefectureEn,
+          postalCode: KAMIKATSU.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? KAMIKATSU.prefectureJa : KAMIKATSU.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? KAMIKATSU.nameJa : KAMIKATSU.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: isJa ? '全国' : 'Japan',
+            item: canonicalUrl(locale)
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: isJa ? KAMIKATSU.prefectureJa : KAMIKATSU.prefectureEn,
+            item: canonicalUrl(locale, 'tokushima')
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: isJa ? KAMIKATSU.nameJa : KAMIKATSU.nameEn,
+            item: url
+          }
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '上勝町の案内' : 'Places in Kamikatsu Town',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

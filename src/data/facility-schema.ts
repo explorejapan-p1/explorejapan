@@ -309,6 +309,29 @@ export const KATSUURA_EXPECTED_CATEGORY_COUNTS = {
 } as const satisfies Record<FacilityCategory, number>;
 
 
+
+export const KAMIKATSU_PACK_JIS = '36302';
+export const KAMIKATSU_PACK_ACCESSED = '2026-08-25';
+export const KAMIKATSU_EXPECTED_ROW_COUNT = 157;
+export const KAMIKATSU_EXPECTED_GEO_COUNT = 74;
+export const KAMIKATSU_EXPECTED_HOURS_COUNT = 97;
+export const KAMIKATSU_EXPECTED_MISSING_ADDRESS = 125;
+export const KAMIKATSU_EXPECTED_MISSING_PHONE = 148;
+export const KAMIKATSU_EXPECTED_CATEGORY_COUNTS = {
+  tourism: 62,
+  cultural_property: 3,
+  care: 7,
+  aed: 0,
+  shelter: 9,
+  emergency_evacuation_site: 5,
+  hospital: 2,
+  childcare: 3,
+  wifi: 0,
+  public_facility: 2,
+  gtfs_stop: 64
+} as const satisfies Record<FacilityCategory, number>;
+
+
 export type FacilityRow = {
   id: string;
   jis: string;
