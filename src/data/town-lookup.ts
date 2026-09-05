@@ -22,7 +22,9 @@ import {
   KAMIITA_EXPECTED_GEO_COUNT,
   KAMIITA_EXPECTED_ROW_COUNT,
   KAMIYAMA_EXPECTED_GEO_COUNT,
-  KAMIYAMA_EXPECTED_ROW_COUNT
+  KAMIYAMA_EXPECTED_ROW_COUNT,
+  KATSUURA_EXPECTED_GEO_COUNT,
+  KATSUURA_EXPECTED_ROW_COUNT
 } from './facility-schema';
 import {MIMA, MIMA_PLACE_PHOTO} from './mima';
 import {MIMA_FACILITIES} from './mima-facilities';
@@ -166,6 +168,18 @@ import {
   KAMIYAMA_TRAVEL_SOURCES,
   KAMIYAMA_TRAVEL_STAY
 } from './kamiyama-travel';
+
+import {KATSUURA, KATSUURA_PLACE_PHOTO} from './katsuura';
+import {KATSUURA_FACILITIES} from './katsuura-facilities';
+import {
+  KATSUURA_TRAVEL_ACCESSED,
+  KATSUURA_TRAVEL_ALL,
+  KATSUURA_TRAVEL_COMMERCE,
+  KATSUURA_TRAVEL_DINING,
+  KATSUURA_TRAVEL_SHOPPING,
+  KATSUURA_TRAVEL_SOURCES,
+  KATSUURA_TRAVEL_STAY
+} from './katsuura-travel';
 
 import {KITAJIMA, KITAJIMA_PLACE_PHOTO} from './kitajima';
 import {KITAJIMA_FACILITIES} from './kitajima-facilities';
@@ -693,6 +707,42 @@ export const KAMIYAMA_LOOKUP: LookupTown = {
   licenseSiteEn: 'Town-site listing'
 };
 
+
+export const KATSUURA_LOOKUP: LookupTown = {
+  slug: 'katsuura',
+  jis: KATSUURA.jis,
+  nameJa: KATSUURA.nameJa,
+  nameEn: KATSUURA.nameEn,
+  heroPhoto: KATSUURA_PLACE_PHOTO,
+  photoCiteJa:
+    '写真は鶴林寺（四国霊場第二十番）。Mti、2011-07-04、CC BY-SA 3.0。File:Kakurin_temple_entrance.jpg。',
+  photoCiteEn:
+    'Photo: Kakurin-ji (Shikoku pilgrimage temple 20). Mti, 4 July 2011, CC BY-SA 3.0. File:Kakurin_temple_entrance.jpg.',
+  rows: KATSUURA_FACILITIES,
+  expectedGeo: KATSUURA_EXPECTED_GEO_COUNT,
+  expectedRows: KATSUURA_EXPECTED_ROW_COUNT,
+  travelDining: KATSUURA_TRAVEL_DINING,
+  travelStay: KATSUURA_TRAVEL_STAY,
+  travelShopping: KATSUURA_TRAVEL_SHOPPING,
+  travelCommerce: KATSUURA_TRAVEL_COMMERCE,
+  travelAll: KATSUURA_TRAVEL_ALL,
+  coverageJa:
+    '勝浦町（JIS 36301）77件。観光38、文化財21、AED 13、保育3、公共施設1、病院1。介護・避難所・緊急避難場所・Wi-Fi・GTFSは0件（未掲載）。公式座標1件。',
+  coverageEn:
+    'Katsuura Town (JIS 36301), 77 rows. Tourism 38, cultural property 21, AED 13, childcare 3, public facility 1, hospital 1. Care, shelter, emergency sites, Wi-Fi, GTFS: 0, unpublished. Official coordinates: 1.',
+  mapLabelJa: '勝浦町の公式座標1件',
+  mapLabelEn: '1 official coordinate in Katsuura Town',
+  mapCitePackJa: '点は凍結パックの公式座標1件（accessed 2026-08-25）。',
+  mapCitePackEn: 'Points: 1 official coordinate from the frozen pack (accessed 2026-08-25).',
+  licenseNoteJa:
+    '行のライセンスは二つ。CC BY 4.0 は徳島県 Our Open Data の利用規約。「町公式サイト掲載情報」は町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Licenses split by row. CC BY 4.0 follows Tokushima Our Open Data. A town-site listing is a fact from town.katsuura.lg.jp, not under that license.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
+
 const BY_SLUG: Record<ReadySlug, LookupTown> = {
   mima: MIMA_LOOKUP,
   tsurugi: TSURUGI_LOOKUP,
@@ -707,7 +757,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   ishii: ISHII_LOOKUP,
   itano: ITANO_LOOKUP,
   kamiita: KAMIITA_LOOKUP,
-  kamiyama: KAMIYAMA_LOOKUP
+  kamiyama: KAMIYAMA_LOOKUP,
+  katsuura: KATSUURA_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
@@ -715,4 +766,4 @@ export function lookupTown(slug: string): LookupTown | null {
   return BY_SLUG[slug];
 }
 
-export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES, AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES, HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES, KITAJIMA_TRAVEL_ACCESSED, KITAJIMA_TRAVEL_SOURCES, NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES, MATSUSHIGE_TRAVEL_ACCESSED, MATSUSHIGE_TRAVEL_SOURCES, ISHII_TRAVEL_ACCESSED, ISHII_TRAVEL_SOURCES, ITANO_TRAVEL_ACCESSED, ITANO_TRAVEL_SOURCES, KAMIITA_TRAVEL_ACCESSED, KAMIITA_TRAVEL_SOURCES, KAMIYAMA_TRAVEL_ACCESSED, KAMIYAMA_TRAVEL_SOURCES};
+export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES, AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES, HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES, KITAJIMA_TRAVEL_ACCESSED, KITAJIMA_TRAVEL_SOURCES, NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES, MATSUSHIGE_TRAVEL_ACCESSED, MATSUSHIGE_TRAVEL_SOURCES, ISHII_TRAVEL_ACCESSED, ISHII_TRAVEL_SOURCES, ITANO_TRAVEL_ACCESSED, ITANO_TRAVEL_SOURCES, KAMIITA_TRAVEL_ACCESSED, KAMIITA_TRAVEL_SOURCES, KAMIYAMA_TRAVEL_ACCESSED, KAMIYAMA_TRAVEL_SOURCES, KATSUURA_TRAVEL_ACCESSED, KATSUURA_TRAVEL_SOURCES};

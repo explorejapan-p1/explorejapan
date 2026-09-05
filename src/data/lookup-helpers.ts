@@ -145,6 +145,18 @@ import {
 } from './kamiyama-travel';
 
 import {
+  isKatsuuraExperiencePackRow,
+  isKatsuuraOnsenPackRow,
+  isKatsuuraStayPackRow,
+  katsuuraPackRowMatchesFilter,
+  katsuuraSightPhoto,
+  katsuuraSourcedHook,
+  katsuuraTopChipForRow,
+  rankKatsuuraSeeRows,
+  resolveKatsuuraFilter
+} from './katsuura-travel';
+
+import {
   isMatsushigeExperiencePackRow,
   isMatsushigeOnsenPackRow,
   isMatsushigeStayPackRow,
@@ -358,6 +370,19 @@ const KAMIITA_HELPERS: LookupHelpers = {
 };
 
 
+
+const KATSUURA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isKatsuuraOnsenPackRow,
+  isExperiencePackRow: isKatsuuraExperiencePackRow,
+  isStayPackRow: isKatsuuraStayPackRow,
+  packRowMatchesFilter: katsuuraPackRowMatchesFilter,
+  rankSeeRows: rankKatsuuraSeeRows,
+  sightPhoto: katsuuraSightPhoto,
+  sourcedHook: katsuuraSourcedHook,
+  topChipForRow: katsuuraTopChipForRow,
+  resolveFilter: resolveKatsuuraFilter
+};
+
 const KAMIYAMA_HELPERS: LookupHelpers = {
   isOnsenPackRow: isKamiyamaOnsenPackRow,
   isExperiencePackRow: isKamiyamaExperiencePackRow,
@@ -384,5 +409,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'itano') return ITANO_HELPERS;
   if (slug === 'kamiita') return KAMIITA_HELPERS;
   if (slug === 'kamiyama') return KAMIYAMA_HELPERS;
+  if (slug === 'katsuura') return KATSUURA_HELPERS;
   return MIMA_HELPERS;
 }

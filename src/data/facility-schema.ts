@@ -287,6 +287,28 @@ export const KAMIYAMA_EXPECTED_CATEGORY_COUNTS = {
 } as const satisfies Record<FacilityCategory, number>;
 
 
+export const KATSUURA_PACK_JIS = '36301';
+export const KATSUURA_PACK_ACCESSED = '2026-08-25';
+export const KATSUURA_EXPECTED_ROW_COUNT = 77;
+export const KATSUURA_EXPECTED_GEO_COUNT = 1;
+export const KATSUURA_EXPECTED_HOURS_COUNT = 35;
+export const KATSUURA_EXPECTED_MISSING_ADDRESS = 14;
+export const KATSUURA_EXPECTED_MISSING_PHONE = 43;
+export const KATSUURA_EXPECTED_CATEGORY_COUNTS = {
+  tourism: 38,
+  cultural_property: 21,
+  care: 0,
+  aed: 13,
+  shelter: 0,
+  emergency_evacuation_site: 0,
+  hospital: 1,
+  childcare: 3,
+  wifi: 0,
+  public_facility: 1,
+  gtfs_stop: 0
+} as const satisfies Record<FacilityCategory, number>;
+
+
 export type FacilityRow = {
   id: string;
   jis: string;
