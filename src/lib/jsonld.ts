@@ -9,6 +9,7 @@ import {MATSUSHIGE, MATSUSHIGE_PLACE_PHOTO} from '@/data/matsushige';
 import {ISHII, ISHII_PLACE_PHOTO} from '@/data/ishii';
 import {ITANO, ITANO_PLACE_PHOTO} from '@/data/itano';
 import {KAMIITA, KAMIITA_PLACE_PHOTO} from '@/data/kamiita';
+import {KAMIYAMA, KAMIYAMA_PLACE_PHOTO} from '@/data/kamiyama';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
@@ -83,6 +84,7 @@ function localityJa(slug: string): string {
   if (slug === 'ishii') return ISHII.nameJa;
   if (slug === 'itano') return ITANO.nameJa;
   if (slug === 'kamiita') return KAMIITA.nameJa;
+  if (slug === 'kamiyama') return KAMIYAMA.nameJa;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameJa;
   return MIMA.nameJa;
 }
@@ -99,6 +101,7 @@ function localityEn(slug: string): string {
   if (slug === 'ishii') return ISHII.nameEn;
   if (slug === 'itano') return ITANO.nameEn;
   if (slug === 'kamiita') return KAMIITA.nameEn;
+  if (slug === 'kamiyama') return KAMIYAMA.nameEn;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameEn;
   return MIMA.nameEn;
 }
@@ -1023,6 +1026,85 @@ export function kamiitaGraph(locale: AppLocale) {
     ]
   };
 }
+
+
+export function kamiyamaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'tokushima/kamiyama');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('kamiyama');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? KAMIYAMA.nameJa : KAMIYAMA.nameEn,
+        alternateName: isJa ? KAMIYAMA.nameEn : KAMIYAMA.nameJa,
+        identifier: KAMIYAMA.jis,
+        url,
+        image: photoAbs(KAMIYAMA_PLACE_PHOTO),
+        sameAs: [KAMIYAMA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa
+            ? '神領字本野間100'
+            : '100 Motonoma, Jinryo',
+          addressLocality: isJa ? KAMIYAMA.nameJa : KAMIYAMA.nameEn,
+          addressRegion: isJa ? KAMIYAMA.prefectureJa : KAMIYAMA.prefectureEn,
+          postalCode: KAMIYAMA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? KAMIYAMA.prefectureJa : KAMIYAMA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? KAMIYAMA.nameJa : KAMIYAMA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: isJa ? '全国' : 'Japan',
+            item: canonicalUrl(locale)
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: isJa ? KAMIYAMA.prefectureJa : KAMIYAMA.prefectureEn,
+            item: canonicalUrl(locale, 'tokushima')
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: isJa ? KAMIYAMA.nameJa : KAMIYAMA.nameEn,
+            item: url
+          }
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '神山町の案内' : 'Places in Kamiyama Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
 
 
 export function kitajimaGraph(locale: AppLocale) {

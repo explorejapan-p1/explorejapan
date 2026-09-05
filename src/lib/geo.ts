@@ -475,9 +475,6 @@ export function projectMimaOfficialMap(
   points: readonly OfficialMapPoint[],
   jis: string = MIMA_PACK_JIS
 ): MimaOfficialMap {
-  if (points.length === 0) {
-    throw new Error('official xy scatter needs at least one pack coordinate');
-  }
   const width = SCATTER_WIDTH;
   const height = SCATTER_HEIGHT;
   const pointFc: FeatureCollection = {
@@ -518,6 +515,9 @@ export function projectMimaOfficialMap(
   }
 
   if (!outline) {
+    if (points.length === 0) {
+      throw new Error('official xy scatter needs at least one pack coordinate or N03 outline');
+    }
     projection = geoMercator().fitExtent(
       [
         [36, 28],

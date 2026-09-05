@@ -264,6 +264,29 @@ export const KAMIITA_EXPECTED_CATEGORY_COUNTS = {
   gtfs_stop: 0
 } as const satisfies Record<FacilityCategory, number>;
 
+
+export const KAMIYAMA_PACK_JIS = '36342';
+export const KAMIYAMA_PACK_ACCESSED = '2026-08-25';
+export const KAMIYAMA_EXPECTED_ROW_COUNT = 221;
+export const KAMIYAMA_EXPECTED_GEO_COUNT = 0;
+export const KAMIYAMA_EXPECTED_HOURS_COUNT = 194;
+export const KAMIYAMA_EXPECTED_MISSING_ADDRESS = 60;
+export const KAMIYAMA_EXPECTED_MISSING_PHONE = 133;
+export const KAMIYAMA_EXPECTED_CATEGORY_COUNTS = {
+  tourism: 55,
+  cultural_property: 75,
+  care: 8,
+  aed: 0,
+  shelter: 24,
+  emergency_evacuation_site: 28,
+  hospital: 6,
+  childcare: 7,
+  wifi: 0,
+  public_facility: 18,
+  gtfs_stop: 0
+} as const satisfies Record<FacilityCategory, number>;
+
+
 export type FacilityRow = {
   id: string;
   jis: string;
