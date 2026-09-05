@@ -1,0 +1,48 @@
+1:"$Sreact.fragment"
+3:I[77105,["/explorejapan/_next/static/chunks/2zcf2stjfzdta.js","/explorejapan/_next/static/chunks/3yr1wzf1p44wg.js"],"default"]
+4:I[97367,["/explorejapan/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
+5:"$Sreact.suspense"
+9:I[97367,["/explorejapan/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
+a:I[97367,["/explorejapan/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
+:HL["/explorejapan/media/kamiyama-36003889-dish.jpg","image"]
+2:T642,{"@context":"https://schema.org","@graph":[{"@type":"Restaurant","@id":"https://explorejapan-p1.github.io/explorejapan/ja/tokushima/kamiyama/p/kamiyama-dining-13/#place","name":"秀乃家　料理仕出し","url":"https://explorejapan-p1.github.io/explorejapan/ja/tokushima/kamiyama/p/kamiyama-dining-13/","image":"https://explorejapan-p1.github.io/explorejapan/media/kamiyama-36003889-dish.jpg","address":{"@type":"PostalAddress","streetAddress":"徳島県名西郡神山町下分今井1-2","addressLocality":"神山町","addressRegion":"徳島県","addressCountry":"JP"},"telephone":"088-677-0023","sameAs":["https://tabelog.com/tokushima/A3603/A360301/36003889/"]},{"@type":"WebPage","@id":"https://explorejapan-p1.github.io/explorejapan/ja/tokushima/kamiyama/p/kamiyama-dining-13/","url":"https://explorejapan-p1.github.io/explorejapan/ja/tokushima/kamiyama/p/kamiyama-dining-13/","name":"秀乃家　料理仕出し","inLanguage":"ja","isPartOf":{"@id":"https://explorejapan-p1.github.io/explorejapan/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"全国","item":"https://explorejapan-p1.github.io/explorejapan/ja/"},{"@type":"ListItem","position":2,"name":"徳島県","item":"https://explorejapan-p1.github.io/explorejapan/ja/tokushima/"},{"@type":"ListItem","position":3,"name":"神山町","item":"https://explorejapan-p1.github.io/explorejapan/ja/tokushima/kamiyama/"},{"@type":"ListItem","position":4,"name":"秀乃家　料理仕出し","item":"https://explorejapan-p1.github.io/explorejapan/ja/tokushima/kamiyama/p/kamiyama-dining-13/"}]}]}8:X
+21:X
+21:C
+0:{"buildId":"jopRlwrdQgqA2XqkDkmW8","data":[{"rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","nav",null,{"className":"crumbs","children":[["$","$L3",null,{"href":"/ja","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"全国"}],["$","span",null,{"children":" / "}],["$","$L3",null,{"href":"/ja/tokushima","localeCookie":"$0:data:0:rsc:props:children:0:1:props:children:0:props:localeCookie","children":"徳島県"}],["$","span",null,{"children":" / "}],["$","$L3",null,{"href":"/ja/tokushima/kamiyama","localeCookie":"$0:data:0:rsc:props:children:0:1:props:children:0:props:localeCookie","children":"美馬市"}],["$","span",null,{"children":" / "}],["$","span",null,{"children":"秀乃家　料理仕出し"}]]}],["$","article",null,{"className":"place-page","children":[["$","div",null,{"className":"card-photo","children":[["$","img",null,{"src":"/explorejapan/media/kamiyama-36003889-dish.jpg","alt":"秀乃家　料理仕出しの料理写真","width":1200,"height":800}],["$","span",null,{"className":"card-photo-cite","children":["食べログ"," / ","出典"]}]]}],["$","h1",null,{"children":"秀乃家　料理仕出し"}],["$","p",null,{"className":"card-score","children":"未評価"}],["$","p",null,{"className":"attr-row","children":[["$","span",null,{"className":"attr-label","children":"住所"}],["$","span",null,{"children":"徳島県名西郡神山町下分今井1-2"}]]}],["$","p",null,{"className":"attr-row","children":[["$","span",null,{"className":"attr-label","children":"電話"}],["$","span",null,{"children":"088-677-0023"}]]}],null,["$","p",null,{"className":"place-card-meta","children":[["$","a",null,{"href":"https://tabelog.com/tokushima/A3603/A360301/36003889/","children":"出典"}]," · ","2026-09-05"]}]]}]],null,["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"isPartial":"$@7","staleTime":"$8","varyParams":null},{"rsc":["$","$1","h",{"children":[null,["$","$L9",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$La",null,{"children":["$","$5",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"秀乃家　料理仕出し · 冒険日本"}],["$","meta","1",{"name":"description","content":"秀乃家　料理仕出し（美馬市）。出典のある案内のみ。"}],["$","meta","2",{"name":"robots","content":"index, follow"}],["$","link","3",{"rel":"canonical","href":"https://explorejapan-p1.github.io/explorejapan/ja/tokushima/kamiyama/p/kamiyama-dining-13/"}],["$","link","4",{"rel":"alternate","hrefLang":"ja","href":"https://explorejapan-p1.github.io/explorejapan/ja/tokushima/kamiyama/p/kamiyama-dining-13/"}],["$","link","5",{"rel":"alternate","hrefLang":"en","href":"https://explorejapan-p1.github.io/explorejapan/en/tokushima/kamiyama/p/kamiyama-dining-13/"}],"$Lb","$Lc","$Ld","$Le","$Lf","$L10","$L11","$L12","$L13","$L14","$L15","$L16","$L17","$L18","$L19","$L1a","$L1b","$L1c"]}]}]}],"$L1d"]}],"isPartial":"$@1e","staleTime":"$8","varyParams":null},{"rsc":"$L1f","isPartial":"$@20","staleTime":"$8","varyParams":"$21"},{"rsc":"$L22","isPartial":"$@23","staleTime":"$8","varyParams":"$21"},{"rsc":"$L24","isPartial":"$@25","staleTime":"$8","varyParams":"$21"},{"rsc":"$L26","isPartial":"$@27","staleTime":"$8","varyParams":"$21"}],"isUpgradeableISRFallback":false,"a":"$@28","rootVaryParams":null,"needsRuntimeRequest":"$@29"}
+2a:I[27201,["/explorejapan/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
+2b:I[39756,["/explorejapan/_next/static/chunks/3fntmmi971322.js"],"default"]
+2c:I[37457,["/explorejapan/_next/static/chunks/3fntmmi971322.js"],"default"]
+6:null
+b:["$","link","6",{"rel":"alternate","hrefLang":"x-default","href":"https://explorejapan-p1.github.io/explorejapan/ja/tokushima/kamiyama/p/kamiyama-dining-13/"}]
+c:["$","meta","7",{"property":"og:title","content":"秀乃家　料理仕出し"}]
+d:["$","meta","8",{"property":"og:description","content":"秀乃家　料理仕出し（美馬市）。出典のある案内のみ。"}]
+e:["$","meta","9",{"property":"og:url","content":"https://explorejapan-p1.github.io/explorejapan/ja/tokushima/kamiyama/p/kamiyama-dining-13/"}]
+f:["$","meta","10",{"property":"og:site_name","content":"冒険日本"}]
+10:["$","meta","11",{"property":"og:locale","content":"ja_JP"}]
+11:["$","meta","12",{"property":"og:image","content":"https://explorejapan-p1.github.io/explorejapan/media/kamiyama-36003889-dish.jpg"}]
+12:["$","meta","13",{"property":"og:image:alt","content":"秀乃家　料理仕出しの料理写真"}]
+13:["$","meta","14",{"property":"og:locale:alternate","content":"en_US"}]
+14:["$","meta","15",{"property":"og:type","content":"article"}]
+15:["$","meta","16",{"name":"twitter:card","content":"summary_large_image"}]
+16:["$","meta","17",{"name":"twitter:title","content":"秀乃家　料理仕出し"}]
+17:["$","meta","18",{"name":"twitter:description","content":"秀乃家　料理仕出し（美馬市）。出典のある案内のみ。"}]
+18:["$","meta","19",{"name":"twitter:image","content":"https://explorejapan-p1.github.io/explorejapan/media/kamiyama-36003889-dish.jpg"}]
+19:["$","link","20",{"rel":"icon","href":"/favicon.ico"}]
+1a:["$","link","21",{"rel":"icon","href":"/favicon-32.png","sizes":"32x32","type":"image/png"}]
+1b:["$","link","22",{"rel":"apple-touch-icon","href":"/apple-touch-icon.png","sizes":"180x180"}]
+1c:["$","$L2a","23",{}]
+1d:["$","meta",null,{"name":"next-size-adjust","content":""}]
+1f:["$","$1","c",{"children":[null,["$","$L2b",null,{"parallelRouterKey":"children","template":["$","$L2c",null,{}]}]]}]
+22:["$","$1","c",{"children":[null,["$","$L2b",null,{"parallelRouterKey":"children","template":["$","$L2c",null,{}]}]]}]
+24:["$","$1","c",{"children":[null,["$","$L2b",null,{"parallelRouterKey":"children","template":["$","$L2c",null,{}]}]]}]
+26:["$","$1","c",{"children":[null,["$","$L2b",null,{"parallelRouterKey":"children","template":["$","$L2c",null,{}]}]]}]
+29:true
+8:300
+8:C
+28:0
+1e:"$undefined"
+20:"$undefined"
+23:"$undefined"
+25:"$undefined"
+27:"$undefined"
+7:"$undefined"

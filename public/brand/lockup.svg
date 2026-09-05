@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+<rect width="1024" height="1024" fill="#ECE2D2"/>
+<circle cx="512" cy="410" r="250" fill="none" stroke="#C43026" stroke-width="28"/>
+<text x="512" y="410" text-anchor="middle" dominant-baseline="central" font-family="Noto Serif CJK JP, Noto Sans CJK JP, sans-serif" font-weight="800" font-size="260" fill="#C43026">冒</text>
+<text x="512" y="800" text-anchor="middle" dominant-baseline="central" font-family="Noto Sans CJK JP, sans-serif" font-weight="700" font-size="84" fill="#0B1F33">BokenJapan</text>
+<text x="512" y="870" text-anchor="middle" dominant-baseline="central" font-family="Noto Sans CJK JP, sans-serif" font-size="36" fill="#C43026" letter-spacing="8">冒険日本</text>
+</svg>

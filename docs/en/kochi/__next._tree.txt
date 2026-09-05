@@ -1,0 +1,6 @@
+:HL["/explorejapan/_next/static/chunks/2f__g127rhf7l.css","style"]
+:HL["/explorejapan/_next/static/chunks/377yl5r1r_phd.css","style"]
+:HL["/explorejapan/_next/static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/explorejapan/_next/static/media/ad9c66e761fed85a-s.p.17y412u0mab7-.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/explorejapan/media/wakimachi-minami-machi-20250828.jpg","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"en","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"kochi","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"jopRlwrdQgqA2XqkDkmW8"}
