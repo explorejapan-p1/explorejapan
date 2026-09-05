@@ -12,6 +12,7 @@ import {KAMIITA, KAMIITA_PLACE_PHOTO} from '@/data/kamiita';
 import {KAMIYAMA, KAMIYAMA_PLACE_PHOTO} from '@/data/kamiyama';
 import {KATSUURA, KATSUURA_PLACE_PHOTO} from '@/data/katsuura';
 import {KAMIKATSU, KAMIKATSU_PLACE_PHOTO} from '@/data/kamikatsu';
+import {SANAGOCHI, SANAGOCHI_PLACE_PHOTO} from '@/data/sanagochi';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
@@ -89,6 +90,7 @@ function localityJa(slug: string): string {
   if (slug === 'kamiyama') return KAMIYAMA.nameJa;
   if (slug === 'katsuura') return KATSUURA.nameJa;
   if (slug === 'kamikatsu') return KAMIKATSU.nameJa;
+  if (slug === 'sanagochi') return SANAGOCHI.nameJa;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameJa;
   return MIMA.nameJa;
 }
@@ -108,6 +110,7 @@ function localityEn(slug: string): string {
   if (slug === 'kamiyama') return KAMIYAMA.nameEn;
   if (slug === 'katsuura') return KATSUURA.nameEn;
   if (slug === 'kamikatsu') return KAMIKATSU.nameEn;
+  if (slug === 'sanagochi') return SANAGOCHI.nameEn;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameEn;
   return MIMA.nameEn;
 }
@@ -1179,6 +1182,83 @@ export function kamikatsuGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '上勝町の案内' : 'Places in Kamikatsu Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+export function sanagochiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'tokushima/sanagochi');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('sanagochi');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? SANAGOCHI.nameJa : SANAGOCHI.nameEn,
+        alternateName: isJa ? SANAGOCHI.nameEn : SANAGOCHI.nameJa,
+        identifier: SANAGOCHI.jis,
+        url,
+        image: photoAbs(SANAGOCHI_PLACE_PHOTO),
+        sameAs: [SANAGOCHI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa
+            ? '下字西ノハナ31番地'
+            : '31 Nishinohana, Shimo',
+          addressLocality: isJa ? SANAGOCHI.nameJa : SANAGOCHI.nameEn,
+          addressRegion: isJa ? SANAGOCHI.prefectureJa : SANAGOCHI.prefectureEn,
+          postalCode: SANAGOCHI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? SANAGOCHI.prefectureJa : SANAGOCHI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? SANAGOCHI.nameJa : SANAGOCHI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: isJa ? '全国' : 'Japan',
+            item: canonicalUrl(locale)
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: isJa ? SANAGOCHI.prefectureJa : SANAGOCHI.prefectureEn,
+            item: canonicalUrl(locale, 'tokushima')
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: isJa ? SANAGOCHI.nameJa : SANAGOCHI.nameEn,
+            item: url
+          }
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '佐那河内村の案内' : 'Places in Sanagochi Village',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

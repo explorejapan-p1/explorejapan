@@ -167,6 +167,18 @@ import {
   rankKamikatsuSeeRows,
   resolveKamikatsuFilter
 } from './kamikatsu-travel';
+import {
+  isSanagochiExperiencePackRow,
+  isSanagochiOnsenPackRow,
+  isSanagochiShoppingPackRow,
+  isSanagochiStayPackRow,
+  resolveSanagochiFilter,
+  sanagochiPackRowMatchesFilter,
+  rankSanagochiSeeRows,
+  sanagochiSightPhoto,
+  sanagochiSourcedHook,
+  sanagochiTopChipForRow
+} from './sanagochi-travel';
 
 import {
   isMatsushigeExperiencePackRow,
@@ -420,6 +432,19 @@ const KAMIKATSU_HELPERS: LookupHelpers = {
   resolveFilter: resolveKamikatsuFilter
 };
 
+
+const SANAGOCHI_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isSanagochiOnsenPackRow,
+  isExperiencePackRow: isSanagochiExperiencePackRow,
+  isStayPackRow: isSanagochiStayPackRow,
+  packRowMatchesFilter: sanagochiPackRowMatchesFilter,
+  rankSeeRows: rankSanagochiSeeRows,
+  sightPhoto: sanagochiSightPhoto,
+  sourcedHook: sanagochiSourcedHook,
+  topChipForRow: sanagochiTopChipForRow,
+  resolveFilter: resolveSanagochiFilter
+};
+
 export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'tsurugi') return TSURUGI_HELPERS;
   if (slug === 'yoshinogawa') return YOSHINOGAWA_HELPERS;
@@ -436,5 +461,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'kamiyama') return KAMIYAMA_HELPERS;
   if (slug === 'katsuura') return KATSUURA_HELPERS;
   if (slug === 'kamikatsu') return KAMIKATSU_HELPERS;
+  if (slug === 'sanagochi') return SANAGOCHI_HELPERS;
   return MIMA_HELPERS;
 }

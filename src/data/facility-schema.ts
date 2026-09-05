@@ -332,6 +332,29 @@ export const KAMIKATSU_EXPECTED_CATEGORY_COUNTS = {
 } as const satisfies Record<FacilityCategory, number>;
 
 
+
+export const SANAGOCHI_PACK_JIS = '36321';
+export const SANAGOCHI_PACK_ACCESSED = '2026-08-25';
+export const SANAGOCHI_EXPECTED_ROW_COUNT = 67;
+export const SANAGOCHI_EXPECTED_GEO_COUNT = 17;
+export const SANAGOCHI_EXPECTED_HOURS_COUNT = 49;
+export const SANAGOCHI_EXPECTED_MISSING_ADDRESS = 20;
+export const SANAGOCHI_EXPECTED_MISSING_PHONE = 41;
+export const SANAGOCHI_EXPECTED_CATEGORY_COUNTS = {
+  tourism: 4,
+  cultural_property: 6,
+  care: 1,
+  aed: 15,
+  shelter: 13,
+  emergency_evacuation_site: 19,
+  hospital: 1,
+  childcare: 3,
+  wifi: 4,
+  public_facility: 1,
+  gtfs_stop: 0
+} as const satisfies Record<FacilityCategory, number>;
+
+
 export type FacilityRow = {
   id: string;
   jis: string;

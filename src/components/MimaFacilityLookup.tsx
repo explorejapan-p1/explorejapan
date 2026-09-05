@@ -36,6 +36,7 @@ import {KAMIITA_TRAVEL_ACCESSED, KAMIITA_TRAVEL_SOURCES} from '@/data/kamiita-tr
 import {KAMIYAMA_TRAVEL_ACCESSED, KAMIYAMA_TRAVEL_SOURCES} from '@/data/kamiyama-travel';
 import {KATSUURA_TRAVEL_ACCESSED, KATSUURA_TRAVEL_SOURCES} from '@/data/katsuura-travel';
 import {KAMIKATSU_TRAVEL_ACCESSED, KAMIKATSU_TRAVEL_SOURCES} from '@/data/kamikatsu-travel';
+import {SANAGOCHI_TRAVEL_ACCESSED, SANAGOCHI_TRAVEL_SOURCES} from '@/data/sanagochi-travel';
 import {NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES} from '@/data/naruto-travel';
 import {
   rankByOurTraffic,
@@ -849,6 +850,25 @@ export function MimaFacilityLookup({
                 {KAMIKATSU_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
                 Experience and commerce stay at 0 — no official list.
                 Shopping shows pack shops with a sourced photo only.
+                Cards show only listings with a sourced photo. No public scores.
+              </>
+            )
+
+
+          ) : town.slug === 'sanagochi' ? (
+            locale === 'ja' ? (
+              <>
+                <a href={SANAGOCHI_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ佐那河内村の公開店ページ（
+                {SANAGOCHI_TRAVEL_ACCESSED}）。
+                宿泊・温泉は客室・浴場の出典写真が無いため0件。
+                体験・買物・商業の公式一覧は未掲載のため0件。
+                カードは出典写真があるものだけ。点数は持ちません。
+              </>
+            ) : (
+              <>
+                <a href={SANAGOCHI_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Sanagochi Village shop pages (
+                {SANAGOCHI_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
+                Experience, shopping, and commerce stay at 0 — no official list.
                 Cards show only listings with a sourced photo. No public scores.
               </>
             )
