@@ -4,9 +4,8 @@
  * Onsen: omit without bath photo (honest 0).
  * Dining from 食べログ 美波町 (C36387) public shop pages with FOOD dish heroes.
  * Shopping: 道の駅 pack name with place-named Commons exterior.
- * PHOTO GAPS (honest 0):
- * 宿泊/温泉/体験/商業: no room/bath 出典 — omit.
- * 観光: ぽっぽマリン — no place-named Commons usable photo yet.
+ * Experience: 日和佐うみがめ博物館カレッタ remapped (Commons).
+ * PHOTO GAPS: 温泉/商業 honest 0; ぽっぽマリン Commons miss.
  * Do not copy 牟岐 / 那賀 / 佐那河内 / 上勝 / 勝浦 / 神山 / 上板 / 板野 / 石井 / 松茂 / 北島 / 藍住 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
@@ -36,6 +35,8 @@ export const MINAMI_ONSEN_PACK_NAMES = [] as const;
 export const MINAMI_ONSEN_PACK_SET: ReadonlySet<string> = new Set(
   MINAMI_ONSEN_PACK_NAMES
 );
+export const MINAMI_EXPERIENCE_PACK_NAMES = ['日和佐うみがめ博物館カレッタ'] as const;
+export const MINAMI_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(MINAMI_EXPERIENCE_PACK_NAMES);
 
 /** Exact tourism-pack names shown on 宿泊, not 観光. Room/bath photo required — none yet. */
 export const MINAMI_STAY_PACK_NAMES = [] as const;
@@ -53,7 +54,6 @@ export const MINAMI_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(
 
 export const MINAMI_SIGHT_PINS = [
   '薬王寺瑜祇塔',
-  '日和佐うみがめ博物館カレッタ',
   '南阿波サンライン',
   '日和佐城',
   '恵比須浜キャンプ村'
@@ -496,11 +496,9 @@ export function isMinamiOnsenPackRow(row: {
   return MINAMI_ONSEN_PACK_SET.has(row.name_ja);
 }
 
-export function isMinamiExperiencePackRow(_row: {
-  category: string;
-  name_ja: string;
-}): boolean {
-  return false;
+export function isMinamiExperiencePackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return MINAMI_EXPERIENCE_PACK_SET.has(row.name_ja);
 }
 
 export function isMinamiStayPackRow(_row: {
@@ -535,6 +533,7 @@ export function rankMinamiSeeRows<T extends Rankable>(rows: readonly T[]): T[] {
     (row) =>
       isSightsCategory(row.category) &&
       !isMinamiOnsenPackRow(row) &&
+      !isMinamiExperiencePackRow(row) &&
       !isMinamiStayPackRow(row) &&
       !isMinamiShoppingPackRow(row) &&
       !MINAMI_DINING_NAME_SET.has(row.name_ja)
@@ -591,6 +590,7 @@ export function minamiTopChipForRow(row: {
   name_ja: string;
 }): FilterId {
   if (isMinamiOnsenPackRow(row)) return 'onsen';
+  if (isMinamiExperiencePackRow(row)) return 'experience';
   if (isMinamiStayPackRow(row)) return 'stay';
   if (isMinamiShoppingPackRow(row)) return 'shopping';
   if (MINAMI_DINING_NAME_SET.has(row.name_ja)) return 'dining';
@@ -610,6 +610,7 @@ export function minamiPackRowMatchesFilter(
     return (
       isSightsCategory(category) &&
       !isMinamiOnsenPackRow(row) &&
+      !isMinamiExperiencePackRow(row) &&
       !isMinamiStayPackRow(row) &&
       !isMinamiShoppingPackRow(row) &&
       !MINAMI_DINING_NAME_SET.has(nameJa)
@@ -617,7 +618,7 @@ export function minamiPackRowMatchesFilter(
   }
   if (filter === 'infra') return isInfraCategory(category);
   if (filter === 'onsen') return isMinamiOnsenPackRow(row);
-  if (filter === 'experience') return false;
+  if (filter === 'experience') return isMinamiExperiencePackRow(row);
   if (filter === 'stay') return isMinamiStayPackRow(row);
   if (filter === 'dining' || filter === 'shopping' || filter === 'commerce') return false;
   return category === filter;

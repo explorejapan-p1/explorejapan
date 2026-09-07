@@ -140,7 +140,8 @@ import {
   isMinamiShoppingPackRow,
   MINAMI_DINING_NAME_SET,
   minamiSightPhoto,
-  rankMinamiSeeRows
+  rankMinamiSeeRows,
+  isMinamiExperiencePackRow
 } from '@/data/minami-travel';
 
 import {
@@ -149,7 +150,8 @@ import {
   isAizumiShoppingPackRow,
   isAizumiStayPackRow,
   rankAizumiSeeRows,
-  aizumiSightPhoto
+  aizumiSightPhoto,
+  isAizumiExperiencePackRow
 } from '@/data/aizumi-travel';
 
 import {
@@ -157,7 +159,8 @@ import {
   isKomatsushimaStayPackRow,
   rankKomatsushimaSeeRows,
   KOMATSUSHIMA_DINING_NAME_SET,
-  komatsushimaSightPhoto
+  komatsushimaSightPhoto,
+  isKomatsushimaExperiencePackRow
 } from '@/data/komatsushima-travel';
 import {
   ANAN_DINING_NAME_SET,
@@ -187,14 +190,16 @@ import {
   isMatsushigeOnsenPackRow,
   isMatsushigeStayPackRow,
   rankMatsushigeSeeRows,
-  matsushigeSightPhoto
+  matsushigeSightPhoto,
+  isMatsushigeExperiencePackRow
 } from '@/data/matsushige-travel';
 
 import {
   isNarutoOnsenPackRow,
   isNarutoStayPackRow,
   rankNarutoSeeRows,
-  narutoSightPhoto
+  narutoSightPhoto,
+  isNarutoExperiencePackRow
 } from '@/data/naruto-travel';
 
 
@@ -485,6 +490,7 @@ function matsushigeListings(): PublicListing[] {
   for (const row of town.rows) {
     if (
       !isMatsushigeOnsenPackRow(row) &&
+      !isMatsushigeExperiencePackRow(row) &&
       !isMatsushigeStayPackRow(row) &&
       !isSightsCategory(row.category)
     ) {
@@ -497,13 +503,16 @@ function matsushigeListings(): PublicListing[] {
   }
   const ranked = rankMatsushigeSeeRows(pack);
   const onsen = pack.filter(isMatsushigeOnsenPackRow);
+  const experience = pack.filter(isMatsushigeExperiencePackRow);
   const stay = pack.filter(isMatsushigeStayPackRow);
-  for (const row of [...stay, ...onsen, ...ranked]) {
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
     const kind: ListingKind = isMatsushigeOnsenPackRow(row)
       ? 'onsen'
-      : isMatsushigeStayPackRow(row)
-        ? 'stay'
-        : 'sights';
+      : isMatsushigeExperiencePackRow(row)
+        ? 'experience'
+        : isMatsushigeStayPackRow(row)
+          ? 'stay'
+          : 'sights';
     out.push(fromPack(row, 'matsushige', kind, matsushigeSightPhoto(row.name_ja)));
   }
   return out;
@@ -592,6 +601,7 @@ function narutoListings(): PublicListing[] {
   for (const row of town.rows) {
     if (
       !isNarutoOnsenPackRow(row) &&
+      !isNarutoExperiencePackRow(row) &&
       !isNarutoStayPackRow(row) &&
       !isSightsCategory(row.category)
     ) {
@@ -604,13 +614,16 @@ function narutoListings(): PublicListing[] {
   }
   const ranked = rankNarutoSeeRows(pack);
   const onsen = pack.filter(isNarutoOnsenPackRow);
+  const experience = pack.filter(isNarutoExperiencePackRow);
   const stay = pack.filter(isNarutoStayPackRow);
-  for (const row of [...stay, ...onsen, ...ranked]) {
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
     const kind: ListingKind = isNarutoOnsenPackRow(row)
       ? 'onsen'
-      : isNarutoStayPackRow(row)
-        ? 'stay'
-        : 'sights';
+      : isNarutoExperiencePackRow(row)
+        ? 'experience'
+        : isNarutoStayPackRow(row)
+          ? 'stay'
+          : 'sights';
     out.push(fromPack(row, 'naruto', kind, narutoSightPhoto(row.name_ja)));
   }
   return out;
@@ -919,6 +932,7 @@ function minamiListings(): PublicListing[] {
     if (MINAMI_DINING_NAME_SET.has(row.name_ja)) continue;
     if (
       !isMinamiOnsenPackRow(row) &&
+      !isMinamiExperiencePackRow(row) &&
       !isMinamiStayPackRow(row) &&
       !isMinamiShoppingPackRow(row) &&
       !isSightsCategory(row.category)
@@ -932,13 +946,16 @@ function minamiListings(): PublicListing[] {
   }
   const ranked = rankMinamiSeeRows(pack);
   const onsen = pack.filter(isMinamiOnsenPackRow);
+  const experience = pack.filter(isMinamiExperiencePackRow);
   const stay = pack.filter(isMinamiStayPackRow);
-  for (const row of [...stay, ...onsen, ...ranked]) {
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
     const kind: ListingKind = isMinamiOnsenPackRow(row)
       ? 'onsen'
-      : isMinamiStayPackRow(row)
-        ? 'stay'
-        : 'sights';
+      : isMinamiExperiencePackRow(row)
+        ? 'experience'
+        : isMinamiStayPackRow(row)
+          ? 'stay'
+          : 'sights';
     out.push(fromPack(row, 'minami', kind, minamiSightPhoto(row.name_ja)));
   }
   return out;
@@ -1000,6 +1017,7 @@ function aizumiListings(): PublicListing[] {
     if (AIZUMI_DINING_NAME_SET.has(row.name_ja)) continue;
     if (
       !isAizumiOnsenPackRow(row) &&
+      !isAizumiExperiencePackRow(row) &&
       !isAizumiStayPackRow(row) &&
       !isAizumiShoppingPackRow(row) &&
       !isSightsCategory(row.category)
@@ -1013,13 +1031,16 @@ function aizumiListings(): PublicListing[] {
   }
   const ranked = rankAizumiSeeRows(pack);
   const onsen = pack.filter(isAizumiOnsenPackRow);
+  const experience = pack.filter(isAizumiExperiencePackRow);
   const stay = pack.filter(isAizumiStayPackRow);
-  for (const row of [...stay, ...onsen, ...ranked]) {
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
     const kind: ListingKind = isAizumiOnsenPackRow(row)
       ? 'onsen'
-      : isAizumiStayPackRow(row)
-        ? 'stay'
-        : 'sights';
+      : isAizumiExperiencePackRow(row)
+        ? 'experience'
+        : isAizumiStayPackRow(row)
+          ? 'stay'
+          : 'sights';
     out.push(fromPack(row, 'aizumi', kind, aizumiSightPhoto(row.name_ja)));
   }
   return out;
@@ -1078,6 +1099,7 @@ function komatsushimaListings(): PublicListing[] {
     if (KOMATSUSHIMA_DINING_NAME_SET.has(row.name_ja)) continue;
     if (
       !isKomatsushimaOnsenPackRow(row) &&
+      !isKomatsushimaExperiencePackRow(row) &&
       !isKomatsushimaStayPackRow(row) &&
       !isSightsCategory(row.category)
     ) {
@@ -1090,13 +1112,16 @@ function komatsushimaListings(): PublicListing[] {
   }
   const ranked = rankKomatsushimaSeeRows(pack);
   const onsen = pack.filter(isKomatsushimaOnsenPackRow);
+  const experience = pack.filter(isKomatsushimaExperiencePackRow);
   const stay = pack.filter(isKomatsushimaStayPackRow);
-  for (const row of [...stay, ...onsen, ...ranked]) {
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
     const kind: ListingKind = isKomatsushimaOnsenPackRow(row)
       ? 'onsen'
-      : isKomatsushimaStayPackRow(row)
-        ? 'stay'
-        : 'sights';
+      : isKomatsushimaExperiencePackRow(row)
+        ? 'experience'
+        : isKomatsushimaStayPackRow(row)
+          ? 'stay'
+          : 'sights';
     out.push(fromPack(row, 'komatsushima', kind, komatsushimaSightPhoto(row.name_ja)));
   }
   return out;

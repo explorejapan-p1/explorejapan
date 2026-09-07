@@ -2,7 +2,7 @@
  * Naruto City travel layer. No frozen pack.
  * Dining from 食べログ 鳴門市 (C36202) public shop pages. FOOD dish photos required.
  * Stay from NAVITIME 鳴門市ホテル一覧 + 楽天トラベル share/room images (出典). Rank strongest first.
- * Do not invent pack dining/stay. Do not copy 徳島市 / 北島 / 松茂 / 藍住 TRAVEL_* rows or photos.
+ * Experience: 渦の道 / ドイツ館 / 大塚国際美術館 (Commons). Do not invent pack dining/stay.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
@@ -29,14 +29,14 @@ export const NARUTO_TRAVEL_SOURCES = {
 
 export const NARUTO_ONSEN_PACK_NAMES = [] as const;
 export const NARUTO_ONSEN_PACK_SET: ReadonlySet<string> = new Set(NARUTO_ONSEN_PACK_NAMES);
+export const NARUTO_EXPERIENCE_PACK_NAMES = ['大鳴門橋遊歩道 渦の道', '鳴門市ドイツ館', '大塚国際美術館'] as const;
+export const NARUTO_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(NARUTO_EXPERIENCE_PACK_NAMES);
 export const NARUTO_STAY_PACK_NAMES = [] as const;
 export const NARUTO_STAY_PACK_SET: ReadonlySet<string> = new Set(NARUTO_STAY_PACK_NAMES);
 
 export const NARUTO_SIGHT_PINS = [
   '鳴門の渦潮',
-  '大鳴門橋遊歩道 渦の道',
   '大鳴門橋',
-  '鳴門市ドイツ館',
   '霊山寺'
 ] as const;
 
@@ -305,8 +305,9 @@ export function isNarutoOnsenPackRow(_row: {category: string; name_ja: string}):
   return false;
 }
 
-export function isNarutoExperiencePackRow(_row: {category: string; name_ja: string}): boolean {
-  return false;
+export function isNarutoExperiencePackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return NARUTO_EXPERIENCE_PACK_SET.has(row.name_ja);
 }
 
 export function isNarutoStayPackRow(_row: {category: string; name_ja: string}): boolean {
@@ -335,6 +336,7 @@ export function rankNarutoSeeRows<T extends Rankable>(rows: readonly T[]): T[] {
     (row) =>
       isSightsCategory(row.category) &&
       !isNarutoOnsenPackRow(row) &&
+      !isNarutoExperiencePackRow(row) &&
       !isNarutoStayPackRow(row) &&
       !isNarutoDiningPackRow(row)
   );
@@ -384,6 +386,7 @@ export function narutoSourcedHook(
 
 export function narutoTopChipForRow(row: {category: string; name_ja: string}): FilterId {
   if (isNarutoOnsenPackRow(row)) return 'onsen';
+  if (isNarutoExperiencePackRow(row)) return 'experience';
   if (isNarutoStayPackRow(row)) return 'stay';
   if (row.category === 'stay') return 'stay';
   if (row.category === 'dining') return 'dining';
@@ -404,13 +407,14 @@ export function narutoPackRowMatchesFilter(
     return (
       isSightsCategory(category) &&
       !isNarutoOnsenPackRow(row) &&
+      !isNarutoExperiencePackRow(row) &&
       !isNarutoStayPackRow(row) &&
       !isNarutoDiningPackRow(row)
     );
   }
   if (filter === 'infra') return isInfraCategory(category);
   if (filter === 'onsen') return isNarutoOnsenPackRow(row);
-  if (filter === 'experience') return false;
+  if (filter === 'experience') return isNarutoExperiencePackRow(row);
   if (filter === 'stay') return isNarutoStayPackRow(row);
   if (filter === 'dining' || filter === 'shopping' || filter === 'commerce') return false;
   return category === filter;

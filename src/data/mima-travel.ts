@@ -391,10 +391,25 @@ type Rankable = {
   lon: number | null;
 };
 
+/** IG-first editorial pins for 観光 #1–#12 (magazine-quality place photos). Density 137 OK if real. */
+export const MIMA_SIGHT_PINS = [
+  'うだつの町並み',
+  '吉田家住宅',
+  '美馬市観光交流センター',
+  '三木家住宅',
+  'デ・レイケの堰堤／デ・レイケ公園',
+  '脇町劇場',
+  '段の塚穴',
+  '郡里廃寺跡',
+  '青木家住宅',
+  '天神ザクラ・世の中ザクラ',
+  '本楽寺',
+  'あんみつ館'
+] as const;
+
 /**
- * Editorial order for 観光. Rank #1–#10 is this order until first-party traffic+search counts exist, not a public-review score.
- * 1 うだつの町並み, 2 吉田家住宅 (one xy listing), 3 美馬市観光交流センター,
- * then other tourism, then cultural. Onsen/experience/family dupes omitted.
+ * Editorial order for 観光. Rank #1–#12 = MIMA_SIGHT_PINS (IG-first magazine-quality), then other tourism, then cultural.
+ * Onsen/experience/family dupes omitted. Density 137 OK if photo-gated real.
  */
 export function rankSeeRows<T extends Rankable>(rows: readonly T[]): T[] {
   const sights = rows.filter(
@@ -404,25 +419,18 @@ export function rankSeeRows<T extends Rankable>(rows: readonly T[]): T[] {
       !isExperiencePackRow(row)
   );
 
-  function take(pred: (row: T) => boolean, preferGeo = false): T | undefined {
-    const hits = sights.filter(pred);
-    if (preferGeo) {
-      const geo = hits.find((row) => row.lat !== null && row.lon !== null);
-      if (geo) return geo;
-    }
-    return hits[0];
+  const used = new Set<string>();
+  const usedNames = new Set<string>();
+  const pinned: T[] = [];
+  for (const pin of MIMA_SIGHT_PINS) {
+    const hit = sights.find((row) => row.name_ja === pin);
+    if (!hit) continue;
+    if (used.has(hit.id) || usedNames.has(hit.name_ja)) continue;
+    pinned.push(hit);
+    used.add(hit.id);
+    usedNames.add(hit.name_ja);
   }
-
-  const pin1 =
-    take((row) => row.name_ja === UDATSU_PACK_NAME) ??
-    take((row) => isUdatsuFamily(row.name_ja));
-  const pin2 = take((row) => isYoshidaFamily(row.name_ja), true);
-  const pin3 =
-    take((row) => row.name_ja === CENTER_PACK_NAME) ??
-    take((row) => isCenterFamily(row.name_ja), true);
-
-  const pinned = [pin1, pin2, pin3].filter((row): row is T => row !== undefined);
-  const used = new Set(pinned.map((row) => row.id));
+  // Family dedupe for pinned udatsu/yoshida/center clusters
   const skipUdatsu = pinned.some((row) => isUdatsuFamily(row.name_ja));
   const skipYoshida = pinned.some((row) => isYoshidaFamily(row.name_ja));
   const skipCenter = pinned.some((row) => isCenterFamily(row.name_ja));
@@ -431,9 +439,12 @@ export function rankSeeRows<T extends Rankable>(rows: readonly T[]): T[] {
   const restCultural: T[] = [];
   for (const row of sights) {
     if (used.has(row.id)) continue;
+    if (usedNames.has(row.name_ja)) continue;
     if (skipUdatsu && isUdatsuFamily(row.name_ja)) continue;
     if (skipYoshida && isYoshidaFamily(row.name_ja)) continue;
     if (skipCenter && isCenterFamily(row.name_ja)) continue;
+    used.add(row.id);
+    usedNames.add(row.name_ja);
     if (row.category === 'tourism') restTourism.push(row);
     else restCultural.push(row);
   }

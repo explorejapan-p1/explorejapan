@@ -98,6 +98,7 @@ const TABELOG_36006727 = 'https://tabelog.com/tokushima/A3601/A360104/36006727/'
 const TABELOG_36009157 = 'https://tabelog.com/tokushima/A3601/A360104/36009157/';
 const TABELOG_36003090 = 'https://tabelog.com/tokushima/A3601/A360104/36003090/';
 const TABELOG_36006782 = 'https://tabelog.com/tokushima/A3601/A360104/36006782/';
+const TABELOG_36000691 = 'https://tabelog.com/tokushima/A3601/A360104/36000691/';
 
 /** Exact pack/travel name_ja only. Place-named Commons for tourism; Tabelog FOOD for dining. */
 export const KAMIKATSU_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
@@ -275,5 +276,19 @@ export const KAMIKATSU_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = 
     'Asakage-tei food photo',
     TABELOG_36006782,
     '食べログ'
-  )
+  ),
+  'HOTEL WHY': sourcePhoto(
+    'kamikatsu-stay-hotel-why.jpg',
+    'HOTEL WHYの客室写真（公式）',
+    'HOTEL WHY room photo (official)',
+    'https://why-kamikatsu.jp/pages/stay',
+    '上勝町ゼロ・ウェイストセンターWHY'
+  ),
+  '月ヶ谷温泉 月の宿': sourcePhoto(
+    'kamikatsu-36000691-dish.jpg',
+    '月ヶ谷温泉 月の宿の料理写真',
+    'Tsukigaya Onsen Tsukinoyado food photo',
+    TABELOG_36000691,
+    '食べログ'
+  ),
 };

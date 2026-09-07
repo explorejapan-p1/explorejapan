@@ -38,8 +38,8 @@ export const NARUTO = {
   }
 } as const;
 
-export const NARUTO_EXPECTED_ROW_COUNT = 5;
-export const NARUTO_EXPECTED_GEO_COUNT = 5;
+export const NARUTO_EXPECTED_ROW_COUNT = 6;
+export const NARUTO_EXPECTED_GEO_COUNT = 6;
 
 function wikiPhoto(
   file: string,
@@ -161,6 +161,17 @@ export const NARUTO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '2014-07-12',
     '霊山寺（四国八十八箇所第一番札所・鳴門市）',
     'Ryōzen-ji, Shikoku pilgrimage temple 1, Naruto'
+  ),
+  '大塚国際美術館': wikiPhoto(
+    'naruto-otsuka-museum.jpg',
+    'https://commons.wikimedia.org/wiki/File:Otsuka_Museum_of_Art_syoumen.jpg',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0',
+    'EMS-62',
+    'https://commons.wikimedia.org/wiki/User:EMS-62',
+    '2014-10-08',
+    '大塚国際美術館の外観（鳴門市）',
+    'Otsuka Museum of Art facade, Naruto City'
   ),
   'すし勝': sourcePhoto(
     'naruto-36001450-dish.jpg',
@@ -426,5 +437,14 @@ export const NARUTO_FACILITIES: readonly FacilityRow[] = [
     NARUTO.sources.ryozenji,
     34.15980278,
     134.50259167
+  ),
+  sight(
+    'naruto-sight-06',
+    '大塚国際美術館',
+    '徳島県鳴門市鳴門町土佐泊浦字福池65-1',
+    '088-687-3737',
+    NARUTO.sources.otsuka,
+    34.23252778,
+    134.63772222
   )
 ];

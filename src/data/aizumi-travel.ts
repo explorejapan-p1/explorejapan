@@ -2,7 +2,7 @@
  * Aizumi travel layer. Pack tourism has no inns/onsen with room or bath photos.
  * Onsen / stay: omit without room or bath photo (honest 0).
  * Dining from 食べログ 藍住町 (C36403) public shop pages with FOOD dish heroes (ranked; menu/supermarket/blur dropped).
- * Shopping / commerce / stay / onsen / experience: honest 0 (no room/bath/view or place-named remaps this pass).
+ * Experience: 歴史館「藍の館」 remapped (Commons). Shopping/commerce/onsen honest 0.
  * HARD BAR 2026-09-07: scenic cover; dish close-ups only; strongest photos first.
  * Do not copy 板野 / 上板 / 北島 / 松茂 / 石井 / 那賀 / 牟岐 / 美波 / 海陽 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
  */
@@ -28,6 +28,8 @@ export const AIZUMI_TRAVEL_SOURCES = {
 
 export const AIZUMI_ONSEN_PACK_NAMES = [] as const;
 export const AIZUMI_ONSEN_PACK_SET: ReadonlySet<string> = new Set(AIZUMI_ONSEN_PACK_NAMES);
+export const AIZUMI_EXPERIENCE_PACK_NAMES = ['歴史館「藍の館」'] as const;
+export const AIZUMI_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(AIZUMI_EXPERIENCE_PACK_NAMES);
 export const AIZUMI_STAY_PACK_NAMES = [] as const;
 export const AIZUMI_STAY_PACK_SET: ReadonlySet<string> = new Set(AIZUMI_STAY_PACK_NAMES);
 export const AIZUMI_SHOPPING_PACK_NAMES = [] as const;
@@ -39,7 +41,6 @@ export const AIZUMI_SIGHT_PINS = [
   '東中富桜づつみ公園',
   '東中富親水公園',
   '史跡公園',
-  '歴史館「藍の館」'
 ] as const;
 
 function stay(
@@ -231,8 +232,9 @@ export function isAizumiOnsenPackRow(row: {category: string; name_ja: string}): 
   if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
   return AIZUMI_ONSEN_PACK_SET.has(row.name_ja);
 }
-export function isAizumiExperiencePackRow(_row: {category: string; name_ja: string}): boolean {
-  return false;
+export function isAizumiExperiencePackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return AIZUMI_EXPERIENCE_PACK_SET.has(row.name_ja);
 }
 export function isAizumiStayPackRow(_row: {category: string; name_ja: string}): boolean {
   return false;
@@ -258,6 +260,7 @@ export function rankAizumiSeeRows<T extends Rankable>(rows: readonly T[]): T[] {
     (row) =>
       isSightsCategory(row.category) &&
       !isAizumiOnsenPackRow(row) &&
+      !isAizumiExperiencePackRow(row) &&
       !isAizumiStayPackRow(row) &&
       !isAizumiShoppingPackRow(row) &&
       !AIZUMI_DINING_NAME_SET.has(row.name_ja)
@@ -301,6 +304,7 @@ export function aizumiSourcedHook(
 
 export function aizumiTopChipForRow(row: {category: string; name_ja: string}): FilterId {
   if (isAizumiOnsenPackRow(row)) return 'onsen';
+  if (isAizumiExperiencePackRow(row)) return 'experience';
   if (isAizumiStayPackRow(row)) return 'stay';
   if (row.category === 'stay') return 'stay';
   if (row.category === 'dining') return 'dining';
@@ -322,6 +326,7 @@ export function aizumiPackRowMatchesFilter(
     return (
       isSightsCategory(category) &&
       !isAizumiOnsenPackRow(row) &&
+      !isAizumiExperiencePackRow(row) &&
       !isAizumiStayPackRow(row) &&
       !isAizumiShoppingPackRow(row) &&
       !AIZUMI_DINING_NAME_SET.has(nameJa)
@@ -329,7 +334,7 @@ export function aizumiPackRowMatchesFilter(
   }
   if (filter === 'infra') return isInfraCategory(category);
   if (filter === 'onsen') return isAizumiOnsenPackRow(row);
-  if (filter === 'experience') return false;
+  if (filter === 'experience') return isAizumiExperiencePackRow(row);
   if (filter === 'stay') return isAizumiStayPackRow(row);
   if (filter === 'dining' || filter === 'shopping' || filter === 'commerce') return false;
   return category === filter;

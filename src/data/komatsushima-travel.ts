@@ -2,7 +2,7 @@
  * Komatsushima City travel layer. No frozen pack.
  * Dining from 食べログ 小松島市 (C36203) public shop pages. FOOD dish photos required.
  * Stay from NAVITIME 小松島市ホテル一覧 + 楽天トラベル share/room-exterior images (出典). Rank strongest first.
- * Onsen / experience / shopping / commerce: honest 0 (no invent).
+ * Experience: 小松島ステーションパーク remapped (Commons SL park). Onsen/shopping/commerce honest 0.
  * Do not invent pack dining/stay. Do not copy 鳴門 / 徳島市 / 阿南 / 藍住 TRAVEL_* rows or photos.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
@@ -29,6 +29,8 @@ export const KOMATSUSHIMA_TRAVEL_SOURCES = {
 
 export const KOMATSUSHIMA_ONSEN_PACK_NAMES = [] as const;
 export const KOMATSUSHIMA_ONSEN_PACK_SET: ReadonlySet<string> = new Set(KOMATSUSHIMA_ONSEN_PACK_NAMES);
+export const KOMATSUSHIMA_EXPERIENCE_PACK_NAMES = ['小松島ステーションパーク'] as const;
+export const KOMATSUSHIMA_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(KOMATSUSHIMA_EXPERIENCE_PACK_NAMES);
 export const KOMATSUSHIMA_STAY_PACK_NAMES = [] as const;
 export const KOMATSUSHIMA_STAY_PACK_SET: ReadonlySet<string> = new Set(KOMATSUSHIMA_STAY_PACK_NAMES);
 
@@ -37,7 +39,6 @@ export const KOMATSUSHIMA_SIGHT_PINS = [
   '金長神社',
   '立江寺',
   '恩山寺',
-  '小松島ステーションパーク'
 ] as const;
 
 function stay(
@@ -311,8 +312,9 @@ export function isKomatsushimaOnsenPackRow(_row: {category: string; name_ja: str
   return false;
 }
 
-export function isKomatsushimaExperiencePackRow(_row: {category: string; name_ja: string}): boolean {
-  return false;
+export function isKomatsushimaExperiencePackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return KOMATSUSHIMA_EXPERIENCE_PACK_SET.has(row.name_ja);
 }
 
 export function isKomatsushimaStayPackRow(_row: {category: string; name_ja: string}): boolean {
@@ -341,6 +343,7 @@ export function rankKomatsushimaSeeRows<T extends Rankable>(rows: readonly T[]):
     (row) =>
       isSightsCategory(row.category) &&
       !isKomatsushimaOnsenPackRow(row) &&
+      !isKomatsushimaExperiencePackRow(row) &&
       !isKomatsushimaStayPackRow(row) &&
       !isKomatsushimaDiningPackRow(row)
   );
@@ -390,6 +393,7 @@ export function komatsushimaSourcedHook(
 
 export function komatsushimaTopChipForRow(row: {category: string; name_ja: string}): FilterId {
   if (isKomatsushimaOnsenPackRow(row)) return 'onsen';
+  if (isKomatsushimaExperiencePackRow(row)) return 'experience';
   if (isKomatsushimaStayPackRow(row)) return 'stay';
   if (row.category === 'stay') return 'stay';
   if (row.category === 'dining') return 'dining';
@@ -410,13 +414,14 @@ export function komatsushimaPackRowMatchesFilter(
     return (
       isSightsCategory(category) &&
       !isKomatsushimaOnsenPackRow(row) &&
+      !isKomatsushimaExperiencePackRow(row) &&
       !isKomatsushimaStayPackRow(row) &&
       !isKomatsushimaDiningPackRow(row)
     );
   }
   if (filter === 'infra') return isInfraCategory(category);
   if (filter === 'onsen') return isKomatsushimaOnsenPackRow(row);
-  if (filter === 'experience') return false;
+  if (filter === 'experience') return isKomatsushimaExperiencePackRow(row);
   if (filter === 'stay') return isKomatsushimaStayPackRow(row);
   if (filter === 'dining' || filter === 'shopping' || filter === 'commerce') return false;
   return category === filter;

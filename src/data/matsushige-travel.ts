@@ -1,6 +1,6 @@
 /**
  * Matsushige travel layer. Pack has no dining/stay categories.
- * Onsen / stay: omit without room or bath photo (honest 0).
+ * Experience: 松茂町歴史民俗資料館・人形浄瑠璃芝居資料館 remapped (Commons). Onsen honest 0.
  * Dining from 食べログ 松茂町 (C36401) public shop pages. Do not invent pack dining.
  * Do not copy 北島 / 藍住 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
  */
@@ -31,6 +31,8 @@ export const MATSUSHIGE_ONSEN_PACK_NAMES = [] as const;
 export const MATSUSHIGE_ONSEN_PACK_SET: ReadonlySet<string> = new Set(
   MATSUSHIGE_ONSEN_PACK_NAMES
 );
+export const MATSUSHIGE_EXPERIENCE_PACK_NAMES = ['松茂町歴史民俗資料館・人形浄瑠璃芝居資料館'] as const;
+export const MATSUSHIGE_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(MATSUSHIGE_EXPERIENCE_PACK_NAMES);
 
 /** Exact tourism-pack names shown on 宿泊, not 観光. Room/bath photo required — none yet. */
 export const MATSUSHIGE_STAY_PACK_NAMES = [] as const;
@@ -42,7 +44,6 @@ export const MATSUSHIGE_STAY_PACK_SET: ReadonlySet<string> = new Set(
 export const MATSUSHIGE_SIGHT_PINS = [
   '月見ヶ丘海水浴場',
   '徳島空港',
-  '松茂町歴史民俗資料館・人形浄瑠璃芝居資料館',
   'とくしまとくとくターミナル',
   '加賀須野橋',
   '不動院'
@@ -275,11 +276,9 @@ export function isMatsushigeOnsenPackRow(row: {
   return MATSUSHIGE_ONSEN_PACK_SET.has(row.name_ja);
 }
 
-export function isMatsushigeExperiencePackRow(_row: {
-  category: string;
-  name_ja: string;
-}): boolean {
-  return false;
+export function isMatsushigeExperiencePackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return MATSUSHIGE_EXPERIENCE_PACK_SET.has(row.name_ja);
 }
 
 export function isMatsushigeStayPackRow(_row: {
@@ -306,6 +305,7 @@ export function rankMatsushigeSeeRows<T extends Rankable>(rows: readonly T[]): T
     (row) =>
       isSightsCategory(row.category) &&
       !isMatsushigeOnsenPackRow(row) &&
+      !isMatsushigeExperiencePackRow(row) &&
       !isMatsushigeStayPackRow(row)
   );
   const used = new Set<string>();
@@ -357,6 +357,7 @@ export function matsushigeTopChipForRow(row: {
   name_ja: string;
 }): FilterId {
   if (isMatsushigeOnsenPackRow(row)) return 'onsen';
+  if (isMatsushigeExperiencePackRow(row)) return 'experience';
   if (isMatsushigeStayPackRow(row)) return 'stay';
   if (row.category === 'stay') return 'stay';
   if (row.category === 'dining') return 'dining';
@@ -376,12 +377,13 @@ export function matsushigePackRowMatchesFilter(
     return (
       isSightsCategory(category) &&
       !isMatsushigeOnsenPackRow(row) &&
+      !isMatsushigeExperiencePackRow(row) &&
       !isMatsushigeStayPackRow(row)
     );
   }
   if (filter === 'infra') return isInfraCategory(category);
   if (filter === 'onsen') return isMatsushigeOnsenPackRow(row);
-  if (filter === 'experience') return false;
+  if (filter === 'experience') return isMatsushigeExperiencePackRow(row);
   if (filter === 'stay') return isMatsushigeStayPackRow(row);
   if (filter === 'dining' || filter === 'shopping' || filter === 'commerce') return false;
   return category === filter;

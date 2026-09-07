@@ -60,7 +60,34 @@ export const KAMIKATSU_SIGHT_PINS = [
   '灌頂ヶ滝'
 ] as const;
 
-export const KAMIKATSU_TRAVEL_STAY: readonly TravelRow[] = [];
+function stay(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'stay',
+    address,
+    phone,
+    source_url,
+    accessed: KAMIKATSU_TRAVEL_ACCESSED
+  };
+}
+
+/** Ranked strongest official room/exterior 出典. HOTEL WHY official stay gallery. */
+export const KAMIKATSU_TRAVEL_STAY: readonly TravelRow[] = [
+  stay(
+    'kamikatsu-stay-01',
+    'HOTEL WHY',
+    '徳島県勝浦郡上勝町大字福原字下日浦7番地2',
+    '070-2616-9012',
+    'https://why-kamikatsu.jp/pages/stay'
+  )
+];
 
 function dining(
   id: string,
@@ -161,6 +188,13 @@ export const KAMIKATSU_TRAVEL_DINING: readonly TravelRow[] = [
     '徳島県勝浦郡上勝町生実白鶴23-1',
     null,
     'https://tabelog.com/tokushima/A3601/A360104/36006782/'
+  ),
+  dining(
+    'kamikatsu-dining-10',
+    '月ヶ谷温泉 月の宿',
+    '徳島県勝浦郡上勝町福原平間71-1',
+    '0885-46-0203',
+    'https://tabelog.com/tokushima/A3601/A360104/36000691/'
   )
 ];
 
