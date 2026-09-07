@@ -49,11 +49,12 @@ import {SHODOSHIMA, SHODOSHIMA_PLACE_PHOTO} from '@/data/shodoshima';
 import {ZENTSUJI, ZENTSUJI_PLACE_PHOTO} from '@/data/zentsuji';
 import {MITOYO, MITOYO_PLACE_PHOTO} from '@/data/mitoyo';
 import {UTAZU, UTAZU_PLACE_PHOTO} from '@/data/utazu';
+import {TONOSHO, TONOSHO_PLACE_PHOTO} from '@/data/tonosho';
 import {Link} from '@/i18n/navigation';
 import type {AppLocale} from '@/i18n/routing';
 import {projectMimaOfficialMap} from '@/lib/geo';
 import {JsonLd} from '@/components/JsonLd';
-import {mimaGraph, tsurugiGraph, yoshinogawaGraph, miyoshiGraph, tokushimaCityGraph, awaGraph, higashimiyoshiGraph, kitajimaGraph, narutoGraph, matsushigeGraph, ishiiGraph, itanoGraph, kamiitaGraph, kamiyamaGraph, katsuuraGraph, kamikatsuGraph, sanagochiGraph, nakaGraph, minamiGraph, kaiyoGraph, aizumiGraph, mugiGraph, komatsushimaGraph, ananGraph, takamatsuGraph, kotohiraGraph, marugameGraph, kanonjiGraph, sakaideGraph, naoshimaGraph, shodoshimaGraph, zentsujiGraph, mitoyoGraph, utazuGraph} from '@/lib/jsonld';
+import {mimaGraph, tsurugiGraph, yoshinogawaGraph, miyoshiGraph, tokushimaCityGraph, awaGraph, higashimiyoshiGraph, kitajimaGraph, narutoGraph, matsushigeGraph, ishiiGraph, itanoGraph, kamiitaGraph, kamiyamaGraph, katsuuraGraph, kamikatsuGraph, sanagochiGraph, nakaGraph, minamiGraph, kaiyoGraph, aizumiGraph, mugiGraph, komatsushimaGraph, ananGraph, takamatsuGraph, kotohiraGraph, marugameGraph, kanonjiGraph, sakaideGraph, naoshimaGraph, shodoshimaGraph, zentsujiGraph, mitoyoGraph, utazuGraph, tonoshoGraph} from '@/lib/jsonld';
 import {shareMetadata} from '@/lib/seo';
 
 type Props = {
@@ -149,6 +150,8 @@ export async function generateMetadata({params}: Props) {
                                                     ? MITOYO_PLACE_PHOTO
                                                   : muni.slug === 'utazu'
                                                     ? UTAZU_PLACE_PHOTO
+                                                  : muni.slug === 'tonosho'
+                                                    ? TONOSHO_PLACE_PHOTO
                                                   : MIMA_PLACE_PHOTO;
   const description = live
     ? muni.slug === 'tsurugi'
@@ -283,6 +286,10 @@ export async function generateMetadata({params}: Props) {
                                       ? loc === 'ja'
                                         ? '宇多津町。ゴールドタワー、四国水族館、臨海公園、食。'
                                         : 'Utazu Town, Kagawa — Gold Tower, Shikoku Aquarium, seaside park, food.'
+                                    : muni.slug === 'tonosho'
+                                      ? loc === 'ja'
+                                        ? '土庄町。エンジェルロード、銚子渓、迷路のまち、食。'
+                                        : 'Tonosho Town, Kagawa — Angel Road, Choshikei, maze town, food.'
           : loc === 'ja'
             ? '四国のまほろば 美馬市。うだつの町並み、食、宿。'
             : 'Mima City, Tokushima — Udatsu townscape, food, and stays.'
@@ -402,7 +409,7 @@ export default async function MunicipalityPage({params}: Props) {
 
   return (
     <>
-      <JsonLd data={town.slug === 'tokushima' ? tokushimaCityGraph(graphLocale) : town.slug === 'tsurugi' ? tsurugiGraph(graphLocale) : town.slug === 'yoshinogawa' ? yoshinogawaGraph(graphLocale) : town.slug === 'miyoshi' ? miyoshiGraph(graphLocale) : town.slug === 'awa' ? awaGraph(graphLocale) : town.slug === 'higashimiyoshi' ? higashimiyoshiGraph(graphLocale) : town.slug === 'kitajima' ? kitajimaGraph(graphLocale) : town.slug === 'naruto' ? narutoGraph(graphLocale) : town.slug === 'matsushige' ? matsushigeGraph(graphLocale) : town.slug === 'ishii' ? ishiiGraph(graphLocale) : town.slug === 'itano' ? itanoGraph(graphLocale) : town.slug === 'kamiita' ? kamiitaGraph(graphLocale) : town.slug === 'kamiyama' ? kamiyamaGraph(graphLocale) : town.slug === 'katsuura' ? katsuuraGraph(graphLocale) : town.slug === 'kamikatsu' ? kamikatsuGraph(graphLocale) : town.slug === 'sanagochi' ? sanagochiGraph(graphLocale) : town.slug === 'naka' ? nakaGraph(graphLocale) : town.slug === 'minami' ? minamiGraph(graphLocale) : town.slug === 'kaiyo' ? kaiyoGraph(graphLocale) : town.slug === 'mugi' ? mugiGraph(graphLocale) : town.slug === 'aizumi' ? aizumiGraph(graphLocale) : town.slug === 'komatsushima' ? komatsushimaGraph(graphLocale) : town.slug === 'anan' ? ananGraph(graphLocale) : town.slug === 'takamatsu' ? takamatsuGraph(graphLocale) : town.slug === 'kotohira' ? kotohiraGraph(graphLocale) : town.slug === 'marugame' ? marugameGraph(graphLocale) : town.slug === 'kanonji' ? kanonjiGraph(graphLocale) : town.slug === 'sakaide' ? sakaideGraph(graphLocale) : town.slug === 'naoshima' ? naoshimaGraph(graphLocale) : town.slug === 'shodoshima' ? shodoshimaGraph(graphLocale) : town.slug === 'zentsuji' ? zentsujiGraph(graphLocale) : town.slug === 'mitoyo' ? mitoyoGraph(graphLocale) : town.slug === 'utazu' ? utazuGraph(graphLocale) : mimaGraph(graphLocale)} />
+      <JsonLd data={town.slug === 'tokushima' ? tokushimaCityGraph(graphLocale) : town.slug === 'tsurugi' ? tsurugiGraph(graphLocale) : town.slug === 'yoshinogawa' ? yoshinogawaGraph(graphLocale) : town.slug === 'miyoshi' ? miyoshiGraph(graphLocale) : town.slug === 'awa' ? awaGraph(graphLocale) : town.slug === 'higashimiyoshi' ? higashimiyoshiGraph(graphLocale) : town.slug === 'kitajima' ? kitajimaGraph(graphLocale) : town.slug === 'naruto' ? narutoGraph(graphLocale) : town.slug === 'matsushige' ? matsushigeGraph(graphLocale) : town.slug === 'ishii' ? ishiiGraph(graphLocale) : town.slug === 'itano' ? itanoGraph(graphLocale) : town.slug === 'kamiita' ? kamiitaGraph(graphLocale) : town.slug === 'kamiyama' ? kamiyamaGraph(graphLocale) : town.slug === 'katsuura' ? katsuuraGraph(graphLocale) : town.slug === 'kamikatsu' ? kamikatsuGraph(graphLocale) : town.slug === 'sanagochi' ? sanagochiGraph(graphLocale) : town.slug === 'naka' ? nakaGraph(graphLocale) : town.slug === 'minami' ? minamiGraph(graphLocale) : town.slug === 'kaiyo' ? kaiyoGraph(graphLocale) : town.slug === 'mugi' ? mugiGraph(graphLocale) : town.slug === 'aizumi' ? aizumiGraph(graphLocale) : town.slug === 'komatsushima' ? komatsushimaGraph(graphLocale) : town.slug === 'anan' ? ananGraph(graphLocale) : town.slug === 'takamatsu' ? takamatsuGraph(graphLocale) : town.slug === 'kotohira' ? kotohiraGraph(graphLocale) : town.slug === 'marugame' ? marugameGraph(graphLocale) : town.slug === 'kanonji' ? kanonjiGraph(graphLocale) : town.slug === 'sakaide' ? sakaideGraph(graphLocale) : town.slug === 'naoshima' ? naoshimaGraph(graphLocale) : town.slug === 'shodoshima' ? shodoshimaGraph(graphLocale) : town.slug === 'zentsuji' ? zentsujiGraph(graphLocale) : town.slug === 'mitoyo' ? mitoyoGraph(graphLocale) : town.slug === 'utazu' ? utazuGraph(graphLocale) : town.slug === 'tonosho' ? tonoshoGraph(graphLocale) : mimaGraph(graphLocale)} />
       <MimaFacilityLookup
         locale={locale}
         town={town}
@@ -2074,6 +2081,59 @@ export default async function MunicipalityPage({params}: Props) {
           : `Figures accessed ${UTAZU.sources.accessed}. Population is unpublished (universes are not mixed). Tenth LIVE Kagawa hub.`}
       </p>
       </details>
+
+
+      ) : town.slug === 'tonosho' ? (
+      <details className="facts-fold">
+        <summary>{isJa ? '町の資料' : 'Town facts'}</summary>
+      <table className="facts">
+        <tbody>
+          <tr>
+            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <td>
+              {TONOSHO.nameJa} / {TONOSHO.nameEn}（{TONOSHO.reading}）
+            </td>
+          </tr>
+          <tr>
+            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <td>
+              <Link href="/kagawa">{isJa ? TONOSHO.prefectureJa : TONOSHO.prefectureEn}</Link>
+            </td>
+          </tr>
+          <tr>
+            <th>JIS / N03_007</th>
+            <td>
+              <strong>{TONOSHO.jis}</strong>
+            </td>
+          </tr>
+          <tr>
+            <th>J-LIS</th>
+            <td>{TONOSHO.jlis}</td>
+          </tr>
+          <tr>
+            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <td>
+              〒{TONOSHO.hall.postalCode} {isJa ? TONOSHO.hall.addressJa : TONOSHO.hall.addressEn}
+              <br />
+              {TONOSHO.hall.phone} · <a href={TONOSHO.sameAs}>sameAs {TONOSHO.sameAs}</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p className="note">
+        <a href={TONOSHO.sources.hall}>{isJa ? '町役場案内' : 'Hall guide'}</a>
+        {' · '}
+        <a href={TONOSHO.sources.home}>{isJa ? '町ホームページ' : 'Town homepage'}</a>
+        {' · '}
+        <a href={TONOSHO.sources.angel}>{isJa ? 'エンジェルロード' : 'Angel Road'}</a>
+      </p>
+      <p className="note">
+        {isJa
+          ? `数字のアクセス日は ${TONOSHO.sources.accessed}。人口は未掲載（出典ページを混ぜません）。香川県11つ目のLIVEハブ。`
+          : `Figures accessed ${TONOSHO.sources.accessed}. Population is unpublished (universes are not mixed). Eleventh LIVE Kagawa hub.`}
+      </p>
+      </details>
+
 
       ) : (
       <details className="facts-fold">

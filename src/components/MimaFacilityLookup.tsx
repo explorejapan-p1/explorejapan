@@ -52,6 +52,7 @@ import {SHODOSHIMA_TRAVEL_ACCESSED} from '@/data/shodoshima-travel';
 import {ZENTSUJI_TRAVEL_ACCESSED} from '@/data/zentsuji-travel';
 import {MITOYO_TRAVEL_ACCESSED} from '@/data/mitoyo-travel';
 import {UTAZU_TRAVEL_ACCESSED} from '@/data/utazu-travel';
+import {TONOSHO_TRAVEL_ACCESSED} from '@/data/tonosho-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1116,6 +1117,26 @@ export function MimaFacilityLookup({
                 Dining from Tabelog Utazu shop pages ({UTAZU_TRAVEL_ACCESSED}).
                 Onsen: Utazu Grand Hotel large bath (distinct from stay room keys).
                 Experience: Michinoeki Lover's Sanctuary Utazu Seaside Park (Commons). Shopping and commerce stay at 0. Tenth LIVE Kagawa hub.
+              </>
+            )
+
+
+) : town.slug === 'tonosho' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（エンジェルロード・銚子渓・土庄港・迷路のまち・小豆島大観音・大坂城残石記念公園）。
+                宿泊は楽天トラベルの客室写真（{TONOSHO_TRAVEL_ACCESSED}）。
+                飲食は食べログ土庄町の公開店ページ（{TONOSHO_TRAVEL_ACCESSED}）。
+                温泉は小豆島国際ホテル大浴場・ホテルグリーンプラザ小豆島大浴場（公式風呂写真・客室キーと分離）。
+                体験は銚子渓自然動物園お猿の国（Commons）。買物・商業は出典写真が無いため0件。香川県11つ目のLIVEハブ（小豆島島内ツイン）。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Angel Road, Choshikei, Tonosho Port, Meiro-no-machi, Shodoshima Daikannon, Osaka Castle Stone Memorial Park).
+                Lodging from Rakuten Travel room photos ({TONOSHO_TRAVEL_ACCESSED}).
+                Dining from Tabelog Tonosho shop pages ({TONOSHO_TRAVEL_ACCESSED}).
+                Onsen: Shodoshima International Hotel and Hotel Green Plaza Shodoshima large baths (distinct from stay room keys).
+                Experience: Choshikei Monkey Park (Commons). Shopping and commerce stay at 0. Eleventh LIVE Kagawa hub (Shodoshima island twin).
               </>
             )
 

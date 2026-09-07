@@ -29,6 +29,7 @@ import {SHODOSHIMA, SHODOSHIMA_PLACE_PHOTO} from '@/data/shodoshima';
 import {ZENTSUJI, ZENTSUJI_PLACE_PHOTO} from '@/data/zentsuji';
 import {MITOYO, MITOYO_PLACE_PHOTO} from '@/data/mitoyo';
 import {UTAZU, UTAZU_PLACE_PHOTO} from '@/data/utazu';
+import {TONOSHO, TONOSHO_PLACE_PHOTO} from '@/data/tonosho';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -127,6 +128,7 @@ function localityJa(slug: string): string {
   if (slug === 'zentsuji') return ZENTSUJI.nameJa;
   if (slug === 'mitoyo') return MITOYO.nameJa;
   if (slug === 'utazu') return UTAZU.nameJa;
+  if (slug === 'tonosho') return TONOSHO.nameJa;
   return MIMA.nameJa;
 }
 
@@ -164,6 +166,7 @@ function localityEn(slug: string): string {
   if (slug === 'zentsuji') return ZENTSUJI.nameEn;
   if (slug === 'mitoyo') return MITOYO.nameEn;
   if (slug === 'utazu') return UTAZU.nameEn;
+  if (slug === 'tonosho') return TONOSHO.nameEn;
   return MIMA.nameEn;
 }
 
@@ -2745,3 +2748,62 @@ export function utazuGraph(locale: AppLocale) {
   };
 }
 
+export function tonoshoGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kagawa/tonosho');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('tonosho');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? TONOSHO.nameJa : TONOSHO.nameEn,
+        alternateName: isJa ? TONOSHO.nameEn : TONOSHO.nameJa,
+        identifier: TONOSHO.jis,
+        url,
+        image: photoAbs(TONOSHO_PLACE_PHOTO),
+        sameAs: [TONOSHO.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '淵崎甲1400番地2' : 'Fuchizaki Ko 1400-2',
+          addressLocality: isJa ? TONOSHO.nameJa : TONOSHO.nameEn,
+          addressRegion: isJa ? TONOSHO.prefectureJa : TONOSHO.prefectureEn,
+          postalCode: TONOSHO.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? TONOSHO.prefectureJa : TONOSHO.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? TONOSHO.nameJa : TONOSHO.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? TONOSHO.prefectureJa : TONOSHO.prefectureEn, item: canonicalUrl(locale, 'kagawa')},
+          {'@type': 'ListItem', position: 3, name: isJa ? TONOSHO.nameJa : TONOSHO.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '土庄町の案内' : 'Places in Tonosho',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}

@@ -8,8 +8,9 @@
 :HL["/explorejapan/media/zentsuji-pagoda-gate.jpg","image"]
 :HL["/explorejapan/media/kanonji-zenigata.jpg","image"]
 :HL["/explorejapan/media/mitoyo-chichibugahama.jpg","image"]
+:HL["/explorejapan/media/tonosho-angel-road.jpg","image"]
 :HL["/explorejapan/media/shodoshima-olive-park.jpg","image"]
 :HL["/explorejapan/media/naoshima-yellow-pumpkin.jpg","image"]
 :HL["/explorejapan/media/utazu-gold-tower.jpg","image"]
 :HL["/explorejapan/media/kotohira-konpira.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"en","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"kagawa","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"sfLscyaFLN46I-YqgGgMP"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"en","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"kagawa","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"SyRygL4xBBdqI3RrbQR4W"}
