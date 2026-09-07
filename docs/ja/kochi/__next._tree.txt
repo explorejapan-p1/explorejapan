@@ -17,7 +17,8 @@
 :HL["/explorejapan/media/nahari-cover-chuo-park.jpg","image"]
 :HL["/explorejapan/media/yasuda-cover-shimaishi.jpg","image"]
 :HL["/explorejapan/media/kitagawa-cover-monet.jpg","image"]
+:HL["/explorejapan/media/umaji-cover-incline.jpg","image"]
 :HL["/explorejapan/media/geisei-cover-kotogahama.jpg","image"]
 :HL["/explorejapan/media/ino-nikobuchi.jpg","image"]
 :HL["/explorejapan/media/kuroshio-cover-matsubara.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"ja","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"kochi","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"YgUQ5hBG5FopzpA_VOuw-"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"ja","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"kochi","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"t1bjwbV_YGk32Uu9DQNJf"}

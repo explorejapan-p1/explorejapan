@@ -77,6 +77,7 @@ import {NAHARI_TRAVEL_ACCESSED} from '@/data/nahari-travel';
 import {YASUDA_TRAVEL_ACCESSED} from '@/data/yasuda-travel';
 import {GEISEI_TRAVEL_ACCESSED} from '@/data/geisei-travel';
 import {KITAGAWA_TRAVEL_ACCESSED} from '@/data/kitagawa-travel';
+import {UMAJI_TRAVEL_ACCESSED} from '@/data/umaji-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1485,6 +1486,22 @@ export function MimaFacilityLookup({
                 Lodging: Kitagawa Onsen Yuzu-no-Yado Rakuten Japanese-Western room photo ({KITAGAWA_TRAVEL_ACCESSED}).
                 Dining from Tabelog Kitagawa shop pages ({KITAGAWA_TRAVEL_ACCESSED}).
                 Onsen: 1 (same facility large bath; distinct mediaInfo key; stay≠onsen). Experience: 0. Shopping/commerce: 0. Eighteenth LIVE Kochi hub.
+              </>
+            )
+          ) : town.slug === 'umaji' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（馬路村インクライン・馬路村役場・魚梁瀬丸山公園・西川渓谷・魚梁瀬森林鉄道）。
+                宿泊は楽天トラベル馬路温泉の本館和室写真（{UMAJI_TRAVEL_ACCESSED}）。
+                飲食は食べログ馬路村の公開店ページ（{UMAJI_TRAVEL_ACCESSED}）。
+                温泉は同施設大浴場1件（客室写真の宿とは別キー・stay≠onsen）。体験は0件。買物・商業は0件。高知県19つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Umaji Incline, Umaji Village Hall, Yanase Maruyama Park, Nishikawa Valley, Yanase Forest Railway).
+                Lodging: Umaji Onsen Rakuten main-building Japanese room photo ({UMAJI_TRAVEL_ACCESSED}).
+                Dining from Tabelog Umaji shop pages ({UMAJI_TRAVEL_ACCESSED}).
+                Onsen: 1 (same facility large bath; distinct media key; stay≠onsen). Experience: 0. Shopping/commerce: 0. Nineteenth LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'geisei' ? (

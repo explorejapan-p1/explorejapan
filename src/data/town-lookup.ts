@@ -325,6 +325,7 @@ import {NAHARI, NAHARI_PLACE_PHOTO, NAHARI_FACILITIES, NAHARI_EXPECTED_GEO_COUNT
 import {YASUDA, YASUDA_PLACE_PHOTO, YASUDA_FACILITIES, YASUDA_EXPECTED_GEO_COUNT, YASUDA_EXPECTED_ROW_COUNT} from './yasuda';
 import {GEISEI, GEISEI_PLACE_PHOTO, GEISEI_FACILITIES, GEISEI_EXPECTED_GEO_COUNT, GEISEI_EXPECTED_ROW_COUNT} from './geisei';
 import {KITAGAWA, KITAGAWA_PLACE_PHOTO, KITAGAWA_FACILITIES, KITAGAWA_EXPECTED_GEO_COUNT, KITAGAWA_EXPECTED_ROW_COUNT} from './kitagawa';
+import {UMAJI, UMAJI_PLACE_PHOTO, UMAJI_FACILITIES, UMAJI_EXPECTED_GEO_COUNT, UMAJI_EXPECTED_ROW_COUNT} from './umaji';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -648,6 +649,13 @@ import {
   KITAGAWA_TRAVEL_COMMERCE,
   KITAGAWA_TRAVEL_ALL
 } from './kitagawa-travel';
+import {
+  UMAJI_TRAVEL_DINING,
+  UMAJI_TRAVEL_STAY,
+  UMAJI_TRAVEL_SHOPPING,
+  UMAJI_TRAVEL_COMMERCE,
+  UMAJI_TRAVEL_ALL
+} from './umaji-travel';
 
 
 
@@ -2390,6 +2398,38 @@ export const KITAGAWA_LOOKUP: LookupTown = {
   licenseSiteEn: 'Village-site listing'
 };
 
+export const UMAJI_LOOKUP: LookupTown = {
+  slug: 'umaji',
+  prefectureSlug: 'kochi',
+  jis: UMAJI.jis,
+  nameJa: UMAJI.nameJa,
+  nameEn: UMAJI.nameEn,
+  heroPhoto: UMAJI_PLACE_PHOTO,
+  photoCiteJa: '写真は馬路村水力インクライン。ブルーノ・プラス、2022-03、CC BY-SA 4.0。File:Umaji Incline1.jpg。',
+  photoCiteEn: 'Photo: Umaji hydraulic incline. Bruno Plus, Mar 2022, CC BY-SA 4.0. File:Umaji Incline1.jpg.',
+  rows: UMAJI_FACILITIES,
+  expectedGeo: UMAJI_EXPECTED_GEO_COUNT,
+  expectedRows: UMAJI_EXPECTED_ROW_COUNT,
+  travelDining: UMAJI_TRAVEL_DINING,
+  travelStay: UMAJI_TRAVEL_STAY,
+  travelShopping: UMAJI_TRAVEL_SHOPPING,
+  travelCommerce: UMAJI_TRAVEL_COMMERCE,
+  travelAll: UMAJI_TRAVEL_ALL,
+  coverageJa:
+    '馬路村（JIS 39306）観光5・宿泊1・飲食2・温泉1・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県19つ目のLIVEハブ。',
+  coverageEn:
+    'Umaji Village (JIS 39306), 5 tourism + 1 stay + 2 dining + 1 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Nineteenth LIVE Kochi hub.',
+  mapLabelJa: '馬路村の出典座標6件',
+  mapLabelEn: '6 sourced coordinates in Umaji Village',
+  mapCitePackJa: '点は村・公式ページ掲載施設のWikipedia/Commons/楽天等出典座標6件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 6 sourced coordinates for village/official facilities (accessed 2026-09-08).',
+  licenseNoteJa: '行のライセンスは村公式・公式観光サイト掲載情報。村ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are village-site listings, facts from vill.umaji.lg.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '村公式サイト掲載情報',
+  licenseSiteEn: 'Village-site listing'
+};
+
+
 export const NAHARI_LOOKUP: LookupTown = {
   slug: 'nahari',
   prefectureSlug: 'kochi',
@@ -2825,7 +2865,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   nahari: NAHARI_LOOKUP,
   yasuda: YASUDA_LOOKUP,
   geisei: GEISEI_LOOKUP,
-  kitagawa: KITAGAWA_LOOKUP
+  kitagawa: KITAGAWA_LOOKUP,
+  umaji: UMAJI_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
