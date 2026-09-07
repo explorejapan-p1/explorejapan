@@ -26,6 +26,7 @@ import {KANONJI, KANONJI_PLACE_PHOTO} from '@/data/kanonji';
 import {SAKAIDE, SAKAIDE_PLACE_PHOTO} from '@/data/sakaide';
 import {NAOSHIMA, NAOSHIMA_PLACE_PHOTO} from '@/data/naoshima';
 import {SHODOSHIMA, SHODOSHIMA_PLACE_PHOTO} from '@/data/shodoshima';
+import {ZENTSUJI, ZENTSUJI_PLACE_PHOTO} from '@/data/zentsuji';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -121,6 +122,7 @@ function localityJa(slug: string): string {
   if (slug === 'sakaide') return SAKAIDE.nameJa;
   if (slug === 'naoshima') return NAOSHIMA.nameJa;
   if (slug === 'shodoshima') return SHODOSHIMA.nameJa;
+  if (slug === 'zentsuji') return ZENTSUJI.nameJa;
   return MIMA.nameJa;
 }
 
@@ -155,6 +157,7 @@ function localityEn(slug: string): string {
   if (slug === 'sakaide') return SAKAIDE.nameEn;
   if (slug === 'naoshima') return NAOSHIMA.nameEn;
   if (slug === 'shodoshima') return SHODOSHIMA.nameEn;
+  if (slug === 'zentsuji') return ZENTSUJI.nameEn;
   return MIMA.nameEn;
 }
 
@@ -2554,3 +2557,64 @@ export function shodoshimaGraph(locale: AppLocale) {
     ]
   };
 }
+
+export function zentsujiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kagawa/zentsuji');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('zentsuji');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? ZENTSUJI.nameJa : ZENTSUJI.nameEn,
+        alternateName: isJa ? ZENTSUJI.nameEn : ZENTSUJI.nameJa,
+        identifier: ZENTSUJI.jis,
+        url,
+        image: photoAbs(ZENTSUJI_PLACE_PHOTO),
+        sameAs: [ZENTSUJI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '文京町二丁目1番1号' : '2-1-1 Bunkyo-cho',
+          addressLocality: isJa ? ZENTSUJI.nameJa : ZENTSUJI.nameEn,
+          addressRegion: isJa ? ZENTSUJI.prefectureJa : ZENTSUJI.prefectureEn,
+          postalCode: ZENTSUJI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? ZENTSUJI.prefectureJa : ZENTSUJI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? ZENTSUJI.nameJa : ZENTSUJI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? ZENTSUJI.prefectureJa : ZENTSUJI.prefectureEn, item: canonicalUrl(locale, 'kagawa')},
+          {'@type': 'ListItem', position: 3, name: isJa ? ZENTSUJI.nameJa : ZENTSUJI.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '善通寺市の案内' : 'Places in Zentsuji',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+

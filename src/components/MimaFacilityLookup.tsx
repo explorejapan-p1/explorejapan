@@ -49,6 +49,7 @@ import {KANONJI_TRAVEL_ACCESSED} from '@/data/kanonji-travel';
 import {SAKAIDE_TRAVEL_ACCESSED} from '@/data/sakaide-travel'
 import {NAOSHIMA_TRAVEL_ACCESSED} from '@/data/naoshima-travel';
 import {SHODOSHIMA_TRAVEL_ACCESSED} from '@/data/shodoshima-travel';
+import {ZENTSUJI_TRAVEL_ACCESSED} from '@/data/zentsuji-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1055,6 +1056,26 @@ export function MimaFacilityLookup({
                 Dining from Tabelog Shodoshima Town shop pages ({SHODOSHIMA_TRAVEL_ACCESSED}).
                 Onsen: Kokuminshukusha and Bay Resort bath stills (distinct from stay room keys). Experience: Kankakei Ropeway.
                 Shopping and commerce stay at 0 without sourced photos. Seventh LIVE Kagawa hub.
+              </>
+            )
+
+
+) : town.slug === 'zentsuji' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（総本山善通寺・曼荼羅寺・出釈迦寺・甲山寺・善通寺駅・市美術館）。
+                宿泊は楽天トラベルの客室写真（{ZENTSUJI_TRAVEL_ACCESSED}）。
+                飲食は食べログ善通寺市の公開店ページ（{ZENTSUJI_TRAVEL_ACCESSED}）。
+                温泉は遍路民宿鶴吉の露天風呂（公式風呂写真・客室キーと分離）。体験は出典なしのため0件。
+                買物は大通り商店街（Commons）。商業は出典写真が無いため0件。香川県8つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Zentsū-ji, Mandara-ji, Shusshaka-ji, Kōyama-ji, Zentsūji Station, City Art Museum).
+                Lodging from Rakuten Travel room photos ({ZENTSUJI_TRAVEL_ACCESSED}).
+                Dining from Tabelog Zentsuji shop pages ({ZENTSUJI_TRAVEL_ACCESSED}).
+                Onsen: Tsurukichi open-air bath still (distinct from stay room keys). Experience stays at 0 without sourced photos.
+                Shopping: Odori arcade (Commons). Commerce stays at 0. Eighth LIVE Kagawa hub.
               </>
             )
 
