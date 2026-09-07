@@ -1,0 +1,10 @@
+komatsushima (JIS 36203) photo gaps — accessed 2026-09-07
+Pass 1: tourism Commons only; no frozen pack.
+dining: 0 — Tabelog FOOD dish photos not yet wired (Pass 2).
+stay: 0 — no sourced room photo.
+onsen: 0 — no sourced bath photo.
+experience: 0 — no official list with photo.
+shopping: 0 — no sourced photo.
+commerce: 0 — no sourced photo.
+AED/hospitals/care/shelters/cultural_property/GTFS: 0 — no frozen open-data pack.
+Cover: File:Ote beach 2010-8-14 No,2.JPG (大手海岸 / Wadajima) — not 鳴門大手 / Omiko(徳島市).

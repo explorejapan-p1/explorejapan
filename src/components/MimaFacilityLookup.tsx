@@ -41,6 +41,7 @@ import {NAKA_TRAVEL_ACCESSED, NAKA_TRAVEL_SOURCES} from '@/data/naka-travel';
 import {MINAMI_TRAVEL_ACCESSED, MINAMI_TRAVEL_SOURCES} from '@/data/minami-travel';
 import {KAIYO_TRAVEL_ACCESSED, KAIYO_TRAVEL_SOURCES} from '@/data/kaiyo-travel';
 import {AIZUMI_TRAVEL_ACCESSED, AIZUMI_TRAVEL_SOURCES} from '@/data/aizumi-travel';
+import {KOMATSUSHIMA_TRAVEL_ACCESSED, KOMATSUSHIMA_TRAVEL_SOURCES} from '@/data/komatsushima-travel';
 import {MUGI_TRAVEL_ACCESSED, MUGI_TRAVEL_SOURCES} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES} from '@/data/naruto-travel';
 import {
@@ -916,7 +917,25 @@ export function MimaFacilityLookup({
               </>
             )
 
-          ) : town.slug === 'aizumi' ? (
+          
+          ) : town.slug === 'komatsushima' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（大手海岸・立江寺・恩山寺・金長神社・ステーションパーク）。
+                飲食・宿泊・温泉・体験・買物・商業は未掲載のため0件（accessed {KOMATSUSHIMA_TRAVEL_ACCESSED}）。
+                カードは出典写真があるものだけ。点数は持ちません。
+                市公式：<a href={KOMATSUSHIMA_TRAVEL_SOURCES.home}>小松島市</a> · <a href={KOMATSUSHIMA_TRAVEL_SOURCES.navi}>小松島ナビ</a>。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Ōte Beach, Tatsue-ji, Onzan-ji, Kincho Shrine, Station Park).
+                Dining, lodging, onsen, experience, shopping, and commerce stay at 0 — unpublished (accessed {KOMATSUSHIMA_TRAVEL_ACCESSED}).
+                Cards show only listings with a sourced photo. No public scores.
+                City sources: <a href={KOMATSUSHIMA_TRAVEL_SOURCES.home}>Komatsushima City</a> · <a href={KOMATSUSHIMA_TRAVEL_SOURCES.navi}>Komatsushima Navi</a>.
+              </>
+            )
+
+) : town.slug === 'aizumi' ? (
             locale === 'ja' ? (
               <>
                 <a href={AIZUMI_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ藍住町の公開店ページ（

@@ -13,6 +13,7 @@ import {ISHII_PLACE_PHOTO} from '@/data/ishii';
 import {ITANO_PLACE_PHOTO} from '@/data/itano';
 import {KAMIITA_PLACE_PHOTO} from '@/data/kamiita';
 import {NARUTO_PLACE_PHOTO} from '@/data/naruto';
+import {KOMATSUSHIMA_PLACE_PHOTO} from '@/data/komatsushima';
 import {TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {PREFECTURES, PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
@@ -101,7 +102,9 @@ export default async function PrefecturePage({params}: Props) {
                                       ? ITANO_PLACE_PHOTO
                                       : m.slug === 'kamiita'
                                         ? KAMIITA_PLACE_PHOTO
-                                        : MIMA_PLACE_PHOTO;
+                                        : m.slug === 'komatsushima'
+                                          ? KOMATSUSHIMA_PLACE_PHOTO
+                                          : MIMA_PLACE_PHOTO;
               const href = `${BASE_PATH}/${locale}/tokushima/${m.slug}/`;
               return (
                 <li key={m.slug} className={live ? 'muni-card is-live' : 'muni-card is-hold'}>

@@ -2,7 +2,7 @@ import type {FacilityRow} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import type {TravelRow} from './mima-travel';
 
-export type ReadySlug = 'mima' | 'tsurugi' | 'yoshinogawa' | 'miyoshi' | 'tokushima' | 'awa' | 'higashimiyoshi' | 'kitajima' | 'naruto' | 'matsushige' | 'ishii' | 'itano' | 'kamiita' | 'kamiyama' | 'katsuura' | 'kamikatsu' | 'sanagochi' | 'naka' | 'mugi' | 'minami' | 'kaiyo' | 'aizumi';
+export type ReadySlug = 'mima' | 'tsurugi' | 'yoshinogawa' | 'miyoshi' | 'tokushima' | 'awa' | 'higashimiyoshi' | 'kitajima' | 'naruto' | 'matsushige' | 'ishii' | 'itano' | 'kamiita' | 'kamiyama' | 'katsuura' | 'kamikatsu' | 'sanagochi' | 'naka' | 'mugi' | 'minami' | 'kaiyo' | 'aizumi' | 'komatsushima';
 
 export type Rankable = {
   id: string;
@@ -42,5 +42,5 @@ export type LookupTown = {
 };
 
 export function isReadySlug(slug: string): slug is ReadySlug {
-  return slug === 'mima' || slug === 'tsurugi' || slug === 'yoshinogawa' || slug === 'miyoshi' || slug === 'tokushima' || slug === 'awa' || slug === 'higashimiyoshi' || slug === 'kitajima' || slug === 'naruto' || slug === 'matsushige' || slug === 'ishii' || slug === 'itano' || slug === 'kamiita' || slug === 'kamiyama' || slug === 'katsuura' || slug === 'kamikatsu' || slug === 'sanagochi' || slug === 'naka' || slug === 'mugi' || slug === 'minami' || slug === 'kaiyo' || slug === 'aizumi';
+  return slug === 'mima' || slug === 'tsurugi' || slug === 'yoshinogawa' || slug === 'miyoshi' || slug === 'tokushima' || slug === 'awa' || slug === 'higashimiyoshi' || slug === 'kitajima' || slug === 'naruto' || slug === 'matsushige' || slug === 'ishii' || slug === 'itano' || slug === 'kamiita' || slug === 'kamiyama' || slug === 'katsuura' || slug === 'kamikatsu' || slug === 'sanagochi' || slug === 'naka' || slug === 'mugi' || slug === 'minami' || slug === 'kaiyo' || slug === 'aizumi' || slug === 'komatsushima';
 }

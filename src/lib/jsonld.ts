@@ -17,6 +17,7 @@ import {NAKA, NAKA_PLACE_PHOTO} from '@/data/naka';
 import {MUGI, MUGI_PLACE_PHOTO} from '@/data/mugi';
 import {MINAMI, MINAMI_PLACE_PHOTO} from '@/data/minami';
 import {AIZUMI, AIZUMI_PLACE_PHOTO} from '@/data/aizumi';
+import {KOMATSUSHIMA, KOMATSUSHIMA_PLACE_PHOTO} from '@/data/komatsushima';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
@@ -100,6 +101,7 @@ function localityJa(slug: string): string {
   if (slug === 'mugi') return MUGI.nameJa;
   if (slug === 'minami') return MINAMI.nameJa;
   if (slug === 'aizumi') return AIZUMI.nameJa;
+  if (slug === 'komatsushima') return KOMATSUSHIMA.nameJa;
   if (slug === 'kaiyo') return KAIYO.nameJa;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameJa;
   return MIMA.nameJa;
@@ -125,6 +127,7 @@ function localityEn(slug: string): string {
   if (slug === 'mugi') return MUGI.nameEn;
   if (slug === 'minami') return MINAMI.nameEn;
   if (slug === 'aizumi') return AIZUMI.nameEn;
+  if (slug === 'komatsushima') return KOMATSUSHIMA.nameEn;
   if (slug === 'kaiyo') return KAIYO.nameEn;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameEn;
   return MIMA.nameEn;
@@ -1910,6 +1913,67 @@ export function aizumiGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '藍住町の案内' : 'Places in Aizumi Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+
+export function komatsushimaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'tokushima/komatsushima');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('komatsushima');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['City', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? KOMATSUSHIMA.nameJa : KOMATSUSHIMA.nameEn,
+        alternateName: isJa ? KOMATSUSHIMA.nameEn : KOMATSUSHIMA.nameJa,
+        identifier: KOMATSUSHIMA.jis,
+        url,
+        image: photoAbs(KOMATSUSHIMA_PLACE_PHOTO),
+        sameAs: [KOMATSUSHIMA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '横須町1番1号' : '1-1 Yokosu-cho',
+          addressLocality: isJa ? KOMATSUSHIMA.nameJa : KOMATSUSHIMA.nameEn,
+          addressRegion: isJa ? KOMATSUSHIMA.prefectureJa : KOMATSUSHIMA.prefectureEn,
+          postalCode: KOMATSUSHIMA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? KOMATSUSHIMA.prefectureJa : KOMATSUSHIMA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? KOMATSUSHIMA.nameJa : KOMATSUSHIMA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? KOMATSUSHIMA.prefectureJa : KOMATSUSHIMA.prefectureEn, item: canonicalUrl(locale, 'tokushima')},
+          {'@type': 'ListItem', position: 3, name: isJa ? KOMATSUSHIMA.nameJa : KOMATSUSHIMA.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '小松島市の案内' : 'Places in Komatsushima City',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

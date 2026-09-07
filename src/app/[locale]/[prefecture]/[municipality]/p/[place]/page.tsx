@@ -12,6 +12,7 @@ import {MATSUSHIGE} from '@/data/matsushige';
 import {ISHII} from '@/data/ishii';
 import {ITANO} from '@/data/itano';
 import {NARUTO} from '@/data/naruto';
+import {KOMATSUSHIMA} from '@/data/komatsushima';
 import {isReadySlug} from '@/data/town-lookup';
 import {PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {Link} from '@/i18n/navigation';
@@ -69,7 +70,9 @@ export async function generateMetadata({params}: Props) {
                         ? '石井町'
                         : municipality === 'itano'
                           ? '板野町'
-                          : '美馬市';
+                          : municipality === 'komatsushima'
+                            ? '小松島市'
+                            : '美馬市';
   const townEn =
     municipality === 'tsurugi'
       ? 'Tsurugi Town'
@@ -93,7 +96,9 @@ export async function generateMetadata({params}: Props) {
                         ? 'Ishii Town'
                         : municipality === 'itano'
                           ? 'Itano Town'
-                          : 'Mima City';
+                          : municipality === 'komatsushima'
+                            ? 'Komatsushima City'
+                            : 'Mima City';
   const description =
     loc === 'ja'
       ? `${listing.nameJa}（${townJa}）。出典のある案内のみ。`
@@ -141,7 +146,9 @@ export default async function PlacePage({params}: Props) {
                         ? ISHII.nameJa
                         : municipality === 'itano'
                           ? ITANO.nameJa
-                          : MIMA.nameJa;
+                          : municipality === 'komatsushima'
+                            ? KOMATSUSHIMA.nameJa
+                            : MIMA.nameJa;
   const townNameEn =
     municipality === 'tsurugi'
       ? TSURUGI.nameEn
@@ -165,7 +172,9 @@ export default async function PlacePage({params}: Props) {
                         ? ISHII.nameEn
                         : municipality === 'itano'
                           ? ITANO.nameEn
-                          : MIMA.nameEn;
+                          : municipality === 'komatsushima'
+                            ? KOMATSUSHIMA.nameEn
+                            : MIMA.nameEn;
   return (
     <>
       <JsonLd data={placeGraph(listing, loc)} />

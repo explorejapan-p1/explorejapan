@@ -269,6 +269,16 @@ import {
   AIZUMI_TRAVEL_STAY
 } from './aizumi-travel';
 
+import {KOMATSUSHIMA, KOMATSUSHIMA_PLACE_PHOTO, KOMATSUSHIMA_FACILITIES, KOMATSUSHIMA_EXPECTED_GEO_COUNT, KOMATSUSHIMA_EXPECTED_ROW_COUNT} from './komatsushima';
+import {
+  KOMATSUSHIMA_TRAVEL_ALL,
+  KOMATSUSHIMA_TRAVEL_COMMERCE,
+  KOMATSUSHIMA_TRAVEL_DINING,
+  KOMATSUSHIMA_TRAVEL_SHOPPING,
+  KOMATSUSHIMA_TRAVEL_STAY
+} from './komatsushima-travel';
+
+
 import {
   KAIYO_TRAVEL_DINING,
   KAIYO_TRAVEL_STAY,
@@ -1088,6 +1098,41 @@ export const MUGI_LOOKUP: LookupTown = {
   licenseSiteEn: 'Town-site listing'
 };
 
+
+export const KOMATSUSHIMA_LOOKUP: LookupTown = {
+  slug: 'komatsushima',
+  jis: KOMATSUSHIMA.jis,
+  nameJa: KOMATSUSHIMA.nameJa,
+  nameEn: KOMATSUSHIMA.nameEn,
+  heroPhoto: KOMATSUSHIMA_PLACE_PHOTO,
+  photoCiteJa:
+    '写真は小松島市和田島町の大手海岸。Mti、2010-08-14、CC BY-SA 3.0。File:Ote beach 2010-8-14 No,2.JPG。',
+  photoCiteEn:
+    'Photo: Ōte Beach, Wadajima, Komatsushima. Mti, 14 Aug 2010, CC BY-SA 3.0. File:Ote beach 2010-8-14 No,2.JPG.',
+  rows: KOMATSUSHIMA_FACILITIES,
+  expectedGeo: KOMATSUSHIMA_EXPECTED_GEO_COUNT,
+  expectedRows: KOMATSUSHIMA_EXPECTED_ROW_COUNT,
+  travelDining: KOMATSUSHIMA_TRAVEL_DINING,
+  travelStay: KOMATSUSHIMA_TRAVEL_STAY,
+  travelShopping: KOMATSUSHIMA_TRAVEL_SHOPPING,
+  travelCommerce: KOMATSUSHIMA_TRAVEL_COMMERCE,
+  travelAll: KOMATSUSHIMA_TRAVEL_ALL,
+  coverageJa:
+    '小松島市（JIS 36203）観光5件（出典写真がある施設のみ）。オープンデータ凍結パックは未掲載。AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。飲食・宿泊・温泉・体験・買物・商業は0件（未掲載）。',
+  coverageEn:
+    'Komatsushima City (JIS 36203), 5 tourism rows with sourced photos. No frozen open-data pack. AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. Dining, stay, onsen, experience, shopping, commerce: 0, unpublished.',
+  mapLabelJa: '小松島市の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Komatsushima City',
+  mapCitePackJa: '点は市・観光ページ掲載施設のWikipedia等出典座標5件（accessed 2026-09-07）。',
+  mapCitePackEn: 'Points: 5 sourced coordinates for city/tourism-page facilities (accessed 2026-09-07).',
+  licenseNoteJa:
+    '行のライセンスは市公式サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.komatsushima.lg.jp, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
 const BY_SLUG: Record<ReadySlug, LookupTown> = {
   mima: MIMA_LOOKUP,
   tsurugi: TSURUGI_LOOKUP,
@@ -1110,7 +1155,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   mugi: MUGI_LOOKUP,
   minami: MINAMI_LOOKUP,
   aizumi: AIZUMI_LOOKUP,
-  kaiyo: KAIYO_LOOKUP
+  kaiyo: KAIYO_LOOKUP,
+  komatsushima: KOMATSUSHIMA_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

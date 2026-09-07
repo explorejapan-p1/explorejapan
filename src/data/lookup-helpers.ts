@@ -228,6 +228,19 @@ import {
 } from './aizumi-travel';
 
 import {
+  isKomatsushimaExperiencePackRow,
+  isKomatsushimaOnsenPackRow,
+  isKomatsushimaStayPackRow,
+  komatsushimaPackRowMatchesFilter,
+  komatsushimaSightPhoto,
+  komatsushimaSourcedHook,
+  komatsushimaTopChipForRow,
+  rankKomatsushimaSeeRows,
+  resolveKomatsushimaFilter
+} from './komatsushima-travel';
+
+
+import {
   isKaiyoExperiencePackRow,
   isKaiyoOnsenPackRow,
   isKaiyoStayPackRow,
@@ -570,6 +583,19 @@ const MUGI_HELPERS: LookupHelpers = {
   resolveFilter: resolveMugiFilter
 };
 
+
+const KOMATSUSHIMA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isKomatsushimaOnsenPackRow,
+  isExperiencePackRow: isKomatsushimaExperiencePackRow,
+  isStayPackRow: isKomatsushimaStayPackRow,
+  packRowMatchesFilter: komatsushimaPackRowMatchesFilter,
+  rankSeeRows: rankKomatsushimaSeeRows,
+  sightPhoto: komatsushimaSightPhoto,
+  sourcedHook: komatsushimaSourcedHook,
+  topChipForRow: komatsushimaTopChipForRow,
+  resolveFilter: resolveKomatsushimaFilter
+};
+
 export function townHelpers(slug: ReadySlug): LookupHelpers {
 
   if (slug === 'tsurugi') return TSURUGI_HELPERS;
@@ -593,5 +619,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'minami') return MINAMI_HELPERS;
   if (slug === 'kaiyo') return KAIYO_HELPERS;
   if (slug === 'aizumi') return AIZUMI_HELPERS;
+  if (slug === 'komatsushima') return KOMATSUSHIMA_HELPERS;
   return MIMA_HELPERS;
 }
