@@ -183,6 +183,20 @@ export const KOTOHIRA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'https://dormy-hotels.com/resort/hotels/shikishimakan/rooms/',
     '公式サイト'
   ),
+  'ことひら温泉 琴参閣 大浴場': sourcePhoto(
+    'kotohira-onsen-kotosankaku.jpg',
+    'ことひら温泉 琴参閣の大浴場写真',
+    'Kotosankaku bath photo',
+    'https://www.kotosankaku.jp/hotspa/',
+    '公式サイト'
+  ),
+  'ことひら温泉 御宿 敷島館 大浴場': sourcePhoto(
+    'kotohira-onsen-shikishima.jpg',
+    'ことひら温泉 御宿 敷島館の大浴場写真',
+    'Shikishimakan bath photo',
+    'https://dormy-hotels.com/resort/hotels/shikishimakan/hotspring/',
+    '公式サイト'
+  ),
 
   "大衆焼肉骨付鳥 金牛 琴平店": sourcePhoto(
     "kotohira-37013981-dish.jpg",
@@ -305,6 +319,6 @@ export const KOTOHIRA_FACILITIES: readonly FacilityRow[] = [
   sight('kotohira-sight-04', '鞘橋', '香川県仲多度郡琴平町', null, KOTOHIRA.sources.kanko, 34.1908, 133.8105),
   sight('kotohira-sight-05', '高灯篭', '香川県仲多度郡琴平町', null, KOTOHIRA.sources.kanko, 34.1925, 133.8130),
   sight('kotohira-sight-06', '旧金毘羅大芝居', '香川県仲多度郡琴平町1241', '0877-75-6716', KOTOHIRA.sources.kanamaruza, 34.1917, 133.8128),
-  sight('kotohira-onsen-01', 'ことひら温泉 琴参閣', '香川県仲多度郡琴平町685-11', '0877-75-1000', 'https://kotosankaku.jp/hotspa/', 34.1900, 133.8110),
-  sight('kotohira-onsen-02', 'ことひら温泉 御宿 敷島館', '香川県仲多度郡琴平町川西713-1', '0877-58-8001', 'https://dormy-hotels.com/resort/hotels/shikishimakan/hotspring/', 34.1892, 133.8118)
+  sight('kotohira-onsen-01', 'ことひら温泉 琴参閣 大浴場', '香川県仲多度郡琴平町685-11', '0877-75-1000', 'https://www.kotosankaku.jp/hotspa/', 34.1900, 133.8110),
+  sight('kotohira-onsen-02', 'ことひら温泉 御宿 敷島館 大浴場', '香川県仲多度郡琴平町川西713-1', '0877-58-8001', 'https://dormy-hotels.com/resort/hotels/shikishimakan/hotspring/', 34.1892, 133.8118)
 ];

@@ -942,7 +942,7 @@ export function MimaFacilityLookup({
                 観光は出典写真がある施設のみ（金刀比羅宮・旭社・表参道・鞘橋・高灯篭）。
                 宿泊は温泉旅館公式の客室写真（{KOTOHIRA_TRAVEL_ACCESSED}）。
                 飲食は食べログ琴平町の公開店ページ（{KOTOHIRA_TRAVEL_ACCESSED}）。
-                温泉は琴参閣・敷島館（公式風呂写真の旅館名で掲載）。体験は旧金毘羅大芝居。
+                温泉は琴参閣・敷島館の大浴場（公式風呂写真・客室キーと分離）。体験は旧金毘羅大芝居。
                 買物・商業は出典写真が無いため0件。香川県2つ目のLIVEハブ。
               </>
             ) : (
@@ -950,7 +950,7 @@ export function MimaFacilityLookup({
                 Tourism shows only facilities with a sourced photo (Kotohira-gū, Asahi-sha, Omotesandō, Saya Bridge, Takatōrō).
                 Lodging from onsen-ryokan official room photos ({KOTOHIRA_TRAVEL_ACCESSED}).
                 Dining from Tabelog Kotohira Town shop pages ({KOTOHIRA_TRAVEL_ACCESSED}).
-                Onsen: Kotosankaku and Shikishimakan. Experience: Kanamaruza.
+                Onsen: Kotosankaku and Shikishimakan bath stills (distinct from stay room keys). Experience: Kanamaruza.
                 Shopping and commerce stay at 0 without sourced photos. Second LIVE Kagawa hub.
               </>
             )

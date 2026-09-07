@@ -1,7 +1,7 @@
 /**
  * Kotohira Town travel layer. No frozen pack.
  * Dining from 食べログ 琴平町 (C37403) public shop pages. FOOD dish photos required.
- * Stay from 公式 room/onsen share images (出典). Rank strongest first.
+ * Stay from 公式 room images (出典). Onsen pack uses distinct 大浴場 names + bath stills (no shared stay photo keys).
  * Shopping / commerce: honest 0. Onsen + experience densified when attributable.
  * Do not invent. Do not copy Tokushima / Takamatsu TRAVEL_* rows or photos.
  */
@@ -26,7 +26,7 @@ export const KOTOHIRA_TRAVEL_SOURCES = {
   shikishima: 'https://dormy-hotels.com/resort/hotels/shikishimakan/'
 } as const;
 
-export const KOTOHIRA_ONSEN_PACK_NAMES = ['ことひら温泉 琴参閣', 'ことひら温泉 御宿 敷島館'] as const;
+export const KOTOHIRA_ONSEN_PACK_NAMES = ['ことひら温泉 琴参閣 大浴場', 'ことひら温泉 御宿 敷島館 大浴場'] as const;
 export const KOTOHIRA_ONSEN_PACK_SET: ReadonlySet<string> = new Set(KOTOHIRA_ONSEN_PACK_NAMES);
 export const KOTOHIRA_EXPERIENCE_PACK_NAMES = ['旧金毘羅大芝居'] as const;
 export const KOTOHIRA_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(KOTOHIRA_EXPERIENCE_PACK_NAMES);

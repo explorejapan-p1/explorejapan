@@ -1286,9 +1286,9 @@ export const KOTOHIRA_LOOKUP: LookupTown = {
   travelCommerce: KOTOHIRA_TRAVEL_COMMERCE,
   travelAll: KOTOHIRA_TRAVEL_ALL,
   coverageJa:
-    '琴平町（JIS 37403）観光5・宿泊2・飲食12・温泉2・体験1（出典写真がある施設のみ）。オープンデータ凍結パックは未掲載。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。香川県2つ目のLIVEハブ。',
+    '琴平町（JIS 37403）観光5・宿泊2・飲食12・温泉2・体験1（出典写真がある施設のみ。温泉は大浴場キーで客室と分離）。オープンデータ凍結パックは未掲載。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。香川県2つ目のLIVEハブ。',
   coverageEn:
-    'Kotohira Town (JIS 37403), 5 tourism + 2 stay + 12 dining + 2 onsen + 1 experience with sourced photos. No frozen open-data pack. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. Second LIVE Kagawa hub.',
+    'Kotohira Town (JIS 37403), 5 tourism + 2 stay + 12 dining + 2 onsen + 1 experience with sourced photos (onsen uses distinct bath keys, not stay room frames). No frozen open-data pack. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. Second LIVE Kagawa hub.',
   mapLabelJa: '琴平町の出典座標8件',
   mapLabelEn: '8 sourced coordinates in Kotohira Town',
   mapCitePackJa: '点は町・神社・公式ページ掲載施設のWikipedia等出典座標8件（accessed 2026-09-07）。',
