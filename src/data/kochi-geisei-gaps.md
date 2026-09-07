@@ -1,6 +1,6 @@
 # Geisei Village (芸西村) gaps (TG566 seventeenth Kochi hub)
 
-Accessed 2026-09-08 (JST).
+Accessed 2026-09-08 (JST). LIVE tip `3512bdf0f9`.
 
 ## LIVE pills (photo-first)
 - stay: 1 (芸西村の家 / Rakuten HOTEL/197184 和室8畳 — stay≠onsen)
@@ -26,4 +26,4 @@ Accessed 2026-09-08 (JST).
 - SEA HOUSE kept as sight (Commons exterior); dining skipped (カフェ/スイーツ dominant).
 
 ## CDN
-(pending cold verify after push)
+Cold CDN PASS after Pages lag (~75s). Live `ja/kochi/geisei/` PASS: hero 芸西村, desc 芸西村。琴ヶ浜、SEA HOUSE、ごめん・なはり線、食。, pills stay/dining/onsen/experience/sights = 1/3/0/0/5. Pref cover geisei-cover-kotogahama present.
