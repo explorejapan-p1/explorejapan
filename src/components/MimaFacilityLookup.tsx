@@ -70,6 +70,7 @@ import {TOSA_TRAVEL_ACCESSED} from '@/data/tosa-travel';
 import {SUSAKI_TRAVEL_ACCESSED} from '@/data/susaki-travel';
 import {SHIMANTO_TRAVEL_ACCESSED} from '@/data/shimanto-travel';
 import {TOSASHIMIZU_TRAVEL_ACCESSED} from '@/data/tosashimizu-travel';
+import {SUKUMO_TRAVEL_ACCESSED} from '@/data/sukumo-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1462,6 +1463,22 @@ export function MimaFacilityLookup({
                 Lodging from Rakuten Travel room photos ({MUROTO_TRAVEL_ACCESSED}).
                 Dining from Tabelog Muroto shop pages ({MUROTO_TRAVEL_ACCESSED}).
                 Onsen: 0 (room-still stay only; no attributable bath keys). Experience: Muroto Geopark Center (Commons). Shopping/commerce: 0. Seventh LIVE Kochi hub.
+              </>
+            )
+          ) : town.slug === 'sukumo' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（宿毛湾・咸陽島・宿毛城・延光寺・沖の島・出井甌穴）。
+                宿泊は楽天トラベル宿毛リゾート椰子の湯の客室写真（{SUKUMO_TRAVEL_ACCESSED}）。
+                飲食は食べログ宿毛市の公開店ページ（{SUKUMO_TRAVEL_ACCESSED}）。
+                温泉は同施設露天風呂（楽天・宿泊と別キー）。体験は道の駅すくも（Commons）。買物・商業は0件。高知県12つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Sukumo Bay, Kan\'yō Island, Sukumo Castle, Enkō-ji, Okinoshima, Dei Ouketsu).
+                Lodging: Sukumo Resort Yashinoyu Rakuten room photo ({SUKUMO_TRAVEL_ACCESSED}).
+                Dining from Tabelog Sukumo shop pages ({SUKUMO_TRAVEL_ACCESSED}).
+                Onsen: outdoor bath still (Rakuten; stay≠onsen). Experience: Michinoeki Sukumo (Commons). Shopping/commerce: 0. Twelfth LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'tosashimizu' ? (

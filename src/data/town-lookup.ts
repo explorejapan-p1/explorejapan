@@ -318,6 +318,7 @@ import {TOSA, TOSA_PLACE_PHOTO, TOSA_FACILITIES, TOSA_EXPECTED_GEO_COUNT, TOSA_E
 import {SUSAKI, SUSAKI_PLACE_PHOTO, SUSAKI_FACILITIES, SUSAKI_EXPECTED_GEO_COUNT, SUSAKI_EXPECTED_ROW_COUNT} from './susaki';
 import {SHIMANTO, SHIMANTO_PLACE_PHOTO, SHIMANTO_FACILITIES, SHIMANTO_EXPECTED_GEO_COUNT, SHIMANTO_EXPECTED_ROW_COUNT} from './shimanto';
 import {TOSASHIMIZU, TOSASHIMIZU_PLACE_PHOTO, TOSASHIMIZU_FACILITIES, TOSASHIMIZU_EXPECTED_GEO_COUNT, TOSASHIMIZU_EXPECTED_ROW_COUNT} from './tosashimizu';
+import {SUKUMO, SUKUMO_PLACE_PHOTO, SUKUMO_FACILITIES, SUKUMO_EXPECTED_GEO_COUNT, SUKUMO_EXPECTED_ROW_COUNT} from './sukumo';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -592,6 +593,13 @@ import {
   TOSASHIMIZU_TRAVEL_COMMERCE,
   TOSASHIMIZU_TRAVEL_ALL,
 } from './tosashimizu-travel';
+import {
+  SUKUMO_TRAVEL_DINING,
+  SUKUMO_TRAVEL_STAY,
+  SUKUMO_TRAVEL_SHOPPING,
+  SUKUMO_TRAVEL_COMMERCE,
+  SUKUMO_TRAVEL_ALL
+} from './sukumo-travel';
 
 
 
@@ -2140,6 +2148,39 @@ export const TOSASHIMIZU_LOOKUP: LookupTown = {
   licenseSiteEn: 'City-site listing'
 };
 
+
+export const SUKUMO_LOOKUP: LookupTown = {
+  slug: 'sukumo',
+  prefectureSlug: 'kochi',
+  jis: SUKUMO.jis,
+  nameJa: SUKUMO.nameJa,
+  nameEn: SUKUMO.nameEn,
+  heroPhoto: SUKUMO_PLACE_PHOTO,
+  photoCiteJa: '写真は宿毛湾。inunami、2019-09-06、CC BY 2.0。File:Sukumo_Bay_-_Sep_6,_2019.jpg。',
+  photoCiteEn: 'Photo: Sukumo Bay. inunami, 6 Sep 2019, CC BY 2.0. File:Sukumo_Bay_-_Sep_6,_2019.jpg.',
+  rows: SUKUMO_FACILITIES,
+  expectedGeo: SUKUMO_EXPECTED_GEO_COUNT,
+  expectedRows: SUKUMO_EXPECTED_ROW_COUNT,
+  travelDining: SUKUMO_TRAVEL_DINING,
+  travelStay: SUKUMO_TRAVEL_STAY,
+  travelShopping: SUKUMO_TRAVEL_SHOPPING,
+  travelCommerce: SUKUMO_TRAVEL_COMMERCE,
+  travelAll: SUKUMO_TRAVEL_ALL,
+  coverageJa:
+    '宿毛市（JIS 39208）観光6・宿泊1・飲食16・温泉1・体験1（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県12つ目のLIVEハブ。',
+  coverageEn:
+    'Sukumo City (JIS 39208), 6 tourism + 1 stay + 16 dining + 1 onsen + 1 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Twelfth LIVE Kochi hub.',
+  mapLabelJa: '宿毛市の出典座標8件',
+  mapLabelEn: '8 sourced coordinates in Sukumo City',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia/Commons等出典座標8件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 8 sourced coordinates for city/official facilities (accessed 2026-09-08).',
+  licenseNoteJa: '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are city-site listings, facts from city.sukumo.kochi.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
+
 export const SHIMANTO_LOOKUP: LookupTown = {
   slug: 'shimanto',
   prefectureSlug: 'kochi',
@@ -2536,7 +2577,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   tosa: TOSA_LOOKUP,
   susaki: SUSAKI_LOOKUP,
   shimanto: SHIMANTO_LOOKUP,
-  tosashimizu: TOSASHIMIZU_LOOKUP
+  tosashimizu: TOSASHIMIZU_LOOKUP,
+  sukumo: SUKUMO_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
