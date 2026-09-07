@@ -1,6 +1,6 @@
 # Kitagawa Village (北川村) gaps (TG566 eighteenth Kochi hub)
 
-Accessed 2026-09-08 (JST). LIVE tip pending.
+Accessed 2026-09-08 (JST). LIVE tip `cfeb867ba8`.
 
 ## LIVE pills (photo-first)
 - stay: 1 (北川村温泉 ゆずの宿 / Rakuten HOTEL/167471 客室和洋 — stay≠onsen)
@@ -26,4 +26,4 @@ Accessed 2026-09-08 (JST). LIVE tip pending.
 - Stay room still and onsen large bath are separate Rakuten mediaInfo keys (HARD BAR stay≠onsen).
 
 ## CDN
-Pending cold CDN after LIVE tip.
+Cold CDN PASS after Pages lag (~45s). Live `ja/kochi/kitagawa/` PASS: hero 北川村, desc 北川村。モネの庭、中岡慎太郎、魚梁瀬、食。, pills stay/dining/onsen/experience/sights = 1/3/1/0/5. Pref cover kitagawa-cover-monet present.
