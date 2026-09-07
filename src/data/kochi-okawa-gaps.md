@@ -1,6 +1,6 @@
 # Okawa Village (大川村) gaps (TG566 twenty-third Kochi hub)
 
-Accessed 2026-09-08 (JST). LIVE tip pending push.
+Accessed 2026-09-08 (JST). LIVE tip `4abe63adcc`.
 
 ## LIVE pills (photo-first)
 - stay: 1 (自然王国 白滝の里 / Rakuten HOTEL/16467 教室タイプ LARGE noplan-k1 → mediaInfo「教室」cat 00000001 c3546f… — stay≠onsen)
@@ -28,4 +28,4 @@ Accessed 2026-09-08 (JST). LIVE tip pending push.
 - 田野町 still deferred: no attributable room still under HARD BAR.
 
 ## CDN
-Cold CDN verify after Pages lag (~60s post-fix). Expect live `ja/kochi/okawa/` PASS: hero 大川村, desc 大川村。小金滝、白滝の里、吉野川、食。, pills stay/dining/onsen/experience/sights = 1/1/0/0/5. Pref cover okawa-cover-kogane present.
+Cold CDN PASS after Pages lag (~60s post-push). Live `ja/kochi/okawa/` PASS: hero 大川村, desc 大川村。小金滝、白滝の里、吉野川、食。, pills stay/dining/onsen/experience/sights = 1/1/0/0/5. Pref cover okawa-cover-kogane present. Tosacho regression PASS.
