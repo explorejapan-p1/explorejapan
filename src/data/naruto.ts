@@ -260,6 +260,97 @@ export const NARUTO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     TABELOG_36000070,
     '食べログ'
   ),
+  'アオアヲナルトリゾート': sourcePhoto(
+    'naruto-stay-01.jpg',
+    'アオアヲナルトリゾートの客室・外観写真',
+    'アオアヲナルトリゾート room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/6123/6123.html',
+    '楽天トラベル'
+  ),
+  'リゾートホテル モアナコースト': sourcePhoto(
+    'naruto-stay-02.jpg',
+    'リゾートホテル モアナコーストの客室・外観写真',
+    'リゾートホテル モアナコースト room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/7769/7769.html',
+    '楽天トラベル'
+  ),
+  'ホテルロータススーペリアリゾート鳴門': sourcePhoto(
+    'naruto-stay-03.jpg',
+    'ホテルロータススーペリアリゾート鳴門の客室・外観写真',
+    'ホテルロータススーペリアリゾート鳴門 room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/153466/153466.html',
+    '楽天トラベル'
+  ),
+  'ホテル ネクセル 鳴門': sourcePhoto(
+    'naruto-stay-04.jpg',
+    'ホテル ネクセル 鳴門の客室・外観写真',
+    'ホテル ネクセル 鳴門 room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/158397/158397.html',
+    '楽天トラベル'
+  ),
+  'ホテルエリアワン鳴門': sourcePhoto(
+    'naruto-stay-05.jpg',
+    'ホテルエリアワン鳴門の客室・外観写真',
+    'ホテルエリアワン鳴門 room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/16170/16170.html',
+    '楽天トラベル'
+  ),
+  'ホテルクラウンヒルズ鳴門 高速鳴門前': sourcePhoto(
+    'naruto-stay-06.jpg',
+    'ホテルクラウンヒルズ鳴門 高速鳴門前の客室・外観写真',
+    'ホテルクラウンヒルズ鳴門 room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/128426/128426.html',
+    '楽天トラベル'
+  ),
+  'グランドエクシブ鳴門 ザ・ロッジ': sourcePhoto(
+    'naruto-stay-07.jpg',
+    'グランドエクシブ鳴門 ザ・ロッジの客室・外観写真',
+    'グランドエクシブ鳴門 ザ・ロッジ room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/108677/108677.html',
+    '楽天トラベル'
+  ),
+  'ホテル ファーストシーズン鳴門': sourcePhoto(
+    'naruto-stay-08.jpg',
+    'ホテル ファーストシーズン鳴門の客室・外観写真',
+    'ホテル ファーストシーズン鳴門 room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/7505/7505.html',
+    '楽天トラベル'
+  ),
+  'ビジネスホテル鳴門': sourcePhoto(
+    'naruto-stay-09.jpg',
+    'ビジネスホテル鳴門の客室・外観写真',
+    'ビジネスホテル鳴門 room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/10747/10747.html',
+    '楽天トラベル'
+  ),
+  'ホテル カクイン鳴門': sourcePhoto(
+    'naruto-stay-10.jpg',
+    'ホテル カクイン鳴門の客室・外観写真',
+    'ホテル カクイン鳴門 room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/183411/183411.html',
+    '楽天トラベル'
+  ),
+  'ホテルリッジ': sourcePhoto(
+    'naruto-stay-11.jpg',
+    'ホテルリッジの客室・外観写真',
+    'ホテルリッジ room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/76857/76857.html',
+    '楽天トラベル'
+  ),
+  'ファミリーロッジ旅籠屋・鳴門駅前店': sourcePhoto(
+    'naruto-stay-12.jpg',
+    'ファミリーロッジ旅籠屋・鳴門駅前店の客室・外観写真',
+    'ファミリーロッジ旅籠屋・鳴門駅前店 room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/146872/146872.html',
+    '楽天トラベル'
+  ),
+  'NEXEL α鳴門': sourcePhoto(
+    'naruto-stay-13.jpg',
+    'NEXEL α鳴門の客室・外観写真',
+    'NEXEL α鳴門 room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/176981/176981.html',
+    '楽天トラベル'
+  ),
 };
 
 function sight(

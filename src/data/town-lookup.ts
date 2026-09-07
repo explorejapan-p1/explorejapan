@@ -606,9 +606,9 @@ export const NARUTO_LOOKUP: LookupTown = {
   travelCommerce: NARUTO_TRAVEL_COMMERCE,
   travelAll: NARUTO_TRAVEL_ALL,
   coverageJa:
-    '鳴門市（JIS 36202）観光1件（出典写真がある施設のみ）。オープンデータ凍結パックは未掲載。AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。飲食・宿泊・温泉・体験・買物・商業は0件（未掲載）。',
+    '鳴門市（JIS 36202）観光5・宿泊13・飲食14（出典写真がある施設のみ）。オープンデータ凍結パックは未掲載。温泉・体験・買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。',
   coverageEn:
-    'Naruto City (JIS 36202), 1 tourism row with a sourced photo. No frozen open-data pack. AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. Dining, stay, onsen, experience, shopping, commerce: 0, unpublished.',
+    'Naruto City (JIS 36202), 5 tourism + 13 stay + 14 dining with sourced photos. No frozen open-data pack. Onsen, experience, shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished.',
   mapLabelJa: '鳴門市の出典座標1件',
   mapLabelEn: '1 sourced coordinate in Naruto City',
   mapCitePackJa: '点は市・観光ページ掲載施設のWikipedia座標1件（accessed 2026-09-05）。',

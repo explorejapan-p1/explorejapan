@@ -1,7 +1,8 @@
 /**
  * Naruto City travel layer. No frozen pack.
  * Dining from 食べログ 鳴門市 (C36202) public shop pages. FOOD dish photos required.
- * Do not invent pack dining. Do not copy 徳島市 / 北島 / 松茂 / 藍住 TRAVEL_* rows or photos.
+ * Stay from NAVITIME 鳴門市ホテル一覧 + 楽天トラベル share/room images (出典). Rank strongest first.
+ * Do not invent pack dining/stay. Do not copy 徳島市 / 北島 / 松茂 / 藍住 TRAVEL_* rows or photos.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
@@ -13,7 +14,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const NARUTO_TRAVEL_ACCESSED = '2026-09-05' as const;
+export const NARUTO_TRAVEL_ACCESSED = '2026-09-07' as const;
 
 export const NARUTO_TRAVEL_SOURCES = {
   home: 'https://www.city.naruto.tokushima.jp/',
@@ -21,7 +22,9 @@ export const NARUTO_TRAVEL_SOURCES = {
   kanko: 'https://www.city.naruto.tokushima.jp/category/bunya/kanko/',
   uzunomichi: 'https://www.uzunomichi.jp/',
   doitsukan: 'https://doitsukan.com/',
-  tabelogCity: 'https://tabelog.com/tokushima/C36202/rstLst/'
+  tabelogCity: 'https://tabelog.com/tokushima/C36202/rstLst/',
+  stayNavi: 'https://www.navitime.co.jp/category/0608002/36202/',
+  rakutenTravel: 'https://travel.rakuten.co.jp/'
 } as const;
 
 export const NARUTO_ONSEN_PACK_NAMES = [] as const;
@@ -37,7 +40,118 @@ export const NARUTO_SIGHT_PINS = [
   '霊山寺'
 ] as const;
 
-export const NARUTO_TRAVEL_STAY: readonly TravelRow[] = [];
+function stay(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'stay',
+    address,
+    phone,
+    source_url,
+    accessed: NARUTO_TRAVEL_ACCESSED
+  };
+}
+
+/** Ranked strongest Instagram-style room/exterior 出典 first. NAVITIME + 楽天シェア画像. */
+export const NARUTO_TRAVEL_STAY: readonly TravelRow[] = [
+  stay(
+    'naruto-stay-01',
+    'アオアヲナルトリゾート',
+    '徳島県鳴門市鳴門町土佐泊浦字大毛16-45',
+    '088-687-2580',
+    'https://travel.rakuten.co.jp/HOTEL/6123/6123.html'
+  ),
+  stay(
+    'naruto-stay-02',
+    'リゾートホテル モアナコースト',
+    '徳島県鳴門市鳴門町土佐泊浦字高砂186-16',
+    '088-687-2255',
+    'https://travel.rakuten.co.jp/HOTEL/7769/7769.html'
+  ),
+  stay(
+    'naruto-stay-03',
+    'ホテルロータススーペリアリゾート鳴門',
+    '徳島県鳴門市鳴門町土佐泊浦大毛234-16',
+    '088-677-9413',
+    'https://travel.rakuten.co.jp/HOTEL/153466/153466.html'
+  ),
+  stay(
+    'naruto-stay-04',
+    'ホテル ネクセル 鳴門',
+    '徳島県鳴門市撫養町斎田大堤55',
+    '088-683-1230',
+    'https://travel.rakuten.co.jp/HOTEL/158397/158397.html'
+  ),
+  stay(
+    'naruto-stay-05',
+    'ホテルエリアワン鳴門',
+    '徳島県鳴門市撫養町小桑島前浜168-1',
+    '088-686-0211',
+    'https://travel.rakuten.co.jp/HOTEL/16170/16170.html'
+  ),
+  stay(
+    'naruto-stay-06',
+    'ホテルクラウンヒルズ鳴門 高速鳴門前',
+    '徳島県鳴門市撫養町大桑島すべり岩浜51-1',
+    '088-685-8883',
+    'https://travel.rakuten.co.jp/HOTEL/128426/128426.html'
+  ),
+  stay(
+    'naruto-stay-07',
+    'グランドエクシブ鳴門 ザ・ロッジ',
+    '徳島県鳴門市北灘町折野大川筋182',
+    '088-682-0246',
+    'https://travel.rakuten.co.jp/HOTEL/108677/108677.html'
+  ),
+  stay(
+    'naruto-stay-08',
+    'ホテル ファーストシーズン鳴門',
+    '徳島県鳴門市撫養町斉田字大堤228番地',
+    '088-686-3261',
+    'https://travel.rakuten.co.jp/HOTEL/7505/7505.html'
+  ),
+  stay(
+    'naruto-stay-09',
+    'ビジネスホテル鳴門',
+    '徳島県鳴門市撫養町斉田字大堤104-105',
+    '088-686-2555',
+    'https://travel.rakuten.co.jp/HOTEL/10747/10747.html'
+  ),
+  stay(
+    'naruto-stay-10',
+    'ホテル カクイン鳴門',
+    '徳島県鳴門市撫養町斎田字大堤208番地',
+    '088-685-1115',
+    'https://travel.rakuten.co.jp/HOTEL/183411/183411.html'
+  ),
+  stay(
+    'naruto-stay-11',
+    'ホテルリッジ',
+    '徳島県鳴門市瀬戸町大島田字中山1-1',
+    '088-688-1212',
+    'https://travel.rakuten.co.jp/HOTEL/76857/76857.html'
+  ),
+  stay(
+    'naruto-stay-12',
+    'ファミリーロッジ旅籠屋・鳴門駅前店',
+    '徳島県鳴門市撫養町小桑島前浜277-2',
+    '088-686-8857',
+    'https://travel.rakuten.co.jp/HOTEL/146872/146872.html'
+  ),
+  stay(
+    'naruto-stay-13',
+    'NEXEL α鳴門',
+    '徳島県鳴門市撫養町小桑島前浜65',
+    '088-685-2277',
+    'https://travel.rakuten.co.jp/HOTEL/176981/176981.html'
+  )
+];
 
 function dining(
   id: string,
@@ -271,6 +385,8 @@ export function narutoSourcedHook(
 export function narutoTopChipForRow(row: {category: string; name_ja: string}): FilterId {
   if (isNarutoOnsenPackRow(row)) return 'onsen';
   if (isNarutoStayPackRow(row)) return 'stay';
+  if (row.category === 'stay') return 'stay';
+  if (row.category === 'dining') return 'dining';
   if (isNarutoDiningPackRow(row)) return 'dining';
   if (isSightsCategory(row.category)) return 'sights';
   if (isInfraCategory(row.category)) return 'sights';
