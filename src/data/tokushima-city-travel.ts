@@ -4,7 +4,8 @@
  * Stay from NAVITIME/楽天トラベル hotel listings + hotel official og/room images where available.
  * Rank strongest Instagram-style photos first. Do not invent listings or fake reviews.
  * Sights densify: city keikan + Commons (弁天山 / 文化の森 / 眉山公園). Fun!Fun! lead → city/Commons only.
- * Onsen / shopping / commerce: honest 0. Experience densified (ropeway/museum/glass/zoo/cruise).
+ * Shopping / commerce densified from Commons (アミコ / 東新町 / 両国本町 / ボードウォーク). そごう閉店(2020)→アミコ東館.
+ * Onsen: 天然温泉びざんの湯 bath from ホテルサンルート徳島 official (出典). Experience densified.
  * Do not copy 鳴門 / 阿南 / 小松島 / 美馬 TRAVEL_* rows or photos.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
@@ -28,7 +29,10 @@ export const TOKUSHIMA_CITY_TRAVEL_SOURCES = {
   castlePark: 'https://www.city.tokushima.tokushima.jp/shisetsu/park/chuo.html',
   tabelogCity: 'https://tabelog.com/tokushima/C36201/rstLst/',
   stayNavi: 'https://www.navitime.co.jp/category/0608002/36201/',
-  rakutenTravel: 'https://travel.rakuten.co.jp/'
+  rakutenTravel: 'https://travel.rakuten.co.jp/',
+  amico: 'https://www.amico-tokushima.jp/',
+  sunroute: 'https://sotetsu-hotels.com/sunroute/tokushima/',
+  bizanYu: 'https://www.awanavi.jp/archives/spot/1670'
 } as const;
 
 export const TOKUSHIMA_CITY_SIGHT_PINS = [
@@ -721,8 +725,90 @@ export const TOKUSHIMA_CITY_STAY_NAME_SET: ReadonlySet<string> = new Set(
   TOKUSHIMA_CITY_TRAVEL_STAY.map((row) => row.name_ja)
 );
 
-export const TOKUSHIMA_CITY_TRAVEL_SHOPPING: readonly TravelRow[] = [];
-export const TOKUSHIMA_CITY_TRAVEL_COMMERCE: readonly TravelRow[] = [];
+function shopping(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'shopping',
+    address,
+    phone,
+    source_url,
+    accessed: TOKUSHIMA_CITY_TRAVEL_ACCESSED
+  };
+}
+
+function commerce(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'commerce',
+    address,
+    phone,
+    source_url,
+    accessed: TOKUSHIMA_CITY_TRAVEL_ACCESSED
+  };
+}
+
+/** Rank strongest Instagram-style arcade/mall photos first. */
+export const TOKUSHIMA_CITY_TRAVEL_SHOPPING: readonly TravelRow[] = [
+  shopping(
+    'tokushima-city-shopping-01',
+    '東新町商店街',
+    '徳島県徳島市東新町',
+    null,
+    'https://www.city.tokushima.tokushima.jp/kankou/'
+  ),
+  shopping(
+    'tokushima-city-shopping-02',
+    'アミコ専門店街',
+    '徳島県徳島市元町1丁目24番地',
+    '088-621-4427',
+    TOKUSHIMA_CITY_TRAVEL_SOURCES.amico
+  ),
+  shopping(
+    'tokushima-city-shopping-03',
+    '両国本町商店街',
+    '徳島県徳島市両国本町',
+    null,
+    'https://www.city.tokushima.tokushima.jp/kankou/'
+  ),
+  shopping(
+    'tokushima-city-shopping-04',
+    'しんまちボードウォーク（パラソルショップ）',
+    '徳島県徳島市南内町・新町橋',
+    null,
+    TOKUSHIMA_CITY_TRAVEL_SOURCES.boardWalk
+  )
+];
+
+export const TOKUSHIMA_CITY_TRAVEL_COMMERCE: readonly TravelRow[] = [
+  commerce(
+    'tokushima-city-commerce-01',
+    'アミコビル',
+    '徳島県徳島市寺島本町西1丁目・元町1丁目',
+    '088-621-4427',
+    TOKUSHIMA_CITY_TRAVEL_SOURCES.amico
+  ),
+  commerce(
+    'tokushima-city-commerce-02',
+    'アミコ東館',
+    '徳島県徳島市寺島本町西1丁目5番地',
+    null,
+    TOKUSHIMA_CITY_TRAVEL_SOURCES.amico
+  )
+];
 
 export const TOKUSHIMA_CITY_TRAVEL_ALL: readonly TravelRow[] = [
   ...TOKUSHIMA_CITY_TRAVEL_STAY,
@@ -749,8 +835,12 @@ function isSightsCategory(value: string): boolean {
 export const TOKUSHIMA_CITY_EXPERIENCE_PACK_NAMES = ['あわぎん眉山ロープウエイ', '徳島城博物館', '徳島ガラススタジオ', 'とくしま動物園', 'ひょうたん島クルーズ'] as const;
 export const TOKUSHIMA_CITY_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(TOKUSHIMA_CITY_EXPERIENCE_PACK_NAMES);
 
-export function isTokushimaCityOnsenPackRow(_row: {category: string; name_ja: string}): boolean {
-  return false;
+export const TOKUSHIMA_CITY_ONSEN_PACK_NAMES = ['天然温泉びざんの湯'] as const;
+export const TOKUSHIMA_CITY_ONSEN_PACK_SET: ReadonlySet<string> = new Set(TOKUSHIMA_CITY_ONSEN_PACK_NAMES);
+
+export function isTokushimaCityOnsenPackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return TOKUSHIMA_CITY_ONSEN_PACK_SET.has(row.name_ja);
 }
 
 export function isTokushimaCityExperiencePackRow(row: {category: string; name_ja: string}): boolean {
@@ -822,6 +912,12 @@ export function tokushimaCitySourcedHook(
   }
   if (row.category === 'stay') {
     return locale === 'ja' ? '徳島市 宿泊案内' : 'Tokushima lodging list';
+  }
+  if (row.category === 'shopping') {
+    return locale === 'ja' ? '徳島市 買物案内' : 'Tokushima shopping list';
+  }
+  if (row.category === 'commerce') {
+    return locale === 'ja' ? '徳島市 商業案内' : 'Tokushima commerce list';
   }
   if (row.category === 'tourism') {
     return locale === 'ja' ? '市の観光案内' : 'City tourism pages';

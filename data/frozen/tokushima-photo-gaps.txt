@@ -19,3 +19,5 @@ Fun!Fun! IG used as lead only → city HP / Commons. Not perfect.
 2026-09-07 pass2: capital 温泉 still honest 0 — 眉山の湯 Commons miss / no attributable bath 出典. 体験 already 1 (あわぎん眉山ロープウエイ).
 2026-09-07 pass3: HARD BAR fix すし瀬名波 wine-bottle → Tabelog sushi nigiri dish. Capital 温泉/買物 still honest 0 (眉山の湯 Commons miss). Instagram-first SIGHT_PINS reorder (ボードウォーク/弁天山 up). Not perfect.
 Capital experience densify pass4: +徳島城博物館 / +徳島ガラススタジオ / +とくしま動物園 / +ひょうたん島クルーズ Commons. Ropeway kept. 温泉/買物/商業 honest 0.
+
+2026-09-07 pass8: capital 買物4 (東新町/アミコ専門店街/両国本町/ボードウォーク・パラソル) + 商業2 (アミコビル/東館) Commons; 温泉1 天然温泉びざんの湯 bath from サンルート公式. そごう閉店→アミコ. stay0×6 still honest 0 (room miss; see /workspace/p1/data/tokushima-stay0-exhaustion.md). Not perfect.

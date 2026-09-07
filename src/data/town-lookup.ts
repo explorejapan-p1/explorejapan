@@ -500,13 +500,13 @@ export const TOKUSHIMA_CITY_LOOKUP: LookupTown = {
   travelCommerce: TOKUSHIMA_CITY_TRAVEL_COMMERCE,
   travelAll: TOKUSHIMA_CITY_TRAVEL_ALL,
   coverageJa:
-    '徳島市（JIS 36201）観光8・宿泊35・飲食55（出典写真がある施設のみ）。オープンデータ凍結パックは未掲載。温泉・体験・買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。',
+    '徳島市（JIS 36201）観光7・宿泊35・飲食55・温泉1・体験5・買物4・商業2（出典写真がある施設のみ）。オープンデータ凍結パックは未掲載。AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。そごう閉店済みのためアミコ系で商業掲載。Perfectではない。',
   coverageEn:
-    'Tokushima City (JIS 36201), 8 tourism + 35 stay + 55 dining with sourced photos. No frozen open-data pack. Onsen, experience, shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished.',
-  mapLabelJa: '徳島市の出典座標8件',
-  mapLabelEn: '8 sourced coordinates in Tokushima City',
-  mapCitePackJa: '点は市ページ掲載施設のWikipedia座標8件（accessed 2026-09-07）。',
-  mapCitePackEn: 'Points: 8 Wikipedia coordinates for city-page facilities (accessed 2026-09-07).',
+    'Tokushima City (JIS 36201), 7 tourism + 35 stay + 55 dining + 1 onsen + 5 experience + 4 shopping + 2 commerce with sourced photos. No frozen open-data pack. AED/hospitals/care/shelters/cultural/GTFS: 0. Sogo closed — Amico mall/commerce used. Not perfect.',
+  mapLabelJa: '徳島市の出典座標13件',
+  mapLabelEn: '13 sourced coordinates in Tokushima City',
+  mapCitePackJa: '点は市ページ掲載施設のWikipedia座標ほか13件（accessed 2026-09-07）。',
+  mapCitePackEn: 'Points: 13 sourced coordinates for city-page facilities (accessed 2026-09-07).',
   licenseNoteJa:
     '行のライセンスは市公式サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
   licenseNoteEn:

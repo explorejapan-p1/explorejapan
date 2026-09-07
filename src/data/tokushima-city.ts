@@ -40,12 +40,15 @@ export const TOKUSHIMA_CITY = {
     zoo: 'https://tokushimazoo.jp/',
     hyotanCruise: 'https://www.awanavi.jp/archives/spot/2542',
     tabelogCity: 'https://tabelog.com/tokushima/C36201/rstLst/',
+    amico: 'https://www.amico-tokushima.jp/',
+    sunroute: 'https://sotetsu-hotels.com/sunroute/tokushima/',
+    bizanYu: 'https://www.awanavi.jp/archives/spot/1670',
     accessed: '2026-09-07'
   }
 } as const;
 
-export const TOKUSHIMA_CITY_EXPECTED_ROW_COUNT = 12;
-export const TOKUSHIMA_CITY_EXPECTED_GEO_COUNT = 12;
+export const TOKUSHIMA_CITY_EXPECTED_ROW_COUNT = 13;
+export const TOKUSHIMA_CITY_EXPECTED_GEO_COUNT = 13;
 
 function wikiPhoto(
   file: string,
@@ -862,6 +865,80 @@ export const TOKUSHIMA_CITY_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto
     "https://web.travel.rakuten.co.jp/share/HOTEL/172414/172414.jpg",
     "楽天トラベル"
   ),
+  // --- 買物 / 商業 (Commons; rank strongest arcade/mall first) ---
+  '東新町商店街': wikiPhoto(
+    'higashi-shinmachi-arcade-1.jpg',
+    'https://commons.wikimedia.org/wiki/File:Higashi-Shinmachi_Shopping_Street_ac_(1).jpg',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0/',
+    'Asturio Cantabrio',
+    'https://commons.wikimedia.org/wiki/User:Asturio_Cantabrio',
+    '2022-08',
+    '東新町商店街アーケード（徳島市）',
+    'Higashi-Shinmachi Shopping Street arcade, Tokushima'
+  ),
+  'アミコ専門店街': wikiPhoto(
+    'amico-senmontengai.jpg',
+    'https://commons.wikimedia.org/wiki/File:Amico_Senmontengai.jpg',
+    'Public domain',
+    'https://commons.wikimedia.org/wiki/File:Amico_Senmontengai.jpg',
+    'Sorrysorry',
+    'https://commons.wikimedia.org/wiki/User:Sorrysorry',
+    '2009-10-10',
+    'アミコ専門店街（徳島市元町）',
+    'Amico specialty shopping arcade, Motomachi, Tokushima'
+  ),
+  '両国本町商店街': wikiPhoto(
+    'ryogoku-honcho-2.jpg',
+    'https://commons.wikimedia.org/wiki/File:%E5%BE%B3%E5%B3%B6%E7%9C%8C%E5%BE%B3%E5%B3%B6%E5%B8%82%E4%B8%A1%E5%9B%BD%E6%9C%AC%E7%94%BA2%E4%B8%81%E7%9B%AE.jpg',
+    'CC BY-SA 3.0',
+    'https://creativecommons.org/licenses/by-sa/3.0/',
+    'Mti',
+    'https://commons.wikimedia.org/wiki/User:Mti',
+    '2011-06-10',
+    '両国本町商店街（徳島市両国本町2丁目）',
+    'Ryogoku-honcho shopping street, Tokushima'
+  ),
+  'しんまちボードウォーク（パラソルショップ）': wikiPhoto(
+    'shinmachi-boardwalk-alt.jpg',
+    'https://commons.wikimedia.org/wiki/File:Shinmachi_boardwalk01s3872.jpg',
+    'CC BY 2.5',
+    'https://creativecommons.org/licenses/by/2.5/',
+    '663highland',
+    'https://commons.wikimedia.org/wiki/User:663highland',
+    '2007-10-06',
+    'しんまちボードウォークと商店沿い（徳島市）',
+    'Shinmachi Boardwalk shopping frontage, Tokushima'
+  ),
+  'アミコビル': wikiPhoto(
+    'amico-building-aibahama.jpg',
+    'https://commons.wikimedia.org/wiki/File:Amico_Building_from_Aibahama_Park_20210207.jpg',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0/',
+    '新幹線',
+    'https://commons.wikimedia.org/wiki/User:%E6%96%B0%E5%B9%B9%E7%B7%9A',
+    '2021-02-07',
+    '藍場浜公園からアミコビル（徳島市）',
+    'Amico Building from Aibahama Park, Tokushima'
+  ),
+  'アミコ東館': wikiPhoto(
+    'amico-building-ac1.jpg',
+    'https://commons.wikimedia.org/wiki/File:Amico_ac_(1).jpg',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0/',
+    'Asturio Cantabrio',
+    'https://commons.wikimedia.org/wiki/User:Asturio_Cantabrio',
+    '2022-08',
+    'アミコ東館外観（徳島市寺島本町西）',
+    'Amico East Building exterior, Tokushima'
+  ),
+  '天然温泉びざんの湯': sourcePhoto(
+    'bizan-no-yu-bath.jpg',
+    '天然温泉びざんの湯の浴場（ホテルサンルート徳島）',
+    'Bizan-no-Yu natural hot spring bath, Hotel Sunroute Tokushima',
+    'https://sotetsu-hotels.com/sunroute/tokushima/',
+    'ホテルサンルート徳島'
+  ),
 };
 
 function sight(
@@ -1000,5 +1077,14 @@ export const TOKUSHIMA_CITY_FACILITIES: readonly FacilityRow[] = [
     TOKUSHIMA_CITY.sources.hyotanCruise,
     34.07051389,
     134.54898889
+  ),
+  sight(
+    'tokushima-city-sight-13',
+    '天然温泉びざんの湯',
+    '徳島県徳島市元町1-5-1 ホテルサンルート徳島',
+    '088-653-8111',
+    TOKUSHIMA_CITY.sources.sunroute,
+    34.0737,
+    134.5512
   )
 ];
