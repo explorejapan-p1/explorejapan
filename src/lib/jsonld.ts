@@ -14,6 +14,7 @@ import {KATSUURA, KATSUURA_PLACE_PHOTO} from '@/data/katsuura';
 import {KAMIKATSU, KAMIKATSU_PLACE_PHOTO} from '@/data/kamikatsu';
 import {SANAGOCHI, SANAGOCHI_PLACE_PHOTO} from '@/data/sanagochi';
 import {NAKA, NAKA_PLACE_PHOTO} from '@/data/naka';
+import {MINAMI, MINAMI_PLACE_PHOTO} from '@/data/minami';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
@@ -93,6 +94,7 @@ function localityJa(slug: string): string {
   if (slug === 'kamikatsu') return KAMIKATSU.nameJa;
   if (slug === 'sanagochi') return SANAGOCHI.nameJa;
   if (slug === 'naka') return NAKA.nameJa;
+  if (slug === 'minami') return MINAMI.nameJa;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameJa;
   return MIMA.nameJa;
 }
@@ -114,6 +116,7 @@ function localityEn(slug: string): string {
   if (slug === 'kamikatsu') return KAMIKATSU.nameEn;
   if (slug === 'sanagochi') return SANAGOCHI.nameEn;
   if (slug === 'naka') return NAKA.nameEn;
+  if (slug === 'minami') return MINAMI.nameEn;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameEn;
   return MIMA.nameEn;
 }
@@ -1340,6 +1343,83 @@ export function nakaGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '那賀町の案内' : 'Places in Naka Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+export function minamiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'tokushima/minami');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('minami');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? MINAMI.nameJa : MINAMI.nameEn,
+        alternateName: isJa ? MINAMI.nameEn : MINAMI.nameJa,
+        identifier: MINAMI.jis,
+        url,
+        image: photoAbs(MINAMI_PLACE_PHOTO),
+        sameAs: [MINAMI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa
+            ? '奥河内字本村18-1'
+            : '18-1 Honmura, Okukawachi',
+          addressLocality: isJa ? MINAMI.nameJa : MINAMI.nameEn,
+          addressRegion: isJa ? MINAMI.prefectureJa : MINAMI.prefectureEn,
+          postalCode: MINAMI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? MINAMI.prefectureJa : MINAMI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? MINAMI.nameJa : MINAMI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: isJa ? '全国' : 'Japan',
+            item: canonicalUrl(locale)
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: isJa ? MINAMI.prefectureJa : MINAMI.prefectureEn,
+            item: canonicalUrl(locale, 'tokushima')
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: isJa ? MINAMI.nameJa : MINAMI.nameEn,
+            item: url
+          }
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '美波町の案内' : 'Places in Minami Town',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

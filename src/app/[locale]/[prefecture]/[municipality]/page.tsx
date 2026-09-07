@@ -20,6 +20,7 @@ import {KATSUURA, KATSUURA_PLACE_PHOTO} from '@/data/katsuura';
 import {KAMIKATSU, KAMIKATSU_PLACE_PHOTO} from '@/data/kamikatsu';
 import {SANAGOCHI, SANAGOCHI_PLACE_PHOTO} from '@/data/sanagochi';
 import {NAKA, NAKA_PLACE_PHOTO} from '@/data/naka';
+import {MINAMI, MINAMI_PLACE_PHOTO} from '@/data/minami';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {PREFECTURE_BY_SLUG} from '@/data/prefectures';
@@ -31,7 +32,7 @@ import {Link} from '@/i18n/navigation';
 import type {AppLocale} from '@/i18n/routing';
 import {projectMimaOfficialMap} from '@/lib/geo';
 import {JsonLd} from '@/components/JsonLd';
-import {mimaGraph, tsurugiGraph, yoshinogawaGraph, miyoshiGraph, tokushimaCityGraph, awaGraph, higashimiyoshiGraph, kitajimaGraph, narutoGraph, matsushigeGraph, ishiiGraph, itanoGraph, kamiitaGraph, kamiyamaGraph, katsuuraGraph, kamikatsuGraph, sanagochiGraph, nakaGraph} from '@/lib/jsonld';
+import {mimaGraph, tsurugiGraph, yoshinogawaGraph, miyoshiGraph, tokushimaCityGraph, awaGraph, higashimiyoshiGraph, kitajimaGraph, narutoGraph, matsushigeGraph, ishiiGraph, itanoGraph, kamiitaGraph, kamiyamaGraph, katsuuraGraph, kamikatsuGraph, sanagochiGraph, nakaGraph, minamiGraph} from '@/lib/jsonld';
 import {shareMetadata} from '@/lib/seo';
 
 type Props = {
@@ -97,6 +98,8 @@ export async function generateMetadata({params}: Props) {
                                     ? SANAGOCHI_PLACE_PHOTO
                                     : muni.slug === 'naka'
                                       ? NAKA_PLACE_PHOTO
+                                      : muni.slug === 'minami'
+                                        ? MINAMI_PLACE_PHOTO
                             : MIMA_PLACE_PHOTO;
   const description = live
     ? muni.slug === 'tsurugi'
@@ -167,6 +170,10 @@ export async function generateMetadata({params}: Props) {
                                     ? loc === 'ja'
                                       ? '那賀町。高の瀬峡、道の駅、食。'
                                       : 'Naka Town, Tokushima — Kōnosekyō gorge, roadside stations, food.'
+                                    : muni.slug === 'minami'
+                                      ? loc === 'ja'
+                                        ? '美波町。薬王寺、日和佐、食。'
+                                        : 'Minami Town, Tokushima — Yakuo-ji, Hiwasa, food.'
           : loc === 'ja'
             ? '四国のまほろば 美馬市。うだつの町並み、食、宿。'
             : 'Mima City, Tokushima — Udatsu townscape, food, and stays.'
@@ -206,8 +213,8 @@ export default async function MunicipalityPage({params}: Props) {
         <div className="coming">
           <p>
             {isJa
-              ? 'この市町村のページは準備中です。現在本文があるのは徳島市・鳴門市・美馬市・つるぎ町・吉野川市・三好市・阿波市・東みよし町・北島町・松茂町・石井町・板野町・上板町・神山町・勝浦町・上勝町・佐那河内村・那賀町です。'
-              : 'This municipality page is coming soon. Tokushima City, Naruto City, Mima City, Tsurugi Town, Yoshinogawa City, Miyoshi City, Awa City, Higashimiyoshi Town, Kitajima Town, Matsushige Town, Ishii Town, Itano Town, Kamiita Town, Kamiyama Town, Katsuura Town, Kamikatsu Town, Sanagochi Village, and Naka Town have full listings in v0.'}
+              ? 'この市町村のページは準備中です。現在本文があるのは徳島市・鳴門市・美馬市・つるぎ町・吉野川市・三好市・阿波市・東みよし町・北島町・松茂町・石井町・板野町・上板町・神山町・勝浦町・上勝町・佐那河内村・那賀町・美波町です。'
+              : 'This municipality page is coming soon. Tokushima City, Naruto City, Mima City, Tsurugi Town, Yoshinogawa City, Miyoshi City, Awa City, Higashimiyoshi Town, Kitajima Town, Matsushige Town, Ishii Town, Itano Town, Kamiita Town, Kamiyama Town, Katsuura Town, Kamikatsu Town, Sanagochi Village, Naka Town, and Minami Town have full listings in v0.'}
           </p>
           <p>
             <Link href="/tokushima/tokushima">{isJa ? '徳島市へ' : 'Go to Tokushima City'}</Link>
@@ -245,6 +252,7 @@ export default async function MunicipalityPage({params}: Props) {
             <Link href="/tokushima/sanagochi">{isJa ? '佐那河内村へ' : 'Go to Sanagochi Village'}</Link>
             {' · '}
             <Link href="/tokushima/naka">{isJa ? '那賀町へ' : 'Go to Naka Town'}</Link>
+            <Link href="/tokushima/minami">{isJa ? '美波町へ' : 'Go to Minami Town'}</Link>
           </p>
         </div>
       </>
@@ -274,7 +282,7 @@ export default async function MunicipalityPage({params}: Props) {
 
   return (
     <>
-      <JsonLd data={town.slug === 'tokushima' ? tokushimaCityGraph(graphLocale) : town.slug === 'tsurugi' ? tsurugiGraph(graphLocale) : town.slug === 'yoshinogawa' ? yoshinogawaGraph(graphLocale) : town.slug === 'miyoshi' ? miyoshiGraph(graphLocale) : town.slug === 'awa' ? awaGraph(graphLocale) : town.slug === 'higashimiyoshi' ? higashimiyoshiGraph(graphLocale) : town.slug === 'kitajima' ? kitajimaGraph(graphLocale) : town.slug === 'naruto' ? narutoGraph(graphLocale) : town.slug === 'matsushige' ? matsushigeGraph(graphLocale) : town.slug === 'ishii' ? ishiiGraph(graphLocale) : town.slug === 'itano' ? itanoGraph(graphLocale) : town.slug === 'kamiita' ? kamiitaGraph(graphLocale) : town.slug === 'kamiyama' ? kamiyamaGraph(graphLocale) : town.slug === 'katsuura' ? katsuuraGraph(graphLocale) : town.slug === 'kamikatsu' ? kamikatsuGraph(graphLocale) : town.slug === 'sanagochi' ? sanagochiGraph(graphLocale) : town.slug === 'naka' ? nakaGraph(graphLocale) : mimaGraph(graphLocale)} />
+      <JsonLd data={town.slug === 'tokushima' ? tokushimaCityGraph(graphLocale) : town.slug === 'tsurugi' ? tsurugiGraph(graphLocale) : town.slug === 'yoshinogawa' ? yoshinogawaGraph(graphLocale) : town.slug === 'miyoshi' ? miyoshiGraph(graphLocale) : town.slug === 'awa' ? awaGraph(graphLocale) : town.slug === 'higashimiyoshi' ? higashimiyoshiGraph(graphLocale) : town.slug === 'kitajima' ? kitajimaGraph(graphLocale) : town.slug === 'naruto' ? narutoGraph(graphLocale) : town.slug === 'matsushige' ? matsushigeGraph(graphLocale) : town.slug === 'ishii' ? ishiiGraph(graphLocale) : town.slug === 'itano' ? itanoGraph(graphLocale) : town.slug === 'kamiita' ? kamiitaGraph(graphLocale) : town.slug === 'kamiyama' ? kamiyamaGraph(graphLocale) : town.slug === 'katsuura' ? katsuuraGraph(graphLocale) : town.slug === 'kamikatsu' ? kamikatsuGraph(graphLocale) : town.slug === 'sanagochi' ? sanagochiGraph(graphLocale) : town.slug === 'naka' ? nakaGraph(graphLocale) : town.slug === 'minami' ? minamiGraph(graphLocale) : mimaGraph(graphLocale)} />
       <nav className="crumbs">
         <Link href="/">{isJa ? '全国' : 'Japan'}</Link>
         <span> / </span>
@@ -1013,6 +1021,59 @@ export default async function MunicipalityPage({params}: Props) {
         {isJa
           ? `数字のアクセス日は ${NAKA.sources.accessed}。人口は未掲載（出典ページを混ぜません）。`
           : `Figures accessed ${NAKA.sources.accessed}. Population is unpublished (universes are not mixed).`}
+      </p>
+      </details>
+
+
+) : town.slug === 'minami' ? (
+      <details className="facts-fold">
+        <summary>{isJa ? '町の資料' : 'Town facts'}</summary>
+      <table className="facts">
+        <tbody>
+          <tr>
+            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <td>
+              {MINAMI.nameJa} / {MINAMI.nameEn}（{MINAMI.reading}）
+            </td>
+          </tr>
+          <tr>
+            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <td>
+              <Link href="/tokushima">{isJa ? MINAMI.prefectureJa : MINAMI.prefectureEn}</Link>
+            </td>
+          </tr>
+          <tr>
+            <th>JIS / N03_007</th>
+            <td>
+              <strong>{MINAMI.jis}</strong>
+              {isJa ? '（佐那河内 36321・上勝 36302・藍住 36403 ではない）' : ' (not Sanagochi 36321 / Kamikatsu 36302 / Aizumi 36403)'}
+            </td>
+          </tr>
+          <tr>
+            <th>J-LIS</th>
+            <td>{MINAMI.jlis}</td>
+          </tr>
+          <tr>
+            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <td>
+              〒{MINAMI.hall.postalCode} {isJa ? MINAMI.hall.addressJa : MINAMI.hall.addressEn}
+              <br />
+              {MINAMI.hall.phone} · <a href={MINAMI.sameAs}>sameAs {MINAMI.sameAs}</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        <a href={MINAMI.sources.hall}>{isJa ? 'お問い合わせ' : 'Contact'}</a>
+        {' · '}
+        <a href={MINAMI.sources.home}>{isJa ? '町ホームページ' : 'Town homepage'}</a>
+        {' · '}
+        <a href={MINAMI.sources.kanko}>{isJa ? '観光サイト' : 'Tourism site'}</a>
+      </p>
+      <p className="note">
+        {isJa
+          ? `数字のアクセス日は ${MINAMI.sources.accessed}。人口は未掲載（出典ページを混ぜません）。`
+          : `Figures accessed ${MINAMI.sources.accessed}. Population is unpublished (universes are not mixed).`}
       </p>
       </details>
 

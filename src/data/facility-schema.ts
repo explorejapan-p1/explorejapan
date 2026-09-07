@@ -378,6 +378,49 @@ export const NAKA_EXPECTED_CATEGORY_COUNTS = {
   gtfs_stop: 99
 } as const satisfies Record<FacilityCategory, number>;
 
+export const MINAMI_PACK_JIS = '36387';
+export const MINAMI_PACK_ACCESSED = '2026-08-27';
+export const MINAMI_EXPECTED_ROW_COUNT = 315;
+export const MINAMI_EXPECTED_GEO_COUNT = 212;
+export const MINAMI_EXPECTED_HOURS_COUNT = 315;
+export const MINAMI_EXPECTED_MISSING_ADDRESS = 9;
+export const MINAMI_EXPECTED_MISSING_PHONE = 213;
+export const MINAMI_EXPECTED_CATEGORY_COUNTS = {
+  tourism: 7,
+  cultural_property: 41,
+  care: 1,
+  aed: 19,
+  shelter: 38,
+  emergency_evacuation_site: 170,
+  hospital: 5,
+  childcare: 7,
+  wifi: 8,
+  public_facility: 10,
+  gtfs_stop: 9
+} as const satisfies Record<FacilityCategory, number>;
+
+export const MUGI_PACK_JIS = '36383';
+export const MUGI_PACK_ACCESSED = '2026-08-27';
+export const MUGI_EXPECTED_ROW_COUNT = 159;
+export const MUGI_EXPECTED_GEO_COUNT = 122;
+export const MUGI_EXPECTED_HOURS_COUNT = 159;
+export const MUGI_EXPECTED_MISSING_ADDRESS = 7;
+export const MUGI_EXPECTED_MISSING_PHONE = 118;
+export const MUGI_EXPECTED_CATEGORY_COUNTS = {
+  tourism: 1,
+  cultural_property: 22,
+  care: 1,
+  aed: 0,
+  shelter: 34,
+  emergency_evacuation_site: 78,
+  hospital: 6,
+  childcare: 2,
+  wifi: 0,
+  public_facility: 15,
+  gtfs_stop: 0
+} as const satisfies Record<FacilityCategory, number>;
+
+
 export type FacilityRow = {
   id: string;
   jis: string;

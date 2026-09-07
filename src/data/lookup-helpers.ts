@@ -190,6 +190,17 @@ import {
   rankNakaSeeRows,
   resolveNakaFilter
 } from './naka-travel';
+import {
+  isMinamiExperiencePackRow,
+  isMinamiOnsenPackRow,
+  isMinamiStayPackRow,
+  minamiPackRowMatchesFilter,
+  minamiSightPhoto,
+  minamiSourcedHook,
+  minamiTopChipForRow,
+  rankMinamiSeeRows,
+  resolveMinamiFilter
+} from './minami-travel';
 
 import {
   isMatsushigeExperiencePackRow,
@@ -468,6 +479,18 @@ const NAKA_HELPERS: LookupHelpers = {
   resolveFilter: resolveNakaFilter
 };
 
+const MINAMI_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isMinamiOnsenPackRow,
+  isExperiencePackRow: isMinamiExperiencePackRow,
+  isStayPackRow: isMinamiStayPackRow,
+  packRowMatchesFilter: minamiPackRowMatchesFilter,
+  rankSeeRows: rankMinamiSeeRows,
+  sightPhoto: minamiSightPhoto,
+  sourcedHook: minamiSourcedHook,
+  topChipForRow: minamiTopChipForRow,
+  resolveFilter: resolveMinamiFilter
+};
+
 export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'tsurugi') return TSURUGI_HELPERS;
   if (slug === 'yoshinogawa') return YOSHINOGAWA_HELPERS;
@@ -486,5 +509,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'kamikatsu') return KAMIKATSU_HELPERS;
   if (slug === 'sanagochi') return SANAGOCHI_HELPERS;
   if (slug === 'naka') return NAKA_HELPERS;
+  if (slug === 'minami') return MINAMI_HELPERS;
   return MIMA_HELPERS;
 }
