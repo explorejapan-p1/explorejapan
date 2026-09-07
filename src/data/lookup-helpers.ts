@@ -293,6 +293,17 @@ import {
   rankKanonjiSeeRows,
   resolveKanonjiFilter
 } from './kanonji-travel';
+import {
+  isSakaideOnsenPackRow,
+  isSakaideExperiencePackRow,
+  isSakaideStayPackRow,
+  sakaidePackRowMatchesFilter,
+  sakaideSightPhoto,
+  sakaideSourcedHook,
+  sakaideTopChipForRow,
+  rankSakaideSeeRows,
+  resolveSakaideFilter
+} from './sakaide-travel';
 
 
 
@@ -716,6 +727,19 @@ const KANONJI_HELPERS: LookupHelpers = {
   resolveFilter: resolveKanonjiFilter
 };
 
+
+const SAKAIDE_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isSakaideOnsenPackRow,
+  isExperiencePackRow: isSakaideExperiencePackRow,
+  isStayPackRow: isSakaideStayPackRow,
+  packRowMatchesFilter: sakaidePackRowMatchesFilter,
+  rankSeeRows: rankSakaideSeeRows,
+  sightPhoto: sakaideSightPhoto,
+  sourcedHook: sakaideSourcedHook,
+  topChipForRow: sakaideTopChipForRow,
+  resolveFilter: resolveSakaideFilter
+};
+
 export function townHelpers(slug: ReadySlug): LookupHelpers {
 
   if (slug === 'tsurugi') return TSURUGI_HELPERS;
@@ -745,5 +769,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'kotohira') return KOTOHIRA_HELPERS;
   if (slug === 'marugame') return MARUGAME_HELPERS;
   if (slug === 'kanonji') return KANONJI_HELPERS;
+  if (slug === 'sakaide') return SAKAIDE_HELPERS;
   return MIMA_HELPERS;
 }

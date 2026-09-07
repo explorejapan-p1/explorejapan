@@ -46,6 +46,7 @@ import {TAKAMATSU_TRAVEL_ACCESSED} from '@/data/takamatsu-travel';
 import {KOTOHIRA_TRAVEL_ACCESSED} from '@/data/kotohira-travel';
 import {MARUGAME_TRAVEL_ACCESSED} from '@/data/marugame-travel';
 import {KANONJI_TRAVEL_ACCESSED} from '@/data/kanonji-travel';
+import {SAKAIDE_TRAVEL_ACCESSED} from '@/data/sakaide-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -993,6 +994,26 @@ export function MimaFacilityLookup({
                 Dining from Tabelog Kanonji City shop pages ({KANONJI_TRAVEL_ACCESSED}).
                 Onsen: Route Inn and Kamenoi Hotel bath stills (distinct from stay room keys). Experience: Michinoeki Kotohiki.
                 Shopping and commerce stay at 0 without sourced photos. Fourth LIVE Kagawa hub.
+              </>
+            )
+
+
+          ) : town.slug === 'sakaide' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（瀬戸大橋・記念公園・タワー・東山魁夷せとうち美術館・与島・鍋島灯台・飯野山・白峯寺・沙弥島）。
+                宿泊は楽天トラベルの客室写真（{SAKAIDE_TRAVEL_ACCESSED}）。
+                飲食は食べログ坂出市の公開店ページ（{SAKAIDE_TRAVEL_ACCESSED}）。
+                温泉はルートイン・グランドホテルの大浴場（公式風呂写真・客室キーと分離）。体験は道の駅瀬戸大橋記念公園。
+                買物・商業は出典写真が無いため0件。香川県5つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Great Seto Bridge, Memorial Park, Tower, Higashiyama Museum, Yoshima, Nabeshima Lighthouse, Mount Iino, Shiromine-ji, Shamijima).
+                Lodging from Rakuten Travel room photos ({SAKAIDE_TRAVEL_ACCESSED}).
+                Dining from Tabelog Sakaide City shop pages ({SAKAIDE_TRAVEL_ACCESSED}).
+                Onsen: Route Inn and Grand Hotel bath stills (distinct from stay room keys). Experience: Michinoeki Seto-Ohashi Kinen-koen.
+                Shopping and commerce stay at 0 without sourced photos. Fifth LIVE Kagawa hub.
               </>
             )
 

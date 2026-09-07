@@ -23,6 +23,7 @@ import {TAKAMATSU, TAKAMATSU_PLACE_PHOTO} from '@/data/takamatsu';
 import {KOTOHIRA, KOTOHIRA_PLACE_PHOTO} from '@/data/kotohira';
 import {MARUGAME, MARUGAME_PLACE_PHOTO} from '@/data/marugame';
 import {KANONJI, KANONJI_PLACE_PHOTO} from '@/data/kanonji';
+import {SAKAIDE, SAKAIDE_PLACE_PHOTO} from '@/data/sakaide';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -115,6 +116,7 @@ function localityJa(slug: string): string {
   if (slug === 'kotohira') return KOTOHIRA.nameJa;
   if (slug === 'marugame') return MARUGAME.nameJa;
   if (slug === 'kanonji') return KANONJI.nameJa;
+  if (slug === 'sakaide') return SAKAIDE.nameJa;
   return MIMA.nameJa;
 }
 
@@ -146,6 +148,7 @@ function localityEn(slug: string): string {
   if (slug === 'kotohira') return KOTOHIRA.nameEn;
   if (slug === 'marugame') return MARUGAME.nameEn;
   if (slug === 'kanonji') return KANONJI.nameEn;
+  if (slug === 'sakaide') return SAKAIDE.nameEn;
   return MIMA.nameEn;
 }
 
@@ -2365,3 +2368,64 @@ export function kanonjiGraph(locale: AppLocale) {
     ]
   };
 }
+
+export function sakaideGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kagawa/sakaide');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('sakaide');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? SAKAIDE.nameJa : SAKAIDE.nameEn,
+        alternateName: isJa ? SAKAIDE.nameEn : SAKAIDE.nameJa,
+        identifier: SAKAIDE.jis,
+        url,
+        image: photoAbs(SAKAIDE_PLACE_PHOTO),
+        sameAs: [SAKAIDE.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '室町二丁目3番5号' : '2-3-5 Muromachi',
+          addressLocality: isJa ? SAKAIDE.nameJa : SAKAIDE.nameEn,
+          addressRegion: isJa ? SAKAIDE.prefectureJa : SAKAIDE.prefectureEn,
+          postalCode: SAKAIDE.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? SAKAIDE.prefectureJa : SAKAIDE.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? SAKAIDE.nameJa : SAKAIDE.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? SAKAIDE.prefectureJa : SAKAIDE.prefectureEn, item: canonicalUrl(locale, 'kagawa')},
+          {'@type': 'ListItem', position: 3, name: isJa ? SAKAIDE.nameJa : SAKAIDE.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '坂出市の案内' : 'Places in Sakaide City',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
