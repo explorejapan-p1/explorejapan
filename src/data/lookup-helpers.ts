@@ -754,6 +754,19 @@ import {
   hidakaTopChipForRow,
   resolveHidakaFilter
 } from './hidaka-travel';
+import {
+  isTsunoDiningPackRow,
+  isTsunoExperiencePackRow,
+  isTsunoOnsenPackRow,
+  isTsunoShoppingPackRow,
+  isTsunoStayPackRow,
+  tsunoPackRowMatchesFilter,
+  rankTsunoSeeRows,
+  tsunoSightPhoto,
+  tsunoSourcedHook,
+  tsunoTopChipForRow,
+  resolveTsunoFilter
+} from './tsuno-travel';
 
 
 
@@ -1497,6 +1510,18 @@ const HIDAKA_HELPERS: LookupHelpers = {
   resolveFilter: resolveHidakaFilter
 };
 
+const TSUNO_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isTsunoOnsenPackRow,
+  isExperiencePackRow: isTsunoExperiencePackRow,
+  isStayPackRow: isTsunoStayPackRow,
+  packRowMatchesFilter: tsunoPackRowMatchesFilter,
+  rankSeeRows: rankTsunoSeeRows,
+  sightPhoto: tsunoSightPhoto,
+  sourcedHook: tsunoSourcedHook,
+  topChipForRow: tsunoTopChipForRow,
+  resolveFilter: resolveTsunoFilter
+};
+
 const NAKATOSA_HELPERS: LookupHelpers = {
   isOnsenPackRow: isNakatosaOnsenPackRow,
   isExperiencePackRow: isNakatosaExperiencePackRow,
@@ -1767,5 +1792,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'ochi') return OCHI_HELPERS;
   if (slug === 'yusuhara') return YUSUHARA_HELPERS;
   if (slug === 'hidaka') return HIDAKA_HELPERS;
+  if (slug === 'tsuno') return TSUNO_HELPERS;
   return MIMA_HELPERS;
 }

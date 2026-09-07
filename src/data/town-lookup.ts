@@ -731,6 +731,15 @@ import {
   HIDAKA_TRAVEL_ALL
 } from './hidaka-travel';
 
+import {TSUNO, TSUNO_PLACE_PHOTO, TSUNO_FACILITIES, TSUNO_EXPECTED_GEO_COUNT, TSUNO_EXPECTED_ROW_COUNT} from './tsuno';
+import {
+  TSUNO_TRAVEL_DINING,
+  TSUNO_TRAVEL_STAY,
+  TSUNO_TRAVEL_SHOPPING,
+  TSUNO_TRAVEL_COMMERCE,
+  TSUNO_TRAVEL_ALL
+} from './tsuno-travel';
+
 
 
 
@@ -3105,6 +3114,38 @@ export const HIDAKA_LOOKUP: LookupTown = {
   licenseSiteJa: '村公式サイト掲載情報',
   licenseSiteEn: 'Village-site listing'
 };
+export const TSUNO_LOOKUP: LookupTown = {
+  slug: 'tsuno',
+  prefectureSlug: 'kochi',
+  jis: TSUNO.jis,
+  nameJa: TSUNO.nameJa,
+  nameEn: TSUNO.nameEn,
+  heroPhoto: TSUNO_PLACE_PHOTO,
+  photoCiteJa: '写真は四国カルスト。Araiyasushige、2025-07-24、CC0。File:Sikokukarusuto_20250724_2.jpg。',
+  photoCiteEn: 'Photo: Shikoku Karst. Araiyasushige, 2025-07-24, CC0. File:Sikokukarusuto_20250724_2.jpg.',
+  rows: TSUNO_FACILITIES,
+  expectedGeo: TSUNO_EXPECTED_GEO_COUNT,
+  expectedRows: TSUNO_EXPECTED_ROW_COUNT,
+  travelDining: TSUNO_TRAVEL_DINING,
+  travelStay: TSUNO_TRAVEL_STAY,
+  travelShopping: TSUNO_TRAVEL_SHOPPING,
+  travelCommerce: TSUNO_TRAVEL_COMMERCE,
+  travelAll: TSUNO_TRAVEL_ALL,
+  coverageJa:
+    '津野町（JIS 39411）観光5・宿泊1・飲食3・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県29つ目のLIVEハブ。',
+  coverageEn:
+    'Tsuno Town (JIS 39411), 5 tourism + 1 stay + 3 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Twenty-ninth LIVE Kochi hub.',
+  mapLabelJa: '津野町の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Tsuno Town',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons/OSM等出典座標5件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 5 sourced coordinates for town/official facilities (accessed 2026-09-08).',
+  licenseNoteJa: '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from town.kochi-tsuno.lg.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
+
 
 
 export const NAKATOSA_LOOKUP: LookupTown = {
@@ -3238,7 +3279,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   nakatosa: NAKATOSA_LOOKUP,
   ochi: OCHI_LOOKUP,
   yusuhara: YUSUHARA_LOOKUP,
-  hidaka: HIDAKA_LOOKUP
+  hidaka: HIDAKA_LOOKUP,
+  tsuno: TSUNO_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

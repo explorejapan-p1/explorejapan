@@ -87,6 +87,7 @@ import {NAKATOSA_TRAVEL_ACCESSED} from '@/data/nakatosa-travel';
 import {OCHI_TRAVEL_ACCESSED} from '@/data/ochi-travel';
 import {YUSUHARA_TRAVEL_ACCESSED} from '@/data/yusuhara-travel';
 import {HIDAKA_TRAVEL_ACCESSED} from '@/data/hidaka-travel';
+import {TSUNO_TRAVEL_ACCESSED} from '@/data/tsuno-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1621,6 +1622,22 @@ export function MimaFacilityLookup({
                 Lodging: Vacation Rental MEI Rakuten western-room bed photo ({HIDAKA_TRAVEL_ACCESSED}).
                 Dining from Tabelog Hidaka shop pages ({HIDAKA_TRAVEL_ACCESSED}).
                 Onsen: 0 (stay≠onsen — private hinoki bath in rental). Experience: 0. Shopping/commerce: 0. Twenty-eighth LIVE Kochi hub.
+              </>
+            )
+          ) : town.slug === 'tsuno' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ表示（四国カルスト、風の里公園、四万十川源流之碑、有宮神社、道の駅布施ヶ坂）。
+                宿泊は楽天トラベル星ふるヴィレッジTENGUのツインルーム客室写真（{TSUNO_TRAVEL_ACCESSED}）。
+                飲食は食べログ津野町の公開店ページ（{TSUNO_TRAVEL_ACCESSED}）。
+                温泉は0件（stay≠onsen）。体験は0件。買物・商業は0件。高知県29つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Shikoku Karst, Kaze-no-Sato Park, Shimanto source monument, Arimiya Shrine, Michinoeki Fusegasaka).
+                Lodging: Hoshifuru Village TENGU Rakuten twin-room photo ({TSUNO_TRAVEL_ACCESSED}).
+                Dining from Tabelog Tsuno shop pages ({TSUNO_TRAVEL_ACCESSED}).
+                Onsen: 0 (stay≠onsen). Experience: 0. Shopping/commerce: 0. Twenty-ninth LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'nakatosa' ? (

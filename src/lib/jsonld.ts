@@ -64,6 +64,7 @@ import {NAKATOSA, NAKATOSA_PLACE_PHOTO} from '@/data/nakatosa';
 import {OCHI, OCHI_PLACE_PHOTO} from '@/data/ochi';
 import {YUSUHARA, YUSUHARA_PLACE_PHOTO} from '@/data/yusuhara';
 import {HIDAKA, HIDAKA_PLACE_PHOTO} from '@/data/hidaka';
+import {TSUNO, TSUNO_PLACE_PHOTO} from '@/data/tsuno';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -4402,6 +4403,68 @@ export function hidakaGraph(locale: AppLocale) {
     ]
   };
 }
+
+
+export function tsunoGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/tsuno');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('tsuno');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? TSUNO.nameJa : TSUNO.nameEn,
+        alternateName: isJa ? TSUNO.nameEn : TSUNO.nameJa,
+        identifier: TSUNO.jis,
+        url,
+        image: photoAbs(TSUNO_PLACE_PHOTO),
+        sameAs: [TSUNO.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '永野225番地1' : '225-1 Nagano',
+          addressLocality: isJa ? TSUNO.nameJa : TSUNO.nameEn,
+          addressRegion: isJa ? TSUNO.prefectureJa : TSUNO.prefectureEn,
+          postalCode: TSUNO.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? TSUNO.prefectureJa : TSUNO.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? TSUNO.nameJa : TSUNO.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? TSUNO.prefectureJa : TSUNO.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? TSUNO.nameJa : TSUNO.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '津野町の案内' : 'Places in Tsuno Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
 
 
 
