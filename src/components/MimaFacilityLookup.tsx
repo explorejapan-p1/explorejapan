@@ -86,6 +86,7 @@ import {NIYODOGAWA_TRAVEL_ACCESSED} from '@/data/niyodogawa-travel';
 import {NAKATOSA_TRAVEL_ACCESSED} from '@/data/nakatosa-travel';
 import {OCHI_TRAVEL_ACCESSED} from '@/data/ochi-travel';
 import {YUSUHARA_TRAVEL_ACCESSED} from '@/data/yusuhara-travel';
+import {HIDAKA_TRAVEL_ACCESSED} from '@/data/hidaka-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1604,6 +1605,22 @@ export function MimaFacilityLookup({
                 Lodging: Kumo-no-Ue Hotel Annex Marche Yusuhara Rakuten twin-room photo ({YUSUHARA_TRAVEL_ACCESSED}).
                 Dining from Tabelog Yusuhara shop pages ({YUSUHARA_TRAVEL_ACCESSED}).
                 Onsen: 0 (stay≠onsen — baths at separate Kumo-no-Ue Onsen). Experience: 0. Shopping/commerce: 0. Twenty-seventh LIVE Kochi hub.
+              </>
+            )
+          ) : town.slug === 'hidaka' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ表示（名越屋沈下橋、日高村役場、小村神社、日下駅、柳瀬橋）。
+                宿泊は楽天トラベル貸切宿 芽の洋室ベッド客室写真（{HIDAKA_TRAVEL_ACCESSED}）。
+                飲食は食べログ日高村の公開店ページ（{HIDAKA_TRAVEL_ACCESSED}）。
+                温泉は0件（stay≠onsen・一棟貸し内風呂は温泉扱いにしない）。体験は0件。買物・商業は0件。高知県28つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Nagoshi Chinka Bridge, Hidaka Village Hall, Omura Shrine, Kusaka Station, Yanase Bridge).
+                Lodging: Vacation Rental MEI Rakuten western-room bed photo ({HIDAKA_TRAVEL_ACCESSED}).
+                Dining from Tabelog Hidaka shop pages ({HIDAKA_TRAVEL_ACCESSED}).
+                Onsen: 0 (stay≠onsen — private hinoki bath in rental). Experience: 0. Shopping/commerce: 0. Twenty-eighth LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'nakatosa' ? (

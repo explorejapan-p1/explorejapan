@@ -63,6 +63,7 @@ import {NIYODOGAWA, NIYODOGAWA_PLACE_PHOTO} from '@/data/niyodogawa';
 import {NAKATOSA, NAKATOSA_PLACE_PHOTO} from '@/data/nakatosa';
 import {OCHI, OCHI_PLACE_PHOTO} from '@/data/ochi';
 import {YUSUHARA, YUSUHARA_PLACE_PHOTO} from '@/data/yusuhara';
+import {HIDAKA, HIDAKA_PLACE_PHOTO} from '@/data/hidaka';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -4340,6 +4341,68 @@ export function yusuharaGraph(locale: AppLocale) {
     ]
   };
 }
+
+
+export function hidakaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/hidaka');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('hidaka');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? HIDAKA.nameJa : HIDAKA.nameEn,
+        alternateName: isJa ? HIDAKA.nameEn : HIDAKA.nameJa,
+        identifier: HIDAKA.jis,
+        url,
+        image: photoAbs(HIDAKA_PLACE_PHOTO),
+        sameAs: [HIDAKA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '本郷61番地1' : '61-1 Hongo',
+          addressLocality: isJa ? HIDAKA.nameJa : HIDAKA.nameEn,
+          addressRegion: isJa ? HIDAKA.prefectureJa : HIDAKA.prefectureEn,
+          postalCode: HIDAKA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? HIDAKA.prefectureJa : HIDAKA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? HIDAKA.nameJa : HIDAKA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? HIDAKA.prefectureJa : HIDAKA.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? HIDAKA.nameJa : HIDAKA.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '日高村の案内' : 'Places in Hidaka Village',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
 
 
 export function nakatosaGraph(locale: AppLocale) {

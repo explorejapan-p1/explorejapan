@@ -722,6 +722,15 @@ import {
   YUSUHARA_TRAVEL_ALL
 } from './yusuhara-travel';
 
+import {HIDAKA, HIDAKA_PLACE_PHOTO, HIDAKA_FACILITIES, HIDAKA_EXPECTED_GEO_COUNT, HIDAKA_EXPECTED_ROW_COUNT} from './hidaka';
+import {
+  HIDAKA_TRAVEL_DINING,
+  HIDAKA_TRAVEL_STAY,
+  HIDAKA_TRAVEL_SHOPPING,
+  HIDAKA_TRAVEL_COMMERCE,
+  HIDAKA_TRAVEL_ALL
+} from './hidaka-travel';
+
 
 
 
@@ -3066,6 +3075,37 @@ export const YUSUHARA_LOOKUP: LookupTown = {
   licenseSiteEn: 'Town-site listing'
 };
 
+export const HIDAKA_LOOKUP: LookupTown = {
+  slug: 'hidaka',
+  prefectureSlug: 'kochi',
+  jis: HIDAKA.jis,
+  nameJa: HIDAKA.nameJa,
+  nameEn: HIDAKA.nameEn,
+  heroPhoto: HIDAKA_PLACE_PHOTO,
+  photoCiteJa: '写真は名越屋沈下橋。r18 INO (PACHIMO)、2014-11-21、CC BY 3.0。File:名越屋沈下橋_-_panoramio.jpg。',
+  photoCiteEn: 'Photo: Nagoshi Chinka Bridge. r18 INO (PACHIMO), 2014-11-21, CC BY 3.0. File:名越屋沈下橋_-_panoramio.jpg.',
+  rows: HIDAKA_FACILITIES,
+  expectedGeo: HIDAKA_EXPECTED_GEO_COUNT,
+  expectedRows: HIDAKA_EXPECTED_ROW_COUNT,
+  travelDining: HIDAKA_TRAVEL_DINING,
+  travelStay: HIDAKA_TRAVEL_STAY,
+  travelShopping: HIDAKA_TRAVEL_SHOPPING,
+  travelCommerce: HIDAKA_TRAVEL_COMMERCE,
+  travelAll: HIDAKA_TRAVEL_ALL,
+  coverageJa:
+    '日高村（JIS 39410）観光5・宿泊1・飲食3・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県28つ目のLIVEハブ。',
+  coverageEn:
+    'Hidaka Village (JIS 39410), 5 tourism + 1 stay + 3 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Twenty-eighth LIVE Kochi hub.',
+  mapLabelJa: '日高村の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Hidaka Village',
+  mapCitePackJa: '点は村・公式ページ掲載施設のWikipedia/Commons/OSM等出典座標5件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 5 sourced coordinates for village/official facilities (accessed 2026-09-08).',
+  licenseNoteJa: '行のライセンスは村公式・公式観光サイト掲載情報。村ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are village-site listings, facts from vill.hidaka.kochi.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '村公式サイト掲載情報',
+  licenseSiteEn: 'Village-site listing'
+};
+
 
 export const NAKATOSA_LOOKUP: LookupTown = {
   slug: 'nakatosa',
@@ -3197,7 +3237,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   niyodogawa: NIYODOGAWA_LOOKUP,
   nakatosa: NAKATOSA_LOOKUP,
   ochi: OCHI_LOOKUP,
-  yusuhara: YUSUHARA_LOOKUP
+  yusuhara: YUSUHARA_LOOKUP,
+  hidaka: HIDAKA_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

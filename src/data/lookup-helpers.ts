@@ -741,6 +741,19 @@ import {
   yusuharaTopChipForRow,
   resolveYusuharaFilter
 } from './yusuhara-travel';
+import {
+  isHidakaDiningPackRow,
+  isHidakaExperiencePackRow,
+  isHidakaOnsenPackRow,
+  isHidakaShoppingPackRow,
+  isHidakaStayPackRow,
+  hidakaPackRowMatchesFilter,
+  rankHidakaSeeRows,
+  hidakaSightPhoto,
+  hidakaSourcedHook,
+  hidakaTopChipForRow,
+  resolveHidakaFilter
+} from './hidaka-travel';
 
 
 
@@ -1472,6 +1485,18 @@ const YUSUHARA_HELPERS: LookupHelpers = {
   resolveFilter: resolveYusuharaFilter
 };
 
+const HIDAKA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isHidakaOnsenPackRow,
+  isExperiencePackRow: isHidakaExperiencePackRow,
+  isStayPackRow: isHidakaStayPackRow,
+  packRowMatchesFilter: hidakaPackRowMatchesFilter,
+  rankSeeRows: rankHidakaSeeRows,
+  sightPhoto: hidakaSightPhoto,
+  sourcedHook: hidakaSourcedHook,
+  topChipForRow: hidakaTopChipForRow,
+  resolveFilter: resolveHidakaFilter
+};
+
 const NAKATOSA_HELPERS: LookupHelpers = {
   isOnsenPackRow: isNakatosaOnsenPackRow,
   isExperiencePackRow: isNakatosaExperiencePackRow,
@@ -1741,5 +1766,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'nakatosa') return NAKATOSA_HELPERS;
   if (slug === 'ochi') return OCHI_HELPERS;
   if (slug === 'yusuhara') return YUSUHARA_HELPERS;
+  if (slug === 'hidaka') return HIDAKA_HELPERS;
   return MIMA_HELPERS;
 }
