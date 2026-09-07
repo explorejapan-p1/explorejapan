@@ -458,6 +458,17 @@ import {
   rankNankokuSeeRows,
   resolveNankokuFilter
 } from './nankoku-travel';
+import {
+  isKonanOnsenPackRow,
+  isKonanExperiencePackRow,
+  isKonanStayPackRow,
+  konanPackRowMatchesFilter,
+  konanSightPhoto,
+  konanSourcedHook,
+  konanTopChipForRow,
+  rankKonanSeeRows,
+  resolveKonanFilter
+} from './konan-travel';
 
 
 
@@ -1030,6 +1041,19 @@ const MANNO_HELPERS: LookupHelpers = {
 };
 
 
+
+const KONAN_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isKonanOnsenPackRow,
+  isExperiencePackRow: isKonanExperiencePackRow,
+  isStayPackRow: isKonanStayPackRow,
+  packRowMatchesFilter: konanPackRowMatchesFilter,
+  rankSeeRows: rankKonanSeeRows,
+  sightPhoto: konanSightPhoto,
+  sourcedHook: konanSourcedHook,
+  topChipForRow: konanTopChipForRow,
+  resolveFilter: resolveKonanFilter
+};
+
 const NANKOKU_HELPERS: LookupHelpers = {
   isOnsenPackRow: isNankokuOnsenPackRow,
   isExperiencePackRow: isNankokuExperiencePackRow,
@@ -1115,5 +1139,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'manno') return MANNO_HELPERS;
   if (slug === 'kochi') return KOCHI_HELPERS;
   if (slug === 'nankoku') return NANKOKU_HELPERS;
+  if (slug === 'konan') return KONAN_HELPERS;
   return MIMA_HELPERS;
 }

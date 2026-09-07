@@ -309,6 +309,7 @@ import {TADOTSU, TADOTSU_PLACE_PHOTO, TADOTSU_FACILITIES, TADOTSU_EXPECTED_GEO_C
 import {MANNO, MANNO_PLACE_PHOTO, MANNO_FACILITIES, MANNO_EXPECTED_GEO_COUNT, MANNO_EXPECTED_ROW_COUNT} from './manno';
 import {KOCHI, KOCHI_PLACE_PHOTO, KOCHI_FACILITIES, KOCHI_EXPECTED_GEO_COUNT, KOCHI_EXPECTED_ROW_COUNT} from './kochi';
 import {NANKOKU, NANKOKU_PLACE_PHOTO, NANKOKU_FACILITIES, NANKOKU_EXPECTED_GEO_COUNT, NANKOKU_EXPECTED_ROW_COUNT} from './nankoku';
+import {KONAN, KONAN_PLACE_PHOTO, KONAN_FACILITIES, KONAN_EXPECTED_GEO_COUNT, KONAN_EXPECTED_ROW_COUNT} from './konan';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -520,6 +521,14 @@ import {
   resolveNankokuFilter,
   rankNankokuSeeRows
 } from './nankoku-travel';
+import {
+  KONAN_TRAVEL_DINING,
+  KONAN_TRAVEL_STAY,
+  KONAN_TRAVEL_SHOPPING,
+  KONAN_TRAVEL_COMMERCE,
+  KONAN_TRAVEL_ALL,
+} from './konan-travel';
+
 
 
 
@@ -1894,6 +1903,40 @@ export const MANNO_LOOKUP: LookupTown = {
 };
 
 
+
+export const KONAN_LOOKUP: LookupTown = {
+  slug: 'konan',
+  prefectureSlug: 'kochi',
+  jis: KONAN.jis,
+  nameJa: KONAN.nameJa,
+  nameEn: KONAN.nameEn,
+  heroPhoto: KONAN_PLACE_PHOTO,
+  photoCiteJa: '写真は絵金蔵。京浜にけ、CC BY-SA 3.0。File:Kochi_Konan_Ekingura_1.jpg。',
+  photoCiteEn: 'Photo: Ekingura. 京浜にけ, CC BY-SA 3.0. File:Kochi_Konan_Ekingura_1.jpg.',
+  rows: KONAN_FACILITIES,
+  expectedGeo: KONAN_EXPECTED_GEO_COUNT,
+  expectedRows: KONAN_EXPECTED_ROW_COUNT,
+  travelDining: KONAN_TRAVEL_DINING,
+  travelStay: KONAN_TRAVEL_STAY,
+  travelShopping: KONAN_TRAVEL_SHOPPING,
+  travelCommerce: KONAN_TRAVEL_COMMERCE,
+  travelAll: KONAN_TRAVEL_ALL,
+  coverageJa:
+    '香南市（JIS 39211）観光6・宿泊1・飲食16・体験1（出典写真がある施設のみ）。温泉・買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載。ユニットバスのみのため温泉0）。オープンデータ凍結パックは未掲載。高知県3つ目のLIVEハブ。',
+  coverageEn:
+    'Konan City (JIS 39211), 6 tourism + 1 stay + 16 dining + 1 experience with sourced photos. Onsen, shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished (unit baths only → onsen 0). No frozen open-data pack. Third LIVE Kochi hub.',
+  mapLabelJa: '香南市の出典座標7件',
+  mapLabelEn: '7 sourced coordinates in Konan City',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia等出典座標7件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 7 sourced coordinates for city/official facilities (accessed 2026-09-08).',
+  licenseNoteJa:
+    '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.kochi-konan.lg.jp, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
 export const NANKOKU_LOOKUP: LookupTown = {
   slug: 'nankoku',
   prefectureSlug: 'kochi',
@@ -2148,7 +2191,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   tadotsu: TADOTSU_LOOKUP,
   manno: MANNO_LOOKUP,
   kochi: KOCHI_LOOKUP,
-  nankoku: NANKOKU_LOOKUP
+  nankoku: NANKOKU_LOOKUP,
+  konan: KONAN_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

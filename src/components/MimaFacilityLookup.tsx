@@ -61,6 +61,7 @@ import {TADOTSU_TRAVEL_ACCESSED} from '@/data/tadotsu-travel';
 import {MANNO_TRAVEL_ACCESSED} from '@/data/manno-travel';
 import {KOCHI_TRAVEL_ACCESSED} from '@/data/kochi-travel';
 import {NANKOKU_TRAVEL_ACCESSED} from '@/data/nankoku-travel';
+import {KONAN_TRAVEL_ACCESSED} from '@/data/konan-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1430,6 +1431,24 @@ export function MimaFacilityLookup({
                 Lodging from Rakuten Travel room photos ({NANKOKU_TRAVEL_ACCESSED}).
                 Dining from Tabelog Nankoku shop pages ({NANKOKU_TRAVEL_ACCESSED}).
                 Onsen: 0 (business-hotel baths only). Experience: Michinoeki Nankoku Furari (Commons). Shopping/commerce: 0. Second LIVE Kochi hub.
+              </>
+            )
+
+
+          ) : town.slug === 'konan' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（絵金蔵・のいち駅・あかおか駅・手結港可動橋・のいち動物公園・夜須駅）。
+                宿泊は楽天トラベルの客室写真（{KONAN_TRAVEL_ACCESSED}）。
+                飲食は食べログ香南市の公開店ページ（{KONAN_TRAVEL_ACCESSED}）。
+                温泉は0件（ユニットバスのみ）。体験は道の駅やす（Commons）。買物・商業は0件。高知県3つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Ekingura, Noichi Station, Akaoka Station, Tei drawbridge, Noichi Zoo, Yasu Station).
+                Lodging from Rakuten Travel room photos ({KONAN_TRAVEL_ACCESSED}).
+                Dining from Tabelog Konan shop pages ({KONAN_TRAVEL_ACCESSED}).
+                Onsen: 0 (unit baths only). Experience: Michinoeki Yasu (Commons). Shopping/commerce: 0. Third LIVE Kochi hub.
               </>
             )
 

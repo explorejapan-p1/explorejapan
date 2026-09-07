@@ -34,6 +34,7 @@ import {TADOTSU_PLACE_PHOTO} from '@/data/tadotsu';
 import {MANNO_PLACE_PHOTO} from '@/data/manno';
 import {KOCHI_PLACE_PHOTO} from '@/data/kochi';
 import {NANKOKU_PLACE_PHOTO} from '@/data/nankoku';
+import {KONAN_PLACE_PHOTO} from '@/data/konan';
 import {KAGAWA_MUNICIPALITIES} from '@/data/kagawa-municipalities';
 import {KOCHI_MUNICIPALITIES} from '@/data/kochi-municipalities';
 import {TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
@@ -172,6 +173,8 @@ export default async function PrefecturePage({params}: Props) {
                                                 ? KOCHI_PLACE_PHOTO
                                               : m.slug === 'nankoku'
                                                 ? NANKOKU_PLACE_PHOTO
+                                              : m.slug === 'konan'
+                                                ? KONAN_PLACE_PHOTO
                                               : m.slug === 'takamatsu'
                                               ? TAKAMATSU_PLACE_PHOTO
                                               : MIMA_PLACE_PHOTO;
