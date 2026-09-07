@@ -728,6 +728,19 @@ import {
   ochiTopChipForRow,
   resolveOchiFilter
 } from './ochi-travel';
+import {
+  isYusuharaDiningPackRow,
+  isYusuharaExperiencePackRow,
+  isYusuharaOnsenPackRow,
+  isYusuharaShoppingPackRow,
+  isYusuharaStayPackRow,
+  yusuharaPackRowMatchesFilter,
+  rankYusuharaSeeRows,
+  yusuharaSightPhoto,
+  yusuharaSourcedHook,
+  yusuharaTopChipForRow,
+  resolveYusuharaFilter
+} from './yusuhara-travel';
 
 
 
@@ -1447,6 +1460,18 @@ const OCHI_HELPERS: LookupHelpers = {
   resolveFilter: resolveOchiFilter
 };
 
+const YUSUHARA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isYusuharaOnsenPackRow,
+  isExperiencePackRow: isYusuharaExperiencePackRow,
+  isStayPackRow: isYusuharaStayPackRow,
+  packRowMatchesFilter: yusuharaPackRowMatchesFilter,
+  rankSeeRows: rankYusuharaSeeRows,
+  sightPhoto: yusuharaSightPhoto,
+  sourcedHook: yusuharaSourcedHook,
+  topChipForRow: yusuharaTopChipForRow,
+  resolveFilter: resolveYusuharaFilter
+};
+
 const NAKATOSA_HELPERS: LookupHelpers = {
   isOnsenPackRow: isNakatosaOnsenPackRow,
   isExperiencePackRow: isNakatosaExperiencePackRow,
@@ -1715,5 +1740,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'niyodogawa') return NIYODOGAWA_HELPERS;
   if (slug === 'nakatosa') return NAKATOSA_HELPERS;
   if (slug === 'ochi') return OCHI_HELPERS;
+  if (slug === 'yusuhara') return YUSUHARA_HELPERS;
   return MIMA_HELPERS;
 }

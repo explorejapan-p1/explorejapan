@@ -62,6 +62,7 @@ import {OKAWA, OKAWA_PLACE_PHOTO} from '@/data/okawa';
 import {NIYODOGAWA, NIYODOGAWA_PLACE_PHOTO} from '@/data/niyodogawa';
 import {NAKATOSA, NAKATOSA_PLACE_PHOTO} from '@/data/nakatosa';
 import {OCHI, OCHI_PLACE_PHOTO} from '@/data/ochi';
+import {YUSUHARA, YUSUHARA_PLACE_PHOTO} from '@/data/yusuhara';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -4278,6 +4279,68 @@ export function ochiGraph(locale: AppLocale) {
     ]
   };
 }
+
+
+export function yusuharaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/yusuhara');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('yusuhara');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? YUSUHARA.nameJa : YUSUHARA.nameEn,
+        alternateName: isJa ? YUSUHARA.nameEn : YUSUHARA.nameJa,
+        identifier: YUSUHARA.jis,
+        url,
+        image: photoAbs(YUSUHARA_PLACE_PHOTO),
+        sameAs: [YUSUHARA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '梼原1444番地1' : '1444-1 Yusuhara',
+          addressLocality: isJa ? YUSUHARA.nameJa : YUSUHARA.nameEn,
+          addressRegion: isJa ? YUSUHARA.prefectureJa : YUSUHARA.prefectureEn,
+          postalCode: YUSUHARA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? YUSUHARA.prefectureJa : YUSUHARA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? YUSUHARA.nameJa : YUSUHARA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? YUSUHARA.prefectureJa : YUSUHARA.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? YUSUHARA.nameJa : YUSUHARA.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '梼原町の案内' : 'Places in Yusuhara Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
 
 export function nakatosaGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'kochi/nakatosa');

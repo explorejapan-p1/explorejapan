@@ -713,6 +713,15 @@ import {
   OCHI_TRAVEL_ALL
 } from './ochi-travel';
 
+import {YUSUHARA, YUSUHARA_PLACE_PHOTO, YUSUHARA_FACILITIES, YUSUHARA_EXPECTED_GEO_COUNT, YUSUHARA_EXPECTED_ROW_COUNT} from './yusuhara';
+import {
+  YUSUHARA_TRAVEL_DINING,
+  YUSUHARA_TRAVEL_STAY,
+  YUSUHARA_TRAVEL_SHOPPING,
+  YUSUHARA_TRAVEL_COMMERCE,
+  YUSUHARA_TRAVEL_ALL
+} from './yusuhara-travel';
+
 
 
 
@@ -3025,6 +3034,39 @@ export const OCHI_LOOKUP: LookupTown = {
   licenseSiteEn: 'Town-site listing'
 };
 
+
+export const YUSUHARA_LOOKUP: LookupTown = {
+  slug: 'yusuhara',
+  prefectureSlug: 'kochi',
+  jis: YUSUHARA.jis,
+  nameJa: YUSUHARA.nameJa,
+  nameEn: YUSUHARA.nameEn,
+  heroPhoto: YUSUHARA_PLACE_PHOTO,
+  photoCiteJa: '写真は天狗高原。r18 INO (PACHIMO)、2014-10-08、CC BY 3.0。File:天狗高原_-_panoramio.jpg。',
+  photoCiteEn: 'Photo: Tengu Highland. r18 INO (PACHIMO), 2014-10-08, CC BY 3.0. File:天狗高原_-_panoramio.jpg.',
+  rows: YUSUHARA_FACILITIES,
+  expectedGeo: YUSUHARA_EXPECTED_GEO_COUNT,
+  expectedRows: YUSUHARA_EXPECTED_ROW_COUNT,
+  travelDining: YUSUHARA_TRAVEL_DINING,
+  travelStay: YUSUHARA_TRAVEL_STAY,
+  travelShopping: YUSUHARA_TRAVEL_SHOPPING,
+  travelCommerce: YUSUHARA_TRAVEL_COMMERCE,
+  travelAll: YUSUHARA_TRAVEL_ALL,
+  coverageJa:
+    '梼原町（JIS 39405）観光5・宿泊1・飲食3・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県27つ目のLIVEハブ。',
+  coverageEn:
+    'Yusuhara Town (JIS 39405), 5 tourism + 1 stay + 3 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Twenty-seventh LIVE Kochi hub.',
+  mapLabelJa: '梼原町の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Yusuhara Town',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons/OSM等出典座標5件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 5 sourced coordinates for town/official facilities (accessed 2026-09-08).',
+  licenseNoteJa: '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from town.yusuhara.lg.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
+
 export const NAKATOSA_LOOKUP: LookupTown = {
   slug: 'nakatosa',
   prefectureSlug: 'kochi',
@@ -3154,7 +3196,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   okawa: OKAWA_LOOKUP,
   niyodogawa: NIYODOGAWA_LOOKUP,
   nakatosa: NAKATOSA_LOOKUP,
-  ochi: OCHI_LOOKUP
+  ochi: OCHI_LOOKUP,
+  yusuhara: YUSUHARA_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

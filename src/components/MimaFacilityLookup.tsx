@@ -85,6 +85,7 @@ import {OKAWA_TRAVEL_ACCESSED} from '@/data/okawa-travel';
 import {NIYODOGAWA_TRAVEL_ACCESSED} from '@/data/niyodogawa-travel';
 import {NAKATOSA_TRAVEL_ACCESSED} from '@/data/nakatosa-travel';
 import {OCHI_TRAVEL_ACCESSED} from '@/data/ochi-travel';
+import {YUSUHARA_TRAVEL_ACCESSED} from '@/data/yusuhara-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1587,6 +1588,22 @@ export function MimaFacilityLookup({
                 Tourism shows only facilities with a sourced photo (Mt. Yokokura, Ochi Town Hall, Naka-Niyodo Bridge, Otaru Falls, Yokokurayama Natural Forest Museum).
                 Lodging: Snow Peak Ochi Niyodogawa Camp Field JYUBAKO room photo ({OCHI_TRAVEL_ACCESSED}).
                 Dining from Tabelog Ochi shop pages ({OCHI_TRAVEL_ACCESSED}).
+              </>
+            )
+          ) : town.slug === 'yusuhara' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ表示（天狗高原、梼原町役場、まちの駅「ゆすはら」、韮ヶ峠、いちやがもり）。
+                宿泊は楽天トラベル雲の上のホテル別館・マルシェユスハラのツインルーム客室写真（{YUSUHARA_TRAVEL_ACCESSED}）。
+                飲食は食べログ梼原町の公開店ページ（{YUSUHARA_TRAVEL_ACCESSED}）。
+                温泉は0件（stay≠onsen・浴場は雲の上の温泉別施設）。体験は0件。買物・商業は0件。高知県27つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Tengu Highland, Yusuhara Town Hall, Machi-no-eki Yusuhara, Niraga Pass, Ichiyagamori).
+                Lodging: Kumo-no-Ue Hotel Annex Marche Yusuhara Rakuten twin-room photo ({YUSUHARA_TRAVEL_ACCESSED}).
+                Dining from Tabelog Yusuhara shop pages ({YUSUHARA_TRAVEL_ACCESSED}).
+                Onsen: 0 (stay≠onsen — baths at separate Kumo-no-Ue Onsen). Experience: 0. Shopping/commerce: 0. Twenty-seventh LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'nakatosa' ? (
