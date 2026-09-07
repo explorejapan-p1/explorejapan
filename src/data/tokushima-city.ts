@@ -33,7 +33,7 @@ export const TOKUSHIMA_CITY = {
     awaodori: 'https://www.city.tokushima.tokushima.jp/shisetsu/bunka_art/awaodori_kaikan.html',
     castlePark: 'https://www.city.tokushima.tokushima.jp/shisetsu/park/chuo.html',
     tabelogCity: 'https://tabelog.com/tokushima/C36201/rstLst/',
-    accessed: '2026-08-28'
+    accessed: '2026-09-07'
   }
 } as const;
 
@@ -59,11 +59,25 @@ function wikiPhoto(
     author,
     authorUrl,
     taken,
-    accessed: '2026-08-28',
+    accessed: '2026-09-07',
     altJa,
     altEn
   };
 }
+
+
+/** Cover: File:Mount Bizan from Shimmachi River 20200607.jpg — 新町川から臨む眉山. Not 鳴門渦潮 / 大歩危 / かずら橋. */
+export const TOKUSHIMA_CITY_PLACE_PHOTO = wikiPhoto(
+  'bizan-shimmachi.jpg',
+  'https://commons.wikimedia.org/wiki/File:Mount_Bizan_from_Shimmachi_River_20200607.jpg',
+  'CC BY-SA 4.0',
+  'https://creativecommons.org/licenses/by-sa/4.0/',
+  '新幹線',
+  'https://commons.wikimedia.org/wiki/User:%E6%96%B0%E5%B9%B9%E7%B7%9A',
+  '2020-06-07',
+  '新町川から臨む眉山（徳島市）',
+  'Mount Bizan from the Shinmachi River, Tokushima'
+);
 
 function sourcePhoto(
   file: string,
@@ -80,32 +94,11 @@ function sourcePhoto(
     author,
     authorUrl: page,
     taken: '2026',
-    accessed: '2026-08-28',
+    accessed: '2026-09-07',
     altJa,
     altEn
   };
 }
-
-/** Cover: File:Mount Bizan from Shimmachi River 20200607.jpg — 新町川から臨む眉山. Not 鳴門渦潮 / 大歩危 / かずら橋. */
-export const TOKUSHIMA_CITY_PLACE_PHOTO = wikiPhoto(
-  'bizan-shimmachi.jpg',
-  'https://commons.wikimedia.org/wiki/File:Mount_Bizan_from_Shimmachi_River_20200607.jpg',
-  'CC BY-SA 4.0',
-  'https://creativecommons.org/licenses/by-sa/4.0/',
-  '新幹線',
-  'https://commons.wikimedia.org/wiki/User:%E6%96%B0%E5%B9%B9%E7%B7%9A',
-  '2020-06-07',
-  '新町川から臨む眉山（徳島市）',
-  'Mount Bizan from the Shinmachi River, Tokushima'
-);
-
-const TABELOG_INOTANI = 'https://tabelog.com/tokushima/A3601/A360101/36000011/';
-const TABELOG_TODAI = 'https://tabelog.com/tokushima/A3601/A360101/36000013/';
-const TABELOG_IPPUKU = 'https://tabelog.com/tokushima/A3601/A360101/36000005/';
-const TABELOG_YAMAKYO = 'https://tabelog.com/tokushima/A3601/A360101/36000632/';
-const TABELOG_KANARIYA = 'https://tabelog.com/tokushima/A3601/A360101/36000816/';
-const TABELOG_MENOH = 'https://tabelog.com/tokushima/A3601/A360101/36000076/';
-const TABELOG_YOAKE = 'https://tabelog.com/tokushima/A3601/A360101/36004118/';
 
 /** Exact travel/sight name_ja only. No 鳴門 / 三好 / 藍住 photos. */
 export const TOKUSHIMA_CITY_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
@@ -154,55 +147,636 @@ export const TOKUSHIMA_CITY_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto
     'あわぎん眉山ロープウエイ（徳島市新町橋）',
     'Awagin Bizan Ropeway, Shinmachibashi, Tokushima'
   ),
-  'いのたに 本店': sourcePhoto(
-    'inotani-ramen.jpg',
-    'いのたに 本店の徳島ラーメン（徳島市西大工町）',
-    'Tokushima ramen at Inotani Honten, Nishi-Daiku-cho, Tokushima',
-    TABELOG_INOTANI,
+  "いのたに 本店": sourcePhoto(
+    "tokushima-36000011-dish.jpg",
+    "いのたに 本店の料理写真",
+    "いのたに 本店 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36000011/",
     '食べログ'
   ),
-  'ラーメン東大 大道本店': sourcePhoto(
-    'todai-ramen.jpg',
-    'ラーメン東大 大道本店の徳島ラーメン（徳島市大道）',
-    'Tokushima ramen at Ramen Todai Daido Honten, Daido, Tokushima',
-    TABELOG_TODAI,
+  "かま田": sourcePhoto(
+    "tokushima-36005584-dish.jpg",
+    "かま田の料理写真",
+    "かま田 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36005584/",
     '食べログ'
   ),
-  '銀座一福 本店': sourcePhoto(
-    'ginza-ippuku-ramen.jpg',
-    '銀座一福 本店の中華そば（徳島市銀座）',
-    'Chuka-soba at Ginza Ippuku Honten, Ginza, Tokushima',
-    TABELOG_IPPUKU,
+  "ししくい": sourcePhoto(
+    "tokushima-36000015-dish.jpg",
+    "ししくいの料理写真",
+    "ししくい food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36000015/",
     '食べログ'
   ),
-  '中華そば やまきょう': sourcePhoto(
-    'yamakyo-ramen.jpg',
-    '中華そば やまきょうの徳島ラーメン（徳島市北矢三町）',
-    'Tokushima ramen at Chuka-soba Yamakyo, Kita-Yaso-cho, Tokushima',
-    TABELOG_YAMAKYO,
+  "ぽんず": sourcePhoto(
+    "tokushima-36005708-dish.jpg",
+    "ぽんずの料理写真",
+    "ぽんず food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36005708/",
     '食べログ'
   ),
-  '可成家 本店': sourcePhoto(
-    'kanariya-ramen.jpg',
-    '可成家 本店の白系ラーメン（徳島市南庄町）',
-    'White-style ramen at Kanariya Honten, Minamisho-cho, Tokushima',
-    TABELOG_KANARIYA,
+  "口福 みなみ": sourcePhoto(
+    "tokushima-36006741-dish.jpg",
+    "口福 みなみの料理写真",
+    "口福 みなみ food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36006741/",
     '食べログ'
   ),
-  '麺王 徳島駅前本店': sourcePhoto(
-    'menoh-ramen.jpg',
-    '麺王 徳島駅前本店の徳島ラーメン（徳島市寺島本町東）',
-    'Tokushima ramen at Men-oh Tokushima Ekimae Honten, Terashima-honcho-higashi, Tokushima',
-    TABELOG_MENOH,
+  "パスト エ ビバンド ガク": sourcePhoto(
+    "tokushima-36004801-dish.jpg",
+    "パスト エ ビバンド ガクの料理写真",
+    "パスト エ ビバンド ガク food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36004801/",
     '食べログ'
   ),
-  'よあけ 駅前店': sourcePhoto(
-    'yoake-ramen.jpg',
-    'よあけ 駅前店の支那そば（徳島市一番町）',
-    'Shina-soba at Yoake Ekimae, Ichiban-cho, Tokushima',
-    TABELOG_YOAKE,
+  "オーバッシュカフェ": sourcePhoto(
+    "tokushima-36004761-dish.jpg",
+    "オーバッシュカフェの料理写真",
+    "オーバッシュカフェ food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36004761/",
     '食べログ'
-  )
+  ),
+  "肴屋けん三": sourcePhoto(
+    "tokushima-36006457-dish.jpg",
+    "肴屋けん三の料理写真",
+    "肴屋けん三 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36006457/",
+    '食べログ'
+  ),
+  "巽屋": sourcePhoto(
+    "tokushima-36000036-dish.jpg",
+    "巽屋の料理写真",
+    "巽屋 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36000036/",
+    '食べログ'
+  ),
+  "ビストロ・ラ・カシェット": sourcePhoto(
+    "tokushima-36006724-dish.jpg",
+    "ビストロ・ラ・カシェットの料理写真",
+    "ビストロ・ラ・カシェット food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36006724/",
+    '食べログ'
+  ),
+  "ラ ボッテガ デル オーリオ": sourcePhoto(
+    "tokushima-36004067-dish.jpg",
+    "ラ ボッテガ デル オーリオの料理写真",
+    "ラ ボッテガ デル オーリオ food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36004067/",
+    '食べログ'
+  ),
+  "いさみ": sourcePhoto(
+    "tokushima-36005458-dish.jpg",
+    "いさみの料理写真",
+    "いさみ food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36005458/",
+    '食べログ'
+  ),
+  "炭火焼ステーキ 但馬": sourcePhoto(
+    "tokushima-36008044-dish.jpg",
+    "炭火焼ステーキ 但馬の料理写真",
+    "炭火焼ステーキ 但馬 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36008044/",
+    '食べログ'
+  ),
+  "美味心鮮 籠屋町 鳴帆渡": sourcePhoto(
+    "tokushima-36002872-dish.jpg",
+    "美味心鮮 籠屋町 鳴帆渡の料理写真",
+    "美味心鮮 籠屋町 鳴帆渡 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36002872/",
+    '食べログ'
+  ),
+  "居酒屋　はる坊": sourcePhoto(
+    "tokushima-36003103-dish.jpg",
+    "居酒屋　はる坊の料理写真",
+    "居酒屋　はる坊 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36003103/",
+    '食べログ'
+  ),
+  "とくさん": sourcePhoto(
+    "tokushima-36000488-dish.jpg",
+    "とくさんの料理写真",
+    "とくさん food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36000488/",
+    '食べログ'
+  ),
+  "手打ちそば 遊山": sourcePhoto(
+    "tokushima-36006466-dish.jpg",
+    "手打ちそば 遊山の料理写真",
+    "手打ちそば 遊山 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36006466/",
+    '食べログ'
+  ),
+  "食彩かなで": sourcePhoto(
+    "tokushima-36005710-dish.jpg",
+    "食彩かなでの料理写真",
+    "食彩かなで food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36005710/",
+    '食べログ'
+  ),
+  "東條": sourcePhoto(
+    "tokushima-36007407-dish.jpg",
+    "東條の料理写真",
+    "東條 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36007407/",
+    '食べログ'
+  ),
+  "和田乃屋 本店": sourcePhoto(
+    "tokushima-36000347-dish.jpg",
+    "和田乃屋 本店の料理写真",
+    "和田乃屋 本店 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36000347/",
+    '食べログ'
+  ),
+  "酒菜和の香": sourcePhoto(
+    "tokushima-36001081-dish.jpg",
+    "酒菜和の香の料理写真",
+    "酒菜和の香 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36001081/",
+    '食べログ'
+  ),
+  "鳥焼処 鳥ぼん 本店": sourcePhoto(
+    "tokushima-36000176-dish.jpg",
+    "鳥焼処 鳥ぼん 本店の料理写真",
+    "鳥焼処 鳥ぼん 本店 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36000176/",
+    '食べログ'
+  ),
+  "阿波尾鶏指定料理店 紺屋町 よしこの": sourcePhoto(
+    "tokushima-36006720-dish.jpg",
+    "阿波尾鶏指定料理店 紺屋町 よしこのの料理写真",
+    "阿波尾鶏指定料理店 紺屋町 よしこの food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36006720/",
+    '食べログ'
+  ),
+  "萬里": sourcePhoto(
+    "tokushima-36000629-dish.jpg",
+    "萬里の料理写真",
+    "萬里 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36000629/",
+    '食べログ'
+  ),
+  "御料理 なつめ": sourcePhoto(
+    "tokushima-36000275-dish.jpg",
+    "御料理 なつめの料理写真",
+    "御料理 なつめ food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36000275/",
+    '食べログ'
+  ),
+  "酒肴結 さかぐち": sourcePhoto(
+    "tokushima-36006104-dish.jpg",
+    "酒肴結 さかぐちの料理写真",
+    "酒肴結 さかぐち food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36006104/",
+    '食べログ'
+  ),
+  "喜助": sourcePhoto(
+    "tokushima-36000821-dish.jpg",
+    "喜助の料理写真",
+    "喜助 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36000821/",
+    '食べログ'
+  ),
+  "居酒屋": sourcePhoto(
+    "tokushima-36002362-dish.jpg",
+    "居酒屋の料理写真",
+    "居酒屋 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36002362/",
+    '食べログ'
+  ),
+  "S.B.DINER TOKUSHIMA": sourcePhoto(
+    "tokushima-36006765-dish.jpg",
+    "S.B.DINER TOKUSHIMAの料理写真",
+    "S.B.DINER TOKUSHIMA food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36006765/",
+    '食べログ'
+  ),
+  "王者-23": sourcePhoto(
+    "tokushima-36005071-dish.jpg",
+    "王者-23の料理写真",
+    "王者-23 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36005071/",
+    '食べログ'
+  ),
+  "Roast Chicken&M.C.Cafe Bon": sourcePhoto(
+    "tokushima-36005804-dish.jpg",
+    "Roast Chicken&M.C.Cafe Bonの料理写真",
+    "Roast Chicken&M.C.Cafe Bon food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36005804/",
+    '食べログ'
+  ),
+  "ポエシア": sourcePhoto(
+    "tokushima-36005048-dish.jpg",
+    "ポエシアの料理写真",
+    "ポエシア food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36005048/",
+    '食べログ'
+  ),
+  "Bar 余白": sourcePhoto(
+    "tokushima-36007504-dish.jpg",
+    "Bar 余白の料理写真",
+    "Bar 余白 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36007504/",
+    '食べログ'
+  ),
+  "くさか": sourcePhoto(
+    "tokushima-36007280-dish.jpg",
+    "くさかの料理写真",
+    "くさか food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36007280/",
+    '食べログ'
+  ),
+  "鳥ぼん 徳島本町店": sourcePhoto(
+    "tokushima-36005691-dish.jpg",
+    "鳥ぼん 徳島本町店の料理写真",
+    "鳥ぼん 徳島本町店 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36005691/",
+    '食べログ'
+  ),
+  "元祖大判焼 あたりや": sourcePhoto(
+    "tokushima-36000061-dish.jpg",
+    "元祖大判焼 あたりやの料理写真",
+    "元祖大判焼 あたりや food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36000061/",
+    '食べログ'
+  ),
+  "セルフうどん やま 徳島駅前店": sourcePhoto(
+    "tokushima-36001628-dish.jpg",
+    "セルフうどん やま 徳島駅前店の料理写真",
+    "セルフうどん やま 徳島駅前店 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36001628/",
+    '食べログ'
+  ),
+  "ココロ": sourcePhoto(
+    "tokushima-36008620-dish.jpg",
+    "ココロの料理写真",
+    "ココロ food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36008620/",
+    '食べログ'
+  ),
+  "活魚水産 紺屋町本店": sourcePhoto(
+    "tokushima-36003913-dish.jpg",
+    "活魚水産 紺屋町本店の料理写真",
+    "活魚水産 紺屋町本店 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36003913/",
+    '食べログ'
+  ),
+  "つるはし": sourcePhoto(
+    "tokushima-36001267-dish.jpg",
+    "つるはしの料理写真",
+    "つるはし food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36001267/",
+    '食べログ'
+  ),
+  "堂の浦 駅前店": sourcePhoto(
+    "tokushima-36004932-dish.jpg",
+    "堂の浦 駅前店の料理写真",
+    "堂の浦 駅前店 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36004932/",
+    '食べログ'
+  ),
+  "食楽園": sourcePhoto(
+    "tokushima-36001271-dish.jpg",
+    "食楽園の料理写真",
+    "食楽園 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36001271/",
+    '食べログ'
+  ),
+  "中華そば かわい": sourcePhoto(
+    "tokushima-36003040-dish.jpg",
+    "中華そば かわいの料理写真",
+    "中華そば かわい food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36003040/",
+    '食べログ'
+  ),
+  "食らんど もっちゃん": sourcePhoto(
+    "tokushima-36001665-dish.jpg",
+    "食らんど もっちゃんの料理写真",
+    "食らんど もっちゃん food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36001665/",
+    '食べログ'
+  ),
+  "スガッチィー": sourcePhoto(
+    "tokushima-36000855-dish.jpg",
+    "スガッチィーの料理写真",
+    "スガッチィー food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36000855/",
+    '食べログ'
+  ),
+  "やました": sourcePhoto(
+    "tokushima-36006442-dish.jpg",
+    "やましたの料理写真",
+    "やました food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36006442/",
+    '食べログ'
+  ),
+  "麺屋 六根": sourcePhoto(
+    "tokushima-36003938-dish.jpg",
+    "麺屋 六根の料理写真",
+    "麺屋 六根 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36003938/",
+    '食べログ'
+  ),
+  "西食": sourcePhoto(
+    "tokushima-36000182-dish.jpg",
+    "西食の料理写真",
+    "西食 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36000182/",
+    '食べログ'
+  ),
+  "地鶏料理専門店 無玄": sourcePhoto(
+    "tokushima-36003961-dish.jpg",
+    "地鶏料理専門店 無玄の料理写真",
+    "地鶏料理専門店 無玄 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36003961/",
+    '食べログ'
+  ),
+  "esse": sourcePhoto(
+    "tokushima-36008675-dish.jpg",
+    "esseの料理写真",
+    "esse food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36008675/",
+    '食べログ'
+  ),
+  "WAKA Ristorante": sourcePhoto(
+    "tokushima-36006817-dish.jpg",
+    "WAKA Ristoranteの料理写真",
+    "WAKA Ristorante food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36006817/",
+    '食べログ'
+  ),
+  "森珈琲店": sourcePhoto(
+    "tokushima-36002642-dish.jpg",
+    "森珈琲店の料理写真",
+    "森珈琲店 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36002642/",
+    '食べログ'
+  ),
+  "酒菜きっちん 雄食": sourcePhoto(
+    "tokushima-36005751-dish.jpg",
+    "酒菜きっちん 雄食の料理写真",
+    "酒菜きっちん 雄食 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36005751/",
+    '食べログ'
+  ),
+  "すし瀬名波": sourcePhoto(
+    "tokushima-36006605-dish.jpg",
+    "すし瀬名波の料理写真",
+    "すし瀬名波 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36006605/",
+    '食べログ'
+  ),
+  "蓮菜": sourcePhoto(
+    "tokushima-36002138-dish.jpg",
+    "蓮菜の料理写真",
+    "蓮菜 food photo",
+    "https://tabelog.com/tokushima/A3601/A360101/36002138/",
+    '食べログ'
+  ),
+  "JRホテルクレメント徳島": sourcePhoto(
+    "tokushima-stay-clement-room.jpg",
+    "JRホテルクレメント徳島の客室・外観写真",
+    "JRホテルクレメント徳島 room or exterior photo",
+    "https://www.jrclement.co.jp/tokushima/",
+    "JRホテルクレメント徳島公式"
+  ),
+  "ホテルサンルート徳島": sourcePhoto(
+    "tokushima-stay-sunroute-room.jpg",
+    "ホテルサンルート徳島の客室・外観写真",
+    "ホテルサンルート徳島 room or exterior photo",
+    "https://sotetsu-hotels.com/sunroute/tokushima/",
+    "ホテルサンルート徳島公式"
+  ),
+  "ダイワロイネットホテル徳島駅前": sourcePhoto(
+    "tokushima-stay-daiwa-og.jpg",
+    "ダイワロイネットホテル徳島駅前の客室・外観写真",
+    "ダイワロイネットホテル徳島駅前 room or exterior photo",
+    "https://www.daiwaroynet.jp/tokushima-ekimae/",
+    "ダイワロイネットホテルズ公式"
+  ),
+  "アパホテル〈徳島駅前〉": sourcePhoto(
+    "tokushima-stay-09.jpg",
+    "アパホテル〈徳島駅前〉の客室・外観写真",
+    "アパホテル〈徳島駅前〉 room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/19105/19105.jpg",
+    "楽天トラベル"
+  ),
+  "東横INN徳島駅前": sourcePhoto(
+    "tokushima-stay-toyoko-og.jpg",
+    "東横INN徳島駅前の客室・外観写真",
+    "東横INN徳島駅前 room or exterior photo",
+    "https://www.toyoko-inn.com/search/detail/00187/",
+    "東横INN公式"
+  ),
+  "徳島グランヴィリオホテル": sourcePhoto(
+    "tokushima-stay-26.jpg",
+    "徳島グランヴィリオホテルの客室・外観写真",
+    "徳島グランヴィリオホテル room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/71949/71949.jpg",
+    "楽天トラベル"
+  ),
+  "スマイルホテル徳島": sourcePhoto(
+    "tokushima-stay-smile.jpg",
+    "スマイルホテル徳島の客室・外観写真",
+    "スマイルホテル徳島 room or exterior photo",
+    "https://www.smile-hotels.com/hotels/tokushima/",
+    "スマイルホテル徳島公式"
+  ),
+  "ホテル グランドパレス徳島": sourcePhoto(
+    "tokushima-stay-11.jpg",
+    "ホテル グランドパレス徳島の客室・外観写真",
+    "ホテル グランドパレス徳島 room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/8830/8830.jpg",
+    "楽天トラベル"
+  ),
+  "アグネスホテル徳島": sourcePhoto(
+    "tokushima-stay-10.jpg",
+    "アグネスホテル徳島の客室・外観写真",
+    "アグネスホテル徳島 room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/9417/9417.jpg",
+    "楽天トラベル"
+  ),
+  "徳島ワシントンホテルプラザ": sourcePhoto(
+    "tokushima-stay-14.jpg",
+    "徳島ワシントンホテルプラザの客室・外観写真",
+    "徳島ワシントンホテルプラザ room or exterior photo",
+    "https://img.travel.rakuten.co.jp/share/image_up/17801/LARGE/7a6731a69a1039f0de98aea780814643ee29baf9.47.9.26.3.jpg",
+    "楽天トラベル"
+  ),
+  "東横INN徳島駅眉山口": sourcePhoto(
+    "tokushima-stay-06.jpg",
+    "東横INN徳島駅眉山口の客室・外観写真",
+    "東横INN徳島駅眉山口 room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/532/532.jpg",
+    "楽天トラベル"
+  ),
+  "アグネスホテル プラス": sourcePhoto(
+    "tokushima-stay-18.jpg",
+    "アグネスホテル プラスの客室・外観写真",
+    "アグネスホテル プラス room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/1530/1530.jpg",
+    "楽天トラベル"
+  ),
+  "ホテル フォーシーズン徳島": sourcePhoto(
+    "tokushima-stay-24.jpg",
+    "ホテル フォーシーズン徳島の客室・外観写真",
+    "ホテル フォーシーズン徳島 room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/151296/151296.jpg",
+    "楽天トラベル"
+  ),
+  "阿波観光ホテル": sourcePhoto(
+    "tokushima-stay-08.jpg",
+    "阿波観光ホテルの客室・外観写真",
+    "阿波観光ホテル room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/7503/7503.jpg",
+    "楽天トラベル"
+  ),
+  "Tabist Hotel Tiki": sourcePhoto(
+    "tokushima-stay-41.jpg",
+    "Tabist Hotel Tikiの客室・外観写真",
+    "Tabist Hotel Tiki room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/187177/187177.jpg",
+    "楽天トラベル"
+  ),
+  "アルファホテル徳島": sourcePhoto(
+    "tokushima-stay-17.jpg",
+    "アルファホテル徳島の客室・外観写真",
+    "アルファホテル徳島 room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/130110/130110.jpg",
+    "楽天トラベル"
+  ),
+  "Yadoya Hiwasa 徳島": sourcePhoto(
+    "tokushima-stay-37.jpg",
+    "Yadoya Hiwasa 徳島の客室・外観写真",
+    "Yadoya Hiwasa 徳島 room or exterior photo",
+    "https://img.travel.rakuten.co.jp/share/image_up/142657/LARGE/f44e3182f0637118ef71be8efb68039c8f5622d6.47.9.26.3.jpg",
+    "楽天トラベル"
+  ),
+  "ハイパーイン 徳島両国橋": sourcePhoto(
+    "tokushima-stay-25.jpg",
+    "ハイパーイン 徳島両国橋の客室・外観写真",
+    "ハイパーイン 徳島両国橋 room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/18922/18922.jpg",
+    "楽天トラベル"
+  ),
+  "ホテル キャッスルCV": sourcePhoto(
+    "tokushima-stay-32.jpg",
+    "ホテル キャッスルCVの客室・外観写真",
+    "ホテル キャッスルCV room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/109104/109104.jpg",
+    "楽天トラベル"
+  ),
+  "ビジネスホテル コスモス徳島": sourcePhoto(
+    "tokushima-stay-23.jpg",
+    "ビジネスホテル コスモス徳島の客室・外観写真",
+    "ビジネスホテル コスモス徳島 room or exterior photo",
+    "https://img.travel.rakuten.co.jp/share/image_up/14303/LARGE/946181a570351cb2a0c75b286d8b2cfe1a2140de.47.1.26.2.jpg",
+    "楽天トラベル"
+  ),
+  "ビジネス旅館七歩": sourcePhoto(
+    "tokushima-stay-42.jpg",
+    "ビジネス旅館七歩の客室・外観写真",
+    "ビジネス旅館七歩 room or exterior photo",
+    "https://img.travel.rakuten.co.jp/share/image_up/187619/LARGE/dcd7dc03f312e206d8617ec72af10e135cac25cf.47.9.26.3.jpg",
+    "楽天トラベル"
+  ),
+  "ホテルみづほ": sourcePhoto(
+    "tokushima-stay-33.jpg",
+    "ホテルみづほの客室・外観写真",
+    "ホテルみづほ room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/32020/32020.jpg",
+    "楽天トラベル"
+  ),
+  "剣山ホテル": sourcePhoto(
+    "tokushima-stay-28.jpg",
+    "剣山ホテルの客室・外観写真",
+    "剣山ホテル room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/29720/29720.jpg",
+    "楽天トラベル"
+  ),
+  "ホテル アストリア": sourcePhoto(
+    "tokushima-stay-39.jpg",
+    "ホテル アストリアの客室・外観写真",
+    "ホテル アストリア room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/178420/178420.jpg",
+    "楽天トラベル"
+  ),
+  "セルフイン徳島蔵本駅前": sourcePhoto(
+    "tokushima-stay-35.jpg",
+    "セルフイン徳島蔵本駅前の客室・外観写真",
+    "セルフイン徳島蔵本駅前 room or exterior photo",
+    "https://img.travel.rakuten.co.jp/share/image_up/109099/LARGE/300879d51a33542c385caf4d96024e38dcaa7f61.47.9.26.3.jpg",
+    "楽天トラベル"
+  ),
+  "ホテル千秋閣": sourcePhoto(
+    "tokushima-stay-22.jpg",
+    "ホテル千秋閣の客室・外観写真",
+    "ホテル千秋閣 room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/70883/70883.jpg",
+    "楽天トラベル"
+  ),
+  "ビジネスホテル サンパール": sourcePhoto(
+    "tokushima-stay-38.jpg",
+    "ビジネスホテル サンパールの客室・外観写真",
+    "ビジネスホテル サンパール room or exterior photo",
+    "https://img.travel.rakuten.co.jp/share/image_up/8723/LARGE/hBi1vE.jpeg",
+    "楽天トラベル"
+  ),
+  "センチュリープラザホテル": sourcePhoto(
+    "tokushima-stay-19.jpg",
+    "センチュリープラザホテルの客室・外観写真",
+    "センチュリープラザホテル room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/84972/84972.jpg",
+    "楽天トラベル"
+  ),
+  "ビジネスホテル アバァンティ(AVANTI)": sourcePhoto(
+    "tokushima-stay-21.jpg",
+    "ビジネスホテル アバァンティ(AVANTI)の客室・外観写真",
+    "ビジネスホテル アバァンティ(AVANTI) room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/28052/28052.jpg",
+    "楽天トラベル"
+  ),
+  "ハイパーイン ホテル越久(えちひさ)": sourcePhoto(
+    "tokushima-stay-12.jpg",
+    "ハイパーイン ホテル越久(えちひさ)の客室・外観写真",
+    "ハイパーイン ホテル越久(えちひさ) room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/76869/76869.jpg",
+    "楽天トラベル"
+  ),
+  "徳島ステーションホテル": sourcePhoto(
+    "tokushima-stay-20.jpg",
+    "徳島ステーションホテルの客室・外観写真",
+    "徳島ステーションホテル room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/12634/12634.jpg",
+    "楽天トラベル"
+  ),
+  "心のやすらぐ宿 旅館ニュー丸新": sourcePhoto(
+    "tokushima-stay-16.jpg",
+    "心のやすらぐ宿 旅館ニュー丸新の客室・外観写真",
+    "心のやすらぐ宿 旅館ニュー丸新 room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/10786/10786.jpg",
+    "楽天トラベル"
+  ),
+  "Hostel Coliberty": sourcePhoto(
+    "tokushima-stay-40.jpg",
+    "Hostel Colibertyの客室・外観写真",
+    "Hostel Coliberty room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/184482/184482.jpg",
+    "楽天トラベル"
+  ),
+  "ホテル サンシャイン徳島": sourcePhoto(
+    "tokushima-stay-34.jpg",
+    "ホテル サンシャイン徳島の客室・外観写真",
+    "ホテル サンシャイン徳島 room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/164950/164950.jpg",
+    "楽天トラベル"
+  ),
+  "ビジネスホテルアネックスみづほ": sourcePhoto(
+    "tokushima-stay-36.jpg",
+    "ビジネスホテルアネックスみづほの客室・外観写真",
+    "ビジネスホテルアネックスみづほ room or exterior photo",
+    "https://web.travel.rakuten.co.jp/share/HOTEL/172414/172414.jpg",
+    "楽天トラベル"
+  ),
 };
 
 function sight(

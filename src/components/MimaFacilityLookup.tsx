@@ -1051,15 +1051,17 @@ export function MimaFacilityLookup({
               <>
                 <a href={TOKUSHIMA_CITY_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ徳島市の公開店ページ（
                 {TOKUSHIMA_CITY_TRAVEL_ACCESSED}）。
-                宿泊・温泉は客室・浴場の出典写真が無いため0件。
-                体験・買物・商業の公式一覧は未掲載のため0件。
+                <a href={TOKUSHIMA_CITY_TRAVEL_SOURCES.stayNavi}>宿泊</a>は楽天トラベル／ホテル公式の客室・外観写真がある施設（
+                {TOKUSHIMA_CITY_TRAVEL_ACCESSED}）。
+                温泉・体験・買物・商業の公式一覧は未掲載のため0件。
                 カードは出典写真があるものだけ。点数は持ちません。
               </>
             ) : (
               <>
                 <a href={TOKUSHIMA_CITY_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Tokushima City shop pages (
-                {TOKUSHIMA_CITY_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
-                Experience, shopping, and commerce stay at 0 — no official list.
+                {TOKUSHIMA_CITY_TRAVEL_ACCESSED}). <a href={TOKUSHIMA_CITY_TRAVEL_SOURCES.stayNavi}>Lodging</a> from
+                Rakuten Travel / hotel-official room or exterior photos ({TOKUSHIMA_CITY_TRAVEL_ACCESSED}).
+                Onsen, experience, shopping, and commerce stay at 0 — no official list.
                 Cards show only listings with a sourced photo. No public scores.
               </>
             )

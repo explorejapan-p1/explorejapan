@@ -1,0 +1,15 @@
+Tokushima City (JIS 36201) capital stay+dining harvest 2026-09-07
+Pills L→R: 宿泊/飲食/温泉/体験/観光/買物/商業
+No frozen pack (capital photo-only).
+
+BEFORE: 宿泊0 / 飲食7 / 温泉0 / 体験0 / 観光5 / 買物0 / 商業0
+AFTER target: 宿泊35 / 飲食55 / 温泉0 / 体験0 / 観光5 / 買物0 / 商業0
+
+宿泊 stay: 35 — Rakuten Travel hotel share images via NAVITIME category list + hotel official room/og (Clement, Sunroute, Daiwa, Smile, Toyoko). Ranked strongest first. Dropped tiny/weak thumbs.
+飲食 dining: 55 — Tabelog C36201 FOOD (type=1) dish close-ups, ranked. Comprehensive city harvest.
+温泉 onsen: 0 — no sourced bath photo this pass
+体験 experience: 0 — no sourced experience photo
+観光 sights: 5 — Bizan cover + castle / boardwalk / Awa Odori / ropeway Commons
+買物 shopping: 0 — no official list
+商業 commerce: 0 — no official list
+AED/hospitals/care/shelters/cultural_property/GTFS: 0 — no frozen open-data pack

@@ -500,9 +500,9 @@ export const TOKUSHIMA_CITY_LOOKUP: LookupTown = {
   travelCommerce: TOKUSHIMA_CITY_TRAVEL_COMMERCE,
   travelAll: TOKUSHIMA_CITY_TRAVEL_ALL,
   coverageJa:
-    '徳島市（JIS 36201）観光5件（出典写真がある施設のみ）。オープンデータ凍結パックは未掲載。AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。',
+    '徳島市（JIS 36201）観光5・宿泊35・飲食55（出典写真がある施設のみ）。オープンデータ凍結パックは未掲載。温泉・体験・買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。',
   coverageEn:
-    'Tokushima City (JIS 36201), 5 tourism rows with sourced photos. No frozen open-data pack. AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished.',
+    'Tokushima City (JIS 36201), 5 tourism + 35 stay + 55 dining with sourced photos. No frozen open-data pack. Onsen, experience, shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished.',
   mapLabelJa: '徳島市の出典座標5件',
   mapLabelEn: '5 sourced coordinates in Tokushima City',
   mapCitePackJa: '点は市ページ掲載施設のWikipedia座標5件（accessed 2026-08-28）。',
