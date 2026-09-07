@@ -1,6 +1,6 @@
 # Yasuda Town (安田町) gaps (TG566 sixteenth Kochi hub)
 
-Accessed 2026-09-08 (JST).
+Accessed 2026-09-08 (JST). LIVE tip `320ffde87b`.
 
 ## LIVE pills (photo-first)
 - stay: 1 (いなかじかん / Rakuten HOTEL/197146 和室 — stay≠onsen)
@@ -25,4 +25,4 @@ Accessed 2026-09-08 (JST).
 - Dining thin OK (nahari=5 / toyo=7 pattern).
 
 ## CDN
-(pending cold verify after push)
+Cold CDN PASS after Pages lag (~70s). Local `docs/ja/kochi/yasuda/` PASS: hero 安田町, desc 安田町。島石ピクニック広場、唐浜、ごめん・なはり線、食。, pills stay/dining/onsen/experience/sights = 1/6/0/0/5.
