@@ -189,6 +189,17 @@ export const NAKA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '森林文化公園あいあいランド（那賀町）',
     'Aiai Land forest culture park, Naka Town'
   ),
+  '大轟の滝': wikiPhoto(
+    'naka-otodoro-falls.jpg',
+    'https://commons.wikimedia.org/wiki/File:Otodoro_Falls.JPG',
+    'CC BY-SA 3.0',
+    'https://creativecommons.org/licenses/by-sa/3.0/',
+    'Reggaeman',
+    'https://commons.wikimedia.org/wiki/User:Reggaeman',
+    '2009-05-09',
+    '大轟の滝（那賀町）',
+    'Ōtodoro Falls, Naka Town'
+  ),
   "木頭カフェ西宇森": sourcePhoto(
     'naka-36009044-dish.jpg',
     "木頭カフェ西宇森の料理写真",

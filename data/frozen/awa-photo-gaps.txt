@@ -1,7 +1,4 @@
-awa inland stay densify 2026-09-07
-BEFORE: 宿泊0 / 飲食14 / 温泉0 / 体験0 / 観光8 / 買物0 / 商業0
-AFTER target: 宿泊1 / 飲食14 / 温泉0 / 体験0 / 観光8 / 買物0 / 商業0
-
-宿泊 stay: 1 — ビジネスホテルアクセス阿波 (NAVITIME+楽天 origin 出典).
-Skipped: ホテル ティアラ (fashion) / Brompton Travel Inn (no 楽天 share).
-温泉/体験/買物/商業: honest 0. Not perfect.
+awa 体験 densify 2026-09-07 (pass7)
+BEFORE: 宿泊1 / 飲食14 / 温泉0 / 体験0 / 観光8 / 買物0 / 商業0
+AFTER:  宿泊1 / 飲食14 / 温泉0 / 体験1 / 観光8 / 買物0 / 商業0
+体験: EXTRA-photo remap 土柱そよ風ひろば (Commons playground). Was not in prior photo-gated 観光. Not perfect.

@@ -222,13 +222,13 @@ export const ISHII_EXPECTED_CATEGORY_COUNTS = {
 
 export const ITANO_PACK_JIS = '36404';
 export const ITANO_PACK_ACCESSED = '2026-08-25';
-export const ITANO_EXPECTED_ROW_COUNT = 186;
-export const ITANO_EXPECTED_GEO_COUNT = 9;
+export const ITANO_EXPECTED_ROW_COUNT = 187;
+export const ITANO_EXPECTED_GEO_COUNT = 10;
 export const ITANO_EXPECTED_HOURS_COUNT = 177;
 export const ITANO_EXPECTED_MISSING_ADDRESS = 2;
 export const ITANO_EXPECTED_MISSING_PHONE = 141;
 export const ITANO_EXPECTED_CATEGORY_COUNTS = {
-  tourism: 8,
+  tourism: 9,
   cultural_property: 45,
   care: 1,
   aed: 27,
@@ -359,13 +359,13 @@ export const SANAGOCHI_EXPECTED_CATEGORY_COUNTS = {
 
 export const NAKA_PACK_JIS = '36368';
 export const NAKA_PACK_ACCESSED = '2026-08-25';
-export const NAKA_EXPECTED_ROW_COUNT = 356;
-export const NAKA_EXPECTED_GEO_COUNT = 110;
+export const NAKA_EXPECTED_ROW_COUNT = 357;
+export const NAKA_EXPECTED_GEO_COUNT = 111;
 export const NAKA_EXPECTED_HOURS_COUNT = 338;
 export const NAKA_EXPECTED_MISSING_ADDRESS = 145;
 export const NAKA_EXPECTED_MISSING_PHONE = 287;
 export const NAKA_EXPECTED_CATEGORY_COUNTS = {
-  tourism: 11,
+  tourism: 12,
   cultural_property: 19,
   care: 9,
   aed: 46,

@@ -1,6 +1,3 @@
-sanagochi inland audit 2026-09-07: NAVITIME hotel category empty — honest stay 0. Not perfect.
-
-観光 densify 2026-09-07 (pass2): +大川原放牧場 Commons EXTRA (3→4). Still <5.
-観光 densify 2026-09-07 (pass3): +宝蔵寺 Commons EXTRA (File:Houzouzi01.jpg) → 観光4→5.
-清流の源 / 大宮八幡宮 — still no place-named Commons usable photo.
-温泉/体験/買物/商業: honest 0.
+sanagochi 体験 hunt 2026-09-07 (pass7)
+BEFORE/AFTER: 宿泊0 / 飲食12 / 温泉0 / 体験0 / 観光5 / 買物0 / 商業0
+体験: honest 0 — 大川原放牧場 remap would drop 観光 below 5; no other place-named activity Commons. stay/onsen/shop honest 0. Not perfect.

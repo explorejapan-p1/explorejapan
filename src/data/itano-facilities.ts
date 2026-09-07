@@ -2,17 +2,31 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {
   FACILITY_CATEGORIES,
-  ITANO_EXPECTED_CATEGORY_COUNTS,
-  ITANO_EXPECTED_GEO_COUNT,
-  ITANO_EXPECTED_HOURS_COUNT,
-  ITANO_EXPECTED_MISSING_ADDRESS,
-  ITANO_EXPECTED_MISSING_PHONE,
-  ITANO_EXPECTED_ROW_COUNT,
   ITANO_PACK_ACCESSED,
   ITANO_PACK_JIS,
   type FacilityCategory,
   type FacilityRow
 } from './facility-schema';
+
+/** Frozen jsonl baselines (before Commons extras). */
+const PACK_ROW_COUNT = 186;
+const PACK_GEO_COUNT = 9;
+const PACK_HOURS_COUNT = 177;
+const PACK_MISSING_ADDRESS = 2;
+const PACK_MISSING_PHONE = 141;
+const PACK_CATEGORY_COUNTS: Record<FacilityCategory, number> = {
+  tourism: 8,
+  cultural_property: 45,
+  care: 1,
+  aed: 27,
+  shelter: 43,
+  emergency_evacuation_site: 42,
+  hospital: 0,
+  childcare: 9,
+  wifi: 0,
+  public_facility: 11,
+  gtfs_stop: 0
+};
 
 const PACK_PATH = path.join(process.cwd(), 'data', 'frozen', 'itano-facilities.jsonl');
 
@@ -113,17 +127,17 @@ function loadItanoFacilities(): readonly FacilityRow[] {
     const parsed: unknown = JSON.parse(line);
     rows.push(parseFacilityRow(parsed));
   }
-  if (rows.length !== ITANO_EXPECTED_ROW_COUNT) {
-    throw new Error(`itano pack row count ${rows.length} != ${ITANO_EXPECTED_ROW_COUNT}`);
+  if (rows.length !== PACK_ROW_COUNT) {
+    throw new Error(`itano pack row count ${rows.length} != ${PACK_ROW_COUNT}`);
   }
   const counts = emptyCounts();
   for (const row of rows) {
     counts[row.category] += 1;
   }
   for (const cat of FACILITY_CATEGORIES) {
-    if (counts[cat] !== ITANO_EXPECTED_CATEGORY_COUNTS[cat]) {
+    if (counts[cat] !== PACK_CATEGORY_COUNTS[cat]) {
       throw new Error(
-        `itano pack ${cat} ${counts[cat]} != ${ITANO_EXPECTED_CATEGORY_COUNTS[cat]}`
+        `itano pack ${cat} ${counts[cat]} != ${PACK_CATEGORY_COUNTS[cat]}`
       );
     }
   }
@@ -137,23 +151,46 @@ function loadItanoFacilities(): readonly FacilityRow[] {
     if (isBlank(row.address)) missingAddress += 1;
     if (isBlank(row.phone)) missingPhone += 1;
   }
-  if (geo !== ITANO_EXPECTED_GEO_COUNT) {
-    throw new Error(`itano pack geo ${geo} != ${ITANO_EXPECTED_GEO_COUNT}`);
+  if (geo !== PACK_GEO_COUNT) {
+    throw new Error(`itano pack geo ${geo} != ${PACK_GEO_COUNT}`);
   }
-  if (hours !== ITANO_EXPECTED_HOURS_COUNT) {
-    throw new Error(`itano pack hours ${hours} != ${ITANO_EXPECTED_HOURS_COUNT}`);
+  if (hours !== PACK_HOURS_COUNT) {
+    throw new Error(`itano pack hours ${hours} != ${PACK_HOURS_COUNT}`);
   }
-  if (missingAddress !== ITANO_EXPECTED_MISSING_ADDRESS) {
+  if (missingAddress !== PACK_MISSING_ADDRESS) {
     throw new Error(
-      `itano pack address gaps ${missingAddress} != ${ITANO_EXPECTED_MISSING_ADDRESS}`
+      `itano pack address gaps ${missingAddress} != ${PACK_MISSING_ADDRESS}`
     );
   }
-  if (missingPhone !== ITANO_EXPECTED_MISSING_PHONE) {
+  if (missingPhone !== PACK_MISSING_PHONE) {
     throw new Error(
-      `itano pack phone gaps ${missingPhone} != ${ITANO_EXPECTED_MISSING_PHONE}`
+      `itano pack phone gaps ${missingPhone} != ${PACK_MISSING_PHONE}`
     );
   }
   return rows;
 }
 
-export const ITANO_FACILITIES: readonly FacilityRow[] = loadItanoFacilities();
+/** Commons-backed extras (not frozen jsonl). Real place-named 出典 only. */
+const ITANO_EXTRA_FACILITIES: readonly FacilityRow[] = [
+  {
+    id: 'itano-extra-hokokuji',
+    jis: ITANO_PACK_JIS,
+    name_ja: '報国寺',
+    reading: 'ほうこくじ',
+    category: 'tourism',
+    lat: 34.1442,
+    lon: 134.4525,
+    address: '徳島県板野郡板野町羅漢',
+    phone: null,
+    official_url: 'http://www.town.itano.tokushima.jp/',
+    hours: null,
+    source_url: 'https://commons.wikimedia.org/wiki/File:Gokuisan_Hokokuji.JPG',
+    license: 'cc_by_open_data',
+    accessed: ITANO_PACK_ACCESSED
+  }
+];
+
+export const ITANO_FACILITIES: readonly FacilityRow[] = [
+  ...loadItanoFacilities(),
+  ...ITANO_EXTRA_FACILITIES
+];

@@ -34,6 +34,9 @@ export const ITANO_ONSEN_PACK_NAMES = [] as const;
 export const ITANO_ONSEN_PACK_SET: ReadonlySet<string> = new Set(
   ITANO_ONSEN_PACK_NAMES
 );
+export const ITANO_EXPERIENCE_PACK_NAMES = ['あすたむらんど徳島'] as const;
+export const ITANO_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(ITANO_EXPERIENCE_PACK_NAMES);
+
 
 /** Exact tourism-pack names shown on 宿泊, not 観光. Room/bath photo required — none yet. */
 export const ITANO_STAY_PACK_NAMES = [] as const;
@@ -50,7 +53,7 @@ export const ITANO_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(
 );
 
 export const ITANO_SIGHT_PINS = [
-  'あすたむらんど徳島',
+  '報国寺',
   '金泉寺（四国霊場第三番札所）',
   '大日寺（四国霊場第四番札所）',
   '地蔵寺（四国霊場第五番札所）',
@@ -269,11 +272,9 @@ export function isItanoOnsenPackRow(row: {
   return ITANO_ONSEN_PACK_SET.has(row.name_ja);
 }
 
-export function isItanoExperiencePackRow(_row: {
-  category: string;
-  name_ja: string;
-}): boolean {
-  return false;
+export function isItanoExperiencePackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return ITANO_EXPERIENCE_PACK_SET.has(row.name_ja);
 }
 
 export function isItanoStayPackRow(_row: {
@@ -308,6 +309,7 @@ export function rankItanoSeeRows<T extends Rankable>(rows: readonly T[]): T[] {
     (row) =>
       isSightsCategory(row.category) &&
       !isItanoOnsenPackRow(row) &&
+      !isItanoExperiencePackRow(row) &&
       !isItanoStayPackRow(row) &&
       !isItanoShoppingPackRow(row)
   );
@@ -362,6 +364,7 @@ export function itanoTopChipForRow(row: {
   category: string;
   name_ja: string;
 }): FilterId {
+  if (isItanoExperiencePackRow(row)) return 'experience';
   if (isItanoOnsenPackRow(row)) return 'onsen';
   if (isItanoStayPackRow(row)) return 'stay';
   if (isItanoShoppingPackRow(row)) return 'shopping';
@@ -381,13 +384,14 @@ export function itanoPackRowMatchesFilter(
     return (
       isSightsCategory(category) &&
       !isItanoOnsenPackRow(row) &&
+      !isItanoExperiencePackRow(row) &&
       !isItanoStayPackRow(row) &&
       !isItanoShoppingPackRow(row)
     );
   }
   if (filter === 'infra') return isInfraCategory(category);
   if (filter === 'onsen') return isItanoOnsenPackRow(row);
-  if (filter === 'experience') return false;
+  if (filter === 'experience') return isItanoExperiencePackRow(row);
   if (filter === 'stay') return isItanoStayPackRow(row);
   if (filter === 'dining' || filter === 'shopping' || filter === 'commerce') return false;
   return category === filter;

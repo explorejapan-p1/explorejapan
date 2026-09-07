@@ -2466,11 +2466,6 @@
 <priority>0.7</priority>
 </url>
 <url>
-<loc>https://explorejapan-p1.github.io/explorejapan/ja/tokushima/ishii/p/36341-tourism-yacho-no-mori/</loc>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
 <loc>https://explorejapan-p1.github.io/explorejapan/ja/tokushima/ishii/p/36341-tourism-jifukuji-fuji/</loc>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
@@ -2566,7 +2561,7 @@
 <priority>0.7</priority>
 </url>
 <url>
-<loc>https://explorejapan-p1.github.io/explorejapan/ja/tokushima/itano/p/36404-tourism-tour-asutamu/</loc>
+<loc>https://explorejapan-p1.github.io/explorejapan/ja/tokushima/itano/p/itano-extra-hokokuji/</loc>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
@@ -3246,7 +3241,7 @@
 <priority>0.7</priority>
 </url>
 <url>
-<loc>https://explorejapan-p1.github.io/explorejapan/ja/tokushima/naka/p/36368-tourism-009/</loc>
+<loc>https://explorejapan-p1.github.io/explorejapan/ja/tokushima/naka/p/naka-extra-otodoro-falls/</loc>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
@@ -6741,11 +6736,6 @@
 <priority>0.7</priority>
 </url>
 <url>
-<loc>https://explorejapan-p1.github.io/explorejapan/en/tokushima/ishii/p/36341-tourism-yacho-no-mori/</loc>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
 <loc>https://explorejapan-p1.github.io/explorejapan/en/tokushima/ishii/p/36341-tourism-jifukuji-fuji/</loc>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
@@ -6841,7 +6831,7 @@
 <priority>0.7</priority>
 </url>
 <url>
-<loc>https://explorejapan-p1.github.io/explorejapan/en/tokushima/itano/p/36404-tourism-tour-asutamu/</loc>
+<loc>https://explorejapan-p1.github.io/explorejapan/en/tokushima/itano/p/itano-extra-hokokuji/</loc>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
@@ -7521,7 +7511,7 @@
 <priority>0.7</priority>
 </url>
 <url>
-<loc>https://explorejapan-p1.github.io/explorejapan/en/tokushima/naka/p/36368-tourism-009/</loc>
+<loc>https://explorejapan-p1.github.io/explorejapan/en/tokushima/naka/p/naka-extra-otodoro-falls/</loc>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>

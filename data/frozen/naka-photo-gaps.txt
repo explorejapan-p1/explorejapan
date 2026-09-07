@@ -1,4 +1,4 @@
-naka 観光 densify 2026-09-07
-BEFORE: 宿泊0 / 飲食19 / 温泉0 / 体験0 / 観光4 / 買物3 / 商業0
-AFTER:  宿泊0 / 飲食19 / 温泉0 / 体験0 / 観光5 / 買物3 / 商業0
-観光: +森林文化公園あいあいランド Commons. Honest stay/onsen 0.
+naka 体験 densify 2026-09-07 (pass7)
+BEFORE: 宿泊0 / 飲食19 / 温泉0 / 体験0 / 観光5 / 買物3 / 商業0
+AFTER:  宿泊0 / 飲食19 / 温泉0 / 体験1 / 観光5 / 買物3 / 商業0
+体験: remap 森林文化公園あいあいランド (existing Commons). 観光 restore EXTRA 大轟の滝 (File:Otodoro Falls.JPG). stay honest 0. Not perfect.

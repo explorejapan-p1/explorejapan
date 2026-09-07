@@ -178,6 +178,17 @@ export const AWA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '法輪寺 本堂（阿波市土成町）',
     'Hōrin-ji main hall, Donari-cho, Awa'
   ),
+  '土柱そよ風ひろば': wikiPhoto(
+    'dochu-soyokaze-playground.jpg',
+    'https://commons.wikimedia.org/wiki/File:%E5%9C%9F%E6%9F%B1%E3%81%9D%E3%82%88%E9%A2%A8%E3%81%B2%E3%82%8D%E3%81%B0_%E9%A6%AC%E3%81%AE%E3%82%B9%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E9%81%8A%E5%85%B7.jpg',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0/',
+    'Harimawood',
+    'https://commons.wikimedia.org/wiki/File:%E5%9C%9F%E6%9F%B1%E3%81%9D%E3%82%88%E9%A2%A8%E3%81%B2%E3%82%8D%E3%81%B0_%E9%A6%AC%E3%81%AE%E3%82%B9%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E9%81%8A%E5%85%B7.jpg',
+    '2024-05-06',
+    '土柱そよ風ひろばの遊具（阿波市）',
+    'Playground at Dochū Soyokaze Hiroba, Awa City'
+  ),
   'Cafe ヨモスガラ': sourcePhoto(
     'cafe-yomosugara-hamburg.jpg',
     'Cafe ヨモスガラの料理写真',

@@ -745,12 +745,12 @@ export const ITANO_LOOKUP: LookupTown = {
   travelCommerce: ITANO_TRAVEL_COMMERCE,
   travelAll: ITANO_TRAVEL_ALL,
   coverageJa:
-    '板野町（JIS 36404）186件。文化財45、避難所43、緊急避難場所42、AED 27、公共施設11、保育9、観光8、介護1。医療機関・Wi-Fi・GTFSは0件（未掲載）。',
+    '板野町（JIS 36404）187件（pack186+Commons EXTRA1）。文化財45、避難所43、緊急避難場所42、AED 27、公共施設11、保育9、観光9、介護1。医療機関・Wi-Fi・GTFSは0件（未掲載）。',
   coverageEn:
-    'Itano Town (JIS 36404), 186 rows. Cultural property 45, shelters 43, emergency sites 42, AED 27, public facilities 11, childcare 9, tourism 8, care 1. Hospitals, Wi-Fi, GTFS: 0, unpublished.',
-  mapLabelJa: '板野町の公式座標9件',
-  mapLabelEn: '9 official coordinates in Itano Town',
-  mapCitePackJa: '点は凍結パックの公式座標9件（accessed 2026-08-25）。',
+    'Itano Town (JIS 36404), 187 rows (pack186+Commons EXTRA1). Cultural property 45, shelters 43, emergency sites 42, AED 27, public facilities 11, childcare 9, tourism 9, care 1. Hospitals, Wi-Fi, GTFS: 0, unpublished.',
+  mapLabelJa: '板野町の公式座標10件',
+  mapLabelEn: '10 official coordinates in Itano Town',
+  mapCitePackJa: '点は凍結パック+Commons EXTRAの公式座標10件（accessed 2026-08-25）。',
   mapCitePackEn: 'Points: 9 official coordinates from the frozen pack (accessed 2026-08-25).',
   licenseNoteJa:
     '行のライセンスは二つ。CC BY 4.0 は徳島県 Our Open Data の利用規約。「町公式サイト掲載情報」は町ページの事実の転記で、オープンデータ許諾ではありません。',
@@ -958,13 +958,13 @@ export const NAKA_LOOKUP: LookupTown = {
   travelCommerce: NAKA_TRAVEL_COMMERCE,
   travelAll: NAKA_TRAVEL_ALL,
   coverageJa:
-    '那賀町（JIS 36368）356件。GTFS停留所99、避難所66、公共施設62、AED46、緊急避難場所29、文化財19、観光11、病院9、介護9、保育6。Wi-Fiは0件（未掲載）。公式座標110件。',
+    '那賀町（JIS 36368）357件（pack356+Commons EXTRA1）。GTFS停留所99、避難所66、公共施設62、AED46、緊急避難場所29、文化財19、観光12、病院9、介護9、保育6。Wi-Fiは0件（未掲載）。公式座標111件。',
   coverageEn:
-    'Naka Town (JIS 36368), 356 rows. GTFS stops 99, shelter 66, public facility 62, AED 46, emergency sites 29, cultural property 19, tourism 11, hospital 9, care 9, childcare 6. Wi-Fi: 0, unpublished. Official coordinates: 110.',
-  mapLabelJa: '那賀町の公式座標110件',
-  mapLabelEn: '110 official coordinates in Naka Town',
-  mapCitePackJa: '点は凍結パックの公式座標110件（accessed 2026-08-25）。',
-  mapCitePackEn: 'Points: 110 official coordinates from the frozen pack (accessed 2026-08-25).',
+    'Naka Town (JIS 36368), 357 rows (pack356+Commons EXTRA1). GTFS stops 99, shelter 66, public facility 62, AED 46, emergency sites 29, cultural property 19, tourism 12, hospital 9, care 9, childcare 6. Wi-Fi: 0, unpublished. Official coordinates: 111.',
+  mapLabelJa: '那賀町の公式座標111件',
+  mapLabelEn: '111 official coordinates in Naka Town',
+  mapCitePackJa: '点は凍結パック+Commons EXTRAの公式座標111件（accessed 2026-08-25）。',
+  mapCitePackEn: 'Points: 111 official coordinates from frozen pack + Commons EXTRA (accessed 2026-08-25).',
   licenseNoteJa:
     '行のライセンスは二つ。CC BY 4.0 は徳島県 Our Open Data の利用規約。「町公式サイト掲載情報」は町・観光ページの事実の転記で、オープンデータ許諾ではありません。',
   licenseNoteEn:

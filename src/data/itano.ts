@@ -151,6 +151,17 @@ export const ITANO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '板野町歴史文化公園',
     'Itano Town History and Culture Park'
   ),
+  '報国寺': wikiPhoto(
+    'hokokuji-itano.jpg',
+    'https://commons.wikimedia.org/wiki/File:Gokuisan_Hokokuji.JPG',
+    'CC BY-SA 3.0',
+    'https://creativecommons.org/licenses/by-sa/3.0/',
+    'Reggaeman',
+    'https://commons.wikimedia.org/wiki/User:Reggaeman',
+    '2011-04-24',
+    '報国寺（板野町・四国別格）',
+    'Hōkoku-ji Temple, Itano Town'
+  ),
   '道の駅いたの': wikiPhoto(
     'michinoeki-itano.jpg',
     'https://commons.wikimedia.org/wiki/File:Michinoeli-itano.jpeg',

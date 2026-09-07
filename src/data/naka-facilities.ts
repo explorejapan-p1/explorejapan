@@ -2,17 +2,31 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {
   FACILITY_CATEGORIES,
-  NAKA_EXPECTED_CATEGORY_COUNTS,
-  NAKA_EXPECTED_GEO_COUNT,
-  NAKA_EXPECTED_HOURS_COUNT,
-  NAKA_EXPECTED_MISSING_ADDRESS,
-  NAKA_EXPECTED_MISSING_PHONE,
-  NAKA_EXPECTED_ROW_COUNT,
   NAKA_PACK_ACCESSED,
   NAKA_PACK_JIS,
   type FacilityCategory,
   type FacilityRow
 } from './facility-schema';
+
+/** Frozen jsonl baselines (before Commons extras). */
+const PACK_ROW_COUNT = 356;
+const PACK_GEO_COUNT = 110;
+const PACK_HOURS_COUNT = 338;
+const PACK_MISSING_ADDRESS = 145;
+const PACK_MISSING_PHONE = 287;
+const PACK_CATEGORY_COUNTS: Record<FacilityCategory, number> = {
+  tourism: 11,
+  cultural_property: 19,
+  care: 9,
+  aed: 46,
+  shelter: 66,
+  emergency_evacuation_site: 29,
+  hospital: 9,
+  childcare: 6,
+  wifi: 0,
+  public_facility: 62,
+  gtfs_stop: 99
+};
 
 const PACK_PATH = path.join(process.cwd(), 'data', 'frozen', 'naka-facilities.jsonl');
 
@@ -113,17 +127,17 @@ function loadNakaFacilities(): readonly FacilityRow[] {
     const parsed: unknown = JSON.parse(line);
     rows.push(parseFacilityRow(parsed));
   }
-  if (rows.length !== NAKA_EXPECTED_ROW_COUNT) {
-    throw new Error(`naka pack row count ${rows.length} != ${NAKA_EXPECTED_ROW_COUNT}`);
+  if (rows.length !== PACK_ROW_COUNT) {
+    throw new Error(`naka pack row count ${rows.length} != ${PACK_ROW_COUNT}`);
   }
   const counts = emptyCounts();
   for (const row of rows) {
     counts[row.category] += 1;
   }
   for (const cat of FACILITY_CATEGORIES) {
-    if (counts[cat] !== NAKA_EXPECTED_CATEGORY_COUNTS[cat]) {
+    if (counts[cat] !== PACK_CATEGORY_COUNTS[cat]) {
       throw new Error(
-        `naka pack ${cat} ${counts[cat]} != ${NAKA_EXPECTED_CATEGORY_COUNTS[cat]}`
+        `naka pack ${cat} ${counts[cat]} != ${PACK_CATEGORY_COUNTS[cat]}`
       );
     }
   }
@@ -137,23 +151,46 @@ function loadNakaFacilities(): readonly FacilityRow[] {
     if (isBlank(row.address)) missingAddress += 1;
     if (isBlank(row.phone)) missingPhone += 1;
   }
-  if (geo !== NAKA_EXPECTED_GEO_COUNT) {
-    throw new Error(`naka pack geo ${geo} != ${NAKA_EXPECTED_GEO_COUNT}`);
+  if (geo !== PACK_GEO_COUNT) {
+    throw new Error(`naka pack geo ${geo} != ${PACK_GEO_COUNT}`);
   }
-  if (hours !== NAKA_EXPECTED_HOURS_COUNT) {
-    throw new Error(`naka pack hours ${hours} != ${NAKA_EXPECTED_HOURS_COUNT}`);
+  if (hours !== PACK_HOURS_COUNT) {
+    throw new Error(`naka pack hours ${hours} != ${PACK_HOURS_COUNT}`);
   }
-  if (missingAddress !== NAKA_EXPECTED_MISSING_ADDRESS) {
+  if (missingAddress !== PACK_MISSING_ADDRESS) {
     throw new Error(
-      `naka pack address gaps ${missingAddress} != ${NAKA_EXPECTED_MISSING_ADDRESS}`
+      `naka pack address gaps ${missingAddress} != ${PACK_MISSING_ADDRESS}`
     );
   }
-  if (missingPhone !== NAKA_EXPECTED_MISSING_PHONE) {
+  if (missingPhone !== PACK_MISSING_PHONE) {
     throw new Error(
-      `naka pack phone gaps ${missingPhone} != ${NAKA_EXPECTED_MISSING_PHONE}`
+      `naka pack phone gaps ${missingPhone} != ${PACK_MISSING_PHONE}`
     );
   }
   return rows;
 }
 
-export const NAKA_FACILITIES: readonly FacilityRow[] = loadNakaFacilities();
+/** Commons-backed extras (not frozen jsonl). Real place-named 出典 only. */
+const NAKA_EXTRA_FACILITIES: readonly FacilityRow[] = [
+  {
+    id: 'naka-extra-otodoro-falls',
+    jis: NAKA_PACK_JIS,
+    name_ja: '大轟の滝',
+    reading: 'おおとどろのたき',
+    category: 'tourism',
+    lat: 33.8736,
+    lon: 134.2964,
+    address: '徳島県那賀郡那賀町沢谷',
+    phone: null,
+    official_url: 'https://www.town.tokushima-naka.lg.jp/gyosei/kankoguide/',
+    hours: null,
+    source_url: 'https://commons.wikimedia.org/wiki/File:Otodoro_Falls.JPG',
+    license: 'cc_by_open_data',
+    accessed: NAKA_PACK_ACCESSED
+  }
+];
+
+export const NAKA_FACILITIES: readonly FacilityRow[] = [
+  ...loadNakaFacilities(),
+  ...NAKA_EXTRA_FACILITIES
+];

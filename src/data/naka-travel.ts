@@ -34,6 +34,9 @@ export const NAKA_ONSEN_PACK_NAMES = [] as const;
 export const NAKA_ONSEN_PACK_SET: ReadonlySet<string> = new Set(
   NAKA_ONSEN_PACK_NAMES
 );
+export const NAKA_EXPERIENCE_PACK_NAMES = ['森林文化公園あいあいランド'] as const;
+export const NAKA_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(NAKA_EXPERIENCE_PACK_NAMES);
+
 
 /** Exact tourism-pack names shown on 宿泊, not 観光. Room/bath photo required — none yet. */
 export const NAKA_STAY_PACK_NAMES = [] as const;
@@ -53,7 +56,7 @@ export const NAKA_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(
   NAKA_SHOPPING_PACK_NAMES
 );
 
-export const NAKA_SIGHT_PINS = ['高の瀬峡平の里', '鷲敷ラインおよび氷柱観音', '剣山並びに亜寒帯植物林', '四季美谷温泉｜休業中', '森林文化公園あいあいランド'] as const;
+export const NAKA_SIGHT_PINS = ['高の瀬峡平の里', '鷲敷ラインおよび氷柱観音', '剣山並びに亜寒帯植物林', '四季美谷温泉｜休業中', '大轟の滝'] as const;
 
 export const NAKA_TRAVEL_STAY: readonly TravelRow[] = [];
 
@@ -290,11 +293,9 @@ export function isNakaOnsenPackRow(row: {
   return NAKA_ONSEN_PACK_SET.has(row.name_ja);
 }
 
-export function isNakaExperiencePackRow(_row: {
-  category: string;
-  name_ja: string;
-}): boolean {
-  return false;
+export function isNakaExperiencePackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return NAKA_EXPERIENCE_PACK_SET.has(row.name_ja);
 }
 
 export function isNakaStayPackRow(_row: {
@@ -329,6 +330,7 @@ export function rankNakaSeeRows<T extends Rankable>(rows: readonly T[]): T[] {
     (row) =>
       isSightsCategory(row.category) &&
       !isNakaOnsenPackRow(row) &&
+      !isNakaExperiencePackRow(row) &&
       !isNakaStayPackRow(row) &&
       !isNakaShoppingPackRow(row) &&
       !NAKA_DINING_NAME_SET.has(row.name_ja)
@@ -384,6 +386,7 @@ export function nakaTopChipForRow(row: {
   category: string;
   name_ja: string;
 }): FilterId {
+  if (isNakaExperiencePackRow(row)) return 'experience';
   if (isNakaOnsenPackRow(row)) return 'onsen';
   if (isNakaStayPackRow(row)) return 'stay';
   if (isNakaShoppingPackRow(row)) return 'shopping';
@@ -404,6 +407,7 @@ export function nakaPackRowMatchesFilter(
     return (
       isSightsCategory(category) &&
       !isNakaOnsenPackRow(row) &&
+      !isNakaExperiencePackRow(row) &&
       !isNakaStayPackRow(row) &&
       !isNakaShoppingPackRow(row) &&
       !NAKA_DINING_NAME_SET.has(nameJa)
@@ -411,7 +415,7 @@ export function nakaPackRowMatchesFilter(
   }
   if (filter === 'infra') return isInfraCategory(category);
   if (filter === 'onsen') return isNakaOnsenPackRow(row);
-  if (filter === 'experience') return false;
+  if (filter === 'experience') return isNakaExperiencePackRow(row);
   if (filter === 'stay') return isNakaStayPackRow(row);
   if (filter === 'dining' || filter === 'shopping' || filter === 'commerce') return false;
   return category === filter;

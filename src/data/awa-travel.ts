@@ -31,6 +31,9 @@ export const AWA_TRAVEL_SOURCES = {
 export const AWA_ONSEN_PACK_NAMES = [] as const;
 
 export const AWA_ONSEN_PACK_SET: ReadonlySet<string> = new Set(AWA_ONSEN_PACK_NAMES);
+export const AWA_EXPERIENCE_PACK_NAMES = ['土柱そよ風ひろば'] as const;
+export const AWA_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(AWA_EXPERIENCE_PACK_NAMES);
+
 
 /** Exact tourism-pack names shown on 宿泊, not 観光. Room/bath photo required — none yet. */
 export const AWA_STAY_PACK_NAMES = [] as const;
@@ -226,8 +229,9 @@ export function isAwaOnsenPackRow(row: {category: string; name_ja: string}): boo
   return AWA_ONSEN_PACK_SET.has(row.name_ja);
 }
 
-export function isAwaExperiencePackRow(_row: {category: string; name_ja: string}): boolean {
-  return false;
+export function isAwaExperiencePackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return AWA_EXPERIENCE_PACK_SET.has(row.name_ja);
 }
 
 export function isAwaStayPackRow(_row: {category: string; name_ja: string}): boolean {
@@ -251,6 +255,7 @@ export function rankAwaSeeRows<T extends Rankable>(rows: readonly T[]): T[] {
     (row) =>
       isSightsCategory(row.category) &&
       !isAwaOnsenPackRow(row) &&
+      !isAwaExperiencePackRow(row) &&
       !isAwaStayPackRow(row)
   );
   const used = new Set<string>();
@@ -298,6 +303,7 @@ export function awaSourcedHook(
 }
 
 export function awaTopChipForRow(row: {category: string; name_ja: string}): FilterId {
+  if (isAwaExperiencePackRow(row)) return 'experience';
   if (isAwaOnsenPackRow(row)) return 'onsen';
   if (isAwaStayPackRow(row)) return 'stay';
   if (isSightsCategory(row.category)) return 'sights';
@@ -316,12 +322,13 @@ export function awaPackRowMatchesFilter(
     return (
       isSightsCategory(category) &&
       !isAwaOnsenPackRow(row) &&
+      !isAwaExperiencePackRow(row) &&
       !isAwaStayPackRow(row)
     );
   }
   if (filter === 'infra') return isInfraCategory(category);
   if (filter === 'onsen') return isAwaOnsenPackRow(row);
-  if (filter === 'experience') return false;
+  if (filter === 'experience') return isAwaExperiencePackRow(row);
   if (filter === 'stay') return isAwaStayPackRow(row);
   if (filter === 'dining' || filter === 'shopping' || filter === 'commerce') return false;
   return category === filter;
