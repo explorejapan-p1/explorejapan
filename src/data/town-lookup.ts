@@ -319,6 +319,7 @@ import {SUSAKI, SUSAKI_PLACE_PHOTO, SUSAKI_FACILITIES, SUSAKI_EXPECTED_GEO_COUNT
 import {SHIMANTO, SHIMANTO_PLACE_PHOTO, SHIMANTO_FACILITIES, SHIMANTO_EXPECTED_GEO_COUNT, SHIMANTO_EXPECTED_ROW_COUNT} from './shimanto';
 import {TOSASHIMIZU, TOSASHIMIZU_PLACE_PHOTO, TOSASHIMIZU_FACILITIES, TOSASHIMIZU_EXPECTED_GEO_COUNT, TOSASHIMIZU_EXPECTED_ROW_COUNT} from './tosashimizu';
 import {SUKUMO, SUKUMO_PLACE_PHOTO, SUKUMO_FACILITIES, SUKUMO_EXPECTED_GEO_COUNT, SUKUMO_EXPECTED_ROW_COUNT} from './sukumo';
+import {KUROSHIO, KUROSHIO_PLACE_PHOTO, KUROSHIO_FACILITIES, KUROSHIO_EXPECTED_GEO_COUNT, KUROSHIO_EXPECTED_ROW_COUNT} from './kuroshio';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -600,6 +601,13 @@ import {
   SUKUMO_TRAVEL_COMMERCE,
   SUKUMO_TRAVEL_ALL
 } from './sukumo-travel';
+import {
+  KUROSHIO_TRAVEL_DINING,
+  KUROSHIO_TRAVEL_STAY,
+  KUROSHIO_TRAVEL_SHOPPING,
+  KUROSHIO_TRAVEL_COMMERCE,
+  KUROSHIO_TRAVEL_ALL
+} from './kuroshio-travel';
 
 
 
@@ -2181,6 +2189,39 @@ export const SUKUMO_LOOKUP: LookupTown = {
 };
 
 
+
+export const KUROSHIO_LOOKUP: LookupTown = {
+  slug: 'kuroshio',
+  prefectureSlug: 'kochi',
+  jis: KUROSHIO.jis,
+  nameJa: KUROSHIO.nameJa,
+  nameEn: KUROSHIO.nameEn,
+  heroPhoto: KUROSHIO_PLACE_PHOTO,
+  photoCiteJa: '写真は入野松原。Saigen Jiro、2018-02-17、CC0。File:Irino_no_Matsubara,_enkei.jpg。',
+  photoCiteEn: 'Photo: Irino Matsubara. Saigen Jiro, 17 Feb 2018, CC0. File:Irino_no_Matsubara,_enkei.jpg.',
+  rows: KUROSHIO_FACILITIES,
+  expectedGeo: KUROSHIO_EXPECTED_GEO_COUNT,
+  expectedRows: KUROSHIO_EXPECTED_ROW_COUNT,
+  travelDining: KUROSHIO_TRAVEL_DINING,
+  travelStay: KUROSHIO_TRAVEL_STAY,
+  travelShopping: KUROSHIO_TRAVEL_SHOPPING,
+  travelCommerce: KUROSHIO_TRAVEL_COMMERCE,
+  travelAll: KUROSHIO_TRAVEL_ALL,
+  coverageJa:
+    '黒潮町（JIS 39428）観光5・宿泊1・飲食16・温泉0・体験1（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県13つ目のLIVEハブ。',
+  coverageEn:
+    'Kuroshio Town (JIS 39428), 5 tourism + 1 stay + 16 dining + 0 onsen + 1 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Thirteenth LIVE Kochi hub.',
+  mapLabelJa: '黒潮町の出典座標6件',
+  mapLabelEn: '6 sourced coordinates in Kuroshio Town',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons等出典座標6件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 6 sourced coordinates for town/official facilities (accessed 2026-09-08).',
+  licenseNoteJa: '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from town.kuroshio.lg.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
+
 export const SHIMANTO_LOOKUP: LookupTown = {
   slug: 'shimanto',
   prefectureSlug: 'kochi',
@@ -2578,7 +2619,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   susaki: SUSAKI_LOOKUP,
   shimanto: SHIMANTO_LOOKUP,
   tosashimizu: TOSASHIMIZU_LOOKUP,
-  sukumo: SUKUMO_LOOKUP
+  sukumo: SUKUMO_LOOKUP,
+  kuroshio: KUROSHIO_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

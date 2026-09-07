@@ -10,7 +10,7 @@ export type Municipality = {
 
 /**
  * Kochi 市区町村. Codes are N03_007 / JIS X 0402 (5-digit).
- * Kochi City 39201 + Nankoku 39204 + Konan 39211 + Kami 39212 + Ino 39386 + Aki 39203 + Muroto 39202 + Tosa 39205 + Susaki 39206 + Shimanto 39210 + Tosashimizu 39209 + Sukumo 39208 LIVE hubs (+ remaining municipalities coming-soon).
+ * Kochi City 39201 + Nankoku 39204 + Konan 39211 + Kami 39212 + Ino 39386 + Aki 39203 + Muroto 39202 + Tosa 39205 + Susaki 39206 + Shimanto 39210 + Tosashimizu 39209 + Sukumo 39208 + Kuroshio 39428 LIVE hubs (+ remaining municipalities coming-soon).
  */
 export const KOCHI_MUNICIPALITIES: Municipality[] = [
   {jis: '39201', slug: 'kochi', nameJa: '高知市', nameEn: 'Kochi', status: 'ready'},
@@ -46,7 +46,7 @@ export const KOCHI_MUNICIPALITIES: Municipality[] = [
   {jis: '39412', slug: 'shimantocho', nameJa: '四万十町', nameEn: 'Shimanto Town', status: 'coming-soon'},
   {jis: '39424', slug: 'otsuki', nameJa: '大月町', nameEn: 'Otsuki', status: 'coming-soon'},
   {jis: '39427', slug: 'mihara', nameJa: '三原村', nameEn: 'Mihara', status: 'coming-soon'},
-  {jis: '39428', slug: 'kuroshio', nameJa: '黒潮町', nameEn: 'Kuroshio', status: 'coming-soon'}
+  {jis: '39428', slug: 'kuroshio', nameJa: '黒潮町', nameEn: 'Kuroshio', status: 'ready'}
 ];
 
 export const KOCHI_JIS = '39201';

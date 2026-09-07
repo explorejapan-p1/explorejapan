@@ -71,6 +71,7 @@ import {SUSAKI_TRAVEL_ACCESSED} from '@/data/susaki-travel';
 import {SHIMANTO_TRAVEL_ACCESSED} from '@/data/shimanto-travel';
 import {TOSASHIMIZU_TRAVEL_ACCESSED} from '@/data/tosashimizu-travel';
 import {SUKUMO_TRAVEL_ACCESSED} from '@/data/sukumo-travel';
+import {KUROSHIO_TRAVEL_ACCESSED} from '@/data/kuroshio-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1463,6 +1464,22 @@ export function MimaFacilityLookup({
                 Lodging from Rakuten Travel room photos ({MUROTO_TRAVEL_ACCESSED}).
                 Dining from Tabelog Muroto shop pages ({MUROTO_TRAVEL_ACCESSED}).
                 Onsen: 0 (room-still stay only; no attributable bath keys). Experience: Muroto Geopark Center (Commons). Shopping/commerce: 0. Seventh LIVE Kochi hub.
+              </>
+            )
+          ) : town.slug === 'kuroshio' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（入野松原・入野海岸・砂浜美術館・加茂神社・佐賀地区）。
+                宿泊は楽天トラベルネスト・ウエストガーデン土佐の客室写真（{KUROSHIO_TRAVEL_ACCESSED}）。
+                飲食は食べログ黒潮町の公開店ページ（{KUROSHIO_TRAVEL_ACCESSED}）。
+                温泉は0件（客室写真の宿のみ・大浴場出典キー無し）。体験は土佐西南大規模公園（Commons）。買物・商業は0件。高知県13つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Irino Matsubara, Irino Coast, Seaside Gallery, Kamo Shrine, Saga district).
+                Lodging: Nest West Garden Tosa Rakuten room photo ({KUROSHIO_TRAVEL_ACCESSED}).
+                Dining from Tabelog Kuroshio shop pages ({KUROSHIO_TRAVEL_ACCESSED}).
+                Onsen: 0 (room-still stay only; no attributable bath keys). Experience: Tosa Seinan Large Park (Commons). Shopping/commerce: 0. Thirteenth LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'sukumo' ? (

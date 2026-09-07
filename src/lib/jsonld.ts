@@ -48,6 +48,7 @@ import {SUSAKI, SUSAKI_PLACE_PHOTO} from '@/data/susaki';
 import {SHIMANTO, SHIMANTO_PLACE_PHOTO} from '@/data/shimanto';
 import {TOSASHIMIZU, TOSASHIMIZU_PLACE_PHOTO} from '@/data/tosashimizu';
 import {SUKUMO, SUKUMO_PLACE_PHOTO} from '@/data/sukumo';
+import {KUROSHIO, KUROSHIO_PLACE_PHOTO} from '@/data/kuroshio';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -165,6 +166,7 @@ function localityJa(slug: string): string {
   if (slug === 'shimanto') return SHIMANTO.nameJa;
   if (slug === 'tosashimizu') return TOSASHIMIZU.nameJa;
   if (slug === 'sukumo') return SUKUMO.nameJa;
+  if (slug === 'kuroshio') return KUROSHIO.nameJa;
   return MIMA.nameJa;
 }
 
@@ -221,6 +223,7 @@ function localityEn(slug: string): string {
   if (slug === 'shimanto') return SHIMANTO.nameEn;
   if (slug === 'tosashimizu') return TOSASHIMIZU.nameEn;
   if (slug === 'sukumo') return SUKUMO.nameEn;
+  if (slug === 'kuroshio') return KUROSHIO.nameEn;
   return MIMA.nameEn;
 }
 
@@ -3813,6 +3816,66 @@ export function sukumoGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '宿毛市の案内' : 'Places in Sukumo City',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+export function kuroshioGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/kuroshio');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('kuroshio');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? KUROSHIO.nameJa : KUROSHIO.nameEn,
+        alternateName: isJa ? KUROSHIO.nameEn : KUROSHIO.nameJa,
+        identifier: KUROSHIO.jis,
+        url,
+        image: photoAbs(KUROSHIO_PLACE_PHOTO),
+        sameAs: [KUROSHIO.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '入野5893番地' : '5893 Irino',
+          addressLocality: isJa ? KUROSHIO.nameJa : KUROSHIO.nameEn,
+          addressRegion: isJa ? KUROSHIO.prefectureJa : KUROSHIO.prefectureEn,
+          postalCode: KUROSHIO.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? KUROSHIO.prefectureJa : KUROSHIO.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? KUROSHIO.nameJa : KUROSHIO.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? KUROSHIO.prefectureJa : KUROSHIO.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? KUROSHIO.nameJa : KUROSHIO.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '黒潮町の案内' : 'Places in Kuroshio Town',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',
