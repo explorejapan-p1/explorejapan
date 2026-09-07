@@ -42,6 +42,7 @@ import {KAIYO_TRAVEL_ACCESSED} from '@/data/kaiyo-travel';
 import {AIZUMI_TRAVEL_ACCESSED} from '@/data/aizumi-travel';
 import {KOMATSUSHIMA_TRAVEL_ACCESSED} from '@/data/komatsushima-travel';
 import {ANAN_TRAVEL_ACCESSED} from '@/data/anan-travel';
+import {TAKAMATSU_TRAVEL_ACCESSED} from '@/data/takamatsu-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -116,8 +117,8 @@ function dedupeMapPoints(
   return out;
 }
 
-function chipHref(next: FilterId, q: string, locale: string, slug: string, id?: string): string {
-  const path = `${BASE_PATH}/${locale}/tokushima/${slug}/`;
+function chipHref(next: FilterId, q: string, locale: string, slug: string, id?: string, prefectureSlug = 'tokushima'): string {
+  const path = `${BASE_PATH}/${locale}/${prefectureSlug}/${slug}/`;
   if (next === 'stay' && !q && !id) return path;
   const parts: string[] = [];
   if (next !== 'stay') parts.push(`c=${encodeURIComponent(next)}`);
@@ -479,7 +480,7 @@ export function MimaFacilityLookup({
   }
 
   function closeSheet() {
-    const href = chipHref(filter === 'all' ? 'stay' : filter, query, locale, town.slug);
+    const href = chipHref(filter === 'all' ? 'stay' : filter, query, locale, town.slug, undefined, town.prefectureSlug);
     window.history.pushState({}, '', href);
     setOpenId(null);
   }
@@ -509,14 +510,14 @@ export function MimaFacilityLookup({
               <a
                 key={cat}
                 className={chipClass(filter === cat && !searching)}
-                href={chipHref(cat, '', locale, town.slug)}
+                href={chipHref(cat, '', locale, town.slug, undefined, town.prefectureSlug)}
                 data-category={cat}
                 data-chip={cat}
                 onClick={(event) => {
                   event.preventDefault();
                   setShowAll(false);
                   setQuery('');
-                  go(chipHref(cat, '', locale, town.slug));
+                  go(chipHref(cat, '', locale, town.slug, undefined, town.prefectureSlug));
                 }}
               >
                 <ChipLabel id={cat} />
@@ -540,7 +541,7 @@ export function MimaFacilityLookup({
         <form
           className="lookup-search-row"
           method="get"
-          action={`${BASE_PATH}/${locale}/tokushima/${town.slug}/`}
+          action={`${BASE_PATH}/${locale}/${town.prefectureSlug}/${town.slug}/`}
           onSubmit={(event) => {
             const fd = new FormData(event.currentTarget);
             const submitted = String(fd.get('q') ?? '').trim();
@@ -915,6 +916,25 @@ export function MimaFacilityLookup({
               </>
             )
 
+          ) : town.slug === 'takamatsu' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（栗林公園・玉藻公園／高松城・屋島・屋島寺・女木島）。
+                宿泊は楽天トラベル／ホテル公式の客室写真（{TAKAMATSU_TRAVEL_ACCESSED}）。
+                飲食は食べログ高松市の公開店ページ（{TAKAMATSU_TRAVEL_ACCESSED}）。
+                体験は屋島ケーブルカー・四国村・イサム・ノグチ庭園美術館。
+                温泉・買物・商業は出典写真が無いため0件。香川県最初のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Ritsurin, Tamamo/Takamatsu Castle, Yashima, Yashima-ji, Megijima).
+                Lodging from Rakuten Travel / hotel-official room photos ({TAKAMATSU_TRAVEL_ACCESSED}).
+                Dining from Tabelog Takamatsu City shop pages ({TAKAMATSU_TRAVEL_ACCESSED}).
+                Experience: Yashima cable car, Shikoku Mura, Isamu Noguchi Garden Museum.
+                Onsen, shopping, and commerce stay at 0 without sourced photos. First LIVE Kagawa hub.
+              </>
+            )
+
 ) : town.slug === 'komatsushima' ? (
             locale === 'ja' ? (
               <>
@@ -1108,7 +1128,7 @@ export function MimaFacilityLookup({
                 data-category={point.category}
                 transform={`translate(${point.x} ${point.y})`}
               >
-                <a href={chipHref(h.topChipForRow(point), '', locale, town.slug, point.id)}>
+                <a href={chipHref(h.topChipForRow(point), '', locale, town.slug, point.id, town.prefectureSlug)}>
                   <circle
                     className={
                       'map-dot' + (openId === point.id ? ' is-active' : '')

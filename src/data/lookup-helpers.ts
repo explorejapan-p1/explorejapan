@@ -249,6 +249,17 @@ import {
   rankAnanSeeRows,
   resolveAnanFilter
 } from './anan-travel';
+import {
+  isTakamatsuOnsenPackRow,
+  isTakamatsuExperiencePackRow,
+  isTakamatsuStayPackRow,
+  takamatsuPackRowMatchesFilter,
+  takamatsuSightPhoto,
+  takamatsuSourcedHook,
+  takamatsuTopChipForRow,
+  rankTakamatsuSeeRows,
+  resolveTakamatsuFilter
+} from './takamatsu-travel';
 
 
 
@@ -622,6 +633,19 @@ const ANAN_HELPERS: LookupHelpers = {
   resolveFilter: resolveAnanFilter
 };
 
+
+const TAKAMATSU_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isTakamatsuOnsenPackRow,
+  isExperiencePackRow: isTakamatsuExperiencePackRow,
+  isStayPackRow: isTakamatsuStayPackRow,
+  packRowMatchesFilter: takamatsuPackRowMatchesFilter,
+  rankSeeRows: rankTakamatsuSeeRows,
+  sightPhoto: takamatsuSightPhoto,
+  sourcedHook: takamatsuSourcedHook,
+  topChipForRow: takamatsuTopChipForRow,
+  resolveFilter: resolveTakamatsuFilter
+};
+
 export function townHelpers(slug: ReadySlug): LookupHelpers {
 
   if (slug === 'tsurugi') return TSURUGI_HELPERS;
@@ -647,5 +671,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'aizumi') return AIZUMI_HELPERS;
   if (slug === 'komatsushima') return KOMATSUSHIMA_HELPERS;
   if (slug === 'anan') return ANAN_HELPERS;
+  if (slug === 'takamatsu') return TAKAMATSU_HELPERS;
   return MIMA_HELPERS;
 }

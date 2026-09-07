@@ -15,6 +15,8 @@ import {KAMIITA_PLACE_PHOTO} from '@/data/kamiita';
 import {NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {KOMATSUSHIMA_PLACE_PHOTO} from '@/data/komatsushima';
 import {ANAN_PLACE_PHOTO} from '@/data/anan';
+import {TAKAMATSU_PLACE_PHOTO} from '@/data/takamatsu';
+import {KAGAWA_MUNICIPALITIES} from '@/data/kagawa-municipalities';
 import {TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {PREFECTURES, PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
@@ -36,19 +38,23 @@ export async function generateMetadata({params}: Props) {
   if (!pref) return {};
   const loc = (locale === 'en' ? 'en' : 'ja') as AppLocale;
   const name = loc === 'ja' ? pref.nameJa : pref.nameEn;
-  const live = pref.slug === 'tokushima';
+  const live = pref.slug === 'tokushima' || pref.slug === 'kagawa';
   return shareMetadata({
     locale: loc,
     rest: pref.slug,
     title: name,
-    description: live
+    description: pref.slug === 'tokushima'
       ? loc === 'ja'
         ? '徳島県の市町村。徳島市・鳴門市・美馬市・つるぎ町・吉野川市・三好市・阿波市・東みよし町・北島町・松茂町・石井町・板野町・上板町。'
         : 'Municipalities in Tokushima. Listings: Tokushima City, Naruto City, Mima City, Tsurugi Town, Yoshinogawa City, Miyoshi City, Awa City, Higashimiyoshi Town, Kitajima Town, Matsushige Town, Ishii Town, Itano Town, and Kamiita Town.'
-      : loc === 'ja'
-        ? 'この県の市町村ページは準備中です。'
-        : 'This prefecture layer is not wired yet.',
-    image: MIMA_PLACE_PHOTO,
+      : pref.slug === 'kagawa'
+        ? loc === 'ja'
+          ? '香川県の市町村。高松市。'
+          : 'Municipalities in Kagawa. Listings: Takamatsu City.'
+        : loc === 'ja'
+          ? 'この県の市町村ページは準備中です。'
+          : 'This prefecture layer is not wired yet.',
+    image: pref.slug === 'kagawa' ? TAKAMATSU_PLACE_PHOTO : MIMA_PLACE_PHOTO,
     index: live
   });
 }
@@ -73,10 +79,10 @@ export default async function PrefecturePage({params}: Props) {
         <span>{name}</span>
       </nav>
       <h1>{name}</h1>
-      {pref.slug === 'tokushima' ? (
+      {pref.slug === 'tokushima' || pref.slug === 'kagawa' ? (
         <>
           <ul className="muni-cards">
-            {TOKUSHIMA_MUNICIPALITIES.map((m) => {
+            {(pref.slug === 'tokushima' ? TOKUSHIMA_MUNICIPALITIES : KAGAWA_MUNICIPALITIES).map((m) => {
               const live = m.status === 'ready';
               const photo =
                 m.slug === 'tokushima'
@@ -107,8 +113,10 @@ export default async function PrefecturePage({params}: Props) {
                                           ? KOMATSUSHIMA_PLACE_PHOTO
                                           : m.slug === 'anan'
                                             ? ANAN_PLACE_PHOTO
-                                            : MIMA_PLACE_PHOTO;
-              const href = `${BASE_PATH}/${locale}/tokushima/${m.slug}/`;
+                                            : m.slug === 'takamatsu'
+                                              ? TAKAMATSU_PLACE_PHOTO
+                                              : MIMA_PLACE_PHOTO;
+              const href = `${BASE_PATH}/${locale}/${pref.slug}/${m.slug}/`;
               return (
                 <li key={m.slug} className={live ? 'muni-card is-live' : 'muni-card is-hold'}>
                   {live ? (
@@ -122,7 +130,7 @@ export default async function PrefecturePage({params}: Props) {
                       <span className="muni-card-name">{isJa ? m.nameJa : m.nameEn}</span>
                     </a>
                   ) : (
-                    <Link href={`/tokushima/${m.slug}`}>
+                    <Link href={`/${pref.slug}/${m.slug}`}>
                       <span className="muni-card-name">{isJa ? m.nameJa : m.nameEn}</span>
                       <span className="muted">{isJa ? '準備中' : 'Coming soon'}</span>
                     </Link>
@@ -131,7 +139,7 @@ export default async function PrefecturePage({params}: Props) {
               );
             })}
           </ul>
-          <TokushimaMap locale={locale} />
+          {pref.slug === 'tokushima' ? <TokushimaMap locale={locale} /> : null}
         </>
       ) : (
         <div className="coming coming-photo">

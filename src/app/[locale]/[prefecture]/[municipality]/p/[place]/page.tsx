@@ -14,6 +14,8 @@ import {ITANO} from '@/data/itano';
 import {NARUTO} from '@/data/naruto';
 import {KOMATSUSHIMA} from '@/data/komatsushima';
 import {ANAN} from '@/data/anan';
+import {TAKAMATSU} from '@/data/takamatsu';
+import {prefSlugForReady} from '@/data/lookup-town';
 import {isReadySlug} from '@/data/town-lookup';
 import {PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {Link} from '@/i18n/navigation';
@@ -33,7 +35,7 @@ export function generateStaticParams() {
     for (const row of places) {
       out.push({
         locale,
-        prefecture: 'tokushima',
+        prefecture: prefSlugForReady(row.slug),
         municipality: row.slug,
         place: row.id
       });
@@ -44,7 +46,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({params}: Props) {
   const {locale, prefecture, municipality, place} = await params;
-  if (prefecture !== 'tokushima' || !isReadySlug(municipality)) return {};
+  if (!isReadySlug(municipality) || prefecture !== prefSlugForReady(municipality)) return {};
   const listing = listingById(place, municipality);
   if (!listing || !listing.photo) return {};
   const loc = (locale === 'en' ? 'en' : 'ja') as AppLocale;
@@ -121,12 +123,12 @@ export async function generateMetadata({params}: Props) {
 
 export default async function PlacePage({params}: Props) {
   const {locale, prefecture, municipality, place} = await params;
-  if (prefecture !== 'tokushima' || !isReadySlug(municipality)) notFound();
+  if (!isReadySlug(municipality) || prefecture !== prefSlugForReady(municipality)) notFound();
   const listing = listingById(place, municipality);
   if (!listing || !listing.photo) notFound();
   const loc = (locale === 'en' ? 'en' : 'ja') as AppLocale;
   const isJa = loc === 'ja';
-  const pref = PREFECTURE_BY_SLUG.get('tokushima')!;
+  const pref = PREFECTURE_BY_SLUG.get(prefecture)!;
   const photo = listing.photo;
   const townNameJa =
     municipality === 'tsurugi'
@@ -194,9 +196,9 @@ export default async function PlacePage({params}: Props) {
       <nav className="crumbs">
         <Link href="/">{isJa ? '全国' : 'Japan'}</Link>
         <span> / </span>
-        <Link href="/tokushima">{isJa ? pref.nameJa : pref.nameEn}</Link>
+        <Link href={`/${prefecture}`}>{isJa ? pref.nameJa : pref.nameEn}</Link>
         <span> / </span>
-        <Link href={`/tokushima/${municipality}`}>{isJa ? townNameJa : townNameEn}</Link>
+        <Link href={`/${prefecture}/${municipality}`}>{isJa ? townNameJa : townNameEn}</Link>
         <span> / </span>
         <span>{listing.nameJa}</span>
       </nav>

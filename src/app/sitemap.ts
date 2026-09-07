@@ -30,11 +30,12 @@ const READY_HUBS = [
   'tokushima/kaiyo',
   'tokushima/aizumi',
   'tokushima/komatsushima',
-  'tokushima/anan'
+  'tokushima/anan',
+  'kagawa/takamatsu'
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = ['', 'tokushima', ...READY_HUBS, ...liveListings().map((row) => listingRest(row.id, row.slug))];
+  const paths = ['', 'tokushima', 'kagawa', ...READY_HUBS, ...liveListings().map((row) => listingRest(row.id, row.slug))];
   const hubSet = new Set<string>(READY_HUBS);
   const entries: MetadataRoute.Sitemap = [];
   for (const locale of routing.locales) {
@@ -42,7 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       entries.push({
         url: canonicalUrl(locale, rest),
         changeFrequency: rest === '' ? 'weekly' : 'monthly',
-        priority: rest === '' ? 1 : hubSet.has(rest) ? 0.9 : rest === 'tokushima' ? 0.85 : 0.7
+        priority: rest === '' ? 1 : hubSet.has(rest) ? 0.9 : rest === 'tokushima' || rest === 'kagawa' ? 0.85 : 0.7
       });
     }
   }

@@ -19,6 +19,7 @@ import {MINAMI, MINAMI_PLACE_PHOTO} from '@/data/minami';
 import {AIZUMI, AIZUMI_PLACE_PHOTO} from '@/data/aizumi';
 import {KOMATSUSHIMA, KOMATSUSHIMA_PLACE_PHOTO} from '@/data/komatsushima';
 import {ANAN, ANAN_PLACE_PHOTO} from '@/data/anan';
+import {TAKAMATSU, TAKAMATSU_PLACE_PHOTO} from '@/data/takamatsu';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
@@ -105,6 +106,8 @@ function localityJa(slug: string): string {
   if (slug === 'komatsushima') return KOMATSUSHIMA.nameJa;
   if (slug === 'kaiyo') return KAIYO.nameJa;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameJa;
+  if (slug === 'anan') return ANAN.nameJa;
+  if (slug === 'takamatsu') return TAKAMATSU.nameJa;
   return MIMA.nameJa;
 }
 
@@ -131,6 +134,8 @@ function localityEn(slug: string): string {
   if (slug === 'komatsushima') return KOMATSUSHIMA.nameEn;
   if (slug === 'kaiyo') return KAIYO.nameEn;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameEn;
+  if (slug === 'anan') return ANAN.nameEn;
+  if (slug === 'takamatsu') return TAKAMATSU.nameEn;
   return MIMA.nameEn;
 }
 
@@ -1844,14 +1849,19 @@ export function placeGraph(listing: PublicListing, locale: AppLocale) {
           {
             '@type': 'ListItem',
             position: 2,
-            name: isJa ? MIMA.prefectureJa : MIMA.prefectureEn,
-            item: canonicalUrl(locale, 'tokushima')
+            name: isJa
+              ? (listing.slug === 'takamatsu' ? TAKAMATSU.prefectureJa : MIMA.prefectureJa)
+              : (listing.slug === 'takamatsu' ? TAKAMATSU.prefectureEn : MIMA.prefectureEn),
+            item: canonicalUrl(locale, listing.slug === 'takamatsu' ? 'kagawa' : 'tokushima')
           },
           {
             '@type': 'ListItem',
             position: 3,
             name: isJa ? localityJa(listing.slug) : localityEn(listing.slug),
-            item: canonicalUrl(locale, `tokushima/${listing.slug}`)
+            item: canonicalUrl(
+              locale,
+              `${listing.slug === 'takamatsu' ? 'kagawa' : 'tokushima'}/${listing.slug}`
+            )
           },
           {
             '@type': 'ListItem',
@@ -2106,3 +2116,62 @@ export function ananGraph(locale: AppLocale) {
   };
 }
 
+export function takamatsuGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kagawa/takamatsu');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('takamatsu');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? TAKAMATSU.nameJa : TAKAMATSU.nameEn,
+        alternateName: isJa ? TAKAMATSU.nameEn : TAKAMATSU.nameJa,
+        identifier: TAKAMATSU.jis,
+        url,
+        image: photoAbs(TAKAMATSU_PLACE_PHOTO),
+        sameAs: [TAKAMATSU.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '番町一丁目8番15号' : '1-8-15 Bancho',
+          addressLocality: isJa ? TAKAMATSU.nameJa : TAKAMATSU.nameEn,
+          addressRegion: isJa ? TAKAMATSU.prefectureJa : TAKAMATSU.prefectureEn,
+          postalCode: TAKAMATSU.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? TAKAMATSU.prefectureJa : TAKAMATSU.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? TAKAMATSU.nameJa : TAKAMATSU.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? TAKAMATSU.prefectureJa : TAKAMATSU.prefectureEn, item: canonicalUrl(locale, 'kagawa')},
+          {'@type': 'ListItem', position: 3, name: isJa ? TAKAMATSU.nameJa : TAKAMATSU.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '高松市の案内' : 'Places in Takamatsu City',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}

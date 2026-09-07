@@ -33,11 +33,18 @@ import {
   MUNICIPALITY_BY_SLUG,
   TOKUSHIMA_MUNICIPALITIES
 } from '@/data/tokushima-municipalities';
+import {KAGAWA_MUNICIPALITIES} from '@/data/kagawa-municipalities';
+import {
+  allMunicipalityStaticParams,
+  municipalityBySlug,
+  prefHasMunicipalityLayer
+} from '@/data/municipalities';
+import {TAKAMATSU, TAKAMATSU_PLACE_PHOTO} from '@/data/takamatsu';
 import {Link} from '@/i18n/navigation';
 import type {AppLocale} from '@/i18n/routing';
 import {projectMimaOfficialMap} from '@/lib/geo';
 import {JsonLd} from '@/components/JsonLd';
-import {mimaGraph, tsurugiGraph, yoshinogawaGraph, miyoshiGraph, tokushimaCityGraph, awaGraph, higashimiyoshiGraph, kitajimaGraph, narutoGraph, matsushigeGraph, ishiiGraph, itanoGraph, kamiitaGraph, kamiyamaGraph, katsuuraGraph, kamikatsuGraph, sanagochiGraph, nakaGraph, minamiGraph, kaiyoGraph, aizumiGraph, mugiGraph, komatsushimaGraph, ananGraph} from '@/lib/jsonld';
+import {mimaGraph, tsurugiGraph, yoshinogawaGraph, miyoshiGraph, tokushimaCityGraph, awaGraph, higashimiyoshiGraph, kitajimaGraph, narutoGraph, matsushigeGraph, ishiiGraph, itanoGraph, kamiitaGraph, kamiyamaGraph, katsuuraGraph, kamikatsuGraph, sanagochiGraph, nakaGraph, minamiGraph, kaiyoGraph, aizumiGraph, mugiGraph, komatsushimaGraph, ananGraph, takamatsuGraph} from '@/lib/jsonld';
 import {shareMetadata} from '@/lib/seo';
 
 type Props = {
@@ -45,16 +52,14 @@ type Props = {
 };
 
 export function generateStaticParams() {
-  return TOKUSHIMA_MUNICIPALITIES.map((m) => ({
-    prefecture: 'tokushima',
-    municipality: m.slug
-  }));
+  return allMunicipalityStaticParams();
 }
 
 export async function generateMetadata({params}: Props) {
   const {locale, prefecture, municipality} = await params;
-  const muni = MUNICIPALITY_BY_SLUG.get(municipality);
-  if (prefecture !== 'tokushima' || !muni) return {};
+  if (!prefHasMunicipalityLayer(prefecture)) return {};
+  const muni = municipalityBySlug(prefecture, municipality);
+  if (!muni) return {};
   const loc = (locale === 'en' ? 'en' : 'ja') as AppLocale;
   const live = muni.status === 'ready';
   const enTitle =
@@ -115,7 +120,9 @@ export async function generateMetadata({params}: Props) {
                                               ? KOMATSUSHIMA_PLACE_PHOTO
                                               : muni.slug === 'anan'
                                                 ? ANAN_PLACE_PHOTO
-                                                : MIMA_PLACE_PHOTO;
+                                                : muni.slug === 'takamatsu'
+                                                  ? TAKAMATSU_PLACE_PHOTO
+                                                  : MIMA_PLACE_PHOTO;
   const description = live
     ? muni.slug === 'tsurugi'
       ? loc === 'ja'
@@ -209,6 +216,10 @@ export async function generateMetadata({params}: Props) {
                                       ? loc === 'ja'
                                         ? '阿南市。蒲生田岬、太龍寺・平等寺、食。'
                                         : 'Anan City, Tokushima — Cape Kamoda, Tairyū-ji and Byōdō-ji, food.'
+                                    : muni.slug === 'takamatsu'
+                                      ? loc === 'ja'
+                                        ? '高松市。栗林公園、玉藻公園、屋島、食。'
+                                        : 'Takamatsu City, Kagawa — Ritsurin Garden, Tamamo Park, Yashima, food.'
           : loc === 'ja'
             ? '四国のまほろば 美馬市。うだつの町並み、食、宿。'
             : 'Mima City, Tokushima — Udatsu townscape, food, and stays.'
@@ -217,7 +228,7 @@ export async function generateMetadata({params}: Props) {
       : 'This municipality page is coming soon.';
   return shareMetadata({
     locale: loc,
-    rest: `tokushima/${muni.slug}`,
+    rest: `${prefecture}/${muni.slug}`,
     title,
     description,
     image,
@@ -227,11 +238,11 @@ export async function generateMetadata({params}: Props) {
 
 export default async function MunicipalityPage({params}: Props) {
   const {locale, prefecture, municipality} = await params;
-  if (prefecture !== 'tokushima') notFound();
-  const muni = MUNICIPALITY_BY_SLUG.get(municipality);
+  if (!prefHasMunicipalityLayer(prefecture)) notFound();
+  const muni = municipalityBySlug(prefecture, municipality);
   if (!muni) notFound();
   setRequestLocale(locale);
-  const pref = PREFECTURE_BY_SLUG.get('tokushima')!;
+  const pref = PREFECTURE_BY_SLUG.get(prefecture)!;
   const isJa = locale === 'ja';
 
   if (muni.status !== 'ready') {
@@ -240,7 +251,7 @@ export default async function MunicipalityPage({params}: Props) {
         <nav className="crumbs">
           <Link href="/">{isJa ? '全国' : 'Japan'}</Link>
           <span> / </span>
-          <Link href="/tokushima">{isJa ? pref.nameJa : pref.nameEn}</Link>
+          <Link href={`/${prefecture}`}>{isJa ? pref.nameJa : pref.nameEn}</Link>
           <span> / </span>
           <span>{isJa ? muni.nameJa : muni.nameEn}</span>
         </nav>
@@ -328,7 +339,7 @@ export default async function MunicipalityPage({params}: Props) {
 
   return (
     <>
-      <JsonLd data={town.slug === 'tokushima' ? tokushimaCityGraph(graphLocale) : town.slug === 'tsurugi' ? tsurugiGraph(graphLocale) : town.slug === 'yoshinogawa' ? yoshinogawaGraph(graphLocale) : town.slug === 'miyoshi' ? miyoshiGraph(graphLocale) : town.slug === 'awa' ? awaGraph(graphLocale) : town.slug === 'higashimiyoshi' ? higashimiyoshiGraph(graphLocale) : town.slug === 'kitajima' ? kitajimaGraph(graphLocale) : town.slug === 'naruto' ? narutoGraph(graphLocale) : town.slug === 'matsushige' ? matsushigeGraph(graphLocale) : town.slug === 'ishii' ? ishiiGraph(graphLocale) : town.slug === 'itano' ? itanoGraph(graphLocale) : town.slug === 'kamiita' ? kamiitaGraph(graphLocale) : town.slug === 'kamiyama' ? kamiyamaGraph(graphLocale) : town.slug === 'katsuura' ? katsuuraGraph(graphLocale) : town.slug === 'kamikatsu' ? kamikatsuGraph(graphLocale) : town.slug === 'sanagochi' ? sanagochiGraph(graphLocale) : town.slug === 'naka' ? nakaGraph(graphLocale) : town.slug === 'minami' ? minamiGraph(graphLocale) : town.slug === 'kaiyo' ? kaiyoGraph(graphLocale) : town.slug === 'mugi' ? mugiGraph(graphLocale) : town.slug === 'aizumi' ? aizumiGraph(graphLocale) : town.slug === 'komatsushima' ? komatsushimaGraph(graphLocale) : town.slug === 'anan' ? ananGraph(graphLocale) : mimaGraph(graphLocale)} />
+      <JsonLd data={town.slug === 'tokushima' ? tokushimaCityGraph(graphLocale) : town.slug === 'tsurugi' ? tsurugiGraph(graphLocale) : town.slug === 'yoshinogawa' ? yoshinogawaGraph(graphLocale) : town.slug === 'miyoshi' ? miyoshiGraph(graphLocale) : town.slug === 'awa' ? awaGraph(graphLocale) : town.slug === 'higashimiyoshi' ? higashimiyoshiGraph(graphLocale) : town.slug === 'kitajima' ? kitajimaGraph(graphLocale) : town.slug === 'naruto' ? narutoGraph(graphLocale) : town.slug === 'matsushige' ? matsushigeGraph(graphLocale) : town.slug === 'ishii' ? ishiiGraph(graphLocale) : town.slug === 'itano' ? itanoGraph(graphLocale) : town.slug === 'kamiita' ? kamiitaGraph(graphLocale) : town.slug === 'kamiyama' ? kamiyamaGraph(graphLocale) : town.slug === 'katsuura' ? katsuuraGraph(graphLocale) : town.slug === 'kamikatsu' ? kamikatsuGraph(graphLocale) : town.slug === 'sanagochi' ? sanagochiGraph(graphLocale) : town.slug === 'naka' ? nakaGraph(graphLocale) : town.slug === 'minami' ? minamiGraph(graphLocale) : town.slug === 'kaiyo' ? kaiyoGraph(graphLocale) : town.slug === 'mugi' ? mugiGraph(graphLocale) : town.slug === 'aizumi' ? aizumiGraph(graphLocale) : town.slug === 'komatsushima' ? komatsushimaGraph(graphLocale) : town.slug === 'anan' ? ananGraph(graphLocale) : town.slug === 'takamatsu' ? takamatsuGraph(graphLocale) : mimaGraph(graphLocale)} />
       <MimaFacilityLookup
         locale={locale}
         town={town}
@@ -1493,6 +1504,57 @@ export default async function MunicipalityPage({params}: Props) {
         {isJa
           ? `数字のアクセス日は ${TSURUGI.sources.accessed}。人口は未掲載（出典ページを混ぜません）。`
           : `Figures accessed ${TSURUGI.sources.accessed}. Population is unpublished (universes are not mixed).`}
+      </p>
+      </details>
+      ) : town.slug === 'takamatsu' ? (
+      <details className="facts-fold">
+        <summary>{isJa ? '市の資料' : 'City facts'}</summary>
+      <table className="facts">
+        <tbody>
+          <tr>
+            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <td>
+              {TAKAMATSU.nameJa} / {TAKAMATSU.nameEn}（{TAKAMATSU.reading}）
+            </td>
+          </tr>
+          <tr>
+            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <td>
+              <Link href="/kagawa">{isJa ? TAKAMATSU.prefectureJa : TAKAMATSU.prefectureEn}</Link>
+            </td>
+          </tr>
+          <tr>
+            <th>JIS / N03_007</th>
+            <td>
+              <strong>{TAKAMATSU.jis}</strong>
+              {isJa ? '（香川県県庁所在地）' : ' (Kagawa prefectural capital)'}
+            </td>
+          </tr>
+          <tr>
+            <th>J-LIS</th>
+            <td>{TAKAMATSU.jlis}</td>
+          </tr>
+          <tr>
+            <th>{isJa ? '市役所' : 'City hall'}</th>
+            <td>
+              〒{TAKAMATSU.hall.postalCode} {isJa ? TAKAMATSU.hall.addressJa : TAKAMATSU.hall.addressEn}
+              <br />
+              {TAKAMATSU.hall.phone} · <a href={TAKAMATSU.sameAs}>sameAs {TAKAMATSU.sameAs}</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        <a href={TAKAMATSU.sources.hall}>{isJa ? '庁舎案内' : 'Hall guide'}</a>
+        {' · '}
+        <a href={TAKAMATSU.sources.home}>{isJa ? '市ホームページ' : 'City homepage'}</a>
+        {' · '}
+        <a href={TAKAMATSU.sources.kanko}>{isJa ? '観光案内' : 'Tourism guide'}</a>
+      </p>
+      <p className="note">
+        {isJa
+          ? `数字のアクセス日は ${TAKAMATSU.sources.accessed}。人口は未掲載（出典ページを混ぜません）。香川県最初のLIVEハブ。`
+          : `Figures accessed ${TAKAMATSU.sources.accessed}. Population is unpublished (universes are not mixed). First LIVE Kagawa hub.`}
       </p>
       </details>
       ) : (

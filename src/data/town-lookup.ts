@@ -290,6 +290,17 @@ import {
   ANAN_TRAVEL_STAY
 } from './anan-travel';
 
+import {TAKAMATSU, TAKAMATSU_PLACE_PHOTO, TAKAMATSU_FACILITIES, TAKAMATSU_EXPECTED_GEO_COUNT, TAKAMATSU_EXPECTED_ROW_COUNT} from './takamatsu';
+import {
+  TAKAMATSU_TRAVEL_ACCESSED,
+  TAKAMATSU_TRAVEL_ALL,
+  TAKAMATSU_TRAVEL_COMMERCE,
+  TAKAMATSU_TRAVEL_DINING,
+  TAKAMATSU_TRAVEL_SHOPPING,
+  TAKAMATSU_TRAVEL_SOURCES,
+  TAKAMATSU_TRAVEL_STAY
+} from './takamatsu-travel';
+
 
 import {
   KAIYO_TRAVEL_DINING,
@@ -344,6 +355,7 @@ export {isReadySlug} from './lookup-town';
 
 export const MIMA_LOOKUP: LookupTown = {
   slug: 'mima',
+  prefectureSlug: 'tokushima',
   jis: MIMA.jis,
   nameJa: MIMA.nameJa,
   nameEn: MIMA.nameEn,
@@ -378,6 +390,7 @@ export const MIMA_LOOKUP: LookupTown = {
 
 export const TSURUGI_LOOKUP: LookupTown = {
   slug: 'tsurugi',
+  prefectureSlug: 'tokushima',
   jis: TSURUGI.jis,
   nameJa: TSURUGI.nameJa,
   nameEn: TSURUGI.nameEn,
@@ -413,6 +426,7 @@ export const TSURUGI_LOOKUP: LookupTown = {
 
 export const YOSHINOGAWA_LOOKUP: LookupTown = {
   slug: 'yoshinogawa',
+  prefectureSlug: 'tokushima',
   jis: YOSHINOGAWA.jis,
   nameJa: YOSHINOGAWA.nameJa,
   nameEn: YOSHINOGAWA.nameEn,
@@ -448,6 +462,7 @@ export const YOSHINOGAWA_LOOKUP: LookupTown = {
 
 export const MIYOSHI_LOOKUP: LookupTown = {
   slug: 'miyoshi',
+  prefectureSlug: 'tokushima',
   jis: MIYOSHI.jis,
   nameJa: MIYOSHI.nameJa,
   nameEn: MIYOSHI.nameEn,
@@ -483,6 +498,7 @@ export const MIYOSHI_LOOKUP: LookupTown = {
 
 export const TOKUSHIMA_CITY_LOOKUP: LookupTown = {
   slug: 'tokushima',
+  prefectureSlug: 'tokushima',
   jis: TOKUSHIMA_CITY.jis,
   nameJa: TOKUSHIMA_CITY.nameJa,
   nameEn: TOKUSHIMA_CITY.nameEn,
@@ -517,6 +533,7 @@ export const TOKUSHIMA_CITY_LOOKUP: LookupTown = {
 
 export const AWA_LOOKUP: LookupTown = {
   slug: 'awa',
+  prefectureSlug: 'tokushima',
   jis: AWA.jis,
   nameJa: AWA.nameJa,
   nameEn: AWA.nameEn,
@@ -553,6 +570,7 @@ export const AWA_LOOKUP: LookupTown = {
 
 export const HIGASHIMIYOSHI_LOOKUP: LookupTown = {
   slug: 'higashimiyoshi',
+  prefectureSlug: 'tokushima',
   jis: HIGASHIMIYOSHI.jis,
   nameJa: HIGASHIMIYOSHI.nameJa,
   nameEn: HIGASHIMIYOSHI.nameEn,
@@ -589,6 +607,7 @@ export const HIGASHIMIYOSHI_LOOKUP: LookupTown = {
 
 export const NARUTO_LOOKUP: LookupTown = {
   slug: 'naruto',
+  prefectureSlug: 'tokushima',
   jis: NARUTO.jis,
   nameJa: NARUTO.nameJa,
   nameEn: NARUTO.nameEn,
@@ -624,6 +643,7 @@ export const NARUTO_LOOKUP: LookupTown = {
 
 export const MATSUSHIGE_LOOKUP: LookupTown = {
   slug: 'matsushige',
+  prefectureSlug: 'tokushima',
   jis: MATSUSHIGE.jis,
   nameJa: MATSUSHIGE.nameJa,
   nameEn: MATSUSHIGE.nameEn,
@@ -658,6 +678,7 @@ export const MATSUSHIGE_LOOKUP: LookupTown = {
 
 export const KITAJIMA_LOOKUP: LookupTown = {
   slug: 'kitajima',
+  prefectureSlug: 'tokushima',
   jis: KITAJIMA.jis,
   nameJa: KITAJIMA.nameJa,
   nameEn: KITAJIMA.nameEn,
@@ -693,6 +714,7 @@ export const KITAJIMA_LOOKUP: LookupTown = {
 
 export const ISHII_LOOKUP: LookupTown = {
   slug: 'ishii',
+  prefectureSlug: 'tokushima',
   jis: ISHII.jis,
   nameJa: ISHII.nameJa,
   nameEn: ISHII.nameEn,
@@ -728,6 +750,7 @@ export const ISHII_LOOKUP: LookupTown = {
 
 export const ITANO_LOOKUP: LookupTown = {
   slug: 'itano',
+  prefectureSlug: 'tokushima',
   jis: ITANO.jis,
   nameJa: ITANO.nameJa,
   nameEn: ITANO.nameEn,
@@ -763,6 +786,7 @@ export const ITANO_LOOKUP: LookupTown = {
 
 export const KAMIITA_LOOKUP: LookupTown = {
   slug: 'kamiita',
+  prefectureSlug: 'tokushima',
   jis: KAMIITA.jis,
   nameJa: KAMIITA.nameJa,
   nameEn: KAMIITA.nameEn,
@@ -799,6 +823,7 @@ export const KAMIITA_LOOKUP: LookupTown = {
 
 export const KAMIYAMA_LOOKUP: LookupTown = {
   slug: 'kamiyama',
+  prefectureSlug: 'tokushima',
   jis: KAMIYAMA.jis,
   nameJa: KAMIYAMA.nameJa,
   nameEn: KAMIYAMA.nameEn,
@@ -834,6 +859,7 @@ export const KAMIYAMA_LOOKUP: LookupTown = {
 
 export const KATSUURA_LOOKUP: LookupTown = {
   slug: 'katsuura',
+  prefectureSlug: 'tokushima',
   jis: KATSUURA.jis,
   nameJa: KATSUURA.nameJa,
   nameEn: KATSUURA.nameEn,
@@ -869,6 +895,7 @@ export const KATSUURA_LOOKUP: LookupTown = {
 
 export const KAMIKATSU_LOOKUP: LookupTown = {
   slug: 'kamikatsu',
+  prefectureSlug: 'tokushima',
   jis: KAMIKATSU.jis,
   nameJa: KAMIKATSU.nameJa,
   nameEn: KAMIKATSU.nameEn,
@@ -905,6 +932,7 @@ export const KAMIKATSU_LOOKUP: LookupTown = {
 
 export const SANAGOCHI_LOOKUP: LookupTown = {
   slug: 'sanagochi',
+  prefectureSlug: 'tokushima',
   jis: SANAGOCHI.jis,
   nameJa: SANAGOCHI.nameJa,
   nameEn: SANAGOCHI.nameEn,
@@ -941,6 +969,7 @@ export const SANAGOCHI_LOOKUP: LookupTown = {
 
 export const NAKA_LOOKUP: LookupTown = {
   slug: 'naka',
+  prefectureSlug: 'tokushima',
   jis: NAKA.jis,
   nameJa: NAKA.nameJa,
   nameEn: NAKA.nameEn,
@@ -977,6 +1006,7 @@ export const NAKA_LOOKUP: LookupTown = {
 
 export const MINAMI_LOOKUP: LookupTown = {
   slug: 'minami',
+  prefectureSlug: 'tokushima',
   jis: MINAMI.jis,
   nameJa: MINAMI.nameJa,
   nameEn: MINAMI.nameEn,
@@ -1014,6 +1044,7 @@ export const MINAMI_LOOKUP: LookupTown = {
 
 export const KAIYO_LOOKUP: LookupTown = {
   slug: 'kaiyo',
+  prefectureSlug: 'tokushima',
   jis: KAIYO.jis,
   nameJa: KAIYO.nameJa,
   nameEn: KAIYO.nameEn,
@@ -1045,6 +1076,7 @@ export const KAIYO_LOOKUP: LookupTown = {
 
 export const AIZUMI_LOOKUP: LookupTown = {
   slug: 'aizumi',
+  prefectureSlug: 'tokushima',
   jis: AIZUMI.jis,
   nameJa: AIZUMI.nameJa,
   nameEn: AIZUMI.nameEn,
@@ -1080,6 +1112,7 @@ export const AIZUMI_LOOKUP: LookupTown = {
 
 export const MUGI_LOOKUP: LookupTown = {
   slug: 'mugi',
+  prefectureSlug: 'tokushima',
   jis: MUGI.jis,
   nameJa: MUGI.nameJa,
   nameEn: MUGI.nameEn,
@@ -1115,6 +1148,7 @@ export const MUGI_LOOKUP: LookupTown = {
 
 export const KOMATSUSHIMA_LOOKUP: LookupTown = {
   slug: 'komatsushima',
+  prefectureSlug: 'tokushima',
   jis: KOMATSUSHIMA.jis,
   nameJa: KOMATSUSHIMA.nameJa,
   nameEn: KOMATSUSHIMA.nameEn,
@@ -1150,6 +1184,7 @@ export const KOMATSUSHIMA_LOOKUP: LookupTown = {
 
 export const ANAN_LOOKUP: LookupTown = {
   slug: 'anan',
+  prefectureSlug: 'tokushima',
   jis: ANAN.jis,
   nameJa: ANAN.nameJa,
   nameEn: ANAN.nameEn,
@@ -1183,6 +1218,43 @@ export const ANAN_LOOKUP: LookupTown = {
 };
 
 
+
+export const TAKAMATSU_LOOKUP: LookupTown = {
+  slug: 'takamatsu',
+  prefectureSlug: 'kagawa',
+  jis: TAKAMATSU.jis,
+  nameJa: TAKAMATSU.nameJa,
+  nameEn: TAKAMATSU.nameEn,
+  heroPhoto: TAKAMATSU_PLACE_PHOTO,
+  photoCiteJa:
+    '写真は栗林公園・観月橋。ブルーノ・プラス、2023-04、CC BY-SA 4.0。File:Ritsurin garden kangetsu bridge.jpg。',
+  photoCiteEn:
+    'Photo: Kangetsu Bridge at Ritsurin Garden. Bruno Plus, Apr 2023, CC BY-SA 4.0. File:Ritsurin garden kangetsu bridge.jpg.',
+  rows: TAKAMATSU_FACILITIES,
+  expectedGeo: TAKAMATSU_EXPECTED_GEO_COUNT,
+  expectedRows: TAKAMATSU_EXPECTED_ROW_COUNT,
+  travelDining: TAKAMATSU_TRAVEL_DINING,
+  travelStay: TAKAMATSU_TRAVEL_STAY,
+  travelShopping: TAKAMATSU_TRAVEL_SHOPPING,
+  travelCommerce: TAKAMATSU_TRAVEL_COMMERCE,
+  travelAll: TAKAMATSU_TRAVEL_ALL,
+  coverageJa:
+    '高松市（JIS 37201）観光5・宿泊4・飲食14・体験3（出典写真がある施設のみ）。オープンデータ凍結パックは未掲載。温泉・買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。香川県最初のLIVEハブ。',
+  coverageEn:
+    'Takamatsu City (JIS 37201), 5 tourism + 4 stay + 14 dining + 3 experience with sourced photos. No frozen open-data pack. Onsen, shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. First LIVE Kagawa hub.',
+  mapLabelJa: '高松市の出典座標8件',
+  mapLabelEn: '8 sourced coordinates in Takamatsu City',
+  mapCitePackJa: '点は市・観光ページ掲載施設のWikipedia等出典座標8件（accessed 2026-09-07）。',
+  mapCitePackEn: 'Points: 8 sourced coordinates for city/tourism-page facilities (accessed 2026-09-07).',
+  licenseNoteJa:
+    '行のライセンスは市公式サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.takamatsu.kagawa.jp, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
+
 const BY_SLUG: Record<ReadySlug, LookupTown> = {
   mima: MIMA_LOOKUP,
   tsurugi: TSURUGI_LOOKUP,
@@ -1207,7 +1279,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   aizumi: AIZUMI_LOOKUP,
   kaiyo: KAIYO_LOOKUP,
   komatsushima: KOMATSUSHIMA_LOOKUP,
-  anan: ANAN_LOOKUP
+  anan: ANAN_LOOKUP,
+  takamatsu: TAKAMATSU_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
@@ -1215,4 +1288,4 @@ export function lookupTown(slug: string): LookupTown | null {
   return BY_SLUG[slug];
 }
 
-export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES, AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES, HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES, KITAJIMA_TRAVEL_ACCESSED, KITAJIMA_TRAVEL_SOURCES, NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES, MATSUSHIGE_TRAVEL_ACCESSED, MATSUSHIGE_TRAVEL_SOURCES, ISHII_TRAVEL_ACCESSED, ISHII_TRAVEL_SOURCES, ITANO_TRAVEL_ACCESSED, ITANO_TRAVEL_SOURCES, KAMIITA_TRAVEL_ACCESSED, KAMIITA_TRAVEL_SOURCES, KAMIYAMA_TRAVEL_ACCESSED, KAMIYAMA_TRAVEL_SOURCES, KATSUURA_TRAVEL_ACCESSED, KATSUURA_TRAVEL_SOURCES, KAMIKATSU_TRAVEL_ACCESSED, KAMIKATSU_TRAVEL_SOURCES, SANAGOCHI_TRAVEL_ACCESSED, SANAGOCHI_TRAVEL_SOURCES, MUGI_TRAVEL_ACCESSED, MUGI_TRAVEL_SOURCES, MINAMI_TRAVEL_ACCESSED, MINAMI_TRAVEL_SOURCES, AIZUMI_TRAVEL_ACCESSED, AIZUMI_TRAVEL_SOURCES, KOMATSUSHIMA_TRAVEL_ACCESSED, KOMATSUSHIMA_TRAVEL_SOURCES, ANAN_TRAVEL_ACCESSED, ANAN_TRAVEL_SOURCES};
+export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES, AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES, HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES, KITAJIMA_TRAVEL_ACCESSED, KITAJIMA_TRAVEL_SOURCES, NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES, MATSUSHIGE_TRAVEL_ACCESSED, MATSUSHIGE_TRAVEL_SOURCES, ISHII_TRAVEL_ACCESSED, ISHII_TRAVEL_SOURCES, ITANO_TRAVEL_ACCESSED, ITANO_TRAVEL_SOURCES, KAMIITA_TRAVEL_ACCESSED, KAMIITA_TRAVEL_SOURCES, KAMIYAMA_TRAVEL_ACCESSED, KAMIYAMA_TRAVEL_SOURCES, KATSUURA_TRAVEL_ACCESSED, KATSUURA_TRAVEL_SOURCES, KAMIKATSU_TRAVEL_ACCESSED, KAMIKATSU_TRAVEL_SOURCES, SANAGOCHI_TRAVEL_ACCESSED, SANAGOCHI_TRAVEL_SOURCES, MUGI_TRAVEL_ACCESSED, MUGI_TRAVEL_SOURCES, MINAMI_TRAVEL_ACCESSED, MINAMI_TRAVEL_SOURCES, AIZUMI_TRAVEL_ACCESSED, AIZUMI_TRAVEL_SOURCES, KOMATSUSHIMA_TRAVEL_ACCESSED, KOMATSUSHIMA_TRAVEL_SOURCES, ANAN_TRAVEL_ACCESSED, ANAN_TRAVEL_SOURCES, TAKAMATSU_TRAVEL_ACCESSED, TAKAMATSU_TRAVEL_SOURCES};
