@@ -1,6 +1,7 @@
 /**
  * Kaiyo travel layer. Pack tourism has inns/onsen/camps without room or bath photos.
- * Onsen / stay: omit without room or bath photo (honest 0).
+ * Stay from NAVITIME 宿泊一覧 + 楽天トラベル share/room images (出典). Rank strongest first.
+ * Onsen: omit without bath photo (honest 0).
  * Dining from 食べログ 海陽町 (C36388) public shop pages with FOOD dish heroes.
  * Shopping: 道の駅 pack name with place-named Commons exterior (not bath photos).
  * Do not copy 牟岐 / 美波 / 那賀 / 佐那河内 / 上勝 / 勝浦 / 神山 / 上板 / 板野 / 石井 / 松茂 / 北島 / 藍住 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
@@ -21,6 +22,8 @@ export const KAIYO_TRAVEL_SOURCES = {
   home: 'https://www.town.kaiyo.lg.jp/',
   hall: 'https://www.town.kaiyo.lg.jp/docs/2011041300637/',
   kanko: 'https://www.town.kaiyo.lg.jp/docs/2024082800028/',
+  stayNavi: 'https://www.navitime.co.jp/category/06/36388/',
+  rakutenTravel: 'https://travel.rakuten.co.jp/',
   tabelogCity: 'https://tabelog.com/tokushima/C36388/rstLst/'
 } as const;
 
@@ -31,7 +34,98 @@ export const KAIYO_STAY_PACK_SET: ReadonlySet<string> = new Set(KAIYO_STAY_PACK_
 export const KAIYO_SHOPPING_PACK_NAMES = ['海陽町宍喰観光ターミナル（道の駅宍喰温泉）'] as const;
 export const KAIYO_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(KAIYO_SHOPPING_PACK_NAMES);
 export const KAIYO_SIGHT_PINS = ['海陽町漁火の森公園施設'] as const;
-export const KAIYO_TRAVEL_STAY: readonly TravelRow[] = [];
+function stay(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'stay',
+    address,
+    phone,
+    source_url,
+    accessed: KAIYO_TRAVEL_ACCESSED
+  };
+}
+
+/** Ranked strongest room/exterior 出典 first. NAVITIME + 楽天シェア画像. */
+export const KAIYO_TRAVEL_STAY: readonly TravelRow[] = [
+  stay(
+    'kaiyo-stay-01',
+    '宍喰温泉 ホテルリビエラししくい',
+    '徳島県海部郡海陽町松原226-1',
+    '0884-76-3300',
+    'https://travel.rakuten.co.jp/HOTEL/8721/8721.html'
+  ),
+  stay(
+    'kaiyo-stay-02',
+    'ふれあいの宿 遊遊NASA',
+    '徳島県海部郡海陽町奥浦鹿け谷58-3',
+    '0884-73-0300',
+    'https://travel.rakuten.co.jp/HOTEL/128443/128443.html'
+  ),
+  stay(
+    'kaiyo-stay-03',
+    'ホテルかいふ & 4stone',
+    '徳島県海部郡海陽町奥浦西分22-1',
+    '0884-73-4522',
+    'https://travel.rakuten.co.jp/HOTEL/193362/193362.html'
+  ),
+  stay(
+    'kaiyo-stay-04',
+    'ペンション ししくい',
+    '徳島県海部郡海陽町宍喰浦字古目84-18',
+    '0884-76-2130',
+    'https://travel.rakuten.co.jp/HOTEL/20625/20625.html'
+  ),
+  stay(
+    'kaiyo-stay-05',
+    'はるる亭',
+    '徳島県海部郡海陽町久保板取230-1',
+    '0884-76-2282',
+    'https://travel.rakuten.co.jp/HOTEL/179334/179334.html'
+  ),
+  stay(
+    'kaiyo-stay-06',
+    '民宿大砂',
+    '徳島県海部郡海陽町浅川大砂19-9',
+    '0884-70-1265',
+    'https://travel.rakuten.co.jp/HOTEL/144988/144988.html'
+  ),
+  stay(
+    'kaiyo-stay-07',
+    '星降る別邸WANASA',
+    '徳島県海部郡海陽町宍喰浦字古目84-26',
+    '0884-76-2130',
+    'https://travel.rakuten.co.jp/HOTEL/191825/191825.html'
+  ),
+  stay(
+    'kaiyo-stay-08',
+    'ドッグランピングSUIYA',
+    '徳島県海部郡海陽町宍喰浦字金目9-10',
+    '070-8506-1690',
+    'https://travel.rakuten.co.jp/HOTEL/199057/199057.html'
+  ),
+  stay(
+    'kaiyo-stay-09',
+    'PRIVATE STAY HANARE',
+    '徳島県海部郡海陽町宍喰浦字松原6-1',
+    '070-9294-1173',
+    'https://travel.rakuten.co.jp/HOTEL/199806/199806.html'
+  ),
+  stay(
+    'kaiyo-stay-10',
+    'ゲストハウス ふくちゃん',
+    '徳島県海部郡海陽町大里上中須43-2',
+    '0884-73-0033',
+    'https://travel.rakuten.co.jp/HOTEL/178487/178487.html'
+  )
+];
+
 
 function dining(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {
   return {id, name_ja, category: 'dining', address, phone, source_url, accessed: KAIYO_TRAVEL_ACCESSED};

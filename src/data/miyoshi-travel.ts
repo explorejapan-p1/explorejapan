@@ -15,7 +15,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const MIYOSHI_TRAVEL_ACCESSED = '2026-08-28' as const;
+export const MIYOSHI_TRAVEL_ACCESSED = '2026-09-07' as const;
 
 export const MIYOSHI_TRAVEL_SOURCES = {
   kanko: 'https://miyoshi-tourism.jp/',
@@ -122,6 +122,41 @@ export const MIYOSHI_TRAVEL_DINING: readonly TravelRow[] = [
     '徳島県三好市池田町ウヱノ３０８６',
     '090-1009-0304',
     'https://miyoshi-tourism.jp/spot/3861/'
+  ),
+  dining(
+    'miyoshi-dining-09',
+    '池田屋',
+    '徳島県三好市池田町マチ2229-22',
+    '0883-72-3466',
+    'https://tabelog.com/tokushima/A3604/A360401/36002427/'
+  ),
+  dining(
+    'miyoshi-dining-10',
+    'Cafe&Bar YAMAYA',
+    '徳島県三好市山城町大川持573-1',
+    '0883-86-1898',
+    'https://tabelog.com/tokushima/A3604/A360401/36007856/'
+  ),
+  dining(
+    'miyoshi-dining-11',
+    'Ｂａｒ ｇ',
+    '徳島県三好市池田町サラダ1759-2オーエヌビル１Ｆ',
+    '0883-72-3457',
+    'https://tabelog.com/tokushima/A3604/A360401/36003562/'
+  ),
+  dining(
+    'miyoshi-dining-12',
+    '珈琲館おおぼけ',
+    '徳島県三好市山城町下名369-3',
+    '0883-84-1433',
+    'https://tabelog.com/tokushima/A3604/A360401/36002868/'
+  ),
+  dining(
+    'miyoshi-dining-13',
+    '安宅屋本店 総本店',
+    '徳島県三好市池田町マチ2477',
+    '0883-72-0073',
+    'https://tabelog.com/tokushima/A3604/A360401/36003875/'
   )
 ];
 

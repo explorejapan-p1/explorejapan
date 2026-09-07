@@ -1,0 +1,4 @@
+awa thin dining densify 2026-09-07
+BEFORE dining 8 → AFTER 14
+Added Tabelog FOOD close-ups: 松尾餃子店, 一天たらいうどん, セルフうどんかかし, アスカ, 平岡飲食店, 日々食彩
+Skipped chains/convenience/no-dish. Not perfect.

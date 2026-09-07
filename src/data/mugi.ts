@@ -267,4 +267,19 @@ export const MUGI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     TABELOG_36002037,
     '食べログ'
   ),
+  '砂美かたやま': sourcePhoto(
+    'mugi-stay-01.jpg',
+    '砂美かたやまの客室・外観写真',
+    '砂美かたやま room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/164686/164686.html',
+    '楽天トラベル'
+  ),
+  'Casa TEBA': sourcePhoto(
+    'mugi-stay-02.jpg',
+    'Casa TEBAの客室・外観写真',
+    'Casa TEBA room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/195745/195745.html',
+    '楽天トラベル'
+  ),
+
 };

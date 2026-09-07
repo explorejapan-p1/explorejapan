@@ -14,7 +14,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const TSURUGI_TRAVEL_ACCESSED = '2026-08-28' as const;
+export const TSURUGI_TRAVEL_ACCESSED = '2026-09-07' as const;
 
 export const TSURUGI_TRAVEL_SOURCES = {
   stayList: 'https://www.town.tokushima-tsurugi.lg.jp/docs/3491.html',
@@ -173,6 +173,48 @@ export const TSURUGI_TRAVEL_DINING: readonly TravelRow[] = [
     null,
     null,
     'https://r.goope.jp/omakase-kitchen/'
+  ),
+  dining(
+    'tsurugi-dining-08',
+    '善太楼',
+    '徳島県美馬郡つるぎ町貞光太田西285-5',
+    '0883-62-2015',
+    'https://tabelog.com/tokushima/A3603/A360302/36002128/'
+  ),
+  dining(
+    'tsurugi-dining-09',
+    '蓮華',
+    '徳島県美馬郡つるぎ町貞光中須賀25-4',
+    '0883-68-8558',
+    'https://tabelog.com/tokushima/A3603/A360302/36008023/'
+  ),
+  dining(
+    'tsurugi-dining-10',
+    '阿波半田手のべ',
+    '徳島県美馬郡つるぎ町半田字松生131-1',
+    '0883-64-2125',
+    'https://tabelog.com/tokushima/A3603/A360302/36004418/'
+  ),
+  dining(
+    'tsurugi-dining-11',
+    '芝製麺',
+    '徳島県美馬郡つるぎ町半田字紙町24-3',
+    '0883-65-0508',
+    'https://tabelog.com/tokushima/A3603/A360302/36007796/'
+  ),
+  dining(
+    'tsurugi-dining-12',
+    '古見茶屋',
+    '徳島県美馬郡つるぎ町一宇赤松6-15',
+    '080-8010-6254',
+    'https://tabelog.com/tokushima/A3603/A360302/36007616/'
+  ),
+  dining(
+    'tsurugi-dining-13',
+    'あづまや製菓 つるぎ町本店',
+    '徳島県美馬郡つるぎ町貞光字町40',
+    '0883-62-2105',
+    'https://tabelog.com/tokushima/A3603/A360302/36003450/'
   )
 ];
 export const TSURUGI_TRAVEL_SHOPPING: readonly TravelRow[] = [];

@@ -278,4 +278,75 @@ export const KAIYO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     TABELOG_36004753,
     '食べログ'
   ),
+  '宍喰温泉 ホテルリビエラししくい': sourcePhoto(
+    'kaiyo-stay-01.jpg',
+    '宍喰温泉 ホテルリビエラししくいの客室・外観写真',
+    '宍喰温泉 ホテルリビエラししくい room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/8721/8721.html',
+    '楽天トラベル'
+  ),
+  'ふれあいの宿 遊遊NASA': sourcePhoto(
+    'kaiyo-stay-02.jpg',
+    'ふれあいの宿 遊遊NASAの客室・外観写真',
+    'ふれあいの宿 遊遊NASA room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/128443/128443.html',
+    '楽天トラベル'
+  ),
+  'ホテルかいふ & 4stone': sourcePhoto(
+    'kaiyo-stay-03.jpg',
+    'ホテルかいふ & 4stoneの客室・外観写真',
+    'ホテルかいふ & 4stone room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/193362/193362.html',
+    '楽天トラベル'
+  ),
+  'ペンション ししくい': sourcePhoto(
+    'kaiyo-stay-04.jpg',
+    'ペンション ししくいの客室・外観写真',
+    'ペンション ししくい room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/20625/20625.html',
+    '楽天トラベル'
+  ),
+  'はるる亭': sourcePhoto(
+    'kaiyo-stay-05.jpg',
+    'はるる亭の客室・外観写真',
+    'はるる亭 room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/179334/179334.html',
+    '楽天トラベル'
+  ),
+  '民宿大砂': sourcePhoto(
+    'kaiyo-stay-06.jpg',
+    '民宿大砂の客室・外観写真',
+    '民宿大砂 room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/144988/144988.html',
+    '楽天トラベル'
+  ),
+  '星降る別邸WANASA': sourcePhoto(
+    'kaiyo-stay-07.jpg',
+    '星降る別邸WANASAの客室・外観写真',
+    '星降る別邸WANASA room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/191825/191825.html',
+    '楽天トラベル'
+  ),
+  'ドッグランピングSUIYA': sourcePhoto(
+    'kaiyo-stay-08.jpg',
+    'ドッグランピングSUIYAの客室・外観写真',
+    'ドッグランピングSUIYA room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/199057/199057.html',
+    '楽天トラベル'
+  ),
+  'PRIVATE STAY HANARE': sourcePhoto(
+    'kaiyo-stay-09.jpg',
+    'PRIVATE STAY HANAREの客室・外観写真',
+    'PRIVATE STAY HANARE room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/199806/199806.html',
+    '楽天トラベル'
+  ),
+  'ゲストハウス ふくちゃん': sourcePhoto(
+    'kaiyo-stay-10.jpg',
+    'ゲストハウス ふくちゃんの客室・外観写真',
+    'ゲストハウス ふくちゃん room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/178487/178487.html',
+    '楽天トラベル'
+  ),
+
 };

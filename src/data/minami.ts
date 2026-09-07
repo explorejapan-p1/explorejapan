@@ -440,5 +440,41 @@ export const MINAMI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     "Classic Burgers food photo",
     "https://tabelog.com/tokushima/A3602/A360203/36009045/",
     '食べログ'
-  )
+  ),
+  'えびす洞温泉 ホテル 白い燈台': sourcePhoto(
+    'minami-stay-01.jpg',
+    'えびす洞温泉 ホテル 白い燈台の客室・外観写真',
+    'えびす洞温泉 ホテル 白い燈台 room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/4799/4799.html',
+    '楽天トラベル'
+  ),
+  'ビジネスホテル・ケアンズ': sourcePhoto(
+    'minami-stay-02.jpg',
+    'ビジネスホテル・ケアンズの客室・外観写真',
+    'ビジネスホテル・ケアンズ room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/30831/30831.html',
+    '楽天トラベル'
+  ),
+  '南阿波サンラインモビレージ': sourcePhoto(
+    'minami-stay-03.jpg',
+    '南阿波サンラインモビレージの客室・外観写真',
+    '南阿波サンラインモビレージ room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/108774/108774.html',
+    '楽天トラベル'
+  ),
+  '花乃宿': sourcePhoto(
+    'minami-stay-04.jpg',
+    '花乃宿の客室・外観写真',
+    '花乃宿 room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/196323/196323.html',
+    '楽天トラベル'
+  ),
+  '民宿 明山荘': sourcePhoto(
+    'minami-stay-05.jpg',
+    '民宿 明山荘の客室・外観写真',
+    '民宿 明山荘 room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/184182/184182.html',
+    '楽天トラベル'
+  ),
+
 };

@@ -233,5 +233,48 @@ export const AWA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'Tenkichi Udon Awa shop food photo',
     TABELOG_TENKICHI,
     '食べログ'
-  )
+  ),
+  '松尾餃子店': sourcePhoto(
+    'awa-36005846-dish.jpg',
+    '松尾餃子店の料理写真',
+    '松尾餃子店 food photo',
+    'https://tabelog.com/tokushima/A3603/A360301/36005846/',
+    '食べログ'
+  ),
+  '一天たらいうどん': sourcePhoto(
+    'awa-36003886-dish.jpg',
+    '一天たらいうどんの料理写真',
+    '一天たらいうどん food photo',
+    'https://tabelog.com/tokushima/A3603/A360301/36003886/',
+    '食べログ'
+  ),
+  'セルフうどんかかし': sourcePhoto(
+    'awa-36003648-dish.jpg',
+    'セルフうどんかかしの料理写真',
+    'セルフうどんかかし food photo',
+    'https://tabelog.com/tokushima/A3603/A360301/36003648/',
+    '食べログ'
+  ),
+  'アスカ': sourcePhoto(
+    'awa-36005642-dish.jpg',
+    'アスカの料理写真',
+    'アスカ food photo',
+    'https://tabelog.com/tokushima/A3603/A360301/36005642/',
+    '食べログ'
+  ),
+  '平岡飲食店': sourcePhoto(
+    'awa-36002618-dish.jpg',
+    '平岡飲食店の料理写真',
+    '平岡飲食店 food photo',
+    'https://tabelog.com/tokushima/A3603/A360301/36002618/',
+    '食べログ'
+  ),
+  '日々食彩': sourcePhoto(
+    'awa-36008059-dish.jpg',
+    '日々食彩の料理写真',
+    '日々食彩 food photo',
+    'https://tabelog.com/tokushima/A3603/A360301/36008059/',
+    '食べログ'
+  ),
+
 };

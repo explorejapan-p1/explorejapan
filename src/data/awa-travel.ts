@@ -15,7 +15,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const AWA_TRAVEL_ACCESSED = '2026-09-05' as const;
+export const AWA_TRAVEL_ACCESSED = '2026-09-07' as const;
 
 export const AWA_TRAVEL_SOURCES = {
   home: 'https://www.city.awa.lg.jp/',
@@ -117,6 +117,48 @@ export const AWA_TRAVEL_DINING: readonly TravelRow[] = [
     '徳島県阿波市阿波町西林166-1',
     null,
     'https://tabelog.com/tokushima/A3603/A360301/36001601/'
+  ),
+  dining(
+    'awa-dining-09',
+    '松尾餃子店',
+    '徳島県阿波市市場町大影境目5-4',
+    '0883-36-3936',
+    'https://tabelog.com/tokushima/A3603/A360301/36005846/'
+  ),
+  dining(
+    'awa-dining-10',
+    '一天たらいうどん',
+    '徳島県阿波市土成町宮川内字上畑93-3',
+    '088-695-2257',
+    'https://tabelog.com/tokushima/A3603/A360301/36003886/'
+  ),
+  dining(
+    'awa-dining-11',
+    'セルフうどんかかし',
+    '徳島県阿波市阿波町大道北66',
+    '0883-35-3835',
+    'https://tabelog.com/tokushima/A3603/A360301/36003648/'
+  ),
+  dining(
+    'awa-dining-12',
+    'アスカ',
+    '徳島県阿波市市場町切幡字古田190アエルワ3F',
+    '080-2981-4146',
+    'https://tabelog.com/tokushima/A3603/A360301/36005642/'
+  ),
+  dining(
+    'awa-dining-13',
+    '平岡飲食店',
+    '徳島県阿波市吉野町西条東姥御前45-6',
+    '088-696-4376',
+    'https://tabelog.com/tokushima/A3603/A360301/36002618/'
+  ),
+  dining(
+    'awa-dining-14',
+    '日々食彩',
+    '徳島県阿波市土成町吉田字梨木原1天然温泉御所の郷',
+    '088-695-4615',
+    'https://tabelog.com/tokushima/A3603/A360301/36008059/'
   )
 ];
 

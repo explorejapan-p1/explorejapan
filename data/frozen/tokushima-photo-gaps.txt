@@ -13,3 +13,5 @@ AFTER: 宿泊35 / 飲食55 / 温泉0 / 体験0 / 観光8 / 買物0 / 商業0
 買物 shopping: 0 — no official list / attributable shop photo
 商業 commerce: 0 — no official list
 Fun!Fun! IG used as lead only → city HP / Commons. Not perfect.
+
+2026-09-07 pass: 温泉/体験/買物/商業 still honest 0 — no Commons/city bath or shop 出典 (眉山の湯 Commons miss; Fun!Fun! lead only).

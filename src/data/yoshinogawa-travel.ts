@@ -15,7 +15,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const YOSHINOGAWA_TRAVEL_ACCESSED = '2026-08-28' as const;
+export const YOSHINOGAWA_TRAVEL_ACCESSED = '2026-09-07' as const;
 
 export const YOSHINOGAWA_TRAVEL_SOURCES = {
   stayList: 'https://www.city.yoshinogawa.lg.jp/docs/2010101500109/',
@@ -231,6 +231,48 @@ export const YOSHINOGAWA_TRAVEL_DINING: readonly TravelRow[] = [
     '徳島県吉野川市鴨島町鴨島字神島485-4',
     '0883-24-3929',
     'https://tabelog.com/tokushima/A3603/A360301/36008974/'
+  ),
+  dining(
+    'yoshinogawa-dining-08',
+    '串カツ田中 徳島鴨島店',
+    '徳島県吉野川市鴨島町内原464-3',
+    '0883-36-1194',
+    'https://tabelog.com/tokushima/A3603/A360301/36008116/'
+  ),
+  dining(
+    'yoshinogawa-dining-09',
+    'コーヒーレスト 豆の木',
+    '徳島県吉野川市鴨島町鴨島394-10',
+    '0883-26-0238',
+    'https://tabelog.com/tokushima/A3603/A360301/36002919/'
+  ),
+  dining(
+    'yoshinogawa-dining-10',
+    'そば処 川内橋本 川島店',
+    '徳島県吉野川市川島町川島663-1',
+    '0883-25-3883',
+    'https://tabelog.com/tokushima/A3603/A360301/36002609/'
+  ),
+  dining(
+    'yoshinogawa-dining-11',
+    'パン ド ミー',
+    '徳島県吉野川市鴨島町鴨島151-1セレブ鴨島',
+    '0883-26-1150',
+    'https://tabelog.com/tokushima/A3603/A360301/36003483/'
+  ),
+  dining(
+    'yoshinogawa-dining-12',
+    'ピンキー',
+    '徳島県吉野川市鴨島町鴨島526-15',
+    '0883-24-1147',
+    'https://tabelog.com/tokushima/A3603/A360301/36002752/'
+  ),
+  dining(
+    'yoshinogawa-dining-13',
+    'レストラン カナ',
+    '徳島県吉野川市鴨島町鴨島471-2セントラルホテル鴨島',
+    '0883-24-8815',
+    'https://tabelog.com/tokushima/A3603/A360301/36000364/'
   )
 ];
 

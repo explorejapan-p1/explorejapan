@@ -395,9 +395,9 @@ export const TSURUGI_LOOKUP: LookupTown = {
   travelCommerce: TSURUGI_TRAVEL_COMMERCE,
   travelAll: TSURUGI_TRAVEL_ALL,
   coverageJa:
-    'つるぎ町（JIS 36468）334件。観光27、文化財97、公共施設48、緊急避難場所20、避難所19、保育3、GTFS停留所120。AED・医療機関・介護・Wi-Fiは0件（未掲載）。',
+    'つるぎ町（JIS 36468）宿泊2・飲食13・温泉1・観光6（出典写真がある施設のみ）＋オープンデータパック。体験・買物・商業0。',
   coverageEn:
-    'Tsurugi Town (JIS 36468), 334 rows. Tourism 27, cultural property 97, public facilities 48, emergency sites 20, shelters 19, childcare 3, GTFS stops 120. AED, hospitals, care, Wi-Fi: 0, unpublished.',
+    'Tsurugi Town (JIS 36468), 2 stay + 13 dining + 1 onsen + 6 tourism with sourced photos, plus open-data pack. Experience, shopping, commerce: 0.',
   mapLabelJa: 'つるぎ町の公式座標171件',
   mapLabelEn: '171 official coordinates in Tsurugi Town',
   mapCitePackJa: '点は凍結パックの公式座標171件（accessed 2026-08-25）。',
@@ -430,9 +430,9 @@ export const YOSHINOGAWA_LOOKUP: LookupTown = {
   travelCommerce: YOSHINOGAWA_TRAVEL_COMMERCE,
   travelAll: YOSHINOGAWA_TRAVEL_ALL,
   coverageJa:
-    '吉野川市（JIS 36205）335件。観光38、文化財77、避難所96、緊急避難場所48、公共施設21、保育26、GTFS停留所29。AED・医療機関・介護・Wi-Fiは0件（未掲載）。',
+    '吉野川市（JIS 36205）宿泊1・飲食13・温泉2・観光17（出典写真がある施設のみ）＋オープンデータパック。体験・買物・商業0。',
   coverageEn:
-    'Yoshinogawa City (JIS 36205), 335 rows. Tourism 38, cultural property 77, shelters 96, emergency sites 48, public facilities 21, childcare 26, GTFS stops 29. AED, hospitals, care, Wi-Fi: 0, unpublished.',
+    'Yoshinogawa City (JIS 36205), 1 stay + 13 dining + 2 onsen + 17 tourism with sourced photos, plus open-data pack. Experience, shopping, commerce: 0.',
   mapLabelJa: '吉野川市の公式座標29件',
   mapLabelEn: '29 official coordinates in Yoshinogawa City',
   mapCitePackJa: '点は凍結パックの公式座標29件（accessed 2026-08-25）。',
@@ -465,9 +465,9 @@ export const MIYOSHI_LOOKUP: LookupTown = {
   travelCommerce: MIYOSHI_TRAVEL_COMMERCE,
   travelAll: MIYOSHI_TRAVEL_ALL,
   coverageJa:
-    '三好市（JIS 36208）1042件。観光221、文化財184、公共施設33、保育32、Wi-Fi 24、GTFS停留所548。AED・医療機関・介護・避難所・緊急避難場所は0件（未掲載）。',
+    '三好市（JIS 36208）宿泊2・飲食13・温泉2・観光10（出典写真がある施設のみ）＋オープンデータパック。体験・買物・商業0。',
   coverageEn:
-    'Miyoshi City (JIS 36208), 1042 rows. Tourism 221, cultural property 184, public facilities 33, childcare 32, Wi-Fi 24, GTFS stops 548. AED, hospitals, care, shelters, emergency sites: 0, unpublished.',
+    'Miyoshi City (JIS 36208), 2 stay + 13 dining + 2 onsen + 10 tourism with sourced photos, plus open-data pack. Experience, shopping, commerce: 0.',
   mapLabelJa: '三好市の公式座標636件',
   mapLabelEn: '636 official coordinates in Miyoshi City',
   mapCitePackJa: '点は凍結パックの公式座標636件（accessed 2026-08-25）。',
@@ -534,9 +534,9 @@ export const AWA_LOOKUP: LookupTown = {
   travelCommerce: AWA_TRAVEL_COMMERCE,
   travelAll: AWA_TRAVEL_ALL,
   coverageJa:
-    '阿波市（JIS 36206）307件。公共施設101、AED 52、避難所33、Wi-Fi 33、保育31、観光30、緊急避難場所24、文化財3。医療機関・介護・GTFSは0件（未掲載）。',
+    '阿波市（JIS 36206）宿泊0・飲食14・観光8（出典写真がある施設のみ）＋オープンデータパック。温泉・体験・買物・商業0。',
   coverageEn:
-    'Awa City (JIS 36206), 307 rows. Public facilities 101, AED 52, shelters 33, Wi-Fi 33, childcare 31, tourism 30, emergency sites 24, cultural property 3. Hospitals, care, GTFS: 0, unpublished.',
+    'Awa City (JIS 36206), 0 stay + 14 dining + 8 tourism with sourced photos, plus open-data pack. Onsen, experience, shopping, commerce: 0.',
   mapLabelJa: '阿波市の公式座標171件',
   mapLabelEn: '171 official coordinates in Awa City',
   mapCitePackJa: '点は凍結パックの公式座標171件（accessed 2026-08-25）。',
@@ -994,9 +994,9 @@ export const MINAMI_LOOKUP: LookupTown = {
   travelCommerce: MINAMI_TRAVEL_COMMERCE,
   travelAll: MINAMI_TRAVEL_ALL,
   coverageJa:
-    '美波町（JIS 36387）315件。緊急避難場所170、文化財41、避難所38、AED19、公共施設10、GTFS停留所9、Wi-Fi8、観光7、保育7、病院5、介護1。公式座標212件。',
+    '美波町（JIS 36387）宿泊5・飲食42・観光5・買物1（出典写真がある施設のみ）＋オープンデータパック。温泉・体験・商業0。',
   coverageEn:
-    'Minami Town (JIS 36387), 315 rows. Emergency sites 170, cultural property 41, shelter 38, AED 19, public facility 10, GTFS stops 9, Wi-Fi 8, tourism 7, childcare 7, hospital 5, care 1. Official coordinates: 212.',
+    'Minami Town (JIS 36387), 5 stay + 42 dining + 5 tourism + 1 shopping with sourced photos, plus open-data pack. Onsen, experience, commerce: 0.',
   mapLabelJa: '美波町の公式座標212件',
   mapLabelEn: '212 official coordinates in Minami Town',
   mapCitePackJa: '点は凍結パックの公式座標212件（accessed 2026-08-27）。',
@@ -1028,8 +1028,10 @@ export const KAIYO_LOOKUP: LookupTown = {
   travelShopping: KAIYO_TRAVEL_SHOPPING,
   travelCommerce: KAIYO_TRAVEL_COMMERCE,
   travelAll: KAIYO_TRAVEL_ALL,
-  coverageJa: '海陽町（JIS 36388）280件。緊急避難場所79、GTFS停留所68、避難所41、AED32、文化財19、公共施設15、病院13、観光6、保育6、介護1。Wi-Fiは0件（未掲載）。公式座標154件。',
-  coverageEn: 'Kaiyo Town (JIS 36388), 280 rows. Emergency sites 79, GTFS stops 68, shelter 41, AED 32, cultural property 19, public facility 15, hospital 13, tourism 6, childcare 6, care 1. Wi-Fi: 0, unpublished. Official coordinates: 154.',
+  coverageJa:
+    '海陽町（JIS 36388）宿泊10・飲食19・観光3・買物1（出典写真がある施設のみ）＋オープンデータパック。温泉・体験・商業0。',
+  coverageEn:
+    'Kaiyo Town (JIS 36388), 10 stay + 19 dining + 3 tourism + 1 shopping with sourced photos, plus open-data pack. Onsen, experience, commerce: 0.',
   mapLabelJa: '海陽町の公式座標154件',
   mapLabelEn: '154 official coordinates in Kaiyo Town',
   mapCitePackJa: '点は凍結パックの公式座標154件（accessed 2026-08-27）。',
@@ -1095,9 +1097,9 @@ export const MUGI_LOOKUP: LookupTown = {
   travelCommerce: MUGI_TRAVEL_COMMERCE,
   travelAll: MUGI_TRAVEL_ALL,
   coverageJa:
-    '牟岐町（JIS 36383）159件。緊急避難場所78、避難所34、文化財22、公共施設15、病院6、保育2、観光1、介護1。AED・Wi-Fi・GTFS停留所は0件（未掲載）。公式座標122件。',
+    '牟岐町（JIS 36383）宿泊2・飲食19・観光3（出典写真がある施設のみ）＋オープンデータパック。温泉・体験・買物・商業0。',
   coverageEn:
-    'Mugi Town (JIS 36383), 159 rows. Emergency sites 78, shelter 34, cultural property 22, public facility 15, hospital 6, childcare 2, tourism 1, care 1. AED / Wi-Fi / GTFS stops: 0, unpublished. Official coordinates: 122.',
+    'Mugi Town (JIS 36383), 2 stay + 19 dining + 3 tourism with sourced photos, plus open-data pack. Onsen, experience, shopping, commerce: 0.',
   mapLabelJa: '牟岐町の公式座標122件',
   mapLabelEn: '122 official coordinates in Mugi Town',
   mapCitePackJa: '点は凍結パックの公式座標122件（accessed 2026-08-27）。',

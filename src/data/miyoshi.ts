@@ -294,5 +294,41 @@ export const MIYOSHI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'Soba set at Mendokoro Awa, Ikeda-cho, Miyoshi',
     TOUR_MEN_AWA,
     '三好市観光協会'
-  )
+  ),
+  '池田屋': sourcePhoto(
+    'miyoshi-36002427-dish.jpg',
+    '池田屋の料理写真',
+    '池田屋 food photo',
+    'https://tabelog.com/tokushima/A3604/A360401/36002427/',
+    '食べログ'
+  ),
+  'Cafe&Bar YAMAYA': sourcePhoto(
+    'miyoshi-36007856-dish.jpg',
+    'Cafe&Bar YAMAYAの料理写真',
+    'Cafe&Bar YAMAYA food photo',
+    'https://tabelog.com/tokushima/A3604/A360401/36007856/',
+    '食べログ'
+  ),
+  'Ｂａｒ ｇ': sourcePhoto(
+    'miyoshi-36003562-dish.jpg',
+    'Ｂａｒ ｇの料理写真',
+    'Ｂａｒ ｇ food photo',
+    'https://tabelog.com/tokushima/A3604/A360401/36003562/',
+    '食べログ'
+  ),
+  '珈琲館おおぼけ': sourcePhoto(
+    'miyoshi-36002868-dish.jpg',
+    '珈琲館おおぼけの料理写真',
+    '珈琲館おおぼけ food photo',
+    'https://tabelog.com/tokushima/A3604/A360401/36002868/',
+    '食べログ'
+  ),
+  '安宅屋本店 総本店': sourcePhoto(
+    'miyoshi-36003875-dish.jpg',
+    '安宅屋本店 総本店の料理写真',
+    '安宅屋本店 総本店 food photo',
+    'https://tabelog.com/tokushima/A3604/A360401/36003875/',
+    '食べログ'
+  ),
+
 };

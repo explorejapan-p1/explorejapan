@@ -1,0 +1,6 @@
+Mugi Town (JIS 36383) stay harvest 2026-09-07
+BEFORE: 宿泊0 / 飲食19 / 温泉0 / 体験0 / 観光3 / 買物0 / 商業0
+AFTER target: 宿泊2 / 飲食19 / 温泉0 / 体験0 / 観光3 / 買物0 / 商業0
+
+宿泊 stay: 2 — 砂美かたやま / Casa TEBA (NAVITIME RK only two with 楽天 share).
+温泉/体験/買物/商業: 0 — honest

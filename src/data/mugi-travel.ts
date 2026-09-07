@@ -1,6 +1,7 @@
 /**
  * Mugi travel layer. Pack tourism has Mollusco without room/bath photos for stay/onsen.
- * Onsen / stay: omit without room or bath photo (honest 0).
+ * Stay from NAVITIME 宿泊一覧 + 楽天トラベル share/room images (出典). Rank strongest first.
+ * Onsen: omit without bath photo (honest 0).
  * Dining from 食べログ 牟岐町 (C36383) public shop pages with FOOD dish heroes.
  * Shopping / experience / commerce: honest 0 — no remappable pack photos this pass.
  * PHOTO GAPS (honest 0):
@@ -24,6 +25,8 @@ export const MUGI_TRAVEL_SOURCES = {
   home: 'https://www.town.tokushima-mugi.lg.jp/',
   hall: 'https://www.town.tokushima-mugi.lg.jp/doc/2024122001101/',
   kanko: 'https://www.town.tokushima-mugi.lg.jp/category/bunya/kanko/',
+  stayNavi: 'https://www.navitime.co.jp/category/06/36383/',
+  rakutenTravel: 'https://travel.rakuten.co.jp/',
   tabelogCity: 'https://tabelog.com/tokushima/C36383/rstLst/'
 } as const;
 
@@ -50,7 +53,42 @@ export const MUGI_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(
 
 export const MUGI_SIGHT_PINS = ['牟岐町モデル木造施設 モラスコむぎ', '出羽島伝統的建造物群保存地区'] as const;
 
-export const MUGI_TRAVEL_STAY: readonly TravelRow[] = [];
+function stay(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'stay',
+    address,
+    phone,
+    source_url,
+    accessed: MUGI_TRAVEL_ACCESSED
+  };
+}
+
+/** Ranked strongest room/exterior 出典 first. NAVITIME + 楽天シェア画像. */
+export const MUGI_TRAVEL_STAY: readonly TravelRow[] = [
+  stay(
+    'mugi-stay-01',
+    '砂美かたやま',
+    '徳島県海部郡牟岐町灘下浜辺6-1',
+    '0884-72-1727',
+    'https://travel.rakuten.co.jp/HOTEL/164686/164686.html'
+  ),
+  stay(
+    'mugi-stay-02',
+    'Casa TEBA',
+    '徳島県海部郡牟岐町牟岐浦出羽島21-6',
+    '090-1320-6340',
+    'https://travel.rakuten.co.jp/HOTEL/195745/195745.html'
+  )
+];
+
 
 function dining(
   id: string,

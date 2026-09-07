@@ -1,6 +1,7 @@
 /**
  * Minami travel layer. Pack tourism has inns/camps without room or bath photos.
- * Onsen / stay: omit without room or bath photo (honest 0).
+ * Stay from NAVITIME 宿泊一覧 + 楽天トラベル share/room images (出典). Rank strongest first.
+ * Onsen: omit without bath photo (honest 0).
  * Dining from 食べログ 美波町 (C36387) public shop pages with FOOD dish heroes.
  * Shopping: 道の駅 pack name with place-named Commons exterior.
  * PHOTO GAPS (honest 0):
@@ -24,6 +25,8 @@ export const MINAMI_TRAVEL_SOURCES = {
   home: 'https://www.town.minami.lg.jp/',
   hall: 'https://www.town.minami.lg.jp/',
   kanko: 'https://www.town.minami.lg.jp/docs/182.html',
+  stayNavi: 'https://www.navitime.co.jp/category/06/36387/',
+  rakutenTravel: 'https://travel.rakuten.co.jp/',
   tabelogCity: 'https://tabelog.com/tokushima/C36387/rstLst/'
 } as const;
 
@@ -50,7 +53,63 @@ export const MINAMI_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(
 
 export const MINAMI_SIGHT_PINS = ['薬王寺瑜祇塔'] as const;
 
-export const MINAMI_TRAVEL_STAY: readonly TravelRow[] = [];
+function stay(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'stay',
+    address,
+    phone,
+    source_url,
+    accessed: MINAMI_TRAVEL_ACCESSED
+  };
+}
+
+/** Ranked strongest room/exterior 出典 first. NAVITIME + 楽天シェア画像. */
+export const MINAMI_TRAVEL_STAY: readonly TravelRow[] = [
+  stay(
+    'minami-stay-01',
+    'えびす洞温泉 ホテル 白い燈台',
+    '徳島県海部郡美波町日和佐浦455',
+    '0884-77-1170',
+    'https://travel.rakuten.co.jp/HOTEL/4799/4799.html'
+  ),
+  stay(
+    'minami-stay-02',
+    'ビジネスホテル・ケアンズ',
+    '徳島県海部郡美波町奥河内弁才天75-17',
+    '0884-77-1211',
+    'https://travel.rakuten.co.jp/HOTEL/30831/30831.html'
+  ),
+  stay(
+    'minami-stay-03',
+    '南阿波サンラインモビレージ',
+    '徳島県海部郡美波町山河内字明丸1-1',
+    '0884-77-0709',
+    'https://travel.rakuten.co.jp/HOTEL/108774/108774.html'
+  ),
+  stay(
+    'minami-stay-04',
+    '花乃宿',
+    '徳島県海部郡美波町奥河内字本村8-1',
+    '0884-70-1881',
+    'https://travel.rakuten.co.jp/HOTEL/196323/196323.html'
+  ),
+  stay(
+    'minami-stay-05',
+    '民宿 明山荘',
+    '徳島県海部郡美波町田井82-1',
+    '0884-78-1717',
+    'https://travel.rakuten.co.jp/HOTEL/184182/184182.html'
+  )
+];
+
 
 function dining(
   id: string,

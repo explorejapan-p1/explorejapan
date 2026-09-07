@@ -1,0 +1,6 @@
+Kaiyo Town (JIS 36388) stay harvest 2026-09-07
+BEFORE: 宿泊0 / 飲食19 / 温泉0 / 体験0 / 観光3 / 買物1 / 商業0
+AFTER target: 宿泊10 / 飲食19 / 温泉0 / 体験0 / 観光3 / 買物1 / 商業0
+
+宿泊 stay: 10 — NAVITIME + 楽天シェア. Skipped tiny 愛宕旅館 share (230px).
+温泉/体験/商業: 0 — honest

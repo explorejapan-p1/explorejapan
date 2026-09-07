@@ -240,5 +240,48 @@ export const TSURUGI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'Okonomiyaki at Nandeyanen, Handa, Tsurugi',
     NANDEYANEN_PAGE,
     'お好み焼　なんでやねん'
-  )
+  ),
+  '善太楼': sourcePhoto(
+    'tsurugi-36002128-dish.jpg',
+    '善太楼の料理写真',
+    '善太楼 food photo',
+    'https://tabelog.com/tokushima/A3603/A360302/36002128/',
+    '食べログ'
+  ),
+  '蓮華': sourcePhoto(
+    'tsurugi-36008023-dish.jpg',
+    '蓮華の料理写真',
+    '蓮華 food photo',
+    'https://tabelog.com/tokushima/A3603/A360302/36008023/',
+    '食べログ'
+  ),
+  '阿波半田手のべ': sourcePhoto(
+    'tsurugi-36004418-dish.jpg',
+    '阿波半田手のべの料理写真',
+    '阿波半田手のべ food photo',
+    'https://tabelog.com/tokushima/A3603/A360302/36004418/',
+    '食べログ'
+  ),
+  '芝製麺': sourcePhoto(
+    'tsurugi-36007796-dish.jpg',
+    '芝製麺の料理写真',
+    '芝製麺 food photo',
+    'https://tabelog.com/tokushima/A3603/A360302/36007796/',
+    '食べログ'
+  ),
+  '古見茶屋': sourcePhoto(
+    'tsurugi-36007616-dish.jpg',
+    '古見茶屋の料理写真',
+    '古見茶屋 food photo',
+    'https://tabelog.com/tokushima/A3603/A360302/36007616/',
+    '食べログ'
+  ),
+  'あづまや製菓 つるぎ町本店': sourcePhoto(
+    'tsurugi-36003450-dish.jpg',
+    'あづまや製菓 つるぎ町本店の料理写真',
+    'あづまや製菓 つるぎ町本店 food photo',
+    'https://tabelog.com/tokushima/A3603/A360302/36003450/',
+    '食べログ'
+  ),
+
 };

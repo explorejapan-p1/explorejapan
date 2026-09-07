@@ -348,5 +348,48 @@ export const YOSHINOGAWA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> 
     'Wagyu at Yakiniku Ao, Kamojima-cho, Yoshinogawa',
     TABELOG_AO,
     '食べログ'
-  )
+  ),
+  '串カツ田中 徳島鴨島店': sourcePhoto(
+    'yoshinogawa-36008116-dish.jpg',
+    '串カツ田中 徳島鴨島店の料理写真',
+    '串カツ田中 徳島鴨島店 food photo',
+    'https://tabelog.com/tokushima/A3603/A360301/36008116/',
+    '食べログ'
+  ),
+  'コーヒーレスト 豆の木': sourcePhoto(
+    'yoshinogawa-36002919-dish.jpg',
+    'コーヒーレスト 豆の木の料理写真',
+    'コーヒーレスト 豆の木 food photo',
+    'https://tabelog.com/tokushima/A3603/A360301/36002919/',
+    '食べログ'
+  ),
+  'そば処 川内橋本 川島店': sourcePhoto(
+    'yoshinogawa-36002609-dish.jpg',
+    'そば処 川内橋本 川島店の料理写真',
+    'そば処 川内橋本 川島店 food photo',
+    'https://tabelog.com/tokushima/A3603/A360301/36002609/',
+    '食べログ'
+  ),
+  'パン ド ミー': sourcePhoto(
+    'yoshinogawa-36003483-dish.jpg',
+    'パン ド ミーの料理写真',
+    'パン ド ミー food photo',
+    'https://tabelog.com/tokushima/A3603/A360301/36003483/',
+    '食べログ'
+  ),
+  'ピンキー': sourcePhoto(
+    'yoshinogawa-36002752-dish.jpg',
+    'ピンキーの料理写真',
+    'ピンキー food photo',
+    'https://tabelog.com/tokushima/A3603/A360301/36002752/',
+    '食べログ'
+  ),
+  'レストラン カナ': sourcePhoto(
+    'yoshinogawa-36000364-dish.jpg',
+    'レストラン カナの料理写真',
+    'レストラン カナ food photo',
+    'https://tabelog.com/tokushima/A3603/A360301/36000364/',
+    '食べログ'
+  ),
+
 };
