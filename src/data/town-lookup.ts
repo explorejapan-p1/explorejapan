@@ -331,6 +331,7 @@ import {OTOYO, OTOYO_PLACE_PHOTO, OTOYO_FACILITIES, OTOYO_EXPECTED_GEO_COUNT, OT
 import {TOSACHO, TOSACHO_PLACE_PHOTO, TOSACHO_FACILITIES, TOSACHO_EXPECTED_GEO_COUNT, TOSACHO_EXPECTED_ROW_COUNT} from './tosacho';
 import {OKAWA, OKAWA_PLACE_PHOTO, OKAWA_FACILITIES, OKAWA_EXPECTED_GEO_COUNT, OKAWA_EXPECTED_ROW_COUNT} from './okawa';
 import {NIYODOGAWA, NIYODOGAWA_PLACE_PHOTO, NIYODOGAWA_FACILITIES, NIYODOGAWA_EXPECTED_GEO_COUNT, NIYODOGAWA_EXPECTED_ROW_COUNT} from './niyodogawa';
+import {NAKATOSA, NAKATOSA_PLACE_PHOTO, NAKATOSA_FACILITIES, NAKATOSA_EXPECTED_GEO_COUNT, NAKATOSA_EXPECTED_ROW_COUNT} from './nakatosa';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -696,6 +697,13 @@ import {
   NIYODOGAWA_TRAVEL_COMMERCE,
   NIYODOGAWA_TRAVEL_ALL
 } from './niyodogawa-travel';
+import {
+  NAKATOSA_TRAVEL_DINING,
+  NAKATOSA_TRAVEL_STAY,
+  NAKATOSA_TRAVEL_SHOPPING,
+  NAKATOSA_TRAVEL_COMMERCE,
+  NAKATOSA_TRAVEL_ALL
+} from './nakatosa-travel';
 
 
 
@@ -2977,6 +2985,38 @@ export const OKAWA_LOOKUP: LookupTown = {
 };
 
 
+
+export const NAKATOSA_LOOKUP: LookupTown = {
+  slug: 'nakatosa',
+  prefectureSlug: 'kochi',
+  jis: NAKATOSA.jis,
+  nameJa: NAKATOSA.nameJa,
+  nameEn: NAKATOSA.nameEn,
+  heroPhoto: NAKATOSA_PLACE_PHOTO,
+  photoCiteJa: '写真は双名島。Araiyasushige、2024-05-07、CC0。File:Hutanazima_20240507_2.jpg。',
+  photoCiteEn: 'Photo: Futana Islands (Hutanazima). Araiyasushige, 2024-05-07, CC0. File:Hutanazima_20240507_2.jpg.',
+  rows: NAKATOSA_FACILITIES,
+  expectedGeo: NAKATOSA_EXPECTED_GEO_COUNT,
+  expectedRows: NAKATOSA_EXPECTED_ROW_COUNT,
+  travelDining: NAKATOSA_TRAVEL_DINING,
+  travelStay: NAKATOSA_TRAVEL_STAY,
+  travelShopping: NAKATOSA_TRAVEL_SHOPPING,
+  travelCommerce: NAKATOSA_TRAVEL_COMMERCE,
+  travelAll: NAKATOSA_TRAVEL_ALL,
+  coverageJa:
+    '中土佐町（JIS 39401）観光5・宿泊1・飲食3・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県25つ目のLIVEハブ。',
+  coverageEn:
+    'Nakatosa Town (JIS 39401), 5 tourism + 1 stay + 3 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Twenty-fifth LIVE Kochi hub.',
+  mapLabelJa: '中土佐町の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Nakatosa Town',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons/楽天等出典座標5件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 5 sourced coordinates for town/official facilities (accessed 2026-09-08).',
+  licenseNoteJa: '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from town.nakatosa.lg.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
 export const NIYODOGAWA_LOOKUP: LookupTown = {
   slug: 'niyodogawa',
   prefectureSlug: 'kochi',
@@ -3073,7 +3113,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   otoyo: OTOYO_LOOKUP,
   tosacho: TOSACHO_LOOKUP,
   okawa: OKAWA_LOOKUP,
-  niyodogawa: NIYODOGAWA_LOOKUP
+  niyodogawa: NIYODOGAWA_LOOKUP,
+  nakatosa: NAKATOSA_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

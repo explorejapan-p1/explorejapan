@@ -60,6 +60,7 @@ import {OTOYO, OTOYO_PLACE_PHOTO} from '@/data/otoyo';
 import {TOSACHO, TOSACHO_PLACE_PHOTO} from '@/data/tosacho';
 import {OKAWA, OKAWA_PLACE_PHOTO} from '@/data/okawa';
 import {NIYODOGAWA, NIYODOGAWA_PLACE_PHOTO} from '@/data/niyodogawa';
+import {NAKATOSA, NAKATOSA_PLACE_PHOTO} from '@/data/nakatosa';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -4214,6 +4215,67 @@ export function otoyoGraph(locale: AppLocale) {
 
 
 
+
+
+export function nakatosaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/nakatosa');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('nakatosa');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? NAKATOSA.nameJa : NAKATOSA.nameEn,
+        alternateName: isJa ? NAKATOSA.nameEn : NAKATOSA.nameJa,
+        identifier: NAKATOSA.jis,
+        url,
+        image: photoAbs(NAKATOSA_PLACE_PHOTO),
+        sameAs: [NAKATOSA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '久礼6663-1' : '6663-1 Kure',
+          addressLocality: isJa ? NAKATOSA.nameJa : NAKATOSA.nameEn,
+          addressRegion: isJa ? NAKATOSA.prefectureJa : NAKATOSA.prefectureEn,
+          postalCode: NAKATOSA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? NAKATOSA.prefectureJa : NAKATOSA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? NAKATOSA.nameJa : NAKATOSA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? NAKATOSA.prefectureJa : NAKATOSA.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? NAKATOSA.nameJa : NAKATOSA.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '中土佐町の案内' : 'Places in Nakatosa Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
 
 export function niyodogawaGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'kochi/niyodogawa');

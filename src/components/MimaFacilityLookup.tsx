@@ -83,6 +83,7 @@ import {OTOYO_TRAVEL_ACCESSED} from '@/data/otoyo-travel';
 import {TOSACHO_TRAVEL_ACCESSED} from '@/data/tosacho-travel';
 import {OKAWA_TRAVEL_ACCESSED} from '@/data/okawa-travel';
 import {NIYODOGAWA_TRAVEL_ACCESSED} from '@/data/niyodogawa-travel';
+import {NAKATOSA_TRAVEL_ACCESSED} from '@/data/nakatosa-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1571,6 +1572,22 @@ export function MimaFacilityLookup({
                 Lodging: Shirataki-no-Sato Rakuten classroom-type guest-room photo ({OKAWA_TRAVEL_ACCESSED}).
                 Dining from Tabelog Okawa Village shop pages ({OKAWA_TRAVEL_ACCESSED}).
                 Onsen: 0 (stay≠onsen). Experience: 0. Shopping/commerce: 0. Twenty-third LIVE Kochi hub.
+              </>
+            )
+          ) : town.slug === 'nakatosa' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（双名島・中土佐町役場・久礼大正町市場・道の駅なかとさ・中土佐町立美術館）。
+                宿泊は楽天トラベル四万十源流の里の本館和室写真（{NAKATOSA_TRAVEL_ACCESSED}）。
+                飲食は食べログ中土佐町の公開店ページ（{NAKATOSA_TRAVEL_ACCESSED}）。
+                温泉は0件（stay≠onsen）。体験は0件。買物・商業は0件。高知県25つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Futana Islands, Nakatosa Town Hall, Kure Taisho Market, Michinoeki Nakatosa, Nakatosa Town Art Museum).
+                Lodging: Shimanto Genryu-no-Sato Rakuten main-building Japanese-room photo ({NAKATOSA_TRAVEL_ACCESSED}).
+                Dining from Tabelog Nakatosa shop pages ({NAKATOSA_TRAVEL_ACCESSED}).
+                Onsen: 0 (stay≠onsen). Experience: 0. Shopping/commerce: 0. Twenty-fifth LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'niyodogawa' ? (
