@@ -414,6 +414,17 @@ import {
   rankAyagawaSeeRows,
   resolveAyagawaFilter
 } from './ayagawa-travel';
+import {
+  tadotsuPackRowMatchesFilter,
+  tadotsuSightPhoto,
+  tadotsuSourcedHook,
+  tadotsuTopChipForRow,
+  resolveTadotsuFilter,
+  rankTadotsuSeeRows,
+  isTadotsuOnsenPackRow,
+  isTadotsuExperiencePackRow,
+  isTadotsuStayPackRow
+} from './tadotsu-travel';
 
 
 
@@ -961,6 +972,19 @@ const AYAGAWA_HELPERS: LookupHelpers = {
   resolveFilter: resolveAyagawaFilter
 };
 
+const TADOTSU_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isTadotsuOnsenPackRow,
+  isExperiencePackRow: isTadotsuExperiencePackRow,
+  isStayPackRow: isTadotsuStayPackRow,
+  packRowMatchesFilter: tadotsuPackRowMatchesFilter,
+  rankSeeRows: rankTadotsuSeeRows,
+  sightPhoto: tadotsuSightPhoto,
+  sourcedHook: tadotsuSourcedHook,
+  topChipForRow: tadotsuTopChipForRow,
+  resolveFilter: resolveTadotsuFilter
+};
+
+
 
 
 const SANUKI_HELPERS: LookupHelpers = {
@@ -1015,5 +1039,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'higashikagawa') return HIGASHIKAGAWA_HELPERS;
   if (slug === 'miki') return MIKI_HELPERS;
   if (slug === 'ayagawa') return AYAGAWA_HELPERS;
+  if (slug === 'tadotsu') return TADOTSU_HELPERS;
   return MIMA_HELPERS;
 }

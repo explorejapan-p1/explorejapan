@@ -305,6 +305,7 @@ import {SANUKI, SANUKI_PLACE_PHOTO, SANUKI_FACILITIES, SANUKI_EXPECTED_GEO_COUNT
 import {HIGASHIKAGAWA, HIGASHIKAGAWA_PLACE_PHOTO, HIGASHIKAGAWA_FACILITIES, HIGASHIKAGAWA_EXPECTED_GEO_COUNT, HIGASHIKAGAWA_EXPECTED_ROW_COUNT} from './higashikagawa';
 import {MIKI, MIKI_PLACE_PHOTO, MIKI_FACILITIES, MIKI_EXPECTED_GEO_COUNT, MIKI_EXPECTED_ROW_COUNT} from './miki';
 import {AYAGAWA, AYAGAWA_PLACE_PHOTO, AYAGAWA_FACILITIES, AYAGAWA_EXPECTED_GEO_COUNT, AYAGAWA_EXPECTED_ROW_COUNT} from './ayagawa';
+import {TADOTSU, TADOTSU_PLACE_PHOTO, TADOTSU_FACILITIES, TADOTSU_EXPECTED_GEO_COUNT, TADOTSU_EXPECTED_ROW_COUNT} from './tadotsu';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -464,6 +465,19 @@ import {
   resolveAyagawaFilter,
   rankAyagawaSeeRows
 } from './ayagawa-travel';
+import {
+  TADOTSU_TRAVEL_DINING,
+  TADOTSU_TRAVEL_STAY,
+  TADOTSU_TRAVEL_SHOPPING,
+  TADOTSU_TRAVEL_COMMERCE,
+  TADOTSU_TRAVEL_ALL,
+  tadotsuSightPhoto,
+  tadotsuSourcedHook,
+  tadotsuTopChipForRow,
+  tadotsuPackRowMatchesFilter,
+  resolveTadotsuFilter,
+  rankTadotsuSeeRows
+} from './tadotsu-travel';
 
 
 
@@ -1334,10 +1348,10 @@ export const KOMATSUSHIMA_LOOKUP: LookupTown = {
     '小松島市（JIS 36203）観光5・宿泊3・飲食25（出典写真がある施設のみ）。オープンデータ凍結パックは未掲載。温泉・体験・買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。',
   coverageEn:
     'Komatsushima City (JIS 36203), 5 tourism + 3 stay + 25 dining with sourced photos. No frozen open-data pack. Onsen, experience, shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished.',
-  mapLabelJa: '小松島市の出典座標5件',
-  mapLabelEn: '5 sourced coordinates in Komatsushima City',
-  mapCitePackJa: '点は市・観光ページ掲載施設のWikipedia等出典座標5件（accessed 2026-09-07）。',
-  mapCitePackEn: 'Points: 5 sourced coordinates for city/tourism-page facilities (accessed 2026-09-07).',
+  mapLabelJa: '小松島市の出典座標4件',
+  mapLabelEn: '4 sourced coordinates in Komatsushima City',
+  mapCitePackJa: '点は市・観光ページ掲載施設のWikipedia等出典座標4件（accessed 2026-09-07）。',
+  mapCitePackEn: 'Points: 4 sourced coordinates for city/tourism-page facilities (accessed 2026-09-07).',
   licenseNoteJa:
     '行のライセンスは市公式サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
   licenseNoteEn:
@@ -1779,6 +1793,37 @@ export const AYAGAWA_LOOKUP: LookupTown = {
   licenseSiteEn: 'Town-site listing'
 };
 
+export const TADOTSU_LOOKUP: LookupTown = {
+  slug: 'tadotsu',
+  prefectureSlug: 'kagawa',
+  jis: TADOTSU.jis,
+  nameJa: TADOTSU.nameJa,
+  nameEn: TADOTSU.nameEn,
+  heroPhoto: TADOTSU_PLACE_PHOTO,
+  photoCiteJa: '写真は海岸寺。Dokudami、CC BY-SA 4.0。File:Kaiganji20220414 1.jpg。',
+  photoCiteEn: 'Photo: Kaiganji. Dokudami, CC BY-SA 4.0. File:Kaiganji20220414 1.jpg.',
+  rows: TADOTSU_FACILITIES,
+  expectedGeo: TADOTSU_EXPECTED_GEO_COUNT,
+  expectedRows: TADOTSU_EXPECTED_ROW_COUNT,
+  travelDining: TADOTSU_TRAVEL_DINING,
+  travelStay: TADOTSU_TRAVEL_STAY,
+  travelShopping: TADOTSU_TRAVEL_SHOPPING,
+  travelCommerce: TADOTSU_TRAVEL_COMMERCE,
+  travelAll: TADOTSU_TRAVEL_ALL,
+  coverageJa: '多度津町（JIS 37404）観光3・宿泊1・飲食16・体験1（出典写真がある施設のみ）。温泉・買物・商業は0件（未掲載）。オープンデータ凍結パックは未掲載。香川県16つ目のLIVEハブ。',
+  coverageEn: 'Tadotsu (JIS 37404), 3 tourism + 1 stay + 16 dining + 1 experience with sourced photos. Onsen, shopping, commerce: 0. No frozen open-data pack. Sixteenth LIVE Kagawa hub.',
+  mapLabelJa: '多度津町の出典座標4件',
+  mapLabelEn: '4 sourced coordinates in Tadotsu',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia等出典座標4件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 4 sourced coordinates for town/official facilities (accessed 2026-09-08).',
+  licenseNoteJa: '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from town.tadotsu.lg.jp, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
+
+
 
 export const TONOSHO_LOOKUP: LookupTown = {
   slug: 'tonosho',
@@ -1959,7 +2004,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   sanuki: SANUKI_LOOKUP,
   higashikagawa: HIGASHIKAGAWA_LOOKUP,
   miki: MIKI_LOOKUP,
-  ayagawa: AYAGAWA_LOOKUP
+  ayagawa: AYAGAWA_LOOKUP,
+  tadotsu: TADOTSU_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

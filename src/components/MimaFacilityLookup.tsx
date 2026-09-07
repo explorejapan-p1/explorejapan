@@ -57,6 +57,7 @@ import {SANUKI_TRAVEL_ACCESSED} from '@/data/sanuki-travel';
 import {HIGASHIKAGAWA_TRAVEL_ACCESSED} from '@/data/higashikagawa-travel';
 import {MIKI_TRAVEL_ACCESSED} from '@/data/miki-travel';
 import {AYAGAWA_TRAVEL_ACCESSED} from '@/data/ayagawa-travel';
+import {TADOTSU_TRAVEL_ACCESSED} from '@/data/tadotsu-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1354,6 +1355,24 @@ export function MimaFacilityLookup({
                 Lodging from Rakuten Travel room photos ({AYAGAWA_TRAVEL_ACCESSED}).
                 Dining from Tabelog Ayagawa shop pages ({AYAGAWA_TRAVEL_ACCESSED}).
                 Onsen: 0. Experience: Michinoeki Takinomiya (Commons). Shopping/commerce: 0. Fifteenth LIVE Kagawa hub.
+              </>
+            )
+
+
+          ) : town.slug === 'tadotsu' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（海岸寺・多度津駅・多度津港）。
+                宿泊は楽天トラベルの客室写真（{TADOTSU_TRAVEL_ACCESSED}）。
+                飲食は食べログ多度津町の公開店ページ（{TADOTSU_TRAVEL_ACCESSED}）。
+                温泉は0件。体験は桃陵公園（Commons）。買物・商業は出典写真が無いため0件。香川県16つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Kaiganji, Tadotsu Station, Tadotsu Port).
+                Lodging from Rakuten Travel room photos ({TADOTSU_TRAVEL_ACCESSED}).
+                Dining from Tabelog Tadotsu shop pages ({TADOTSU_TRAVEL_ACCESSED}).
+                Onsen: 0. Experience: Toryo Park (Commons). Shopping/commerce: 0. Sixteenth LIVE Kagawa hub.
               </>
             )
 

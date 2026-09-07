@@ -34,6 +34,7 @@ import {SANUKI, SANUKI_PLACE_PHOTO} from '@/data/sanuki';
 import {HIGASHIKAGAWA, HIGASHIKAGAWA_PLACE_PHOTO} from '@/data/higashikagawa';
 import {MIKI, MIKI_PLACE_PHOTO} from '@/data/miki';
 import {AYAGAWA, AYAGAWA_PLACE_PHOTO} from '@/data/ayagawa';
+import {TADOTSU, TADOTSU_PLACE_PHOTO} from '@/data/tadotsu';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -137,6 +138,7 @@ function localityJa(slug: string): string {
   if (slug === 'higashikagawa') return HIGASHIKAGAWA.nameJa;
   if (slug === 'miki') return MIKI.nameJa;
   if (slug === 'ayagawa') return AYAGAWA.nameJa;
+  if (slug === 'tadotsu') return TADOTSU.nameJa;
   return MIMA.nameJa;
 }
 
@@ -179,6 +181,7 @@ function localityEn(slug: string): string {
   if (slug === 'higashikagawa') return HIGASHIKAGAWA.nameEn;
   if (slug === 'miki') return MIKI.nameEn;
   if (slug === 'ayagawa') return AYAGAWA.nameEn;
+  if (slug === 'tadotsu') return TADOTSU.nameEn;
   return MIMA.nameEn;
 }
 
@@ -3049,6 +3052,66 @@ export function ayagawaGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '綾川町の案内' : 'Places in Ayagawa',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+export function tadotsuGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kagawa/tadotsu');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('tadotsu');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? TADOTSU.nameJa : TADOTSU.nameEn,
+        alternateName: isJa ? TADOTSU.nameEn : TADOTSU.nameJa,
+        identifier: TADOTSU.jis,
+        url,
+        image: photoAbs(TADOTSU_PLACE_PHOTO),
+        sameAs: [TADOTSU.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '栄町三丁目3番95号' : '3-3-95 Sakae-cho',
+          addressLocality: isJa ? TADOTSU.nameJa : TADOTSU.nameEn,
+          addressRegion: isJa ? TADOTSU.prefectureJa : TADOTSU.prefectureEn,
+          postalCode: TADOTSU.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? TADOTSU.prefectureJa : TADOTSU.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? TADOTSU.nameJa : TADOTSU.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? TADOTSU.prefectureJa : TADOTSU.prefectureEn, item: canonicalUrl(locale, 'kagawa')},
+          {'@type': 'ListItem', position: 3, name: isJa ? TADOTSU.nameJa : TADOTSU.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '多度津町の案内' : 'Places in Tadotsu',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',
