@@ -10,7 +10,7 @@ export type Municipality = {
 
 /**
  * Kochi 市区町村. Codes are N03_007 / JIS X 0402 (5-digit).
- * Kochi City 39201 + Nankoku 39204 + Konan 39211 + Kami 39212 + Ino 39386 + Aki 39203 + Muroto 39202 + Tosa 39205 + Susaki 39206 + Shimanto 39210 + Tosashimizu 39209 + Sukumo 39208 + Kuroshio 39428 LIVE hubs (+ remaining municipalities coming-soon).
+ * Kochi City 39201 + Nankoku 39204 + Konan 39211 + Kami 39212 + Ino 39386 + Aki 39203 + Muroto 39202 + Tosa 39205 + Susaki 39206 + Shimanto 39210 + Tosashimizu 39209 + Sukumo 39208 + Kuroshio 39428 + Toyo 39301 + Nahari 39302 LIVE hubs (+ remaining municipalities coming-soon).
  */
 export const KOCHI_MUNICIPALITIES: Municipality[] = [
   {jis: '39201', slug: 'kochi', nameJa: '高知市', nameEn: 'Kochi', status: 'ready'},
@@ -25,7 +25,7 @@ export const KOCHI_MUNICIPALITIES: Municipality[] = [
   {jis: '39211', slug: 'konan', nameJa: '香南市', nameEn: 'Konan', status: 'ready'},
   {jis: '39212', slug: 'kami', nameJa: '香美市', nameEn: 'Kami', status: 'ready'},
   {jis: '39301', slug: 'toyo', nameJa: '東洋町', nameEn: 'Toyo', status: 'ready'},
-  {jis: '39302', slug: 'nahari', nameJa: '奈半利町', nameEn: 'Nahari', status: 'coming-soon'},
+  {jis: '39302', slug: 'nahari', nameJa: '奈半利町', nameEn: 'Nahari', status: 'ready'},
   {jis: '39303', slug: 'tano', nameJa: '田野町', nameEn: 'Tano', status: 'coming-soon'},
   {jis: '39304', slug: 'yasuda', nameJa: '安田町', nameEn: 'Yasuda', status: 'coming-soon'},
   {jis: '39305', slug: 'kitagawa', nameJa: '北川村', nameEn: 'Kitagawa', status: 'coming-soon'},

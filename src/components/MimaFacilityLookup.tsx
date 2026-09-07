@@ -73,6 +73,7 @@ import {TOSASHIMIZU_TRAVEL_ACCESSED} from '@/data/tosashimizu-travel';
 import {SUKUMO_TRAVEL_ACCESSED} from '@/data/sukumo-travel';
 import {KUROSHIO_TRAVEL_ACCESSED} from '@/data/kuroshio-travel';
 import {TOYO_TRAVEL_ACCESSED} from '@/data/toyo-travel';
+import {NAHARI_TRAVEL_ACCESSED} from '@/data/nahari-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1465,6 +1466,22 @@ export function MimaFacilityLookup({
                 Lodging from Rakuten Travel room photos ({MUROTO_TRAVEL_ACCESSED}).
                 Dining from Tabelog Muroto shop pages ({MUROTO_TRAVEL_ACCESSED}).
                 Onsen: 0 (room-still stay only; no attributable bath keys). Experience: Muroto Geopark Center (Commons). Shopping/commerce: 0. Seventh LIVE Kochi hub.
+              </>
+            )
+          ) : town.slug === 'nahari' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（奈半利中央公園・加領郷灯台・奈半利町甲・奈半利港眺望・奈半利駅）。
+                宿泊は楽天トラベルホテルなはりの客室写真（{NAHARI_TRAVEL_ACCESSED}）。
+                飲食は食べログ奈半利町の公開店ページ（{NAHARI_TRAVEL_ACCESSED}）。
+                温泉は0件（客室写真の宿のみ・大浴場はあるが温泉キー無し）。体験は0件。買物・商業は0件。高知県15つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Nahari Central Park, Karyogo Lighthouse, Kō district, port view, Nahari Station).
+                Lodging: Hotel Nahari Rakuten room photo ({NAHARI_TRAVEL_ACCESSED}).
+                Dining from Tabelog Nahari shop pages ({NAHARI_TRAVEL_ACCESSED}).
+                Onsen: 0 (room-still stay; bath keys are 大浴場 not 温泉). Experience: 0. Shopping/commerce: 0. Fifteenth LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'toyo' ? (

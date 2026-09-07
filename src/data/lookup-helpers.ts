@@ -592,6 +592,17 @@ import {
   toyoSourcedHook,
   toyoTopChipForRow
 } from './toyo-travel';
+import {
+  isNahariOnsenPackRow,
+  isNahariExperiencePackRow,
+  isNahariStayPackRow,
+  rankNahariSeeRows,
+  resolveNahariFilter,
+  nahariPackRowMatchesFilter,
+  nahariSightPhoto,
+  nahariSourcedHook,
+  nahariTopChipForRow
+} from './nahari-travel';
 
 
 
@@ -1198,6 +1209,19 @@ const SUKUMO_HELPERS: LookupHelpers = {
   resolveFilter: resolveSukumoFilter
 };
 
+
+const NAHARI_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isNahariOnsenPackRow,
+  isExperiencePackRow: isNahariExperiencePackRow,
+  isStayPackRow: isNahariStayPackRow,
+  packRowMatchesFilter: nahariPackRowMatchesFilter,
+  rankSeeRows: rankNahariSeeRows,
+  sightPhoto: nahariSightPhoto,
+  sourcedHook: nahariSourcedHook,
+  topChipForRow: nahariTopChipForRow,
+  resolveFilter: resolveNahariFilter
+};
+
 const TOYO_HELPERS: LookupHelpers = {
   isOnsenPackRow: isToyoOnsenPackRow,
   isExperiencePackRow: isToyoExperiencePackRow,
@@ -1415,5 +1439,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'sukumo') return SUKUMO_HELPERS;
   if (slug === 'kuroshio') return KUROSHIO_HELPERS;
   if (slug === 'toyo') return TOYO_HELPERS;
+  if (slug === 'nahari') return NAHARI_HELPERS;
   return MIMA_HELPERS;
 }

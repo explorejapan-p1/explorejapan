@@ -50,6 +50,7 @@ import {TOSASHIMIZU, TOSASHIMIZU_PLACE_PHOTO} from '@/data/tosashimizu';
 import {SUKUMO, SUKUMO_PLACE_PHOTO} from '@/data/sukumo';
 import {KUROSHIO, KUROSHIO_PLACE_PHOTO} from '@/data/kuroshio';
 import {TOYO, TOYO_PLACE_PHOTO} from '@/data/toyo';
+import {NAHARI, NAHARI_PLACE_PHOTO} from '@/data/nahari';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -169,6 +170,7 @@ function localityJa(slug: string): string {
   if (slug === 'sukumo') return SUKUMO.nameJa;
   if (slug === 'kuroshio') return KUROSHIO.nameJa;
   if (slug === 'toyo') return TOYO.nameJa;
+  if (slug === 'nahari') return NAHARI.nameJa;
   return MIMA.nameJa;
 }
 
@@ -227,6 +229,7 @@ function localityEn(slug: string): string {
   if (slug === 'sukumo') return SUKUMO.nameEn;
   if (slug === 'kuroshio') return KUROSHIO.nameEn;
   if (slug === 'toyo') return TOYO.nameEn;
+  if (slug === 'nahari') return NAHARI.nameEn;
   return MIMA.nameEn;
 }
 
@@ -3880,6 +3883,66 @@ export function toyoGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '東洋町の案内' : 'Places in Toyo Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+export function nahariGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/nahari');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('nahari');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? NAHARI.nameJa : NAHARI.nameEn,
+        alternateName: isJa ? NAHARI.nameEn : NAHARI.nameJa,
+        identifier: NAHARI.jis,
+        url,
+        image: photoAbs(NAHARI_PLACE_PHOTO),
+        sameAs: [NAHARI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '乙1659番地1' : '1659-1 Otsu',
+          addressLocality: isJa ? NAHARI.nameJa : NAHARI.nameEn,
+          addressRegion: isJa ? NAHARI.prefectureJa : NAHARI.prefectureEn,
+          postalCode: NAHARI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? NAHARI.prefectureJa : NAHARI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? NAHARI.nameJa : NAHARI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? NAHARI.prefectureJa : NAHARI.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? NAHARI.nameJa : NAHARI.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '奈半利町の案内' : 'Places in Nahari Town',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

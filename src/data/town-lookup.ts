@@ -321,6 +321,7 @@ import {TOSASHIMIZU, TOSASHIMIZU_PLACE_PHOTO, TOSASHIMIZU_FACILITIES, TOSASHIMIZ
 import {SUKUMO, SUKUMO_PLACE_PHOTO, SUKUMO_FACILITIES, SUKUMO_EXPECTED_GEO_COUNT, SUKUMO_EXPECTED_ROW_COUNT} from './sukumo';
 import {KUROSHIO, KUROSHIO_PLACE_PHOTO, KUROSHIO_FACILITIES, KUROSHIO_EXPECTED_GEO_COUNT, KUROSHIO_EXPECTED_ROW_COUNT} from './kuroshio';
 import {TOYO, TOYO_PLACE_PHOTO, TOYO_FACILITIES, TOYO_EXPECTED_GEO_COUNT, TOYO_EXPECTED_ROW_COUNT} from './toyo';
+import {NAHARI, NAHARI_PLACE_PHOTO, NAHARI_FACILITIES, NAHARI_EXPECTED_GEO_COUNT, NAHARI_EXPECTED_ROW_COUNT} from './nahari';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -616,6 +617,13 @@ import {
   TOYO_TRAVEL_COMMERCE,
   TOYO_TRAVEL_ALL
 } from './toyo-travel';
+import {
+  NAHARI_TRAVEL_DINING,
+  NAHARI_TRAVEL_STAY,
+  NAHARI_TRAVEL_SHOPPING,
+  NAHARI_TRAVEL_COMMERCE,
+  NAHARI_TRAVEL_ALL
+} from './nahari-travel';
 
 
 
@@ -2261,6 +2269,38 @@ export const TOYO_LOOKUP: LookupTown = {
   licenseSiteEn: 'Town-site listing'
 };
 
+export const NAHARI_LOOKUP: LookupTown = {
+  slug: 'nahari',
+  prefectureSlug: 'kochi',
+  jis: NAHARI.jis,
+  nameJa: NAHARI.nameJa,
+  nameEn: NAHARI.nameEn,
+  heroPhoto: NAHARI_PLACE_PHOTO,
+  photoCiteJa: '写真は奈半利中央公園。運動会プロテインパワー、2023-08、CC BY-SA 4.0。File:Nahari_central_park_202308.jpg。',
+  photoCiteEn: 'Photo: Nahari Central Park. Undokai Protein Power, Aug 2023, CC BY-SA 4.0. File:Nahari_central_park_202308.jpg.',
+  rows: NAHARI_FACILITIES,
+  expectedGeo: NAHARI_EXPECTED_GEO_COUNT,
+  expectedRows: NAHARI_EXPECTED_ROW_COUNT,
+  travelDining: NAHARI_TRAVEL_DINING,
+  travelStay: NAHARI_TRAVEL_STAY,
+  travelShopping: NAHARI_TRAVEL_SHOPPING,
+  travelCommerce: NAHARI_TRAVEL_COMMERCE,
+  travelAll: NAHARI_TRAVEL_ALL,
+  coverageJa:
+    '奈半利町（JIS 39302）観光5・宿泊1・飲食5・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県15つ目のLIVEハブ。',
+  coverageEn:
+    'Nahari Town (JIS 39302), 5 tourism + 1 stay + 5 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Fifteenth LIVE Kochi hub.',
+  mapLabelJa: '奈半利町の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Nahari Town',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons等出典座標5件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 5 sourced coordinates for town/official facilities (accessed 2026-09-08).',
+  licenseNoteJa: '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from town.nahari.kochi.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
+
 export const SHIMANTO_LOOKUP: LookupTown = {
   slug: 'shimanto',
   prefectureSlug: 'kochi',
@@ -2660,7 +2700,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   tosashimizu: TOSASHIMIZU_LOOKUP,
   sukumo: SUKUMO_LOOKUP,
   kuroshio: KUROSHIO_LOOKUP,
-  toyo: TOYO_LOOKUP
+  toyo: TOYO_LOOKUP,
+  nahari: NAHARI_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
