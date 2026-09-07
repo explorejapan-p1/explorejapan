@@ -145,6 +145,28 @@ export const MUGI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '出羽島の港と石積み（牟岐町）',
     'Tebajima harbor stone quay, Mugi'
   ),
+  '牟岐八幡神社': wikiPhoto(
+    'mugi-hachiman.jpg',
+    'https://commons.wikimedia.org/wiki/File:%E7%89%9F%E5%B2%90%E5%85%AB%E5%B9%A1%E7%A5%9E%E7%A4%BE_%E6%8B%9D%E6%AE%BF.jpg',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0/',
+    'Shizuha',
+    'https://commons.wikimedia.org/wiki/User:Shizuha',
+    '2024-06-03',
+    '牟岐八幡神社拝殿（牟岐町）',
+    'Mugi Hachiman Shrine haiden, Mugi Town'
+  ),
+  '牟岐川': wikiPhoto(
+    'mugi-river.jpg',
+    'https://commons.wikimedia.org/wiki/File:Mugi_river_Tokushima.jpg',
+    'CC BY 3.0',
+    'https://creativecommons.org/licenses/by/3.0/',
+    'Bakkai',
+    'https://ja.wikipedia.org/wiki/User:Bakkai',
+    '2009-08-17',
+    '牟岐川（牟岐町）',
+    'Mugi River, Mugi Town'
+  ),
 
   "つくしお好焼店": sourcePhoto(
     'mugi-36002586-dish.jpg',

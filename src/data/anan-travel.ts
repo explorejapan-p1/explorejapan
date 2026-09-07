@@ -40,7 +40,9 @@ export const ANAN_SIGHT_PINS = [
   '蒲生田岬',
   '太龍寺',
   '平等寺',
-  '那賀川'
+  '那賀川',
+  'あこめ海岸',
+  '岡山城址'
 ] as const;
 
 function stay(

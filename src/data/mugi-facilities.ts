@@ -2,17 +2,31 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {
   FACILITY_CATEGORIES,
-  MUGI_EXPECTED_CATEGORY_COUNTS,
-  MUGI_EXPECTED_GEO_COUNT,
-  MUGI_EXPECTED_HOURS_COUNT,
-  MUGI_EXPECTED_MISSING_ADDRESS,
-  MUGI_EXPECTED_MISSING_PHONE,
-  MUGI_EXPECTED_ROW_COUNT,
   MUGI_PACK_ACCESSED,
   MUGI_PACK_JIS,
   type FacilityCategory,
   type FacilityRow
 } from './facility-schema';
+
+/** Frozen jsonl baselines (before Commons extras). */
+const PACK_ROW_COUNT = 159;
+const PACK_GEO_COUNT = 122;
+const PACK_HOURS_COUNT = 159;
+const PACK_MISSING_ADDRESS = 7;
+const PACK_MISSING_PHONE = 118;
+const PACK_CATEGORY_COUNTS: Record<FacilityCategory, number> = {
+  tourism: 1,
+  cultural_property: 22,
+  care: 1,
+  aed: 0,
+  shelter: 34,
+  emergency_evacuation_site: 78,
+  hospital: 6,
+  childcare: 2,
+  wifi: 0,
+  public_facility: 15,
+  gtfs_stop: 0
+};
 
 const PACK_PATH = path.join(process.cwd(), 'data', 'frozen', 'mugi-facilities.jsonl');
 
@@ -113,17 +127,17 @@ function loadNakaFacilities(): readonly FacilityRow[] {
     const parsed: unknown = JSON.parse(line);
     rows.push(parseFacilityRow(parsed));
   }
-  if (rows.length !== MUGI_EXPECTED_ROW_COUNT) {
-    throw new Error(`naka pack row count ${rows.length} != ${MUGI_EXPECTED_ROW_COUNT}`);
+  if (rows.length !== PACK_ROW_COUNT) {
+    throw new Error(`naka pack row count ${rows.length} != ${PACK_ROW_COUNT}`);
   }
   const counts = emptyCounts();
   for (const row of rows) {
     counts[row.category] += 1;
   }
   for (const cat of FACILITY_CATEGORIES) {
-    if (counts[cat] !== MUGI_EXPECTED_CATEGORY_COUNTS[cat]) {
+    if (counts[cat] !== PACK_CATEGORY_COUNTS[cat]) {
       throw new Error(
-        `naka pack ${cat} ${counts[cat]} != ${MUGI_EXPECTED_CATEGORY_COUNTS[cat]}`
+        `naka pack ${cat} ${counts[cat]} != ${PACK_CATEGORY_COUNTS[cat]}`
       );
     }
   }
@@ -137,23 +151,62 @@ function loadNakaFacilities(): readonly FacilityRow[] {
     if (isBlank(row.address)) missingAddress += 1;
     if (isBlank(row.phone)) missingPhone += 1;
   }
-  if (geo !== MUGI_EXPECTED_GEO_COUNT) {
-    throw new Error(`naka pack geo ${geo} != ${MUGI_EXPECTED_GEO_COUNT}`);
+  if (geo !== PACK_GEO_COUNT) {
+    throw new Error(`naka pack geo ${geo} != ${PACK_GEO_COUNT}`);
   }
-  if (hours !== MUGI_EXPECTED_HOURS_COUNT) {
-    throw new Error(`naka pack hours ${hours} != ${MUGI_EXPECTED_HOURS_COUNT}`);
+  if (hours !== PACK_HOURS_COUNT) {
+    throw new Error(`naka pack hours ${hours} != ${PACK_HOURS_COUNT}`);
   }
-  if (missingAddress !== MUGI_EXPECTED_MISSING_ADDRESS) {
+  if (missingAddress !== PACK_MISSING_ADDRESS) {
     throw new Error(
-      `naka pack address gaps ${missingAddress} != ${MUGI_EXPECTED_MISSING_ADDRESS}`
+      `naka pack address gaps ${missingAddress} != ${PACK_MISSING_ADDRESS}`
     );
   }
-  if (missingPhone !== MUGI_EXPECTED_MISSING_PHONE) {
+  if (missingPhone !== PACK_MISSING_PHONE) {
     throw new Error(
-      `naka pack phone gaps ${missingPhone} != ${MUGI_EXPECTED_MISSING_PHONE}`
+      `naka pack phone gaps ${missingPhone} != ${PACK_MISSING_PHONE}`
     );
   }
   return rows;
 }
 
-export const MUGI_FACILITIES: readonly FacilityRow[] = loadNakaFacilities();
+/** Commons-backed extras (not frozen jsonl). Real place-named 出典 only. */
+const MUGI_EXTRA_FACILITIES: readonly FacilityRow[] = [
+  {
+    id: 'mugi-extra-hachiman',
+    jis: MUGI_PACK_JIS,
+    name_ja: '牟岐八幡神社',
+    reading: 'むぎはちまんじんじゃ',
+    category: 'tourism',
+    lat: 33.668,
+    lon: 134.421,
+    address: '徳島県海部郡牟岐町中村',
+    phone: null,
+    official_url: 'https://www.town.tokushima-mugi.lg.jp/',
+    hours: null,
+    source_url: 'https://commons.wikimedia.org/wiki/File:%E7%89%9F%E5%B2%90%E5%85%AB%E5%B9%A1%E7%A5%9E%E7%A4%BE_%E6%8B%9D%E6%AE%BF.jpg',
+    license: 'cc_by_open_data',
+    accessed: MUGI_PACK_ACCESSED
+  },
+  {
+    id: 'mugi-extra-river',
+    jis: MUGI_PACK_JIS,
+    name_ja: '牟岐川',
+    reading: 'むぎがわ',
+    category: 'tourism',
+    lat: 33.67,
+    lon: 134.42,
+    address: '徳島県海部郡牟岐町',
+    phone: null,
+    official_url: 'https://www.town.tokushima-mugi.lg.jp/',
+    hours: null,
+    source_url: 'https://commons.wikimedia.org/wiki/File:Mugi_river_Tokushima.jpg',
+    license: 'cc_by_open_data',
+    accessed: MUGI_PACK_ACCESSED
+  }
+];
+
+export const MUGI_FACILITIES: readonly FacilityRow[] = [
+  ...loadNakaFacilities(),
+  ...MUGI_EXTRA_FACILITIES
+];

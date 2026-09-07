@@ -43,7 +43,9 @@ export const MATSUSHIGE_SIGHT_PINS = [
   '月見ヶ丘海水浴場',
   '徳島空港',
   '松茂町歴史民俗資料館・人形浄瑠璃芝居資料館',
-  'とくしまとくとくターミナル'
+  'とくしまとくとくターミナル',
+  '加賀須野橋',
+  '不動院'
 ] as const;
 
 function stay(

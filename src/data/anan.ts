@@ -32,13 +32,15 @@ export const ANAN = {
     byodoji: 'https://www.awanavi.jp/archives/spot/2802',
     tairyujiRopeway: 'https://www.awanavi.jp/archives/spot/1896',
     nakagawa: 'https://www.city.anan.tokushima.jp/',
+    akome: 'https://www.city.anan.tokushima.jp/',
+    okayamaCastle: 'https://www.city.anan.tokushima.jp/',
     tabelogCity: 'https://tabelog.com/tokushima/C36204/rstLst/',
     accessed: '2026-09-07'
   }
 } as const;
 
-export const ANAN_EXPECTED_ROW_COUNT = 5;
-export const ANAN_EXPECTED_GEO_COUNT = 5;
+export const ANAN_EXPECTED_ROW_COUNT = 7;
+export const ANAN_EXPECTED_GEO_COUNT = 7;
 
 function wikiPhoto(
   file: string,
@@ -162,6 +164,28 @@ export const ANAN_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '2008-04-05',
     '那賀川（阿南市）',
     'Naka River, Anan'
+  ),
+  'あこめ海岸': wikiPhoto(
+    'anan-akome-beach.jpg',
+    'https://commons.wikimedia.org/wiki/File:Akome_beach_-%E3%81%82%E3%81%93%E3%82%81%E6%B5%B7%E5%B2%B8_-_panoramio.jpg',
+    'CC BY-SA 3.0',
+    'https://creativecommons.org/licenses/by-sa/3.0/',
+    'yano@mama.akari.ne.jp',
+    'https://web.archive.org/web/20161029110233/http://www.panoramio.com/user/5198788',
+    '2014-11-06',
+    'あこめ海岸（阿南市）',
+    'Akome Beach, Anan'
+  ),
+  '岡山城址': wikiPhoto(
+    'anan-okayama-castle.jpg',
+    'https://commons.wikimedia.org/wiki/File:Aratano-okayamajo-castle.jpg',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0/',
+    'AreaPhoto',
+    'https://commons.wikimedia.org/wiki/User:AreaPhoto',
+    '2022-04-30',
+    '岡山城址（阿南市新野町）',
+    'Okayama Castle site, Aratano, Anan'
   ),
 
   "Loup": sourcePhoto(
@@ -401,5 +425,23 @@ export const ANAN_FACILITIES: readonly FacilityRow[] = [
     ANAN.sources.nakagawa,
     33.95,
     134.65
+  ),
+  sight(
+    'anan-sight-06',
+    'あこめ海岸',
+    '徳島県阿南市椿町',
+    null,
+    ANAN.sources.akome,
+    33.82,
+    134.72
+  ),
+  sight(
+    'anan-sight-07',
+    '岡山城址',
+    '徳島県阿南市新野町入田',
+    null,
+    ANAN.sources.okayamaCastle,
+    33.85,
+    134.56
   )
 ];

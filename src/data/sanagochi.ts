@@ -127,6 +127,17 @@ export const SANAGOCHI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = 
     '徳円寺（佐那河内村・しゃくなげ）',
     'Tokuen-ji Temple, Sanagochi Village'
   ),
+  '大川原放牧場': wikiPhoto(
+    'sanagochi-okawara-bokujo.jpg',
+    'https://commons.wikimedia.org/wiki/File:%E5%A4%A7%E5%B7%9D%E5%8E%9F%E6%94%BE%E7%89%A7%E5%A0%B4_-_panoramio.jpg',
+    'CC BY 3.0',
+    'https://creativecommons.org/licenses/by/3.0/',
+    'akiakane',
+    'https://web.archive.org/web/20161023223215/http://www.panoramio.com/user/2285547',
+    '2011-11-05',
+    '大川原放牧場（佐那河内村）',
+    'Okawara Ranch, Sanagochi Village'
+  ),
   "YOME厨房": sourcePhoto(
     'sanagochi-36005383-dish.jpg',
     "YOME厨房の料理写真",

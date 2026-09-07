@@ -127,6 +127,7 @@ import {
 import {
   MUGI_DINING_NAME_SET,
   isMugiOnsenPackRow,
+  isMugiExperiencePackRow,
   isMugiShoppingPackRow,
   isMugiStayPackRow,
   rankMugiSeeRows,
@@ -1036,6 +1037,7 @@ function mugiListings(): PublicListing[] {
     if (MUGI_DINING_NAME_SET.has(row.name_ja)) continue;
     if (
       !isMugiOnsenPackRow(row) &&
+      !isMugiExperiencePackRow(row) &&
       !isMugiStayPackRow(row) &&
       !isMugiShoppingPackRow(row) &&
       !isSightsCategory(row.category)
@@ -1049,13 +1051,16 @@ function mugiListings(): PublicListing[] {
   }
   const ranked = rankMugiSeeRows(pack);
   const onsen = pack.filter(isMugiOnsenPackRow);
+  const experience = pack.filter(isMugiExperiencePackRow);
   const stay = pack.filter(isMugiStayPackRow);
-  for (const row of [...stay, ...onsen, ...ranked]) {
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
     const kind: ListingKind = isMugiOnsenPackRow(row)
       ? 'onsen'
-      : isMugiStayPackRow(row)
-        ? 'stay'
-        : 'sights';
+      : isMugiExperiencePackRow(row)
+        ? 'experience'
+        : isMugiStayPackRow(row)
+          ? 'stay'
+          : 'sights';
     out.push(fromPack(row, 'mugi', kind, mugiSightPhoto(row.name_ja)));
   }
   return out;

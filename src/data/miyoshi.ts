@@ -163,6 +163,17 @@ export const MIYOSHI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '箸蔵寺の本堂（三好市池田町）',
     'Hashikura-ji main hall, Ikeda-cho, Miyoshi'
   ),
+  '箸蔵山ロープウェイ株式会社': wikiPhoto(
+    'miyoshi-hashikura-ropeway.jpg',
+    'https://commons.wikimedia.org/wiki/File:Hasikuraropeway_04.jpg',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0/',
+    'Dokudami',
+    'https://commons.wikimedia.org/wiki/User:Dokudami',
+    '2018-11-29',
+    '箸蔵山ロープウェイ（三好市）',
+    'Hashikurasan Ropeway, Miyoshi'
+  ),
   '池田へそっ湖大橋': wikiPhoto(
     'ikeda-hesokko-ohashi.jpg',
     'https://commons.wikimedia.org/wiki/File:Ikedahesokkooohasi_20230708_1.jpg',

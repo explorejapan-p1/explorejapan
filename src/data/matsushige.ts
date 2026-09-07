@@ -140,6 +140,28 @@ export const MATSUSHIGE_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> =
     '松茂町歴史民俗資料館・人形浄瑠璃芝居資料館',
     'Matsushige Historical Folk Museum and Joruri Puppet Museum'
   ),
+  '加賀須野橋': wikiPhoto(
+    'matsushige-kagasuno-bridge.jpg',
+    'https://commons.wikimedia.org/wiki/File:%E5%8A%A0%E8%B3%80%E9%A0%88%E9%87%8E%E6%A9%8B_20210424_01.jpg',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0/',
+    'Shizuha',
+    'https://commons.wikimedia.org/wiki/User:Shizuha',
+    '2021-04-24',
+    '加賀須野橋（松茂町）',
+    'Kagasuno Bridge, Matsushige Town'
+  ),
+  '不動院': wikiPhoto(
+    'matsushige-fudouin.jpg',
+    'https://commons.wikimedia.org/wiki/File:Hudouin0.jpg',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0/',
+    'Dokudami',
+    'https://commons.wikimedia.org/wiki/User:Dokudami',
+    '2014-10-10',
+    '不動院の不動堂（松茂町）',
+    'Fudō-in Temple, Matsushige Town'
+  ),
   '宝ラーメン 徳島阿波おどり空港店': sourcePhoto(
     'matsushige-36005033-dish.jpg',
     '宝ラーメン 徳島阿波おどり空港店の料理写真',

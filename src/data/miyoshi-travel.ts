@@ -33,7 +33,7 @@ export const MIYOSHI_TRAVEL_SOURCES = {
 export const MIYOSHI_ONSEN_PACK_NAMES = ['和の宿 ホテル祖谷温泉', '湯元新祖谷温泉 ホテルかずら橋'] as const;
 
 export const MIYOSHI_ONSEN_PACK_SET: ReadonlySet<string> = new Set(MIYOSHI_ONSEN_PACK_NAMES);
-export const MIYOSHI_EXPERIENCE_PACK_NAMES = ['大歩危峡まんなか/大歩危峡観光遊覧船'] as const;
+export const MIYOSHI_EXPERIENCE_PACK_NAMES = ['大歩危峡まんなか/大歩危峡観光遊覧船', '箸蔵山ロープウェイ株式会社'] as const;
 export const MIYOSHI_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(MIYOSHI_EXPERIENCE_PACK_NAMES);
 
 /** Exact tourism-pack names shown on 宿泊, not 観光. Room/bath/view photo required. */

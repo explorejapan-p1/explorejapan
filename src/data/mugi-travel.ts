@@ -3,7 +3,7 @@
  * Stay from NAVITIME 宿泊一覧 + 楽天トラベル share/room images (出典). Rank strongest first.
  * Onsen: omit without bath photo (honest 0).
  * Dining from 食べログ 牟岐町 (C36383) public shop pages with FOOD dish heroes.
- * Shopping / experience / commerce: honest 0 — no remappable pack photos this pass.
+ * Experience: モラスコむぎ remapped (museum). Shopping/commerce honest 0.
  * PHOTO GAPS (honest 0):
  * 宿泊/温泉/買物/商業/体験: no room/bath/shop exterior 出典 on pack names; Tabelog dining FOOD only.
  * 観光 without Commons: pack tourism is thin (モラスコむぎ + cultural 出羽島/松坂 already mapped).
@@ -32,6 +32,8 @@ export const MUGI_TRAVEL_SOURCES = {
 
 /** Exact tourism-pack names shown on 温泉, not 観光. Bath photo required — none yet. */
 export const MUGI_ONSEN_PACK_NAMES = [] as const;
+export const MUGI_EXPERIENCE_PACK_NAMES = ['牟岐町モデル木造施設 モラスコむぎ'] as const;
+export const MUGI_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(MUGI_EXPERIENCE_PACK_NAMES);
 
 export const MUGI_ONSEN_PACK_SET: ReadonlySet<string> = new Set(
   MUGI_ONSEN_PACK_NAMES
@@ -51,7 +53,7 @@ export const MUGI_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(
   MUGI_SHOPPING_PACK_NAMES
 );
 
-export const MUGI_SIGHT_PINS = ['牟岐町モデル木造施設 モラスコむぎ', '出羽島伝統的建造物群保存地区', '出羽島港口の東西の大波止の石積み'] as const;
+export const MUGI_SIGHT_PINS = ['出羽島伝統的建造物群保存地区', '出羽島港口の東西の大波止の石積み', '松坂隧道', '牟岐八幡神社', '牟岐川'] as const;
 
 function stay(
   id: string,
@@ -301,11 +303,12 @@ export function isMugiOnsenPackRow(row: {
   return MUGI_ONSEN_PACK_SET.has(row.name_ja);
 }
 
-export function isMugiExperiencePackRow(_row: {
+export function isMugiExperiencePackRow(row: {
   category: string;
   name_ja: string;
 }): boolean {
-  return false;
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return MUGI_EXPERIENCE_PACK_SET.has(row.name_ja);
 }
 
 export function isMugiStayPackRow(_row: {
@@ -340,6 +343,7 @@ export function rankMugiSeeRows<T extends Rankable>(rows: readonly T[]): T[] {
     (row) =>
       isSightsCategory(row.category) &&
       !isMugiOnsenPackRow(row) &&
+      !isMugiExperiencePackRow(row) &&
       !isMugiStayPackRow(row) &&
       !isMugiShoppingPackRow(row) &&
       !MUGI_DINING_NAME_SET.has(row.name_ja)
@@ -396,6 +400,7 @@ export function mugiTopChipForRow(row: {
   name_ja: string;
 }): FilterId {
   if (isMugiOnsenPackRow(row)) return 'onsen';
+  if (isMugiExperiencePackRow(row)) return 'experience';
   if (isMugiStayPackRow(row)) return 'stay';
   if (isMugiShoppingPackRow(row)) return 'shopping';
   if (MUGI_DINING_NAME_SET.has(row.name_ja)) return 'dining';
@@ -415,6 +420,7 @@ export function mugiPackRowMatchesFilter(
     return (
       isSightsCategory(category) &&
       !isMugiOnsenPackRow(row) &&
+      !isMugiExperiencePackRow(row) &&
       !isMugiStayPackRow(row) &&
       !isMugiShoppingPackRow(row) &&
       !MUGI_DINING_NAME_SET.has(nameJa)
@@ -422,7 +428,7 @@ export function mugiPackRowMatchesFilter(
   }
   if (filter === 'infra') return isInfraCategory(category);
   if (filter === 'onsen') return isMugiOnsenPackRow(row);
-  if (filter === 'experience') return false;
+  if (filter === 'experience') return isMugiExperiencePackRow(row);
   if (filter === 'stay') return isMugiStayPackRow(row);
   if (filter === 'dining' || filter === 'shopping' || filter === 'commerce') return false;
   return category === filter;
