@@ -63,6 +63,7 @@ import {KOCHI_TRAVEL_ACCESSED} from '@/data/kochi-travel';
 import {NANKOKU_TRAVEL_ACCESSED} from '@/data/nankoku-travel';
 import {KONAN_TRAVEL_ACCESSED} from '@/data/konan-travel';
 import {KAMI_TRAVEL_ACCESSED} from '@/data/kami-travel';
+import {INO_TRAVEL_ACCESSED} from '@/data/ino-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1437,6 +1438,26 @@ export function MimaFacilityLookup({
 
 
           
+
+          
+          ) : town.slug === 'ino' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（にこ淵・いの町紙の博物館・伊野駅・名越屋沈下橋・伊野停留場・紙のこいのぼり）。
+                宿泊は楽天トラベルの客室写真（{INO_TRAVEL_ACCESSED}）。
+                飲食は食べログいの町の公開店ページ（{INO_TRAVEL_ACCESSED}）。
+                温泉は0件（客室写真の宿のみ・大浴場出典キー無し）。体験は道の駅土佐和紙工芸村（Commons）。買物・商業は0件。高知県5つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Nikobuchi, Ino Paper Museum, JR Ino Station, Nagoya Chinkabashi, Tosaden Ino Station, paper carp streamers).
+                Lodging from Rakuten Travel room photos ({INO_TRAVEL_ACCESSED}).
+                Dining from Tabelog Ino shop pages ({INO_TRAVEL_ACCESSED}).
+                Onsen: 0 (room-still stay only; no attributable bath keys). Experience: Michinoeki Tosa Washi Craft Village (Commons). Shopping/commerce: 0. Fifth LIVE Kochi hub.
+              </>
+            )
+
+
           ) : town.slug === 'kami' ? (
             locale === 'ja' ? (
               <>

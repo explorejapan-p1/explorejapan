@@ -482,6 +482,18 @@ import {
   resolveKamiFilter
 } from './kami-travel';
 
+import {
+  isInoExperiencePackRow,
+  isInoOnsenPackRow,
+  isInoStayPackRow,
+  inoPackRowMatchesFilter,
+  inoSightPhoto,
+  inoSourcedHook,
+  inoTopChipForRow,
+  rankInoSeeRows,
+  resolveInoFilter
+} from './ino-travel';
+
 
 
 
@@ -1055,6 +1067,19 @@ const MANNO_HELPERS: LookupHelpers = {
 
 
 
+
+const INO_HELPERS: LookupHelpers = {
+  resolveFilter: resolveInoFilter,
+  rankSeeRows: rankInoSeeRows,
+  packRowMatchesFilter: inoPackRowMatchesFilter,
+  isOnsenPackRow: isInoOnsenPackRow,
+  isExperiencePackRow: isInoExperiencePackRow,
+  isStayPackRow: isInoStayPackRow,
+  sightPhoto: inoSightPhoto,
+  sourcedHook: inoSourcedHook,
+  topChipForRow: inoTopChipForRow
+};
+
 const KAMI_HELPERS: LookupHelpers = {
   resolveFilter: resolveKamiFilter,
   rankSeeRows: rankKamiSeeRows,
@@ -1166,5 +1191,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'nankoku') return NANKOKU_HELPERS;
   if (slug === 'konan') return KONAN_HELPERS;
   if (slug === 'kami') return KAMI_HELPERS;
+  if (slug === 'ino') return INO_HELPERS;
   return MIMA_HELPERS;
 }

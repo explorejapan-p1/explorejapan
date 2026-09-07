@@ -40,6 +40,7 @@ import {KOCHI, KOCHI_PLACE_PHOTO} from '@/data/kochi';
 import {NANKOKU, NANKOKU_PLACE_PHOTO} from '@/data/nankoku';
 import {KONAN, KONAN_PLACE_PHOTO} from '@/data/konan';
 import {KAMI, KAMI_PLACE_PHOTO} from '@/data/kami';
+import {INO, INO_PLACE_PHOTO} from '@/data/ino';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -149,6 +150,7 @@ function localityJa(slug: string): string {
   if (slug === 'nankoku') return NANKOKU.nameJa;
   if (slug === 'konan') return KONAN.nameJa;
   if (slug === 'kami') return KAMI.nameJa;
+  if (slug === 'ino') return INO.nameJa;
   return MIMA.nameJa;
 }
 
@@ -197,6 +199,7 @@ function localityEn(slug: string): string {
   if (slug === 'nankoku') return NANKOKU.nameEn;
   if (slug === 'konan') return KONAN.nameEn;
   if (slug === 'kami') return KAMI.nameEn;
+  if (slug === 'ino') return INO.nameEn;
   return MIMA.nameEn;
 }
 
@@ -3427,6 +3430,66 @@ export function kamiGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '香美市の案内' : 'Places in Kami City',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+export function inoGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/ino');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('ino');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? INO.nameJa : INO.nameEn,
+        alternateName: isJa ? INO.nameEn : INO.nameJa,
+        identifier: INO.jis,
+        url,
+        image: photoAbs(INO_PLACE_PHOTO),
+        sameAs: [INO.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '1700番地1' : '1700-1',
+          addressLocality: isJa ? INO.nameJa : INO.nameEn,
+          addressRegion: isJa ? INO.prefectureJa : INO.prefectureEn,
+          postalCode: INO.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? INO.prefectureJa : INO.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? INO.nameJa : INO.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? INO.prefectureJa : INO.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? INO.nameJa : INO.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? 'いの町の案内' : 'Places in Ino Town',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

@@ -311,6 +311,7 @@ import {KOCHI, KOCHI_PLACE_PHOTO, KOCHI_FACILITIES, KOCHI_EXPECTED_GEO_COUNT, KO
 import {NANKOKU, NANKOKU_PLACE_PHOTO, NANKOKU_FACILITIES, NANKOKU_EXPECTED_GEO_COUNT, NANKOKU_EXPECTED_ROW_COUNT} from './nankoku';
 import {KONAN, KONAN_PLACE_PHOTO, KONAN_FACILITIES, KONAN_EXPECTED_GEO_COUNT, KONAN_EXPECTED_ROW_COUNT} from './konan';
 import {KAMI, KAMI_PLACE_PHOTO, KAMI_FACILITIES, KAMI_EXPECTED_GEO_COUNT, KAMI_EXPECTED_ROW_COUNT} from './kami';
+import {INO, INO_PLACE_PHOTO, INO_FACILITIES, INO_EXPECTED_GEO_COUNT, INO_EXPECTED_ROW_COUNT} from './ino';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -536,6 +537,13 @@ import {
   KAMI_TRAVEL_COMMERCE,
   KAMI_TRAVEL_ALL,
 } from './kami-travel';
+import {
+  INO_TRAVEL_DINING,
+  INO_TRAVEL_STAY,
+  INO_TRAVEL_SHOPPING,
+  INO_TRAVEL_COMMERCE,
+  INO_TRAVEL_ALL,
+} from './ino-travel';
 
 
 
@@ -1913,6 +1921,40 @@ export const MANNO_LOOKUP: LookupTown = {
 
 
 
+
+export const INO_LOOKUP: LookupTown = {
+  slug: 'ino',
+  prefectureSlug: 'kochi',
+  jis: INO.jis,
+  nameJa: INO.nameJa,
+  nameEn: INO.nameEn,
+  heroPhoto: INO_PLACE_PHOTO,
+  photoCiteJa: '写真はにこ淵（仁淀ブルー）。かるちる、CC0。File:Niko_Buchi_deep_water_No.1.jpg。',
+  photoCiteEn: 'Photo: Nikobuchi (Niyodo Blue). かるちる, CC0. File:Niko_Buchi_deep_water_No.1.jpg.',
+  rows: INO_FACILITIES,
+  expectedGeo: INO_EXPECTED_GEO_COUNT,
+  expectedRows: INO_EXPECTED_ROW_COUNT,
+  travelDining: INO_TRAVEL_DINING,
+  travelStay: INO_TRAVEL_STAY,
+  travelShopping: INO_TRAVEL_SHOPPING,
+  travelCommerce: INO_TRAVEL_COMMERCE,
+  travelAll: INO_TRAVEL_ALL,
+  coverageJa:
+    'いの町（JIS 39386）観光6・宿泊1・飲食16・体験1（出典写真がある施設のみ）。温泉・買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載。客室写真の宿のみで大浴場出典キー無しのため温泉0）。オープンデータ凍結パックは未掲載。高知県5つ目のLIVEハブ。',
+  coverageEn:
+    'Ino Town (JIS 39386), 6 tourism + 1 stay + 16 dining + 1 experience with sourced photos. Onsen, shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished (room-still stay only → onsen 0). No frozen open-data pack. Fifth LIVE Kochi hub.',
+  mapLabelJa: 'いの町の出典座標7件',
+  mapLabelEn: '7 sourced coordinates in Ino Town',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons等出典座標7件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 7 sourced coordinates for town/official facilities (accessed 2026-09-08).',
+  licenseNoteJa:
+    '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are town-site listings, facts from town.ino.kochi.jp / inofan.jp, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
 export const KAMI_LOOKUP: LookupTown = {
   slug: 'kami',
   prefectureSlug: 'kochi',
@@ -2235,7 +2277,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   kochi: KOCHI_LOOKUP,
   nankoku: NANKOKU_LOOKUP,
   konan: KONAN_LOOKUP,
-  kami: KAMI_LOOKUP
+  kami: KAMI_LOOKUP,
+  ino: INO_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
