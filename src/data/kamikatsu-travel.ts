@@ -32,6 +32,9 @@ export const KAMIKATSU_ONSEN_PACK_NAMES = [] as const;
 export const KAMIKATSU_ONSEN_PACK_SET: ReadonlySet<string> = new Set(
   KAMIKATSU_ONSEN_PACK_NAMES
 );
+export const KAMIKATSU_EXPERIENCE_PACK_NAMES = ['上勝町ゼロ・ウェイストセンターWHY'] as const;
+export const KAMIKATSU_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(KAMIKATSU_EXPERIENCE_PACK_NAMES);
+
 
 /** Exact tourism-pack names shown on 宿泊, not 観光. Room/bath photo required — none yet. */
 export const KAMIKATSU_STAY_PACK_NAMES = [] as const;
@@ -244,11 +247,9 @@ export function isKamikatsuOnsenPackRow(row: {
   return KAMIKATSU_ONSEN_PACK_SET.has(row.name_ja);
 }
 
-export function isKamikatsuExperiencePackRow(_row: {
-  category: string;
-  name_ja: string;
-}): boolean {
-  return false;
+export function isKamikatsuExperiencePackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return KAMIKATSU_EXPERIENCE_PACK_SET.has(row.name_ja);
 }
 
 export function isKamikatsuStayPackRow(_row: {
@@ -283,6 +284,7 @@ export function rankKamikatsuSeeRows<T extends Rankable>(rows: readonly T[]): T[
     (row) =>
       isSightsCategory(row.category) &&
       !isKamikatsuOnsenPackRow(row) &&
+      !isKamikatsuExperiencePackRow(row) &&
       !isKamikatsuStayPackRow(row) &&
       !isKamikatsuShoppingPackRow(row) &&
       !KAMIKATSU_DINING_NAME_SET.has(row.name_ja)
@@ -338,6 +340,7 @@ export function kamikatsuTopChipForRow(row: {
   category: string;
   name_ja: string;
 }): FilterId {
+  if (isKamikatsuExperiencePackRow(row)) return 'experience';
   if (isKamikatsuOnsenPackRow(row)) return 'onsen';
   if (isKamikatsuStayPackRow(row)) return 'stay';
   if (isKamikatsuShoppingPackRow(row)) return 'shopping';
@@ -358,6 +361,7 @@ export function kamikatsuPackRowMatchesFilter(
     return (
       isSightsCategory(category) &&
       !isKamikatsuOnsenPackRow(row) &&
+      !isKamikatsuExperiencePackRow(row) &&
       !isKamikatsuStayPackRow(row) &&
       !isKamikatsuShoppingPackRow(row) &&
       !KAMIKATSU_DINING_NAME_SET.has(nameJa)
@@ -365,7 +369,7 @@ export function kamikatsuPackRowMatchesFilter(
   }
   if (filter === 'infra') return isInfraCategory(category);
   if (filter === 'onsen') return isKamikatsuOnsenPackRow(row);
-  if (filter === 'experience') return false;
+  if (filter === 'experience') return isKamikatsuExperiencePackRow(row);
   if (filter === 'stay') return isKamikatsuStayPackRow(row);
   if (filter === 'dining' || filter === 'shopping' || filter === 'commerce') return false;
   return category === filter;

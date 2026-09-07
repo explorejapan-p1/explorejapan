@@ -39,6 +39,7 @@ export const KOMATSUSHIMA_SIGHT_PINS = [
   '金長神社',
   '立江寺',
   '恩山寺',
+  '豊国神社',
 ] as const;
 
 function stay(

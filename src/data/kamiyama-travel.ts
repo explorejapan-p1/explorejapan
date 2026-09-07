@@ -33,6 +33,9 @@ export const KAMIYAMA_ONSEN_PACK_NAMES = ['神山温泉いやしの湯'] as cons
 export const KAMIYAMA_ONSEN_PACK_SET: ReadonlySet<string> = new Set(
   KAMIYAMA_ONSEN_PACK_NAMES
 );
+export const KAMIYAMA_EXPERIENCE_PACK_NAMES = ['徳島県立 神山森林公園 イルローザの森'] as const;
+export const KAMIYAMA_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(KAMIYAMA_EXPERIENCE_PACK_NAMES);
+
 
 /** Exact tourism-pack names shown on 宿泊, not 観光. Room/bath photo required. */
 export const KAMIYAMA_STAY_PACK_NAMES = ['神山温泉ホテル四季の里'] as const;
@@ -243,11 +246,9 @@ export function isKamiyamaOnsenPackRow(row: {
   return KAMIYAMA_ONSEN_PACK_SET.has(row.name_ja);
 }
 
-export function isKamiyamaExperiencePackRow(_row: {
-  category: string;
-  name_ja: string;
-}): boolean {
-  return false;
+export function isKamiyamaExperiencePackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return KAMIYAMA_EXPERIENCE_PACK_SET.has(row.name_ja);
 }
 
 export function isKamiyamaStayPackRow(row: {
@@ -283,6 +284,7 @@ export function rankKamiyamaSeeRows<T extends Rankable>(rows: readonly T[]): T[]
     (row) =>
       isSightsCategory(row.category) &&
       !isKamiyamaOnsenPackRow(row) &&
+      !isKamiyamaExperiencePackRow(row) &&
       !isKamiyamaStayPackRow(row) &&
       !isKamiyamaShoppingPackRow(row) &&
       !KAMIYAMA_DINING_NAME_SET.has(row.name_ja)
@@ -338,6 +340,7 @@ export function kamiyamaTopChipForRow(row: {
   category: string;
   name_ja: string;
 }): FilterId {
+  if (isKamiyamaExperiencePackRow(row)) return 'experience';
   if (isKamiyamaOnsenPackRow(row)) return 'onsen';
   if (isKamiyamaStayPackRow(row)) return 'stay';
   if (isKamiyamaShoppingPackRow(row)) return 'shopping';
@@ -358,6 +361,7 @@ export function kamiyamaPackRowMatchesFilter(
     return (
       isSightsCategory(category) &&
       !isKamiyamaOnsenPackRow(row) &&
+      !isKamiyamaExperiencePackRow(row) &&
       !isKamiyamaStayPackRow(row) &&
       !isKamiyamaShoppingPackRow(row) &&
       !KAMIYAMA_DINING_NAME_SET.has(nameJa)
@@ -365,7 +369,7 @@ export function kamiyamaPackRowMatchesFilter(
   }
   if (filter === 'infra') return isInfraCategory(category);
   if (filter === 'onsen') return isKamiyamaOnsenPackRow(row);
-  if (filter === 'experience') return false;
+  if (filter === 'experience') return isKamiyamaExperiencePackRow(row);
   if (filter === 'stay') return isKamiyamaStayPackRow(row);
   if (filter === 'dining' || filter === 'shopping' || filter === 'commerce') return false;
   return category === filter;

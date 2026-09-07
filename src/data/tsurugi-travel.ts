@@ -45,6 +45,8 @@ export const TSURUGI_STAY_PACK_NAMES = [
 export const TSURUGI_STAY_PACK_SET: ReadonlySet<string> = new Set(TSURUGI_STAY_PACK_NAMES);
 
 export const TSURUGI_ONSEN_PACK_NAME = '剣山木綿麻温泉（つるぎさんゆうまおんせん）' as const;
+export const TSURUGI_EXPERIENCE_PACK_NAMES = ['ラ・フォーレつるぎ山'] as const;
+export const TSURUGI_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(TSURUGI_EXPERIENCE_PACK_NAMES);
 
 export const TSURUGI_SIGHT_PINS = ['二層うだつの町並み', '旧永井家庄屋屋敷', '織本屋'] as const;
 
@@ -247,8 +249,9 @@ export function isTsurugiOnsenPackRow(row: {category: string; name_ja: string}):
   return row.name_ja === TSURUGI_ONSEN_PACK_NAME;
 }
 
-export function isTsurugiExperiencePackRow(_row: {category: string; name_ja: string}): boolean {
-  return false;
+export function isTsurugiExperiencePackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return TSURUGI_EXPERIENCE_PACK_SET.has(row.name_ja);
 }
 
 export function isTsurugiStayPackRow(row: {category: string; name_ja: string}): boolean {
@@ -273,6 +276,7 @@ export function rankTsurugiSeeRows<T extends Rankable>(rows: readonly T[]): T[] 
     (row) =>
       isSightsCategory(row.category) &&
       !isTsurugiOnsenPackRow(row) &&
+      !isTsurugiExperiencePackRow(row) &&
       !isTsurugiStayPackRow(row)
   );
   const used = new Set<string>();
@@ -317,6 +321,7 @@ export function tsurugiSourcedHook(
 }
 
 export function tsurugiTopChipForRow(row: {category: string; name_ja: string}): FilterId {
+  if (isTsurugiExperiencePackRow(row)) return 'experience';
   if (isTsurugiOnsenPackRow(row)) return 'onsen';
   if (isTsurugiStayPackRow(row)) return 'stay';
   if (isSightsCategory(row.category)) return 'sights';
@@ -336,7 +341,7 @@ export function tsurugiPackRowMatchesFilter(
   }
   if (filter === 'infra') return isInfraCategory(category);
   if (filter === 'onsen') return isTsurugiOnsenPackRow(row);
-  if (filter === 'experience') return false;
+  if (filter === 'experience') return isTsurugiExperiencePackRow(row);
   if (filter === 'stay') return isTsurugiStayPackRow(row);
   if (filter === 'dining' || filter === 'shopping' || filter === 'commerce') return false;
   return category === filter;

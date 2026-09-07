@@ -15,13 +15,15 @@ import {
   isTsurugiOnsenPackRow,
   isTsurugiStayPackRow,
   rankTsurugiSeeRows,
-  tsurugiSightPhoto
+  tsurugiSightPhoto,
+  isTsurugiExperiencePackRow,
 } from '@/data/tsurugi-travel';
 import {
   isYoshinogawaOnsenPackRow,
   isYoshinogawaStayPackRow,
   rankYoshinogawaSeeRows,
-  yoshinogawaSightPhoto
+  yoshinogawaSightPhoto,
+  isYoshinogawaExperiencePackRow,
 } from '@/data/yoshinogawa-travel';
 
 import {
@@ -51,14 +53,16 @@ import {
   isHigashimiyoshiOnsenPackRow,
   isHigashimiyoshiStayPackRow,
   rankHigashimiyoshiSeeRows,
-  higashimiyoshiSightPhoto
+  higashimiyoshiSightPhoto,
+  isHigashimiyoshiExperiencePackRow,
 } from '@/data/higashimiyoshi-travel';
 
 import {
   isKitajimaOnsenPackRow,
   isKitajimaStayPackRow,
   rankKitajimaSeeRows,
-  kitajimaSightPhoto
+  kitajimaSightPhoto,
+  isKitajimaExperiencePackRow,
 } from '@/data/kitajima-travel';
 
 import {
@@ -80,7 +84,8 @@ import {
   isKamiitaStayPackRow,
   isKamiitaShoppingPackRow,
   rankKamiitaSeeRows,
-  kamiitaSightPhoto
+  kamiitaSightPhoto,
+  isKamiitaExperiencePackRow,
 } from '@/data/kamiita-travel';
 import {
   isKamiyamaOnsenPackRow,
@@ -88,7 +93,8 @@ import {
   isKamiyamaShoppingPackRow,
   rankKamiyamaSeeRows,
   kamiyamaSightPhoto,
-  KAMIYAMA_DINING_NAME_SET
+  KAMIYAMA_DINING_NAME_SET,
+  isKamiyamaExperiencePackRow,
 } from '@/data/kamiyama-travel';
 
 import {
@@ -97,7 +103,8 @@ import {
   isKatsuuraShoppingPackRow,
   rankKatsuuraSeeRows,
   katsuuraSightPhoto,
-  KATSUURA_DINING_NAME_SET
+  KATSUURA_DINING_NAME_SET,
+  isKatsuuraExperiencePackRow,
 } from '@/data/katsuura-travel';
 import {
   isKamikatsuOnsenPackRow,
@@ -105,7 +112,8 @@ import {
   isKamikatsuStayPackRow,
   KAMIKATSU_DINING_NAME_SET,
   kamikatsuSightPhoto,
-  rankKamikatsuSeeRows
+  rankKamikatsuSeeRows,
+  isKamikatsuExperiencePackRow,
 } from '@/data/kamikatsu-travel';
 import {
   isSanagochiOnsenPackRow,
@@ -309,6 +317,7 @@ function tsurugiListings(): PublicListing[] {
   for (const row of town.rows) {
     if (
       !isTsurugiOnsenPackRow(row) &&
+      !isTsurugiExperiencePackRow(row) &&
       !isTsurugiStayPackRow(row) &&
       !isSightsCategory(row.category)
     ) {
@@ -320,12 +329,15 @@ function tsurugiListings(): PublicListing[] {
     pack.push(row);
   }
   const ranked = rankTsurugiSeeRows(pack);
+  const experience = pack.filter(isTsurugiExperiencePackRow);
   const onsen = pack.filter(isTsurugiOnsenPackRow);
   const stay = pack.filter(isTsurugiStayPackRow);
-  for (const row of [...stay, ...onsen, ...ranked]) {
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
     const kind: ListingKind = isTsurugiOnsenPackRow(row)
       ? 'onsen'
-      : isTsurugiStayPackRow(row)
+      : isTsurugiExperiencePackRow(row)
+        ? 'experience'
+        : isTsurugiStayPackRow(row)
         ? 'stay'
         : 'sights';
     out.push(fromPack(row, 'tsurugi', kind, tsurugiSightPhoto(row.name_ja)));
@@ -344,6 +356,7 @@ function yoshinogawaListings(): PublicListing[] {
   for (const row of town.rows) {
     if (
       !isYoshinogawaOnsenPackRow(row) &&
+      !isYoshinogawaExperiencePackRow(row) &&
       !isYoshinogawaStayPackRow(row) &&
       !isSightsCategory(row.category)
     ) {
@@ -355,12 +368,15 @@ function yoshinogawaListings(): PublicListing[] {
     pack.push(row);
   }
   const ranked = rankYoshinogawaSeeRows(pack);
+  const experience = pack.filter(isYoshinogawaExperiencePackRow);
   const onsen = pack.filter(isYoshinogawaOnsenPackRow);
   const stay = pack.filter(isYoshinogawaStayPackRow);
-  for (const row of [...stay, ...onsen, ...ranked]) {
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
     const kind: ListingKind = isYoshinogawaOnsenPackRow(row)
       ? 'onsen'
-      : isYoshinogawaStayPackRow(row)
+      : isYoshinogawaExperiencePackRow(row)
+        ? 'experience'
+        : isYoshinogawaStayPackRow(row)
         ? 'stay'
         : 'sights';
     out.push(fromPack(row, 'yoshinogawa', kind, yoshinogawaSightPhoto(row.name_ja)));
@@ -454,6 +470,7 @@ function higashimiyoshiListings(): PublicListing[] {
   for (const row of town.rows) {
     if (
       !isHigashimiyoshiOnsenPackRow(row) &&
+      !isHigashimiyoshiExperiencePackRow(row) &&
       !isHigashimiyoshiStayPackRow(row) &&
       !isSightsCategory(row.category)
     ) {
@@ -465,12 +482,15 @@ function higashimiyoshiListings(): PublicListing[] {
     pack.push(row);
   }
   const ranked = rankHigashimiyoshiSeeRows(pack);
+  const experience = pack.filter(isHigashimiyoshiExperiencePackRow);
   const onsen = pack.filter(isHigashimiyoshiOnsenPackRow);
   const stay = pack.filter(isHigashimiyoshiStayPackRow);
-  for (const row of [...stay, ...onsen, ...ranked]) {
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
     const kind: ListingKind = isHigashimiyoshiOnsenPackRow(row)
       ? 'onsen'
-      : isHigashimiyoshiStayPackRow(row)
+      : isHigashimiyoshiExperiencePackRow(row)
+        ? 'experience'
+        : isHigashimiyoshiStayPackRow(row)
         ? 'stay'
         : 'sights';
     out.push(fromPack(row, 'higashimiyoshi', kind, higashimiyoshiSightPhoto(row.name_ja)));
@@ -528,6 +548,7 @@ function kitajimaListings(): PublicListing[] {
   for (const row of town.rows) {
     if (
       !isKitajimaOnsenPackRow(row) &&
+      !isKitajimaExperiencePackRow(row) &&
       !isKitajimaStayPackRow(row) &&
       !isSightsCategory(row.category)
     ) {
@@ -539,12 +560,15 @@ function kitajimaListings(): PublicListing[] {
     pack.push(row);
   }
   const ranked = rankKitajimaSeeRows(pack);
+  const experience = pack.filter(isKitajimaExperiencePackRow);
   const onsen = pack.filter(isKitajimaOnsenPackRow);
   const stay = pack.filter(isKitajimaStayPackRow);
-  for (const row of [...stay, ...onsen, ...ranked]) {
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
     const kind: ListingKind = isKitajimaOnsenPackRow(row)
       ? 'onsen'
-      : isKitajimaStayPackRow(row)
+      : isKitajimaExperiencePackRow(row)
+        ? 'experience'
+        : isKitajimaStayPackRow(row)
         ? 'stay'
         : 'sights';
     out.push(fromPack(row, 'kitajima', kind, kitajimaSightPhoto(row.name_ja)));
@@ -711,6 +735,7 @@ function kamiitaListings(): PublicListing[] {
   for (const row of town.rows) {
     if (
       !isKamiitaOnsenPackRow(row) &&
+      !isKamiitaExperiencePackRow(row) &&
       !isKamiitaStayPackRow(row) &&
       !isKamiitaShoppingPackRow(row) &&
       !isSightsCategory(row.category)
@@ -723,12 +748,15 @@ function kamiitaListings(): PublicListing[] {
     pack.push(row);
   }
   const ranked = rankKamiitaSeeRows(pack);
+  const experience = pack.filter(isKamiitaExperiencePackRow);
   const onsen = pack.filter(isKamiitaOnsenPackRow);
   const stay = pack.filter(isKamiitaStayPackRow);
-  for (const row of [...stay, ...onsen, ...ranked]) {
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
     const kind: ListingKind = isKamiitaOnsenPackRow(row)
       ? 'onsen'
-      : isKamiitaStayPackRow(row)
+      : isKamiitaExperiencePackRow(row)
+        ? 'experience'
+        : isKamiitaStayPackRow(row)
         ? 'stay'
         : 'sights';
     out.push(fromPack(row, 'kamiita', kind, kamiitaSightPhoto(row.name_ja)));
@@ -748,6 +776,7 @@ function kamiyamaListings(): PublicListing[] {
     if (KAMIYAMA_DINING_NAME_SET.has(row.name_ja)) continue;
     if (
       !isKamiyamaOnsenPackRow(row) &&
+      !isKamiyamaExperiencePackRow(row) &&
       !isKamiyamaStayPackRow(row) &&
       !isKamiyamaShoppingPackRow(row) &&
       !isSightsCategory(row.category)
@@ -760,12 +789,15 @@ function kamiyamaListings(): PublicListing[] {
     pack.push(row);
   }
   const ranked = rankKamiyamaSeeRows(pack);
+  const experience = pack.filter(isKamiyamaExperiencePackRow);
   const onsen = pack.filter(isKamiyamaOnsenPackRow);
   const stay = pack.filter(isKamiyamaStayPackRow);
-  for (const row of [...stay, ...onsen, ...ranked]) {
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
     const kind: ListingKind = isKamiyamaOnsenPackRow(row)
       ? 'onsen'
-      : isKamiyamaStayPackRow(row)
+      : isKamiyamaExperiencePackRow(row)
+        ? 'experience'
+        : isKamiyamaStayPackRow(row)
         ? 'stay'
         : 'sights';
     out.push(fromPack(row, 'kamiyama', kind, kamiyamaSightPhoto(row.name_ja)));
@@ -785,6 +817,7 @@ function katsuuraListings(): PublicListing[] {
     if (KATSUURA_DINING_NAME_SET.has(row.name_ja)) continue;
     if (
       !isKatsuuraOnsenPackRow(row) &&
+      !isKatsuuraExperiencePackRow(row) &&
       !isKatsuuraStayPackRow(row) &&
       !isKatsuuraShoppingPackRow(row) &&
       !isSightsCategory(row.category)
@@ -797,12 +830,15 @@ function katsuuraListings(): PublicListing[] {
     pack.push(row);
   }
   const ranked = rankKatsuuraSeeRows(pack);
+  const experience = pack.filter(isKatsuuraExperiencePackRow);
   const onsen = pack.filter(isKatsuuraOnsenPackRow);
   const stay = pack.filter(isKatsuuraStayPackRow);
-  for (const row of [...stay, ...onsen, ...ranked]) {
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
     const kind: ListingKind = isKatsuuraOnsenPackRow(row)
       ? 'onsen'
-      : isKatsuuraStayPackRow(row)
+      : isKatsuuraExperiencePackRow(row)
+        ? 'experience'
+        : isKatsuuraStayPackRow(row)
         ? 'stay'
         : 'sights';
     out.push(fromPack(row, 'katsuura', kind, katsuuraSightPhoto(row.name_ja)));
@@ -822,6 +858,7 @@ function kamikatsuListings(): PublicListing[] {
     if (KAMIKATSU_DINING_NAME_SET.has(row.name_ja)) continue;
     if (
       !isKamikatsuOnsenPackRow(row) &&
+      !isKamikatsuExperiencePackRow(row) &&
       !isKamikatsuStayPackRow(row) &&
       !isKamikatsuShoppingPackRow(row) &&
       !isSightsCategory(row.category)
@@ -834,12 +871,15 @@ function kamikatsuListings(): PublicListing[] {
     pack.push(row);
   }
   const ranked = rankKamikatsuSeeRows(pack);
+  const experience = pack.filter(isKamikatsuExperiencePackRow);
   const onsen = pack.filter(isKamikatsuOnsenPackRow);
   const stay = pack.filter(isKamikatsuStayPackRow);
-  for (const row of [...stay, ...onsen, ...ranked]) {
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
     const kind: ListingKind = isKamikatsuOnsenPackRow(row)
       ? 'onsen'
-      : isKamikatsuStayPackRow(row)
+      : isKamikatsuExperiencePackRow(row)
+        ? 'experience'
+        : isKamikatsuStayPackRow(row)
         ? 'stay'
         : 'sights';
     out.push(fromPack(row, 'kamikatsu', kind, kamikatsuSightPhoto(row.name_ja)));

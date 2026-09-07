@@ -56,7 +56,8 @@ export const MINAMI_SIGHT_PINS = [
   '薬王寺瑜祇塔',
   '南阿波サンライン',
   '日和佐城',
-  '恵比須浜キャンプ村'
+  '恵比須浜キャンプ村',
+  '日和佐灯台'
 ] as const;
 
 function stay(

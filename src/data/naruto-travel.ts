@@ -37,7 +37,9 @@ export const NARUTO_STAY_PACK_SET: ReadonlySet<string> = new Set(NARUTO_STAY_PAC
 export const NARUTO_SIGHT_PINS = [
   '鳴門の渦潮',
   '大鳴門橋',
-  '霊山寺'
+  '霊山寺',
+  '道の駅第九の里',
+  '長谷寺'
 ] as const;
 
 function stay(

@@ -29,6 +29,9 @@ export const KATSUURA_ONSEN_PACK_NAMES = [] as const;
 export const KATSUURA_ONSEN_PACK_SET: ReadonlySet<string> = new Set(
   KATSUURA_ONSEN_PACK_NAMES
 );
+export const KATSUURA_EXPERIENCE_PACK_NAMES = ['恐竜の里'] as const;
+export const KATSUURA_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(KATSUURA_EXPERIENCE_PACK_NAMES);
+
 
 /** Exact tourism-pack names shown on 宿泊, not 観光. Room/bath photo required — none yet. */
 export const KATSUURA_STAY_PACK_NAMES = [] as const;
@@ -207,11 +210,9 @@ export function isKatsuuraOnsenPackRow(row: {
   return KATSUURA_ONSEN_PACK_SET.has(row.name_ja);
 }
 
-export function isKatsuuraExperiencePackRow(_row: {
-  category: string;
-  name_ja: string;
-}): boolean {
-  return false;
+export function isKatsuuraExperiencePackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return KATSUURA_EXPERIENCE_PACK_SET.has(row.name_ja);
 }
 
 export function isKatsuuraStayPackRow(_row: {
@@ -246,6 +247,7 @@ export function rankKatsuuraSeeRows<T extends Rankable>(rows: readonly T[]): T[]
     (row) =>
       isSightsCategory(row.category) &&
       !isKatsuuraOnsenPackRow(row) &&
+      !isKatsuuraExperiencePackRow(row) &&
       !isKatsuuraStayPackRow(row) &&
       !isKatsuuraShoppingPackRow(row) &&
       !KATSUURA_DINING_NAME_SET.has(row.name_ja)
@@ -301,6 +303,7 @@ export function katsuuraTopChipForRow(row: {
   category: string;
   name_ja: string;
 }): FilterId {
+  if (isKatsuuraExperiencePackRow(row)) return 'experience';
   if (isKatsuuraOnsenPackRow(row)) return 'onsen';
   if (isKatsuuraStayPackRow(row)) return 'stay';
   if (isKatsuuraShoppingPackRow(row)) return 'shopping';
@@ -321,6 +324,7 @@ export function katsuuraPackRowMatchesFilter(
     return (
       isSightsCategory(category) &&
       !isKatsuuraOnsenPackRow(row) &&
+      !isKatsuuraExperiencePackRow(row) &&
       !isKatsuuraStayPackRow(row) &&
       !isKatsuuraShoppingPackRow(row) &&
       !KATSUURA_DINING_NAME_SET.has(nameJa)
@@ -328,7 +332,7 @@ export function katsuuraPackRowMatchesFilter(
   }
   if (filter === 'infra') return isInfraCategory(category);
   if (filter === 'onsen') return isKatsuuraOnsenPackRow(row);
-  if (filter === 'experience') return false;
+  if (filter === 'experience') return isKatsuuraExperiencePackRow(row);
   if (filter === 'stay') return isKatsuuraStayPackRow(row);
   if (filter === 'dining' || filter === 'shopping' || filter === 'commerce') return false;
   return category === filter;

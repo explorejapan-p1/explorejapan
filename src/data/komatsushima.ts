@@ -32,14 +32,15 @@ export const KOMATSUSHIMA = {
     tatsueji: 'https://www.awanavi.jp/spot/1000219/',
     onzanji: 'https://www.awanavi.jp/archives/spot/2804',
     kincho: 'https://www.city.komatsushima.lg.jp/komatsushima-navi/spots/5157.html',
+    toyokuni: 'https://www.city.komatsushima.lg.jp/komatsushima-navi/',
     stationPark: 'https://www.city.komatsushima.lg.jp/komatsushima-navi/',
     tabelogCity: 'https://tabelog.com/tokushima/C36203/rstLst/',
     accessed: '2026-09-07'
   }
 } as const;
 
-export const KOMATSUSHIMA_EXPECTED_ROW_COUNT = 5;
-export const KOMATSUSHIMA_EXPECTED_GEO_COUNT = 5;
+export const KOMATSUSHIMA_EXPECTED_ROW_COUNT = 6;
+export const KOMATSUSHIMA_EXPECTED_GEO_COUNT = 6;
 
 function wikiPhoto(
   file: string,
@@ -172,6 +173,17 @@ export const KOMATSUSHIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>>
     '2014-04-04',
     '小松島ステーションパーク（小松島市）',
     'Komatsushima Station Park, Komatsushima City'
+  ),
+  '豊国神社': wikiPhoto(
+    'komatsushima-toyokuni.jpg',
+    'https://commons.wikimedia.org/wiki/File:Toyokuni_shrine,_Komatsushima,_Tokushima.jpg',
+    'CC0',
+    'https://creativecommons.org/publicdomain/zero/1.0/',
+    '岩佐 栄三',
+    'https://commons.wikimedia.org/wiki/File:Toyokuni_shrine,_Komatsushima,_Tokushima.jpg',
+    '2018-01-15',
+    '豊国神社（小松島市）',
+    'Toyokuni Shrine, Komatsushima City'
   ),
   '岡本中華 小松島本店': sourcePhoto(
     "komatsushima-36000030-dish.jpg",
@@ -445,5 +457,14 @@ export const KOMATSUSHIMA_FACILITIES: readonly FacilityRow[] = [
     KOMATSUSHIMA.sources.stationPark,
     34.01086389,
     134.58689444
+  ),
+  sight(
+    'komatsushima-sight-06',
+    '豊国神社',
+    '徳島県小松島市中郷町字金谷18',
+    null,
+    KOMATSUSHIMA.sources.toyokuni,
+    34.00730556,
+    134.56538889
   )
 ];

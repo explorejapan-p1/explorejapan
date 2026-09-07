@@ -219,6 +219,22 @@ const KITAJIMA_EXTRA_FACILITIES: readonly FacilityRow[] = [
     source_url: 'https://commons.wikimedia.org/wiki/File:%E3%82%B5%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%95%E5%8C%97%E5%B3%B6%E3%81%A8%E5%8C%97%E5%B3%B6%E7%94%BA%E7%AB%8B%E5%9B%B3%E6%9B%B8%E9%A4%A8%E3%83%BB%E5%89%B5%E4%B8%96%E3%83%9B%E3%83%BC%E3%83%AB_-_panoramio.jpg',
     license: 'cc_by_open_data',
     accessed: KITAJIMA_PACK_ACCESSED
+  },
+  {
+    id: 'kitajima-extra-aqua',
+    jis: KITAJIMA_PACK_JIS,
+    name_ja: 'アクアプラザ',
+    reading: 'あくあぷらざ',
+    category: 'tourism',
+    lat: 34.1255,
+    lon: 134.5475,
+    address: '徳島県板野郡北島町新喜来字南古田',
+    phone: null,
+    official_url: 'https://www.town.kitajima.lg.jp/',
+    hours: null,
+    source_url: 'https://commons.wikimedia.org/wiki/File:Aquaplaza.JPG',
+    license: 'cc_by_open_data',
+    accessed: KITAJIMA_PACK_ACCESSED
   }
 ];
 

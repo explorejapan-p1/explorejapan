@@ -29,6 +29,9 @@ export const KAMIITA_ONSEN_PACK_NAMES = [] as const;
 export const KAMIITA_ONSEN_PACK_SET: ReadonlySet<string> = new Set(
   KAMIITA_ONSEN_PACK_NAMES
 );
+export const KAMIITA_EXPERIENCE_PACK_NAMES = ['技の館'] as const;
+export const KAMIITA_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(KAMIITA_EXPERIENCE_PACK_NAMES);
+
 
 /** Exact tourism-pack names shown on 宿泊, not 観光. Room/bath photo required — none yet. */
 export const KAMIITA_STAY_PACK_NAMES = [] as const;
@@ -212,11 +215,9 @@ export function isKamiitaOnsenPackRow(row: {
   return KAMIITA_ONSEN_PACK_SET.has(row.name_ja);
 }
 
-export function isKamiitaExperiencePackRow(_row: {
-  category: string;
-  name_ja: string;
-}): boolean {
-  return false;
+export function isKamiitaExperiencePackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return KAMIITA_EXPERIENCE_PACK_SET.has(row.name_ja);
 }
 
 export function isKamiitaStayPackRow(_row: {
@@ -251,6 +252,7 @@ export function rankKamiitaSeeRows<T extends Rankable>(rows: readonly T[]): T[] 
     (row) =>
       isSightsCategory(row.category) &&
       !isKamiitaOnsenPackRow(row) &&
+      !isKamiitaExperiencePackRow(row) &&
       !isKamiitaStayPackRow(row) &&
       !isKamiitaShoppingPackRow(row)
   );
@@ -305,6 +307,7 @@ export function kamiitaTopChipForRow(row: {
   category: string;
   name_ja: string;
 }): FilterId {
+  if (isKamiitaExperiencePackRow(row)) return 'experience';
   if (isKamiitaOnsenPackRow(row)) return 'onsen';
   if (isKamiitaStayPackRow(row)) return 'stay';
   if (isKamiitaShoppingPackRow(row)) return 'shopping';
@@ -324,13 +327,14 @@ export function kamiitaPackRowMatchesFilter(
     return (
       isSightsCategory(category) &&
       !isKamiitaOnsenPackRow(row) &&
+      !isKamiitaExperiencePackRow(row) &&
       !isKamiitaStayPackRow(row) &&
       !isKamiitaShoppingPackRow(row)
     );
   }
   if (filter === 'infra') return isInfraCategory(category);
   if (filter === 'onsen') return isKamiitaOnsenPackRow(row);
-  if (filter === 'experience') return false;
+  if (filter === 'experience') return isKamiitaExperiencePackRow(row);
   if (filter === 'stay') return isKamiitaStayPackRow(row);
   if (filter === 'dining' || filter === 'shopping' || filter === 'commerce') return false;
   return category === filter;

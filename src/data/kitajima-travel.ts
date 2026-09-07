@@ -30,6 +30,8 @@ export const KITAJIMA_ONSEN_PACK_NAMES = [] as const;
 export const KITAJIMA_ONSEN_PACK_SET: ReadonlySet<string> = new Set(
   KITAJIMA_ONSEN_PACK_NAMES
 );
+export const KITAJIMA_EXPERIENCE_PACK_NAMES = ['アクアプラザ'] as const;
+export const KITAJIMA_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(KITAJIMA_EXPERIENCE_PACK_NAMES);
 
 /** Exact tourism-pack names shown on 宿泊, not 観光. Room/bath photo required — none yet. */
 export const KITAJIMA_STAY_PACK_NAMES = [] as const;
@@ -203,11 +205,9 @@ export function isKitajimaOnsenPackRow(row: {
   return KITAJIMA_ONSEN_PACK_SET.has(row.name_ja);
 }
 
-export function isKitajimaExperiencePackRow(_row: {
-  category: string;
-  name_ja: string;
-}): boolean {
-  return false;
+export function isKitajimaExperiencePackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return KITAJIMA_EXPERIENCE_PACK_SET.has(row.name_ja);
 }
 
 export function isKitajimaStayPackRow(_row: {
@@ -234,6 +234,7 @@ export function rankKitajimaSeeRows<T extends Rankable>(rows: readonly T[]): T[]
     (row) =>
       isSightsCategory(row.category) &&
       !isKitajimaOnsenPackRow(row) &&
+      !isKitajimaExperiencePackRow(row) &&
       !isKitajimaStayPackRow(row)
   );
   const used = new Set<string>();
@@ -284,6 +285,7 @@ export function kitajimaTopChipForRow(row: {
   category: string;
   name_ja: string;
 }): FilterId {
+  if (isKitajimaExperiencePackRow(row)) return 'experience';
   if (isKitajimaOnsenPackRow(row)) return 'onsen';
   if (isKitajimaStayPackRow(row)) return 'stay';
   if (isSightsCategory(row.category)) return 'sights';
@@ -302,12 +304,13 @@ export function kitajimaPackRowMatchesFilter(
     return (
       isSightsCategory(category) &&
       !isKitajimaOnsenPackRow(row) &&
+      !isKitajimaExperiencePackRow(row) &&
       !isKitajimaStayPackRow(row)
     );
   }
   if (filter === 'infra') return isInfraCategory(category);
   if (filter === 'onsen') return isKitajimaOnsenPackRow(row);
-  if (filter === 'experience') return false;
+  if (filter === 'experience') return isKitajimaExperiencePackRow(row);
   if (filter === 'stay') return isKitajimaStayPackRow(row);
   if (filter === 'dining' || filter === 'shopping' || filter === 'commerce') return false;
   return category === filter;

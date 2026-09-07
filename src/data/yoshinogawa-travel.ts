@@ -39,6 +39,9 @@ export const YOSHINOGAWA_ONSEN_PACK_NAMES = [
 export const YOSHINOGAWA_ONSEN_PACK_SET: ReadonlySet<string> = new Set(
   YOSHINOGAWA_ONSEN_PACK_NAMES
 );
+export const YOSHINOGAWA_EXPERIENCE_PACK_NAMES = ['バンブーパーク'] as const;
+export const YOSHINOGAWA_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(YOSHINOGAWA_EXPERIENCE_PACK_NAMES);
+
 
 export const YOSHINOGAWA_SIGHT_PINS = [
   '川島城',
@@ -306,8 +309,9 @@ export function isYoshinogawaOnsenPackRow(row: {category: string; name_ja: strin
   return YOSHINOGAWA_ONSEN_PACK_SET.has(row.name_ja);
 }
 
-export function isYoshinogawaExperiencePackRow(_row: {category: string; name_ja: string}): boolean {
-  return false;
+export function isYoshinogawaExperiencePackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return YOSHINOGAWA_EXPERIENCE_PACK_SET.has(row.name_ja);
 }
 
 export function isYoshinogawaStayPackRow(_row: {category: string; name_ja: string}): boolean {
@@ -331,6 +335,7 @@ export function rankYoshinogawaSeeRows<T extends Rankable>(rows: readonly T[]): 
     (row) =>
       isSightsCategory(row.category) &&
       !isYoshinogawaOnsenPackRow(row) &&
+      !isYoshinogawaExperiencePackRow(row) &&
       !isYoshinogawaStayPackRow(row)
   );
   const used = new Set<string>();
@@ -378,6 +383,7 @@ export function yoshinogawaSourcedHook(
 }
 
 export function yoshinogawaTopChipForRow(row: {category: string; name_ja: string}): FilterId {
+  if (isYoshinogawaExperiencePackRow(row)) return 'experience';
   if (isYoshinogawaOnsenPackRow(row)) return 'onsen';
   if (isYoshinogawaStayPackRow(row)) return 'stay';
   if (isSightsCategory(row.category)) return 'sights';
@@ -396,12 +402,13 @@ export function yoshinogawaPackRowMatchesFilter(
     return (
       isSightsCategory(category) &&
       !isYoshinogawaOnsenPackRow(row) &&
+      !isYoshinogawaExperiencePackRow(row) &&
       !isYoshinogawaStayPackRow(row)
     );
   }
   if (filter === 'infra') return isInfraCategory(category);
   if (filter === 'onsen') return isYoshinogawaOnsenPackRow(row);
-  if (filter === 'experience') return false;
+  if (filter === 'experience') return isYoshinogawaExperiencePackRow(row);
   if (filter === 'stay') return isYoshinogawaStayPackRow(row);
   if (filter === 'dining' || filter === 'shopping' || filter === 'commerce') return false;
   return category === filter;

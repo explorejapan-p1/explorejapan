@@ -32,6 +32,9 @@ export const HIGASHIMIYOSHI_ONSEN_PACK_NAMES = [] as const;
 export const HIGASHIMIYOSHI_ONSEN_PACK_SET: ReadonlySet<string> = new Set(
   HIGASHIMIYOSHI_ONSEN_PACK_NAMES
 );
+export const HIGASHIMIYOSHI_EXPERIENCE_PACK_NAMES = ['吉野川ハイウェイオアシス'] as const;
+export const HIGASHIMIYOSHI_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(HIGASHIMIYOSHI_EXPERIENCE_PACK_NAMES);
+
 
 /** Exact tourism-pack names shown on 宿泊, not 観光. Room/bath photo required — none yet. */
 export const HIGASHIMIYOSHI_STAY_PACK_NAMES = [] as const;
@@ -227,11 +230,9 @@ export function isHigashimiyoshiOnsenPackRow(row: {
   return HIGASHIMIYOSHI_ONSEN_PACK_SET.has(row.name_ja);
 }
 
-export function isHigashimiyoshiExperiencePackRow(_row: {
-  category: string;
-  name_ja: string;
-}): boolean {
-  return false;
+export function isHigashimiyoshiExperiencePackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return HIGASHIMIYOSHI_EXPERIENCE_PACK_SET.has(row.name_ja);
 }
 
 export function isHigashimiyoshiStayPackRow(_row: {
@@ -258,6 +259,7 @@ export function rankHigashimiyoshiSeeRows<T extends Rankable>(rows: readonly T[]
     (row) =>
       isSightsCategory(row.category) &&
       !isHigashimiyoshiOnsenPackRow(row) &&
+      !isHigashimiyoshiExperiencePackRow(row) &&
       !isHigashimiyoshiStayPackRow(row)
   );
   const used = new Set<string>();
@@ -308,6 +310,7 @@ export function higashimiyoshiTopChipForRow(row: {
   category: string;
   name_ja: string;
 }): FilterId {
+  if (isHigashimiyoshiExperiencePackRow(row)) return 'experience';
   if (isHigashimiyoshiOnsenPackRow(row)) return 'onsen';
   if (isHigashimiyoshiStayPackRow(row)) return 'stay';
   if (isSightsCategory(row.category)) return 'sights';
@@ -326,12 +329,13 @@ export function higashimiyoshiPackRowMatchesFilter(
     return (
       isSightsCategory(category) &&
       !isHigashimiyoshiOnsenPackRow(row) &&
+      !isHigashimiyoshiExperiencePackRow(row) &&
       !isHigashimiyoshiStayPackRow(row)
     );
   }
   if (filter === 'infra') return isInfraCategory(category);
   if (filter === 'onsen') return isHigashimiyoshiOnsenPackRow(row);
-  if (filter === 'experience') return false;
+  if (filter === 'experience') return isHigashimiyoshiExperiencePackRow(row);
   if (filter === 'stay') return isHigashimiyoshiStayPackRow(row);
   if (filter === 'dining' || filter === 'shopping' || filter === 'commerce') return false;
   return category === filter;

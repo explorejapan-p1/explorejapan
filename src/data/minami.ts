@@ -147,6 +147,17 @@ export const MINAMI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   '恵比須浜（美波町）',
   'Ebisuhama beach, Minami Town'
 ),
+  '日和佐灯台': wikiPhoto(
+  'hiwasa-toudai-minami.jpg',
+  'https://commons.wikimedia.org/wiki/File:Hiwasa_toudai_20240611_1.jpg',
+  'CC0',
+  'https://creativecommons.org/publicdomain/zero/1.0/',
+  'Araiyasushige',
+  'https://commons.wikimedia.org/wiki/User:Araiyasushige',
+  '2024-06-11',
+  '日和佐港灯台（美波町）',
+  'Hiwasa Port lighthouse, Minami Town'
+),
   "イザリcafe": sourcePhoto(
     "minami-36003206-dish.jpg",
     "イザリcafeの料理写真",

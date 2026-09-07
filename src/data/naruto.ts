@@ -33,13 +33,15 @@ export const NARUTO = {
     doitsukan: 'https://doitsukan.com/',
     otsuka: 'https://o-museum.or.jp/',
     ryozenji: 'https://www.awanavi.jp/spot/1000210/',
+    daiku: 'https://www.awanavi.jp/spot/1000248/',
+    chokokuji: 'https://www.awanavi.jp/spot/1000211/',
     tabelogCity: 'https://tabelog.com/tokushima/C36202/rstLst/',
     accessed: '2026-09-05'
   }
 } as const;
 
-export const NARUTO_EXPECTED_ROW_COUNT = 6;
-export const NARUTO_EXPECTED_GEO_COUNT = 6;
+export const NARUTO_EXPECTED_ROW_COUNT = 8;
+export const NARUTO_EXPECTED_GEO_COUNT = 8;
 
 function wikiPhoto(
   file: string,
@@ -172,6 +174,28 @@ export const NARUTO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '2014-10-08',
     '大塚国際美術館の外観（鳴門市）',
     'Otsuka Museum of Art facade, Naruto City'
+  ),
+  '道の駅第九の里': wikiPhoto(
+    'naruto-michinoeki-daiku.jpg',
+    'https://commons.wikimedia.org/wiki/File:140712_Michinoeki_Daiku_no_sato_Naruto_Tokushima_pref_Japan01n.jpg',
+    'CC BY 2.5',
+    'https://creativecommons.org/licenses/by/2.5',
+    '663highland',
+    'https://commons.wikimedia.org/wiki/User:663highland',
+    '2014-07-12',
+    '道の駅第九の里（鳴門市大麻町）',
+    'Michinoeki Daiku-no-sato, Oasa-cho, Naruto'
+  ),
+  '長谷寺': wikiPhoto(
+    'naruto-chokokuji.jpg',
+    'https://commons.wikimedia.org/wiki/File:Tokushima-Naruto_Chokokuji.jpg',
+    'CC0',
+    'https://creativecommons.org/publicdomain/zero/1.0/',
+    'MaedaAkihiko',
+    'https://commons.wikimedia.org/wiki/User:MaedaAkihiko',
+    '2025-09-16',
+    '長谷寺の境内（鳴門市）',
+    'Chōkoku-ji temple grounds, Naruto City'
   ),
   'すし勝': sourcePhoto(
     'naruto-36001450-dish.jpg',
@@ -446,5 +470,23 @@ export const NARUTO_FACILITIES: readonly FacilityRow[] = [
     NARUTO.sources.otsuka,
     34.23252778,
     134.63772222
+  ),
+  sight(
+    'naruto-sight-07',
+    '道の駅第九の里',
+    '徳島県鳴門市大麻町桧字東山田52-1',
+    '088-689-2225',
+    NARUTO.sources.daiku,
+    34.16383,
+    134.49881
+  ),
+  sight(
+    'naruto-sight-08',
+    '長谷寺',
+    '徳島県鳴門市里浦町里浦字花面385',
+    null,
+    NARUTO.sources.chokokuji,
+    34.17072222,
+    134.58494444
   )
 ];
