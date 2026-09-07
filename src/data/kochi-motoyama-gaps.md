@@ -1,6 +1,6 @@
 # Motoyama Town (本山町) gaps (TG566 twentieth Kochi hub)
 
-Accessed 2026-09-08 (JST). LIVE tip pending push.
+Accessed 2026-09-08 (JST). LIVE tip `be54fa8032` (+ helpers fix pending tip).
 
 ## LIVE pills (photo-first)
 - stay: 1 (一軒宿あせみ / Rakuten HOTEL/199462 和洋室 LARGE noplan-asemi — stay≠onsen)
@@ -24,7 +24,8 @@ Accessed 2026-09-08 (JST). LIVE tip pending push.
 - HARD BAR stay PASS: plan thumbnails name=noplan-asemi map to 和洋室 42m² LARGE stills on Rakuten share CDN (room still e25055… beds+tatami).
 - Onsen honest 0 (Asemi listing shows シャワー・トイレ付; no separate 大浴場 media key).
 - Dining thin OK (honest 3 with dish JPGs).
+- townHelpers early-return bug fixed so chip counts gate on Motoyama sight photos.
 - 田野町 still deferred: no attributable room still under HARD BAR.
 
 ## CDN
-Cold CDN pending after Pages deploy.
+Cold CDN re-check pending after helpers fix push.

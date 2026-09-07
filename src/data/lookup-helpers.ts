@@ -1563,7 +1563,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'geisei') return GEISEI_HELPERS;
   if (slug === 'kitagawa') return KITAGAWA_HELPERS;
   if (slug === 'umaji') return UMAJI_HELPERS;
-  return MIMA_HELPERS;  if (slug === 'umaji') return UMAJI_HELPERS;
   if (slug === 'motoyama') return MOTOYAMA_HELPERS;
   return MIMA_HELPERS;
 }
