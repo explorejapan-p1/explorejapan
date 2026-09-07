@@ -50,6 +50,7 @@ import {SAKAIDE_TRAVEL_ACCESSED} from '@/data/sakaide-travel'
 import {NAOSHIMA_TRAVEL_ACCESSED} from '@/data/naoshima-travel';
 import {SHODOSHIMA_TRAVEL_ACCESSED} from '@/data/shodoshima-travel';
 import {ZENTSUJI_TRAVEL_ACCESSED} from '@/data/zentsuji-travel';
+import {MITOYO_TRAVEL_ACCESSED} from '@/data/mitoyo-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1076,6 +1077,25 @@ export function MimaFacilityLookup({
                 Dining from Tabelog Zentsuji shop pages ({ZENTSUJI_TRAVEL_ACCESSED}).
                 Onsen: Tsurukichi open-air bath still (distinct from stay room keys). Experience stays at 0 without sourced photos.
                 Shopping: Odori arcade (Commons). Commerce stays at 0. Eighth LIVE Kagawa hub.
+              </>
+            )
+
+) : town.slug === 'mitoyo' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（父母ヶ浜・紫雲出山・本山寺・弥谷寺・大興寺・津嶋神社・詫間駅・不動の滝）。
+                宿泊は楽天トラベルの客室写真（{MITOYO_TRAVEL_ACCESSED}）。
+                飲食は食べログ三豊市の公開店ページ（{MITOYO_TRAVEL_ACCESSED}）。
+                温泉はル・ポール粟島大浴場とふれあいパークみの露天風呂（公式風呂写真・客室キーと分離）。
+                体験は道の駅たからだのさと（Commons）。買物・商業は出典写真が無いため0件。香川県9つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Chichibugahama, Mount Shiude, Motoyama-ji, Iyadani-ji, Daikō-ji, Tsushima Shrine, Takuma Station, Fudō Falls).
+                Lodging from Rakuten Travel room photos ({MITOYO_TRAVEL_ACCESSED}).
+                Dining from Tabelog Mitoyo shop pages ({MITOYO_TRAVEL_ACCESSED}).
+                Onsen: Le Port Awashima large bath and Fureai Park Mino open-air bath (distinct from stay room keys).
+                Experience: Michinoeki Takara-da-no-sato (Commons). Shopping and commerce stay at 0. Ninth LIVE Kagawa hub.
               </>
             )
 

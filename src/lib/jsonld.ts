@@ -27,6 +27,7 @@ import {SAKAIDE, SAKAIDE_PLACE_PHOTO} from '@/data/sakaide';
 import {NAOSHIMA, NAOSHIMA_PLACE_PHOTO} from '@/data/naoshima';
 import {SHODOSHIMA, SHODOSHIMA_PLACE_PHOTO} from '@/data/shodoshima';
 import {ZENTSUJI, ZENTSUJI_PLACE_PHOTO} from '@/data/zentsuji';
+import {MITOYO, MITOYO_PLACE_PHOTO} from '@/data/mitoyo';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -123,6 +124,7 @@ function localityJa(slug: string): string {
   if (slug === 'naoshima') return NAOSHIMA.nameJa;
   if (slug === 'shodoshima') return SHODOSHIMA.nameJa;
   if (slug === 'zentsuji') return ZENTSUJI.nameJa;
+  if (slug === 'mitoyo') return MITOYO.nameJa;
   return MIMA.nameJa;
 }
 
@@ -158,6 +160,7 @@ function localityEn(slug: string): string {
   if (slug === 'naoshima') return NAOSHIMA.nameEn;
   if (slug === 'shodoshima') return SHODOSHIMA.nameEn;
   if (slug === 'zentsuji') return ZENTSUJI.nameEn;
+  if (slug === 'mitoyo') return MITOYO.nameEn;
   return MIMA.nameEn;
 }
 
@@ -2602,6 +2605,67 @@ export function zentsujiGraph(locale: AppLocale) {
           {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
           {'@type': 'ListItem', position: 2, name: isJa ? ZENTSUJI.prefectureJa : ZENTSUJI.prefectureEn, item: canonicalUrl(locale, 'kagawa')},
           {'@type': 'ListItem', position: 3, name: isJa ? ZENTSUJI.nameJa : ZENTSUJI.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '善通寺市の案内' : 'Places in Zentsuji',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+
+export function mitoyoGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kagawa/mitoyo');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('mitoyo');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? MITOYO.nameJa : MITOYO.nameEn,
+        alternateName: isJa ? MITOYO.nameEn : MITOYO.nameJa,
+        identifier: MITOYO.jis,
+        url,
+        image: photoAbs(MITOYO_PLACE_PHOTO),
+        sameAs: [MITOYO.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '高瀬町下勝間2373番地1' : '2373-1 Shimokatsuma, Takase-cho',
+          addressLocality: isJa ? MITOYO.nameJa : MITOYO.nameEn,
+          addressRegion: isJa ? MITOYO.prefectureJa : MITOYO.prefectureEn,
+          postalCode: MITOYO.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? MITOYO.prefectureJa : MITOYO.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? MITOYO.nameJa : MITOYO.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? MITOYO.prefectureJa : MITOYO.prefectureEn, item: canonicalUrl(locale, 'kagawa')},
+          {'@type': 'ListItem', position: 3, name: isJa ? MITOYO.nameJa : MITOYO.nameEn, item: url}
         ]
       },
       {

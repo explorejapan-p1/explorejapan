@@ -337,6 +337,17 @@ import {
   zentsujiSourcedHook,
   zentsujiTopChipForRow
 } from './zentsuji-travel';
+import {
+  isMitoyoOnsenPackRow,
+  isMitoyoExperiencePackRow,
+  isMitoyoStayPackRow,
+  rankMitoyoSeeRows,
+  resolveMitoyoFilter,
+  mitoyoPackRowMatchesFilter,
+  mitoyoSightPhoto,
+  mitoyoSourcedHook,
+  mitoyoTopChipForRow
+} from './mitoyo-travel';
 
 
 
@@ -811,6 +822,18 @@ const ZENTSUJI_HELPERS: LookupHelpers = {
   resolveFilter: resolveZentsujiFilter
 };
 
+const MITOYO_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isMitoyoOnsenPackRow,
+  isExperiencePackRow: isMitoyoExperiencePackRow,
+  isStayPackRow: isMitoyoStayPackRow,
+  packRowMatchesFilter: mitoyoPackRowMatchesFilter,
+  rankSeeRows: rankMitoyoSeeRows,
+  sightPhoto: mitoyoSightPhoto,
+  sourcedHook: mitoyoSourcedHook,
+  topChipForRow: mitoyoTopChipForRow,
+  resolveFilter: resolveMitoyoFilter
+};
+
 export function townHelpers(slug: ReadySlug): LookupHelpers {
 
   if (slug === 'tsurugi') return TSURUGI_HELPERS;
@@ -844,5 +867,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'naoshima') return NAOSHIMA_HELPERS;
   if (slug === 'shodoshima') return SHODOSHIMA_HELPERS;
   if (slug === 'zentsuji') return ZENTSUJI_HELPERS;
+  if (slug === 'mitoyo') return MITOYO_HELPERS;
   return MIMA_HELPERS;
 }

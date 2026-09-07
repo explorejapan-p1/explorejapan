@@ -243,6 +243,14 @@ import {
   isZentsujiStayPackRow,
   rankZentsujiSeeRows
 } from '@/data/zentsuji-travel';
+import {
+  isMitoyoOnsenPackRow,
+  isMitoyoExperiencePackRow,
+  isMitoyoStayPackRow,
+  rankMitoyoSeeRows,
+  mitoyoSightPhoto,
+  MITOYO_DINING_NAME_SET
+} from '@/data/mitoyo-travel';
 
 
 
@@ -1593,6 +1601,47 @@ function zentsujiListings(): PublicListing[] {
 
 
 
+
+function mitoyoListings(): PublicListing[] {
+  const town = lookupTown('mitoyo')!;
+  const out: PublicListing[] = town.travelAll.map((row) =>
+    fromTravel(row, 'mitoyo', mitoyoSightPhoto(row.name_ja))
+  );
+  const seen = new Set<string>();
+  const pack: FacilityRow[] = [];
+  for (const row of town.rows) {
+    if (MITOYO_DINING_NAME_SET.has(row.name_ja)) continue;
+    if (
+      !isMitoyoOnsenPackRow(row) &&
+      !isMitoyoExperiencePackRow(row) &&
+      !isMitoyoStayPackRow(row) &&
+      !isSightsCategory(row.category)
+    ) {
+      continue;
+    }
+    const key = packDedupeKey(row);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    pack.push(row);
+  }
+  const ranked = rankMitoyoSeeRows(pack);
+  const onsen = pack.filter(isMitoyoOnsenPackRow);
+  const experience = pack.filter(isMitoyoExperiencePackRow);
+  const stay = pack.filter(isMitoyoStayPackRow);
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
+    const kind: ListingKind = isMitoyoOnsenPackRow(row)
+      ? 'onsen'
+      : isMitoyoExperiencePackRow(row)
+        ? 'experience'
+        : isMitoyoStayPackRow(row)
+          ? 'stay'
+          : 'sights';
+    out.push(fromPack(row, 'mitoyo', kind, mitoyoSightPhoto(row.name_ja)));
+  }
+  return out;
+}
+
+
 const CACHE: Record<ReadySlug, PublicListing[]> = {
   mima: mimaListings(),
   tsurugi: tsurugiListings(),
@@ -1625,7 +1674,8 @@ const CACHE: Record<ReadySlug, PublicListing[]> = {
   sakaide: sakaideListings(),
   naoshima: naoshimaListings(),
   shodoshima: shodoshimaListings(),
-  zentsuji: zentsujiListings()
+  zentsuji: zentsujiListings(),
+  mitoyo: mitoyoListings()
 };
 
 export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {
@@ -1633,7 +1683,7 @@ export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {
 }
 
 export function allPublicListings(): PublicListing[] {
-  return [...CACHE.mima, ...CACHE.tsurugi, ...CACHE.yoshinogawa, ...CACHE.miyoshi, ...CACHE.tokushima, ...CACHE.awa, ...CACHE.higashimiyoshi, ...CACHE.kitajima, ...CACHE.naruto, ...CACHE.matsushige, ...CACHE.ishii, ...CACHE.itano, ...CACHE.kamiita, ...CACHE.kamiyama, ...CACHE.katsuura, ...CACHE.kamikatsu, ...CACHE.sanagochi, ...CACHE.naka, ...CACHE.mugi, ...CACHE.minami, ...CACHE.aizumi, ...CACHE.kaiyo, ...CACHE.komatsushima, ...CACHE.anan, ...CACHE.takamatsu, ...CACHE.kotohira, ...CACHE.marugame, ...CACHE.kanonji, ...CACHE.sakaide, ...CACHE.naoshima, ...CACHE.shodoshima, ...CACHE.zentsuji];
+  return [...CACHE.mima, ...CACHE.tsurugi, ...CACHE.yoshinogawa, ...CACHE.miyoshi, ...CACHE.tokushima, ...CACHE.awa, ...CACHE.higashimiyoshi, ...CACHE.kitajima, ...CACHE.naruto, ...CACHE.matsushige, ...CACHE.ishii, ...CACHE.itano, ...CACHE.kamiita, ...CACHE.kamiyama, ...CACHE.katsuura, ...CACHE.kamikatsu, ...CACHE.sanagochi, ...CACHE.naka, ...CACHE.mugi, ...CACHE.minami, ...CACHE.aizumi, ...CACHE.kaiyo, ...CACHE.komatsushima, ...CACHE.anan, ...CACHE.takamatsu, ...CACHE.kotohira, ...CACHE.marugame, ...CACHE.kanonji, ...CACHE.sakaide, ...CACHE.naoshima, ...CACHE.shodoshima, ...CACHE.zentsuji, ...CACHE.mitoyo];
 }
 
 export function liveListings(slug?: ReadySlug): PublicListing[] {
