@@ -314,6 +314,7 @@ import {KAMI, KAMI_PLACE_PHOTO, KAMI_FACILITIES, KAMI_EXPECTED_GEO_COUNT, KAMI_E
 import {INO, INO_PLACE_PHOTO, INO_FACILITIES, INO_EXPECTED_GEO_COUNT, INO_EXPECTED_ROW_COUNT} from './ino';
 import {AKI, AKI_PLACE_PHOTO, AKI_FACILITIES, AKI_EXPECTED_GEO_COUNT, AKI_EXPECTED_ROW_COUNT} from './aki';
 import {MUROTO, MUROTO_PLACE_PHOTO, MUROTO_FACILITIES, MUROTO_EXPECTED_GEO_COUNT, MUROTO_EXPECTED_ROW_COUNT} from './muroto';
+import {TOSA, TOSA_PLACE_PHOTO, TOSA_FACILITIES, TOSA_EXPECTED_GEO_COUNT, TOSA_EXPECTED_ROW_COUNT} from './tosa';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -560,6 +561,13 @@ import {
   MUROTO_TRAVEL_COMMERCE,
   MUROTO_TRAVEL_ALL,
 } from './muroto-travel';
+import {
+  TOSA_TRAVEL_DINING,
+  TOSA_TRAVEL_STAY,
+  TOSA_TRAVEL_SHOPPING,
+  TOSA_TRAVEL_COMMERCE,
+  TOSA_TRAVEL_ALL,
+} from './tosa-travel';
 
 
 
@@ -2007,6 +2015,40 @@ export const AKI_LOOKUP: LookupTown = {
 
 
 
+
+export const TOSA_LOOKUP: LookupTown = {
+  slug: 'tosa',
+  prefectureSlug: 'kochi',
+  jis: TOSA.jis,
+  nameJa: TOSA.nameJa,
+  nameEn: TOSA.nameEn,
+  heroPhoto: TOSA_PLACE_PHOTO,
+  photoCiteJa: '写真は仁淀川河口大橋。谷本 一郎、2017-09-06、CC BY-SA 4.0。File:仁淀川河口大橋.jpg。',
+  photoCiteEn: 'Photo: Niyodo River estuary bridge. Ichiro Tanimoto, 6 Sep 2017, CC BY-SA 4.0. File:仁淀川河口大橋.jpg.',
+  rows: TOSA_FACILITIES,
+  expectedGeo: TOSA_EXPECTED_GEO_COUNT,
+  expectedRows: TOSA_EXPECTED_ROW_COUNT,
+  travelDining: TOSA_TRAVEL_DINING,
+  travelStay: TOSA_TRAVEL_STAY,
+  travelShopping: TOSA_TRAVEL_SHOPPING,
+  travelCommerce: TOSA_TRAVEL_COMMERCE,
+  travelAll: TOSA_TRAVEL_ALL,
+  coverageJa:
+    '土佐市（JIS 39205）観光6・宿泊1・飲食16・温泉1・体験1（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県8つ目のLIVEハブ。',
+  coverageEn:
+    'Tosa City (JIS 39205), 6 tourism + 1 stay + 16 dining + 1 onsen + 1 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Eighth LIVE Kochi hub.',
+  mapLabelJa: '土佐市の出典座標8件',
+  mapLabelEn: '8 sourced coordinates in Tosa City',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia/Commons等出典座標8件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 8 sourced coordinates for city/official facilities (accessed 2026-09-08).',
+  licenseNoteJa:
+    '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.tosa.lg.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
 export const MUROTO_LOOKUP: LookupTown = {
   slug: 'muroto',
   prefectureSlug: 'kochi',
@@ -2366,7 +2408,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   kami: KAMI_LOOKUP,
   ino: INO_LOOKUP,
   aki: AKI_LOOKUP,
-  muroto: MUROTO_LOOKUP
+  muroto: MUROTO_LOOKUP,
+  tosa: TOSA_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

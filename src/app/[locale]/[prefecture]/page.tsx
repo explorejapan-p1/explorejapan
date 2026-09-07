@@ -39,6 +39,7 @@ import {KAMI_PLACE_PHOTO} from '@/data/kami';
 import {INO_PLACE_PHOTO} from '@/data/ino';
 import {AKI_PLACE_PHOTO} from '@/data/aki';
 import {MUROTO_PLACE_PHOTO} from '@/data/muroto';
+import {TOSA_PLACE_PHOTO} from '@/data/tosa';
 import {KAGAWA_MUNICIPALITIES} from '@/data/kagawa-municipalities';
 import {KOCHI_MUNICIPALITIES} from '@/data/kochi-municipalities';
 import {TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
@@ -181,7 +182,7 @@ export default async function PrefecturePage({params}: Props) {
                                                 ? KONAN_PLACE_PHOTO
                                               : m.slug === 'kami'
                                                 ? KAMI_PLACE_PHOTO
-                                              : m.slug === 'ino' ? INO_PLACE_PHOTO : m.slug === 'aki' ? AKI_PLACE_PHOTO : m.slug === 'muroto' ? MUROTO_PLACE_PHOTO : m.slug === 'takamatsu'
+                                              : m.slug === 'ino' ? INO_PLACE_PHOTO : m.slug === 'aki' ? AKI_PLACE_PHOTO : m.slug === 'muroto' ? MUROTO_PLACE_PHOTO : m.slug === 'tosa' ? TOSA_PLACE_PHOTO : m.slug === 'takamatsu'
                                               ? TAKAMATSU_PLACE_PHOTO
                                               : MIMA_PLACE_PHOTO;
               const href = `${BASE_PATH}/${locale}/${pref.slug}/${m.slug}/`;

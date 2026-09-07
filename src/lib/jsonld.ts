@@ -43,6 +43,7 @@ import {KAMI, KAMI_PLACE_PHOTO} from '@/data/kami';
 import {INO, INO_PLACE_PHOTO} from '@/data/ino';
 import {AKI, AKI_PLACE_PHOTO} from '@/data/aki';
 import {MUROTO, MUROTO_PLACE_PHOTO} from '@/data/muroto';
+import {TOSA, TOSA_PLACE_PHOTO} from '@/data/tosa';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -3556,6 +3557,67 @@ export function akiGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '安芸市の案内' : 'Places in Aki City',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+
+export function tosaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/tosa');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('tosa');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? TOSA.nameJa : TOSA.nameEn,
+        alternateName: isJa ? TOSA.nameEn : TOSA.nameJa,
+        identifier: TOSA.jis,
+        url,
+        image: photoAbs(TOSA_PLACE_PHOTO),
+        sameAs: [TOSA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '高岡町甲2017番地1' : '2017-1 Kō, Takaoka-cho',
+          addressLocality: isJa ? TOSA.nameJa : TOSA.nameEn,
+          addressRegion: isJa ? TOSA.prefectureJa : TOSA.prefectureEn,
+          postalCode: TOSA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? TOSA.prefectureJa : TOSA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? TOSA.nameJa : TOSA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? TOSA.prefectureJa : TOSA.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? TOSA.nameJa : TOSA.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '土佐市の案内' : 'Places in Tosa City',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

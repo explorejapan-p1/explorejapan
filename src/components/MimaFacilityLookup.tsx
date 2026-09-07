@@ -66,6 +66,7 @@ import {KAMI_TRAVEL_ACCESSED} from '@/data/kami-travel';
 import {INO_TRAVEL_ACCESSED} from '@/data/ino-travel';
 import {AKI_TRAVEL_ACCESSED} from '@/data/aki-travel';
 import {MUROTO_TRAVEL_ACCESSED} from '@/data/muroto-travel';
+import {TOSA_TRAVEL_ACCESSED} from '@/data/tosa-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1460,8 +1461,22 @@ export function MimaFacilityLookup({
                 Onsen: 0 (room-still stay only; no attributable bath keys). Experience: Muroto Geopark Center (Commons). Shopping/commerce: 0. Seventh LIVE Kochi hub.
               </>
             )
-
-
+          ) : town.slug === 'tosa' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（仁淀川河口大橋・清瀧寺・青龍寺・宇佐漁港・蟹ヶ池・新居緑地公園）。
+                宿泊は土佐龍温泉三陽荘のCommons離れ写真（{TOSA_TRAVEL_ACCESSED}；楽天mediaInfo無し）。
+                飲食は食べログ土佐市の公開店ページ（{TOSA_TRAVEL_ACCESSED}）。
+                温泉は三陽荘大浴場露天風呂（Commons・宿泊と別キー）。体験は新居地区観光交流施設南風（Commons）。買物・商業は0件。高知県8つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Niyodo estuary bridge, Seiryū-ji, Shōryū-ji, Usa port, Kanigaike, Nii park).
+                Lodging: Sanyo-so annex Commons photo ({TOSA_TRAVEL_ACCESSED}; Rakuten mediaInfo absent).
+                Dining from Tabelog Tosa shop pages ({TOSA_TRAVEL_ACCESSED}).
+                Onsen: Sanyo-so outdoor bath (Commons; stay≠onsen). Experience: Maze tourism facility (Commons). Shopping/commerce: 0. Eighth LIVE Kochi hub.
+              </>
+            )
 ) : town.slug === 'aki' ? (
             locale === 'ja' ? (
               <>
