@@ -36,6 +36,7 @@ import {MIKI, MIKI_PLACE_PHOTO} from '@/data/miki';
 import {AYAGAWA, AYAGAWA_PLACE_PHOTO} from '@/data/ayagawa';
 import {TADOTSU, TADOTSU_PLACE_PHOTO} from '@/data/tadotsu';
 import {MANNO, MANNO_PLACE_PHOTO} from '@/data/manno';
+import {KOCHI, KOCHI_PLACE_PHOTO} from '@/data/kochi';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -141,6 +142,7 @@ function localityJa(slug: string): string {
   if (slug === 'ayagawa') return AYAGAWA.nameJa;
   if (slug === 'tadotsu') return TADOTSU.nameJa;
   if (slug === 'manno') return MANNO.nameJa;
+  if (slug === 'kochi') return KOCHI.nameJa;
   return MIMA.nameJa;
 }
 
@@ -185,6 +187,7 @@ function localityEn(slug: string): string {
   if (slug === 'ayagawa') return AYAGAWA.nameEn;
   if (slug === 'tadotsu') return TADOTSU.nameEn;
   if (slug === 'manno') return MANNO.nameEn;
+  if (slug === 'kochi') return KOCHI.nameEn;
   return MIMA.nameEn;
 }
 
@@ -3185,3 +3188,64 @@ export function mannoGraph(locale: AppLocale) {
     ]
   };
 }
+
+export function kochiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/kochi');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('kochi');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? KOCHI.nameJa : KOCHI.nameEn,
+        alternateName: isJa ? KOCHI.nameEn : KOCHI.nameJa,
+        identifier: KOCHI.jis,
+        url,
+        image: photoAbs(KOCHI_PLACE_PHOTO),
+        sameAs: [KOCHI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '本町5丁目1-45' : '1-45 Honmachi 5-chome',
+          addressLocality: isJa ? KOCHI.nameJa : KOCHI.nameEn,
+          addressRegion: isJa ? KOCHI.prefectureJa : KOCHI.prefectureEn,
+          postalCode: KOCHI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? KOCHI.prefectureJa : KOCHI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? KOCHI.nameJa : KOCHI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? KOCHI.prefectureJa : KOCHI.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? KOCHI.nameJa : KOCHI.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '高知市の案内' : 'Places in Kochi City',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+

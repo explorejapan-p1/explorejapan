@@ -2,7 +2,7 @@ import type {FacilityRow} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import type {TravelRow} from './mima-travel';
 
-export type ReadySlug = 'mima' | 'tsurugi' | 'yoshinogawa' | 'miyoshi' | 'tokushima' | 'awa' | 'higashimiyoshi' | 'kitajima' | 'naruto' | 'matsushige' | 'ishii' | 'itano' | 'kamiita' | 'kamiyama' | 'katsuura' | 'kamikatsu' | 'sanagochi' | 'naka' | 'mugi' | 'minami' | 'kaiyo' | 'aizumi' | 'komatsushima' | 'anan' | 'takamatsu' | 'kotohira' | 'marugame' | 'kanonji' | 'sakaide' | 'naoshima' | 'shodoshima' | 'zentsuji' | 'mitoyo' | 'utazu' | 'tonosho' | 'sanuki' | 'higashikagawa' | 'miki' | 'ayagawa' | 'tadotsu' | 'manno';
+export type ReadySlug = 'mima' | 'tsurugi' | 'yoshinogawa' | 'miyoshi' | 'tokushima' | 'awa' | 'higashimiyoshi' | 'kitajima' | 'naruto' | 'matsushige' | 'ishii' | 'itano' | 'kamiita' | 'kamiyama' | 'katsuura' | 'kamikatsu' | 'sanagochi' | 'naka' | 'mugi' | 'minami' | 'kaiyo' | 'aizumi' | 'komatsushima' | 'anan' | 'takamatsu' | 'kotohira' | 'marugame' | 'kanonji' | 'sakaide' | 'naoshima' | 'shodoshima' | 'zentsuji' | 'mitoyo' | 'utazu' | 'tonosho' | 'sanuki' | 'higashikagawa' | 'miki' | 'ayagawa' | 'tadotsu' | 'manno' | 'kochi';
 
 export type Rankable = {
   id: string;
@@ -15,7 +15,7 @@ export type Rankable = {
 /** Serializable lookup chrome. Helpers live in lookup-helpers (no node:fs). */
 export type LookupTown = {
   slug: ReadySlug;
-  prefectureSlug: 'tokushima' | 'kagawa';
+  prefectureSlug: 'tokushima' | 'kagawa' | 'kochi';
   jis: string;
   nameJa: string;
   nameEn: string;
@@ -43,14 +43,15 @@ export type LookupTown = {
 };
 
 export function isReadySlug(slug: string): slug is ReadySlug {
-  return slug === 'mima' || slug === 'tsurugi' || slug === 'yoshinogawa' || slug === 'miyoshi' || slug === 'tokushima' || slug === 'awa' || slug === 'higashimiyoshi' || slug === 'kitajima' || slug === 'naruto' || slug === 'matsushige' || slug === 'ishii' || slug === 'itano' || slug === 'kamiita' || slug === 'kamiyama' || slug === 'katsuura' || slug === 'kamikatsu' || slug === 'sanagochi' || slug === 'naka' || slug === 'mugi' || slug === 'minami' || slug === 'kaiyo' || slug === 'aizumi' || slug === 'komatsushima' || slug === 'anan' || slug === 'takamatsu' || slug === 'kotohira' || slug === 'marugame' || slug === 'kanonji' || slug === 'sakaide' || slug === 'naoshima' || slug === 'shodoshima' || slug === 'zentsuji' || slug === 'mitoyo' || slug === 'utazu' || slug === 'tonosho' || slug === 'sanuki' || slug === 'higashikagawa' || slug === 'miki' || slug === 'ayagawa' || slug === 'tadotsu' || slug === 'manno'
+  return slug === 'mima' || slug === 'tsurugi' || slug === 'yoshinogawa' || slug === 'miyoshi' || slug === 'tokushima' || slug === 'awa' || slug === 'higashimiyoshi' || slug === 'kitajima' || slug === 'naruto' || slug === 'matsushige' || slug === 'ishii' || slug === 'itano' || slug === 'kamiita' || slug === 'kamiyama' || slug === 'katsuura' || slug === 'kamikatsu' || slug === 'sanagochi' || slug === 'naka' || slug === 'mugi' || slug === 'minami' || slug === 'kaiyo' || slug === 'aizumi' || slug === 'komatsushima' || slug === 'anan' || slug === 'takamatsu' || slug === 'kotohira' || slug === 'marugame' || slug === 'kanonji' || slug === 'sakaide' || slug === 'naoshima' || slug === 'shodoshima' || slug === 'zentsuji' || slug === 'mitoyo' || slug === 'utazu' || slug === 'tonosho' || slug === 'sanuki' || slug === 'higashikagawa' || slug === 'miki' || slug === 'ayagawa' || slug === 'tadotsu' || slug === 'manno' || slug === 'kochi'
 }
 
 
-export type PrefSlug = 'tokushima' | 'kagawa';
+export type PrefSlug = 'tokushima' | 'kagawa' | 'kochi';
 
 /** Pref path segment for a ReadySlug hub. Tokushima hubs stay tokushima; Takamatsu is kagawa. */
 export function prefSlugForReady(slug: ReadySlug): PrefSlug {
+  if (slug === 'kochi') return 'kochi';
   if (slug === 'takamatsu' || slug === 'kotohira' || slug === 'marugame' || slug === 'kanonji' || slug === 'sakaide' || slug === 'naoshima' || slug === 'shodoshima' || slug === 'zentsuji' || slug === 'mitoyo' || slug === 'utazu' || slug === 'tonosho' || slug === 'sanuki' || slug === 'higashikagawa' || slug === 'miki' || slug === 'ayagawa' || slug === 'tadotsu' || slug === 'manno') return 'kagawa';
   return 'tokushima';
 }

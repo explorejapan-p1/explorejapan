@@ -307,6 +307,7 @@ import {MIKI, MIKI_PLACE_PHOTO, MIKI_FACILITIES, MIKI_EXPECTED_GEO_COUNT, MIKI_E
 import {AYAGAWA, AYAGAWA_PLACE_PHOTO, AYAGAWA_FACILITIES, AYAGAWA_EXPECTED_GEO_COUNT, AYAGAWA_EXPECTED_ROW_COUNT} from './ayagawa';
 import {TADOTSU, TADOTSU_PLACE_PHOTO, TADOTSU_FACILITIES, TADOTSU_EXPECTED_GEO_COUNT, TADOTSU_EXPECTED_ROW_COUNT} from './tadotsu';
 import {MANNO, MANNO_PLACE_PHOTO, MANNO_FACILITIES, MANNO_EXPECTED_GEO_COUNT, MANNO_EXPECTED_ROW_COUNT} from './manno';
+import {KOCHI, KOCHI_PLACE_PHOTO, KOCHI_FACILITIES, KOCHI_EXPECTED_GEO_COUNT, KOCHI_EXPECTED_ROW_COUNT} from './kochi';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -492,6 +493,19 @@ import {
   resolveMannoFilter,
   rankMannoSeeRows
 } from './manno-travel';
+import {
+  KOCHI_TRAVEL_DINING,
+  KOCHI_TRAVEL_STAY,
+  KOCHI_TRAVEL_SHOPPING,
+  KOCHI_TRAVEL_COMMERCE,
+  KOCHI_TRAVEL_ALL,
+  kochiSightPhoto,
+  kochiSourcedHook,
+  kochiTopChipForRow,
+  kochiPackRowMatchesFilter,
+  resolveKochiFilter,
+  rankKochiSeeRows
+} from './kochi-travel';
 
 
 
@@ -1865,6 +1879,40 @@ export const MANNO_LOOKUP: LookupTown = {
   licenseSiteEn: 'Town-site listing'
 };
 
+export const KOCHI_LOOKUP: LookupTown = {
+  slug: 'kochi',
+  prefectureSlug: 'kochi',
+  jis: KOCHI.jis,
+  nameJa: KOCHI.nameJa,
+  nameEn: KOCHI.nameEn,
+  heroPhoto: KOCHI_PLACE_PHOTO,
+  photoCiteJa: '写真は高知城天守。663highland、CC BY 2.5。File:Kochi_Castle08s3872.jpg。',
+  photoCiteEn: 'Photo: Kochi Castle keep. 663highland, CC BY 2.5. File:Kochi_Castle08s3872.jpg.',
+  rows: KOCHI_FACILITIES,
+  expectedGeo: KOCHI_EXPECTED_GEO_COUNT,
+  expectedRows: KOCHI_EXPECTED_ROW_COUNT,
+  travelDining: KOCHI_TRAVEL_DINING,
+  travelStay: KOCHI_TRAVEL_STAY,
+  travelShopping: KOCHI_TRAVEL_SHOPPING,
+  travelCommerce: KOCHI_TRAVEL_COMMERCE,
+  travelAll: KOCHI_TRAVEL_ALL,
+  coverageJa:
+    '高知市（JIS 39201）観光8・宿泊1・飲食16・体験1（出典写真がある施設のみ）。温泉・買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載。ビジネスホテル浴室のみのため温泉0）。オープンデータ凍結パックは未掲載。高知県1つ目のLIVEハブ。',
+  coverageEn:
+    'Kochi City (JIS 39201), 8 tourism + 1 stay + 16 dining + 1 experience with sourced photos. Onsen, shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished (business-hotel baths only → onsen 0). No frozen open-data pack. First LIVE Kochi hub.',
+  mapLabelJa: '高知市の出典座標9件',
+  mapLabelEn: '9 sourced coordinates in Kochi City',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia等出典座標9件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 9 sourced coordinates for city/official facilities (accessed 2026-09-08).',
+  licenseNoteJa:
+    '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.kochi.kochi.jp, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
+
 
 
 
@@ -2050,7 +2098,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   miki: MIKI_LOOKUP,
   ayagawa: AYAGAWA_LOOKUP,
   tadotsu: TADOTSU_LOOKUP,
-  manno: MANNO_LOOKUP
+  manno: MANNO_LOOKUP,
+  kochi: KOCHI_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

@@ -436,6 +436,17 @@ import {
   isMannoExperiencePackRow,
   isMannoStayPackRow
 } from './manno-travel';
+import {
+  isKochiOnsenPackRow,
+  isKochiExperiencePackRow,
+  isKochiStayPackRow,
+  kochiPackRowMatchesFilter,
+  kochiSightPhoto,
+  kochiSourcedHook,
+  kochiTopChipForRow,
+  rankKochiSeeRows,
+  resolveKochiFilter
+} from './kochi-travel';
 
 
 
@@ -1007,6 +1018,19 @@ const MANNO_HELPERS: LookupHelpers = {
   resolveFilter: resolveMannoFilter
 };
 
+const KOCHI_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isKochiOnsenPackRow,
+  isExperiencePackRow: isKochiExperiencePackRow,
+  isStayPackRow: isKochiStayPackRow,
+  packRowMatchesFilter: kochiPackRowMatchesFilter,
+  rankSeeRows: rankKochiSeeRows,
+  sightPhoto: kochiSightPhoto,
+  sourcedHook: kochiSourcedHook,
+  topChipForRow: kochiTopChipForRow,
+  resolveFilter: resolveKochiFilter
+};
+
+
 
 
 
@@ -1065,5 +1089,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'ayagawa') return AYAGAWA_HELPERS;
   if (slug === 'tadotsu') return TADOTSU_HELPERS;
   if (slug === 'manno') return MANNO_HELPERS;
+  if (slug === 'kochi') return KOCHI_HELPERS;
   return MIMA_HELPERS;
 }

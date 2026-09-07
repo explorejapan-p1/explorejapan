@@ -32,7 +32,9 @@ import {MIKI_PLACE_PHOTO} from '@/data/miki';
 import {AYAGAWA_PLACE_PHOTO} from '@/data/ayagawa';
 import {TADOTSU_PLACE_PHOTO} from '@/data/tadotsu';
 import {MANNO_PLACE_PHOTO} from '@/data/manno';
+import {KOCHI_PLACE_PHOTO} from '@/data/kochi';
 import {KAGAWA_MUNICIPALITIES} from '@/data/kagawa-municipalities';
+import {KOCHI_MUNICIPALITIES} from '@/data/kochi-municipalities';
 import {TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {PREFECTURES, PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
@@ -54,7 +56,7 @@ export async function generateMetadata({params}: Props) {
   if (!pref) return {};
   const loc = (locale === 'en' ? 'en' : 'ja') as AppLocale;
   const name = loc === 'ja' ? pref.nameJa : pref.nameEn;
-  const live = pref.slug === 'tokushima' || pref.slug === 'kagawa';
+  const live = pref.slug === 'tokushima' || pref.slug === 'kagawa' || pref.slug === 'kochi';
   return shareMetadata({
     locale: loc,
     rest: pref.slug,
@@ -67,10 +69,14 @@ export async function generateMetadata({params}: Props) {
         ? loc === 'ja'
           ? '香川県の市町村。高松市・琴平町。'
           : 'Municipalities in Kagawa. Listings: Takamatsu City, Kotohira Town.'
+        : pref.slug === 'kochi'
+          ? loc === 'ja'
+            ? '高知県の市町村。高知市。'
+            : 'Municipalities in Kochi. Listings: Kochi City.'
         : loc === 'ja'
           ? 'この県の市町村ページは準備中です。'
           : 'This prefecture layer is not wired yet.',
-    image: pref.slug === 'kagawa' ? TAKAMATSU_PLACE_PHOTO : MIMA_PLACE_PHOTO,
+    image: pref.slug === 'kochi' ? KOCHI_PLACE_PHOTO : pref.slug === 'kagawa' ? TAKAMATSU_PLACE_PHOTO : MIMA_PLACE_PHOTO,
     index: live
   });
 }
@@ -95,10 +101,10 @@ export default async function PrefecturePage({params}: Props) {
         <span>{name}</span>
       </nav>
       <h1>{name}</h1>
-      {pref.slug === 'tokushima' || pref.slug === 'kagawa' ? (
+      {pref.slug === 'tokushima' || pref.slug === 'kagawa' || pref.slug === 'kochi' ? (
         <>
           <ul className="muni-cards">
-            {(pref.slug === 'tokushima' ? TOKUSHIMA_MUNICIPALITIES : KAGAWA_MUNICIPALITIES).map((m) => {
+            {(pref.slug === 'tokushima' ? TOKUSHIMA_MUNICIPALITIES : pref.slug === 'kagawa' ? KAGAWA_MUNICIPALITIES : KOCHI_MUNICIPALITIES).map((m) => {
               const live = m.status === 'ready';
               const photo =
                 m.slug === 'tokushima'
@@ -161,6 +167,8 @@ export default async function PrefecturePage({params}: Props) {
                                                 ? TADOTSU_PLACE_PHOTO
                                               : m.slug === 'manno'
                                                 ? MANNO_PLACE_PHOTO
+                                              : m.slug === 'kochi'
+                                                ? KOCHI_PLACE_PHOTO
                                               : m.slug === 'takamatsu'
                                               ? TAKAMATSU_PLACE_PHOTO
                                               : MIMA_PLACE_PHOTO;
