@@ -19,7 +19,8 @@ import {TAKAMATSU_PLACE_PHOTO} from '@/data/takamatsu';
 import {KOTOHIRA_PLACE_PHOTO} from '@/data/kotohira';
 import {MARUGAME_PLACE_PHOTO} from '@/data/marugame';
 import {KANONJI_PLACE_PHOTO} from '@/data/kanonji';
-import {SAKAIDE_PLACE_PHOTO} from '@/data/sakaide';
+import {SAKAIDE_PLACE_PHOTO} from '@/data/sakaide'
+import {NAOSHIMA_PLACE_PHOTO} from '@/data/naoshima';
 import {KAGAWA_MUNICIPALITIES} from '@/data/kagawa-municipalities';
 import {TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {PREFECTURES, PREFECTURE_BY_SLUG} from '@/data/prefectures';
@@ -125,6 +126,8 @@ export default async function PrefecturePage({params}: Props) {
                                               ? KANONJI_PLACE_PHOTO
                                             : m.slug === 'sakaide'
                                               ? SAKAIDE_PLACE_PHOTO
+                                            : m.slug === 'naoshima'
+                                              ? NAOSHIMA_PLACE_PHOTO
                                             : m.slug === 'takamatsu'
                                               ? TAKAMATSU_PLACE_PHOTO
                                               : MIMA_PLACE_PHOTO;

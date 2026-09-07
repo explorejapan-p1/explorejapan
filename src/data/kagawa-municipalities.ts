@@ -10,7 +10,7 @@ export type Municipality = {
 
 /**
  * Kagawa 市区町村. Codes are N03_007 / JIS X 0402 (5-digit).
- * Takamatsu 37201 + Marugame 37202 + Sakaide 37203 + Kanonji 37205 + Kotohira 37403 LIVE hubs.
+ * Takamatsu 37201 + Marugame 37202 + Sakaide 37203 + Kanonji 37205 + Kotohira 37403 + Naoshima 37364 LIVE hubs.
  */
 export const KAGAWA_MUNICIPALITIES: Municipality[] = [
   {jis: '37201', slug: 'takamatsu', nameJa: '高松市', nameEn: 'Takamatsu', status: 'ready'},
@@ -24,7 +24,7 @@ export const KAGAWA_MUNICIPALITIES: Municipality[] = [
   {jis: '37322', slug: 'tonosho', nameJa: '土庄町', nameEn: 'Tonosho', status: 'coming-soon'},
   {jis: '37324', slug: 'shodoshima', nameJa: '小豆島町', nameEn: 'Shodoshima', status: 'coming-soon'},
   {jis: '37341', slug: 'miki', nameJa: '三木町', nameEn: 'Miki', status: 'coming-soon'},
-  {jis: '37364', slug: 'naoshima', nameJa: '直島町', nameEn: 'Naoshima', status: 'coming-soon'},
+  {jis: '37364', slug: 'naoshima', nameJa: '直島町', nameEn: 'Naoshima', status: 'ready'},
   {jis: '37386', slug: 'utazu', nameJa: '宇多津町', nameEn: 'Utazu', status: 'coming-soon'},
   {jis: '37387', slug: 'ayagawa', nameJa: '綾川町', nameEn: 'Ayagawa', status: 'coming-soon'},
   {jis: '37403', slug: 'kotohira', nameJa: '琴平町', nameEn: 'Kotohira', status: 'ready'},

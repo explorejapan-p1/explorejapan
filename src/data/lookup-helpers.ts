@@ -304,6 +304,17 @@ import {
   rankSakaideSeeRows,
   resolveSakaideFilter
 } from './sakaide-travel';
+import {
+  isNaoshimaOnsenPackRow,
+  isNaoshimaExperiencePackRow,
+  isNaoshimaStayPackRow,
+  naoshimaPackRowMatchesFilter,
+  naoshimaSightPhoto,
+  naoshimaSourcedHook,
+  naoshimaTopChipForRow,
+  rankNaoshimaSeeRows,
+  resolveNaoshimaFilter
+} from './naoshima-travel';
 
 
 
@@ -728,6 +739,7 @@ const KANONJI_HELPERS: LookupHelpers = {
 };
 
 
+
 const SAKAIDE_HELPERS: LookupHelpers = {
   isOnsenPackRow: isSakaideOnsenPackRow,
   isExperiencePackRow: isSakaideExperiencePackRow,
@@ -739,6 +751,19 @@ const SAKAIDE_HELPERS: LookupHelpers = {
   topChipForRow: sakaideTopChipForRow,
   resolveFilter: resolveSakaideFilter
 };
+const NAOSHIMA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isNaoshimaOnsenPackRow,
+  isExperiencePackRow: isNaoshimaExperiencePackRow,
+  isStayPackRow: isNaoshimaStayPackRow,
+  packRowMatchesFilter: naoshimaPackRowMatchesFilter,
+  rankSeeRows: rankNaoshimaSeeRows,
+  sightPhoto: naoshimaSightPhoto,
+  sourcedHook: naoshimaSourcedHook,
+  topChipForRow: naoshimaTopChipForRow,
+  resolveFilter: resolveNaoshimaFilter
+};
+
+
 
 export function townHelpers(slug: ReadySlug): LookupHelpers {
 
@@ -770,5 +795,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'marugame') return MARUGAME_HELPERS;
   if (slug === 'kanonji') return KANONJI_HELPERS;
   if (slug === 'sakaide') return SAKAIDE_HELPERS;
+  if (slug === 'naoshima') return NAOSHIMA_HELPERS;
   return MIMA_HELPERS;
 }

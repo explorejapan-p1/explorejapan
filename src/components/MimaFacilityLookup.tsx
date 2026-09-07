@@ -46,7 +46,8 @@ import {TAKAMATSU_TRAVEL_ACCESSED} from '@/data/takamatsu-travel';
 import {KOTOHIRA_TRAVEL_ACCESSED} from '@/data/kotohira-travel';
 import {MARUGAME_TRAVEL_ACCESSED} from '@/data/marugame-travel';
 import {KANONJI_TRAVEL_ACCESSED} from '@/data/kanonji-travel';
-import {SAKAIDE_TRAVEL_ACCESSED} from '@/data/sakaide-travel';
+import {SAKAIDE_TRAVEL_ACCESSED} from '@/data/sakaide-travel'
+import {NAOSHIMA_TRAVEL_ACCESSED} from '@/data/naoshima-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1014,6 +1015,25 @@ export function MimaFacilityLookup({
                 Dining from Tabelog Sakaide City shop pages ({SAKAIDE_TRAVEL_ACCESSED}).
                 Onsen: Route Inn and Grand Hotel bath stills (distinct from stay room keys). Experience: Michinoeki Seto-Ohashi Kinen-koen.
                 Shopping and commerce stay at 0 without sourced photos. Fifth LIVE Kagawa hub.
+              </>
+            )
+
+) : town.slug === 'naoshima' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（南瓜・宮浦港・地中美術館・ベネッセ・李禹煥美術館・パヴィリオン・護王神社・琴弾地・ANDO MUSEUM）。
+                宿泊は楽天トラベルの客室写真（{NAOSHIMA_TRAVEL_ACCESSED}）。
+                飲食は食べログ直島町の公開店ページ（{NAOSHIMA_TRAVEL_ACCESSED}）。
+                温泉はつつじ荘の貸切風呂（公式風呂写真・客室キーと分離）。体験は直島銭湯。
+                買物・商業は出典写真が無いため0件。香川県6つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Yellow Pumpkin, Miyanoura Port, Chichu, Benesse House Museum, Lee Ufan Museum, Pavilion, Go'o Shrine, Kotakiji Beach, ANDO MUSEUM).
+                Lodging from Rakuten Travel room photos ({NAOSHIMA_TRAVEL_ACCESSED}).
+                Dining from Tabelog Naoshima Town shop pages ({NAOSHIMA_TRAVEL_ACCESSED}).
+                Onsen: Tsutsuji-so private bath still (distinct from stay room keys). Experience: Naoshima Bath.
+                Shopping and commerce stay at 0 without sourced photos. Sixth LIVE Kagawa hub.
               </>
             )
 

@@ -24,6 +24,7 @@ import {KOTOHIRA, KOTOHIRA_PLACE_PHOTO} from '@/data/kotohira';
 import {MARUGAME, MARUGAME_PLACE_PHOTO} from '@/data/marugame';
 import {KANONJI, KANONJI_PLACE_PHOTO} from '@/data/kanonji';
 import {SAKAIDE, SAKAIDE_PLACE_PHOTO} from '@/data/sakaide';
+import {NAOSHIMA, NAOSHIMA_PLACE_PHOTO} from '@/data/naoshima';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -117,6 +118,7 @@ function localityJa(slug: string): string {
   if (slug === 'marugame') return MARUGAME.nameJa;
   if (slug === 'kanonji') return KANONJI.nameJa;
   if (slug === 'sakaide') return SAKAIDE.nameJa;
+  if (slug === 'naoshima') return NAOSHIMA.nameJa;
   return MIMA.nameJa;
 }
 
@@ -149,6 +151,7 @@ function localityEn(slug: string): string {
   if (slug === 'marugame') return MARUGAME.nameEn;
   if (slug === 'kanonji') return KANONJI.nameEn;
   if (slug === 'sakaide') return SAKAIDE.nameEn;
+  if (slug === 'naoshima') return NAOSHIMA.nameEn;
   return MIMA.nameEn;
 }
 
@@ -2418,6 +2421,66 @@ export function sakaideGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '坂出市の案内' : 'Places in Sakaide City',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+export function naoshimaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kagawa/naoshima');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('naoshima');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? NAOSHIMA.nameJa : NAOSHIMA.nameEn,
+        alternateName: isJa ? NAOSHIMA.nameEn : NAOSHIMA.nameJa,
+        identifier: NAOSHIMA.jis,
+        url,
+        image: photoAbs(NAOSHIMA_PLACE_PHOTO),
+        sameAs: [NAOSHIMA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '室町二丁目3番5号' : '2-3-5 Muromachi',
+          addressLocality: isJa ? NAOSHIMA.nameJa : NAOSHIMA.nameEn,
+          addressRegion: isJa ? NAOSHIMA.prefectureJa : NAOSHIMA.prefectureEn,
+          postalCode: NAOSHIMA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? NAOSHIMA.prefectureJa : NAOSHIMA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? NAOSHIMA.nameJa : NAOSHIMA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? NAOSHIMA.prefectureJa : NAOSHIMA.prefectureEn, item: canonicalUrl(locale, 'kagawa')},
+          {'@type': 'ListItem', position: 3, name: isJa ? NAOSHIMA.nameJa : NAOSHIMA.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '直島町の案内' : 'Places in Naoshima Town',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',
