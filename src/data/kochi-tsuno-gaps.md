@@ -1,6 +1,6 @@
 # Tsuno Town (津野町) gaps (TG566 twenty-ninth Kochi hub)
 
-Accessed 2026-09-08 (JST). LIVE tip pending push.
+Accessed 2026-09-08 (JST). LIVE tip `1f1de4a965`.
 
 ## LIVE pills (photo-first)
 - stay: 1 (星ふるヴィレッジTENGU / Rakuten HOTEL/129993 ツインルーム LARGE gallery mediaInfo「スタールーム。メゾネットの1階はツインルーム」cat 00000001 — stay≠onsen)
@@ -28,4 +28,4 @@ Accessed 2026-09-08 (JST). LIVE tip pending push.
 - 佐川町・田野町 still deferred.
 
 ## CDN
-Cold CDN pending post-push.
+Cold CDN PASS after Pages lag (~70s post-push). Live `ja/kochi/tsuno/` PASS: hero 津野町, desc 津野町。四国カルスト、四万十源流、天狗、食。, pills stay/dining/onsen/experience/sights = 1/3/0/0/5. Pref cover tsuno-cover-karst present. Hidaka regression PASS.
