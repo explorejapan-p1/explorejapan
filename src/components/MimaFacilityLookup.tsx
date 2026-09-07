@@ -72,6 +72,7 @@ import {SHIMANTO_TRAVEL_ACCESSED} from '@/data/shimanto-travel';
 import {TOSASHIMIZU_TRAVEL_ACCESSED} from '@/data/tosashimizu-travel';
 import {SUKUMO_TRAVEL_ACCESSED} from '@/data/sukumo-travel';
 import {KUROSHIO_TRAVEL_ACCESSED} from '@/data/kuroshio-travel';
+import {TOYO_TRAVEL_ACCESSED} from '@/data/toyo-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1464,6 +1465,22 @@ export function MimaFacilityLookup({
                 Lodging from Rakuten Travel room photos ({MUROTO_TRAVEL_ACCESSED}).
                 Dining from Tabelog Muroto shop pages ({MUROTO_TRAVEL_ACCESSED}).
                 Onsen: 0 (room-still stay only; no attributable bath keys). Experience: Muroto Geopark Center (Commons). Shopping/commerce: 0. Seventh LIVE Kochi hub.
+              </>
+            )
+          ) : town.slug === 'toyo' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（白浜海水浴場・生見海岸・甲浦・法界上人堂・野根地区）。
+                宿泊は楽天トラベル東洋白浜リゾートホテルの客室写真（{TOYO_TRAVEL_ACCESSED}）。
+                飲食は食べログ東洋町の公開店ページ（{TOYO_TRAVEL_ACCESSED}）。
+                温泉は0件（客室写真の宿のみ・大浴場出典キー無し）。体験は海の駅東洋町（Commons）。買物・商業は0件。高知県14つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Shirahama Beach, Ikumi Coast, Kannoura, Hokai Shonin-do, None district).
+                Lodging: Toyo Shirahama Resort Hotel Rakuten room photo ({TOYO_TRAVEL_ACCESSED}).
+                Dining from Tabelog Toyo shop pages ({TOYO_TRAVEL_ACCESSED}).
+                Onsen: 0 (room-still stay only; no attributable bath keys). Experience: Umi-no-Eki Toyo (Commons). Shopping/commerce: 0. Fourteenth LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'kuroshio' ? (

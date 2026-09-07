@@ -24,7 +24,7 @@ export const KOCHI_MUNICIPALITIES: Municipality[] = [
   {jis: '39210', slug: 'shimanto', nameJa: '四万十市', nameEn: 'Shimanto', status: 'ready'},
   {jis: '39211', slug: 'konan', nameJa: '香南市', nameEn: 'Konan', status: 'ready'},
   {jis: '39212', slug: 'kami', nameJa: '香美市', nameEn: 'Kami', status: 'ready'},
-  {jis: '39301', slug: 'toyo', nameJa: '東洋町', nameEn: 'Toyo', status: 'coming-soon'},
+  {jis: '39301', slug: 'toyo', nameJa: '東洋町', nameEn: 'Toyo', status: 'ready'},
   {jis: '39302', slug: 'nahari', nameJa: '奈半利町', nameEn: 'Nahari', status: 'coming-soon'},
   {jis: '39303', slug: 'tano', nameJa: '田野町', nameEn: 'Tano', status: 'coming-soon'},
   {jis: '39304', slug: 'yasuda', nameJa: '安田町', nameEn: 'Yasuda', status: 'coming-soon'},

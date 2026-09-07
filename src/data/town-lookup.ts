@@ -320,6 +320,7 @@ import {SHIMANTO, SHIMANTO_PLACE_PHOTO, SHIMANTO_FACILITIES, SHIMANTO_EXPECTED_G
 import {TOSASHIMIZU, TOSASHIMIZU_PLACE_PHOTO, TOSASHIMIZU_FACILITIES, TOSASHIMIZU_EXPECTED_GEO_COUNT, TOSASHIMIZU_EXPECTED_ROW_COUNT} from './tosashimizu';
 import {SUKUMO, SUKUMO_PLACE_PHOTO, SUKUMO_FACILITIES, SUKUMO_EXPECTED_GEO_COUNT, SUKUMO_EXPECTED_ROW_COUNT} from './sukumo';
 import {KUROSHIO, KUROSHIO_PLACE_PHOTO, KUROSHIO_FACILITIES, KUROSHIO_EXPECTED_GEO_COUNT, KUROSHIO_EXPECTED_ROW_COUNT} from './kuroshio';
+import {TOYO, TOYO_PLACE_PHOTO, TOYO_FACILITIES, TOYO_EXPECTED_GEO_COUNT, TOYO_EXPECTED_ROW_COUNT} from './toyo';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -608,6 +609,13 @@ import {
   KUROSHIO_TRAVEL_COMMERCE,
   KUROSHIO_TRAVEL_ALL
 } from './kuroshio-travel';
+import {
+  TOYO_TRAVEL_DINING,
+  TOYO_TRAVEL_STAY,
+  TOYO_TRAVEL_SHOPPING,
+  TOYO_TRAVEL_COMMERCE,
+  TOYO_TRAVEL_ALL
+} from './toyo-travel';
 
 
 
@@ -2222,6 +2230,37 @@ export const KUROSHIO_LOOKUP: LookupTown = {
 };
 
 
+export const TOYO_LOOKUP: LookupTown = {
+  slug: 'toyo',
+  prefectureSlug: 'kochi',
+  jis: TOYO.jis,
+  nameJa: TOYO.nameJa,
+  nameEn: TOYO.nameEn,
+  heroPhoto: TOYO_PLACE_PHOTO,
+  photoCiteJa: '写真は白浜海水浴場。Araiyasushige、2024-05-14、CC0。File:Sirahama_20240514_1.jpg。',
+  photoCiteEn: 'Photo: Shirahama Beach. Araiyasushige, 14 May 2024, CC0. File:Sirahama_20240514_1.jpg.',
+  rows: TOYO_FACILITIES,
+  expectedGeo: TOYO_EXPECTED_GEO_COUNT,
+  expectedRows: TOYO_EXPECTED_ROW_COUNT,
+  travelDining: TOYO_TRAVEL_DINING,
+  travelStay: TOYO_TRAVEL_STAY,
+  travelShopping: TOYO_TRAVEL_SHOPPING,
+  travelCommerce: TOYO_TRAVEL_COMMERCE,
+  travelAll: TOYO_TRAVEL_ALL,
+  coverageJa:
+    '東洋町（JIS 39301）観光5・宿泊1・飲食7・温泉0・体験1（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県14つ目のLIVEハブ。',
+  coverageEn:
+    'Toyo Town (JIS 39301), 5 tourism + 1 stay + 7 dining + 0 onsen + 1 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Fourteenth LIVE Kochi hub.',
+  mapLabelJa: '東洋町の出典座標6件',
+  mapLabelEn: '6 sourced coordinates in Toyo Town',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons等出典座標6件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 6 sourced coordinates for town/official facilities (accessed 2026-09-08).',
+  licenseNoteJa: '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from town.toyo.kochi.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
 export const SHIMANTO_LOOKUP: LookupTown = {
   slug: 'shimanto',
   prefectureSlug: 'kochi',
@@ -2620,7 +2659,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   shimanto: SHIMANTO_LOOKUP,
   tosashimizu: TOSASHIMIZU_LOOKUP,
   sukumo: SUKUMO_LOOKUP,
-  kuroshio: KUROSHIO_LOOKUP
+  kuroshio: KUROSHIO_LOOKUP,
+  toyo: TOYO_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

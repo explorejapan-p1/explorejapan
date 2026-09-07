@@ -49,6 +49,7 @@ import {SHIMANTO, SHIMANTO_PLACE_PHOTO} from '@/data/shimanto';
 import {TOSASHIMIZU, TOSASHIMIZU_PLACE_PHOTO} from '@/data/tosashimizu';
 import {SUKUMO, SUKUMO_PLACE_PHOTO} from '@/data/sukumo';
 import {KUROSHIO, KUROSHIO_PLACE_PHOTO} from '@/data/kuroshio';
+import {TOYO, TOYO_PLACE_PHOTO} from '@/data/toyo';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -167,6 +168,7 @@ function localityJa(slug: string): string {
   if (slug === 'tosashimizu') return TOSASHIMIZU.nameJa;
   if (slug === 'sukumo') return SUKUMO.nameJa;
   if (slug === 'kuroshio') return KUROSHIO.nameJa;
+  if (slug === 'toyo') return TOYO.nameJa;
   return MIMA.nameJa;
 }
 
@@ -224,6 +226,7 @@ function localityEn(slug: string): string {
   if (slug === 'tosashimizu') return TOSASHIMIZU.nameEn;
   if (slug === 'sukumo') return SUKUMO.nameEn;
   if (slug === 'kuroshio') return KUROSHIO.nameEn;
+  if (slug === 'toyo') return TOYO.nameEn;
   return MIMA.nameEn;
 }
 
@@ -3816,6 +3819,67 @@ export function sukumoGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '宿毛市の案内' : 'Places in Sukumo City',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+
+export function toyoGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/toyo');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('toyo');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? TOYO.nameJa : TOYO.nameEn,
+        alternateName: isJa ? TOYO.nameEn : TOYO.nameJa,
+        identifier: TOYO.jis,
+        url,
+        image: photoAbs(TOYO_PLACE_PHOTO),
+        sameAs: [TOYO.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '大字生見758番地3' : '758-3 Ikumi',
+          addressLocality: isJa ? TOYO.nameJa : TOYO.nameEn,
+          addressRegion: isJa ? TOYO.prefectureJa : TOYO.prefectureEn,
+          postalCode: TOYO.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? TOYO.prefectureJa : TOYO.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? TOYO.nameJa : TOYO.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? TOYO.prefectureJa : TOYO.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? TOYO.nameJa : TOYO.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '東洋町の案内' : 'Places in Toyo Town',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

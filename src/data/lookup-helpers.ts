@@ -581,6 +581,17 @@ import {
   kuroshioSourcedHook,
   kuroshioTopChipForRow
 } from './kuroshio-travel';
+import {
+  isToyoExperiencePackRow,
+  isToyoOnsenPackRow,
+  isToyoStayPackRow,
+  rankToyoSeeRows,
+  resolveToyoFilter,
+  toyoPackRowMatchesFilter,
+  toyoSightPhoto,
+  toyoSourcedHook,
+  toyoTopChipForRow
+} from './toyo-travel';
 
 
 
@@ -1187,6 +1198,18 @@ const SUKUMO_HELPERS: LookupHelpers = {
   resolveFilter: resolveSukumoFilter
 };
 
+const TOYO_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isToyoOnsenPackRow,
+  isExperiencePackRow: isToyoExperiencePackRow,
+  isStayPackRow: isToyoStayPackRow,
+  packRowMatchesFilter: toyoPackRowMatchesFilter,
+  rankSeeRows: rankToyoSeeRows,
+  sightPhoto: toyoSightPhoto,
+  sourcedHook: toyoSourcedHook,
+  topChipForRow: toyoTopChipForRow,
+  resolveFilter: resolveToyoFilter
+};
+
 const KUROSHIO_HELPERS: LookupHelpers = {
   isOnsenPackRow: isKuroshioOnsenPackRow,
   isExperiencePackRow: isKuroshioExperiencePackRow,
@@ -1391,5 +1414,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'tosashimizu') return TOSASHIMIZU_HELPERS;
   if (slug === 'sukumo') return SUKUMO_HELPERS;
   if (slug === 'kuroshio') return KUROSHIO_HELPERS;
+  if (slug === 'toyo') return TOYO_HELPERS;
   return MIMA_HELPERS;
 }
