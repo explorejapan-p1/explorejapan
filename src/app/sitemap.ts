@@ -25,6 +25,7 @@ const READY_HUBS = [
   'tokushima/kamikatsu',
   'tokushima/sanagochi',
   'tokushima/naka',
+  'tokushima/mugi',
   'tokushima/minami',
   'tokushima/kaiyo',
   'tokushima/aizumi'

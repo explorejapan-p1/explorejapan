@@ -40,6 +40,8 @@ import {SANAGOCHI_TRAVEL_ACCESSED, SANAGOCHI_TRAVEL_SOURCES} from '@/data/sanago
 import {NAKA_TRAVEL_ACCESSED, NAKA_TRAVEL_SOURCES} from '@/data/naka-travel';
 import {MINAMI_TRAVEL_ACCESSED, MINAMI_TRAVEL_SOURCES} from '@/data/minami-travel';
 import {KAIYO_TRAVEL_ACCESSED, KAIYO_TRAVEL_SOURCES} from '@/data/kaiyo-travel';
+import {AIZUMI_TRAVEL_ACCESSED, AIZUMI_TRAVEL_SOURCES} from '@/data/aizumi-travel';
+import {MUGI_TRAVEL_ACCESSED, MUGI_TRAVEL_SOURCES} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES} from '@/data/naruto-travel';
 import {
   rankByOurTraffic,
@@ -896,7 +898,41 @@ export function MimaFacilityLookup({
                 Cards show only listings with a sourced photo. No public scores.
               </>
             )
-) : town.slug === 'minami' ? (
+
+          
+          ) : town.slug === 'mugi' ? (
+            locale === 'ja' ? (
+              <>
+                <a href={MUGI_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ牟岐町の公開店ページ（
+                {MUGI_TRAVEL_ACCESSED}）。
+                宿泊・温泉は客室・浴場の出典写真が無いため0件。
+                体験・買物・商業も出典写真が無いため0件。
+              </>
+            ) : (
+              <>
+                <a href={MUGI_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Mugi Town shop pages (
+                {MUGI_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
+                Experience, shopping, and commerce stay at 0 without sourced photos.
+              </>
+            )
+
+          ) : town.slug === 'aizumi' ? (
+            locale === 'ja' ? (
+              <>
+                <a href={AIZUMI_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ藍住町の公開店ページ（
+                {AIZUMI_TRAVEL_ACCESSED}）。
+                宿泊・温泉は客室・浴場の出典写真が無いため0件。
+                体験・買物・商業も出典写真が無いため0件。
+              </>
+            ) : (
+              <>
+                <a href={AIZUMI_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Aizumi Town shop pages (
+                {AIZUMI_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
+                Experience, shopping, and commerce stay at 0 without sourced photos.
+              </>
+            )
+
+          ) : town.slug === 'minami' ? (
             locale === 'ja' ? (
               <>
                 <a href={MINAMI_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ美波町の公開店ページ（

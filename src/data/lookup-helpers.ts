@@ -190,6 +190,19 @@ import {
   rankNakaSeeRows,
   resolveNakaFilter
 } from './naka-travel';
+
+import {
+  isMugiExperiencePackRow,
+  isMugiOnsenPackRow,
+  isMugiStayPackRow,
+  mugiPackRowMatchesFilter,
+  mugiSightPhoto,
+  mugiSourcedHook,
+  mugiTopChipForRow,
+  rankMugiSeeRows,
+  resolveMugiFilter
+} from './mugi-travel';
+
 import {
   isMinamiExperiencePackRow,
   isMinamiOnsenPackRow,
@@ -544,6 +557,19 @@ const AIZUMI_HELPERS: LookupHelpers = {
   resolveFilter: resolveAizumiFilter
 };
 
+
+const MUGI_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isMugiOnsenPackRow,
+  isExperiencePackRow: isMugiExperiencePackRow,
+  isStayPackRow: isMugiStayPackRow,
+  packRowMatchesFilter: mugiPackRowMatchesFilter,
+  rankSeeRows: rankMugiSeeRows,
+  sightPhoto: mugiSightPhoto,
+  sourcedHook: mugiSourcedHook,
+  topChipForRow: mugiTopChipForRow,
+  resolveFilter: resolveMugiFilter
+};
+
 export function townHelpers(slug: ReadySlug): LookupHelpers {
 
   if (slug === 'tsurugi') return TSURUGI_HELPERS;
@@ -563,6 +589,7 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'kamikatsu') return KAMIKATSU_HELPERS;
   if (slug === 'sanagochi') return SANAGOCHI_HELPERS;
   if (slug === 'naka') return NAKA_HELPERS;
+  if (slug === 'mugi') return MUGI_HELPERS;
   if (slug === 'minami') return MINAMI_HELPERS;
   if (slug === 'kaiyo') return KAIYO_HELPERS;
   if (slug === 'aizumi') return AIZUMI_HELPERS;

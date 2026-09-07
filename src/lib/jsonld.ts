@@ -14,6 +14,7 @@ import {KATSUURA, KATSUURA_PLACE_PHOTO} from '@/data/katsuura';
 import {KAMIKATSU, KAMIKATSU_PLACE_PHOTO} from '@/data/kamikatsu';
 import {SANAGOCHI, SANAGOCHI_PLACE_PHOTO} from '@/data/sanagochi';
 import {NAKA, NAKA_PLACE_PHOTO} from '@/data/naka';
+import {MUGI, MUGI_PLACE_PHOTO} from '@/data/mugi';
 import {MINAMI, MINAMI_PLACE_PHOTO} from '@/data/minami';
 import {AIZUMI, AIZUMI_PLACE_PHOTO} from '@/data/aizumi';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
@@ -96,6 +97,7 @@ function localityJa(slug: string): string {
   if (slug === 'kamikatsu') return KAMIKATSU.nameJa;
   if (slug === 'sanagochi') return SANAGOCHI.nameJa;
   if (slug === 'naka') return NAKA.nameJa;
+  if (slug === 'mugi') return MUGI.nameJa;
   if (slug === 'minami') return MINAMI.nameJa;
   if (slug === 'aizumi') return AIZUMI.nameJa;
   if (slug === 'kaiyo') return KAIYO.nameJa;
@@ -120,6 +122,7 @@ function localityEn(slug: string): string {
   if (slug === 'kamikatsu') return KAMIKATSU.nameEn;
   if (slug === 'sanagochi') return SANAGOCHI.nameEn;
   if (slug === 'naka') return NAKA.nameEn;
+  if (slug === 'mugi') return MUGI.nameEn;
   if (slug === 'minami') return MINAMI.nameEn;
   if (slug === 'aizumi') return AIZUMI.nameEn;
   if (slug === 'kaiyo') return KAIYO.nameEn;
@@ -1907,6 +1910,66 @@ export function aizumiGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '藍住町の案内' : 'Places in Aizumi Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+export function mugiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'tokushima/mugi');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('mugi');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? MUGI.nameJa : MUGI.nameEn,
+        alternateName: isJa ? MUGI.nameEn : MUGI.nameJa,
+        identifier: MUGI.jis,
+        url,
+        image: photoAbs(MUGI_PLACE_PHOTO),
+        sameAs: [MUGI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '中村字本村7-4' : '7-4 Honmura, Nakamura',
+          addressLocality: isJa ? MUGI.nameJa : MUGI.nameEn,
+          addressRegion: isJa ? MUGI.prefectureJa : MUGI.prefectureEn,
+          postalCode: MUGI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? MUGI.prefectureJa : MUGI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? MUGI.nameJa : MUGI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? MUGI.prefectureJa : MUGI.prefectureEn, item: canonicalUrl(locale, 'tokushima')},
+          {'@type': 'ListItem', position: 3, name: isJa ? MUGI.nameJa : MUGI.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '牟岐町の案内' : 'Places in Mugi Town',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',
