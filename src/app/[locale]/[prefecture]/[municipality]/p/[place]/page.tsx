@@ -184,6 +184,10 @@ export default async function PlacePage({params}: Props) {
                             : municipality === 'anan'
                               ? ANAN.nameEn
                               : MIMA.nameEn;
+  const dest =
+    listing.officialUrl && listing.officialUrl.trim() !== ''
+      ? listing.officialUrl
+      : listing.sourceUrl;
   return (
     <>
       <JsonLd data={placeGraph(listing, loc)} />
@@ -197,18 +201,25 @@ export default async function PlacePage({params}: Props) {
         <span>{listing.nameJa}</span>
       </nav>
       <article className="place-page">
-        <div className="card-photo">
-          <img
-            src={photo.src}
-            alt={isJa ? photo.altJa : photo.altEn}
-            width={1200}
-            height={800}
-          />
-          <span className="card-photo-cite">
-            {photo.author} / {photo.license}
-          </span>
-        </div>
-        <h1>{listing.nameJa}</h1>
+        <a
+          href={dest}
+          className="facility-card-link place-photo-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div className="card-photo">
+            <img
+              src={photo.src}
+              alt={isJa ? photo.altJa : photo.altEn}
+              width={1200}
+              height={800}
+            />
+            <span className="card-photo-cite">
+              {photo.author} / {photo.license}
+            </span>
+          </div>
+          <h1>{listing.nameJa}</h1>
+        </a>
         <p className="card-score">{isJa ? '未評価' : 'Unrated'}</p>
         {listing.address ? (
           <p className="attr-row">
@@ -228,11 +239,7 @@ export default async function PlacePage({params}: Props) {
             <span>{listing.hours}</span>
           </p>
         ) : null}
-        <p className="place-card-meta">
-          <a href={listing.sourceUrl}>{isJa ? '出典' : 'Source'}</a>
-          {' · '}
-          {listing.accessed}
-        </p>
+        <p className="place-card-meta">{listing.accessed}</p>
       </article>
     </>
   );

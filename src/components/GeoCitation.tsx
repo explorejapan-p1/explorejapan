@@ -12,7 +12,7 @@ export function GeoCitation({source, locale, variant = 'default'}: Props) {
     return (
       <footer className="geo-cite geo-cite-tiny">
         <p>
-          <span className="geo-cite-label">{isJa ? '出典' : 'Source'}</span>
+          <span className="geo-cite-label">{isJa ? '地図' : 'Map'}</span>
           {isJa ? '国土数値情報（行政区域）' : 'NLNI Administrative Zones'}{' '}
           <a href={N03_CITATION.url} title={N03_CITATION.gsiNote}>
             {N03_CITATION.vintage}
@@ -27,7 +27,7 @@ export function GeoCitation({source, locale, variant = 'default'}: Props) {
   return (
     <footer className="geo-cite">
       <p>
-        <span className="geo-cite-label">{isJa ? '出典' : 'Source'}</span>
+        <span className="geo-cite-label">{isJa ? '地図' : 'Map'}</span>
         {isJa ? N03_CITATION.productJa : N03_CITATION.productEn}（
         <a href={N03_CITATION.url}>{N03_CITATION.vintage}</a> / {N03_CITATION.license}）
       </p>

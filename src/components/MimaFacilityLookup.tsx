@@ -15,36 +15,35 @@ import {
   TOP_CHIP_COUNTS,
   TRAVEL_ACCESSED,
   TRAVEL_CARD_FOLD,
-  TRAVEL_SOURCES,
   isTravelFilter,
   type FilterId,
   type TravelRow
 } from '@/data/mima-travel';
 import type {LookupTown} from '@/data/lookup-town';
 import {townHelpers} from '@/data/lookup-helpers';
-import {TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES} from '@/data/tsurugi-travel';
-import {YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES} from '@/data/yoshinogawa-travel';
-import {MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES} from '@/data/miyoshi-travel';
-import {TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES} from '@/data/tokushima-city-travel';
-import {AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES} from '@/data/awa-travel';
-import {HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES} from '@/data/higashimiyoshi-travel';
-import {KITAJIMA_TRAVEL_ACCESSED, KITAJIMA_TRAVEL_SOURCES} from '@/data/kitajima-travel';
-import {MATSUSHIGE_TRAVEL_ACCESSED, MATSUSHIGE_TRAVEL_SOURCES} from '@/data/matsushige-travel';
-import {ISHII_TRAVEL_ACCESSED, ISHII_TRAVEL_SOURCES} from '@/data/ishii-travel';
-import {ITANO_TRAVEL_ACCESSED, ITANO_TRAVEL_SOURCES} from '@/data/itano-travel';
-import {KAMIITA_TRAVEL_ACCESSED, KAMIITA_TRAVEL_SOURCES} from '@/data/kamiita-travel';
-import {KAMIYAMA_TRAVEL_ACCESSED, KAMIYAMA_TRAVEL_SOURCES} from '@/data/kamiyama-travel';
-import {KATSUURA_TRAVEL_ACCESSED, KATSUURA_TRAVEL_SOURCES} from '@/data/katsuura-travel';
-import {KAMIKATSU_TRAVEL_ACCESSED, KAMIKATSU_TRAVEL_SOURCES} from '@/data/kamikatsu-travel';
-import {SANAGOCHI_TRAVEL_ACCESSED, SANAGOCHI_TRAVEL_SOURCES} from '@/data/sanagochi-travel';
-import {NAKA_TRAVEL_ACCESSED, NAKA_TRAVEL_SOURCES} from '@/data/naka-travel';
-import {MINAMI_TRAVEL_ACCESSED, MINAMI_TRAVEL_SOURCES} from '@/data/minami-travel';
-import {KAIYO_TRAVEL_ACCESSED, KAIYO_TRAVEL_SOURCES} from '@/data/kaiyo-travel';
-import {AIZUMI_TRAVEL_ACCESSED, AIZUMI_TRAVEL_SOURCES} from '@/data/aizumi-travel';
-import {KOMATSUSHIMA_TRAVEL_ACCESSED, KOMATSUSHIMA_TRAVEL_SOURCES} from '@/data/komatsushima-travel';
-import {ANAN_TRAVEL_ACCESSED, ANAN_TRAVEL_SOURCES} from '@/data/anan-travel';
-import {MUGI_TRAVEL_ACCESSED, MUGI_TRAVEL_SOURCES} from '@/data/mugi-travel';
-import {NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES} from '@/data/naruto-travel';
+import {TSURUGI_TRAVEL_ACCESSED} from '@/data/tsurugi-travel';
+import {YOSHINOGAWA_TRAVEL_ACCESSED} from '@/data/yoshinogawa-travel';
+import {MIYOSHI_TRAVEL_ACCESSED} from '@/data/miyoshi-travel';
+import {TOKUSHIMA_CITY_TRAVEL_ACCESSED} from '@/data/tokushima-city-travel';
+import {AWA_TRAVEL_ACCESSED} from '@/data/awa-travel';
+import {HIGASHIMIYOSHI_TRAVEL_ACCESSED} from '@/data/higashimiyoshi-travel';
+import {KITAJIMA_TRAVEL_ACCESSED} from '@/data/kitajima-travel';
+import {MATSUSHIGE_TRAVEL_ACCESSED} from '@/data/matsushige-travel';
+import {ISHII_TRAVEL_ACCESSED} from '@/data/ishii-travel';
+import {ITANO_TRAVEL_ACCESSED} from '@/data/itano-travel';
+import {KAMIITA_TRAVEL_ACCESSED} from '@/data/kamiita-travel';
+import {KAMIYAMA_TRAVEL_ACCESSED} from '@/data/kamiyama-travel';
+import {KATSUURA_TRAVEL_ACCESSED} from '@/data/katsuura-travel';
+import {KAMIKATSU_TRAVEL_ACCESSED} from '@/data/kamikatsu-travel';
+import {SANAGOCHI_TRAVEL_ACCESSED} from '@/data/sanagochi-travel';
+import {NAKA_TRAVEL_ACCESSED} from '@/data/naka-travel';
+import {MINAMI_TRAVEL_ACCESSED} from '@/data/minami-travel';
+import {KAIYO_TRAVEL_ACCESSED} from '@/data/kaiyo-travel';
+import {AIZUMI_TRAVEL_ACCESSED} from '@/data/aizumi-travel';
+import {KOMATSUSHIMA_TRAVEL_ACCESSED} from '@/data/komatsushima-travel';
+import {ANAN_TRAVEL_ACCESSED} from '@/data/anan-travel';
+import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
+import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
   rankByOurTraffic,
   recordFacilitySearch,
@@ -74,6 +73,14 @@ function isBlank(value: string | null | undefined): boolean {
 
 function isPackRow(row: CardRow): row is FacilityRow {
   return !isTravelFilter(row.category);
+}
+
+
+function destinationUrl(row: CardRow): string {
+  if (isPackRow(row) && row.official_url && !isBlank(row.official_url)) {
+    return row.official_url;
+  }
+  return row.source_url;
 }
 
 function displayDedupeKey(row: FacilityRow): string {
@@ -179,30 +186,28 @@ function FacilityCard({
   row,
   locale,
   rank,
-  href,
-  onOpen,
+  onView,
   town
 }: {
   row: CardRow;
   locale: string;
   rank: number | null;
-  href: string;
-  onOpen: (id: string) => void;
+  onView: (id: string) => void;
   town: LookupTown;
 }) {
   const t = useTranslations('lookup');
   const h = townHelpers(town.slug);
   const photo = h.sightPhoto(row.name_ja);
   const hook = h.sourcedHook(row, locale);
+  const dest = destinationUrl(row);
   return (
     <article className="facility-card" data-id={row.id} data-category={row.category}>
       <a
-        href={href}
+        href={dest}
         className="facility-card-link"
-        onClick={(event) => {
-          event.preventDefault();
-          onOpen(row.id);
-        }}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => onView(row.id)}
       >
         <div className={photo ? 'card-photo' : 'card-photo is-well'}>
           {photo ? (
@@ -304,15 +309,7 @@ function DetailSheet({
             <span>{pack.hours}</span>
           </p>
         ) : null}
-        {pack && pack.official_url && !isBlank(pack.official_url) ? (
-          <p className="attr-row">
-            <span className="attr-label">{t('official')}</span>
-            <a href={pack.official_url}>{pack.official_url}</a>
-          </p>
-        ) : null}
         <footer className="place-card-meta">
-          <a href={row.source_url}>{t('source')}</a>
-          {' · '}
           {row.accessed}
           {pack && kind ? (
             <>
@@ -482,10 +479,7 @@ export function MimaFacilityLookup({
     applyFromLocation();
   }
 
-  function openCard(id: string) {
-    const href = chipHref(filter === 'all' ? 'stay' : filter, query, locale, town.slug, id);
-    window.history.pushState({}, '', href);
-    setOpenId(id);
+  function onCardView(id: string) {
     setTraffic((prev) => ({...prev, views: recordFacilityView(id)}));
   }
 
@@ -613,8 +607,7 @@ export function MimaFacilityLookup({
               row={row}
               locale={locale}
               rank={searching ? null : index + 1}
-              href={chipHref(filter === 'all' ? 'stay' : filter, query, locale, town.slug, row.id)}
-              onOpen={openCard}
+              onView={onCardView}
               town={town}
             />
           ))}
@@ -633,27 +626,27 @@ export function MimaFacilityLookup({
           {town.slug === 'mima' ? (
             locale === 'ja' ? (
               <>
-                <a href={TRAVEL_SOURCES.dining}>飲食</a>・<a href={TRAVEL_SOURCES.stay}>宿泊</a>
+                飲食・宿泊
                 は美馬観光ビューロー（{TRAVEL_ACCESSED}）。
-                <a href={TRAVEL_SOURCES.shoppingMap}>買物</a>・商業はうだつの町並み周辺図（2026-08-27）。
-                <a href={TRAVEL_SOURCES.onsen}>温泉</a>・<a href={TRAVEL_SOURCES.experience}>体験</a>
+                買物・商業はうだつの町並み周辺図（2026-08-27）。
+                温泉・体験
                 は市の観光マップ。点数は持ちません。
               </>
             ) : (
               <>
-                <a href={TRAVEL_SOURCES.dining}>Dining</a> and{' '}
-                <a href={TRAVEL_SOURCES.stay}>lodging</a> from the Mima Tourism Bureau (
-                {TRAVEL_ACCESSED}). <a href={TRAVEL_SOURCES.shoppingMap}>Shopping</a> and commerce
+                Dining and{' '}
+                lodging from the Mima Tourism Bureau (
+                {TRAVEL_ACCESSED}). Shopping and commerce
                 from the Udatsu townscape map (2026-08-27).{' '}
-                <a href={TRAVEL_SOURCES.onsen}>Onsen</a> and{' '}
-                <a href={TRAVEL_SOURCES.experience}>experience</a> from the city tourism map. No
+                Onsen and{' '}
+                experience from the city tourism map. No
                 public scores.
               </>
             )
           ) : town.slug === 'yoshinogawa' ? (
             locale === 'ja' ? (
               <>
-                <a href={YOSHINOGAWA_TRAVEL_SOURCES.stayList}>宿泊</a>は市の宿泊施設案内（
+                宿泊は市の宿泊施設案内（
                 {YOSHINOGAWA_TRAVEL_ACCESSED} の公式ページ）。
                 飲食は食べログ公開店ページ（{YOSHINOGAWA_TRAVEL_ACCESSED}）。単一出典は要確認。
                 体験・買物・商業の公式一覧は未掲載のため0件。
@@ -662,7 +655,7 @@ export function MimaFacilityLookup({
               </>
             ) : (
               <>
-                <a href={YOSHINOGAWA_TRAVEL_SOURCES.stayList}>Lodging</a> from the city lodging list
+                Lodging from the city lodging list
                 (official page of {YOSHINOGAWA_TRAVEL_ACCESSED}). Dining from Tabelog shop pages (
                 {YOSHINOGAWA_TRAVEL_ACCESSED}); a single source is flagged 要確認. Experience, shopping,
                 and commerce stay at 0 — no official list. Onsen from the city tourism pages.
@@ -672,20 +665,20 @@ export function MimaFacilityLookup({
           ) : town.slug === 'miyoshi' ? (
             locale === 'ja' ? (
               <>
-                <a href={MIYOSHI_TRAVEL_SOURCES.stayList}>宿泊</a>は観光協会の宿泊案内と公式客室写真（
+                宿泊は観光協会の宿泊案内と公式客室写真（
                 {MIYOSHI_TRAVEL_ACCESSED}）。
-                <a href={MIYOSHI_TRAVEL_SOURCES.gourmet}>飲食</a>は市＋観光協会の公開店ページ（{MIYOSHI_TRAVEL_ACCESSED}）。
+                飲食は市＋観光協会の公開店ページ（{MIYOSHI_TRAVEL_ACCESSED}）。
                 体験・買物・商業の公式一覧は未掲載のため0件。
-                <a href={MIYOSHI_TRAVEL_SOURCES.iyaOnsenRoten}>温泉</a>は公式の露天写真があるもの。
+                温泉は公式の露天写真があるもの。
                 カードは出典写真があるものだけ。点数は持ちません。
               </>
             ) : (
               <>
-                <a href={MIYOSHI_TRAVEL_SOURCES.stayList}>Lodging</a> from the tourism association
+                Lodging from the tourism association
                 lodging list and official guest-room photos ({MIYOSHI_TRAVEL_ACCESSED}).{' '}
-                <a href={MIYOSHI_TRAVEL_SOURCES.gourmet}>Dining</a> from city / association shop pages (
+                Dining from city / association shop pages (
                 {MIYOSHI_TRAVEL_ACCESSED}). Experience, shopping, and commerce stay at 0 — no official
-                list. <a href={MIYOSHI_TRAVEL_SOURCES.iyaOnsenRoten}>Onsen</a> where an official outdoor-bath
+                list. Onsen where an official outdoor-bath
                 photo exists. Cards show only listings with a sourced photo. No public scores.
               </>
             )
@@ -693,7 +686,7 @@ export function MimaFacilityLookup({
           ) : town.slug === 'awa' ? (
             locale === 'ja' ? (
               <>
-                <a href={AWA_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ阿波市の公開店ページ（
+                飲食は食べログ阿波市の公開店ページ（
                 {AWA_TRAVEL_ACCESSED}）。
                 宿泊・温泉は客室・浴場の出典写真が無いため0件。
                 体験・買物・商業の公式一覧は未掲載のため0件。
@@ -701,7 +694,7 @@ export function MimaFacilityLookup({
               </>
             ) : (
               <>
-                <a href={AWA_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Awa City shop pages (
+                Dining from Tabelog Awa City shop pages (
                 {AWA_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
                 Experience, shopping, and commerce stay at 0 — no official list.
                 Cards show only listings with a sourced photo. No public scores.
@@ -712,7 +705,7 @@ export function MimaFacilityLookup({
           ) : town.slug === 'higashimiyoshi' ? (
             locale === 'ja' ? (
               <>
-                <a href={HIGASHIMIYOSHI_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ東みよし町の公開店ページ（
+                飲食は食べログ東みよし町の公開店ページ（
                 {HIGASHIMIYOSHI_TRAVEL_ACCESSED}）。
                 宿泊・温泉は客室・浴場の出典写真が無いため0件。
                 体験・買物・商業の公式一覧は未掲載のため0件。
@@ -720,7 +713,7 @@ export function MimaFacilityLookup({
               </>
             ) : (
               <>
-                <a href={HIGASHIMIYOSHI_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Higashimiyoshi Town shop pages (
+                Dining from Tabelog Higashimiyoshi Town shop pages (
                 {HIGASHIMIYOSHI_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
                 Experience, shopping, and commerce stay at 0 — no official list.
                 Cards show only listings with a sourced photo. No public scores.
@@ -735,14 +728,14 @@ export function MimaFacilityLookup({
                 観光は出典写真がある施設のみ（鳴門の渦潮）。
                 飲食・宿泊・温泉・体験・買物・商業は未掲載のため0件（accessed {NARUTO_TRAVEL_ACCESSED}）。
                 カードは出典写真があるものだけ。点数は持ちません。
-                市公式：<a href={NARUTO_TRAVEL_SOURCES.home}>鳴門市</a> · <a href={NARUTO_TRAVEL_SOURCES.uzunomichi}>渦の道</a>。
+                市公式：鳴門市 · 渦の道。
               </>
             ) : (
               <>
                 Tourism shows only facilities with a sourced photo (Naruto whirlpools).
                 Dining, lodging, onsen, experience, shopping, and commerce stay at 0 — unpublished (accessed {NARUTO_TRAVEL_ACCESSED}).
                 Cards show only listings with a sourced photo. No public scores.
-                City sources: <a href={NARUTO_TRAVEL_SOURCES.home}>Naruto City</a> · <a href={NARUTO_TRAVEL_SOURCES.uzunomichi}>Uzunomichi</a>.
+                City sources: Naruto City · Uzunomichi.
               </>
             )
 
@@ -751,7 +744,7 @@ export function MimaFacilityLookup({
           ) : town.slug === 'ishii' ? (
             locale === 'ja' ? (
               <>
-                <a href={ISHII_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ石井町の公開店ページ（
+                飲食は食べログ石井町の公開店ページ（
                 {ISHII_TRAVEL_ACCESSED}）。
                 宿泊・温泉は客室・浴場の出典写真が無いため0件。
                 体験・買物・商業の公式一覧は未掲載のため0件。
@@ -759,7 +752,7 @@ export function MimaFacilityLookup({
               </>
             ) : (
               <>
-                <a href={ISHII_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Ishii Town shop pages (
+                Dining from Tabelog Ishii Town shop pages (
                 {ISHII_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
                 Experience, shopping, and commerce stay at 0 — no official list.
                 Cards show only listings with a sourced photo. No public scores.
@@ -769,7 +762,7 @@ export function MimaFacilityLookup({
           ) : town.slug === 'itano' ? (
             locale === 'ja' ? (
               <>
-                <a href={ITANO_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ板野町の公開店ページ（
+                飲食は食べログ板野町の公開店ページ（
                 {ITANO_TRAVEL_ACCESSED}）。
                 宿泊・温泉は客室・浴場の出典写真が無いため0件（あせび温泉やすらぎの郷は浴場写真なし）。
                 買物は道の駅いたの（Commons写真あり）。体験・商業の公式一覧は未掲載のため0件。
@@ -777,7 +770,7 @@ export function MimaFacilityLookup({
               </>
             ) : (
               <>
-                <a href={ITANO_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Itano Town shop pages (
+                Dining from Tabelog Itano Town shop pages (
                 {ITANO_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo (including Asebi Onsen).
                 Shopping: Michi-no-eki Itano (Commons photo). Experience and commerce stay at 0 — no official list.
                 Cards show only listings with a sourced photo. No public scores.
@@ -788,7 +781,7 @@ export function MimaFacilityLookup({
           ) : town.slug === 'kamiita' ? (
             locale === 'ja' ? (
               <>
-                <a href={KAMIITA_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ上板町の公開店ページ（
+                飲食は食べログ上板町の公開店ページ（
                 {KAMIITA_TRAVEL_ACCESSED}）。
                 宿泊・温泉は客室・浴場の出典写真が無いため0件。
                 体験・買物・商業の公式一覧は未掲載のため0件。
@@ -796,7 +789,7 @@ export function MimaFacilityLookup({
               </>
             ) : (
               <>
-                <a href={KAMIITA_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Kamiita Town shop pages (
+                Dining from Tabelog Kamiita Town shop pages (
                 {KAMIITA_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
                 Experience, shopping, and commerce stay at 0 — no official list.
                 Cards show only listings with a sourced photo. No public scores.
@@ -806,7 +799,7 @@ export function MimaFacilityLookup({
           ) : town.slug === 'kamiyama' ? (
             locale === 'ja' ? (
               <>
-                <a href={KAMIYAMA_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ神山町の公開店ページ（
+                飲食は食べログ神山町の公開店ページ（
                 {KAMIYAMA_TRAVEL_ACCESSED}）。
                 宿泊・温泉は客室・浴場の出典写真が無いため0件。
                 体験・買物・商業の公式一覧は未掲載のため0件。
@@ -814,7 +807,7 @@ export function MimaFacilityLookup({
               </>
             ) : (
               <>
-                <a href={KAMIYAMA_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Kamiyama Town shop pages (
+                Dining from Tabelog Kamiyama Town shop pages (
                 {KAMIYAMA_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
                 Experience, shopping, and commerce stay at 0 — no official list.
                 Cards show only listings with a sourced photo. No public scores.
@@ -824,7 +817,7 @@ export function MimaFacilityLookup({
           ) : town.slug === 'katsuura' ? (
             locale === 'ja' ? (
               <>
-                <a href={KATSUURA_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ勝浦町の公開店ページ（
+                飲食は食べログ勝浦町の公開店ページ（
                 {KATSUURA_TRAVEL_ACCESSED}）。
                 宿泊・温泉は客室・浴場の出典写真が無いため0件。
                 体験・買物・商業の公式一覧は未掲載のため0件。
@@ -832,7 +825,7 @@ export function MimaFacilityLookup({
               </>
             ) : (
               <>
-                <a href={KATSUURA_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Katsuura Town shop pages (
+                Dining from Tabelog Katsuura Town shop pages (
                 {KATSUURA_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
                 Experience, shopping, and commerce stay at 0 — no official list.
                 Cards show only listings with a sourced photo. No public scores.
@@ -843,7 +836,7 @@ export function MimaFacilityLookup({
           ) : town.slug === 'kamikatsu' ? (
             locale === 'ja' ? (
               <>
-                <a href={KAMIKATSU_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ上勝町の公開店ページ（
+                飲食は食べログ上勝町の公開店ページ（
                 {KAMIKATSU_TRAVEL_ACCESSED}）。
                 宿泊・温泉は客室・浴場の出典写真が無いため0件。
                 体験・商業の公式一覧は未掲載のため0件。
@@ -852,7 +845,7 @@ export function MimaFacilityLookup({
               </>
             ) : (
               <>
-                <a href={KAMIKATSU_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Kamikatsu Town shop pages (
+                Dining from Tabelog Kamikatsu Town shop pages (
                 {KAMIKATSU_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
                 Experience and commerce stay at 0 — no official list.
                 Shopping shows pack shops with a sourced photo only.
@@ -864,7 +857,7 @@ export function MimaFacilityLookup({
           ) : town.slug === 'sanagochi' ? (
             locale === 'ja' ? (
               <>
-                <a href={SANAGOCHI_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ佐那河内村の公開店ページ（
+                飲食は食べログ佐那河内村の公開店ページ（
                 {SANAGOCHI_TRAVEL_ACCESSED}）。
                 宿泊・温泉は客室・浴場の出典写真が無いため0件。
                 体験・買物・商業の公式一覧は未掲載のため0件。
@@ -872,7 +865,7 @@ export function MimaFacilityLookup({
               </>
             ) : (
               <>
-                <a href={SANAGOCHI_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Sanagochi Village shop pages (
+                Dining from Tabelog Sanagochi Village shop pages (
                 {SANAGOCHI_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
                 Experience, shopping, and commerce stay at 0 — no official list.
                 Cards show only listings with a sourced photo. No public scores.
@@ -883,7 +876,7 @@ export function MimaFacilityLookup({
           ) : town.slug === 'naka' ? (
             locale === 'ja' ? (
               <>
-                <a href={NAKA_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ那賀町の公開店ページ（
+                飲食は食べログ那賀町の公開店ページ（
                 {NAKA_TRAVEL_ACCESSED}）。
                 宿泊・温泉は客室・浴場の出典写真が無いため0件。
                 体験・商業の公式一覧は未掲載のため0件。
@@ -892,7 +885,7 @@ export function MimaFacilityLookup({
               </>
             ) : (
               <>
-                <a href={NAKA_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Naka Town shop pages (
+                Dining from Tabelog Naka Town shop pages (
                 {NAKA_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
                 Experience and commerce stay at 0 — no official list.
                 Shopping shows pack roadside stations with a sourced photo only.
@@ -904,14 +897,14 @@ export function MimaFacilityLookup({
           ) : town.slug === 'mugi' ? (
             locale === 'ja' ? (
               <>
-                <a href={MUGI_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ牟岐町の公開店ページ（
+                飲食は食べログ牟岐町の公開店ページ（
                 {MUGI_TRAVEL_ACCESSED}）。
                 宿泊・温泉は客室・浴場の出典写真が無いため0件。
                 体験・買物・商業も出典写真が無いため0件。
               </>
             ) : (
               <>
-                <a href={MUGI_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Mugi Town shop pages (
+                Dining from Tabelog Mugi Town shop pages (
                 {MUGI_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
                 Experience, shopping, and commerce stay at 0 without sourced photos.
               </>
@@ -922,14 +915,14 @@ export function MimaFacilityLookup({
           ) : town.slug === 'anan' ? (
             locale === 'ja' ? (
               <>
-                <a href={ANAN_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ阿南市の公開店ページ（
+                飲食は食べログ阿南市の公開店ページ（
                 {ANAN_TRAVEL_ACCESSED}）。
                 宿泊・温泉は客室・浴場の出典写真が無いため0件。
                 体験・買物・商業も出典写真が無いため0件。
               </>
             ) : (
               <>
-                <a href={ANAN_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Anan City shop pages (
+                Dining from Tabelog Anan City shop pages (
                 {ANAN_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
                 Experience, shopping, and commerce stay at 0 without sourced photos.
               </>
@@ -941,28 +934,28 @@ export function MimaFacilityLookup({
                 観光は出典写真がある施設のみ（大手海岸・立江寺・恩山寺・金長神社・ステーションパーク）。
                 飲食・宿泊・温泉・体験・買物・商業は未掲載のため0件（accessed {KOMATSUSHIMA_TRAVEL_ACCESSED}）。
                 カードは出典写真があるものだけ。点数は持ちません。
-                市公式：<a href={KOMATSUSHIMA_TRAVEL_SOURCES.home}>小松島市</a> · <a href={KOMATSUSHIMA_TRAVEL_SOURCES.navi}>小松島ナビ</a>。
+                市公式：小松島市 · 小松島ナビ。
               </>
             ) : (
               <>
                 Tourism shows only facilities with a sourced photo (Ōte Beach, Tatsue-ji, Onzan-ji, Kincho Shrine, Station Park).
                 Dining, lodging, onsen, experience, shopping, and commerce stay at 0 — unpublished (accessed {KOMATSUSHIMA_TRAVEL_ACCESSED}).
                 Cards show only listings with a sourced photo. No public scores.
-                City sources: <a href={KOMATSUSHIMA_TRAVEL_SOURCES.home}>Komatsushima City</a> · <a href={KOMATSUSHIMA_TRAVEL_SOURCES.navi}>Komatsushima Navi</a>.
+                City sources: Komatsushima City · Komatsushima Navi.
               </>
             )
 
 ) : town.slug === 'aizumi' ? (
             locale === 'ja' ? (
               <>
-                <a href={AIZUMI_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ藍住町の公開店ページ（
+                飲食は食べログ藍住町の公開店ページ（
                 {AIZUMI_TRAVEL_ACCESSED}）。
                 宿泊・温泉は客室・浴場の出典写真が無いため0件。
                 体験・買物・商業も出典写真が無いため0件。
               </>
             ) : (
               <>
-                <a href={AIZUMI_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Aizumi Town shop pages (
+                Dining from Tabelog Aizumi Town shop pages (
                 {AIZUMI_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
                 Experience, shopping, and commerce stay at 0 without sourced photos.
               </>
@@ -971,7 +964,7 @@ export function MimaFacilityLookup({
           ) : town.slug === 'minami' ? (
             locale === 'ja' ? (
               <>
-                <a href={MINAMI_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ美波町の公開店ページ（
+                飲食は食べログ美波町の公開店ページ（
                 {MINAMI_TRAVEL_ACCESSED}）。
                 宿泊・温泉は客室・浴場の出典写真が無いため0件。
                 体験・商業の公式一覧は未掲載のため0件。
@@ -980,7 +973,7 @@ export function MimaFacilityLookup({
               </>
             ) : (
               <>
-                <a href={MINAMI_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Minami Town shop pages (
+                Dining from Tabelog Minami Town shop pages (
                 {MINAMI_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
                 Experience and commerce stay at 0 — no official list.
                 Shopping shows pack roadside stations with a sourced photo only.
@@ -992,7 +985,7 @@ export function MimaFacilityLookup({
           ) : town.slug === 'kaiyo' ? (
             locale === 'ja' ? (
               <>
-                <a href={KAIYO_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ海陽町の公開店ページ（
+                飲食は食べログ海陽町の公開店ページ（
                 {KAIYO_TRAVEL_ACCESSED}）。
                 宿泊・温泉は客室・浴場の出典写真が無いため0件。
                 体験・商業の公式一覧は未掲載のため0件。
@@ -1001,7 +994,7 @@ export function MimaFacilityLookup({
               </>
             ) : (
               <>
-                <a href={KAIYO_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Kaiyo Town shop pages (
+                Dining from Tabelog Kaiyo Town shop pages (
                 {KAIYO_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
                 Experience and commerce stay at 0 — no official list.
                 Shopping shows pack roadside stations with a sourced photo only.
@@ -1012,7 +1005,7 @@ export function MimaFacilityLookup({
 ) : town.slug === 'matsushige' ? (
             locale === 'ja' ? (
               <>
-                <a href={MATSUSHIGE_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ松茂町の公開店ページ（
+                飲食は食べログ松茂町の公開店ページ（
                 {MATSUSHIGE_TRAVEL_ACCESSED}）。
                 宿泊・温泉は客室・浴場の出典写真が無いため0件。
                 体験・買物・商業の公式一覧は未掲載のため0件。
@@ -1020,7 +1013,7 @@ export function MimaFacilityLookup({
               </>
             ) : (
               <>
-                <a href={MATSUSHIGE_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Matsushige Town shop pages (
+                Dining from Tabelog Matsushige Town shop pages (
                 {MATSUSHIGE_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
                 Experience, shopping, and commerce stay at 0 — no official list.
                 Cards show only listings with a sourced photo. No public scores.
@@ -1030,7 +1023,7 @@ export function MimaFacilityLookup({
           ) : town.slug === 'kitajima' ? (
             locale === 'ja' ? (
               <>
-                <a href={KITAJIMA_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ北島町の公開店ページ（
+                飲食は食べログ北島町の公開店ページ（
                 {KITAJIMA_TRAVEL_ACCESSED}）。
                 宿泊・温泉は客室・浴場の出典写真が無いため0件。
                 体験・買物・商業の公式一覧は未掲載のため0件。
@@ -1038,7 +1031,7 @@ export function MimaFacilityLookup({
               </>
             ) : (
               <>
-                <a href={KITAJIMA_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Kitajima Town shop pages (
+                Dining from Tabelog Kitajima Town shop pages (
                 {KITAJIMA_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
                 Experience, shopping, and commerce stay at 0 — no official list.
                 Cards show only listings with a sourced photo. No public scores.
@@ -1048,17 +1041,17 @@ export function MimaFacilityLookup({
           ) : town.slug === 'tokushima' ? (
             locale === 'ja' ? (
               <>
-                <a href={TOKUSHIMA_CITY_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ徳島市の公開店ページ（
+                飲食は食べログ徳島市の公開店ページ（
                 {TOKUSHIMA_CITY_TRAVEL_ACCESSED}）。
-                <a href={TOKUSHIMA_CITY_TRAVEL_SOURCES.stayNavi}>宿泊</a>は楽天トラベル／ホテル公式の客室・外観写真がある施設（
+                宿泊は楽天トラベル／ホテル公式の客室・外観写真がある施設（
                 {TOKUSHIMA_CITY_TRAVEL_ACCESSED}）。
                 温泉・体験・買物・商業の公式一覧は未掲載のため0件。
                 カードは出典写真があるものだけ。点数は持ちません。
               </>
             ) : (
               <>
-                <a href={TOKUSHIMA_CITY_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Tokushima City shop pages (
-                {TOKUSHIMA_CITY_TRAVEL_ACCESSED}). <a href={TOKUSHIMA_CITY_TRAVEL_SOURCES.stayNavi}>Lodging</a> from
+                Dining from Tabelog Tokushima City shop pages (
+                {TOKUSHIMA_CITY_TRAVEL_ACCESSED}). Lodging from
                 Rakuten Travel / hotel-official room or exterior photos ({TOKUSHIMA_CITY_TRAVEL_ACCESSED}).
                 Onsen, experience, shopping, and commerce stay at 0 — no official list.
                 Cards show only listings with a sourced photo. No public scores.
@@ -1066,20 +1059,20 @@ export function MimaFacilityLookup({
             )
           ) : locale === 'ja' ? (
             <>
-              <a href={TSURUGI_TRAVEL_SOURCES.stayList}>宿泊</a>は町の宿泊施設案内（パック掲載＋
+              宿泊は町の宿泊施設案内（パック掲載＋
               {TSURUGI_TRAVEL_ACCESSED} の公式ページ）。
               飲食は道の駅レストラン・食べログ公開店ページ・商工会会員ページ（{TSURUGI_TRAVEL_ACCESSED}）。
               体験・買物・商業の公式一覧は未掲載のため0件。
-              <a href={TSURUGI_TRAVEL_SOURCES.onsen}>温泉</a>は町の観光案内で名前を確認できたもの。
+              温泉は町の観光案内で名前を確認できたもの。
               カードは出典写真があるものだけ。点数は持ちません。
             </>
           ) : (
             <>
-              <a href={TSURUGI_TRAVEL_SOURCES.stayList}>Lodging</a> from the town lodging list
+              Lodging from the town lodging list
               (pack rows plus the official page of {TSURUGI_TRAVEL_ACCESSED}). Dining from the
               roadside-station restaurant, Tabelog shop pages, and chamber member pages (
               {TSURUGI_TRAVEL_ACCESSED}). Experience, shopping, and commerce stay at 0 — no official
-              list. <a href={TSURUGI_TRAVEL_SOURCES.onsen}>Onsen</a> from the town tourism pages.
+              list. Onsen from the town tourism pages.
               Cards show only listings with a sourced photo. No public scores.
             </>
           )}
