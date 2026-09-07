@@ -58,6 +58,7 @@ import {UMAJI, UMAJI_PLACE_PHOTO} from '@/data/umaji';
 import {MOTOYAMA, MOTOYAMA_PLACE_PHOTO} from '@/data/motoyama';
 import {OTOYO, OTOYO_PLACE_PHOTO} from '@/data/otoyo';
 import {TOSACHO, TOSACHO_PLACE_PHOTO} from '@/data/tosacho';
+import {OKAWA, OKAWA_PLACE_PHOTO} from '@/data/okawa';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -4210,6 +4211,67 @@ export function otoyoGraph(locale: AppLocale) {
 }
 
 
+
+
+export function okawaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/okawa');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('okawa');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? OKAWA.nameJa : OKAWA.nameEn,
+        alternateName: isJa ? OKAWA.nameEn : OKAWA.nameJa,
+        identifier: OKAWA.jis,
+        url,
+        image: photoAbs(OKAWA_PLACE_PHOTO),
+        sameAs: [OKAWA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '小松27-1' : '27-1 Komatsu',
+          addressLocality: isJa ? OKAWA.nameJa : OKAWA.nameEn,
+          addressRegion: isJa ? OKAWA.prefectureJa : OKAWA.prefectureEn,
+          postalCode: OKAWA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? OKAWA.prefectureJa : OKAWA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? OKAWA.nameJa : OKAWA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? OKAWA.prefectureJa : OKAWA.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? OKAWA.nameJa : OKAWA.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '大川村の案内' : 'Places in Okawa Village',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
 
 export function tosachoGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'kochi/tosacho');

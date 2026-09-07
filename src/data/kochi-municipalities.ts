@@ -10,7 +10,7 @@ export type Municipality = {
 
 /**
  * Kochi 市区町村. Codes are N03_007 / JIS X 0402 (5-digit).
- * Kochi City 39201 + Nankoku 39204 + Konan 39211 + Kami 39212 + Ino 39386 + Aki 39203 + Muroto 39202 + Tosa 39205 + Susaki 39206 + Shimanto 39210 + Tosashimizu 39209 + Sukumo 39208 + Kuroshio 39428 + Toyo 39301 + Nahari 39302 + Yasuda 39304 + Geisei 39307 + Kitagawa 39305 + Umaji 39306 + Motoyama 39341 + Otoyo 39344 + Tosacho 39363 LIVE hubs (+ remaining municipalities coming-soon).
+ * Kochi City 39201 + Nankoku 39204 + Konan 39211 + Kami 39212 + Ino 39386 + Aki 39203 + Muroto 39202 + Tosa 39205 + Susaki 39206 + Shimanto 39210 + Tosashimizu 39209 + Sukumo 39208 + Kuroshio 39428 + Toyo 39301 + Nahari 39302 + Yasuda 39304 + Geisei 39307 + Kitagawa 39305 + Umaji 39306 + Motoyama 39341 + Otoyo 39344 + Tosacho 39363 + Okawa 39364 LIVE hubs (+ remaining municipalities coming-soon).
  */
 export const KOCHI_MUNICIPALITIES: Municipality[] = [
   {jis: '39201', slug: 'kochi', nameJa: '高知市', nameEn: 'Kochi', status: 'ready'},
@@ -34,7 +34,7 @@ export const KOCHI_MUNICIPALITIES: Municipality[] = [
   {jis: '39341', slug: 'motoyama', nameJa: '本山町', nameEn: 'Motoyama', status: 'ready'},
   {jis: '39344', slug: 'otoyo', nameJa: '大豊町', nameEn: 'Otoyo', status: 'ready'},
   {jis: '39363', slug: 'tosacho', nameJa: '土佐町', nameEn: 'Tosa Town', status: 'ready'},
-  {jis: '39364', slug: 'okawa', nameJa: '大川村', nameEn: 'Okawa', status: 'coming-soon'},
+  {jis: '39364', slug: 'okawa', nameJa: '大川村', nameEn: 'Okawa', status: 'ready'},
   {jis: '39386', slug: 'ino', nameJa: 'いの町', nameEn: 'Ino', status: 'ready'},
   {jis: '39387', slug: 'niyodogawa', nameJa: '仁淀川町', nameEn: 'Niyodogawa', status: 'coming-soon'},
   {jis: '39401', slug: 'nakatosa', nameJa: '中土佐町', nameEn: 'Nakatosa', status: 'coming-soon'},

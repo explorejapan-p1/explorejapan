@@ -81,6 +81,7 @@ import {UMAJI_TRAVEL_ACCESSED} from '@/data/umaji-travel';
 import {MOTOYAMA_TRAVEL_ACCESSED} from '@/data/motoyama-travel';
 import {OTOYO_TRAVEL_ACCESSED} from '@/data/otoyo-travel';
 import {TOSACHO_TRAVEL_ACCESSED} from '@/data/tosacho-travel';
+import {OKAWA_TRAVEL_ACCESSED} from '@/data/okawa-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1553,6 +1554,22 @@ export function MimaFacilityLookup({
                 Lodging: Sameura Lakeside Hotel Rakuten Japanese-room photo ({TOSACHO_TRAVEL_ACCESSED}).
                 Dining from Tabelog Tosa Town shop pages ({TOSACHO_TRAVEL_ACCESSED}).
                 Onsen: 0 (in-room bath stay; stay≠onsen). Experience: 0. Shopping/commerce: 0. Twenty-second LIVE Kochi hub.
+              </>
+            )
+          ) : town.slug === 'okawa' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（小金滝・大川村役場・村のえき・翁の滝・自然王国白滝の里）。
+                宿泊は楽天トラベル自然王国白滝の里の教室タイプ客室写真（{OKAWA_TRAVEL_ACCESSED}）。
+                飲食は食べログ大川村の公開店ページ（{OKAWA_TRAVEL_ACCESSED}）。
+                温泉は0件（stay≠onsen）。体験は0件。買物・商業は0件。高知県23つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Kogane Falls, Okawa Village Hall, Mura-no-eki, Okina Falls, Shirataki-no-Sato).
+                Lodging: Shirataki-no-Sato Rakuten classroom-type guest-room photo ({OKAWA_TRAVEL_ACCESSED}).
+                Dining from Tabelog Okawa Village shop pages ({OKAWA_TRAVEL_ACCESSED}).
+                Onsen: 0 (stay≠onsen). Experience: 0. Shopping/commerce: 0. Twenty-third LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'geisei' ? (

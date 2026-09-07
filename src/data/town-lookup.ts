@@ -329,6 +329,7 @@ import {UMAJI, UMAJI_PLACE_PHOTO, UMAJI_FACILITIES, UMAJI_EXPECTED_GEO_COUNT, UM
 import {MOTOYAMA, MOTOYAMA_PLACE_PHOTO, MOTOYAMA_FACILITIES, MOTOYAMA_EXPECTED_GEO_COUNT, MOTOYAMA_EXPECTED_ROW_COUNT} from './motoyama';
 import {OTOYO, OTOYO_PLACE_PHOTO, OTOYO_FACILITIES, OTOYO_EXPECTED_GEO_COUNT, OTOYO_EXPECTED_ROW_COUNT} from './otoyo';
 import {TOSACHO, TOSACHO_PLACE_PHOTO, TOSACHO_FACILITIES, TOSACHO_EXPECTED_GEO_COUNT, TOSACHO_EXPECTED_ROW_COUNT} from './tosacho';
+import {OKAWA, OKAWA_PLACE_PHOTO, OKAWA_FACILITIES, OKAWA_EXPECTED_GEO_COUNT, OKAWA_EXPECTED_ROW_COUNT} from './okawa';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -680,6 +681,13 @@ import {
   TOSACHO_TRAVEL_COMMERCE,
   TOSACHO_TRAVEL_ALL
 } from './tosacho-travel';
+import {
+  OKAWA_TRAVEL_DINING,
+  OKAWA_TRAVEL_STAY,
+  OKAWA_TRAVEL_SHOPPING,
+  OKAWA_TRAVEL_COMMERCE,
+  OKAWA_TRAVEL_ALL
+} from './okawa-travel';
 
 
 
@@ -2928,6 +2936,38 @@ export const ZENTSUJI_LOOKUP: LookupTown = {
   licenseSiteEn: 'City-site listing'
 };
 
+
+export const OKAWA_LOOKUP: LookupTown = {
+  slug: 'okawa',
+  prefectureSlug: 'kochi',
+  jis: OKAWA.jis,
+  nameJa: OKAWA.nameJa,
+  nameEn: OKAWA.nameEn,
+  heroPhoto: OKAWA_PLACE_PHOTO,
+  photoCiteJa: '写真は小金滝。r18 INO (PACHIMO)、2014-04-06、CC BY 3.0。File:小金滝_-_panoramio.jpg。',
+  photoCiteEn: 'Photo: Kogane Falls. r18 INO (PACHIMO), 2014-04-06, CC BY 3.0. File:小金滝_-_panoramio.jpg.',
+  rows: OKAWA_FACILITIES,
+  expectedGeo: OKAWA_EXPECTED_GEO_COUNT,
+  expectedRows: OKAWA_EXPECTED_ROW_COUNT,
+  travelDining: OKAWA_TRAVEL_DINING,
+  travelStay: OKAWA_TRAVEL_STAY,
+  travelShopping: OKAWA_TRAVEL_SHOPPING,
+  travelCommerce: OKAWA_TRAVEL_COMMERCE,
+  travelAll: OKAWA_TRAVEL_ALL,
+  coverageJa:
+    '大川村（JIS 39364）観光5・宿泊1・飲食1・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県23つ目のLIVEハブ。',
+  coverageEn:
+    'Okawa Village (JIS 39364), 5 tourism + 1 stay + 1 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Twenty-third LIVE Kochi hub.',
+  mapLabelJa: '大川村の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Okawa Village',
+  mapCitePackJa: '点は村・公式ページ掲載施設のWikipedia/Commons/楽天等出典座標5件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 5 sourced coordinates for village/official facilities (accessed 2026-09-08).',
+  licenseNoteJa: '行のライセンスは村公式・公式観光サイト掲載情報。村ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are village-site listings, facts from vill.okawa.kochi.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '村公式サイト掲載情報',
+  licenseSiteEn: 'Village-site listing'
+};
+
 const BY_SLUG: Record<ReadySlug, LookupTown> = {
   mima: MIMA_LOOKUP,
   tsurugi: TSURUGI_LOOKUP,
@@ -2991,7 +3031,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   umaji: UMAJI_LOOKUP,
   motoyama: MOTOYAMA_LOOKUP,
   otoyo: OTOYO_LOOKUP,
-  tosacho: TOSACHO_LOOKUP
+  tosacho: TOSACHO_LOOKUP,
+  okawa: OKAWA_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
