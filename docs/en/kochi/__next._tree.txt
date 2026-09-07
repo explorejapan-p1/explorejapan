@@ -11,4 +11,4 @@
 :HL["/explorejapan/media/konan-ekingura.jpg","image"]
 :HL["/explorejapan/media/kami-anpanman.jpg","image"]
 :HL["/explorejapan/media/ino-nikobuchi.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"en","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"kochi","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"s6XfHk6og7BjA9J5wTIku"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"en","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"kochi","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"LWScI_oct3GpD-PAogfp2"}

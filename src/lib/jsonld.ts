@@ -46,6 +46,7 @@ import {MUROTO, MUROTO_PLACE_PHOTO} from '@/data/muroto';
 import {TOSA, TOSA_PLACE_PHOTO} from '@/data/tosa';
 import {SUSAKI, SUSAKI_PLACE_PHOTO} from '@/data/susaki';
 import {SHIMANTO, SHIMANTO_PLACE_PHOTO} from '@/data/shimanto';
+import {TOSASHIMIZU, TOSASHIMIZU_PLACE_PHOTO} from '@/data/tosashimizu';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -161,6 +162,7 @@ function localityJa(slug: string): string {
   if (slug === 'tosa') return TOSA.nameJa;
   if (slug === 'susaki') return SUSAKI.nameJa;
   if (slug === 'shimanto') return SHIMANTO.nameJa;
+  if (slug === 'tosashimizu') return TOSASHIMIZU.nameJa;
   return MIMA.nameJa;
 }
 
@@ -215,6 +217,7 @@ function localityEn(slug: string): string {
   if (slug === 'tosa') return TOSA.nameEn;
   if (slug === 'susaki') return SUSAKI.nameEn;
   if (slug === 'shimanto') return SHIMANTO.nameEn;
+  if (slug === 'tosashimizu') return TOSASHIMIZU.nameEn;
   return MIMA.nameEn;
 }
 
@@ -3697,6 +3700,66 @@ export function susakiGraph(locale: AppLocale) {
   };
 }
 
+
+export function tosashimizuGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/tosashimizu');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('tosashimizu');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? TOSASHIMIZU.nameJa : TOSASHIMIZU.nameEn,
+        alternateName: isJa ? TOSASHIMIZU.nameEn : TOSASHIMIZU.nameJa,
+        identifier: TOSASHIMIZU.jis,
+        url,
+        image: photoAbs(TOSASHIMIZU_PLACE_PHOTO),
+        sameAs: [TOSASHIMIZU.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '天神町11番2号' : '11-2 Tenjin-cho',
+          addressLocality: isJa ? TOSASHIMIZU.nameJa : TOSASHIMIZU.nameEn,
+          addressRegion: isJa ? TOSASHIMIZU.prefectureJa : TOSASHIMIZU.prefectureEn,
+          postalCode: TOSASHIMIZU.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? TOSASHIMIZU.prefectureJa : TOSASHIMIZU.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? TOSASHIMIZU.nameJa : TOSASHIMIZU.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? TOSASHIMIZU.prefectureJa : TOSASHIMIZU.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? TOSASHIMIZU.nameJa : TOSASHIMIZU.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '土佐清水市の案内' : 'Places in Tosashimizu City',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
 
 export function shimantoGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'kochi/shimanto');

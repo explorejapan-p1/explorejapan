@@ -548,6 +548,17 @@ import {
   shimantoSourcedHook,
   shimantoTopChipForRow
 } from './shimanto-travel';
+import {
+  isTosashimizuOnsenPackRow,
+  isTosashimizuExperiencePackRow,
+  isTosashimizuStayPackRow,
+  rankTosashimizuSeeRows,
+  resolveTosashimizuFilter,
+  tosashimizuPackRowMatchesFilter,
+  tosashimizuSightPhoto,
+  tosashimizuSourcedHook,
+  tosashimizuTopChipForRow
+} from './tosashimizu-travel';
 
 
 
@@ -1129,6 +1140,19 @@ const MANNO_HELPERS: LookupHelpers = {
 
 
 
+
+const TOSASHIMIZU_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isTosashimizuOnsenPackRow,
+  isExperiencePackRow: isTosashimizuExperiencePackRow,
+  isStayPackRow: isTosashimizuStayPackRow,
+  packRowMatchesFilter: tosashimizuPackRowMatchesFilter,
+  rankSeeRows: rankTosashimizuSeeRows,
+  sightPhoto: tosashimizuSightPhoto,
+  sourcedHook: tosashimizuSourcedHook,
+  topChipForRow: tosashimizuTopChipForRow,
+  resolveFilter: resolveTosashimizuFilter
+};
+
 const SHIMANTO_HELPERS: LookupHelpers = {
   isOnsenPackRow: isShimantoOnsenPackRow,
   isExperiencePackRow: isShimantoExperiencePackRow,
@@ -1318,5 +1342,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'tosa') return TOSA_HELPERS;
   if (slug === 'susaki') return SUSAKI_HELPERS;
   if (slug === 'shimanto') return SHIMANTO_HELPERS;
+  if (slug === 'tosashimizu') return TOSASHIMIZU_HELPERS;
   return MIMA_HELPERS;
 }

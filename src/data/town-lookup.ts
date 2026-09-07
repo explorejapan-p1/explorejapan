@@ -317,6 +317,7 @@ import {MUROTO, MUROTO_PLACE_PHOTO, MUROTO_FACILITIES, MUROTO_EXPECTED_GEO_COUNT
 import {TOSA, TOSA_PLACE_PHOTO, TOSA_FACILITIES, TOSA_EXPECTED_GEO_COUNT, TOSA_EXPECTED_ROW_COUNT} from './tosa';
 import {SUSAKI, SUSAKI_PLACE_PHOTO, SUSAKI_FACILITIES, SUSAKI_EXPECTED_GEO_COUNT, SUSAKI_EXPECTED_ROW_COUNT} from './susaki';
 import {SHIMANTO, SHIMANTO_PLACE_PHOTO, SHIMANTO_FACILITIES, SHIMANTO_EXPECTED_GEO_COUNT, SHIMANTO_EXPECTED_ROW_COUNT} from './shimanto';
+import {TOSASHIMIZU, TOSASHIMIZU_PLACE_PHOTO, TOSASHIMIZU_FACILITIES, TOSASHIMIZU_EXPECTED_GEO_COUNT, TOSASHIMIZU_EXPECTED_ROW_COUNT} from './tosashimizu';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -584,6 +585,13 @@ import {
   SHIMANTO_TRAVEL_COMMERCE,
   SHIMANTO_TRAVEL_ALL,
 } from './shimanto-travel';
+import {
+  TOSASHIMIZU_TRAVEL_DINING,
+  TOSASHIMIZU_TRAVEL_STAY,
+  TOSASHIMIZU_TRAVEL_SHOPPING,
+  TOSASHIMIZU_TRAVEL_COMMERCE,
+  TOSASHIMIZU_TRAVEL_ALL,
+} from './tosashimizu-travel';
 
 
 
@@ -2100,6 +2108,38 @@ export const SUSAKI_LOOKUP: LookupTown = {
 };
 
 
+
+export const TOSASHIMIZU_LOOKUP: LookupTown = {
+  slug: 'tosashimizu',
+  prefectureSlug: 'kochi',
+  jis: TOSASHIMIZU.jis,
+  nameJa: TOSASHIMIZU.nameJa,
+  nameEn: TOSASHIMIZU.nameEn,
+  heroPhoto: TOSASHIMIZU_PLACE_PHOTO,
+  photoCiteJa: '写真は足摺岬。Reggaeman、2009-06-27、CC BY-SA 3.0。File:Ashizuri_Cape_01.JPG。',
+  photoCiteEn: 'Photo: Cape Ashizuri. Reggaeman, 27 Jun 2009, CC BY-SA 3.0. File:Ashizuri_Cape_01.JPG.',
+  rows: TOSASHIMIZU_FACILITIES,
+  expectedGeo: TOSASHIMIZU_EXPECTED_GEO_COUNT,
+  expectedRows: TOSASHIMIZU_EXPECTED_ROW_COUNT,
+  travelDining: TOSASHIMIZU_TRAVEL_DINING,
+  travelStay: TOSASHIMIZU_TRAVEL_STAY,
+  travelShopping: TOSASHIMIZU_TRAVEL_SHOPPING,
+  travelCommerce: TOSASHIMIZU_TRAVEL_COMMERCE,
+  travelAll: TOSASHIMIZU_TRAVEL_ALL,
+  coverageJa:
+    '土佐清水市（JIS 39209）観光6・宿泊1・飲食16・温泉1・体験1（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県11つ目のLIVEハブ。',
+  coverageEn:
+    'Tosashimizu City (JIS 39209), 6 tourism + 1 stay + 16 dining + 1 onsen + 1 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Eleventh LIVE Kochi hub.',
+  mapLabelJa: '土佐清水市の出典座標8件',
+  mapLabelEn: '8 sourced coordinates in Tosashimizu City',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia/Commons等出典座標8件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 8 sourced coordinates for city/official facilities (accessed 2026-09-08).',
+  licenseNoteJa: '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are city-site listings, facts from city.tosashimizu.lg.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
 export const SHIMANTO_LOOKUP: LookupTown = {
   slug: 'shimanto',
   prefectureSlug: 'kochi',
@@ -2495,7 +2535,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   muroto: MUROTO_LOOKUP,
   tosa: TOSA_LOOKUP,
   susaki: SUSAKI_LOOKUP,
-  shimanto: SHIMANTO_LOOKUP
+  shimanto: SHIMANTO_LOOKUP,
+  tosashimizu: TOSASHIMIZU_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

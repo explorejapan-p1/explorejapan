@@ -69,6 +69,7 @@ import {MUROTO_TRAVEL_ACCESSED} from '@/data/muroto-travel';
 import {TOSA_TRAVEL_ACCESSED} from '@/data/tosa-travel';
 import {SUSAKI_TRAVEL_ACCESSED} from '@/data/susaki-travel';
 import {SHIMANTO_TRAVEL_ACCESSED} from '@/data/shimanto-travel';
+import {TOSASHIMIZU_TRAVEL_ACCESSED} from '@/data/tosashimizu-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1461,6 +1462,22 @@ export function MimaFacilityLookup({
                 Lodging from Rakuten Travel room photos ({MUROTO_TRAVEL_ACCESSED}).
                 Dining from Tabelog Muroto shop pages ({MUROTO_TRAVEL_ACCESSED}).
                 Onsen: 0 (room-still stay only; no attributable bath keys). Experience: Muroto Geopark Center (Commons). Shopping/commerce: 0. Seventh LIVE Kochi hub.
+              </>
+            )
+          ) : town.slug === 'tosashimizu' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（足摺岬・足摺岬灯台・金剛福寺・竜串・白山洞門・大岐の浜）。
+                宿泊は楽天トラベルＴｈｅＭａｎａ　Ｖｉｌｌａｇｅの客室写真（{TOSASHIMIZU_TRAVEL_ACCESSED}）。
+                飲食は食べログ土佐清水市の公開店ページ（{TOSASHIMIZU_TRAVEL_ACCESSED}）。
+                温泉は同施設露天風呂（楽天・宿泊と別キー）。体験はジョン万次郎資料館（Commons）。買物・商業は0件。高知県11つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Cape Ashizuri, lighthouse, Kongōfuku-ji, Tatsukushi, Hakusan Domon, Ooki Beach).
+                Lodging: TheMana Village Rakuten room photo ({TOSASHIMIZU_TRAVEL_ACCESSED}).
+                Dining from Tabelog Tosashimizu shop pages ({TOSASHIMIZU_TRAVEL_ACCESSED}).
+                Onsen: outdoor bath still (Rakuten; stay≠onsen). Experience: John Manjiro Museum (Commons). Shopping/commerce: 0. Eleventh LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'shimanto' ? (
