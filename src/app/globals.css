@@ -212,6 +212,13 @@ h2 { font-size: 1.28rem; margin: 2rem 0 0.55rem; letter-spacing: 0.01em; }
 }
 .photo-cite a { color: inherit; }
 
+.hero-photo-credit {
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
 .lookup-sticky {
   position: sticky;
   top: 0;

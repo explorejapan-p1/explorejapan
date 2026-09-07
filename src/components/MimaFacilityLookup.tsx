@@ -498,14 +498,6 @@ export function MimaFacilityLookup({
             alt={locale === 'ja' ? town.heroPhoto.altJa : town.heroPhoto.altEn}
           />
           <h1 className="hero-title">{locale === 'ja' ? town.nameJa : town.nameEn}</h1>
-          <figcaption className="photo-cite">
-            {locale === 'ja' ? town.photoCiteJa : town.photoCiteEn}{' '}
-            <a href={town.heroPhoto.commons}>Wikimedia Commons</a>
-            {' / '}
-            <a href={town.heroPhoto.licenseUrl}>{town.heroPhoto.license}</a>
-            {' / '}
-            <a href={town.heroPhoto.authorUrl}>{town.heroPhoto.author}</a>
-          </figcaption>
         </figure>
       </div>
 
@@ -1155,6 +1147,11 @@ export function MimaFacilityLookup({
             )}
           </div>
         </div>
+        <p className="tiny-cite hero-photo-credit">
+          {locale === 'ja' ? town.photoCiteJa : town.photoCiteEn}
+          {' · '}
+          {town.heroPhoto.author} / {town.heroPhoto.license}
+        </p>
         <p className="tally">{locale === 'ja' ? town.coverageJa : town.coverageEn}</p>
         <p className="note">{locale === 'ja' ? town.licenseNoteJa : town.licenseNoteEn}</p>
         </details>
