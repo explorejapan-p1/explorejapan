@@ -82,6 +82,7 @@ import {MOTOYAMA_TRAVEL_ACCESSED} from '@/data/motoyama-travel';
 import {OTOYO_TRAVEL_ACCESSED} from '@/data/otoyo-travel';
 import {TOSACHO_TRAVEL_ACCESSED} from '@/data/tosacho-travel';
 import {OKAWA_TRAVEL_ACCESSED} from '@/data/okawa-travel';
+import {NIYODOGAWA_TRAVEL_ACCESSED} from '@/data/niyodogawa-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1570,6 +1571,22 @@ export function MimaFacilityLookup({
                 Lodging: Shirataki-no-Sato Rakuten classroom-type guest-room photo ({OKAWA_TRAVEL_ACCESSED}).
                 Dining from Tabelog Okawa Village shop pages ({OKAWA_TRAVEL_ACCESSED}).
                 Onsen: 0 (stay≠onsen). Experience: 0. Shopping/commerce: 0. Twenty-third LIVE Kochi hub.
+              </>
+            )
+          ) : town.slug === 'niyodogawa' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（中津渓谷・仁淀川町役場・雨竜の滝・長者の棚田・大渡ダム）。
+                宿泊は楽天トラベル中津渓谷ゆの森の本館和室写真（{NIYODOGAWA_TRAVEL_ACCESSED}）。
+                飲食は食べログ仁淀川町の公開店ページ（{NIYODOGAWA_TRAVEL_ACCESSED}）。
+                温泉は0件（施設に浴場あるがstay≠onsen・onsen pack未掲載）。体験は0件。買物・商業は0件。高知県24つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Nakatsu Gorge, Niyodogawa Town Hall, Uryu Falls, Choja terraces, Odo Dam).
+                Lodging: Nakatsu Keikoku Yunomori Rakuten main-building Japanese-room photo ({NIYODOGAWA_TRAVEL_ACCESSED}).
+                Dining from Tabelog Niyodogawa shop pages ({NIYODOGAWA_TRAVEL_ACCESSED}).
+                Onsen: 0 (baths exist; stay≠onsen; no onsen pack). Experience: 0. Shopping/commerce: 0. Twenty-fourth LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'geisei' ? (

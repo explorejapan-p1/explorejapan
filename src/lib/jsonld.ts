@@ -59,6 +59,7 @@ import {MOTOYAMA, MOTOYAMA_PLACE_PHOTO} from '@/data/motoyama';
 import {OTOYO, OTOYO_PLACE_PHOTO} from '@/data/otoyo';
 import {TOSACHO, TOSACHO_PLACE_PHOTO} from '@/data/tosacho';
 import {OKAWA, OKAWA_PLACE_PHOTO} from '@/data/okawa';
+import {NIYODOGAWA, NIYODOGAWA_PLACE_PHOTO} from '@/data/niyodogawa';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -4212,6 +4213,67 @@ export function otoyoGraph(locale: AppLocale) {
 
 
 
+
+
+export function niyodogawaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/niyodogawa');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('niyodogawa');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? NIYODOGAWA.nameJa : NIYODOGAWA.nameEn,
+        alternateName: isJa ? NIYODOGAWA.nameEn : NIYODOGAWA.nameJa,
+        identifier: NIYODOGAWA.jis,
+        url,
+        image: photoAbs(NIYODOGAWA_PLACE_PHOTO),
+        sameAs: [NIYODOGAWA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '大崎200番地' : '200 Osaki',
+          addressLocality: isJa ? NIYODOGAWA.nameJa : NIYODOGAWA.nameEn,
+          addressRegion: isJa ? NIYODOGAWA.prefectureJa : NIYODOGAWA.prefectureEn,
+          postalCode: NIYODOGAWA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? NIYODOGAWA.prefectureJa : NIYODOGAWA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? NIYODOGAWA.nameJa : NIYODOGAWA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? NIYODOGAWA.prefectureJa : NIYODOGAWA.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? NIYODOGAWA.nameJa : NIYODOGAWA.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '仁淀川町の案内' : 'Places in Niyodogawa Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
 
 export function okawaGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'kochi/okawa');

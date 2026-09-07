@@ -691,6 +691,17 @@ import {
   okawaTopChipForRow,
   resolveOkawaFilter
 } from './okawa-travel';
+import {
+  isNiyodogawaOnsenPackRow,
+  isNiyodogawaExperiencePackRow,
+  isNiyodogawaStayPackRow,
+  niyodogawaPackRowMatchesFilter,
+  rankNiyodogawaSeeRows,
+  niyodogawaSightPhoto,
+  niyodogawaSourcedHook,
+  niyodogawaTopChipForRow,
+  resolveNiyodogawaFilter
+} from './niyodogawa-travel';
 
 
 
@@ -1386,6 +1397,19 @@ const OKAWA_HELPERS: LookupHelpers = {
   resolveFilter: resolveOkawaFilter
 };
 
+const NIYODOGAWA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isNiyodogawaOnsenPackRow,
+  isExperiencePackRow: isNiyodogawaExperiencePackRow,
+  isStayPackRow: isNiyodogawaStayPackRow,
+  packRowMatchesFilter: niyodogawaPackRowMatchesFilter,
+  rankSeeRows: rankNiyodogawaSeeRows,
+  sightPhoto: niyodogawaSightPhoto,
+  sourcedHook: niyodogawaSourcedHook,
+  topChipForRow: niyodogawaTopChipForRow,
+  resolveFilter: resolveNiyodogawaFilter
+};
+
+
 
 
 const YASUDA_HELPERS: LookupHelpers = {
@@ -1638,5 +1662,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'otoyo') return OTOYO_HELPERS;
   if (slug === 'tosacho') return TOSACHO_HELPERS;
   if (slug === 'okawa') return OKAWA_HELPERS;
+  if (slug === 'niyodogawa') return NIYODOGAWA_HELPERS;
   return MIMA_HELPERS;
 }

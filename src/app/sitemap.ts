@@ -70,7 +70,8 @@ const READY_HUBS = [
   'kochi/motoyama',
   'kochi/otoyo',
   'kochi/tosacho',
-  'kochi/okawa'
+  'kochi/okawa',
+  'kochi/niyodogawa'
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

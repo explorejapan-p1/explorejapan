@@ -330,6 +330,7 @@ import {MOTOYAMA, MOTOYAMA_PLACE_PHOTO, MOTOYAMA_FACILITIES, MOTOYAMA_EXPECTED_G
 import {OTOYO, OTOYO_PLACE_PHOTO, OTOYO_FACILITIES, OTOYO_EXPECTED_GEO_COUNT, OTOYO_EXPECTED_ROW_COUNT} from './otoyo';
 import {TOSACHO, TOSACHO_PLACE_PHOTO, TOSACHO_FACILITIES, TOSACHO_EXPECTED_GEO_COUNT, TOSACHO_EXPECTED_ROW_COUNT} from './tosacho';
 import {OKAWA, OKAWA_PLACE_PHOTO, OKAWA_FACILITIES, OKAWA_EXPECTED_GEO_COUNT, OKAWA_EXPECTED_ROW_COUNT} from './okawa';
+import {NIYODOGAWA, NIYODOGAWA_PLACE_PHOTO, NIYODOGAWA_FACILITIES, NIYODOGAWA_EXPECTED_GEO_COUNT, NIYODOGAWA_EXPECTED_ROW_COUNT} from './niyodogawa';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -688,6 +689,13 @@ import {
   OKAWA_TRAVEL_COMMERCE,
   OKAWA_TRAVEL_ALL
 } from './okawa-travel';
+import {
+  NIYODOGAWA_TRAVEL_DINING,
+  NIYODOGAWA_TRAVEL_STAY,
+  NIYODOGAWA_TRAVEL_SHOPPING,
+  NIYODOGAWA_TRAVEL_COMMERCE,
+  NIYODOGAWA_TRAVEL_ALL
+} from './niyodogawa-travel';
 
 
 
@@ -2968,6 +2976,38 @@ export const OKAWA_LOOKUP: LookupTown = {
   licenseSiteEn: 'Village-site listing'
 };
 
+
+export const NIYODOGAWA_LOOKUP: LookupTown = {
+  slug: 'niyodogawa',
+  prefectureSlug: 'kochi',
+  jis: NIYODOGAWA.jis,
+  nameJa: NIYODOGAWA.nameJa,
+  nameEn: NIYODOGAWA.nameEn,
+  heroPhoto: NIYODOGAWA_PLACE_PHOTO,
+  photoCiteJa: '写真は中津渓谷。r18 INO (PACHIMO)、2014-09-23、CC BY 3.0。File:中津渓谷_-_panoramio.jpg。',
+  photoCiteEn: 'Photo: Nakatsu Gorge. r18 INO (PACHIMO), 2014-09-23, CC BY 3.0. File:中津渓谷_-_panoramio.jpg.',
+  rows: NIYODOGAWA_FACILITIES,
+  expectedGeo: NIYODOGAWA_EXPECTED_GEO_COUNT,
+  expectedRows: NIYODOGAWA_EXPECTED_ROW_COUNT,
+  travelDining: NIYODOGAWA_TRAVEL_DINING,
+  travelStay: NIYODOGAWA_TRAVEL_STAY,
+  travelShopping: NIYODOGAWA_TRAVEL_SHOPPING,
+  travelCommerce: NIYODOGAWA_TRAVEL_COMMERCE,
+  travelAll: NIYODOGAWA_TRAVEL_ALL,
+  coverageJa:
+    '仁淀川町（JIS 39387）観光5・宿泊1・飲食3・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県24つ目のLIVEハブ。',
+  coverageEn:
+    'Niyodogawa Town (JIS 39387), 5 tourism + 1 stay + 3 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Twenty-fourth LIVE Kochi hub.',
+  mapLabelJa: '仁淀川町の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Niyodogawa Town',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons/楽天等出典座標5件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 5 sourced coordinates for town/official facilities (accessed 2026-09-08).',
+  licenseNoteJa: '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from town.niyodogawa.lg.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
 const BY_SLUG: Record<ReadySlug, LookupTown> = {
   mima: MIMA_LOOKUP,
   tsurugi: TSURUGI_LOOKUP,
@@ -3032,7 +3072,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   motoyama: MOTOYAMA_LOOKUP,
   otoyo: OTOYO_LOOKUP,
   tosacho: TOSACHO_LOOKUP,
-  okawa: OKAWA_LOOKUP
+  okawa: OKAWA_LOOKUP,
+  niyodogawa: NIYODOGAWA_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
