@@ -10,7 +10,7 @@ export type Municipality = {
 
 /**
  * Kagawa 市区町村. Codes are N03_007 / JIS X 0402 (5-digit).
- * Takamatsu 37201 + Marugame 37202 + Sakaide 37203 + Zentsuji 37204 + Kanonji 37205 + Mitoyo 37208 + Kotohira 37403 + Naoshima 37364 + Shodoshima 37324 + Utazu 37386 + Tonosho 37322 LIVE hubs.
+ * Takamatsu 37201 + Marugame 37202 + Sakaide 37203 + Zentsuji 37204 + Kanonji 37205 + Mitoyo 37208 + Kotohira 37403 + Naoshima 37364 + Shodoshima 37324 + Utazu 37386 + Tonosho 37322 + Sanuki 37206 LIVE hubs.
  */
 export const KAGAWA_MUNICIPALITIES: Municipality[] = [
   {jis: '37201', slug: 'takamatsu', nameJa: '高松市', nameEn: 'Takamatsu', status: 'ready'},
@@ -18,7 +18,7 @@ export const KAGAWA_MUNICIPALITIES: Municipality[] = [
   {jis: '37203', slug: 'sakaide', nameJa: '坂出市', nameEn: 'Sakaide', status: 'ready'},
   {jis: '37204', slug: 'zentsuji', nameJa: '善通寺市', nameEn: 'Zentsuji', status: 'ready'},
   {jis: '37205', slug: 'kanonji', nameJa: '観音寺市', nameEn: 'Kanonji', status: 'ready'},
-  {jis: '37206', slug: 'sanuki', nameJa: 'さぬき市', nameEn: 'Sanuki', status: 'coming-soon'},
+  {jis: '37206', slug: 'sanuki', nameJa: 'さぬき市', nameEn: 'Sanuki', status: 'ready'},
   {jis: '37207', slug: 'higashikagawa', nameJa: '東かがわ市', nameEn: 'Higashikagawa', status: 'coming-soon'},
   {jis: '37208', slug: 'mitoyo', nameJa: '三豊市', nameEn: 'Mitoyo', status: 'ready'},
   {jis: '37322', slug: 'tonosho', nameJa: '土庄町', nameEn: 'Tonosho', status: 'ready'},

@@ -30,6 +30,7 @@ import {ZENTSUJI, ZENTSUJI_PLACE_PHOTO} from '@/data/zentsuji';
 import {MITOYO, MITOYO_PLACE_PHOTO} from '@/data/mitoyo';
 import {UTAZU, UTAZU_PLACE_PHOTO} from '@/data/utazu';
 import {TONOSHO, TONOSHO_PLACE_PHOTO} from '@/data/tonosho';
+import {SANUKI, SANUKI_PLACE_PHOTO} from '@/data/sanuki';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -129,6 +130,7 @@ function localityJa(slug: string): string {
   if (slug === 'mitoyo') return MITOYO.nameJa;
   if (slug === 'utazu') return UTAZU.nameJa;
   if (slug === 'tonosho') return TONOSHO.nameJa;
+  if (slug === 'sanuki') return SANUKI.nameJa;
   return MIMA.nameJa;
 }
 
@@ -167,6 +169,7 @@ function localityEn(slug: string): string {
   if (slug === 'mitoyo') return MITOYO.nameEn;
   if (slug === 'utazu') return UTAZU.nameEn;
   if (slug === 'tonosho') return TONOSHO.nameEn;
+  if (slug === 'sanuki') return SANUKI.nameEn;
   return MIMA.nameEn;
 }
 
@@ -2797,6 +2800,66 @@ export function tonoshoGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '土庄町の案内' : 'Places in Tonosho',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+export function sanukiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kagawa/sanuki');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('sanuki');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? SANUKI.nameJa : SANUKI.nameEn,
+        alternateName: isJa ? SANUKI.nameEn : SANUKI.nameJa,
+        identifier: SANUKI.jis,
+        url,
+        image: photoAbs(SANUKI_PLACE_PHOTO),
+        sameAs: [SANUKI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '志度5385番地8' : '5385-8 Shido',
+          addressLocality: isJa ? SANUKI.nameJa : SANUKI.nameEn,
+          addressRegion: isJa ? SANUKI.prefectureJa : SANUKI.prefectureEn,
+          postalCode: SANUKI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? SANUKI.prefectureJa : SANUKI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? SANUKI.nameJa : SANUKI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? SANUKI.prefectureJa : SANUKI.prefectureEn, item: canonicalUrl(locale, 'kagawa')},
+          {'@type': 'ListItem', position: 3, name: isJa ? SANUKI.nameJa : SANUKI.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? 'さぬき市の案内' : 'Places in Sanuki',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

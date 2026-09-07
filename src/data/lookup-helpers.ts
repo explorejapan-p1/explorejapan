@@ -370,6 +370,17 @@ import {
   tonoshoTopChipForRow,
   resolveTonoshoFilter
 } from './tonosho-travel';
+import {
+  isSanukiOnsenPackRow,
+  isSanukiExperiencePackRow,
+  isSanukiStayPackRow,
+  sanukiPackRowMatchesFilter,
+  rankSanukiSeeRows,
+  sanukiSightPhoto,
+  sanukiSourcedHook,
+  sanukiTopChipForRow,
+  resolveSanukiFilter
+} from './sanuki-travel';
 
 
 
@@ -880,6 +891,18 @@ const TONOSHO_HELPERS: LookupHelpers = {
   resolveFilter: resolveTonoshoFilter
 };
 
+const SANUKI_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isSanukiOnsenPackRow,
+  isExperiencePackRow: isSanukiExperiencePackRow,
+  isStayPackRow: isSanukiStayPackRow,
+  packRowMatchesFilter: sanukiPackRowMatchesFilter,
+  rankSeeRows: rankSanukiSeeRows,
+  sightPhoto: sanukiSightPhoto,
+  sourcedHook: sanukiSourcedHook,
+  topChipForRow: sanukiTopChipForRow,
+  resolveFilter: resolveSanukiFilter
+};
+
 export function townHelpers(slug: ReadySlug): LookupHelpers {
 
   if (slug === 'tsurugi') return TSURUGI_HELPERS;
@@ -916,5 +939,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'mitoyo') return MITOYO_HELPERS;
   if (slug === 'utazu') return UTAZU_HELPERS;
   if (slug === 'tonosho') return TONOSHO_HELPERS;
+  if (slug === 'sanuki') return SANUKI_HELPERS;
   return MIMA_HELPERS;
 }

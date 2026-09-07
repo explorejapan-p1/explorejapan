@@ -53,6 +53,7 @@ import {ZENTSUJI_TRAVEL_ACCESSED} from '@/data/zentsuji-travel';
 import {MITOYO_TRAVEL_ACCESSED} from '@/data/mitoyo-travel';
 import {UTAZU_TRAVEL_ACCESSED} from '@/data/utazu-travel';
 import {TONOSHO_TRAVEL_ACCESSED} from '@/data/tonosho-travel';
+import {SANUKI_TRAVEL_ACCESSED} from '@/data/sanuki-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1137,6 +1138,26 @@ export function MimaFacilityLookup({
                 Dining from Tabelog Tonosho shop pages ({TONOSHO_TRAVEL_ACCESSED}).
                 Onsen: Shodoshima International Hotel and Hotel Green Plaza Shodoshima large baths (distinct from stay room keys).
                 Experience: Choshikei Monkey Park (Commons). Shopping and commerce stay at 0. Eleventh LIVE Kagawa hub (Shodoshima island twin).
+              </>
+            )
+
+
+) : town.slug === 'sanuki' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（志度寺・長尾寺・津田の松原・大串半島・志度駅・石清水神社）。
+                宿泊は楽天トラベルの客室写真（{SANUKI_TRAVEL_ACCESSED}）。
+                飲食は食べログさぬき市の公開店ページ（{SANUKI_TRAVEL_ACCESSED}）。
+                温泉はじゃこ丸パーク津田大浴場（公式風呂写真・客室キーと分離）。
+                体験は道の駅ながお（Commons）。買物・商業は出典写真が無いため0件。香川県12つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Shido-ji, Nagao-ji, Tsuda-no-Matsubara, Ogushi Peninsula, Shido Station, Iwashimizu Shrine).
+                Lodging from Rakuten Travel room photos ({SANUKI_TRAVEL_ACCESSED}).
+                Dining from Tabelog Sanuki shop pages ({SANUKI_TRAVEL_ACCESSED}).
+                Onsen: Jakomaru Park Tsuda large bath (distinct from stay room keys).
+                Experience: Michinoeki Nagao (Commons). Shopping and commerce stay at 0. Twelfth LIVE Kagawa hub.
               </>
             )
 
