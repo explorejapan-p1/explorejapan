@@ -54,6 +54,7 @@ import {MITOYO_TRAVEL_ACCESSED} from '@/data/mitoyo-travel';
 import {UTAZU_TRAVEL_ACCESSED} from '@/data/utazu-travel';
 import {TONOSHO_TRAVEL_ACCESSED} from '@/data/tonosho-travel';
 import {SANUKI_TRAVEL_ACCESSED} from '@/data/sanuki-travel';
+import {HIGASHIKAGAWA_TRAVEL_ACCESSED} from '@/data/higashikagawa-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1299,6 +1300,25 @@ export function MimaFacilityLookup({
               温泉は町の観光案内で名前を確認できたもの。
               カードは出典写真があるものだけ。点数は持ちません。
             </>
+          ) : town.slug === 'higashikagawa' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（引田城跡・引田のまち並み・引田港・白鳥神社・釈王寺・與田寺）。
+                宿泊は楽天トラベルの客室写真（{HIGASHIKAGAWA_TRAVEL_ACCESSED}）。
+                飲食は食べログ東かがわ市の公開店ページ（{HIGASHIKAGAWA_TRAVEL_ACCESSED}）。
+                温泉は瀬戸内リゾート　ベッセルおおち大浴場（公式風呂写真・客室キーと分離）。
+                体験は讃州井筒屋敷（Commons）。買物・商業は出典写真が無いため0件。香川県13つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Hiketa Castle, Hiketa townscape, Port of Hiketa, Shirotori Shrine, Shakuo-ji, Yoda-ji).
+                Lodging from Rakuten Travel room photos ({HIGASHIKAGAWA_TRAVEL_ACCESSED}).
+                Dining from Tabelog Higashikagawa shop pages ({HIGASHIKAGAWA_TRAVEL_ACCESSED}).
+                Onsen: Setouchi Resort Vessel Oochi large bath (official bath still; distinct from room keys).
+                Experience: Sanshu Izutsu Yashiki (Commons). Shopping/commerce: 0 without sourced photos. Thirteenth LIVE Kagawa hub.
+              </>
+            )
+
           ) : (
             <>
               Lodging from the town lodging list

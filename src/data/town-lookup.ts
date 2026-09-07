@@ -302,6 +302,7 @@ import {MITOYO, MITOYO_PLACE_PHOTO, MITOYO_FACILITIES, MITOYO_EXPECTED_GEO_COUNT
 import {UTAZU, UTAZU_PLACE_PHOTO, UTAZU_FACILITIES, UTAZU_EXPECTED_GEO_COUNT, UTAZU_EXPECTED_ROW_COUNT} from './utazu';
 import {TONOSHO, TONOSHO_PLACE_PHOTO, TONOSHO_FACILITIES, TONOSHO_EXPECTED_GEO_COUNT, TONOSHO_EXPECTED_ROW_COUNT} from './tonosho';
 import {SANUKI, SANUKI_PLACE_PHOTO, SANUKI_FACILITIES, SANUKI_EXPECTED_GEO_COUNT, SANUKI_EXPECTED_ROW_COUNT} from './sanuki';
+import {HIGASHIKAGAWA, HIGASHIKAGAWA_PLACE_PHOTO, HIGASHIKAGAWA_FACILITIES, HIGASHIKAGAWA_EXPECTED_GEO_COUNT, HIGASHIKAGAWA_EXPECTED_ROW_COUNT} from './higashikagawa';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -411,6 +412,30 @@ import {
   SANUKI_TRAVEL_ACCESSED,
   SANUKI_TRAVEL_SOURCES
 } from './sanuki-travel';
+import {
+  HIGASHIKAGAWA_TRAVEL_ALL,
+  HIGASHIKAGAWA_TRAVEL_DINING,
+  HIGASHIKAGAWA_TRAVEL_STAY,
+  HIGASHIKAGAWA_TRAVEL_SHOPPING,
+  HIGASHIKAGAWA_TRAVEL_COMMERCE,
+  HIGASHIKAGAWA_TRAVEL_ACCESSED,
+  HIGASHIKAGAWA_ONSEN_PACK_NAMES,
+  HIGASHIKAGAWA_EXPERIENCE_PACK_NAMES,
+  HIGASHIKAGAWA_STAY_PACK_NAMES,
+  HIGASHIKAGAWA_SHOPPING_PACK_NAMES,
+  HIGASHIKAGAWA_SIGHT_PINS,
+  higashikagawaSightPhoto,
+  higashikagawaSourcedHook,
+  higashikagawaTopChipForRow,
+  higashikagawaPackRowMatchesFilter,
+  rankHigashikagawaSeeRows,
+  isHigashikagawaOnsenPackRow,
+  isHigashikagawaExperiencePackRow,
+  isHigashikagawaStayPackRow,
+  isHigashikagawaShoppingPackRow,
+  isHigashikagawaDiningPackRow,
+  HIGASHIKAGAWA_DINING_NAME_SET
+} from './higashikagawa-travel';
 
 
 import {
@@ -1625,6 +1650,42 @@ export const SANUKI_LOOKUP: LookupTown = {
   licenseSiteEn: 'City-site listing'
 };
 
+
+export const HIGASHIKAGAWA_LOOKUP: LookupTown = {
+  slug: 'higashikagawa',
+  prefectureSlug: 'kagawa',
+  jis: HIGASHIKAGAWA.jis,
+  nameJa: HIGASHIKAGAWA.nameJa,
+  nameEn: HIGASHIKAGAWA.nameEn,
+  heroPhoto: HIGASHIKAGAWA_PLACE_PHOTO,
+  photoCiteJa:
+    '写真は引田城跡。HikaruKinkakuji、CC BY-SA 4.0。File:Hiketa-Castle.jpg。',
+  photoCiteEn:
+    'Photo: Hiketa Castle ruins. HikaruKinkakuji, CC BY-SA 4.0. File:Hiketa-Castle.jpg.',
+  rows: HIGASHIKAGAWA_FACILITIES,
+  expectedGeo: HIGASHIKAGAWA_EXPECTED_GEO_COUNT,
+  expectedRows: HIGASHIKAGAWA_EXPECTED_ROW_COUNT,
+  travelDining: HIGASHIKAGAWA_TRAVEL_DINING,
+  travelStay: HIGASHIKAGAWA_TRAVEL_STAY,
+  travelShopping: HIGASHIKAGAWA_TRAVEL_SHOPPING,
+  travelCommerce: HIGASHIKAGAWA_TRAVEL_COMMERCE,
+  travelAll: HIGASHIKAGAWA_TRAVEL_ALL,
+  coverageJa:
+    '東かがわ市（JIS 37207）観光6・宿泊2・飲食16・温泉1・体験1（出典写真がある施設のみ。温泉は大浴場キーで客室と分離）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。香川県13つ目のLIVEハブ。',
+  coverageEn:
+    'Higashikagawa (JIS 37207), 6 tourism + 2 stay + 16 dining + 1 onsen + 1 experience with sourced photos (onsen uses distinct bath key). Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Thirteenth LIVE Kagawa hub.',
+  mapLabelJa: '東かがわ市の出典座標8件',
+  mapLabelEn: '8 sourced coordinates in Higashikagawa',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia等出典座標8件（accessed 2026-09-07）。',
+  mapCitePackEn: 'Points: 8 sourced coordinates for city/official facilities (accessed 2026-09-07).',
+  licenseNoteJa:
+    '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from higashikagawa.jp, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
 export const TONOSHO_LOOKUP: LookupTown = {
   slug: 'tonosho',
   prefectureSlug: 'kagawa',
@@ -1801,7 +1862,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   mitoyo: MITOYO_LOOKUP,
   utazu: UTAZU_LOOKUP,
   tonosho: TONOSHO_LOOKUP,
-  sanuki: SANUKI_LOOKUP
+  sanuki: SANUKI_LOOKUP,
+  higashikagawa: HIGASHIKAGAWA_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

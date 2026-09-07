@@ -19,7 +19,7 @@ export const KAGAWA_MUNICIPALITIES: Municipality[] = [
   {jis: '37204', slug: 'zentsuji', nameJa: '善通寺市', nameEn: 'Zentsuji', status: 'ready'},
   {jis: '37205', slug: 'kanonji', nameJa: '観音寺市', nameEn: 'Kanonji', status: 'ready'},
   {jis: '37206', slug: 'sanuki', nameJa: 'さぬき市', nameEn: 'Sanuki', status: 'ready'},
-  {jis: '37207', slug: 'higashikagawa', nameJa: '東かがわ市', nameEn: 'Higashikagawa', status: 'coming-soon'},
+  {jis: '37207', slug: 'higashikagawa', nameJa: '東かがわ市', nameEn: 'Higashikagawa', status: 'ready'},
   {jis: '37208', slug: 'mitoyo', nameJa: '三豊市', nameEn: 'Mitoyo', status: 'ready'},
   {jis: '37322', slug: 'tonosho', nameJa: '土庄町', nameEn: 'Tonosho', status: 'ready'},
   {jis: '37324', slug: 'shodoshima', nameJa: '小豆島町', nameEn: 'Shodoshima', status: 'ready'},

@@ -31,6 +31,7 @@ import {MITOYO, MITOYO_PLACE_PHOTO} from '@/data/mitoyo';
 import {UTAZU, UTAZU_PLACE_PHOTO} from '@/data/utazu';
 import {TONOSHO, TONOSHO_PLACE_PHOTO} from '@/data/tonosho';
 import {SANUKI, SANUKI_PLACE_PHOTO} from '@/data/sanuki';
+import {HIGASHIKAGAWA, HIGASHIKAGAWA_PLACE_PHOTO} from '@/data/higashikagawa';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -131,6 +132,7 @@ function localityJa(slug: string): string {
   if (slug === 'utazu') return UTAZU.nameJa;
   if (slug === 'tonosho') return TONOSHO.nameJa;
   if (slug === 'sanuki') return SANUKI.nameJa;
+  if (slug === 'higashikagawa') return HIGASHIKAGAWA.nameJa;
   return MIMA.nameJa;
 }
 
@@ -170,6 +172,7 @@ function localityEn(slug: string): string {
   if (slug === 'utazu') return UTAZU.nameEn;
   if (slug === 'tonosho') return TONOSHO.nameEn;
   if (slug === 'sanuki') return SANUKI.nameEn;
+  if (slug === 'higashikagawa') return HIGASHIKAGAWA.nameEn;
   return MIMA.nameEn;
 }
 
@@ -2860,6 +2863,66 @@ export function sanukiGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? 'さぬき市の案内' : 'Places in Sanuki',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+export function higashikagawaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kagawa/higashikagawa');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('higashikagawa');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? HIGASHIKAGAWA.nameJa : HIGASHIKAGAWA.nameEn,
+        alternateName: isJa ? HIGASHIKAGAWA.nameEn : HIGASHIKAGAWA.nameJa,
+        identifier: HIGASHIKAGAWA.jis,
+        url,
+        image: photoAbs(HIGASHIKAGAWA_PLACE_PHOTO),
+        sameAs: [HIGASHIKAGAWA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '湊1847番地1' : '1847-1 Minato',
+          addressLocality: isJa ? HIGASHIKAGAWA.nameJa : HIGASHIKAGAWA.nameEn,
+          addressRegion: isJa ? HIGASHIKAGAWA.prefectureJa : HIGASHIKAGAWA.prefectureEn,
+          postalCode: HIGASHIKAGAWA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? HIGASHIKAGAWA.prefectureJa : HIGASHIKAGAWA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? HIGASHIKAGAWA.nameJa : HIGASHIKAGAWA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? HIGASHIKAGAWA.prefectureJa : HIGASHIKAGAWA.prefectureEn, item: canonicalUrl(locale, 'kagawa')},
+          {'@type': 'ListItem', position: 3, name: isJa ? HIGASHIKAGAWA.nameJa : HIGASHIKAGAWA.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '東かがわ市の案内' : 'Places in Higashikagawa',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',
