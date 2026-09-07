@@ -58,6 +58,7 @@ import {HIGASHIKAGAWA_TRAVEL_ACCESSED} from '@/data/higashikagawa-travel';
 import {MIKI_TRAVEL_ACCESSED} from '@/data/miki-travel';
 import {AYAGAWA_TRAVEL_ACCESSED} from '@/data/ayagawa-travel';
 import {TADOTSU_TRAVEL_ACCESSED} from '@/data/tadotsu-travel';
+import {MANNO_TRAVEL_ACCESSED} from '@/data/manno-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1373,6 +1374,24 @@ export function MimaFacilityLookup({
                 Lodging from Rakuten Travel room photos ({TADOTSU_TRAVEL_ACCESSED}).
                 Dining from Tabelog Tadotsu shop pages ({TADOTSU_TRAVEL_ACCESSED}).
                 Onsen: 0. Experience: Toryo Park (Commons). Shopping/commerce: 0. Sixteenth LIVE Kagawa hub.
+              </>
+            )
+
+
+          ) : town.slug === 'manno' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（国営讃岐まんのう公園・満濃池・天文台・ひまわりの里・かりんの丘・小橋の滝）。
+                宿泊は楽天トラベルの客室写真（{MANNO_TRAVEL_ACCESSED}）。
+                飲食は食べログまんのう町の公開店ページ（{MANNO_TRAVEL_ACCESSED}）。
+                温泉は湯山荘　阿讃琴南 大浴場（客室キーと分離）。体験は道の駅ことなみ（Commons）。買物・商業は0件。香川県17つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Sanuki Manno Park, Mannoike, observatory, sunflower field, Karin-no-oka, Kobashi Falls).
+                Lodging from Rakuten Travel room photos ({MANNO_TRAVEL_ACCESSED}).
+                Dining from Tabelog Manno shop pages ({MANNO_TRAVEL_ACCESSED}).
+                Onsen: Yuyamaso Asan bath (distinct from stay key). Experience: Michinoeki Kotonami (Commons). Shopping/commerce: 0. Seventeenth LIVE Kagawa hub.
               </>
             )
 

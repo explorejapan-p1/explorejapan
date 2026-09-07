@@ -425,6 +425,17 @@ import {
   isTadotsuExperiencePackRow,
   isTadotsuStayPackRow
 } from './tadotsu-travel';
+import {
+  mannoPackRowMatchesFilter,
+  mannoSightPhoto,
+  mannoSourcedHook,
+  mannoTopChipForRow,
+  resolveMannoFilter,
+  rankMannoSeeRows,
+  isMannoOnsenPackRow,
+  isMannoExperiencePackRow,
+  isMannoStayPackRow
+} from './manno-travel';
 
 
 
@@ -984,6 +995,19 @@ const TADOTSU_HELPERS: LookupHelpers = {
   resolveFilter: resolveTadotsuFilter
 };
 
+const MANNO_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isMannoOnsenPackRow,
+  isExperiencePackRow: isMannoExperiencePackRow,
+  isStayPackRow: isMannoStayPackRow,
+  packRowMatchesFilter: mannoPackRowMatchesFilter,
+  rankSeeRows: rankMannoSeeRows,
+  sightPhoto: mannoSightPhoto,
+  sourcedHook: mannoSourcedHook,
+  topChipForRow: mannoTopChipForRow,
+  resolveFilter: resolveMannoFilter
+};
+
+
 
 
 
@@ -1040,5 +1064,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'miki') return MIKI_HELPERS;
   if (slug === 'ayagawa') return AYAGAWA_HELPERS;
   if (slug === 'tadotsu') return TADOTSU_HELPERS;
+  if (slug === 'manno') return MANNO_HELPERS;
   return MIMA_HELPERS;
 }

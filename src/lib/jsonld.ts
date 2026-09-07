@@ -35,6 +35,7 @@ import {HIGASHIKAGAWA, HIGASHIKAGAWA_PLACE_PHOTO} from '@/data/higashikagawa';
 import {MIKI, MIKI_PLACE_PHOTO} from '@/data/miki';
 import {AYAGAWA, AYAGAWA_PLACE_PHOTO} from '@/data/ayagawa';
 import {TADOTSU, TADOTSU_PLACE_PHOTO} from '@/data/tadotsu';
+import {MANNO, MANNO_PLACE_PHOTO} from '@/data/manno';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -139,6 +140,7 @@ function localityJa(slug: string): string {
   if (slug === 'miki') return MIKI.nameJa;
   if (slug === 'ayagawa') return AYAGAWA.nameJa;
   if (slug === 'tadotsu') return TADOTSU.nameJa;
+  if (slug === 'manno') return MANNO.nameJa;
   return MIMA.nameJa;
 }
 
@@ -182,6 +184,7 @@ function localityEn(slug: string): string {
   if (slug === 'miki') return MIKI.nameEn;
   if (slug === 'ayagawa') return AYAGAWA.nameEn;
   if (slug === 'tadotsu') return TADOTSU.nameEn;
+  if (slug === 'manno') return MANNO.nameEn;
   return MIMA.nameEn;
 }
 
@@ -3112,6 +3115,66 @@ export function tadotsuGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '多度津町の案内' : 'Places in Tadotsu',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+export function mannoGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kagawa/manno');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('manno');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? MANNO.nameJa : MANNO.nameEn,
+        alternateName: isJa ? MANNO.nameEn : MANNO.nameJa,
+        identifier: MANNO.jis,
+        url,
+        image: photoAbs(MANNO_PLACE_PHOTO),
+        sameAs: [MANNO.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '吉野下430' : '430 Yoshinoshimo',
+          addressLocality: isJa ? MANNO.nameJa : MANNO.nameEn,
+          addressRegion: isJa ? MANNO.prefectureJa : MANNO.prefectureEn,
+          postalCode: MANNO.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? MANNO.prefectureJa : MANNO.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? MANNO.nameJa : MANNO.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? MANNO.prefectureJa : MANNO.prefectureEn, item: canonicalUrl(locale, 'kagawa')},
+          {'@type': 'ListItem', position: 3, name: isJa ? MANNO.nameJa : MANNO.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? 'まんのう町の案内' : 'Places in Manno',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

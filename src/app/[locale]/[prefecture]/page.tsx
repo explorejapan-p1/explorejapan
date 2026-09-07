@@ -31,6 +31,7 @@ import {HIGASHIKAGAWA_PLACE_PHOTO} from '@/data/higashikagawa';
 import {MIKI_PLACE_PHOTO} from '@/data/miki';
 import {AYAGAWA_PLACE_PHOTO} from '@/data/ayagawa';
 import {TADOTSU_PLACE_PHOTO} from '@/data/tadotsu';
+import {MANNO_PLACE_PHOTO} from '@/data/manno';
 import {KAGAWA_MUNICIPALITIES} from '@/data/kagawa-municipalities';
 import {TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {PREFECTURES, PREFECTURE_BY_SLUG} from '@/data/prefectures';
@@ -158,6 +159,8 @@ export default async function PrefecturePage({params}: Props) {
                                                 ? AYAGAWA_PLACE_PHOTO
                                               : m.slug === 'tadotsu'
                                                 ? TADOTSU_PLACE_PHOTO
+                                              : m.slug === 'manno'
+                                                ? MANNO_PLACE_PHOTO
                                               : m.slug === 'takamatsu'
                                               ? TAKAMATSU_PLACE_PHOTO
                                               : MIMA_PLACE_PHOTO;

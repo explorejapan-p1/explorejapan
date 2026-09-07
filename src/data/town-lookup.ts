@@ -306,6 +306,7 @@ import {HIGASHIKAGAWA, HIGASHIKAGAWA_PLACE_PHOTO, HIGASHIKAGAWA_FACILITIES, HIGA
 import {MIKI, MIKI_PLACE_PHOTO, MIKI_FACILITIES, MIKI_EXPECTED_GEO_COUNT, MIKI_EXPECTED_ROW_COUNT} from './miki';
 import {AYAGAWA, AYAGAWA_PLACE_PHOTO, AYAGAWA_FACILITIES, AYAGAWA_EXPECTED_GEO_COUNT, AYAGAWA_EXPECTED_ROW_COUNT} from './ayagawa';
 import {TADOTSU, TADOTSU_PLACE_PHOTO, TADOTSU_FACILITIES, TADOTSU_EXPECTED_GEO_COUNT, TADOTSU_EXPECTED_ROW_COUNT} from './tadotsu';
+import {MANNO, MANNO_PLACE_PHOTO, MANNO_FACILITIES, MANNO_EXPECTED_GEO_COUNT, MANNO_EXPECTED_ROW_COUNT} from './manno';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -478,6 +479,19 @@ import {
   resolveTadotsuFilter,
   rankTadotsuSeeRows
 } from './tadotsu-travel';
+import {
+  MANNO_TRAVEL_DINING,
+  MANNO_TRAVEL_STAY,
+  MANNO_TRAVEL_SHOPPING,
+  MANNO_TRAVEL_COMMERCE,
+  MANNO_TRAVEL_ALL,
+  mannoSightPhoto,
+  mannoSourcedHook,
+  mannoTopChipForRow,
+  mannoPackRowMatchesFilter,
+  resolveMannoFilter,
+  rankMannoSeeRows
+} from './manno-travel';
 
 
 
@@ -1822,6 +1836,36 @@ export const TADOTSU_LOOKUP: LookupTown = {
   licenseSiteEn: 'Town-site listing'
 };
 
+export const MANNO_LOOKUP: LookupTown = {
+  slug: 'manno',
+  prefectureSlug: 'kagawa',
+  jis: MANNO.jis,
+  nameJa: MANNO.nameJa,
+  nameEn: MANNO.nameEn,
+  heroPhoto: MANNO_PLACE_PHOTO,
+  photoCiteJa: '写真は国営讃岐まんのう公園。本人、Public domain。File:Sanuki-mannou-park.JPG。',
+  photoCiteEn: 'Photo: Sanuki Manno National Park. Public domain. File:Sanuki-mannou-park.JPG.',
+  rows: MANNO_FACILITIES,
+  expectedGeo: MANNO_EXPECTED_GEO_COUNT,
+  expectedRows: MANNO_EXPECTED_ROW_COUNT,
+  travelDining: MANNO_TRAVEL_DINING,
+  travelStay: MANNO_TRAVEL_STAY,
+  travelShopping: MANNO_TRAVEL_SHOPPING,
+  travelCommerce: MANNO_TRAVEL_COMMERCE,
+  travelAll: MANNO_TRAVEL_ALL,
+  coverageJa: 'まんのう町（JIS 37406）観光6・宿泊1・飲食16・温泉1・体験1（出典写真がある施設のみ）。買物・商業は0件（未掲載）。オープンデータ凍結パックは未掲載。香川県17つ目のLIVEハブ。',
+  coverageEn: 'Manno (JIS 37406), 6 tourism + 1 stay + 16 dining + 1 onsen + 1 experience with sourced photos. Shopping, commerce: 0. No frozen open-data pack. Seventeenth LIVE Kagawa hub.',
+  mapLabelJa: 'まんのう町の出典座標8件',
+  mapLabelEn: '8 sourced coordinates in Manno',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia等出典座標8件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 8 sourced coordinates for town/official facilities (accessed 2026-09-08).',
+  licenseNoteJa: '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from town.manno.lg.jp, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
+
 
 
 
@@ -2005,7 +2049,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   higashikagawa: HIGASHIKAGAWA_LOOKUP,
   miki: MIKI_LOOKUP,
   ayagawa: AYAGAWA_LOOKUP,
-  tadotsu: TADOTSU_LOOKUP
+  tadotsu: TADOTSU_LOOKUP,
+  manno: MANNO_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
