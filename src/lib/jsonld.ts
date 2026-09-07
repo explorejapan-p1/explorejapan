@@ -22,6 +22,7 @@ import {ANAN, ANAN_PLACE_PHOTO} from '@/data/anan';
 import {TAKAMATSU, TAKAMATSU_PLACE_PHOTO} from '@/data/takamatsu';
 import {KOTOHIRA, KOTOHIRA_PLACE_PHOTO} from '@/data/kotohira';
 import {MARUGAME, MARUGAME_PLACE_PHOTO} from '@/data/marugame';
+import {KANONJI, KANONJI_PLACE_PHOTO} from '@/data/kanonji';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -113,6 +114,7 @@ function localityJa(slug: string): string {
   if (slug === 'takamatsu') return TAKAMATSU.nameJa;
   if (slug === 'kotohira') return KOTOHIRA.nameJa;
   if (slug === 'marugame') return MARUGAME.nameJa;
+  if (slug === 'kanonji') return KANONJI.nameJa;
   return MIMA.nameJa;
 }
 
@@ -143,6 +145,7 @@ function localityEn(slug: string): string {
   if (slug === 'takamatsu') return TAKAMATSU.nameEn;
   if (slug === 'kotohira') return KOTOHIRA.nameEn;
   if (slug === 'marugame') return MARUGAME.nameEn;
+  if (slug === 'kanonji') return KANONJI.nameEn;
   return MIMA.nameEn;
 }
 
@@ -2287,6 +2290,66 @@ export function marugameGraph(locale: AppLocale) {
           {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
           {'@type': 'ListItem', position: 2, name: isJa ? MARUGAME.prefectureJa : MARUGAME.prefectureEn, item: canonicalUrl(locale, 'kagawa')},
           {'@type': 'ListItem', position: 3, name: isJa ? MARUGAME.nameJa : MARUGAME.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '丸亀市の案内' : 'Places in Marugame City',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+export function kanonjiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kagawa/kanonji');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('kanonji');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? KANONJI.nameJa : KANONJI.nameEn,
+        alternateName: isJa ? KANONJI.nameEn : KANONJI.nameJa,
+        identifier: KANONJI.jis,
+        url,
+        image: photoAbs(KANONJI_PLACE_PHOTO),
+        sameAs: [KANONJI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '大手町二丁目4番21号' : '2-4-21 Otemachi',
+          addressLocality: isJa ? KANONJI.nameJa : KANONJI.nameEn,
+          addressRegion: isJa ? KANONJI.prefectureJa : KANONJI.prefectureEn,
+          postalCode: KANONJI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? KANONJI.prefectureJa : KANONJI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? KANONJI.nameJa : KANONJI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? KANONJI.prefectureJa : KANONJI.prefectureEn, item: canonicalUrl(locale, 'kagawa')},
+          {'@type': 'ListItem', position: 3, name: isJa ? KANONJI.nameJa : KANONJI.nameEn, item: url}
         ]
       },
       {

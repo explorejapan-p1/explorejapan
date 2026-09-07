@@ -45,6 +45,7 @@ import {ANAN_TRAVEL_ACCESSED} from '@/data/anan-travel';
 import {TAKAMATSU_TRAVEL_ACCESSED} from '@/data/takamatsu-travel';
 import {KOTOHIRA_TRAVEL_ACCESSED} from '@/data/kotohira-travel';
 import {MARUGAME_TRAVEL_ACCESSED} from '@/data/marugame-travel';
+import {KANONJI_TRAVEL_ACCESSED} from '@/data/kanonji-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -972,6 +973,26 @@ export function MimaFacilityLookup({
                 Dining from Tabelog Marugame City shop pages ({MARUGAME_TRAVEL_ACCESSED}).
                 Onsen: APA and Super Hotel bath stills (distinct from stay room keys). Experience: Uchiwa Museum.
                 Shopping and commerce stay at 0 without sourced photos. Third LIVE Kagawa hub.
+              </>
+            )
+
+
+          ) : town.slug === 'kanonji' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（銭形砂絵・琴弾公園・有明浜・神恵院・観音寺・琴弾八幡宮・高屋神社・豊稔池堰堤・伊吹島）。
+                宿泊は楽天トラベルの客室写真（{KANONJI_TRAVEL_ACCESSED}）。
+                飲食は食べログ観音寺市の公開店ページ（{KANONJI_TRAVEL_ACCESSED}）。
+                温泉はルートイン・亀の井ホテルの大浴場（公式風呂写真・客室キーと分離）。体験は道の駅ことひき。
+                買物・商業は出典写真が無いため0件。香川県4つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Zenigata Sunae, Kotohiki Park, Ariakehama, Jinne-in, Kannon-ji, Kotohiki Hachiman-gū, Takaya Shrine, Hōnen-ike Dam, Ibuki Island).
+                Lodging from Rakuten Travel room photos ({KANONJI_TRAVEL_ACCESSED}).
+                Dining from Tabelog Kanonji City shop pages ({KANONJI_TRAVEL_ACCESSED}).
+                Onsen: Route Inn and Kamenoi Hotel bath stills (distinct from stay room keys). Experience: Michinoeki Kotohiki.
+                Shopping and commerce stay at 0 without sourced photos. Fourth LIVE Kagawa hub.
               </>
             )
 
