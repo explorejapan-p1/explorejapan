@@ -1,6 +1,6 @@
 # Niyodogawa Town (仁淀川町) gaps (TG566 twenty-fourth Kochi hub)
 
-Accessed 2026-09-08 (JST). LIVE tip pending push.
+Accessed 2026-09-08 (JST). LIVE tip `6b8e7430e4`.
 
 ## LIVE pills (photo-first)
 - stay: 1 (中津渓谷 ゆの森 / Rakuten HOTEL/107685 本館和室 LARGE plan a6e422c3 = mediaInfo「本館和室」 — stay≠onsen)
@@ -28,4 +28,4 @@ Accessed 2026-09-08 (JST). LIVE tip pending push.
 - 田野町 still deferred.
 
 ## CDN
-Cold CDN verify after Pages lag (~60s post-push). Expect live `ja/kochi/niyodogawa/` PASS: hero 仁淀川町, desc 仁淀川町。中津渓谷、雨竜の滝、仁淀ブルー、食。, pills 1/3/0/0/5. Pref cover niyodogawa-cover-nakatsu present.
+Cold CDN PASS after Pages lag (~60s post-push). Live `ja/kochi/niyodogawa/` PASS: hero 仁淀川町, desc 仁淀川町。中津渓谷、雨竜の滝、仁淀ブルー、食。, pills stay/dining/onsen/experience/sights = 1/3/0/0/5. Pref cover niyodogawa-cover-nakatsu present. Okawa/tosacho regression PASS.
