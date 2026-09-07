@@ -1,6 +1,6 @@
 # Tosa Town (土佐町) gaps (TG566 twenty-second Kochi hub)
 
-Accessed 2026-09-08 (JST). LIVE tip pending push.
+Accessed 2026-09-08 (JST). LIVE tip `b61bc4676d`.
 
 ## LIVE pills (photo-first)
 - stay: 1 (さめうら荘レイクサイドホテル / Rakuten HOTEL/180726 和室 LARGE mediaInfo【和室一例】ef0621… — stay≠onsen)
@@ -28,4 +28,4 @@ Accessed 2026-09-08 (JST). LIVE tip pending push.
 - 田野町 still deferred: no attributable room still under HARD BAR.
 
 ## CDN
-Cold CDN verify after Pages lag (~60s post-push). Expect live `ja/kochi/tosacho/` PASS: hero 土佐町, desc 土佐町。さめうら湖、道の駅、食。, pills stay/dining/onsen/experience/sights = 1/3/0/0/5. Pref cover tosacho-cover-sameura present.
+Cold CDN PASS after Pages lag (~60s post-push). Live `ja/kochi/tosacho/` PASS: hero 土佐町, desc 土佐町。さめうら湖、道の駅、食。, pills stay/dining/onsen/experience/sights = 1/3/0/0/5. Pref cover tosacho-cover-sameura present.
