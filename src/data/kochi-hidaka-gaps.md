@@ -1,6 +1,6 @@
 # Hidaka Village (日高村) gaps (TG566 twenty-eighth Kochi hub)
 
-Accessed 2026-09-08 (JST). LIVE tip pending push.
+Accessed 2026-09-08 (JST). LIVE tip `031f6c6945`.
 
 ## LIVE pills (photo-first)
 - stay: 1 (貸切宿 芽 / Rakuten HOTEL/185303 洋室ベッド LARGE gallery mediaInfo「洋室にはセミダブルのベッド2つ合わせ…」cat 00000001 — stay≠onsen; private hinoki bath in rental)
@@ -29,4 +29,4 @@ Accessed 2026-09-08 (JST). LIVE tip pending push.
 - 田野町 still deferred: no attributable room still under HARD BAR.
 
 ## CDN
-Cold CDN pending post-push.
+Cold CDN PASS after Pages lag (~70s post-push). Live `ja/kochi/hidaka/` PASS: hero 日高村, desc 日高村。名越屋沈下橋、小村神社、オムライス、食。, pills stay/dining/onsen/experience/sights = 1/3/0/0/5. Pref cover hidaka-cover-nagoshi present. Yusuhara regression PASS.
