@@ -1,6 +1,6 @@
 # Yusuhara Town (梼原町) gaps (TG566 twenty-seventh Kochi hub)
 
-Accessed 2026-09-08 (JST). LIVE tip pending push.
+Accessed 2026-09-08 (JST). LIVE tip `f7bb5ef42c`.
 
 ## LIVE pills (photo-first)
 - stay: 1 (雲の上のホテル別館・マルシェユスハラ / Rakuten HOTEL/109505 ツインルーム LARGE gallery mediaInfo「ツインルーム」cat 00000001 cIE0Mq — stay≠onsen; baths at 雲の上の温泉 separate)
@@ -29,4 +29,4 @@ Accessed 2026-09-08 (JST). LIVE tip pending push.
 - 田野町 still deferred: no attributable room still under HARD BAR.
 
 ## CDN
-Cold CDN pending after Pages lag post-push.
+Cold CDN PASS after Pages lag (~70s post-push). Live `ja/kochi/yusuhara/` PASS: hero 梼原町, desc 梼原町。天狗高原、雲の上、マルシェ、食。, pills stay/dining/onsen/experience/sights = 1/3/0/0/5. Pref cover yusuhara-cover-tengu present. Ochi regression PASS.
