@@ -24,6 +24,7 @@ import {MINAMI, MINAMI_PLACE_PHOTO} from '@/data/minami';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {AIZUMI, AIZUMI_PLACE_PHOTO} from '@/data/aizumi';
 import {KOMATSUSHIMA, KOMATSUSHIMA_PLACE_PHOTO} from '@/data/komatsushima';
+import {ANAN, ANAN_PLACE_PHOTO} from '@/data/anan';
 import {MUGI, MUGI_PLACE_PHOTO} from '@/data/mugi';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
@@ -36,7 +37,7 @@ import {Link} from '@/i18n/navigation';
 import type {AppLocale} from '@/i18n/routing';
 import {projectMimaOfficialMap} from '@/lib/geo';
 import {JsonLd} from '@/components/JsonLd';
-import {mimaGraph, tsurugiGraph, yoshinogawaGraph, miyoshiGraph, tokushimaCityGraph, awaGraph, higashimiyoshiGraph, kitajimaGraph, narutoGraph, matsushigeGraph, ishiiGraph, itanoGraph, kamiitaGraph, kamiyamaGraph, katsuuraGraph, kamikatsuGraph, sanagochiGraph, nakaGraph, minamiGraph, kaiyoGraph, aizumiGraph, mugiGraph, komatsushimaGraph} from '@/lib/jsonld';
+import {mimaGraph, tsurugiGraph, yoshinogawaGraph, miyoshiGraph, tokushimaCityGraph, awaGraph, higashimiyoshiGraph, kitajimaGraph, narutoGraph, matsushigeGraph, ishiiGraph, itanoGraph, kamiitaGraph, kamiyamaGraph, katsuuraGraph, kamikatsuGraph, sanagochiGraph, nakaGraph, minamiGraph, kaiyoGraph, aizumiGraph, mugiGraph, komatsushimaGraph, ananGraph} from '@/lib/jsonld';
 import {shareMetadata} from '@/lib/seo';
 
 type Props = {
@@ -112,7 +113,9 @@ export async function generateMetadata({params}: Props) {
                                             ? AIZUMI_PLACE_PHOTO
                                             : muni.slug === 'komatsushima'
                                               ? KOMATSUSHIMA_PLACE_PHOTO
-                                              : MIMA_PLACE_PHOTO;
+                                              : muni.slug === 'anan'
+                                                ? ANAN_PLACE_PHOTO
+                                                : MIMA_PLACE_PHOTO;
   const description = live
     ? muni.slug === 'tsurugi'
       ? loc === 'ja'
@@ -202,6 +205,10 @@ export async function generateMetadata({params}: Props) {
                                       ? loc === 'ja'
                                         ? '小松島市。大手海岸、立江寺・恩山寺。'
                                         : 'Komatsushima City, Tokushima — Ōte Beach, Tatsue-ji and Onzan-ji.'
+                                    : muni.slug === 'anan'
+                                      ? loc === 'ja'
+                                        ? '阿南市。蒲生田岬、太龍寺・平等寺、食。'
+                                        : 'Anan City, Tokushima — Cape Kamoda, Tairyū-ji and Byōdō-ji, food.'
           : loc === 'ja'
             ? '四国のまほろば 美馬市。うだつの町並み、食、宿。'
             : 'Mima City, Tokushima — Udatsu townscape, food, and stays.'
@@ -241,8 +248,8 @@ export default async function MunicipalityPage({params}: Props) {
         <div className="coming">
           <p>
             {isJa
-              ? 'この市町村のページは準備中です。現在本文があるのは徳島市・鳴門市・小松島市・美馬市・つるぎ町・吉野川市・三好市・阿波市・東みよし町・北島町・松茂町・石井町・板野町・上板町・神山町・勝浦町・上勝町・佐那河内村・那賀町・牟岐町・美波町・海陽町・藍住町です。'
-              : 'This municipality page is coming soon. Tokushima City, Naruto City, Komatsushima City, Mima City, Tsurugi Town, Yoshinogawa City, Miyoshi City, Awa City, Higashimiyoshi Town, Kitajima Town, Matsushige Town, Ishii Town, Itano Town, Kamiita Town, Kamiyama Town, Katsuura Town, Kamikatsu Town, Sanagochi Village, Naka Town, Mugi Town, Minami Town, Kaiyo Town, and Aizumi Town have full listings in v0.'}
+              ? 'この市町村のページは準備中です。現在本文があるのは徳島市・鳴門市・小松島市・阿南市・美馬市・つるぎ町・吉野川市・三好市・阿波市・東みよし町・北島町・松茂町・石井町・板野町・上板町・神山町・勝浦町・上勝町・佐那河内村・那賀町・牟岐町・美波町・海陽町・藍住町です。'
+              : 'This municipality page is coming soon. Tokushima City, Naruto City, Komatsushima City, Anan City, Mima City, Tsurugi Town, Yoshinogawa City, Miyoshi City, Awa City, Higashimiyoshi Town, Kitajima Town, Matsushige Town, Ishii Town, Itano Town, Kamiita Town, Kamiyama Town, Katsuura Town, Kamikatsu Town, Sanagochi Village, Naka Town, Mugi Town, Minami Town, Kaiyo Town, and Aizumi Town have full listings in v0.'}
           </p>
           <p>
             <Link href="/tokushima/tokushima">{isJa ? '徳島市へ' : 'Go to Tokushima City'}</Link>
@@ -290,6 +297,8 @@ export default async function MunicipalityPage({params}: Props) {
             <Link href="/tokushima/aizumi">{isJa ? '藍住町へ' : 'Go to Aizumi Town'}</Link>
             {' · '}
             <Link href="/tokushima/komatsushima">{isJa ? '小松島市へ' : 'Go to Komatsushima City'}</Link>
+            {' · '}
+            <Link href="/tokushima/anan">{isJa ? '阿南市へ' : 'Go to Anan City'}</Link>
           </p>
         </div>
       </>
@@ -319,7 +328,7 @@ export default async function MunicipalityPage({params}: Props) {
 
   return (
     <>
-      <JsonLd data={town.slug === 'tokushima' ? tokushimaCityGraph(graphLocale) : town.slug === 'tsurugi' ? tsurugiGraph(graphLocale) : town.slug === 'yoshinogawa' ? yoshinogawaGraph(graphLocale) : town.slug === 'miyoshi' ? miyoshiGraph(graphLocale) : town.slug === 'awa' ? awaGraph(graphLocale) : town.slug === 'higashimiyoshi' ? higashimiyoshiGraph(graphLocale) : town.slug === 'kitajima' ? kitajimaGraph(graphLocale) : town.slug === 'naruto' ? narutoGraph(graphLocale) : town.slug === 'matsushige' ? matsushigeGraph(graphLocale) : town.slug === 'ishii' ? ishiiGraph(graphLocale) : town.slug === 'itano' ? itanoGraph(graphLocale) : town.slug === 'kamiita' ? kamiitaGraph(graphLocale) : town.slug === 'kamiyama' ? kamiyamaGraph(graphLocale) : town.slug === 'katsuura' ? katsuuraGraph(graphLocale) : town.slug === 'kamikatsu' ? kamikatsuGraph(graphLocale) : town.slug === 'sanagochi' ? sanagochiGraph(graphLocale) : town.slug === 'naka' ? nakaGraph(graphLocale) : town.slug === 'minami' ? minamiGraph(graphLocale) : town.slug === 'kaiyo' ? kaiyoGraph(graphLocale) : town.slug === 'mugi' ? mugiGraph(graphLocale) : town.slug === 'aizumi' ? aizumiGraph(graphLocale) : town.slug === 'komatsushima' ? komatsushimaGraph(graphLocale) : mimaGraph(graphLocale)} />
+      <JsonLd data={town.slug === 'tokushima' ? tokushimaCityGraph(graphLocale) : town.slug === 'tsurugi' ? tsurugiGraph(graphLocale) : town.slug === 'yoshinogawa' ? yoshinogawaGraph(graphLocale) : town.slug === 'miyoshi' ? miyoshiGraph(graphLocale) : town.slug === 'awa' ? awaGraph(graphLocale) : town.slug === 'higashimiyoshi' ? higashimiyoshiGraph(graphLocale) : town.slug === 'kitajima' ? kitajimaGraph(graphLocale) : town.slug === 'naruto' ? narutoGraph(graphLocale) : town.slug === 'matsushige' ? matsushigeGraph(graphLocale) : town.slug === 'ishii' ? ishiiGraph(graphLocale) : town.slug === 'itano' ? itanoGraph(graphLocale) : town.slug === 'kamiita' ? kamiitaGraph(graphLocale) : town.slug === 'kamiyama' ? kamiyamaGraph(graphLocale) : town.slug === 'katsuura' ? katsuuraGraph(graphLocale) : town.slug === 'kamikatsu' ? kamikatsuGraph(graphLocale) : town.slug === 'sanagochi' ? sanagochiGraph(graphLocale) : town.slug === 'naka' ? nakaGraph(graphLocale) : town.slug === 'minami' ? minamiGraph(graphLocale) : town.slug === 'kaiyo' ? kaiyoGraph(graphLocale) : town.slug === 'mugi' ? mugiGraph(graphLocale) : town.slug === 'aizumi' ? aizumiGraph(graphLocale) : town.slug === 'komatsushima' ? komatsushimaGraph(graphLocale) : town.slug === 'anan' ? ananGraph(graphLocale) : mimaGraph(graphLocale)} />
       <nav className="crumbs">
         <Link href="/">{isJa ? '全国' : 'Japan'}</Link>
         <span> / </span>
@@ -1289,6 +1298,59 @@ export default async function MunicipalityPage({params}: Props) {
       </p>
       </details>
 
+
+
+
+
+      ) : town.slug === 'anan' ? (
+      <details className="facts-fold">
+        <summary>{isJa ? '市の資料' : 'City facts'}</summary>
+      <table className="facts">
+        <tbody>
+          <tr>
+            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <td>
+              {ANAN.nameJa} / {ANAN.nameEn}（{ANAN.reading}）
+            </td>
+          </tr>
+          <tr>
+            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <td>
+              <Link href="/tokushima">{isJa ? ANAN.prefectureJa : ANAN.prefectureEn}</Link>
+            </td>
+          </tr>
+          <tr>
+            <th>JIS / N03_007</th>
+            <td>
+              <strong>{ANAN.jis}</strong>
+              {isJa ? '（小松島 36203・鳴門 36202・徳島市 36201 ではない）' : ' (not Komatsushima 36203 / Naruto 36202 / Tokushima 36201)'}
+            </td>
+          </tr>
+          <tr>
+            <th>J-LIS</th>
+            <td>{ANAN.jlis}</td>
+          </tr>
+          <tr>
+            <th>{isJa ? '市役所' : 'City hall'}</th>
+            <td>
+              〒{ANAN.hall.postalCode} {isJa ? ANAN.hall.addressJa : ANAN.hall.addressEn}
+              <br />
+              {ANAN.hall.phone} · <a href={ANAN.sameAs}>sameAs {ANAN.sameAs}</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        <a href={ANAN.sources.home}>{isJa ? '市ホームページ' : 'City homepage'}</a>
+        {' · '}
+        <a href={ANAN.sources.kanko}>{isJa ? '観光・文化' : 'Tourism & culture'}</a>
+      </p>
+      <p className="note">
+        {isJa
+          ? `数字のアクセス日は ${ANAN.sources.accessed}。人口は未掲載（出典ページを混ぜません）。`
+          : `Figures accessed ${ANAN.sources.accessed}. Population is unpublished (universes are not mixed).`}
+      </p>
+      </details>
 
 
 

@@ -18,6 +18,7 @@ import {MUGI, MUGI_PLACE_PHOTO} from '@/data/mugi';
 import {MINAMI, MINAMI_PLACE_PHOTO} from '@/data/minami';
 import {AIZUMI, AIZUMI_PLACE_PHOTO} from '@/data/aizumi';
 import {KOMATSUSHIMA, KOMATSUSHIMA_PLACE_PHOTO} from '@/data/komatsushima';
+import {ANAN, ANAN_PLACE_PHOTO} from '@/data/anan';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
@@ -2044,3 +2045,64 @@ export function mugiGraph(locale: AppLocale) {
     ]
   };
 }
+
+export function ananGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'tokushima/anan');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('anan');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? ANAN.nameJa : ANAN.nameEn,
+        alternateName: isJa ? ANAN.nameEn : ANAN.nameJa,
+        identifier: ANAN.jis,
+        url,
+        image: photoAbs(ANAN_PLACE_PHOTO),
+        sameAs: [ANAN.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '富岡町トノ町12番地3' : '12-3 Tonochō, Tomioka-cho',
+          addressLocality: isJa ? ANAN.nameJa : ANAN.nameEn,
+          addressRegion: isJa ? ANAN.prefectureJa : ANAN.prefectureEn,
+          postalCode: ANAN.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? ANAN.prefectureJa : ANAN.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? ANAN.nameJa : ANAN.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? ANAN.prefectureJa : ANAN.prefectureEn, item: canonicalUrl(locale, 'tokushima')},
+          {'@type': 'ListItem', position: 3, name: isJa ? ANAN.nameJa : ANAN.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '阿南市の案内' : 'Places in Anan City',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+

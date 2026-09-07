@@ -42,6 +42,7 @@ import {MINAMI_TRAVEL_ACCESSED, MINAMI_TRAVEL_SOURCES} from '@/data/minami-trave
 import {KAIYO_TRAVEL_ACCESSED, KAIYO_TRAVEL_SOURCES} from '@/data/kaiyo-travel';
 import {AIZUMI_TRAVEL_ACCESSED, AIZUMI_TRAVEL_SOURCES} from '@/data/aizumi-travel';
 import {KOMATSUSHIMA_TRAVEL_ACCESSED, KOMATSUSHIMA_TRAVEL_SOURCES} from '@/data/komatsushima-travel';
+import {ANAN_TRAVEL_ACCESSED, ANAN_TRAVEL_SOURCES} from '@/data/anan-travel';
 import {MUGI_TRAVEL_ACCESSED, MUGI_TRAVEL_SOURCES} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES} from '@/data/naruto-travel';
 import {
@@ -918,7 +919,24 @@ export function MimaFacilityLookup({
             )
 
           
-          ) : town.slug === 'komatsushima' ? (
+          
+          ) : town.slug === 'anan' ? (
+            locale === 'ja' ? (
+              <>
+                <a href={ANAN_TRAVEL_SOURCES.tabelogCity}>飲食</a>は食べログ阿南市の公開店ページ（
+                {ANAN_TRAVEL_ACCESSED}）。
+                宿泊・温泉は客室・浴場の出典写真が無いため0件。
+                体験・買物・商業も出典写真が無いため0件。
+              </>
+            ) : (
+              <>
+                <a href={ANAN_TRAVEL_SOURCES.tabelogCity}>Dining</a> from Tabelog Anan City shop pages (
+                {ANAN_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
+                Experience, shopping, and commerce stay at 0 without sourced photos.
+              </>
+            )
+
+) : town.slug === 'komatsushima' ? (
             locale === 'ja' ? (
               <>
                 観光は出典写真がある施設のみ（大手海岸・立江寺・恩山寺・金長神社・ステーションパーク）。
