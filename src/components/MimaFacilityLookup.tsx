@@ -80,6 +80,7 @@ import {KITAGAWA_TRAVEL_ACCESSED} from '@/data/kitagawa-travel';
 import {UMAJI_TRAVEL_ACCESSED} from '@/data/umaji-travel';
 import {MOTOYAMA_TRAVEL_ACCESSED} from '@/data/motoyama-travel';
 import {OTOYO_TRAVEL_ACCESSED} from '@/data/otoyo-travel';
+import {TOSACHO_TRAVEL_ACCESSED} from '@/data/tosacho-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1536,6 +1537,22 @@ export function MimaFacilityLookup({
                 Lodging: Otoyonomori Rakuten Japanese-room photo ({OTOYO_TRAVEL_ACCESSED}).
                 Dining from Tabelog Otoyo shop pages ({OTOYO_TRAVEL_ACCESSED}).
                 Onsen: 0 (private bath stay; stay≠onsen). Experience: 0. Shopping/commerce: 0. Twenty-first LIVE Kochi hub.
+              </>
+            )
+          ) : town.slug === 'tosacho' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（道の駅土佐さめうら・土佐町役場・上吉野川橋・田井・土居のパノラマ）。
+                宿泊は楽天トラベルさめうら荘レイクサイドホテルの和室写真（{TOSACHO_TRAVEL_ACCESSED}）。
+                飲食は食べログ土佐町の公開店ページ（{TOSACHO_TRAVEL_ACCESSED}）。
+                温泉は0件（客室バスのみ・stay≠onsen）。体験は0件。買物・商業は0件。高知県22つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Roadside Station Tosa Sameura, Tosa Town Hall, Kami-Yoshinogawa Bridge, Tai, Doi panorama).
+                Lodging: Sameura Lakeside Hotel Rakuten Japanese-room photo ({TOSACHO_TRAVEL_ACCESSED}).
+                Dining from Tabelog Tosa Town shop pages ({TOSACHO_TRAVEL_ACCESSED}).
+                Onsen: 0 (in-room bath stay; stay≠onsen). Experience: 0. Shopping/commerce: 0. Twenty-second LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'geisei' ? (

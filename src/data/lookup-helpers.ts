@@ -669,6 +669,17 @@ import {
   otoyoTopChipForRow,
   resolveOtoyoFilter
 } from './otoyo-travel';
+import {
+  isTosachoOnsenPackRow,
+  isTosachoExperiencePackRow,
+  isTosachoStayPackRow,
+  tosachoPackRowMatchesFilter,
+  rankTosachoSeeRows,
+  tosachoSightPhoto,
+  tosachoSourcedHook,
+  tosachoTopChipForRow,
+  resolveTosachoFilter
+} from './tosacho-travel';
 
 
 
@@ -1340,6 +1351,18 @@ const OTOYO_HELPERS: LookupHelpers = {
   resolveFilter: resolveOtoyoFilter
 };
 
+const TOSACHO_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isTosachoOnsenPackRow,
+  isExperiencePackRow: isTosachoExperiencePackRow,
+  isStayPackRow: isTosachoStayPackRow,
+  packRowMatchesFilter: tosachoPackRowMatchesFilter,
+  rankSeeRows: rankTosachoSeeRows,
+  sightPhoto: tosachoSightPhoto,
+  sourcedHook: tosachoSourcedHook,
+  topChipForRow: tosachoTopChipForRow,
+  resolveFilter: resolveTosachoFilter
+};
+
 
 const YASUDA_HELPERS: LookupHelpers = {
   isOnsenPackRow: isYasudaOnsenPackRow,
@@ -1589,5 +1612,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'umaji') return UMAJI_HELPERS;
   if (slug === 'motoyama') return MOTOYAMA_HELPERS;
   if (slug === 'otoyo') return OTOYO_HELPERS;
+  if (slug === 'tosacho') return TOSACHO_HELPERS;
   return MIMA_HELPERS;
 }
