@@ -1,6 +1,6 @@
 # Otoyo Town (大豊町) gaps (TG566 twenty-first Kochi hub)
 
-Accessed 2026-09-08 (JST). LIVE tip pending push.
+Accessed 2026-09-08 (JST). LIVE tip `f235d11d85`.
 
 ## LIVE pills (photo-first)
 - stay: 1 (大豊の森 / Rakuten HOTEL/184242 和室 LARGE noplan-001 mediaInfo【和室】91ee15… — stay≠onsen)
