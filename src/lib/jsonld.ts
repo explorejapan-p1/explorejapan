@@ -28,6 +28,7 @@ import {NAOSHIMA, NAOSHIMA_PLACE_PHOTO} from '@/data/naoshima';
 import {SHODOSHIMA, SHODOSHIMA_PLACE_PHOTO} from '@/data/shodoshima';
 import {ZENTSUJI, ZENTSUJI_PLACE_PHOTO} from '@/data/zentsuji';
 import {MITOYO, MITOYO_PLACE_PHOTO} from '@/data/mitoyo';
+import {UTAZU, UTAZU_PLACE_PHOTO} from '@/data/utazu';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -125,6 +126,7 @@ function localityJa(slug: string): string {
   if (slug === 'shodoshima') return SHODOSHIMA.nameJa;
   if (slug === 'zentsuji') return ZENTSUJI.nameJa;
   if (slug === 'mitoyo') return MITOYO.nameJa;
+  if (slug === 'utazu') return UTAZU.nameJa;
   return MIMA.nameJa;
 }
 
@@ -161,6 +163,7 @@ function localityEn(slug: string): string {
   if (slug === 'shodoshima') return SHODOSHIMA.nameEn;
   if (slug === 'zentsuji') return ZENTSUJI.nameEn;
   if (slug === 'mitoyo') return MITOYO.nameEn;
+  if (slug === 'utazu') return UTAZU.nameEn;
   return MIMA.nameEn;
 }
 
@@ -2670,7 +2673,67 @@ export function mitoyoGraph(locale: AppLocale) {
       },
       {
         '@type': 'ItemList',
-        name: isJa ? '善通寺市の案内' : 'Places in Zentsuji',
+        name: isJa ? '三豊市の案内' : 'Places in Mitoyo',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+export function utazuGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kagawa/utazu');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('utazu');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? UTAZU.nameJa : UTAZU.nameEn,
+        alternateName: isJa ? UTAZU.nameEn : UTAZU.nameJa,
+        identifier: UTAZU.jis,
+        url,
+        image: photoAbs(UTAZU_PLACE_PHOTO),
+        sameAs: [UTAZU.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '1881番地' : '1881',
+          addressLocality: isJa ? UTAZU.nameJa : UTAZU.nameEn,
+          addressRegion: isJa ? UTAZU.prefectureJa : UTAZU.prefectureEn,
+          postalCode: UTAZU.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? UTAZU.prefectureJa : UTAZU.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? UTAZU.nameJa : UTAZU.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? UTAZU.prefectureJa : UTAZU.prefectureEn, item: canonicalUrl(locale, 'kagawa')},
+          {'@type': 'ListItem', position: 3, name: isJa ? UTAZU.nameJa : UTAZU.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '宇多津町の案内' : 'Places in Utazu',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

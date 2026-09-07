@@ -51,6 +51,7 @@ import {NAOSHIMA_TRAVEL_ACCESSED} from '@/data/naoshima-travel';
 import {SHODOSHIMA_TRAVEL_ACCESSED} from '@/data/shodoshima-travel';
 import {ZENTSUJI_TRAVEL_ACCESSED} from '@/data/zentsuji-travel';
 import {MITOYO_TRAVEL_ACCESSED} from '@/data/mitoyo-travel';
+import {UTAZU_TRAVEL_ACCESSED} from '@/data/utazu-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1096,6 +1097,25 @@ export function MimaFacilityLookup({
                 Dining from Tabelog Mitoyo shop pages ({MITOYO_TRAVEL_ACCESSED}).
                 Onsen: Le Port Awashima large bath and Fureai Park Mino open-air bath (distinct from stay room keys).
                 Experience: Michinoeki Takara-da-no-sato (Commons). Shopping and commerce stay at 0. Ninth LIVE Kagawa hub.
+              </>
+            )
+
+) : town.slug === 'utazu' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（ゴールドタワー・宇多津臨海公園・四国水族館・復元塩田・宇多津駅・青ノ山）。
+                宿泊は楽天トラベルの客室写真（{UTAZU_TRAVEL_ACCESSED}）。
+                飲食は食べログ宇多津町の公開店ページ（{UTAZU_TRAVEL_ACCESSED}）。
+                温泉は宇多津グランドホテル大浴場（公式風呂写真・客室キーと分離）。
+                体験は道の駅恋人の聖地うたづ臨海公園（Commons）。買物・商業は出典写真が無いため0件。香川県10つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Gold Tower, Utazu Seaside Park, Shikoku Aquarium, restored salt pans, Utazu Station, Mount Aono).
+                Lodging from Rakuten Travel room photos ({UTAZU_TRAVEL_ACCESSED}).
+                Dining from Tabelog Utazu shop pages ({UTAZU_TRAVEL_ACCESSED}).
+                Onsen: Utazu Grand Hotel large bath (distinct from stay room keys).
+                Experience: Michinoeki Lover's Sanctuary Utazu Seaside Park (Commons). Shopping and commerce stay at 0. Tenth LIVE Kagawa hub.
               </>
             )
 

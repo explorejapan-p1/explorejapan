@@ -24,6 +24,7 @@ import {NAOSHIMA_PLACE_PHOTO} from '@/data/naoshima';
 import {SHODOSHIMA_PLACE_PHOTO} from '@/data/shodoshima';
 import {ZENTSUJI_PLACE_PHOTO} from '@/data/zentsuji';
 import {MITOYO_PLACE_PHOTO} from '@/data/mitoyo';
+import {UTAZU_PLACE_PHOTO} from '@/data/utazu';
 import {KAGAWA_MUNICIPALITIES} from '@/data/kagawa-municipalities';
 import {TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {PREFECTURES, PREFECTURE_BY_SLUG} from '@/data/prefectures';
@@ -137,6 +138,8 @@ export default async function PrefecturePage({params}: Props) {
                                               ? ZENTSUJI_PLACE_PHOTO
                                             : m.slug === 'mitoyo'
                                               ? MITOYO_PLACE_PHOTO
+                                            : m.slug === 'utazu'
+                                              ? UTAZU_PLACE_PHOTO
                                             : m.slug === 'takamatsu'
                                               ? TAKAMATSU_PLACE_PHOTO
                                               : MIMA_PLACE_PHOTO;

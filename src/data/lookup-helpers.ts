@@ -348,6 +348,17 @@ import {
   mitoyoSourcedHook,
   mitoyoTopChipForRow
 } from './mitoyo-travel';
+import {
+  isUtazuOnsenPackRow,
+  isUtazuExperiencePackRow,
+  isUtazuStayPackRow,
+  rankUtazuSeeRows,
+  resolveUtazuFilter,
+  utazuPackRowMatchesFilter,
+  utazuSightPhoto,
+  utazuSourcedHook,
+  utazuTopChipForRow
+} from './utazu-travel';
 
 
 
@@ -834,6 +845,18 @@ const MITOYO_HELPERS: LookupHelpers = {
   resolveFilter: resolveMitoyoFilter
 };
 
+const UTAZU_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isUtazuOnsenPackRow,
+  isExperiencePackRow: isUtazuExperiencePackRow,
+  isStayPackRow: isUtazuStayPackRow,
+  packRowMatchesFilter: utazuPackRowMatchesFilter,
+  rankSeeRows: rankUtazuSeeRows,
+  sightPhoto: utazuSightPhoto,
+  sourcedHook: utazuSourcedHook,
+  topChipForRow: utazuTopChipForRow,
+  resolveFilter: resolveUtazuFilter
+};
+
 export function townHelpers(slug: ReadySlug): LookupHelpers {
 
   if (slug === 'tsurugi') return TSURUGI_HELPERS;
@@ -868,5 +891,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'shodoshima') return SHODOSHIMA_HELPERS;
   if (slug === 'zentsuji') return ZENTSUJI_HELPERS;
   if (slug === 'mitoyo') return MITOYO_HELPERS;
+  if (slug === 'utazu') return UTAZU_HELPERS;
   return MIMA_HELPERS;
 }
