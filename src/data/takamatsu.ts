@@ -310,9 +310,9 @@ export const TAKAMATSU_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = 
 
   'ＪＲホテルクレメント高松': sourcePhoto(
     'takamatsu-stay-clement.jpg',
-    'ＪＲホテルクレメント高松の客室・外観写真',
-    'JR Hotel Clement Takamatsu room or exterior photo',
-    'https://travel.rakuten.co.jp/HOTEL/14862/14862.html',
+    'ＪＲホテルクレメント高松の客室写真',
+    'JR Hotel Clement Takamatsu room photo',
+    'https://trvimg.r10s.jp/share/image_up/14862/origin/1c87dced4945c82beea1ef800d5edd7da5d02ae4.47.9.26.3.jpg',
     '楽天トラベル'
   ),
   '高松センチュリーホテル': sourcePhoto(
@@ -324,9 +324,9 @@ export const TAKAMATSU_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = 
   ),
   'エクストールイン高松': sourcePhoto(
     'takamatsu-stay-extol.jpg',
-    'エクストールイン高松の客室・外観写真',
-    'Extol Inn Takamatsu room or exterior photo',
-    'https://travel.rakuten.co.jp/HOTEL/172251/172251.html',
+    'エクストールイン高松の客室写真',
+    'Extol Inn Takamatsu room photo',
+    'https://trvimg.r10s.jp/share/image_up/172251/origin/7d883a79ab34de3df21996df14862fc041560595.47.9.26.3.jpg',
     '楽天トラベル'
   ),
   'コンフォートホテル高松': sourcePhoto(
