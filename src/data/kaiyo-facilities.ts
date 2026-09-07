@@ -2,17 +2,31 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {
   FACILITY_CATEGORIES,
-  KAIYO_EXPECTED_CATEGORY_COUNTS,
-  KAIYO_EXPECTED_GEO_COUNT,
-  KAIYO_EXPECTED_HOURS_COUNT,
-  KAIYO_EXPECTED_MISSING_ADDRESS,
-  KAIYO_EXPECTED_MISSING_PHONE,
-  KAIYO_EXPECTED_ROW_COUNT,
   KAIYO_PACK_ACCESSED,
   KAIYO_PACK_JIS,
   type FacilityCategory,
   type FacilityRow
 } from './facility-schema';
+
+/** Frozen jsonl baselines (before Commons extras). */
+const PACK_ROW_COUNT = 280;
+const PACK_GEO_COUNT = 154;
+const PACK_HOURS_COUNT = 280;
+const PACK_MISSING_ADDRESS = 68;
+const PACK_MISSING_PHONE = 180;
+const PACK_CATEGORY_COUNTS: Record<FacilityCategory, number> = {
+  tourism: 6,
+  cultural_property: 19,
+  care: 1,
+  aed: 32,
+  shelter: 41,
+  emergency_evacuation_site: 79,
+  hospital: 13,
+  childcare: 6,
+  wifi: 0,
+  public_facility: 15,
+  gtfs_stop: 68
+};
 
 const PACK_PATH = path.join(process.cwd(), 'data', 'frozen', 'kaiyo-facilities.jsonl');
 
@@ -113,17 +127,17 @@ function loadNakaFacilities(): readonly FacilityRow[] {
     const parsed: unknown = JSON.parse(line);
     rows.push(parseFacilityRow(parsed));
   }
-  if (rows.length !== KAIYO_EXPECTED_ROW_COUNT) {
-    throw new Error(`naka pack row count ${rows.length} != ${KAIYO_EXPECTED_ROW_COUNT}`);
+  if (rows.length !== PACK_ROW_COUNT) {
+    throw new Error(`naka pack row count ${rows.length} != ${PACK_ROW_COUNT}`);
   }
   const counts = emptyCounts();
   for (const row of rows) {
     counts[row.category] += 1;
   }
   for (const cat of FACILITY_CATEGORIES) {
-    if (counts[cat] !== KAIYO_EXPECTED_CATEGORY_COUNTS[cat]) {
+    if (counts[cat] !== PACK_CATEGORY_COUNTS[cat]) {
       throw new Error(
-        `naka pack ${cat} ${counts[cat]} != ${KAIYO_EXPECTED_CATEGORY_COUNTS[cat]}`
+        `naka pack ${cat} ${counts[cat]} != ${PACK_CATEGORY_COUNTS[cat]}`
       );
     }
   }
@@ -137,23 +151,78 @@ function loadNakaFacilities(): readonly FacilityRow[] {
     if (isBlank(row.address)) missingAddress += 1;
     if (isBlank(row.phone)) missingPhone += 1;
   }
-  if (geo !== KAIYO_EXPECTED_GEO_COUNT) {
-    throw new Error(`naka pack geo ${geo} != ${KAIYO_EXPECTED_GEO_COUNT}`);
+  if (geo !== PACK_GEO_COUNT) {
+    throw new Error(`naka pack geo ${geo} != ${PACK_GEO_COUNT}`);
   }
-  if (hours !== KAIYO_EXPECTED_HOURS_COUNT) {
-    throw new Error(`naka pack hours ${hours} != ${KAIYO_EXPECTED_HOURS_COUNT}`);
+  if (hours !== PACK_HOURS_COUNT) {
+    throw new Error(`naka pack hours ${hours} != ${PACK_HOURS_COUNT}`);
   }
-  if (missingAddress !== KAIYO_EXPECTED_MISSING_ADDRESS) {
+  if (missingAddress !== PACK_MISSING_ADDRESS) {
     throw new Error(
-      `naka pack address gaps ${missingAddress} != ${KAIYO_EXPECTED_MISSING_ADDRESS}`
+      `naka pack address gaps ${missingAddress} != ${PACK_MISSING_ADDRESS}`
     );
   }
-  if (missingPhone !== KAIYO_EXPECTED_MISSING_PHONE) {
+  if (missingPhone !== PACK_MISSING_PHONE) {
     throw new Error(
-      `naka pack phone gaps ${missingPhone} != ${KAIYO_EXPECTED_MISSING_PHONE}`
+      `naka pack phone gaps ${missingPhone} != ${PACK_MISSING_PHONE}`
     );
   }
   return rows;
 }
 
-export const KAIYO_FACILITIES: readonly FacilityRow[] = loadNakaFacilities();
+/** Commons-backed extras (not frozen jsonl). Real place-named 出典 only. */
+const KAIYO_EXTRA_FACILITIES: readonly FacilityRow[] = [
+  {
+    id: 'kaiyo-extra-todoroki',
+    jis: KAIYO_PACK_JIS,
+    name_ja: '轟九十九滝',
+    reading: 'とどろきくじゅうくたき',
+    category: 'tourism',
+    lat: 33.6015,
+    lon: 134.3525,
+    address: '徳島県海部郡海陽町平井轟',
+    phone: null,
+    official_url: 'https://www.awanavi.jp/',
+    hours: null,
+    source_url: 'https://commons.wikimedia.org/wiki/Category:Todoroki_99_Waterfalls',
+    license: 'cc_by_open_data',
+    accessed: KAIYO_PACK_ACCESSED
+  },
+  {
+    id: 'kaiyo-extra-marine-jam',
+    jis: KAIYO_PACK_JIS,
+    name_ja: '海陽町海洋自然博物館マリンジャム',
+    reading: 'かいようちょうかいようしぜんはくぶつかんまりんじゃむ',
+    category: 'tourism',
+    lat: 33.55,
+    lon: 134.3,
+    address: '徳島県海部郡海陽町芝',
+    phone: null,
+    official_url: 'https://www.town.kaiyo.lg.jp/',
+    hours: null,
+    source_url: 'https://commons.wikimedia.org/wiki/Category:Kaiyo_Town_Marine_Nature_Museum_Marine_Jam',
+    license: 'cc_by_open_data',
+    accessed: KAIYO_PACK_ACCESSED
+  },
+  {
+    id: 'kaiyo-extra-oosuna',
+    jis: KAIYO_PACK_JIS,
+    name_ja: '大砂海岸',
+    reading: 'おおすなかいがん',
+    category: 'tourism',
+    lat: 33.59,
+    lon: 134.37,
+    address: '徳島県海部郡海陽町浅川大砂',
+    phone: null,
+    official_url: 'https://www.town.kaiyo.lg.jp/',
+    hours: null,
+    source_url: 'https://commons.wikimedia.org/wiki/File:Oosuna_beach_-_%E5%A4%A7%E7%A0%82%E6%B5%B7%E5%B2%B8_-_panoramio.jpg',
+    license: 'cc_by_open_data',
+    accessed: KAIYO_PACK_ACCESSED
+  }
+];
+
+export const KAIYO_FACILITIES: readonly FacilityRow[] = [
+  ...loadNakaFacilities(),
+  ...KAIYO_EXTRA_FACILITIES
+];

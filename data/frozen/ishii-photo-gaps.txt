@@ -1,2 +1,4 @@
-
-ishii inland audit 2026-09-07: only ハッピースノーマン (fashion-class) — honest stay 0. Not perfect.
+ishii 観光 densify 2026-09-07
+BEFORE: 宿泊0 / 飲食14 / 温泉0 / 体験0 / 観光4 / 買物0 / 商業0
+AFTER:  宿泊0 / 飲食14 / 温泉0 / 体験0 / 観光6 / 買物0 / 商業0
+観光: +阿波国分尼寺跡 / +童学寺庭園「逍遙園」 Commons. Honest stay0.

@@ -1,7 +1,4 @@
-higashimiyoshi inland stay densify 2026-09-07
-BEFORE: 宿泊0 / 飲食12 / 温泉0 / 体験0 / 観光4 / 買物0 / 商業0
-AFTER target: 宿泊2 / 飲食12 / 温泉0 / 体験0 / 観光4 / 買物0 / 商業0
-
-宿泊 stay: 2 — ビジネスホテル わらぐろ / ファミリーロッジ旅籠屋・吉野川SA店 (NAVITIME+楽天).
-Skipped: ホテルおはなはん (no 楽天 share). Address 旅籠屋 listed as みよし町 on Rakuten; NAVITIME JIS 36489 東みよし.
-温泉/体験/買物/商業: honest 0. 観光 still thin. Not perfect.
+higashimiyoshi 観光 densify 2026-09-07
+BEFORE: 宿泊2 / 飲食12 / 温泉0 / 体験0 / 観光4 / 買物0 / 商業0
+AFTER:  宿泊2 / 飲食12 / 温泉0 / 体験0 / 観光6 / 買物0 / 商業0
+観光: +神通の滝 / +鴨神社 Commons.

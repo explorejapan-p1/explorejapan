@@ -107,6 +107,28 @@ const TABELOG_IKEHIRO = 'https://tabelog.com/tokushima/A3601/A360101/36007647/';
 /** Exact pack/travel name_ja only. No 松茂 / 藍住 / 鳴門 / 徳島市 photos. */
 export const KITAJIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   '北島チューリップ公園': KITAJIMA_PLACE_PHOTO,
+  'チューリップハウス': wikiPhoto(
+    'kitajima-tulip-park-02.jpg',
+    'https://commons.wikimedia.org/wiki/File:Kitajima_Tulip_Park_02.jpg',
+    'CC BY 2.1 jp',
+    'https://creativecommons.org/licenses/by/2.1/jp/',
+    'タクドラの金太郎',
+    'https://commons.wikimedia.org/wiki/File:Kitajima_Tulip_Park_02.jpg',
+    '2009-04-08',
+    '北島チューリップ公園・チューリップハウス付近（北島町）',
+    'Tulip House area, Kitajima Tulip Park'
+  ),
+  'アクアプラザ': wikiPhoto(
+    'kitajima-aquaplaza.jpg',
+    'https://commons.wikimedia.org/wiki/File:Aquaplaza.JPG',
+    'CC0',
+    'https://creativecommons.org/publicdomain/zero/1.0/',
+    'Shugyoso',
+    'https://commons.wikimedia.org/wiki/File:Aquaplaza.JPG',
+    '2011-12-31',
+    'アクアプラザ北島（北島町）',
+    'Aquaplaza Kitajima'
+  ),
   '焼肉レストラン 炙家bis  北島店': sourcePhoto(
     'aburiya-bis-kitajima-dish.jpg',
     '焼肉レストラン 炙家bis 北島店の料理写真',

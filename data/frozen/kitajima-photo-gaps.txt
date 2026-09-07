@@ -1,11 +1,5 @@
-Kitajima (JIS 36402) stay audit 2026-09-07
-Pills L→R: 宿泊/飲食/温泉/体験/観光/買物/商業
-
+Kitajima (JIS 36402) 観光/商業 densify 2026-09-07
 BEFORE: 宿泊0 / 飲食14 / 温泉0 / 体験0 / 観光1 / 買物0 / 商業0
-AFTER: 宿泊0 / 飲食14 / 温泉0 / 体験0 / 観光1 / 買物0 / 商業0
-
-宿泊 stay: honest 0 — NAVITIME category 404; じゃらん/楽天「北島町」hits are adjacent 松茂/徳島市 hotels.
-  Kitajima House minpaku lacks marketable share photo this pass.
-飲食 dining: 14 — prior Tabelog
-温泉/体験/買物/商業: honest 0
-観光 sights: 1 — 北島チューリップ公園 (thin)
+AFTER:  宿泊0 / 飲食14 / 温泉0 / 体験0 / 観光2 / 買物0 / 商業1
+観光: +チューリップハウス Commons twin. 商業: +アクアプラザ Commons.
+宿泊: honest 0. Not perfect.

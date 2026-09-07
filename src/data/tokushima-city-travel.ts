@@ -36,7 +36,6 @@ export const TOKUSHIMA_CITY_SIGHT_PINS = [
   '徳島城跡',
   '新町川水際公園・しんまちボードウォーク',
   '阿波おどり会館',
-  'あわぎん眉山ロープウエイ',
   '弁天山',
   '文化の森総合公園',
   '眉山公園'
@@ -747,12 +746,16 @@ function isSightsCategory(value: string): boolean {
   return SIGHTS_SET.has(value);
 }
 
+export const TOKUSHIMA_CITY_EXPERIENCE_PACK_NAMES = ['あわぎん眉山ロープウエイ'] as const;
+export const TOKUSHIMA_CITY_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(TOKUSHIMA_CITY_EXPERIENCE_PACK_NAMES);
+
 export function isTokushimaCityOnsenPackRow(_row: {category: string; name_ja: string}): boolean {
   return false;
 }
 
-export function isTokushimaCityExperiencePackRow(_row: {category: string; name_ja: string}): boolean {
-  return false;
+export function isTokushimaCityExperiencePackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return TOKUSHIMA_CITY_EXPERIENCE_PACK_SET.has(row.name_ja);
 }
 
 export function isTokushimaCityStayPackRow(_row: {category: string; name_ja: string}): boolean {
@@ -781,6 +784,7 @@ export function rankTokushimaCitySeeRows<T extends Rankable>(rows: readonly T[])
     (row) =>
       isSightsCategory(row.category) &&
       !isTokushimaCityOnsenPackRow(row) &&
+      !isTokushimaCityExperiencePackRow(row) &&
       !isTokushimaCityStayPackRow(row) &&
       !isTokushimaCityDiningPackRow(row)
   );
@@ -830,6 +834,7 @@ export function tokushimaCitySourcedHook(
 
 export function tokushimaCityTopChipForRow(row: {category: string; name_ja: string}): FilterId {
   if (isTokushimaCityOnsenPackRow(row)) return 'onsen';
+  if (isTokushimaCityExperiencePackRow(row)) return 'experience';
   if (isTokushimaCityStayPackRow(row)) return 'stay';
   if (row.category === 'stay') return 'stay';
   if (row.category === 'dining') return 'dining';
@@ -850,13 +855,14 @@ export function tokushimaCityPackRowMatchesFilter(
     return (
       isSightsCategory(category) &&
       !isTokushimaCityOnsenPackRow(row) &&
+      !isTokushimaCityExperiencePackRow(row) &&
       !isTokushimaCityStayPackRow(row) &&
       !isTokushimaCityDiningPackRow(row)
     );
   }
   if (filter === 'infra') return isInfraCategory(category);
   if (filter === 'onsen') return isTokushimaCityOnsenPackRow(row);
-  if (filter === 'experience') return false;
+  if (filter === 'experience') return isTokushimaCityExperiencePackRow(row);
   if (filter === 'stay') return isTokushimaCityStayPackRow(row);
   if (filter === 'dining' || filter === 'shopping' || filter === 'commerce') return false;
   return category === filter;

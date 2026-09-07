@@ -28,12 +28,14 @@ export const KAIYO_TRAVEL_SOURCES = {
 } as const;
 
 export const KAIYO_ONSEN_PACK_NAMES = [] as const;
+export const KAIYO_EXPERIENCE_PACK_NAMES = ['海陽町海洋自然博物館マリンジャム'] as const;
+export const KAIYO_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(KAIYO_EXPERIENCE_PACK_NAMES);
 export const KAIYO_ONSEN_PACK_SET: ReadonlySet<string> = new Set(KAIYO_ONSEN_PACK_NAMES);
 export const KAIYO_STAY_PACK_NAMES = [] as const;
 export const KAIYO_STAY_PACK_SET: ReadonlySet<string> = new Set(KAIYO_STAY_PACK_NAMES);
 export const KAIYO_SHOPPING_PACK_NAMES = ['海陽町宍喰観光ターミナル（道の駅宍喰温泉）'] as const;
 export const KAIYO_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(KAIYO_SHOPPING_PACK_NAMES);
-export const KAIYO_SIGHT_PINS = ['海陽町漁火の森公園施設'] as const;
+export const KAIYO_SIGHT_PINS = ['海陽町漁火の森公園施設', '轟九十九滝', '大砂海岸', '阿波海南文化村', '宍喰浦の化石漣痕'] as const;
 function stay(
   id: string,
   name_ja: string,
@@ -175,7 +177,10 @@ export function isKaiyoOnsenPackRow(row: {category: string; name_ja: string}): b
   if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
   return KAIYO_ONSEN_PACK_SET.has(row.name_ja);
 }
-export function isKaiyoExperiencePackRow(_row: {category: string; name_ja: string}): boolean { return false; }
+export function isKaiyoExperiencePackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return KAIYO_EXPERIENCE_PACK_SET.has(row.name_ja);
+}
 export function isKaiyoStayPackRow(_row: {category: string; name_ja: string}): boolean { return false; }
 export function isKaiyoShoppingPackRow(row: {category: string; name_ja: string}): boolean {
   if (row.category !== 'tourism' && row.category !== 'public_facility') return false;
@@ -185,7 +190,7 @@ export function kaiyoSightPhoto(nameJa: string): MimaPlacePhoto | null { return 
 
 type Rankable = {id: string; name_ja: string; category: string; lat: number | null; lon: number | null;};
 export function rankKaiyoSeeRows<T extends Rankable>(rows: readonly T[]): T[] {
-  const sights = rows.filter((row) => isSightsCategory(row.category) && !isKaiyoOnsenPackRow(row) && !isKaiyoStayPackRow(row) && !isKaiyoShoppingPackRow(row) && !KAIYO_DINING_NAME_SET.has(row.name_ja));
+  const sights = rows.filter((row) => isSightsCategory(row.category) && !isKaiyoOnsenPackRow(row) && !isKaiyoExperiencePackRow(row) && !isKaiyoStayPackRow(row) && !isKaiyoShoppingPackRow(row) && !KAIYO_DINING_NAME_SET.has(row.name_ja));
   const used = new Set<string>(); const usedNames = new Set<string>(); const pinned: T[] = [];
   for (const pin of KAIYO_SIGHT_PINS) { const hit = sights.find((row) => row.name_ja === pin); if (!hit) continue; pinned.push(hit); used.add(hit.id); usedNames.add(hit.name_ja); }
   const restTourism: T[] = []; const restCultural: T[] = [];
@@ -204,6 +209,7 @@ export function kaiyoSourcedHook(row: {name_ja: string; address: string | null; 
 }
 export function kaiyoTopChipForRow(row: {category: string; name_ja: string}): FilterId {
   if (isKaiyoOnsenPackRow(row)) return 'onsen';
+  if (isKaiyoExperiencePackRow(row)) return 'experience';
   if (isKaiyoStayPackRow(row)) return 'stay';
   if (isKaiyoShoppingPackRow(row)) return 'shopping';
   if (KAIYO_DINING_NAME_SET.has(row.name_ja)) return 'dining';
@@ -214,10 +220,10 @@ export function kaiyoTopChipForRow(row: {category: string; name_ja: string}): Fi
 export function kaiyoPackRowMatchesFilter(category: FacilityCategory, filter: FilterId, nameJa = ''): boolean {
   const row = {category, name_ja: nameJa};
   if (filter === 'all') return true;
-  if (filter === 'sights') return isSightsCategory(category) && !isKaiyoOnsenPackRow(row) && !isKaiyoStayPackRow(row) && !isKaiyoShoppingPackRow(row) && !KAIYO_DINING_NAME_SET.has(nameJa);
+  if (filter === 'sights') return isSightsCategory(category) && !isKaiyoOnsenPackRow(row) && !isKaiyoExperiencePackRow(row) && !isKaiyoStayPackRow(row) && !isKaiyoShoppingPackRow(row) && !KAIYO_DINING_NAME_SET.has(nameJa);
   if (filter === 'infra') return isInfraCategory(category);
   if (filter === 'onsen') return isKaiyoOnsenPackRow(row);
-  if (filter === 'experience') return false;
+  if (filter === 'experience') return isKaiyoExperiencePackRow(row);
   if (filter === 'stay') return isKaiyoStayPackRow(row);
   if (filter === 'dining' || filter === 'shopping' || filter === 'commerce') return false;
   return category === filter;

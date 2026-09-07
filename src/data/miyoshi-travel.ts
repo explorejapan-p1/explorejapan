@@ -33,6 +33,8 @@ export const MIYOSHI_TRAVEL_SOURCES = {
 export const MIYOSHI_ONSEN_PACK_NAMES = ['和の宿 ホテル祖谷温泉', '湯元新祖谷温泉 ホテルかずら橋'] as const;
 
 export const MIYOSHI_ONSEN_PACK_SET: ReadonlySet<string> = new Set(MIYOSHI_ONSEN_PACK_NAMES);
+export const MIYOSHI_EXPERIENCE_PACK_NAMES = ['大歩危峡まんなか/大歩危峡観光遊覧船'] as const;
+export const MIYOSHI_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(MIYOSHI_EXPERIENCE_PACK_NAMES);
 
 /** Exact tourism-pack names shown on 宿泊, not 観光. Room/bath/view photo required. */
 export const MIYOSHI_STAY_PACK_NAMES = ['峡谷の湯宿 大歩危峡まんなか', '桃源郷祖谷の山里 茅葺き民家ステイ'] as const;
@@ -194,8 +196,9 @@ export function isMiyoshiOnsenPackRow(row: {category: string; name_ja: string}):
   return MIYOSHI_ONSEN_PACK_SET.has(row.name_ja);
 }
 
-export function isMiyoshiExperiencePackRow(_row: {category: string; name_ja: string}): boolean {
-  return false;
+export function isMiyoshiExperiencePackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return MIYOSHI_EXPERIENCE_PACK_SET.has(row.name_ja);
 }
 
 export function isMiyoshiStayPackRow(row: {category: string; name_ja: string}): boolean {
@@ -225,6 +228,7 @@ export function rankMiyoshiSeeRows<T extends Rankable>(rows: readonly T[]): T[] 
     (row) =>
       isSightsCategory(row.category) &&
       !isMiyoshiOnsenPackRow(row) &&
+      !isMiyoshiExperiencePackRow(row) &&
       !isMiyoshiStayPackRow(row) &&
       !isMiyoshiDiningPackRow(row)
   );
@@ -274,6 +278,7 @@ export function miyoshiSourcedHook(
 
 export function miyoshiTopChipForRow(row: {category: string; name_ja: string}): FilterId {
   if (isMiyoshiOnsenPackRow(row)) return 'onsen';
+  if (isMiyoshiExperiencePackRow(row)) return 'experience';
   if (isMiyoshiStayPackRow(row)) return 'stay';
   if (isMiyoshiDiningPackRow(row)) return 'dining';
   if (isSightsCategory(row.category)) return 'sights';
@@ -292,13 +297,14 @@ export function miyoshiPackRowMatchesFilter(
     return (
       isSightsCategory(category) &&
       !isMiyoshiOnsenPackRow(row) &&
+      !isMiyoshiExperiencePackRow(row) &&
       !isMiyoshiStayPackRow(row) &&
       !isMiyoshiDiningPackRow(row)
     );
   }
   if (filter === 'infra') return isInfraCategory(category);
   if (filter === 'onsen') return isMiyoshiOnsenPackRow(row);
-  if (filter === 'experience') return false;
+  if (filter === 'experience') return isMiyoshiExperiencePackRow(row);
   if (filter === 'stay') return isMiyoshiStayPackRow(row);
   if (filter === 'dining' || filter === 'shopping' || filter === 'commerce') return false;
   return category === filter;

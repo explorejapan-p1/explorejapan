@@ -138,6 +138,28 @@ export const HIGASHIMIYOSHI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto
     '美濃田の淵キャンプ村の木橋（東みよし町）',
     'Wooden bridge at Minoda-no-fuchi Camp Village, Higashimiyoshi'
   ),
+  '神通の滝': wikiPhoto(
+    'higashimiyoshi-jintsunotaki.jpg',
+    'https://commons.wikimedia.org/wiki/File:Zintunotaki_01.jpg',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0/',
+    'Dokudami',
+    'https://commons.wikimedia.org/wiki/User:Dokudami',
+    '2019-12-17',
+    '神通の滝（東みよし町）',
+    'Jintsū Falls, Higashimiyoshi'
+  ),
+  '鴨神社': wikiPhoto(
+    'higashimiyoshi-kamo-jinja.jpg',
+    'https://commons.wikimedia.org/wiki/File:%E9%B4%A8%E7%A5%9E%E7%A4%BE%E3%81%AE%E6%8B%9D%E6%AE%BF.jpg',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0/',
+    'TISK.Kasuya',
+    'https://commons.wikimedia.org/wiki/File:%E9%B4%A8%E7%A5%9E%E7%A4%BE%E3%81%AE%E6%8B%9D%E6%AE%BF.jpg',
+    '2020-07-18',
+    '鴨神社拝殿（東みよし町）',
+    'Kamo Shrine haiden, Higashimiyoshi'
+  ),
   'まあ庵': sourcePhoto(
     'maa-an-dish.jpg',
     'まあ庵の料理写真',

@@ -178,6 +178,17 @@ export const NAKA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '四季美谷温泉外観（那賀町・休業中）',
     'Shikibidani Onsen exterior (closed), Naka Town'
   ),
+  '森林文化公園あいあいランド': wikiPhoto(
+    'naka-aiai-land.jpg',
+    'https://commons.wikimedia.org/wiki/File:Aioi_Shinrin_Bijyutsukan.JPG',
+    'CC0',
+    'https://creativecommons.org/publicdomain/zero/1.0/',
+    'Knuckle modoki',
+    'https://commons.wikimedia.org/wiki/File:Aioi_Shinrin_Bijyutsukan.JPG',
+    '2011-04-02',
+    '森林文化公園あいあいランド（那賀町）',
+    'Aiai Land forest culture park, Naka Town'
+  ),
   "木頭カフェ西宇森": sourcePhoto(
     'naka-36009044-dish.jpg',
     "木頭カフェ西宇森の料理写真",

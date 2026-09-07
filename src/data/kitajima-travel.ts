@@ -38,7 +38,7 @@ export const KITAJIMA_STAY_PACK_SET: ReadonlySet<string> = new Set(
   KITAJIMA_STAY_PACK_NAMES
 );
 
-export const KITAJIMA_SIGHT_PINS = ['北島チューリップ公園'] as const;
+export const KITAJIMA_SIGHT_PINS = ['北島チューリップ公園', 'チューリップハウス'] as const;
 
 export const KITAJIMA_TRAVEL_STAY: readonly TravelRow[] = [];
 
@@ -166,7 +166,12 @@ export const KITAJIMA_DINING_NAME_SET: ReadonlySet<string> = new Set(
 );
 
 export const KITAJIMA_TRAVEL_SHOPPING: readonly TravelRow[] = [];
-export const KITAJIMA_TRAVEL_COMMERCE: readonly TravelRow[] = [];
+function commerce(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {
+  return {id, name_ja, category: 'commerce', address, phone, source_url, accessed: KITAJIMA_TRAVEL_ACCESSED};
+}
+export const KITAJIMA_TRAVEL_COMMERCE: readonly TravelRow[] = [
+  commerce('kitajima-commerce-01', 'アクアプラザ', '徳島県板野郡北島町鯛浜字西ノ須173', null, 'https://www.town.kitajima.lg.jp/')
+];
 
 export const KITAJIMA_TRAVEL_ALL: readonly TravelRow[] = [
   ...KITAJIMA_TRAVEL_DINING,

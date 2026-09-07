@@ -28,14 +28,16 @@ import {
   isMiyoshiOnsenPackRow,
   isMiyoshiStayPackRow,
   rankMiyoshiSeeRows,
-  miyoshiSightPhoto
+  miyoshiSightPhoto,
+  isMiyoshiExperiencePackRow
 } from '@/data/miyoshi-travel';
 
 import {
   isTokushimaCityOnsenPackRow,
   isTokushimaCityStayPackRow,
   rankTokushimaCitySeeRows,
-  tokushimaCitySightPhoto
+  tokushimaCitySightPhoto,
+  isTokushimaCityExperiencePackRow
 } from '@/data/tokushima-city-travel';
 
 import {
@@ -161,7 +163,8 @@ import {
   isAnanOnsenPackRow,
   isAnanStayPackRow,
   rankAnanSeeRows,
-  ananSightPhoto
+  ananSightPhoto,
+  isAnanExperiencePackRow
 } from '@/data/anan-travel';
 
 
@@ -173,7 +176,8 @@ import {
   isKaiyoShoppingPackRow,
   KAIYO_DINING_NAME_SET,
   kaiyoSightPhoto,
-  rankKaiyoSeeRows
+  rankKaiyoSeeRows,
+  isKaiyoExperiencePackRow
 } from '@/data/kaiyo-travel';
 
 
@@ -369,6 +373,7 @@ function miyoshiListings(): PublicListing[] {
   for (const row of town.rows) {
     if (
       !isMiyoshiOnsenPackRow(row) &&
+      !isMiyoshiExperiencePackRow(row) &&
       !isMiyoshiStayPackRow(row) &&
       !isSightsCategory(row.category)
     ) {
@@ -381,13 +386,16 @@ function miyoshiListings(): PublicListing[] {
   }
   const ranked = rankMiyoshiSeeRows(pack);
   const onsen = pack.filter(isMiyoshiOnsenPackRow);
+  const experience = pack.filter(isMiyoshiExperiencePackRow);
   const stay = pack.filter(isMiyoshiStayPackRow);
-  for (const row of [...stay, ...onsen, ...ranked]) {
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
     const kind: ListingKind = isMiyoshiOnsenPackRow(row)
       ? 'onsen'
-      : isMiyoshiStayPackRow(row)
-        ? 'stay'
-        : 'sights';
+      : isMiyoshiExperiencePackRow(row)
+        ? 'experience'
+        : isMiyoshiStayPackRow(row)
+          ? 'stay'
+          : 'sights';
     out.push(fromPack(row, 'miyoshi', kind, miyoshiSightPhoto(row.name_ja)));
   }
   return out;
@@ -544,6 +552,7 @@ function tokushimaCityListings(): PublicListing[] {
   for (const row of town.rows) {
     if (
       !isTokushimaCityOnsenPackRow(row) &&
+      !isTokushimaCityExperiencePackRow(row) &&
       !isTokushimaCityStayPackRow(row) &&
       !isSightsCategory(row.category)
     ) {
@@ -556,13 +565,16 @@ function tokushimaCityListings(): PublicListing[] {
   }
   const ranked = rankTokushimaCitySeeRows(pack);
   const onsen = pack.filter(isTokushimaCityOnsenPackRow);
+  const experience = pack.filter(isTokushimaCityExperiencePackRow);
   const stay = pack.filter(isTokushimaCityStayPackRow);
-  for (const row of [...stay, ...onsen, ...ranked]) {
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
     const kind: ListingKind = isTokushimaCityOnsenPackRow(row)
       ? 'onsen'
-      : isTokushimaCityStayPackRow(row)
-        ? 'stay'
-        : 'sights';
+      : isTokushimaCityExperiencePackRow(row)
+        ? 'experience'
+        : isTokushimaCityStayPackRow(row)
+          ? 'stay'
+          : 'sights';
     out.push(fromPack(row, 'tokushima', kind, tokushimaCitySightPhoto(row.name_ja)));
   }
   return out;
@@ -946,6 +958,7 @@ function kaiyoListings(): PublicListing[] {
     if (KAIYO_DINING_NAME_SET.has(row.name_ja)) continue;
     if (
       !isKaiyoOnsenPackRow(row) &&
+      !isKaiyoExperiencePackRow(row) &&
       !isKaiyoStayPackRow(row) &&
       !isKaiyoShoppingPackRow(row) &&
       !isSightsCategory(row.category)
@@ -959,13 +972,16 @@ function kaiyoListings(): PublicListing[] {
   }
   const ranked = rankKaiyoSeeRows(pack);
   const onsen = pack.filter(isKaiyoOnsenPackRow);
+  const experience = pack.filter(isKaiyoExperiencePackRow);
   const stay = pack.filter(isKaiyoStayPackRow);
-  for (const row of [...stay, ...onsen, ...ranked]) {
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
     const kind: ListingKind = isKaiyoOnsenPackRow(row)
       ? 'onsen'
-      : isKaiyoStayPackRow(row)
-        ? 'stay'
-        : 'sights';
+      : isKaiyoExperiencePackRow(row)
+        ? 'experience'
+        : isKaiyoStayPackRow(row)
+          ? 'stay'
+          : 'sights';
     out.push(fromPack(row, 'kaiyo', kind, kaiyoSightPhoto(row.name_ja)));
   }
   return out;
@@ -1093,6 +1109,7 @@ function ananListings(): PublicListing[] {
     if (ANAN_DINING_NAME_SET.has(row.name_ja)) continue;
     if (
       !isAnanOnsenPackRow(row) &&
+      !isAnanExperiencePackRow(row) &&
       !isAnanStayPackRow(row) &&
       !isSightsCategory(row.category)
     ) {
@@ -1105,13 +1122,16 @@ function ananListings(): PublicListing[] {
   }
   const ranked = rankAnanSeeRows(pack);
   const onsen = pack.filter(isAnanOnsenPackRow);
+  const experience = pack.filter(isAnanExperiencePackRow);
   const stay = pack.filter(isAnanStayPackRow);
-  for (const row of [...stay, ...onsen, ...ranked]) {
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
     const kind: ListingKind = isAnanOnsenPackRow(row)
       ? 'onsen'
-      : isAnanStayPackRow(row)
-        ? 'stay'
-        : 'sights';
+      : isAnanExperiencePackRow(row)
+        ? 'experience'
+        : isAnanStayPackRow(row)
+          ? 'stay'
+          : 'sights';
     out.push(fromPack(row, 'anan', kind, ananSightPhoto(row.name_ja)));
   }
   return out;

@@ -140,6 +140,28 @@ export const ISHII_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '地福寺の藤（石井町）',
     'Wisteria at Jifuku-ji, Ishii Town'
   ),
+  '阿波国分尼寺跡': wikiPhoto(
+    'ishii-kokubunniji.jpg',
+    'https://commons.wikimedia.org/wiki/File:Awakokubunnzi03.jpg',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0/',
+    'Dokudami',
+    'https://commons.wikimedia.org/wiki/User:Dokudami',
+    '2014-08-31',
+    '阿波国分尼寺跡（石井町）',
+    'Awa Kokubun-niji site, Ishii Town'
+  ),
+  '童学寺庭園「逍遙園」': wikiPhoto(
+    'ishii-dogakuji.jpg',
+    'https://commons.wikimedia.org/wiki/File:Dogakuji_01.JPG',
+    'CC BY-SA 3.0',
+    'https://creativecommons.org/licenses/by-sa/3.0/',
+    'Reggaeman',
+    'https://commons.wikimedia.org/wiki/User:Reggaeman',
+    '2009-09-21',
+    '童学寺（石井町）',
+    'Dōgaku-ji Temple, Ishii Town'
+  ),
   '十三八': sourcePhoto(
     'ishii-36001237-dish.jpg',
     '十三八の料理写真',

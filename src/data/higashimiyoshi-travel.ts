@@ -44,7 +44,9 @@ export const HIGASHIMIYOSHI_SIGHT_PINS = [
   '加茂の大クス',
   '美濃田の淵',
   '吉野川ハイウェイオアシス',
-  '美濃田の淵キャンプ村'
+  '美濃田の淵キャンプ村',
+  '神通の滝',
+  '鴨神社'
 ] as const;
 
 function stay(

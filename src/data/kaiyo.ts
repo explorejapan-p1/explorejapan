@@ -145,6 +145,39 @@ export const KAIYO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '道の駅宍喰温泉（海陽町）',
     'Michinoeki Shishikui Onsen, Kaiyo Town'
   ),
+  '轟九十九滝': wikiPhoto(
+    'kaiyo-todoroki-falls.jpg',
+    'https://commons.wikimedia.org/wiki/File:Todoroki_Watefalls_01.JPG',
+    'CC BY-SA 3.0',
+    'https://creativecommons.org/licenses/by-sa/3.0/',
+    'Reggaeman',
+    'https://commons.wikimedia.org/wiki/User:Reggaeman',
+    '2009-05-09',
+    '轟九十九滝（海陽町）',
+    'Todoroki 99 Waterfalls, Kaiyo Town'
+  ),
+  '海陽町海洋自然博物館マリンジャム': wikiPhoto(
+    'kaiyo-marine-jam.jpg',
+    'https://commons.wikimedia.org/wiki/File:Marine_jam_outeior.jpg',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0/',
+    '運動会プロテインパワー',
+    'https://commons.wikimedia.org/wiki/File:Marine_jam_outeior.jpg',
+    '2023-08',
+    '海陽町海洋自然博物館マリンジャム外観（海陽町）',
+    'Kaiyo Marine Nature Museum Marine Jam exterior'
+  ),
+  '大砂海岸': wikiPhoto(
+    'kaiyo-oosuna-beach.jpg',
+    'https://commons.wikimedia.org/wiki/File:Oosuna_beach_-_%E5%A4%A7%E7%A0%82%E6%B5%B7%E5%B2%B8_-_panoramio.jpg',
+    'CC BY-SA 3.0',
+    'https://creativecommons.org/licenses/by-sa/3.0/',
+    'yano@mama.akari.ne.jp',
+    'https://web.archive.org/web/20161029110233/http://www.panoramio.com/user/5198788',
+    '2011-08-11',
+    '大砂海岸（海陽町）',
+    'Oosuna Beach, Kaiyo Town'
+  ),
   "味政": sourcePhoto(
     'kaiyo-36004755-dish.jpg',
     "味政の料理写真",

@@ -41,7 +41,9 @@ export const ISHII_SIGHT_PINS = [
   '吉野川第十堰',
   '前山公園',
   '野鳥の森',
-  '地福寺の藤'
+  '地福寺の藤',
+  '阿波国分尼寺跡',
+  '童学寺庭園「逍遙園」'
 ] as const;
 
 export const ISHII_TRAVEL_STAY: readonly TravelRow[] = [];

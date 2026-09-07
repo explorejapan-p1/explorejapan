@@ -53,7 +53,7 @@ export const NAKA_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(
   NAKA_SHOPPING_PACK_NAMES
 );
 
-export const NAKA_SIGHT_PINS = ['高の瀬峡平の里', '鷲敷ラインおよび氷柱観音', '剣山並びに亜寒帯植物林', '四季美谷温泉｜休業中'] as const;
+export const NAKA_SIGHT_PINS = ['高の瀬峡平の里', '鷲敷ラインおよび氷柱観音', '剣山並びに亜寒帯植物林', '四季美谷温泉｜休業中', '森林文化公園あいあいランド'] as const;
 
 export const NAKA_TRAVEL_STAY: readonly TravelRow[] = [];
 

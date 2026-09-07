@@ -29,6 +29,8 @@ export const ANAN_TRAVEL_SOURCES = {
 
 export const ANAN_ONSEN_PACK_NAMES = [] as const;
 export const ANAN_ONSEN_PACK_SET: ReadonlySet<string> = new Set(ANAN_ONSEN_PACK_NAMES);
+export const ANAN_EXPERIENCE_PACK_NAMES = ['太龍寺ロープウェイ'] as const;
+export const ANAN_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(ANAN_EXPERIENCE_PACK_NAMES);
 export const ANAN_STAY_PACK_NAMES = [] as const;
 export const ANAN_STAY_PACK_SET: ReadonlySet<string> = new Set(ANAN_STAY_PACK_NAMES);
 export const ANAN_SHOPPING_PACK_NAMES = [] as const;
@@ -38,7 +40,6 @@ export const ANAN_SIGHT_PINS = [
   '蒲生田岬',
   '太龍寺',
   '平等寺',
-  '太龍寺ロープウェイ',
   '那賀川'
 ] as const;
 
@@ -280,8 +281,9 @@ export function isAnanOnsenPackRow(_row: {category: string; name_ja: string}): b
   return false;
 }
 
-export function isAnanExperiencePackRow(_row: {category: string; name_ja: string}): boolean {
-  return false;
+export function isAnanExperiencePackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return ANAN_EXPERIENCE_PACK_SET.has(row.name_ja);
 }
 
 export function isAnanStayPackRow(_row: {category: string; name_ja: string}): boolean {
@@ -314,6 +316,7 @@ export function rankAnanSeeRows<T extends Rankable>(rows: readonly T[]): T[] {
     (row) =>
       isSightsCategory(row.category) &&
       !isAnanOnsenPackRow(row) &&
+      !isAnanExperiencePackRow(row) &&
       !isAnanStayPackRow(row) &&
       !isAnanDiningPackRow(row)
   );
@@ -363,6 +366,7 @@ export function ananSourcedHook(
 
 export function ananTopChipForRow(row: {category: string; name_ja: string}): FilterId {
   if (isAnanOnsenPackRow(row)) return 'onsen';
+  if (isAnanExperiencePackRow(row)) return 'experience';
   if (isAnanStayPackRow(row)) return 'stay';
   if (row.category === 'stay') return 'stay';
   if (row.category === 'dining') return 'dining';
@@ -383,13 +387,14 @@ export function ananPackRowMatchesFilter(
     return (
       isSightsCategory(category) &&
       !isAnanOnsenPackRow(row) &&
+      !isAnanExperiencePackRow(row) &&
       !isAnanStayPackRow(row) &&
       !isAnanDiningPackRow(row)
     );
   }
   if (filter === 'infra') return isInfraCategory(category);
   if (filter === 'onsen') return isAnanOnsenPackRow(row);
-  if (filter === 'experience') return false;
+  if (filter === 'experience') return isAnanExperiencePackRow(row);
   if (filter === 'stay') return isAnanStayPackRow(row);
   if (filter === 'dining' || filter === 'shopping' || filter === 'commerce') return false;
   return category === filter;

@@ -1,2 +1,4 @@
-
-naka inland audit 2026-09-07: NAVITIME hotel category empty; onsen exteriors already 観光 — bath 出典 miss — honest stay/onsen 0. Not perfect.
+naka 観光 densify 2026-09-07
+BEFORE: 宿泊0 / 飲食19 / 温泉0 / 体験0 / 観光4 / 買物3 / 商業0
+AFTER:  宿泊0 / 飲食19 / 温泉0 / 体験0 / 観光5 / 買物3 / 商業0
+観光: +森林文化公園あいあいランド Commons. Honest stay/onsen 0.

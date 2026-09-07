@@ -380,13 +380,13 @@ export const NAKA_EXPECTED_CATEGORY_COUNTS = {
 
 export const KAIYO_PACK_JIS = '36388';
 export const KAIYO_PACK_ACCESSED = '2026-08-27';
-export const KAIYO_EXPECTED_ROW_COUNT = 280;
-export const KAIYO_EXPECTED_GEO_COUNT = 154;
+export const KAIYO_EXPECTED_ROW_COUNT = 283;
+export const KAIYO_EXPECTED_GEO_COUNT = 157;
 export const KAIYO_EXPECTED_HOURS_COUNT = 280;
 export const KAIYO_EXPECTED_MISSING_ADDRESS = 68;
-export const KAIYO_EXPECTED_MISSING_PHONE = 180;
+export const KAIYO_EXPECTED_MISSING_PHONE = 183;
 export const KAIYO_EXPECTED_CATEGORY_COUNTS = {
-  tourism: 6,
+  tourism: 9,
   cultural_property: 19,
   care: 1,
   aed: 32,
