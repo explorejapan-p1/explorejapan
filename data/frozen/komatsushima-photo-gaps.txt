@@ -1,12 +1,15 @@
-komatsushima (JIS 36203) photo HARD BAR sweep 2026-09-07
+Komatsushima City (JIS 36203) stay harvest 2026-09-07
 Pills L→R: 宿泊/飲食/温泉/体験/観光/買物/商業
-No frozen pack (鳴門 pattern).
+No frozen pack (photo-only).
 
-宿泊 stay: 0 — no sourced room/bath/view photo
-飲食 dining: 25 — Tabelog C36203 FOOD dish close-ups ranked strongest-first; no menus
-温泉 onsen: 0 — no sourced bath photo
-体験 experience: 0 — no official list with photo
-観光 sights: cover 大手海岸 (File:Ote beach 2010-8-14 No,2.JPG); pins 大手海岸→立江寺→恩山寺→金長神社→小松島ステーションパーク
-買物 shopping: 0 — no sourced photo
-商業 commerce: 0 — no sourced photo
-AED/hospitals/care/shelters/cultural_property/GTFS: 0 — no frozen open-data pack
+BEFORE: 宿泊0 / 飲食25 / 温泉0 / 体験0 / 観光5 / 買物0 / 商業0
+AFTER target: 宿泊3 / 飲食25 / 温泉0 / 体験0 / 観光5 / 買物0 / 商業0
+
+宿泊 stay: 3 — NAVITIME 小松島市ホテル一覧 + 楽天シェア外観。Ranked strongest first.
+  Wired: スーパーホテル徳島・小松島天然温泉 / HOTEL AZ 徳島小松島店 / みどり旅館
+  Skipped: シルフィード (fashion/love hotel, not marketable tourism pill);
+           立江寺宿坊 (Rakuten og=temple hall, not room/exterior lodging visual).
+飲食 dining: 25 — prior LIVE (unchanged)
+温泉/体験/買物/商業: 0 — honest
+観光 sights: 5 — prior Commons/city
+Lead: @komatsushima_official → confirmed on NAVITIME/楽天/hotel pages. Never scrape IG CDN.

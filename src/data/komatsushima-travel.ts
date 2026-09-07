@@ -1,8 +1,9 @@
 /**
  * Komatsushima City travel layer. No frozen pack.
  * Dining from 食べログ 小松島市 (C36203) public shop pages. FOOD dish photos required.
- * Stay / onsen / experience / shopping / commerce: honest 0 (no room/bath/view remaps).
- * Do not invent pack dining. Do not copy 鳴門 / 徳島市 / 阿南 / 藍住 TRAVEL_* rows or photos.
+ * Stay from NAVITIME 小松島市ホテル一覧 + 楽天トラベル share/room-exterior images (出典). Rank strongest first.
+ * Onsen / experience / shopping / commerce: honest 0 (no invent).
+ * Do not invent pack dining/stay. Do not copy 鳴門 / 徳島市 / 阿南 / 藍住 TRAVEL_* rows or photos.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
@@ -21,7 +22,9 @@ export const KOMATSUSHIMA_TRAVEL_SOURCES = {
   hall: 'https://www.city.komatsushima.lg.jp/docs/2617.html',
   kanko: 'https://www.city.komatsushima.lg.jp/kanko/kanko/',
   navi: 'https://www.city.komatsushima.lg.jp/komatsushima-navi/',
-  tabelogCity: 'https://tabelog.com/tokushima/C36203/rstLst/'
+  tabelogCity: 'https://tabelog.com/tokushima/C36203/rstLst/',
+  stayNavi: 'https://www.navitime.co.jp/category/0608002/36203/',
+  rakutenTravel: 'https://travel.rakuten.co.jp/'
 } as const;
 
 export const KOMATSUSHIMA_ONSEN_PACK_NAMES = [] as const;
@@ -37,7 +40,48 @@ export const KOMATSUSHIMA_SIGHT_PINS = [
   '小松島ステーションパーク'
 ] as const;
 
-export const KOMATSUSHIMA_TRAVEL_STAY: readonly TravelRow[] = [];
+function stay(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'stay',
+    address,
+    phone,
+    source_url,
+    accessed: KOMATSUSHIMA_TRAVEL_ACCESSED
+  };
+}
+
+/** Ranked strongest Instagram-style room/exterior 出典 first. NAVITIME + 楽天シェア画像. */
+export const KOMATSUSHIMA_TRAVEL_STAY: readonly TravelRow[] = [
+  stay(
+    'komatsushima-stay-01',
+    'スーパーホテル徳島・小松島天然温泉',
+    '徳島県小松島市小松島町字若井崎10-6',
+    '0885-32-9001',
+    'https://travel.rakuten.co.jp/HOTEL/182768/182768.html'
+  ),
+  stay(
+    'komatsushima-stay-02',
+    'HOTEL AZ 徳島小松島店',
+    '徳島県小松島市金磯町字土手町93-1',
+    '0885-32-5670',
+    'https://travel.rakuten.co.jp/HOTEL/181837/181837.html'
+  ),
+  stay(
+    'komatsushima-stay-03',
+    'みどり旅館',
+    '徳島県小松島市小松島町外開7-5',
+    '0885-32-3633',
+    'https://travel.rakuten.co.jp/HOTEL/158330/158330.html'
+  )
+];
 
 function dining(
   id: string,
@@ -347,6 +391,8 @@ export function komatsushimaSourcedHook(
 export function komatsushimaTopChipForRow(row: {category: string; name_ja: string}): FilterId {
   if (isKomatsushimaOnsenPackRow(row)) return 'onsen';
   if (isKomatsushimaStayPackRow(row)) return 'stay';
+  if (row.category === 'stay') return 'stay';
+  if (row.category === 'dining') return 'dining';
   if (isKomatsushimaDiningPackRow(row)) return 'dining';
   if (isSightsCategory(row.category)) return 'sights';
   if (isInfraCategory(row.category)) return 'sights';

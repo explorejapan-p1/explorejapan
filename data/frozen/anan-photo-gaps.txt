@@ -1,12 +1,14 @@
-Anan (JIS 36204) photo HARD BAR sweep 2026-09-07
+Anan City (JIS 36204) stay harvest 2026-09-07
 Pills L→R: 宿泊/飲食/温泉/体験/観光/買物/商業
-No frozen pack (鳴門 pattern).
+No frozen pack (photo-only).
 
-宿泊 stay: 0 — no sourced room/bath/view photo
-飲食 dining: 16 — Tabelog C36204 FOOD dish close-ups ranked; dropped hotels/民宿/道の駅 + beer-only hero (魚まさ swapped to sashimi)
-温泉 onsen: 0 — no sourced bath photo
-体験 experience: 0 — no sourced experience photo
-観光 sights: cover 蒲生田岬 (File:Kamodamisaki Lighthouse.jpg); pins 蒲生田岬→太龍寺 (File:Tairyuji 06.JPG)→平等寺 (File:Byodo-ji, View from the Main Hall 01.jpg)
-買物 shopping: 0 — no place-named remaps this pass
-商業 commerce: 0 — no place-named remaps this pass
-AED/hospitals/care/shelters/cultural_property/GTFS: 0 — no frozen open-data pack
+BEFORE: 宿泊0 / 飲食16 / 温泉0 / 体験0 / 観光3 / 買物0 / 商業0
+AFTER target: 宿泊7 / 飲食16 / 温泉0 / 体験0 / 観光3 / 買物0 / 商業0
+
+宿泊 stay: 7 — 阿南市観光協会「泊まる」+ 楽天シェア/公式掲載外観。Ranked strongest first.
+  Wired: スーパーホテル阿南・富岡 / 市役所前禁煙館 / スマイルホテル阿南 /
+         ルートイン阿南 / ベイサイドホテル龍宮 / あなんステーションホテル / 阿南第一ホテル
+飲食 dining: 16 — prior LIVE (unchanged)
+温泉/体験/買物/商業: 0 — honest
+観光 sights: 3 — prior (thin; densify later)
+Lead: @anan.city → confirmed on 観光協会/楽天/hotel official. Never scrape IG CDN.

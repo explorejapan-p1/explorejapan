@@ -348,6 +348,28 @@ export const KOMATSUSHIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>>
     TABELOG_36004985,
     '食べログ'
   ),
+
+  'スーパーホテル徳島・小松島天然温泉': sourcePhoto(
+    'komatsushima-stay-01.jpg',
+    'スーパーホテル徳島・小松島天然温泉の客室・外観写真',
+    'Super Hotel Tokushima Komatsushima room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/182768/182768.html',
+    '楽天トラベル'
+  ),
+  'HOTEL AZ 徳島小松島店': sourcePhoto(
+    'komatsushima-stay-02.jpg',
+    'HOTEL AZ 徳島小松島店の客室・外観写真',
+    'HOTEL AZ Tokushima Komatsushima room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/181837/181837.html',
+    '楽天トラベル'
+  ),
+  'みどり旅館': sourcePhoto(
+    'komatsushima-stay-03.jpg',
+    'みどり旅館の客室・外観写真',
+    'Midori Ryokan room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/158330/158330.html',
+    '楽天トラベル'
+  ),
 };
 
 function sight(

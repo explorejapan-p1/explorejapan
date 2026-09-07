@@ -251,6 +251,56 @@ export const ANAN_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     TABELOG_36000888,
     '食べログ'
   ),
+
+  'スーパーホテル阿南・富岡': sourcePhoto(
+    'anan-stay-01.jpg',
+    'スーパーホテル阿南・富岡の客室・外観写真',
+    'Super Hotel Anan Tomioka room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/172821/172821.html',
+    '楽天トラベル'
+  ),
+  'スーパーホテル阿南・市役所前禁煙館': sourcePhoto(
+    'anan-stay-02.jpg',
+    'スーパーホテル阿南・市役所前禁煙館の客室・外観写真',
+    'Super Hotel Anan City Hall room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/179159/179159.html',
+    '楽天トラベル'
+  ),
+  'スマイルホテル阿南': sourcePhoto(
+    'anan-stay-03.jpg',
+    'スマイルホテル阿南の客室・外観写真',
+    'Smile Hotel Anan room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/25307/25307.html',
+    '楽天トラベル'
+  ),
+  'ホテルルートイン阿南': sourcePhoto(
+    'anan-stay-04.jpg',
+    'ホテルルートイン阿南の客室・外観写真',
+    'Hotel Route-Inn Anan room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/164934/164934.html',
+    '楽天トラベル'
+  ),
+  'ベイサイドホテル龍宮': sourcePhoto(
+    'anan-stay-05.jpg',
+    'ベイサイドホテル龍宮の客室・外観写真',
+    'Bayside Hotel Ryugu room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/30081/30081.html',
+    '楽天トラベル'
+  ),
+  'あなんステーションホテル': sourcePhoto(
+    'anan-stay-06.jpg',
+    'あなんステーションホテルの客室・外観写真',
+    'Anan Station Hotel room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/70924/70924.html',
+    '楽天トラベル'
+  ),
+  '阿南第一ホテル': sourcePhoto(
+    'anan-stay-07.jpg',
+    '阿南第一ホテルの客室・外観写真',
+    'Anan Daiichi Hotel room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/5414/5414.html',
+    '楽天トラベル'
+  ),
 };
 
 function sight(

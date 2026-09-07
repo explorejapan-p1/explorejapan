@@ -1130,9 +1130,9 @@ export const KOMATSUSHIMA_LOOKUP: LookupTown = {
   travelCommerce: KOMATSUSHIMA_TRAVEL_COMMERCE,
   travelAll: KOMATSUSHIMA_TRAVEL_ALL,
   coverageJa:
-    '小松島市（JIS 36203）観光5件（出典写真がある施設のみ）。オープンデータ凍結パックは未掲載。AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。飲食・宿泊・温泉・体験・買物・商業は0件（未掲載）。',
+    '小松島市（JIS 36203）観光5・宿泊3・飲食25（出典写真がある施設のみ）。オープンデータ凍結パックは未掲載。温泉・体験・買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。',
   coverageEn:
-    'Komatsushima City (JIS 36203), 5 tourism rows with sourced photos. No frozen open-data pack. AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. Dining, stay, onsen, experience, shopping, commerce: 0, unpublished.',
+    'Komatsushima City (JIS 36203), 5 tourism + 3 stay + 25 dining with sourced photos. No frozen open-data pack. Onsen, experience, shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished.',
   mapLabelJa: '小松島市の出典座標5件',
   mapLabelEn: '5 sourced coordinates in Komatsushima City',
   mapCitePackJa: '点は市・観光ページ掲載施設のWikipedia等出典座標5件（accessed 2026-09-07）。',
@@ -1165,9 +1165,9 @@ export const ANAN_LOOKUP: LookupTown = {
   travelCommerce: ANAN_TRAVEL_COMMERCE,
   travelAll: ANAN_TRAVEL_ALL,
   coverageJa:
-    '阿南市（JIS 36204）観光3件（出典写真がある施設のみ）。オープンデータ凍結パックは未掲載。AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。飲食は食べログ公開店ページ。宿泊・温泉・体験・買物・商業は0件（未掲載）。',
+    '阿南市（JIS 36204）観光3・宿泊7・飲食16（出典写真がある施設のみ）。オープンデータ凍結パックは未掲載。温泉・体験・買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。',
   coverageEn:
-    'Anan City (JIS 36204), 3 tourism rows with sourced photos. No frozen open-data pack. AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. Dining from Tabelog public shop pages. Stay, onsen, experience, shopping, commerce: 0, unpublished.',
+    'Anan City (JIS 36204), 3 tourism + 7 stay + 16 dining with sourced photos. No frozen open-data pack. Onsen, experience, shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished.',
   mapLabelJa: '阿南市の出典座標3件',
   mapLabelEn: '3 sourced coordinates in Anan City',
   mapCitePackJa: '点は市・観光ページ掲載施設のWikipedia座標3件（accessed 2026-09-07）。',

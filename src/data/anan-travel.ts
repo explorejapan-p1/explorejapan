@@ -1,8 +1,9 @@
 /**
  * Anan City travel layer. No frozen pack.
  * Dining from 食べログ 阿南市 (C36204) public shop pages. FOOD dish photos required.
- * Stay / onsen / experience / shopping / commerce: honest 0 (no room/bath/view remaps).
- * Do not invent pack dining. Do not copy 小松島 / 鳴門 / 徳島市 / 藍住 / 那賀 TRAVEL_* rows or photos.
+ * Stay from NAVITIME/観光協会 leads + 楽天トラベル share/room-exterior images (出典). Rank strongest first.
+ * Onsen / experience / shopping / commerce: honest 0 (no invent).
+ * Do not invent pack dining/stay. Do not copy 小松島 / 鳴門 / 徳島市 / 藍住 / 那賀 TRAVEL_* rows or photos.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
@@ -20,7 +21,10 @@ export const ANAN_TRAVEL_SOURCES = {
   home: 'https://www.city.anan.tokushima.jp/',
   hall: 'https://www.city.anan.tokushima.jp/',
   kanko: 'https://www.city.anan.tokushima.jp/category/bunya/kankobunka/',
-  tabelogCity: 'https://tabelog.com/tokushima/C36204/rstLst/'
+  tabelogCity: 'https://tabelog.com/tokushima/C36204/rstLst/',
+  stayNavi: 'https://www.navitime.co.jp/category/0608002/36204/',
+  rakutenTravel: 'https://travel.rakuten.co.jp/',
+  ananKankoStay: 'https://www.anan-kankou.jp/itemclass.php?m=3'
 } as const;
 
 export const ANAN_ONSEN_PACK_NAMES = [] as const;
@@ -36,7 +40,76 @@ export const ANAN_SIGHT_PINS = [
   '平等寺'
 ] as const;
 
-export const ANAN_TRAVEL_STAY: readonly TravelRow[] = [];
+function stay(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'stay',
+    address,
+    phone,
+    source_url,
+    accessed: ANAN_TRAVEL_ACCESSED
+  };
+}
+
+/** Ranked strongest Instagram-style room/exterior 出典 first. 楽天シェア + 公式掲載画像. */
+export const ANAN_TRAVEL_STAY: readonly TravelRow[] = [
+  stay(
+    'anan-stay-01',
+    'スーパーホテル阿南・富岡',
+    '徳島県阿南市学原町深田9-1',
+    '0884-22-9000',
+    'https://travel.rakuten.co.jp/HOTEL/172821/172821.html'
+  ),
+  stay(
+    'anan-stay-02',
+    'スーパーホテル阿南・市役所前禁煙館',
+    '徳島県阿南市富岡町トノ町51-9',
+    '0884-28-9002',
+    'https://travel.rakuten.co.jp/HOTEL/179159/179159.html'
+  ),
+  stay(
+    'anan-stay-03',
+    'スマイルホテル阿南',
+    '徳島県阿南市富岡町滝の下42-4',
+    '0884-23-2222',
+    'https://travel.rakuten.co.jp/HOTEL/25307/25307.html'
+  ),
+  stay(
+    'anan-stay-04',
+    'ホテルルートイン阿南',
+    '徳島県阿南市領家町火屋ヶ原142',
+    '050-5847-7340',
+    'https://travel.rakuten.co.jp/HOTEL/164934/164934.html'
+  ),
+  stay(
+    'anan-stay-05',
+    'ベイサイドホテル龍宮',
+    '徳島県阿南市橘町幸田92-2',
+    '0884-27-2027',
+    'https://travel.rakuten.co.jp/HOTEL/30081/30081.html'
+  ),
+  stay(
+    'anan-stay-06',
+    'あなんステーションホテル',
+    '徳島県阿南市富岡町今福寺43-5',
+    '0884-28-7711',
+    'https://travel.rakuten.co.jp/HOTEL/70924/70924.html'
+  ),
+  stay(
+    'anan-stay-07',
+    '阿南第一ホテル',
+    '徳島県阿南市富岡町西池田口14-1',
+    '0884-22-6622',
+    'https://travel.rakuten.co.jp/HOTEL/5414/5414.html'
+  )
+];
 
 function dining(
   id: string,
@@ -289,6 +362,8 @@ export function ananSourcedHook(
 export function ananTopChipForRow(row: {category: string; name_ja: string}): FilterId {
   if (isAnanOnsenPackRow(row)) return 'onsen';
   if (isAnanStayPackRow(row)) return 'stay';
+  if (row.category === 'stay') return 'stay';
+  if (row.category === 'dining') return 'dining';
   if (isAnanDiningPackRow(row)) return 'dining';
   if (isSightsCategory(row.category)) return 'sights';
   if (isInfraCategory(row.category)) return 'sights';
