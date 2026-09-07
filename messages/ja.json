@@ -37,7 +37,7 @@
     "mapHonest": "点はパックの緯度経度だけです。OSMもGoogleも使いません。",
     "mapCitePack": "点は凍結パックの公式座標61件（accessed 2026-08-25）。",
     "mapCiteBbox": "外枠は61点の範囲です。",
-    "citeLabel": "出典",
+    "citeLabel": "地図",
     "photoCite": "写真は脇町南町（うだつの町並み）。Araiyasushige、2025-08-28、CC0 1.0。",
     "idleHint": "名前を入れるか、上の種別を押してください。",
     "more": "さらに表示",
