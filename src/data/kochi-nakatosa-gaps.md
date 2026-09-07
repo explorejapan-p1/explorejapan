@@ -1,6 +1,6 @@
 # Nakatosa Town (中土佐町) gaps (TG566 twenty-fifth Kochi hub)
 
-Accessed 2026-09-08 (JST). LIVE tip pending.
+Accessed 2026-09-08 (JST). LIVE tip `beffc38792`.
 
 ## LIVE pills (photo-first)
 - stay: 1 (四万十源流の里 / Rakuten HOTEL/162815 本館和室 LARGE mediaInfo「本館和室」cat 00000001 — stay≠onsen)
@@ -28,4 +28,4 @@ Accessed 2026-09-08 (JST). LIVE tip pending.
 - 田野町 still deferred: no attributable room still under HARD BAR.
 
 ## CDN
-Cold CDN pending post-push.
+Cold CDN PASS after Pages lag (~70s post-push). Live `ja/kochi/nakatosa/` PASS: hero 中土佐町, desc 中土佐町。双名島、大正町市場、四万十源流、食。, pills stay/dining/onsen/experience/sights = 1/3/0/0/5. Pref cover nakatosa-cover-hutanazima present. Niyodogawa regression PASS.
