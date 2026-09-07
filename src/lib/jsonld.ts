@@ -44,6 +44,7 @@ import {INO, INO_PLACE_PHOTO} from '@/data/ino';
 import {AKI, AKI_PLACE_PHOTO} from '@/data/aki';
 import {MUROTO, MUROTO_PLACE_PHOTO} from '@/data/muroto';
 import {TOSA, TOSA_PLACE_PHOTO} from '@/data/tosa';
+import {SUSAKI, SUSAKI_PLACE_PHOTO} from '@/data/susaki';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -156,6 +157,7 @@ function localityJa(slug: string): string {
   if (slug === 'ino') return INO.nameJa;
   if (slug === 'aki') return AKI.nameJa;
   if (slug === 'muroto') return MUROTO.nameJa;
+  if (slug === 'susaki') return SUSAKI.nameJa;
   return MIMA.nameJa;
 }
 
@@ -207,6 +209,7 @@ function localityEn(slug: string): string {
   if (slug === 'ino') return INO.nameEn;
   if (slug === 'aki') return AKI.nameEn;
   if (slug === 'muroto') return MUROTO.nameEn;
+  if (slug === 'susaki') return SUSAKI.nameEn;
   return MIMA.nameEn;
 }
 
@@ -3618,6 +3621,66 @@ export function tosaGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '土佐市の案内' : 'Places in Tosa City',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+export function susakiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/susaki');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('susaki');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? SUSAKI.nameJa : SUSAKI.nameEn,
+        alternateName: isJa ? SUSAKI.nameEn : SUSAKI.nameJa,
+        identifier: SUSAKI.jis,
+        url,
+        image: photoAbs(SUSAKI_PLACE_PHOTO),
+        sameAs: [SUSAKI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '山手町1番7号' : '1-7 Yamate-cho',
+          addressLocality: isJa ? SUSAKI.nameJa : SUSAKI.nameEn,
+          addressRegion: isJa ? SUSAKI.prefectureJa : SUSAKI.prefectureEn,
+          postalCode: SUSAKI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? SUSAKI.prefectureJa : SUSAKI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? SUSAKI.nameJa : SUSAKI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? SUSAKI.prefectureJa : SUSAKI.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? SUSAKI.nameJa : SUSAKI.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '須崎市の案内' : 'Places in Susaki City',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

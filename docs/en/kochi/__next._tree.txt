@@ -7,7 +7,8 @@
 :HL["/explorejapan/media/aki-noradokei.jpg","image"]
 :HL["/explorejapan/media/nankoku-kokubunji.jpg","image"]
 :HL["/explorejapan/media/tosa-cover-niyodo-bridge.jpg","image"]
+:HL["/explorejapan/media/wakimachi-minami-machi-20250828.jpg","image"]
 :HL["/explorejapan/media/konan-ekingura.jpg","image"]
 :HL["/explorejapan/media/kami-anpanman.jpg","image"]
 :HL["/explorejapan/media/ino-nikobuchi.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"en","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"kochi","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"MP5qqpDkbDcrPcXJ3hnKB"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"en","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"kochi","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"d6RblxAuykA_-eeR8N8Qv"}

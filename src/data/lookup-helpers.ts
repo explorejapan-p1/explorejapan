@@ -526,6 +526,18 @@ import {
   rankTosaSeeRows,
   resolveTosaFilter
 } from './tosa-travel';
+import {
+  isSusakiExperiencePackRow,
+  isSusakiOnsenPackRow,
+  isSusakiStayPackRow,
+  rankSusakiSeeRows,
+  resolveSusakiFilter,
+  susakiPackRowMatchesFilter,
+  susakiSightPhoto,
+  susakiSourcedHook,
+  susakiTopChipForRow
+} from './susaki-travel';
+
 
 
 
@@ -1104,6 +1116,19 @@ const MANNO_HELPERS: LookupHelpers = {
 
 
 
+
+const SUSAKI_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isSusakiOnsenPackRow,
+  isExperiencePackRow: isSusakiExperiencePackRow,
+  isStayPackRow: isSusakiStayPackRow,
+  packRowMatchesFilter: susakiPackRowMatchesFilter,
+  rankSeeRows: rankSusakiSeeRows,
+  sightPhoto: susakiSightPhoto,
+  sourcedHook: susakiSourcedHook,
+  topChipForRow: susakiTopChipForRow,
+  resolveFilter: resolveSusakiFilter
+};
+
 const TOSA_HELPERS: LookupHelpers = {
   isOnsenPackRow: isTosaOnsenPackRow,
   isExperiencePackRow: isTosaExperiencePackRow,
@@ -1267,5 +1292,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'aki') return AKI_HELPERS;
   if (slug === 'muroto') return MUROTO_HELPERS;
   if (slug === 'tosa') return TOSA_HELPERS;
+  if (slug === 'susaki') return SUSAKI_HELPERS;
   return MIMA_HELPERS;
 }

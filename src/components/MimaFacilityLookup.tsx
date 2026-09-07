@@ -67,6 +67,7 @@ import {INO_TRAVEL_ACCESSED} from '@/data/ino-travel';
 import {AKI_TRAVEL_ACCESSED} from '@/data/aki-travel';
 import {MUROTO_TRAVEL_ACCESSED} from '@/data/muroto-travel';
 import {TOSA_TRAVEL_ACCESSED} from '@/data/tosa-travel';
+import {SUSAKI_TRAVEL_ACCESSED} from '@/data/susaki-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1459,6 +1460,22 @@ export function MimaFacilityLookup({
                 Lodging from Rakuten Travel room photos ({MUROTO_TRAVEL_ACCESSED}).
                 Dining from Tabelog Muroto shop pages ({MUROTO_TRAVEL_ACCESSED}).
                 Onsen: 0 (room-still stay only; no attributable bath keys). Experience: Muroto Geopark Center (Commons). Shopping/commerce: 0. Seventh LIVE Kochi hub.
+              </>
+            )
+          ) : town.slug === 'susaki' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（横浪黒潮ライン・大善寺・鳴無神社・須賀神社・野見湾・桑田山雪割り桜）。
+                宿泊は楽天トラベルＨＯＴＥＬ　ＡＺ　高知須崎店の客室写真（{SUSAKI_TRAVEL_ACCESSED}）。
+                飲食は食べログ須崎市の公開店ページ（{SUSAKI_TRAVEL_ACCESSED}）。
+                温泉は0件（客室写真の宿のみ・大浴場出典キー無し）。体験は道の駅かわうその里すさき（Commons）。買物・商業は0件。高知県9つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Yokonami Kuroshio Line, Daizen-ji, Otonashi Shrine, Suga Shrine, Nomi Bay, Kuwadayama sakura).
+                Lodging: HOTEL AZ Kochi Susaki Rakuten room photo ({SUSAKI_TRAVEL_ACCESSED}).
+                Dining from Tabelog Susaki shop pages ({SUSAKI_TRAVEL_ACCESSED}).
+                Onsen: 0 (room-still stay only; no attributable bath keys). Experience: Michinoeki Kawauso-no-Sato Susaki (Commons). Shopping/commerce: 0. Ninth LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'tosa' ? (

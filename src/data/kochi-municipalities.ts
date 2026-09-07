@@ -10,7 +10,7 @@ export type Municipality = {
 
 /**
  * Kochi 市区町村. Codes are N03_007 / JIS X 0402 (5-digit).
- * Kochi City 39201 + Nankoku 39204 + Konan 39211 + Kami 39212 + Ino 39386 + Aki 39203 + Muroto 39202 + Tosa 39205 LIVE hubs (+ remaining municipalities coming-soon).
+ * Kochi City 39201 + Nankoku 39204 + Konan 39211 + Kami 39212 + Ino 39386 + Aki 39203 + Muroto 39202 + Tosa 39205 + Susaki 39206 LIVE hubs (+ remaining municipalities coming-soon).
  */
 export const KOCHI_MUNICIPALITIES: Municipality[] = [
   {jis: '39201', slug: 'kochi', nameJa: '高知市', nameEn: 'Kochi', status: 'ready'},
@@ -18,7 +18,7 @@ export const KOCHI_MUNICIPALITIES: Municipality[] = [
   {jis: '39203', slug: 'aki', nameJa: '安芸市', nameEn: 'Aki', status: 'ready'},
   {jis: '39204', slug: 'nankoku', nameJa: '南国市', nameEn: 'Nankoku', status: 'ready'},
   {jis: '39205', slug: 'tosa', nameJa: '土佐市', nameEn: 'Tosa', status: 'ready'},
-  {jis: '39206', slug: 'susaki', nameJa: '須崎市', nameEn: 'Susaki', status: 'coming-soon'},
+  {jis: '39206', slug: 'susaki', nameJa: '須崎市', nameEn: 'Susaki', status: 'ready'},
   {jis: '39208', slug: 'sukumo', nameJa: '宿毛市', nameEn: 'Sukumo', status: 'coming-soon'},
   {jis: '39209', slug: 'tosashimizu', nameJa: '土佐清水市', nameEn: 'Tosashimizu', status: 'coming-soon'},
   {jis: '39210', slug: 'shimanto', nameJa: '四万十市', nameEn: 'Shimanto', status: 'coming-soon'},

@@ -315,6 +315,7 @@ import {INO, INO_PLACE_PHOTO, INO_FACILITIES, INO_EXPECTED_GEO_COUNT, INO_EXPECT
 import {AKI, AKI_PLACE_PHOTO, AKI_FACILITIES, AKI_EXPECTED_GEO_COUNT, AKI_EXPECTED_ROW_COUNT} from './aki';
 import {MUROTO, MUROTO_PLACE_PHOTO, MUROTO_FACILITIES, MUROTO_EXPECTED_GEO_COUNT, MUROTO_EXPECTED_ROW_COUNT} from './muroto';
 import {TOSA, TOSA_PLACE_PHOTO, TOSA_FACILITIES, TOSA_EXPECTED_GEO_COUNT, TOSA_EXPECTED_ROW_COUNT} from './tosa';
+import {SUSAKI, SUSAKI_PLACE_PHOTO, SUSAKI_FACILITIES, SUSAKI_EXPECTED_GEO_COUNT, SUSAKI_EXPECTED_ROW_COUNT} from './susaki';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -568,6 +569,13 @@ import {
   TOSA_TRAVEL_COMMERCE,
   TOSA_TRAVEL_ALL,
 } from './tosa-travel';
+import {
+  SUSAKI_TRAVEL_DINING,
+  SUSAKI_TRAVEL_STAY,
+  SUSAKI_TRAVEL_SHOPPING,
+  SUSAKI_TRAVEL_COMMERCE,
+  SUSAKI_TRAVEL_ALL,
+} from './susaki-travel';
 
 
 
@@ -2049,6 +2057,40 @@ export const TOSA_LOOKUP: LookupTown = {
   licenseSiteEn: 'City-site listing'
 };
 
+
+export const SUSAKI_LOOKUP: LookupTown = {
+  slug: 'susaki',
+  prefectureSlug: 'kochi',
+  jis: SUSAKI.jis,
+  nameJa: SUSAKI.nameJa,
+  nameEn: SUSAKI.nameEn,
+  heroPhoto: SUSAKI_PLACE_PHOTO,
+  photoCiteJa: '写真は横浪自然公園の海岸（横浪黒潮ライン）。Raita Futo、2020-09-22、CC BY 2.0。File:Yokonami_Nature_Park_Coastline_(52004285222).jpg。',
+  photoCiteEn: 'Photo: Yokonami Nature Park coastline. Raita Futo, 22 Sep 2020, CC BY 2.0. File:Yokonami_Nature_Park_Coastline_(52004285222).jpg.',
+  rows: SUSAKI_FACILITIES,
+  expectedGeo: SUSAKI_EXPECTED_GEO_COUNT,
+  expectedRows: SUSAKI_EXPECTED_ROW_COUNT,
+  travelDining: SUSAKI_TRAVEL_DINING,
+  travelStay: SUSAKI_TRAVEL_STAY,
+  travelShopping: SUSAKI_TRAVEL_SHOPPING,
+  travelCommerce: SUSAKI_TRAVEL_COMMERCE,
+  travelAll: SUSAKI_TRAVEL_ALL,
+  coverageJa:
+    '須崎市（JIS 39206）観光6・宿泊1・飲食16・温泉0・体験1（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県9つ目のLIVEハブ。',
+  coverageEn:
+    'Susaki City (JIS 39206), 6 tourism + 1 stay + 16 dining + 0 onsen + 1 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Ninth LIVE Kochi hub.',
+  mapLabelJa: '須崎市の出典座標7件',
+  mapLabelEn: '7 sourced coordinates in Susaki City',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia/Commons等出典座標7件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 7 sourced coordinates for city/official facilities (accessed 2026-09-08).',
+  licenseNoteJa:
+    '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.susaki.lg.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
 export const MUROTO_LOOKUP: LookupTown = {
   slug: 'muroto',
   prefectureSlug: 'kochi',
@@ -2409,7 +2451,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   ino: INO_LOOKUP,
   aki: AKI_LOOKUP,
   muroto: MUROTO_LOOKUP,
-  tosa: TOSA_LOOKUP
+  tosa: TOSA_LOOKUP,
+  susaki: SUSAKI_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
