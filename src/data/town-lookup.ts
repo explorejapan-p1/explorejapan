@@ -33,6 +33,12 @@ import {
   NAKA_EXPECTED_ROW_COUNT,
   MINAMI_EXPECTED_GEO_COUNT,
   MINAMI_EXPECTED_ROW_COUNT
+,
+  KAIYO_EXPECTED_GEO_COUNT
+,
+  KAIYO_EXPECTED_ROW_COUNT,
+  AIZUMI_EXPECTED_GEO_COUNT,
+  AIZUMI_EXPECTED_ROW_COUNT
 } from './facility-schema';
 import {MIMA, MIMA_PLACE_PHOTO} from './mima';
 import {MIMA_FACILITIES} from './mima-facilities';
@@ -205,9 +211,11 @@ import {
 import {SANAGOCHI, SANAGOCHI_PLACE_PHOTO} from './sanagochi';
 import {NAKA, NAKA_PLACE_PHOTO} from './naka';
 import {MINAMI, MINAMI_PLACE_PHOTO} from './minami';
+import {KAIYO, KAIYO_PLACE_PHOTO} from './kaiyo';
 import {SANAGOCHI_FACILITIES} from './sanagochi-facilities';
 import {NAKA_FACILITIES} from './naka-facilities';
 import {MINAMI_FACILITIES} from './minami-facilities';
+import {KAIYO_FACILITIES} from './kaiyo-facilities';
 import {
   SANAGOCHI_TRAVEL_ACCESSED,
   SANAGOCHI_TRAVEL_ALL,
@@ -233,6 +241,30 @@ import {
   MINAMI_TRAVEL_COMMERCE,
   MINAMI_TRAVEL_ALL
 } from './minami-travel';
+
+import {AIZUMI, AIZUMI_PLACE_PHOTO} from './aizumi';
+import {AIZUMI_FACILITIES} from './aizumi-facilities';
+import {
+  AIZUMI_TRAVEL_ACCESSED,
+  AIZUMI_TRAVEL_ALL,
+  AIZUMI_TRAVEL_COMMERCE,
+  AIZUMI_TRAVEL_DINING,
+  AIZUMI_TRAVEL_SHOPPING,
+  AIZUMI_TRAVEL_SOURCES,
+  AIZUMI_TRAVEL_STAY
+} from './aizumi-travel';
+
+import {
+  KAIYO_TRAVEL_DINING,
+  KAIYO_TRAVEL_STAY,
+  KAIYO_TRAVEL_SHOPPING,
+  KAIYO_TRAVEL_COMMERCE,
+  KAIYO_TRAVEL_ALL,
+  KAIYO_TRAVEL_ACCESSED,
+  KAIYO_TRAVEL_SOURCES
+} from './kaiyo-travel';
+
+
 
 
 
@@ -940,6 +972,72 @@ export const MINAMI_LOOKUP: LookupTown = {
   licenseSiteEn: 'Town-site listing'
 };
 
+
+
+
+export const KAIYO_LOOKUP: LookupTown = {
+  slug: 'kaiyo',
+  jis: KAIYO.jis,
+  nameJa: KAIYO.nameJa,
+  nameEn: KAIYO.nameEn,
+  heroPhoto: KAIYO_PLACE_PHOTO,
+  photoCiteJa: '写真は漁火の森公園。akiakane、2011-12-27、CC BY 3.0。File:漁火の森公園_遊歩道より_-_panoramio.jpg。',
+  photoCiteEn: 'Photo: Isarino-mori Park. akiakane, 27 Dec 2011, CC BY 3.0. File:漁火の森公園_遊歩道より_-_panoramio.jpg.',
+  rows: KAIYO_FACILITIES,
+  expectedGeo: KAIYO_EXPECTED_GEO_COUNT,
+  expectedRows: KAIYO_EXPECTED_ROW_COUNT,
+  travelDining: KAIYO_TRAVEL_DINING,
+  travelStay: KAIYO_TRAVEL_STAY,
+  travelShopping: KAIYO_TRAVEL_SHOPPING,
+  travelCommerce: KAIYO_TRAVEL_COMMERCE,
+  travelAll: KAIYO_TRAVEL_ALL,
+  coverageJa: '海陽町（JIS 36388）280件。緊急避難場所79、GTFS停留所68、避難所41、AED32、文化財19、公共施設15、病院13、観光6、保育6、介護1。Wi-Fiは0件（未掲載）。公式座標154件。',
+  coverageEn: 'Kaiyo Town (JIS 36388), 280 rows. Emergency sites 79, GTFS stops 68, shelter 41, AED 32, cultural property 19, public facility 15, hospital 13, tourism 6, childcare 6, care 1. Wi-Fi: 0, unpublished. Official coordinates: 154.',
+  mapLabelJa: '海陽町の公式座標154件',
+  mapLabelEn: '154 official coordinates in Kaiyo Town',
+  mapCitePackJa: '点は凍結パックの公式座標154件（accessed 2026-08-27）。',
+  mapCitePackEn: 'Points: 154 official coordinates from the frozen pack (accessed 2026-08-27).',
+  licenseNoteJa: '行のライセンスは二つ。CC BY 4.0 は徳島県 Our Open Data の利用規約。「町公式サイト掲載情報」は町・観光ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Licenses split by row. CC BY 4.0 follows Tokushima Our Open Data. A town-site listing is a fact from town.kaiyo.lg.jp, not under that license.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
+
+export const AIZUMI_LOOKUP: LookupTown = {
+  slug: 'aizumi',
+  jis: AIZUMI.jis,
+  nameJa: AIZUMI.nameJa,
+  nameEn: AIZUMI.nameEn,
+  heroPhoto: AIZUMI_PLACE_PHOTO,
+  photoCiteJa:
+    '写真は歴史館「藍の館」。Tamago915、2007-05-04、CC BY-SA 3.0。File:Aizumi_Ai_no_Yakata.jpg。',
+  photoCiteEn:
+    'Photo: Ai-no-Yakata indigo museum. Tamago915, 4 May 2007, CC BY-SA 3.0. File:Aizumi_Ai_no_Yakata.jpg.',
+  rows: AIZUMI_FACILITIES,
+  expectedGeo: AIZUMI_EXPECTED_GEO_COUNT,
+  expectedRows: AIZUMI_EXPECTED_ROW_COUNT,
+  travelDining: AIZUMI_TRAVEL_DINING,
+  travelStay: AIZUMI_TRAVEL_STAY,
+  travelShopping: AIZUMI_TRAVEL_SHOPPING,
+  travelCommerce: AIZUMI_TRAVEL_COMMERCE,
+  travelAll: AIZUMI_TRAVEL_ALL,
+  coverageJa:
+    '藍住町（JIS 36403）225件。文化財57、公共施設50、病院41、保育36、観光17、避難所12、緊急避難場所11、介護1。AED・Wi-Fi・GTFS停留所は0件（未掲載）。公式座標36件。',
+  coverageEn:
+    'Aizumi Town (JIS 36403), 225 rows. Cultural property 57, public facility 50, hospital 41, childcare 36, tourism 17, shelter 12, emergency sites 11, care 1. AED / Wi-Fi / GTFS stops: 0, unpublished. Official coordinates: 36.',
+  mapLabelJa: '藍住町の公式座標36件',
+  mapLabelEn: '36 official coordinates in Aizumi Town',
+  mapCitePackJa: '点は凍結パックの公式座標36件（accessed 2026-08-27）。',
+  mapCitePackEn: 'Points: 36 official coordinates from the frozen pack (accessed 2026-08-27).',
+  licenseNoteJa:
+    '行のライセンスは二つ。CC BY 4.0 は徳島県 Our Open Data の利用規約。「町公式サイト掲載情報」は町・観光ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Licenses split by row. CC BY 4.0 follows Tokushima Our Open Data. A town-site listing is a fact from town.aizumi.lg.jp, not under that license.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
 const BY_SLUG: Record<ReadySlug, LookupTown> = {
   mima: MIMA_LOOKUP,
   tsurugi: TSURUGI_LOOKUP,
@@ -959,7 +1057,9 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   kamikatsu: KAMIKATSU_LOOKUP,
   sanagochi: SANAGOCHI_LOOKUP,
   naka: NAKA_LOOKUP,
-  minami: MINAMI_LOOKUP
+  minami: MINAMI_LOOKUP,
+  aizumi: AIZUMI_LOOKUP,
+  kaiyo: KAIYO_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
@@ -967,4 +1067,4 @@ export function lookupTown(slug: string): LookupTown | null {
   return BY_SLUG[slug];
 }
 
-export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES, AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES, HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES, KITAJIMA_TRAVEL_ACCESSED, KITAJIMA_TRAVEL_SOURCES, NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES, MATSUSHIGE_TRAVEL_ACCESSED, MATSUSHIGE_TRAVEL_SOURCES, ISHII_TRAVEL_ACCESSED, ISHII_TRAVEL_SOURCES, ITANO_TRAVEL_ACCESSED, ITANO_TRAVEL_SOURCES, KAMIITA_TRAVEL_ACCESSED, KAMIITA_TRAVEL_SOURCES, KAMIYAMA_TRAVEL_ACCESSED, KAMIYAMA_TRAVEL_SOURCES, KATSUURA_TRAVEL_ACCESSED, KATSUURA_TRAVEL_SOURCES, KAMIKATSU_TRAVEL_ACCESSED, KAMIKATSU_TRAVEL_SOURCES, SANAGOCHI_TRAVEL_ACCESSED, SANAGOCHI_TRAVEL_SOURCES, MINAMI_TRAVEL_ACCESSED, MINAMI_TRAVEL_SOURCES};
+export {TRAVEL_ACCESSED, TRAVEL_SOURCES, TSURUGI_TRAVEL_ACCESSED, TSURUGI_TRAVEL_SOURCES, YOSHINOGAWA_TRAVEL_ACCESSED, YOSHINOGAWA_TRAVEL_SOURCES, MIYOSHI_TRAVEL_ACCESSED, MIYOSHI_TRAVEL_SOURCES, TOKUSHIMA_CITY_TRAVEL_ACCESSED, TOKUSHIMA_CITY_TRAVEL_SOURCES, AWA_TRAVEL_ACCESSED, AWA_TRAVEL_SOURCES, HIGASHIMIYOSHI_TRAVEL_ACCESSED, HIGASHIMIYOSHI_TRAVEL_SOURCES, KITAJIMA_TRAVEL_ACCESSED, KITAJIMA_TRAVEL_SOURCES, NARUTO_TRAVEL_ACCESSED, NARUTO_TRAVEL_SOURCES, MATSUSHIGE_TRAVEL_ACCESSED, MATSUSHIGE_TRAVEL_SOURCES, ISHII_TRAVEL_ACCESSED, ISHII_TRAVEL_SOURCES, ITANO_TRAVEL_ACCESSED, ITANO_TRAVEL_SOURCES, KAMIITA_TRAVEL_ACCESSED, KAMIITA_TRAVEL_SOURCES, KAMIYAMA_TRAVEL_ACCESSED, KAMIYAMA_TRAVEL_SOURCES, KATSUURA_TRAVEL_ACCESSED, KATSUURA_TRAVEL_SOURCES, KAMIKATSU_TRAVEL_ACCESSED, KAMIKATSU_TRAVEL_SOURCES, SANAGOCHI_TRAVEL_ACCESSED, SANAGOCHI_TRAVEL_SOURCES, MINAMI_TRAVEL_ACCESSED, MINAMI_TRAVEL_SOURCES, AIZUMI_TRAVEL_ACCESSED, AIZUMI_TRAVEL_SOURCES};

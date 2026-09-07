@@ -15,6 +15,8 @@ import {KAMIKATSU, KAMIKATSU_PLACE_PHOTO} from '@/data/kamikatsu';
 import {SANAGOCHI, SANAGOCHI_PLACE_PHOTO} from '@/data/sanagochi';
 import {NAKA, NAKA_PLACE_PHOTO} from '@/data/naka';
 import {MINAMI, MINAMI_PLACE_PHOTO} from '@/data/minami';
+import {AIZUMI, AIZUMI_PLACE_PHOTO} from '@/data/aizumi';
+import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
@@ -95,6 +97,8 @@ function localityJa(slug: string): string {
   if (slug === 'sanagochi') return SANAGOCHI.nameJa;
   if (slug === 'naka') return NAKA.nameJa;
   if (slug === 'minami') return MINAMI.nameJa;
+  if (slug === 'aizumi') return AIZUMI.nameJa;
+  if (slug === 'kaiyo') return KAIYO.nameJa;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameJa;
   return MIMA.nameJa;
 }
@@ -117,6 +121,8 @@ function localityEn(slug: string): string {
   if (slug === 'sanagochi') return SANAGOCHI.nameEn;
   if (slug === 'naka') return NAKA.nameEn;
   if (slug === 'minami') return MINAMI.nameEn;
+  if (slug === 'aizumi') return AIZUMI.nameEn;
+  if (slug === 'kaiyo') return KAIYO.nameEn;
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameEn;
   return MIMA.nameEn;
 }
@@ -1431,6 +1437,67 @@ export function minamiGraph(locale: AppLocale) {
   };
 }
 
+
+export function kaiyoGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'tokushima/kaiyo');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('kaiyo');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? KAIYO.nameJa : KAIYO.nameEn,
+        alternateName: isJa ? KAIYO.nameEn : KAIYO.nameJa,
+        identifier: KAIYO.jis,
+        url,
+        image: photoAbs(KAIYO_PLACE_PHOTO),
+        sameAs: [KAIYO.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '大里字上中須128' : '128 Kaminakasu, Osato',
+          addressLocality: isJa ? KAIYO.nameJa : KAIYO.nameEn,
+          addressRegion: isJa ? KAIYO.prefectureJa : KAIYO.prefectureEn,
+          postalCode: KAIYO.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? KAIYO.prefectureJa : KAIYO.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? KAIYO.nameJa : KAIYO.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? KAIYO.prefectureJa : KAIYO.prefectureEn, item: canonicalUrl(locale, 'tokushima')},
+          {'@type': 'ListItem', position: 3, name: isJa ? KAIYO.nameJa : KAIYO.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '海陽町の案内' : 'Places in Kaiyo Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
 export function kamiyamaGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'tokushima/kamiyama');
   const origin = siteOrigin();
@@ -1786,6 +1853,66 @@ export function placeGraph(listing: PublicListing, locale: AppLocale) {
             item: url
           }
         ]
+      }
+    ]
+  };
+}
+
+export function aizumiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'tokushima/aizumi');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('aizumi');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? AIZUMI.nameJa : AIZUMI.nameEn,
+        alternateName: isJa ? AIZUMI.nameEn : AIZUMI.nameJa,
+        identifier: AIZUMI.jis,
+        url,
+        image: photoAbs(AIZUMI_PLACE_PHOTO),
+        sameAs: [AIZUMI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '奥野字矢上前52-1' : '52-1 Yagami-mae, Okuno',
+          addressLocality: isJa ? AIZUMI.nameJa : AIZUMI.nameEn,
+          addressRegion: isJa ? AIZUMI.prefectureJa : AIZUMI.prefectureEn,
+          postalCode: AIZUMI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? AIZUMI.prefectureJa : AIZUMI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? AIZUMI.nameJa : AIZUMI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? AIZUMI.prefectureJa : AIZUMI.prefectureEn, item: canonicalUrl(locale, 'tokushima')},
+          {'@type': 'ListItem', position: 3, name: isJa ? AIZUMI.nameJa : AIZUMI.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '藍住町の案内' : 'Places in Aizumi Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
       }
     ]
   };

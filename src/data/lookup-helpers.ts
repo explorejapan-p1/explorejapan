@@ -203,6 +203,32 @@ import {
 } from './minami-travel';
 
 import {
+  isAizumiExperiencePackRow,
+  isAizumiOnsenPackRow,
+  isAizumiStayPackRow,
+  aizumiPackRowMatchesFilter,
+  aizumiSightPhoto,
+  aizumiSourcedHook,
+  aizumiTopChipForRow,
+  rankAizumiSeeRows,
+  resolveAizumiFilter
+} from './aizumi-travel';
+
+import {
+  isKaiyoExperiencePackRow,
+  isKaiyoOnsenPackRow,
+  isKaiyoStayPackRow,
+  kaiyoPackRowMatchesFilter,
+  kaiyoSightPhoto,
+  kaiyoSourcedHook,
+  kaiyoTopChipForRow,
+  rankKaiyoSeeRows,
+  resolveKaiyoFilter
+} from './kaiyo-travel';
+
+
+
+import {
   isMatsushigeExperiencePackRow,
   isMatsushigeOnsenPackRow,
   isMatsushigeStayPackRow,
@@ -491,7 +517,35 @@ const MINAMI_HELPERS: LookupHelpers = {
   resolveFilter: resolveMinamiFilter
 };
 
+
+
+const KAIYO_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isKaiyoOnsenPackRow,
+  isExperiencePackRow: isKaiyoExperiencePackRow,
+  isStayPackRow: isKaiyoStayPackRow,
+  packRowMatchesFilter: kaiyoPackRowMatchesFilter,
+  rankSeeRows: rankKaiyoSeeRows,
+  sightPhoto: kaiyoSightPhoto,
+  sourcedHook: kaiyoSourcedHook,
+  topChipForRow: kaiyoTopChipForRow,
+  resolveFilter: resolveKaiyoFilter
+};
+
+
+const AIZUMI_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isAizumiOnsenPackRow,
+  isExperiencePackRow: isAizumiExperiencePackRow,
+  isStayPackRow: isAizumiStayPackRow,
+  packRowMatchesFilter: aizumiPackRowMatchesFilter,
+  rankSeeRows: rankAizumiSeeRows,
+  sightPhoto: aizumiSightPhoto,
+  sourcedHook: aizumiSourcedHook,
+  topChipForRow: aizumiTopChipForRow,
+  resolveFilter: resolveAizumiFilter
+};
+
 export function townHelpers(slug: ReadySlug): LookupHelpers {
+
   if (slug === 'tsurugi') return TSURUGI_HELPERS;
   if (slug === 'yoshinogawa') return YOSHINOGAWA_HELPERS;
   if (slug === 'miyoshi') return MIYOSHI_HELPERS;
@@ -510,5 +564,7 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'sanagochi') return SANAGOCHI_HELPERS;
   if (slug === 'naka') return NAKA_HELPERS;
   if (slug === 'minami') return MINAMI_HELPERS;
+  if (slug === 'kaiyo') return KAIYO_HELPERS;
+  if (slug === 'aizumi') return AIZUMI_HELPERS;
   return MIMA_HELPERS;
 }
