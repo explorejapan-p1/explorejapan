@@ -2,6 +2,9 @@
  * Sanagochi travel layer. Pack tourism has no inns/onsen with room or bath photos.
  * Onsen / stay: omit without room or bath photo (honest 0).
  * Dining from 食べログ 佐那河内村 (C36321) public shop pages with FOOD dish heroes.
+ * PHOTO GAPS (honest 0):
+ * 宿泊/温泉/買物/商業/体験: no room/bath/shop 出典 — omit.
+ * 観光: 清流の源 — no place-named Commons usable photo yet.
  * Do not copy 上勝 / 勝浦 / 神山 / 上板 / 板野 / 石井 / 松茂 / 北島 / 藍住 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
@@ -72,18 +75,18 @@ function dining(
 
 export const SANAGOCHI_TRAVEL_DINING: readonly TravelRow[] = [
   dining(
-    'sanagochi-dining-01',
-    "YOME厨房",
-    "徳島県名東郡佐那河内村上字平間161",
-    "090-1170-3698",
-    "https://tabelog.com/tokushima/A3601/A360104/36005383/"
-  ),
-  dining(
     'sanagochi-dining-02',
     "佐那河内ジェラート",
     "徳島県名東郡佐那河内村上字宮前84-1",
     "088-636-4030",
     "https://tabelog.com/tokushima/A3601/A360104/36007906/"
+  ),
+  dining(
+    'sanagochi-dining-01',
+    "YOME厨房",
+    "徳島県名東郡佐那河内村上字平間161",
+    "090-1170-3698",
+    "https://tabelog.com/tokushima/A3601/A360104/36005383/"
   ),
   dining(
     'sanagochi-dining-03',
@@ -155,6 +158,7 @@ export const SANAGOCHI_TRAVEL_DINING: readonly TravelRow[] = [
     "088-679-2295",
     "https://tabelog.com/tokushima/A3601/A360101/36003955/"
   )
+
 ];
 
 export const SANAGOCHI_DINING_NAME_SET: ReadonlySet<string> = new Set(

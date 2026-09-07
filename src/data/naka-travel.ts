@@ -3,6 +3,10 @@
  * Onsen / stay: omit without room or bath photo (honest 0).
  * Dining from 食べログ 那賀町 (C36368) public shop pages with FOOD dish heroes.
  * Shopping: 道の駅 pack names with place-named Commons exteriors (not bath photos).
+ * PHOTO GAPS (honest 0 — no place-named Commons / room-bath / FOOD yet):
+ * 観光: わじきラインキャンプ場, 美那川キャンプ村, 森林総合利用施設 （ファガスの森),
+ *       コテージみやこわすれ, 農産物直売所あいおい, 森林文化公園あいあいランド
+ * 宿泊/温泉/体験/商業: 0 — pack inns/onsen lack room or bath 出典; no commerce 出典.
  * Do not copy 佐那河内 / 上勝 / 勝浦 / 神山 / 上板 / 板野 / 石井 / 松茂 / 北島 / 藍住 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
@@ -49,7 +53,7 @@ export const NAKA_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(
   NAKA_SHOPPING_PACK_NAMES
 );
 
-export const NAKA_SIGHT_PINS = ['高の瀬峡平の里'] as const;
+export const NAKA_SIGHT_PINS = ['高の瀬峡平の里', '鷲敷ラインおよび氷柱観音', '剣山並びに亜寒帯植物林', '四季美谷温泉｜休業中'] as const;
 
 export const NAKA_TRAVEL_STAY: readonly TravelRow[] = [];
 
@@ -98,46 +102,11 @@ export const NAKA_TRAVEL_DINING: readonly TravelRow[] = [
     "https://tabelog.com/tokushima/A3603/A360302/36009044/"
   ),
   dining(
-    'naka-dining-02',
-    "きとうむら",
-    "徳島県那賀郡那賀町木頭出原ヨコマチ23-2",
-    "0884-68-2212",
-    "https://tabelog.com/tokushima/A3601/A360101/36006513/"
-  ),
-  dining(
     'naka-dining-03',
     "Cafe ATARI",
     "徳島県那賀郡那賀町横石字大板53-19",
     "090-7577-7624",
     "https://tabelog.com/tokushima/A3602/A360203/36009140/"
-  ),
-  dining(
-    'naka-dining-04',
-    "菩提樹",
-    "徳島県那賀郡那賀町和食郷田野89 道の駅 鷲の里",
-    "0884-62-3222",
-    "https://tabelog.com/tokushima/A3601/A360104/36004894/"
-  ),
-  dining(
-    'naka-dining-05',
-    "もみじ川温泉レストラン　湖畔",
-    "徳島県那賀郡那賀町大久保字西納野4-7 道の駅 もみじ川温泉内",
-    "0884-62-1171",
-    "https://tabelog.com/tokushima/A3602/A360203/36003100/"
-  ),
-  dining(
-    'naka-dining-06',
-    "道の駅 わじき",
-    "徳島県那賀郡那賀町中山字関ヶ原34-56",
-    "0884-62-3553",
-    "https://tabelog.com/tokushima/A3602/A360201/36005082/"
-  ),
-  dining(
-    'naka-dining-07',
-    "宮田製菓",
-    "徳島県那賀郡那賀町延野字王子48-5",
-    "0884-62-0016",
-    "https://tabelog.com/tokushima/A3602/A360203/36006500/"
   ),
   dining(
     'naka-dining-08',
@@ -154,6 +123,13 @@ export const NAKA_TRAVEL_DINING: readonly TravelRow[] = [
     "https://tabelog.com/tokushima/A3601/A360104/36000767/"
   ),
   dining(
+    'naka-dining-05',
+    "もみじ川温泉レストラン　湖畔",
+    "徳島県那賀郡那賀町大久保字西納野4-7 道の駅 もみじ川温泉内",
+    "0884-62-1171",
+    "https://tabelog.com/tokushima/A3602/A360203/36003100/"
+  ),
+  dining(
     'naka-dining-10',
     "さんが　きっちんまま",
     "徳島県那賀郡那賀町小仁宇大坪333-1",
@@ -161,18 +137,18 @@ export const NAKA_TRAVEL_DINING: readonly TravelRow[] = [
     "https://tabelog.com/tokushima/A3602/A360202/36004447/"
   ),
   dining(
-    'naka-dining-11',
-    "津田千寿苑",
-    "徳島県那賀郡那賀町土佐字南町114-1",
-    "0884-62-2128",
-    "https://tabelog.com/tokushima/A3601/A360104/36004354/"
-  ),
-  dining(
     'naka-dining-12',
     "たちばな食堂",
     "徳島県那賀郡那賀町木頭出原字シモマチ35-1",
     "0884-68-2058",
     "https://tabelog.com/tokushima/A3602/A360202/36005658/"
+  ),
+  dining(
+    'naka-dining-04',
+    "菩提樹",
+    "徳島県那賀郡那賀町和食郷田野89 道の駅 鷲の里",
+    "0884-62-3222",
+    "https://tabelog.com/tokushima/A3601/A360104/36004894/"
   ),
   dining(
     'naka-dining-13',
@@ -187,6 +163,34 @@ export const NAKA_TRAVEL_DINING: readonly TravelRow[] = [
     "徳島県那賀郡那賀町土佐字南町134-1",
     null,
     "https://tabelog.com/tokushima/A3601/A360104/36005506/"
+  ),
+  dining(
+    'naka-dining-11',
+    "津田千寿苑",
+    "徳島県那賀郡那賀町土佐字南町114-1",
+    "0884-62-2128",
+    "https://tabelog.com/tokushima/A3601/A360104/36004354/"
+  ),
+  dining(
+    'naka-dining-02',
+    "きとうむら",
+    "徳島県那賀郡那賀町木頭出原ヨコマチ23-2",
+    "0884-68-2212",
+    "https://tabelog.com/tokushima/A3601/A360101/36006513/"
+  ),
+  dining(
+    'naka-dining-06',
+    "道の駅 わじき",
+    "徳島県那賀郡那賀町中山字関ヶ原34-56",
+    "0884-62-3553",
+    "https://tabelog.com/tokushima/A3602/A360201/36005082/"
+  ),
+  dining(
+    'naka-dining-07',
+    "宮田製菓",
+    "徳島県那賀郡那賀町延野字王子48-5",
+    "0884-62-0016",
+    "https://tabelog.com/tokushima/A3602/A360203/36006500/"
   ),
   dining(
     'naka-dining-15',
@@ -222,7 +226,8 @@ export const NAKA_TRAVEL_DINING: readonly TravelRow[] = [
     "徳島県那賀郡那賀町沢谷字釜ケ谷1-1",
     "090-1578-3029",
     "https://tabelog.com/tokushima/A3603/A360301/36007461/"
-  ),
+  )
+
 ];
 
 export const NAKA_DINING_NAME_SET: ReadonlySet<string> = new Set(

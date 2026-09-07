@@ -145,6 +145,39 @@ export const NAKA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '道の駅もみじ川温泉（那賀町）',
     'Michinoeki Momijigawa Onsen, Naka Town'
   ),
+  '鷲敷ラインおよび氷柱観音': wikiPhoto(
+    'wajiki-line-naka.jpg',
+    'https://commons.wikimedia.org/wiki/File:%E9%B7%B2%E6%95%B7%E3%83%A9%E3%82%A4%E3%83%B3_-_panoramio.jpg',
+    'CC BY 3.0',
+    'https://creativecommons.org/licenses/by/3.0/',
+    'akiakane',
+    'https://web.archive.org/web/20161013084957/http://www.panoramio.com/user/2285547',
+    '2008-11-26',
+    '鷲敷ライン（那賀町）',
+    'Wajiki Line gorge, Naka Town'
+  ),
+  '剣山並びに亜寒帯植物林': wikiPhoto(
+    'tsurugi-rindo-naka.jpg',
+    'https://commons.wikimedia.org/wiki/File:%E5%89%A3%E5%B1%B1%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E6%9E%97%E9%81%93_-_Mt.Tsurugi_super_forest_road_-_panoramio_%283%29.jpg',
+    'CC BY-SA 3.0',
+    'https://creativecommons.org/licenses/by-sa/3.0/',
+    'yano@mama.akari.ne.jp',
+    'https://web.archive.org/web/20161102154126/http://www.panoramio.com/user/5198788',
+    '2014-11-02',
+    '剣山スーパー林道付近の山並み（那賀町）',
+    'Mt. Tsurugi forest-road scenery, Naka Town'
+  ),
+  '四季美谷温泉｜休業中': wikiPhoto(
+    'shikibidani-onsen-naka.jpg',
+    'https://commons.wikimedia.org/wiki/File:Shikibidani_Onsen_in_Naka,_Tokushima_prefecture,_Japan.jpg',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0/',
+    'K.F.',
+    'https://commons.wikimedia.org/wiki/User:K.F.',
+    '2014-05-10',
+    '四季美谷温泉外観（那賀町・休業中）',
+    'Shikibidani Onsen exterior (closed), Naka Town'
+  ),
   "木頭カフェ西宇森": sourcePhoto(
     'naka-36009044-dish.jpg',
     "木頭カフェ西宇森の料理写真",
