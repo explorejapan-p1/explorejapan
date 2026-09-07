@@ -55,6 +55,7 @@ import {UTAZU_TRAVEL_ACCESSED} from '@/data/utazu-travel';
 import {TONOSHO_TRAVEL_ACCESSED} from '@/data/tonosho-travel';
 import {SANUKI_TRAVEL_ACCESSED} from '@/data/sanuki-travel';
 import {HIGASHIKAGAWA_TRAVEL_ACCESSED} from '@/data/higashikagawa-travel';
+import {MIKI_TRAVEL_ACCESSED} from '@/data/miki-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1316,6 +1317,25 @@ export function MimaFacilityLookup({
                 Dining from Tabelog Higashikagawa shop pages ({HIGASHIKAGAWA_TRAVEL_ACCESSED}).
                 Onsen: Setouchi Resort Vessel Oochi large bath (official bath still; distinct from room keys).
                 Experience: Sanshu Izutsu Yashiki (Commons). Shopping/commerce: 0 without sourced photos. Thirteenth LIVE Kagawa hub.
+              </>
+            )
+
+          ) : town.slug === 'miki' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（浄土寺・虹の滝・公渕森林公園・白山神社・男井間池・池戸八幡神社・白山）。
+                宿泊は楽天トラベルの客室写真（{MIKI_TRAVEL_ACCESSED}）。
+                飲食は食べログ三木町の公開店ページ（{MIKI_TRAVEL_ACCESSED}）。
+                温泉は0件（ＨＯＴＥＬ　ＡＺはユニットバスのみ）。
+                体験はトレスタ白山アイスアリーナ（Commons）。買物・商業は出典写真が無いため0件。香川県14つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Jodo-ji, Rainbow Falls, Kinbuchi Forest Park, Shirayama Shrine, Oimaike, Ikedo Hachiman, Mount Shirayama).
+                Lodging from Rakuten Travel room photos ({MIKI_TRAVEL_ACCESSED}).
+                Dining from Tabelog Miki shop pages ({MIKI_TRAVEL_ACCESSED}).
+                Onsen: 0 (HOTEL AZ unit bath only).
+                Experience: Tresta Shirayama Ice Arena (Commons). Shopping/commerce: 0 without sourced photos. Fourteenth LIVE Kagawa hub.
               </>
             )
 

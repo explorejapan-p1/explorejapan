@@ -32,6 +32,7 @@ import {UTAZU, UTAZU_PLACE_PHOTO} from '@/data/utazu';
 import {TONOSHO, TONOSHO_PLACE_PHOTO} from '@/data/tonosho';
 import {SANUKI, SANUKI_PLACE_PHOTO} from '@/data/sanuki';
 import {HIGASHIKAGAWA, HIGASHIKAGAWA_PLACE_PHOTO} from '@/data/higashikagawa';
+import {MIKI, MIKI_PLACE_PHOTO} from '@/data/miki';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -133,6 +134,7 @@ function localityJa(slug: string): string {
   if (slug === 'tonosho') return TONOSHO.nameJa;
   if (slug === 'sanuki') return SANUKI.nameJa;
   if (slug === 'higashikagawa') return HIGASHIKAGAWA.nameJa;
+  if (slug === 'miki') return MIKI.nameJa;
   return MIMA.nameJa;
 }
 
@@ -173,6 +175,7 @@ function localityEn(slug: string): string {
   if (slug === 'tonosho') return TONOSHO.nameEn;
   if (slug === 'sanuki') return SANUKI.nameEn;
   if (slug === 'higashikagawa') return HIGASHIKAGAWA.nameEn;
+  if (slug === 'miki') return MIKI.nameEn;
   return MIMA.nameEn;
 }
 
@@ -2922,7 +2925,67 @@ export function higashikagawaGraph(locale: AppLocale) {
       },
       {
         '@type': 'ItemList',
-        name: isJa ? '東かがわ市の案内' : 'Places in Higashikagawa',
+        name: isJa ? '三木町の案内' : 'Places in Miki',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+export function mikiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kagawa/miki');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('miki');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? MIKI.nameJa : MIKI.nameEn,
+        alternateName: isJa ? MIKI.nameEn : MIKI.nameJa,
+        identifier: MIKI.jis,
+        url,
+        image: photoAbs(MIKI_PLACE_PHOTO),
+        sameAs: [MIKI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '大字氷上310番地' : '310 Hyokami',
+          addressLocality: isJa ? MIKI.nameJa : MIKI.nameEn,
+          addressRegion: isJa ? MIKI.prefectureJa : MIKI.prefectureEn,
+          postalCode: MIKI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? MIKI.prefectureJa : MIKI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? MIKI.nameJa : MIKI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? MIKI.prefectureJa : MIKI.prefectureEn, item: canonicalUrl(locale, 'kagawa')},
+          {'@type': 'ListItem', position: 3, name: isJa ? MIKI.nameJa : MIKI.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '三木町の案内' : 'Places in Miki',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

@@ -28,6 +28,7 @@ import {UTAZU_PLACE_PHOTO} from '@/data/utazu';
 import {TONOSHO_PLACE_PHOTO} from '@/data/tonosho';
 import {SANUKI_PLACE_PHOTO} from '@/data/sanuki';
 import {HIGASHIKAGAWA_PLACE_PHOTO} from '@/data/higashikagawa';
+import {MIKI_PLACE_PHOTO} from '@/data/miki';
 import {KAGAWA_MUNICIPALITIES} from '@/data/kagawa-municipalities';
 import {TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {PREFECTURES, PREFECTURE_BY_SLUG} from '@/data/prefectures';
@@ -149,7 +150,9 @@ export default async function PrefecturePage({params}: Props) {
                                               ? SANUKI_PLACE_PHOTO
                                               : m.slug === 'higashikagawa'
                                                 ? HIGASHIKAGAWA_PLACE_PHOTO
-                                            : m.slug === 'takamatsu'
+                                              : m.slug === 'miki'
+                                                ? MIKI_PLACE_PHOTO
+                                              : m.slug === 'takamatsu'
                                               ? TAKAMATSU_PLACE_PHOTO
                                               : MIMA_PLACE_PHOTO;
               const href = `${BASE_PATH}/${locale}/${pref.slug}/${m.slug}/`;

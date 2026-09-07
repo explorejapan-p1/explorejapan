@@ -303,6 +303,7 @@ import {UTAZU, UTAZU_PLACE_PHOTO, UTAZU_FACILITIES, UTAZU_EXPECTED_GEO_COUNT, UT
 import {TONOSHO, TONOSHO_PLACE_PHOTO, TONOSHO_FACILITIES, TONOSHO_EXPECTED_GEO_COUNT, TONOSHO_EXPECTED_ROW_COUNT} from './tonosho';
 import {SANUKI, SANUKI_PLACE_PHOTO, SANUKI_FACILITIES, SANUKI_EXPECTED_GEO_COUNT, SANUKI_EXPECTED_ROW_COUNT} from './sanuki';
 import {HIGASHIKAGAWA, HIGASHIKAGAWA_PLACE_PHOTO, HIGASHIKAGAWA_FACILITIES, HIGASHIKAGAWA_EXPECTED_GEO_COUNT, HIGASHIKAGAWA_EXPECTED_ROW_COUNT} from './higashikagawa';
+import {MIKI, MIKI_PLACE_PHOTO, MIKI_FACILITIES, MIKI_EXPECTED_GEO_COUNT, MIKI_EXPECTED_ROW_COUNT} from './miki';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -436,6 +437,19 @@ import {
   isHigashikagawaDiningPackRow,
   HIGASHIKAGAWA_DINING_NAME_SET
 } from './higashikagawa-travel';
+import {
+  MIKI_TRAVEL_DINING,
+  MIKI_TRAVEL_STAY,
+  MIKI_TRAVEL_SHOPPING,
+  MIKI_TRAVEL_COMMERCE,
+  MIKI_TRAVEL_ALL,
+  mikiSightPhoto,
+  mikiSourcedHook,
+  mikiTopChipForRow,
+  mikiPackRowMatchesFilter,
+  resolveMikiFilter,
+  rankMikiSeeRows
+} from './miki-travel';
 
 
 import {
@@ -1686,6 +1700,41 @@ export const HIGASHIKAGAWA_LOOKUP: LookupTown = {
   licenseSiteEn: 'City-site listing'
 };
 
+export const MIKI_LOOKUP: LookupTown = {
+  slug: 'miki',
+  prefectureSlug: 'kagawa',
+  jis: MIKI.jis,
+  nameJa: MIKI.nameJa,
+  nameEn: MIKI.nameEn,
+  heroPhoto: MIKI_PLACE_PHOTO,
+  photoCiteJa:
+    '写真は浄土寺の不動明王像。Dokudami、CC BY-SA 3.0。File:Zyoudoziɤ.jpg。',
+  photoCiteEn:
+    'Photo: Jodo-ji Fudo statue. Dokudami, CC BY-SA 3.0. File:Zyoudoziɤ.jpg.',
+  rows: MIKI_FACILITIES,
+  expectedGeo: MIKI_EXPECTED_GEO_COUNT,
+  expectedRows: MIKI_EXPECTED_ROW_COUNT,
+  travelDining: MIKI_TRAVEL_DINING,
+  travelStay: MIKI_TRAVEL_STAY,
+  travelShopping: MIKI_TRAVEL_SHOPPING,
+  travelCommerce: MIKI_TRAVEL_COMMERCE,
+  travelAll: MIKI_TRAVEL_ALL,
+  coverageJa:
+    '三木町（JIS 37341）観光8・宿泊1・飲食16・体験1（出典写真がある施設のみ）。温泉・買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載。AZはユニットバスのみのため温泉0）。オープンデータ凍結パックは未掲載。香川県14つ目のLIVEハブ。',
+  coverageEn:
+    'Miki (JIS 37341), 8 tourism + 1 stay + 16 dining + 1 experience with sourced photos. Onsen, shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished (AZ unit bath only → onsen 0). No frozen open-data pack. Fourteenth LIVE Kagawa hub.',
+  mapLabelJa: '三木町の出典座標9件',
+  mapLabelEn: '9 sourced coordinates in Miki',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia等出典座標9件（accessed 2026-09-07）。',
+  mapCitePackEn: 'Points: 9 sourced coordinates for town/official facilities (accessed 2026-09-07).',
+  licenseNoteJa:
+    '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are town-site listings, facts from town.miki.lg.jp, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
 export const TONOSHO_LOOKUP: LookupTown = {
   slug: 'tonosho',
   prefectureSlug: 'kagawa',
@@ -1863,7 +1912,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   utazu: UTAZU_LOOKUP,
   tonosho: TONOSHO_LOOKUP,
   sanuki: SANUKI_LOOKUP,
-  higashikagawa: HIGASHIKAGAWA_LOOKUP
+  higashikagawa: HIGASHIKAGAWA_LOOKUP,
+  miki: MIKI_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

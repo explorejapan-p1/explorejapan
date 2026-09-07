@@ -392,6 +392,17 @@ import {
   rankHigashikagawaSeeRows,
   resolveHigashikagawaFilter
 } from './higashikagawa-travel';
+import {
+  isMikiExperiencePackRow,
+  isMikiOnsenPackRow,
+  isMikiStayPackRow,
+  mikiPackRowMatchesFilter,
+  mikiSightPhoto,
+  mikiSourcedHook,
+  mikiTopChipForRow,
+  rankMikiSeeRows,
+  resolveMikiFilter
+} from './miki-travel';
 
 
 
@@ -914,6 +925,19 @@ const HIGASHIKAGAWA_HELPERS: LookupHelpers = {
   resolveFilter: resolveHigashikagawaFilter
 };
 
+const MIKI_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isMikiOnsenPackRow,
+  isExperiencePackRow: isMikiExperiencePackRow,
+  isStayPackRow: isMikiStayPackRow,
+  packRowMatchesFilter: mikiPackRowMatchesFilter,
+  rankSeeRows: rankMikiSeeRows,
+  sightPhoto: mikiSightPhoto,
+  sourcedHook: mikiSourcedHook,
+  topChipForRow: mikiTopChipForRow,
+  resolveFilter: resolveMikiFilter
+};
+
+
 const SANUKI_HELPERS: LookupHelpers = {
   isOnsenPackRow: isSanukiOnsenPackRow,
   isExperiencePackRow: isSanukiExperiencePackRow,
@@ -964,5 +988,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'tonosho') return TONOSHO_HELPERS;
   if (slug === 'sanuki') return SANUKI_HELPERS;
   if (slug === 'higashikagawa') return HIGASHIKAGAWA_HELPERS;
+  if (slug === 'miki') return MIKI_HELPERS;
   return MIMA_HELPERS;
 }
