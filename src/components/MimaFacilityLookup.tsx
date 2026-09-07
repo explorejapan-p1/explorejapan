@@ -48,6 +48,7 @@ import {MARUGAME_TRAVEL_ACCESSED} from '@/data/marugame-travel';
 import {KANONJI_TRAVEL_ACCESSED} from '@/data/kanonji-travel';
 import {SAKAIDE_TRAVEL_ACCESSED} from '@/data/sakaide-travel'
 import {NAOSHIMA_TRAVEL_ACCESSED} from '@/data/naoshima-travel';
+import {SHODOSHIMA_TRAVEL_ACCESSED} from '@/data/shodoshima-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1034,6 +1035,26 @@ export function MimaFacilityLookup({
                 Dining from Tabelog Naoshima Town shop pages ({NAOSHIMA_TRAVEL_ACCESSED}).
                 Onsen: Tsutsuji-so private bath still (distinct from stay room keys). Experience: Naoshima Bath.
                 Shopping and commerce stay at 0 without sourced photos. Sixth LIVE Kagawa hub.
+              </>
+            )
+
+
+) : town.slug === 'shodoshima' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（オリーブ公園・寒霞渓・二十四の瞳映画村・マルキン醤油記念館・草壁港・福田港）。土庄町スポットは含めない。
+                宿泊は楽天トラベルの客室写真（{SHODOSHIMA_TRAVEL_ACCESSED}）。
+                飲食は食べログ小豆島町の公開店ページ（{SHODOSHIMA_TRAVEL_ACCESSED}）。
+                温泉は国民宿舎・ベイリゾートの大浴場（公式風呂写真・客室キーと分離）。体験は寒霞渓ロープウェイ。
+                買物・商業は出典写真が無いため0件。香川県7つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Olive Park, Kankakei, Twenty-Four Eyes Movie Village, Marukin Soy Sauce Museum, Kusakabe Port, Fukuda Port). Tonosho-only spots excluded.
+                Lodging from Rakuten Travel room photos ({SHODOSHIMA_TRAVEL_ACCESSED}).
+                Dining from Tabelog Shodoshima Town shop pages ({SHODOSHIMA_TRAVEL_ACCESSED}).
+                Onsen: Kokuminshukusha and Bay Resort bath stills (distinct from stay room keys). Experience: Kankakei Ropeway.
+                Shopping and commerce stay at 0 without sourced photos. Seventh LIVE Kagawa hub.
               </>
             )
 

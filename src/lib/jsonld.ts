@@ -25,6 +25,7 @@ import {MARUGAME, MARUGAME_PLACE_PHOTO} from '@/data/marugame';
 import {KANONJI, KANONJI_PLACE_PHOTO} from '@/data/kanonji';
 import {SAKAIDE, SAKAIDE_PLACE_PHOTO} from '@/data/sakaide';
 import {NAOSHIMA, NAOSHIMA_PLACE_PHOTO} from '@/data/naoshima';
+import {SHODOSHIMA, SHODOSHIMA_PLACE_PHOTO} from '@/data/shodoshima';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -119,6 +120,7 @@ function localityJa(slug: string): string {
   if (slug === 'kanonji') return KANONJI.nameJa;
   if (slug === 'sakaide') return SAKAIDE.nameJa;
   if (slug === 'naoshima') return NAOSHIMA.nameJa;
+  if (slug === 'shodoshima') return SHODOSHIMA.nameJa;
   return MIMA.nameJa;
 }
 
@@ -152,6 +154,7 @@ function localityEn(slug: string): string {
   if (slug === 'kanonji') return KANONJI.nameEn;
   if (slug === 'sakaide') return SAKAIDE.nameEn;
   if (slug === 'naoshima') return NAOSHIMA.nameEn;
+  if (slug === 'shodoshima') return SHODOSHIMA.nameEn;
   return MIMA.nameEn;
 }
 
@@ -2492,3 +2495,62 @@ export function naoshimaGraph(locale: AppLocale) {
   };
 }
 
+export function shodoshimaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kagawa/shodoshima');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('shodoshima');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? SHODOSHIMA.nameJa : SHODOSHIMA.nameEn,
+        alternateName: isJa ? SHODOSHIMA.nameEn : SHODOSHIMA.nameJa,
+        identifier: SHODOSHIMA.jis,
+        url,
+        image: photoAbs(SHODOSHIMA_PLACE_PHOTO),
+        sameAs: [SHODOSHIMA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '片城甲44番地95' : 'Katashiro Ko 44-95',
+          addressLocality: isJa ? SHODOSHIMA.nameJa : SHODOSHIMA.nameEn,
+          addressRegion: isJa ? SHODOSHIMA.prefectureJa : SHODOSHIMA.prefectureEn,
+          postalCode: SHODOSHIMA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? SHODOSHIMA.prefectureJa : SHODOSHIMA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? SHODOSHIMA.nameJa : SHODOSHIMA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? SHODOSHIMA.prefectureJa : SHODOSHIMA.prefectureEn, item: canonicalUrl(locale, 'kagawa')},
+          {'@type': 'ListItem', position: 3, name: isJa ? SHODOSHIMA.nameJa : SHODOSHIMA.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '小豆島町の案内' : 'Places in Shodoshima Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}

@@ -315,6 +315,17 @@ import {
   rankNaoshimaSeeRows,
   resolveNaoshimaFilter
 } from './naoshima-travel';
+import {
+  isShodoshimaOnsenPackRow,
+  isShodoshimaExperiencePackRow,
+  isShodoshimaStayPackRow,
+  shodoshimaPackRowMatchesFilter,
+  shodoshimaSightPhoto,
+  shodoshimaSourcedHook,
+  shodoshimaTopChipForRow,
+  rankShodoshimaSeeRows,
+  resolveShodoshimaFilter
+} from './shodoshima-travel';
 
 
 
@@ -765,6 +776,18 @@ const NAOSHIMA_HELPERS: LookupHelpers = {
 
 
 
+const SHODOSHIMA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isShodoshimaOnsenPackRow,
+  isExperiencePackRow: isShodoshimaExperiencePackRow,
+  isStayPackRow: isShodoshimaStayPackRow,
+  packRowMatchesFilter: shodoshimaPackRowMatchesFilter,
+  rankSeeRows: rankShodoshimaSeeRows,
+  sightPhoto: shodoshimaSightPhoto,
+  sourcedHook: shodoshimaSourcedHook,
+  topChipForRow: shodoshimaTopChipForRow,
+  resolveFilter: resolveShodoshimaFilter
+};
+
 export function townHelpers(slug: ReadySlug): LookupHelpers {
 
   if (slug === 'tsurugi') return TSURUGI_HELPERS;
@@ -796,5 +819,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'kanonji') return KANONJI_HELPERS;
   if (slug === 'sakaide') return SAKAIDE_HELPERS;
   if (slug === 'naoshima') return NAOSHIMA_HELPERS;
+  if (slug === 'shodoshima') return SHODOSHIMA_HELPERS;
   return MIMA_HELPERS;
 }
