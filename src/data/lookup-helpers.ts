@@ -625,6 +625,17 @@ import {
   geiseiSourcedHook,
   geiseiTopChipForRow
 } from './geisei-travel';
+import {
+  isKitagawaOnsenPackRow,
+  isKitagawaExperiencePackRow,
+  isKitagawaStayPackRow,
+  kitagawaPackRowMatchesFilter,
+  rankKitagawaSeeRows,
+  kitagawaSightPhoto,
+  kitagawaSourcedHook,
+  kitagawaTopChipForRow,
+  resolveKitagawaFilter
+} from './kitagawa-travel';
 
 
 
@@ -1247,6 +1258,19 @@ const GEISEI_HELPERS: LookupHelpers = {
   resolveFilter: resolveGeiseiFilter
 };
 
+
+const KITAGAWA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isKitagawaOnsenPackRow,
+  isExperiencePackRow: isKitagawaExperiencePackRow,
+  isStayPackRow: isKitagawaStayPackRow,
+  packRowMatchesFilter: kitagawaPackRowMatchesFilter,
+  rankSeeRows: rankKitagawaSeeRows,
+  sightPhoto: kitagawaSightPhoto,
+  sourcedHook: kitagawaSourcedHook,
+  topChipForRow: kitagawaTopChipForRow,
+  resolveFilter: resolveKitagawaFilter
+};
+
 const YASUDA_HELPERS: LookupHelpers = {
   isOnsenPackRow: isYasudaOnsenPackRow,
   isExperiencePackRow: isYasudaExperiencePackRow,
@@ -1491,5 +1515,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'nahari') return NAHARI_HELPERS;
   if (slug === 'yasuda') return YASUDA_HELPERS;
   if (slug === 'geisei') return GEISEI_HELPERS;
+  if (slug === 'kitagawa') return KITAGAWA_HELPERS;
   return MIMA_HELPERS;
 }

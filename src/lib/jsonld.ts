@@ -53,6 +53,7 @@ import {TOYO, TOYO_PLACE_PHOTO} from '@/data/toyo';
 import {NAHARI, NAHARI_PLACE_PHOTO} from '@/data/nahari';
 import {YASUDA, YASUDA_PLACE_PHOTO} from '@/data/yasuda';
 import {GEISEI, GEISEI_PLACE_PHOTO} from '@/data/geisei';
+import {KITAGAWA, KITAGAWA_PLACE_PHOTO} from '@/data/kitagawa';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -3951,6 +3952,67 @@ export function geiseiGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '芸西村の案内' : 'Places in Geisei Village',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+
+export function kitagawaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/kitagawa');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('kitagawa');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? KITAGAWA.nameJa : KITAGAWA.nameEn,
+        alternateName: isJa ? KITAGAWA.nameEn : KITAGAWA.nameJa,
+        identifier: KITAGAWA.jis,
+        url,
+        image: photoAbs(KITAGAWA_PLACE_PHOTO),
+        sameAs: [KITAGAWA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '野友甲1530番地' : '1530 Notomo-ko',
+          addressLocality: isJa ? KITAGAWA.nameJa : KITAGAWA.nameEn,
+          addressRegion: isJa ? KITAGAWA.prefectureJa : KITAGAWA.prefectureEn,
+          postalCode: KITAGAWA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? KITAGAWA.prefectureJa : KITAGAWA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? KITAGAWA.nameJa : KITAGAWA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? KITAGAWA.prefectureJa : KITAGAWA.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? KITAGAWA.nameJa : KITAGAWA.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '北川村の案内' : 'Places in Kitagawa Village',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

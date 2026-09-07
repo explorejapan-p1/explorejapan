@@ -76,6 +76,7 @@ import {TOYO_TRAVEL_ACCESSED} from '@/data/toyo-travel';
 import {NAHARI_TRAVEL_ACCESSED} from '@/data/nahari-travel';
 import {YASUDA_TRAVEL_ACCESSED} from '@/data/yasuda-travel';
 import {GEISEI_TRAVEL_ACCESSED} from '@/data/geisei-travel';
+import {KITAGAWA_TRAVEL_ACCESSED} from '@/data/kitagawa-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1468,6 +1469,22 @@ export function MimaFacilityLookup({
                 Lodging from Rakuten Travel room photos ({MUROTO_TRAVEL_ACCESSED}).
                 Dining from Tabelog Muroto shop pages ({MUROTO_TRAVEL_ACCESSED}).
                 Onsen: 0 (room-still stay only; no attributable bath keys). Experience: Muroto Geopark Center (Commons). Shopping/commerce: 0. Seventh LIVE Kochi hub.
+              </>
+            )
+          ) : town.slug === 'kitagawa' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（モネの庭・中岡慎太郎館・中岡慎太郎生家・北川村役場・魚梁瀬ダム）。
+                宿泊は楽天トラベル北川村温泉ゆずの宿の客室和洋写真（{KITAGAWA_TRAVEL_ACCESSED}）。
+                飲食は食べログ北川村の公開店ページ（{KITAGAWA_TRAVEL_ACCESSED}）。
+                温泉は同施設大浴場1件（客室写真の宿とは別キー・stay≠onsen）。体験は0件。買物・商業は0件。高知県18つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Monet's Garden, Nakaoka Shintaro Museum, Birthplace, Kitagawa Village Hall, Yanase Dam).
+                Lodging: Kitagawa Onsen Yuzu-no-Yado Rakuten Japanese-Western room photo ({KITAGAWA_TRAVEL_ACCESSED}).
+                Dining from Tabelog Kitagawa shop pages ({KITAGAWA_TRAVEL_ACCESSED}).
+                Onsen: 1 (same facility large bath; distinct mediaInfo key; stay≠onsen). Experience: 0. Shopping/commerce: 0. Eighteenth LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'geisei' ? (

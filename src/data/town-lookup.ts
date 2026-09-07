@@ -324,6 +324,7 @@ import {TOYO, TOYO_PLACE_PHOTO, TOYO_FACILITIES, TOYO_EXPECTED_GEO_COUNT, TOYO_E
 import {NAHARI, NAHARI_PLACE_PHOTO, NAHARI_FACILITIES, NAHARI_EXPECTED_GEO_COUNT, NAHARI_EXPECTED_ROW_COUNT} from './nahari';
 import {YASUDA, YASUDA_PLACE_PHOTO, YASUDA_FACILITIES, YASUDA_EXPECTED_GEO_COUNT, YASUDA_EXPECTED_ROW_COUNT} from './yasuda';
 import {GEISEI, GEISEI_PLACE_PHOTO, GEISEI_FACILITIES, GEISEI_EXPECTED_GEO_COUNT, GEISEI_EXPECTED_ROW_COUNT} from './geisei';
+import {KITAGAWA, KITAGAWA_PLACE_PHOTO, KITAGAWA_FACILITIES, KITAGAWA_EXPECTED_GEO_COUNT, KITAGAWA_EXPECTED_ROW_COUNT} from './kitagawa';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -640,6 +641,14 @@ import {
   GEISEI_TRAVEL_COMMERCE,
   GEISEI_TRAVEL_ALL
 } from './geisei-travel';
+import {
+  KITAGAWA_TRAVEL_DINING,
+  KITAGAWA_TRAVEL_STAY,
+  KITAGAWA_TRAVEL_SHOPPING,
+  KITAGAWA_TRAVEL_COMMERCE,
+  KITAGAWA_TRAVEL_ALL
+} from './kitagawa-travel';
+
 
 
 
@@ -2349,6 +2358,38 @@ export const GEISEI_LOOKUP: LookupTown = {
   licenseSiteEn: 'Village-site listing'
 };
 
+
+export const KITAGAWA_LOOKUP: LookupTown = {
+  slug: 'kitagawa',
+  prefectureSlug: 'kochi',
+  jis: KITAGAWA.jis,
+  nameJa: KITAGAWA.nameJa,
+  nameEn: KITAGAWA.nameEn,
+  heroPhoto: KITAGAWA_PLACE_PHOTO,
+  photoCiteJa: '写真は北川村モネの庭マルモッタンの水の庭。Earthboud1960、2016-07-20、CC BY-SA 4.0。File:Monet-Marumottan-mizu02.jpg。',
+  photoCiteEn: 'Photo: Monet\'s Garden Marmottan water garden. Earthboud1960, 20 Jul 2016, CC BY-SA 4.0. File:Monet-Marumottan-mizu02.jpg.',
+  rows: KITAGAWA_FACILITIES,
+  expectedGeo: KITAGAWA_EXPECTED_GEO_COUNT,
+  expectedRows: KITAGAWA_EXPECTED_ROW_COUNT,
+  travelDining: KITAGAWA_TRAVEL_DINING,
+  travelStay: KITAGAWA_TRAVEL_STAY,
+  travelShopping: KITAGAWA_TRAVEL_SHOPPING,
+  travelCommerce: KITAGAWA_TRAVEL_COMMERCE,
+  travelAll: KITAGAWA_TRAVEL_ALL,
+  coverageJa:
+    '北川村（JIS 39305）観光5・宿泊1・飲食3・温泉1・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県18つ目のLIVEハブ。',
+  coverageEn:
+    'Kitagawa Village (JIS 39305), 5 tourism + 1 stay + 3 dining + 1 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Eighteenth LIVE Kochi hub.',
+  mapLabelJa: '北川村の出典座標6件',
+  mapLabelEn: '6 sourced coordinates in Kitagawa Village',
+  mapCitePackJa: '点は村・公式ページ掲載施設のWikipedia/Commons/楽天等出典座標6件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 6 sourced coordinates for village/official facilities (accessed 2026-09-08).',
+  licenseNoteJa: '行のライセンスは村公式・公式観光サイト掲載情報。村ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are village-site listings, facts from kitagawamura.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '村公式サイト掲載情報',
+  licenseSiteEn: 'Village-site listing'
+};
+
 export const NAHARI_LOOKUP: LookupTown = {
   slug: 'nahari',
   prefectureSlug: 'kochi',
@@ -2783,7 +2824,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   toyo: TOYO_LOOKUP,
   nahari: NAHARI_LOOKUP,
   yasuda: YASUDA_LOOKUP,
-  geisei: GEISEI_LOOKUP
+  geisei: GEISEI_LOOKUP,
+  kitagawa: KITAGAWA_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
