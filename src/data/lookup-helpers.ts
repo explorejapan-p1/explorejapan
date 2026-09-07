@@ -504,6 +504,17 @@ import {
   rankAkiSeeRows,
   resolveAkiFilter
 } from './aki-travel';
+import {
+  murotoPackRowMatchesFilter,
+  murotoSightPhoto,
+  murotoSourcedHook,
+  murotoTopChipForRow,
+  isMurotoExperiencePackRow,
+  isMurotoOnsenPackRow,
+  isMurotoStayPackRow,
+  rankMurotoSeeRows,
+  resolveMurotoFilter
+} from './muroto-travel';
 
 
 
@@ -1080,6 +1091,19 @@ const MANNO_HELPERS: LookupHelpers = {
 
 
 
+
+const MUROTO_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isMurotoOnsenPackRow,
+  isExperiencePackRow: isMurotoExperiencePackRow,
+  isStayPackRow: isMurotoStayPackRow,
+  packRowMatchesFilter: murotoPackRowMatchesFilter,
+  rankSeeRows: rankMurotoSeeRows,
+  sightPhoto: murotoSightPhoto,
+  sourcedHook: murotoSourcedHook,
+  topChipForRow: murotoTopChipForRow,
+  resolveFilter: resolveMurotoFilter
+};
+
 const AKI_HELPERS: LookupHelpers = {
   isOnsenPackRow: isAkiOnsenPackRow,
   isExperiencePackRow: isAkiExperiencePackRow,
@@ -1217,5 +1241,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'kami') return KAMI_HELPERS;
   if (slug === 'ino') return INO_HELPERS;
   if (slug === 'aki') return AKI_HELPERS;
+  if (slug === 'muroto') return MUROTO_HELPERS;
   return MIMA_HELPERS;
 }

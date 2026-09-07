@@ -42,6 +42,7 @@ import {KONAN, KONAN_PLACE_PHOTO} from '@/data/konan';
 import {KAMI, KAMI_PLACE_PHOTO} from '@/data/kami';
 import {INO, INO_PLACE_PHOTO} from '@/data/ino';
 import {AKI, AKI_PLACE_PHOTO} from '@/data/aki';
+import {MUROTO, MUROTO_PLACE_PHOTO} from '@/data/muroto';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -153,6 +154,7 @@ function localityJa(slug: string): string {
   if (slug === 'kami') return KAMI.nameJa;
   if (slug === 'ino') return INO.nameJa;
   if (slug === 'aki') return AKI.nameJa;
+  if (slug === 'muroto') return MUROTO.nameJa;
   return MIMA.nameJa;
 }
 
@@ -203,6 +205,7 @@ function localityEn(slug: string): string {
   if (slug === 'kami') return KAMI.nameEn;
   if (slug === 'ino') return INO.nameEn;
   if (slug === 'aki') return AKI.nameEn;
+  if (slug === 'muroto') return MUROTO.nameEn;
   return MIMA.nameEn;
 }
 
@@ -3564,3 +3567,62 @@ export function akiGraph(locale: AppLocale) {
   };
 }
 
+export function murotoGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/muroto');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('muroto');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? MUROTO.nameJa : MUROTO.nameEn,
+        alternateName: isJa ? MUROTO.nameEn : MUROTO.nameJa,
+        identifier: MUROTO.jis,
+        url,
+        image: photoAbs(MUROTO_PLACE_PHOTO),
+        sameAs: [MUROTO.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '浮津25番地1' : '25-1 Ukitsu',
+          addressLocality: isJa ? MUROTO.nameJa : MUROTO.nameEn,
+          addressRegion: isJa ? MUROTO.prefectureJa : MUROTO.prefectureEn,
+          postalCode: MUROTO.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? MUROTO.prefectureJa : MUROTO.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? MUROTO.nameJa : MUROTO.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? MUROTO.prefectureJa : MUROTO.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? MUROTO.nameJa : MUROTO.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '室戸市の案内' : 'Places in Muroto City',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}

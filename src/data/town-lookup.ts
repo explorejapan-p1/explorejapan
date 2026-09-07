@@ -313,6 +313,7 @@ import {KONAN, KONAN_PLACE_PHOTO, KONAN_FACILITIES, KONAN_EXPECTED_GEO_COUNT, KO
 import {KAMI, KAMI_PLACE_PHOTO, KAMI_FACILITIES, KAMI_EXPECTED_GEO_COUNT, KAMI_EXPECTED_ROW_COUNT} from './kami';
 import {INO, INO_PLACE_PHOTO, INO_FACILITIES, INO_EXPECTED_GEO_COUNT, INO_EXPECTED_ROW_COUNT} from './ino';
 import {AKI, AKI_PLACE_PHOTO, AKI_FACILITIES, AKI_EXPECTED_GEO_COUNT, AKI_EXPECTED_ROW_COUNT} from './aki';
+import {MUROTO, MUROTO_PLACE_PHOTO, MUROTO_FACILITIES, MUROTO_EXPECTED_GEO_COUNT, MUROTO_EXPECTED_ROW_COUNT} from './muroto';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -552,6 +553,13 @@ import {
   AKI_TRAVEL_COMMERCE,
   AKI_TRAVEL_ALL,
 } from './aki-travel';
+import {
+  MUROTO_TRAVEL_DINING,
+  MUROTO_TRAVEL_STAY,
+  MUROTO_TRAVEL_SHOPPING,
+  MUROTO_TRAVEL_COMMERCE,
+  MUROTO_TRAVEL_ALL,
+} from './muroto-travel';
 
 
 
@@ -1998,6 +2006,41 @@ export const AKI_LOOKUP: LookupTown = {
 };
 
 
+
+export const MUROTO_LOOKUP: LookupTown = {
+  slug: 'muroto',
+  prefectureSlug: 'kochi',
+  jis: MUROTO.jis,
+  nameJa: MUROTO.nameJa,
+  nameEn: MUROTO.nameEn,
+  heroPhoto: MUROTO_PLACE_PHOTO,
+  photoCiteJa: '写真は室戸岬。Motokoka、2010-09-26、CC BY-SA 4.0。File:Cape_Muroto,_Muroto_city_02.jpg。',
+  photoCiteEn: 'Photo: Cape Muroto. Motokoka, 26 Sep 2010, CC BY-SA 4.0. File:Cape_Muroto,_Muroto_city_02.jpg.',
+  rows: MUROTO_FACILITIES,
+  expectedGeo: MUROTO_EXPECTED_GEO_COUNT,
+  expectedRows: MUROTO_EXPECTED_ROW_COUNT,
+  travelDining: MUROTO_TRAVEL_DINING,
+  travelStay: MUROTO_TRAVEL_STAY,
+  travelShopping: MUROTO_TRAVEL_SHOPPING,
+  travelCommerce: MUROTO_TRAVEL_COMMERCE,
+  travelAll: MUROTO_TRAVEL_ALL,
+  coverageJa:
+    '室戸市（JIS 39202）観光6・宿泊1・飲食16・体験1（出典写真がある施設のみ）。温泉・買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載。客室写真の宿のみで大浴場出典キー無しのため温泉0）。オープンデータ凍結パックは未掲載。高知県7つ目のLIVEハブ。',
+  coverageEn:
+    'Muroto City (JIS 39202), 6 tourism + 1 stay + 16 dining + 1 experience with sourced photos. Onsen, shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished (room-still stay only → onsen 0). No frozen open-data pack. Seventh LIVE Kochi hub.',
+  mapLabelJa: '室戸市の出典座標7件',
+  mapLabelEn: '7 sourced coordinates in Muroto City',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia/Commons等出典座標7件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 7 sourced coordinates for city/official facilities (accessed 2026-09-08).',
+  licenseNoteJa:
+    '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.muroto.kochi.jp, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
+
 export const KAMI_LOOKUP: LookupTown = {
   slug: 'kami',
   prefectureSlug: 'kochi',
@@ -2322,7 +2365,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   konan: KONAN_LOOKUP,
   kami: KAMI_LOOKUP,
   ino: INO_LOOKUP,
-  aki: AKI_LOOKUP
+  aki: AKI_LOOKUP,
+  muroto: MUROTO_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

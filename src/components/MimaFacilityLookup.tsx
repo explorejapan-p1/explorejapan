@@ -65,6 +65,7 @@ import {KONAN_TRAVEL_ACCESSED} from '@/data/konan-travel';
 import {KAMI_TRAVEL_ACCESSED} from '@/data/kami-travel';
 import {INO_TRAVEL_ACCESSED} from '@/data/ino-travel';
 import {AKI_TRAVEL_ACCESSED} from '@/data/aki-travel';
+import {MUROTO_TRAVEL_ACCESSED} from '@/data/muroto-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1442,7 +1443,26 @@ export function MimaFacilityLookup({
 
           
           
-          ) : town.slug === 'aki' ? (
+          
+          ) : town.slug === 'muroto' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（室戸岬・室戸岬灯台・むろと廃校水族館・金剛頂寺・最御崎寺・御厨人窟）。
+                宿泊は楽天トラベルの客室写真（{MUROTO_TRAVEL_ACCESSED}）。
+                飲食は食べログ室戸市の公開店ページ（{MUROTO_TRAVEL_ACCESSED}）。
+                温泉は0件（客室写真の宿のみ・大浴場出典キー無し）。体験は室戸世界ジオパークセンター（Commons）。買物・商業は0件。高知県7つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Cape Muroto, lighthouse, schoolhouse aquarium, Kongochō-ji, Hotsumisaki-ji, Mikurodo).
+                Lodging from Rakuten Travel room photos ({MUROTO_TRAVEL_ACCESSED}).
+                Dining from Tabelog Muroto shop pages ({MUROTO_TRAVEL_ACCESSED}).
+                Onsen: 0 (room-still stay only; no attributable bath keys). Experience: Muroto Geopark Center (Commons). Shopping/commerce: 0. Seventh LIVE Kochi hub.
+              </>
+            )
+
+
+) : town.slug === 'aki' ? (
             locale === 'ja' ? (
               <>
                 観光は出典写真がある施設のみ（野良時計・安芸城跡・伊尾木洞・岩崎弥太郎生家・安芸駅・安芸市立歴史民俗資料館）。
