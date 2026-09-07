@@ -1,6 +1,7 @@
 /**
  * Komatsushima City travel layer. No frozen pack.
- * Pass 1: empty dining. Pass 2 may add Tabelog FOOD dish photos.
+ * Dining from 食べログ 小松島市 (C36203) public shop pages. FOOD dish photos required.
+ * Stay / onsen / experience / shopping / commerce: honest 0 (no room/bath/view remaps).
  * Do not invent pack dining. Do not copy 鳴門 / 徳島市 / 阿南 / 藍住 TRAVEL_* rows or photos.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
@@ -37,7 +38,202 @@ export const KOMATSUSHIMA_SIGHT_PINS = [
 ] as const;
 
 export const KOMATSUSHIMA_TRAVEL_STAY: readonly TravelRow[] = [];
-export const KOMATSUSHIMA_TRAVEL_DINING: readonly TravelRow[] = [];
+
+function dining(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'dining',
+    address,
+    phone,
+    source_url,
+    accessed: KOMATSUSHIMA_TRAVEL_ACCESSED
+  };
+}
+
+export const KOMATSUSHIMA_TRAVEL_DINING: readonly TravelRow[] = [
+  dining(
+    'komatsushima-dining-01',
+    '岡本中華 小松島本店',
+    "徳島県小松島市中田町字奥林60-1",
+    "0885-32-0653",
+    "https://tabelog.com/tokushima/A3601/A360103/36000030/"
+  ),
+  dining(
+    'komatsushima-dining-02',
+    '讃岐うどん しろちゃん',
+    "徳島県小松島市小松島町字新港33-7",
+    "0885-38-6422",
+    "https://tabelog.com/tokushima/A3601/A360103/36007302/"
+  ),
+  dining(
+    'komatsushima-dining-03',
+    '恵比須丸',
+    "徳島県小松島市大林町森ノ本6-1",
+    "0885-37-0581",
+    "https://tabelog.com/tokushima/A3601/A360103/36000370/"
+  ),
+  dining(
+    'komatsushima-dining-04',
+    '中華そば猪虎',
+    "徳島県小松島市横須町8-52",
+    "0885-33-0839",
+    "https://tabelog.com/tokushima/A3601/A360103/36006427/"
+  ),
+  dining(
+    'komatsushima-dining-05',
+    '松本中華そば店',
+    "徳島県小松島市小松島町馬場ノ本71",
+    "0885-32-1355",
+    "https://tabelog.com/tokushima/A3601/A360103/36002606/"
+  ),
+  dining(
+    'komatsushima-dining-06',
+    '七ふくうどん',
+    "徳島県小松島市横須町16-12",
+    "050-5594-0547",
+    "https://tabelog.com/tokushima/A3601/A360103/36001374/"
+  ),
+  dining(
+    'komatsushima-dining-07',
+    'おひるごはん&おさけごはん MOG食堂',
+    "徳島県小松島市小松島町字井利ノ口43-1",
+    "0885-39-0855",
+    "https://tabelog.com/tokushima/A3601/A360103/36007576/"
+  ),
+  dining(
+    'komatsushima-dining-08',
+    'セルフうどん すずめ',
+    "徳島県小松島市中田町内開8-1第一多田ビル１Ｆ",
+    "0885-33-3837",
+    "https://tabelog.com/tokushima/A3601/A360103/36003888/"
+  ),
+  dining(
+    'komatsushima-dining-09',
+    'いっすんぼうし',
+    "徳島県小松島市江田町敷地前78-4",
+    "088-669-3978",
+    "https://tabelog.com/tokushima/A3601/A360103/36001217/"
+  ),
+  dining(
+    'komatsushima-dining-10',
+    '田んぼと畑のレストラン あいさいキッチン',
+    "徳島県小松島市立江町炭屋ヶ谷47-3みはらしの丘あいさい広場",
+    "0885-38-0112",
+    "https://tabelog.com/tokushima/A3601/A360103/36007496/"
+  ),
+  dining(
+    'komatsushima-dining-11',
+    '津久司蒲鉾',
+    "徳島県小松島市南小松島町2-34",
+    "0885-33-2345",
+    "https://tabelog.com/tokushima/A3601/A360103/36004802/"
+  ),
+  dining(
+    'komatsushima-dining-12',
+    '谷ちくわ商店',
+    "徳島県小松島市横須町3-59",
+    "08853-2-0867",
+    "https://tabelog.com/tokushima/A3601/A360103/36000581/"
+  ),
+  dining(
+    'komatsushima-dining-13',
+    '和食家 てんすい',
+    "徳島県小松島市中田町奥林60-1",
+    "0885-32-8680",
+    "https://tabelog.com/tokushima/A3601/A360103/36002491/"
+  ),
+  dining(
+    'komatsushima-dining-14',
+    '幸蘭',
+    "徳島県小松島市金磯町9-50",
+    "0885-33-2147",
+    "https://tabelog.com/tokushima/A3601/A360103/36000956/"
+  ),
+  dining(
+    'komatsushima-dining-15',
+    'うどんや　どんな',
+    "徳島県小松島市中田町字内開4番地11",
+    "0885-38-6568",
+    "https://tabelog.com/tokushima/A3601/A360103/36004169/"
+  ),
+  dining(
+    'komatsushima-dining-16',
+    '潮音',
+    "徳島県小松島市芝生町狭間10-1",
+    "080-8080-9601",
+    "https://tabelog.com/tokushima/A3601/A360103/36008502/"
+  ),
+  dining(
+    'komatsushima-dining-17',
+    'ゆ～ちゃん',
+    "徳島県小松島市芝生町字宮ノ前28-1",
+    "088-533-3385",
+    "https://tabelog.com/tokushima/A3601/A360103/36004798/"
+  ),
+  dining(
+    'komatsushima-dining-18',
+    'まるか',
+    "徳島県小松島市小松島町字新港29-4",
+    "090-7575-3725",
+    "https://tabelog.com/tokushima/A3601/A360103/36004972/"
+  ),
+  dining(
+    'komatsushima-dining-19',
+    '赤石飯店',
+    "徳島県小松島市赤石町3-43",
+    "0885-38-1552",
+    "https://tabelog.com/tokushima/A3601/A360103/36001584/"
+  ),
+  dining(
+    'komatsushima-dining-20',
+    'めん処 玉好 小松島本店',
+    "徳島県小松島市中田町内開10-7",
+    "0885-32-7016",
+    "https://tabelog.com/tokushima/A3601/A360103/36000265/"
+  ),
+  dining(
+    'komatsushima-dining-21',
+    'たの久',
+    "徳島県小松島市神田瀬町角田13-2",
+    "0885-33-3591",
+    "https://tabelog.com/tokushima/A3601/A360103/36001329/"
+  ),
+  dining(
+    'komatsushima-dining-22',
+    '炭火焼鳥とりすけ',
+    "徳島県小松島市神田瀬町12-27",
+    "0885-32-1709",
+    "https://tabelog.com/tokushima/A3601/A360103/36006988/"
+  ),
+  dining(
+    'komatsushima-dining-23',
+    'まんぷく亭',
+    "徳島県小松島市大林町宮ノ本60",
+    "0885-38-0188",
+    "https://tabelog.com/tokushima/A3601/A360103/36000962/"
+  ),
+  dining(
+    'komatsushima-dining-24',
+    'キッチンゑみ',
+    "徳島県小松島市立江町松本5-1",
+    "0885-37-1048",
+    "https://tabelog.com/tokushima/A3601/A360103/36005081/"
+  ),
+  dining(
+    'komatsushima-dining-25',
+    '中華そば 樽屋',
+    "徳島県小松島市南小松島町7-5",
+    "0885-34-9115",
+    "https://tabelog.com/tokushima/A3601/A360103/36004985/"
+  )
+];
 export const KOMATSUSHIMA_TRAVEL_SHOPPING: readonly TravelRow[] = [];
 export const KOMATSUSHIMA_TRAVEL_COMMERCE: readonly TravelRow[] = [];
 

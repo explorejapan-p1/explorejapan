@@ -153,6 +153,7 @@ import {
   isKomatsushimaOnsenPackRow,
   isKomatsushimaStayPackRow,
   rankKomatsushimaSeeRows,
+  KOMATSUSHIMA_DINING_NAME_SET,
   komatsushimaSightPhoto
 } from '@/data/komatsushima-travel';
 import {
@@ -1053,6 +1054,7 @@ function komatsushimaListings(): PublicListing[] {
   const seen = new Set<string>();
   const pack: FacilityRow[] = [];
   for (const row of town.rows) {
+    if (KOMATSUSHIMA_DINING_NAME_SET.has(row.name_ja)) continue;
     if (
       !isKomatsushimaOnsenPackRow(row) &&
       !isKomatsushimaStayPackRow(row) &&
