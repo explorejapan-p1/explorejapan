@@ -37,6 +37,7 @@ import {AYAGAWA, AYAGAWA_PLACE_PHOTO} from '@/data/ayagawa';
 import {TADOTSU, TADOTSU_PLACE_PHOTO} from '@/data/tadotsu';
 import {MANNO, MANNO_PLACE_PHOTO} from '@/data/manno';
 import {KOCHI, KOCHI_PLACE_PHOTO} from '@/data/kochi';
+import {NANKOKU, NANKOKU_PLACE_PHOTO} from '@/data/nankoku';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -143,6 +144,7 @@ function localityJa(slug: string): string {
   if (slug === 'tadotsu') return TADOTSU.nameJa;
   if (slug === 'manno') return MANNO.nameJa;
   if (slug === 'kochi') return KOCHI.nameJa;
+  if (slug === 'nankoku') return NANKOKU.nameJa;
   return MIMA.nameJa;
 }
 
@@ -188,6 +190,7 @@ function localityEn(slug: string): string {
   if (slug === 'tadotsu') return TADOTSU.nameEn;
   if (slug === 'manno') return MANNO.nameEn;
   if (slug === 'kochi') return KOCHI.nameEn;
+  if (slug === 'nankoku') return NANKOKU.nameEn;
   return MIMA.nameEn;
 }
 
@@ -3238,6 +3241,66 @@ export function kochiGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '高知市の案内' : 'Places in Kochi City',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+export function nankokuGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/nankoku');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('nankoku');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? NANKOKU.nameJa : NANKOKU.nameEn,
+        alternateName: isJa ? NANKOKU.nameEn : NANKOKU.nameJa,
+        identifier: NANKOKU.jis,
+        url,
+        image: photoAbs(NANKOKU_PLACE_PHOTO),
+        sameAs: [NANKOKU.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '大埇甲2301番地' : '2301 Osoe Ko',
+          addressLocality: isJa ? NANKOKU.nameJa : NANKOKU.nameEn,
+          addressRegion: isJa ? NANKOKU.prefectureJa : NANKOKU.prefectureEn,
+          postalCode: NANKOKU.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? NANKOKU.prefectureJa : NANKOKU.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? NANKOKU.nameJa : NANKOKU.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? NANKOKU.prefectureJa : NANKOKU.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? NANKOKU.nameJa : NANKOKU.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '南国市の案内' : 'Places in Nankoku City',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

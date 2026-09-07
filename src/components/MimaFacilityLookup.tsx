@@ -59,6 +59,8 @@ import {MIKI_TRAVEL_ACCESSED} from '@/data/miki-travel';
 import {AYAGAWA_TRAVEL_ACCESSED} from '@/data/ayagawa-travel';
 import {TADOTSU_TRAVEL_ACCESSED} from '@/data/tadotsu-travel';
 import {MANNO_TRAVEL_ACCESSED} from '@/data/manno-travel';
+import {KOCHI_TRAVEL_ACCESSED} from '@/data/kochi-travel';
+import {NANKOKU_TRAVEL_ACCESSED} from '@/data/nankoku-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1392,6 +1394,42 @@ export function MimaFacilityLookup({
                 Lodging from Rakuten Travel room photos ({MANNO_TRAVEL_ACCESSED}).
                 Dining from Tabelog Manno shop pages ({MANNO_TRAVEL_ACCESSED}).
                 Onsen: Yuyamaso Asan bath (distinct from stay key). Experience: Michinoeki Kotonami (Commons). Shopping/commerce: 0. Seventeenth LIVE Kagawa hub.
+              </>
+            )
+
+
+          ) : town.slug === 'kochi' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（高知城・桂浜・龍馬像・日曜市・わんぱーく・五台山・牧野植物園・竹林寺）。
+                宿泊は楽天トラベルの客室写真（{KOCHI_TRAVEL_ACCESSED}）。
+                飲食は食べログ高知市の公開店ページ（{KOCHI_TRAVEL_ACCESSED}）。
+                温泉は0件（ビジネスホテル浴室のみ）。体験はひろめ市場（Commons）。買物・商業は0件。高知県1つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Kochi Castle, Katsurahama, Ryoma statue, Sunday Market, Wanpark, Godaisan, Makino, Chikurin-ji).
+                Lodging from Rakuten Travel room photos ({KOCHI_TRAVEL_ACCESSED}).
+                Dining from Tabelog Kochi City shop pages ({KOCHI_TRAVEL_ACCESSED}).
+                Onsen: 0 (business-hotel baths only). Experience: Hirome Market (Commons). Shopping/commerce: 0. First LIVE Kochi hub.
+              </>
+            )
+
+
+          ) : town.slug === 'nankoku' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（土佐国分寺・岡豊城・歴史民俗資料館・高知龍馬空港・前浜掩体群・後免駅）。
+                宿泊は楽天トラベルの客室写真（{NANKOKU_TRAVEL_ACCESSED}）。
+                飲食は食べログ南国市の公開店ページ（{NANKOKU_TRAVEL_ACCESSED}）。
+                温泉は0件（ビジネスホテル浴室のみ）。体験は道の駅南国 風良里（Commons）。買物・商業は0件。高知県2つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Tosa Kokubun-ji, Okō Castle, Museum of History, Kochi Ryoma Airport, Maehama bunkers, Gomen Station).
+                Lodging from Rakuten Travel room photos ({NANKOKU_TRAVEL_ACCESSED}).
+                Dining from Tabelog Nankoku shop pages ({NANKOKU_TRAVEL_ACCESSED}).
+                Onsen: 0 (business-hotel baths only). Experience: Michinoeki Nankoku Furari (Commons). Shopping/commerce: 0. Second LIVE Kochi hub.
               </>
             )
 

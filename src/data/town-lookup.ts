@@ -308,6 +308,7 @@ import {AYAGAWA, AYAGAWA_PLACE_PHOTO, AYAGAWA_FACILITIES, AYAGAWA_EXPECTED_GEO_C
 import {TADOTSU, TADOTSU_PLACE_PHOTO, TADOTSU_FACILITIES, TADOTSU_EXPECTED_GEO_COUNT, TADOTSU_EXPECTED_ROW_COUNT} from './tadotsu';
 import {MANNO, MANNO_PLACE_PHOTO, MANNO_FACILITIES, MANNO_EXPECTED_GEO_COUNT, MANNO_EXPECTED_ROW_COUNT} from './manno';
 import {KOCHI, KOCHI_PLACE_PHOTO, KOCHI_FACILITIES, KOCHI_EXPECTED_GEO_COUNT, KOCHI_EXPECTED_ROW_COUNT} from './kochi';
+import {NANKOKU, NANKOKU_PLACE_PHOTO, NANKOKU_FACILITIES, NANKOKU_EXPECTED_GEO_COUNT, NANKOKU_EXPECTED_ROW_COUNT} from './nankoku';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -506,6 +507,19 @@ import {
   resolveKochiFilter,
   rankKochiSeeRows
 } from './kochi-travel';
+import {
+  NANKOKU_TRAVEL_DINING,
+  NANKOKU_TRAVEL_STAY,
+  NANKOKU_TRAVEL_SHOPPING,
+  NANKOKU_TRAVEL_COMMERCE,
+  NANKOKU_TRAVEL_ALL,
+  nankokuSightPhoto,
+  nankokuSourcedHook,
+  nankokuTopChipForRow,
+  nankokuPackRowMatchesFilter,
+  resolveNankokuFilter,
+  rankNankokuSeeRows
+} from './nankoku-travel';
 
 
 
@@ -1879,6 +1893,40 @@ export const MANNO_LOOKUP: LookupTown = {
   licenseSiteEn: 'Town-site listing'
 };
 
+
+export const NANKOKU_LOOKUP: LookupTown = {
+  slug: 'nankoku',
+  prefectureSlug: 'kochi',
+  jis: NANKOKU.jis,
+  nameJa: NANKOKU.nameJa,
+  nameEn: NANKOKU.nameEn,
+  heroPhoto: NANKOKU_PLACE_PHOTO,
+  photoCiteJa: '写真は土佐国分寺大師堂。Reggaeman、CC BY-SA 3.0。File:Tosa_Kokubunji_05.JPG。',
+  photoCiteEn: 'Photo: Daishi-dō at Tosa Kokubun-ji. Reggaeman, CC BY-SA 3.0. File:Tosa_Kokubunji_05.JPG.',
+  rows: NANKOKU_FACILITIES,
+  expectedGeo: NANKOKU_EXPECTED_GEO_COUNT,
+  expectedRows: NANKOKU_EXPECTED_ROW_COUNT,
+  travelDining: NANKOKU_TRAVEL_DINING,
+  travelStay: NANKOKU_TRAVEL_STAY,
+  travelShopping: NANKOKU_TRAVEL_SHOPPING,
+  travelCommerce: NANKOKU_TRAVEL_COMMERCE,
+  travelAll: NANKOKU_TRAVEL_ALL,
+  coverageJa:
+    '南国市（JIS 39204）観光6・宿泊1・飲食16・体験1（出典写真がある施設のみ）。温泉・買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載。ビジネスホテル浴室のみのため温泉0）。オープンデータ凍結パックは未掲載。高知県2つ目のLIVEハブ。',
+  coverageEn:
+    'Nankoku City (JIS 39204), 6 tourism + 1 stay + 16 dining + 1 experience with sourced photos. Onsen, shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished (business-hotel baths only → onsen 0). No frozen open-data pack. Second LIVE Kochi hub.',
+  mapLabelJa: '南国市の出典座標7件',
+  mapLabelEn: '7 sourced coordinates in Nankoku City',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia等出典座標7件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 7 sourced coordinates for city/official facilities (accessed 2026-09-08).',
+  licenseNoteJa:
+    '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.nankoku.lg.jp, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
 export const KOCHI_LOOKUP: LookupTown = {
   slug: 'kochi',
   prefectureSlug: 'kochi',
@@ -2099,7 +2147,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   ayagawa: AYAGAWA_LOOKUP,
   tadotsu: TADOTSU_LOOKUP,
   manno: MANNO_LOOKUP,
-  kochi: KOCHI_LOOKUP
+  kochi: KOCHI_LOOKUP,
+  nankoku: NANKOKU_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

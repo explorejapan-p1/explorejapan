@@ -47,11 +47,13 @@ const READY_HUBS = [
   'kagawa/miki',
   'kagawa/ayagawa',
   'kagawa/tadotsu',
-  'kagawa/manno'
+  'kagawa/manno',
+  'kochi/kochi',
+  'kochi/nankoku'
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = ['', 'tokushima', 'kagawa', ...READY_HUBS, ...liveListings().map((row) => listingRest(row.id, row.slug))];
+  const paths = ['', 'tokushima', 'kagawa', 'kochi', ...READY_HUBS, ...liveListings().map((row) => listingRest(row.id, row.slug))];
   const hubSet = new Set<string>(READY_HUBS);
   const entries: MetadataRoute.Sitemap = [];
   for (const locale of routing.locales) {
@@ -59,7 +61,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       entries.push({
         url: canonicalUrl(locale, rest),
         changeFrequency: rest === '' ? 'weekly' : 'monthly',
-        priority: rest === '' ? 1 : hubSet.has(rest) ? 0.9 : rest === 'tokushima' || rest === 'kagawa' ? 0.85 : 0.7
+        priority: rest === '' ? 1 : hubSet.has(rest) ? 0.9 : rest === 'tokushima' || rest === 'kagawa' || rest === 'kochi' ? 0.85 : 0.7
       });
     }
   }

@@ -10,13 +10,13 @@ export type Municipality = {
 
 /**
  * Kochi 市区町村. Codes are N03_007 / JIS X 0402 (5-digit).
- * Kochi City 39201 LIVE hub (+ remaining municipalities coming-soon).
+ * Kochi City 39201 + Nankoku 39204 LIVE hubs (+ remaining municipalities coming-soon).
  */
 export const KOCHI_MUNICIPALITIES: Municipality[] = [
   {jis: '39201', slug: 'kochi', nameJa: '高知市', nameEn: 'Kochi', status: 'ready'},
   {jis: '39202', slug: 'muroto', nameJa: '室戸市', nameEn: 'Muroto', status: 'coming-soon'},
   {jis: '39203', slug: 'aki', nameJa: '安芸市', nameEn: 'Aki', status: 'coming-soon'},
-  {jis: '39204', slug: 'nankoku', nameJa: '南国市', nameEn: 'Nankoku', status: 'coming-soon'},
+  {jis: '39204', slug: 'nankoku', nameJa: '南国市', nameEn: 'Nankoku', status: 'ready'},
   {jis: '39205', slug: 'tosa', nameJa: '土佐市', nameEn: 'Tosa', status: 'coming-soon'},
   {jis: '39206', slug: 'susaki', nameJa: '須崎市', nameEn: 'Susaki', status: 'coming-soon'},
   {jis: '39208', slug: 'sukumo', nameJa: '宿毛市', nameEn: 'Sukumo', status: 'coming-soon'},
