@@ -922,13 +922,13 @@ export const SANAGOCHI_LOOKUP: LookupTown = {
   travelCommerce: SANAGOCHI_TRAVEL_COMMERCE,
   travelAll: SANAGOCHI_TRAVEL_ALL,
   coverageJa:
-    '佐那河内村（JIS 36321）67件。緊急避難場所19、AED15、避難所13、文化財6、観光4、Wi-Fi4、保育3、公共施設1、病院1、介護1。GTFS停留所は0件（未掲載）。公式座標17件。',
+    '佐那河内村（JIS 36321）69件（pack67+Commons EXTRA2）。緊急避難場所19、AED15、避難所13、文化財6、観光6、Wi-Fi4、保育3、公共施設1、病院1、介護1。GTFS停留所は0件（未掲載）。公式座標19件。',
   coverageEn:
-    'Sanagochi Village (JIS 36321), 67 rows. Emergency sites 19, AED 15, shelter 13, cultural property 6, tourism 4, Wi-Fi 4, childcare 3, public facility 1, hospital 1, care 1. GTFS stops: 0, unpublished. Official coordinates: 17.',
-  mapLabelJa: '佐那河内村の公式座標17件',
-  mapLabelEn: '17 official coordinates in Sanagochi Village',
-  mapCitePackJa: '点は凍結パックの公式座標17件（accessed 2026-08-25）。',
-  mapCitePackEn: 'Points: 17 official coordinates from the frozen pack (accessed 2026-08-25).',
+    'Sanagochi Village (JIS 36321), 69 rows (pack67+Commons EXTRA2). Emergency sites 19, AED 15, shelter 13, cultural property 6, tourism 6, Wi-Fi 4, childcare 3, public facility 1, hospital 1, care 1. GTFS stops: 0, unpublished. Official coordinates: 19.',
+  mapLabelJa: '佐那河内村の公式座標19件',
+  mapLabelEn: '19 official coordinates in Sanagochi Village',
+  mapCitePackJa: '点は凍結パック+Commons EXTRAの公式座標19件（accessed 2026-08-25）。',
+  mapCitePackEn: 'Points: 19 official coordinates from frozen pack + Commons EXTRA (accessed 2026-08-25).',
   licenseNoteJa:
     '行のライセンスは二つ。CC BY 4.0 は徳島県 Our Open Data の利用規約。「村公式サイト掲載情報」は村・観光ページの事実の転記で、オープンデータ許諾ではありません。',
   licenseNoteEn:

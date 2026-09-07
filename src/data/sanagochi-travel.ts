@@ -4,7 +4,7 @@
  * Dining from 食べログ 佐那河内村 (C36321) public shop pages with FOOD dish heroes.
  * PHOTO GAPS (honest 0):
  * 宿泊/温泉/買物/商業/体験: no room/bath/shop 出典 — omit.
- * 観光: 清流の源 / 大宮八幡宮 — still no place-named Commons; +大川原放牧場 EXTRA.
+ * 観光: 清流の源 / 大宮八幡宮 — still no place-named Commons; +大川原放牧場 / +宝蔵寺 EXTRA.
  * Do not copy 上勝 / 勝浦 / 神山 / 上板 / 板野 / 石井 / 松茂 / 北島 / 藍住 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
@@ -51,7 +51,8 @@ export const SANAGOCHI_SIGHT_PINS = [
   '大川原高原',
   '嵯峨峡',
   'しゃくなげ(徳円寺)',
-  '大川原放牧場'
+  '大川原放牧場',
+  '宝蔵寺'
 ] as const;
 
 export const SANAGOCHI_TRAVEL_STAY: readonly TravelRow[] = [];

@@ -51,7 +51,13 @@ export const MINAMI_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(
   MINAMI_SHOPPING_PACK_NAMES
 );
 
-export const MINAMI_SIGHT_PINS = ['薬王寺瑜祇塔'] as const;
+export const MINAMI_SIGHT_PINS = [
+  '薬王寺瑜祇塔',
+  '日和佐うみがめ博物館カレッタ',
+  '南阿波サンライン',
+  '日和佐城',
+  '恵比須浜キャンプ村'
+] as const;
 
 function stay(
   id: string,

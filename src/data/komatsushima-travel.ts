@@ -34,9 +34,9 @@ export const KOMATSUSHIMA_STAY_PACK_SET: ReadonlySet<string> = new Set(KOMATSUSH
 
 export const KOMATSUSHIMA_SIGHT_PINS = [
   '大手海岸',
+  '金長神社',
   '立江寺',
   '恩山寺',
-  '金長神社',
   '小松島ステーションパーク'
 ] as const;
 

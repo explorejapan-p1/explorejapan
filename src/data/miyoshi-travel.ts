@@ -42,10 +42,10 @@ export const MIYOSHI_STAY_PACK_NAMES = ['峡谷の湯宿 大歩危峡まんな�
 export const MIYOSHI_STAY_PACK_SET: ReadonlySet<string> = new Set(MIYOSHI_STAY_PACK_NAMES);
 
 export const MIYOSHI_SIGHT_PINS = [
-  '大歩危小歩危',
   '祖谷のかずら橋',
-  'うだつの町並み・阿波池田うだつの家たばこ資料館',
-  '落合集落・落合集落展望所'
+  '大歩危小歩危',
+  '落合集落・落合集落展望所',
+  'うだつの町並み・阿波池田うだつの家たばこ資料館'
 ] as const;
 
 export const MIYOSHI_TRAVEL_STAY: readonly TravelRow[] = [];

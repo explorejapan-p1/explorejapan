@@ -33,10 +33,10 @@ export const TOKUSHIMA_CITY_TRAVEL_SOURCES = {
 
 export const TOKUSHIMA_CITY_SIGHT_PINS = [
   '眉山',
-  '徳島城跡',
   '新町川水際公園・しんまちボードウォーク',
-  '阿波おどり会館',
   '弁天山',
+  '阿波おどり会館',
+  '徳島城跡',
   '文化の森総合公園',
   '眉山公園'
 ] as const;

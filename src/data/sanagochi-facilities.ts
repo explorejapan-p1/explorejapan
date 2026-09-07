@@ -187,6 +187,22 @@ const SANAGOCHI_EXTRA_FACILITIES: readonly FacilityRow[] = [
     source_url: 'https://commons.wikimedia.org/wiki/File:%E5%A4%A7%E5%B7%9D%E5%8E%9F%E6%94%BE%E7%89%A7%E5%A0%B4_-_panoramio.jpg',
     license: 'cc_by_open_data',
     accessed: SANAGOCHI_PACK_ACCESSED
+  },
+  {
+    id: 'sanagochi-extra-hozouji',
+    jis: SANAGOCHI_PACK_JIS,
+    name_ja: '宝蔵寺',
+    reading: 'ほうぞうじ',
+    category: 'tourism',
+    lat: 33.982111,
+    lon: 134.459389,
+    address: '徳島県名東郡佐那河内村下中溝38',
+    phone: null,
+    official_url: 'https://www.vill.sanagochi.lg.jp/kankoevent/kanko.html',
+    hours: null,
+    source_url: 'https://commons.wikimedia.org/wiki/File:Houzouzi01.jpg',
+    license: 'cc_by_open_data',
+    accessed: SANAGOCHI_PACK_ACCESSED
   }
 ];
 

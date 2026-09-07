@@ -35,7 +35,7 @@ export const KAIYO_STAY_PACK_NAMES = [] as const;
 export const KAIYO_STAY_PACK_SET: ReadonlySet<string> = new Set(KAIYO_STAY_PACK_NAMES);
 export const KAIYO_SHOPPING_PACK_NAMES = ['海陽町宍喰観光ターミナル（道の駅宍喰温泉）'] as const;
 export const KAIYO_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(KAIYO_SHOPPING_PACK_NAMES);
-export const KAIYO_SIGHT_PINS = ['海陽町漁火の森公園施設', '轟九十九滝', '大砂海岸', '阿波海南文化村', '宍喰浦の化石漣痕'] as const;
+export const KAIYO_SIGHT_PINS = ['大砂海岸', '轟九十九滝', '海陽町漁火の森公園施設', '宍喰浦の化石漣痕', '阿波海南文化村'] as const;
 function stay(
   id: string,
   name_ja: string,

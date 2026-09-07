@@ -38,11 +38,11 @@ export const ANAN_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(ANAN_SHOPPING
 
 export const ANAN_SIGHT_PINS = [
   '蒲生田岬',
+  'あこめ海岸',
   '太龍寺',
   '平等寺',
-  '那賀川',
-  'あこめ海岸',
-  '岡山城址'
+  '岡山城址',
+  '那賀川'
 ] as const;
 
 function stay(

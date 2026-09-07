@@ -138,6 +138,17 @@ export const SANAGOCHI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = 
     '大川原放牧場（佐那河内村）',
     'Okawara Ranch, Sanagochi Village'
   ),
+  '宝蔵寺': wikiPhoto(
+    'sanagochi-hozouji.jpg',
+    'https://commons.wikimedia.org/wiki/File:Houzouzi01.jpg',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0/',
+    'Dokudami',
+    'https://commons.wikimedia.org/wiki/User:Dokudami',
+    '2014-12-12',
+    '宝蔵寺の本堂と大師堂（佐那河内村）',
+    'Hozo-ji Temple main hall and Daishi hall, Sanagochi Village'
+  ),
   "YOME厨房": sourcePhoto(
     'sanagochi-36005383-dish.jpg',
     "YOME厨房の料理写真",
