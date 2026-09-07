@@ -26,7 +26,7 @@ export const KAGAWA_MUNICIPALITIES: Municipality[] = [
   {jis: '37341', slug: 'miki', nameJa: '三木町', nameEn: 'Miki', status: 'ready'},
   {jis: '37364', slug: 'naoshima', nameJa: '直島町', nameEn: 'Naoshima', status: 'ready'},
   {jis: '37386', slug: 'utazu', nameJa: '宇多津町', nameEn: 'Utazu', status: 'ready'},
-  {jis: '37387', slug: 'ayagawa', nameJa: '綾川町', nameEn: 'Ayagawa', status: 'coming-soon'},
+  {jis: '37387', slug: 'ayagawa', nameJa: '綾川町', nameEn: 'Ayagawa', status: 'ready'},
   {jis: '37403', slug: 'kotohira', nameJa: '琴平町', nameEn: 'Kotohira', status: 'ready'},
   {jis: '37404', slug: 'tadotsu', nameJa: '多度津町', nameEn: 'Tadotsu', status: 'coming-soon'},
   {jis: '37406', slug: 'manno', nameJa: 'まんのう町', nameEn: 'Manno', status: 'coming-soon'}

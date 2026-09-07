@@ -304,6 +304,7 @@ import {TONOSHO, TONOSHO_PLACE_PHOTO, TONOSHO_FACILITIES, TONOSHO_EXPECTED_GEO_C
 import {SANUKI, SANUKI_PLACE_PHOTO, SANUKI_FACILITIES, SANUKI_EXPECTED_GEO_COUNT, SANUKI_EXPECTED_ROW_COUNT} from './sanuki';
 import {HIGASHIKAGAWA, HIGASHIKAGAWA_PLACE_PHOTO, HIGASHIKAGAWA_FACILITIES, HIGASHIKAGAWA_EXPECTED_GEO_COUNT, HIGASHIKAGAWA_EXPECTED_ROW_COUNT} from './higashikagawa';
 import {MIKI, MIKI_PLACE_PHOTO, MIKI_FACILITIES, MIKI_EXPECTED_GEO_COUNT, MIKI_EXPECTED_ROW_COUNT} from './miki';
+import {AYAGAWA, AYAGAWA_PLACE_PHOTO, AYAGAWA_FACILITIES, AYAGAWA_EXPECTED_GEO_COUNT, AYAGAWA_EXPECTED_ROW_COUNT} from './ayagawa';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -450,6 +451,20 @@ import {
   resolveMikiFilter,
   rankMikiSeeRows
 } from './miki-travel';
+import {
+  AYAGAWA_TRAVEL_DINING,
+  AYAGAWA_TRAVEL_STAY,
+  AYAGAWA_TRAVEL_SHOPPING,
+  AYAGAWA_TRAVEL_COMMERCE,
+  AYAGAWA_TRAVEL_ALL,
+  ayagawaSightPhoto,
+  ayagawaSourcedHook,
+  ayagawaTopChipForRow,
+  ayagawaPackRowMatchesFilter,
+  resolveAyagawaFilter,
+  rankAyagawaSeeRows
+} from './ayagawa-travel';
+
 
 
 import {
@@ -1735,6 +1750,36 @@ export const MIKI_LOOKUP: LookupTown = {
   licenseSiteEn: 'Town-site listing'
 };
 
+export const AYAGAWA_LOOKUP: LookupTown = {
+  slug: 'ayagawa',
+  prefectureSlug: 'kagawa',
+  jis: AYAGAWA.jis,
+  nameJa: AYAGAWA.nameJa,
+  nameEn: AYAGAWA.nameEn,
+  heroPhoto: AYAGAWA_PLACE_PHOTO,
+  photoCiteJa: '写真は滝宮天満宮。Bakkai、CC BY 3.0。File:Takinomiya tenmangu.jpg。',
+  photoCiteEn: 'Photo: Takinomiya Tenmangu. Bakkai, CC BY 3.0. File:Takinomiya tenmangu.jpg.',
+  rows: AYAGAWA_FACILITIES,
+  expectedGeo: AYAGAWA_EXPECTED_GEO_COUNT,
+  expectedRows: AYAGAWA_EXPECTED_ROW_COUNT,
+  travelDining: AYAGAWA_TRAVEL_DINING,
+  travelStay: AYAGAWA_TRAVEL_STAY,
+  travelShopping: AYAGAWA_TRAVEL_SHOPPING,
+  travelCommerce: AYAGAWA_TRAVEL_COMMERCE,
+  travelAll: AYAGAWA_TRAVEL_ALL,
+  coverageJa: '綾川町（JIS 37387）観光6・宿泊1・飲食16・体験1（出典写真がある施設のみ）。温泉・買物・商業は0件（未掲載）。オープンデータ凍結パックは未掲載。香川県15つ目のLIVEハブ。',
+  coverageEn: 'Ayagawa (JIS 37387), 6 tourism + 1 stay + 16 dining + 1 experience with sourced photos. Onsen, shopping, commerce: 0. No frozen open-data pack. Fifteenth LIVE Kagawa hub.',
+  mapLabelJa: '綾川町の出典座標7件',
+  mapLabelEn: '7 sourced coordinates in Ayagawa',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia等出典座標7件（accessed 2026-09-07）。',
+  mapCitePackEn: 'Points: 7 sourced coordinates for town/official facilities (accessed 2026-09-07).',
+  licenseNoteJa: '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from town.ayagawa.lg.jp, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
+
 export const TONOSHO_LOOKUP: LookupTown = {
   slug: 'tonosho',
   prefectureSlug: 'kagawa',
@@ -1913,7 +1958,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   tonosho: TONOSHO_LOOKUP,
   sanuki: SANUKI_LOOKUP,
   higashikagawa: HIGASHIKAGAWA_LOOKUP,
-  miki: MIKI_LOOKUP
+  miki: MIKI_LOOKUP,
+  ayagawa: AYAGAWA_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

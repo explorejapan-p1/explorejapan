@@ -33,6 +33,7 @@ import {TONOSHO, TONOSHO_PLACE_PHOTO} from '@/data/tonosho';
 import {SANUKI, SANUKI_PLACE_PHOTO} from '@/data/sanuki';
 import {HIGASHIKAGAWA, HIGASHIKAGAWA_PLACE_PHOTO} from '@/data/higashikagawa';
 import {MIKI, MIKI_PLACE_PHOTO} from '@/data/miki';
+import {AYAGAWA, AYAGAWA_PLACE_PHOTO} from '@/data/ayagawa';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -135,6 +136,7 @@ function localityJa(slug: string): string {
   if (slug === 'sanuki') return SANUKI.nameJa;
   if (slug === 'higashikagawa') return HIGASHIKAGAWA.nameJa;
   if (slug === 'miki') return MIKI.nameJa;
+  if (slug === 'ayagawa') return AYAGAWA.nameJa;
   return MIMA.nameJa;
 }
 
@@ -176,6 +178,7 @@ function localityEn(slug: string): string {
   if (slug === 'sanuki') return SANUKI.nameEn;
   if (slug === 'higashikagawa') return HIGASHIKAGAWA.nameEn;
   if (slug === 'miki') return MIKI.nameEn;
+  if (slug === 'ayagawa') return AYAGAWA.nameEn;
   return MIMA.nameEn;
 }
 
@@ -2986,6 +2989,66 @@ export function mikiGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '三木町の案内' : 'Places in Miki',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+export function ayagawaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kagawa/ayagawa');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('ayagawa');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? AYAGAWA.nameJa : AYAGAWA.nameEn,
+        alternateName: isJa ? AYAGAWA.nameEn : AYAGAWA.nameJa,
+        identifier: AYAGAWA.jis,
+        url,
+        image: photoAbs(AYAGAWA_PLACE_PHOTO),
+        sameAs: [AYAGAWA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '滝宮299番地' : '299 Takinomiya',
+          addressLocality: isJa ? AYAGAWA.nameJa : AYAGAWA.nameEn,
+          addressRegion: isJa ? AYAGAWA.prefectureJa : AYAGAWA.prefectureEn,
+          postalCode: AYAGAWA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? AYAGAWA.prefectureJa : AYAGAWA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? AYAGAWA.nameJa : AYAGAWA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? AYAGAWA.prefectureJa : AYAGAWA.prefectureEn, item: canonicalUrl(locale, 'kagawa')},
+          {'@type': 'ListItem', position: 3, name: isJa ? AYAGAWA.nameJa : AYAGAWA.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '綾川町の案内' : 'Places in Ayagawa',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

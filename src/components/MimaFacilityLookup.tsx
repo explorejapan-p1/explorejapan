@@ -56,6 +56,7 @@ import {TONOSHO_TRAVEL_ACCESSED} from '@/data/tonosho-travel';
 import {SANUKI_TRAVEL_ACCESSED} from '@/data/sanuki-travel';
 import {HIGASHIKAGAWA_TRAVEL_ACCESSED} from '@/data/higashikagawa-travel';
 import {MIKI_TRAVEL_ACCESSED} from '@/data/miki-travel';
+import {AYAGAWA_TRAVEL_ACCESSED} from '@/data/ayagawa-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1338,6 +1339,24 @@ export function MimaFacilityLookup({
                 Experience: Tresta Shirayama Ice Arena (Commons). Shopping/commerce: 0 without sourced photos. Fourteenth LIVE Kagawa hub.
               </>
             )
+
+          ) : town.slug === 'ayagawa' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（滝宮天満宮・瀧宮神社・高鉢山・堤山・菩提院・金毘羅灯籠）。
+                宿泊は楽天トラベルの客室写真（{AYAGAWA_TRAVEL_ACCESSED}）。
+                飲食は食べログ綾川町の公開店ページ（{AYAGAWA_TRAVEL_ACCESSED}）。
+                温泉は0件。体験は道の駅滝宮（Commons）。買物・商業は出典写真が無いため0件。香川県15つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Takinomiya Tenmangu, Takinomiya Shrine, Mount Takahachi, Mount Tsutsuma, Bodai-in, Konpira lantern).
+                Lodging from Rakuten Travel room photos ({AYAGAWA_TRAVEL_ACCESSED}).
+                Dining from Tabelog Ayagawa shop pages ({AYAGAWA_TRAVEL_ACCESSED}).
+                Onsen: 0. Experience: Michinoeki Takinomiya (Commons). Shopping/commerce: 0. Fifteenth LIVE Kagawa hub.
+              </>
+            )
+
 
           ) : (
             <>
