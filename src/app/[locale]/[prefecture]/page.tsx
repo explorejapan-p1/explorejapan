@@ -51,6 +51,7 @@ import {YASUDA_PLACE_PHOTO} from '@/data/yasuda';
 import {GEISEI_PLACE_PHOTO} from '@/data/geisei';
 import {KITAGAWA_PLACE_PHOTO} from '@/data/kitagawa';
 import {UMAJI_PLACE_PHOTO} from '@/data/umaji';
+import {MOTOYAMA_PLACE_PHOTO} from '@/data/motoyama';
 import {KAGAWA_MUNICIPALITIES} from '@/data/kagawa-municipalities';
 import {KOCHI_MUNICIPALITIES} from '@/data/kochi-municipalities';
 import {TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
@@ -193,7 +194,7 @@ export default async function PrefecturePage({params}: Props) {
                                                 ? KONAN_PLACE_PHOTO
                                               : m.slug === 'kami'
                                                 ? KAMI_PLACE_PHOTO
-                                              : m.slug === 'ino' ? INO_PLACE_PHOTO : m.slug === 'aki' ? AKI_PLACE_PHOTO : m.slug === 'muroto' ? MUROTO_PLACE_PHOTO : m.slug === 'tosa' ? TOSA_PLACE_PHOTO : m.slug === 'susaki' ? SUSAKI_PLACE_PHOTO : m.slug === 'shimanto' ? SHIMANTO_PLACE_PHOTO : m.slug === 'tosashimizu' ? TOSASHIMIZU_PLACE_PHOTO : m.slug === 'sukumo' ? SUKUMO_PLACE_PHOTO : m.slug === 'kuroshio' ? KUROSHIO_PLACE_PHOTO : m.slug === 'toyo' ? TOYO_PLACE_PHOTO : m.slug === 'nahari' ? NAHARI_PLACE_PHOTO : m.slug === 'yasuda' ? YASUDA_PLACE_PHOTO : m.slug === 'geisei' ? GEISEI_PLACE_PHOTO : m.slug === 'kitagawa' ? KITAGAWA_PLACE_PHOTO : m.slug === 'umaji' ? UMAJI_PLACE_PHOTO : m.slug === 'takamatsu'
+                                              : m.slug === 'ino' ? INO_PLACE_PHOTO : m.slug === 'aki' ? AKI_PLACE_PHOTO : m.slug === 'muroto' ? MUROTO_PLACE_PHOTO : m.slug === 'tosa' ? TOSA_PLACE_PHOTO : m.slug === 'susaki' ? SUSAKI_PLACE_PHOTO : m.slug === 'shimanto' ? SHIMANTO_PLACE_PHOTO : m.slug === 'tosashimizu' ? TOSASHIMIZU_PLACE_PHOTO : m.slug === 'sukumo' ? SUKUMO_PLACE_PHOTO : m.slug === 'kuroshio' ? KUROSHIO_PLACE_PHOTO : m.slug === 'toyo' ? TOYO_PLACE_PHOTO : m.slug === 'nahari' ? NAHARI_PLACE_PHOTO : m.slug === 'yasuda' ? YASUDA_PLACE_PHOTO : m.slug === 'geisei' ? GEISEI_PLACE_PHOTO : m.slug === 'kitagawa' ? KITAGAWA_PLACE_PHOTO : m.slug === 'umaji' ? UMAJI_PLACE_PHOTO : m.slug === 'motoyama' ? MOTOYAMA_PLACE_PHOTO : m.slug === 'takamatsu'
                                               ? TAKAMATSU_PLACE_PHOTO
                                               : MIMA_PLACE_PHOTO;
               const href = `${BASE_PATH}/${locale}/${pref.slug}/${m.slug}/`;

@@ -326,6 +326,7 @@ import {YASUDA, YASUDA_PLACE_PHOTO, YASUDA_FACILITIES, YASUDA_EXPECTED_GEO_COUNT
 import {GEISEI, GEISEI_PLACE_PHOTO, GEISEI_FACILITIES, GEISEI_EXPECTED_GEO_COUNT, GEISEI_EXPECTED_ROW_COUNT} from './geisei';
 import {KITAGAWA, KITAGAWA_PLACE_PHOTO, KITAGAWA_FACILITIES, KITAGAWA_EXPECTED_GEO_COUNT, KITAGAWA_EXPECTED_ROW_COUNT} from './kitagawa';
 import {UMAJI, UMAJI_PLACE_PHOTO, UMAJI_FACILITIES, UMAJI_EXPECTED_GEO_COUNT, UMAJI_EXPECTED_ROW_COUNT} from './umaji';
+import {MOTOYAMA, MOTOYAMA_PLACE_PHOTO, MOTOYAMA_FACILITIES, MOTOYAMA_EXPECTED_GEO_COUNT, MOTOYAMA_EXPECTED_ROW_COUNT} from './motoyama';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -656,6 +657,13 @@ import {
   UMAJI_TRAVEL_COMMERCE,
   UMAJI_TRAVEL_ALL
 } from './umaji-travel';
+import {
+  MOTOYAMA_TRAVEL_DINING,
+  MOTOYAMA_TRAVEL_STAY,
+  MOTOYAMA_TRAVEL_SHOPPING,
+  MOTOYAMA_TRAVEL_COMMERCE,
+  MOTOYAMA_TRAVEL_ALL
+} from './motoyama-travel';
 
 
 
@@ -2430,6 +2438,38 @@ export const UMAJI_LOOKUP: LookupTown = {
 };
 
 
+export const MOTOYAMA_LOOKUP: LookupTown = {
+  slug: 'motoyama',
+  prefectureSlug: 'kochi',
+  jis: MOTOYAMA.jis,
+  nameJa: MOTOYAMA.nameJa,
+  nameEn: MOTOYAMA.nameEn,
+  heroPhoto: MOTOYAMA_PLACE_PHOTO,
+  photoCiteJa: '写真は旧本山大橋。r18 INO (PACHIMO)、2016-04-28、CC BY 3.0。File:旧本山大橋.jpg。',
+  photoCiteEn: 'Photo: Former Motoyama Bridge. r18 INO (PACHIMO), 2016-04-28, CC BY 3.0. File:旧本山大橋.jpg.',
+  rows: MOTOYAMA_FACILITIES,
+  expectedGeo: MOTOYAMA_EXPECTED_GEO_COUNT,
+  expectedRows: MOTOYAMA_EXPECTED_ROW_COUNT,
+  travelDining: MOTOYAMA_TRAVEL_DINING,
+  travelStay: MOTOYAMA_TRAVEL_STAY,
+  travelShopping: MOTOYAMA_TRAVEL_SHOPPING,
+  travelCommerce: MOTOYAMA_TRAVEL_COMMERCE,
+  travelAll: MOTOYAMA_TRAVEL_ALL,
+  coverageJa:
+    '本山町（JIS 39341）観光5・宿泊1・飲食3・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県20つ目のLIVEハブ。',
+  coverageEn:
+    'Motoyama Town (JIS 39341), 5 tourism + 1 stay + 3 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Twentieth LIVE Kochi hub.',
+  mapLabelJa: '本山町の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Motoyama Town',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons/楽天等出典座標5件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 5 sourced coordinates for town/official facilities (accessed 2026-09-08).',
+  licenseNoteJa: '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from town.motoyama.kochi.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
+
 export const NAHARI_LOOKUP: LookupTown = {
   slug: 'nahari',
   prefectureSlug: 'kochi',
@@ -2866,7 +2906,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   yasuda: YASUDA_LOOKUP,
   geisei: GEISEI_LOOKUP,
   kitagawa: KITAGAWA_LOOKUP,
-  umaji: UMAJI_LOOKUP
+  umaji: UMAJI_LOOKUP,
+  motoyama: MOTOYAMA_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

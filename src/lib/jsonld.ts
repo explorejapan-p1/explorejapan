@@ -55,6 +55,7 @@ import {YASUDA, YASUDA_PLACE_PHOTO} from '@/data/yasuda';
 import {GEISEI, GEISEI_PLACE_PHOTO} from '@/data/geisei';
 import {KITAGAWA, KITAGAWA_PLACE_PHOTO} from '@/data/kitagawa';
 import {UMAJI, UMAJI_PLACE_PHOTO} from '@/data/umaji';
+import {MOTOYAMA, MOTOYAMA_PLACE_PHOTO} from '@/data/motoyama';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -4074,6 +4075,66 @@ export function umajiGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '馬路村の案内' : 'Places in Umaji Village',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+export function motoyamaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/motoyama');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('motoyama');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? MOTOYAMA.nameJa : MOTOYAMA.nameEn,
+        alternateName: isJa ? MOTOYAMA.nameEn : MOTOYAMA.nameJa,
+        identifier: MOTOYAMA.jis,
+        url,
+        image: photoAbs(MOTOYAMA_PLACE_PHOTO),
+        sameAs: [MOTOYAMA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '本山636番地' : '636 Motoyama',
+          addressLocality: isJa ? MOTOYAMA.nameJa : MOTOYAMA.nameEn,
+          addressRegion: isJa ? MOTOYAMA.prefectureJa : MOTOYAMA.prefectureEn,
+          postalCode: MOTOYAMA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? MOTOYAMA.prefectureJa : MOTOYAMA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? MOTOYAMA.nameJa : MOTOYAMA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? MOTOYAMA.prefectureJa : MOTOYAMA.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? MOTOYAMA.nameJa : MOTOYAMA.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '本山町の案内' : 'Places in Motoyama Town',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

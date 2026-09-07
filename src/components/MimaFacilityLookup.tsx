@@ -78,6 +78,7 @@ import {YASUDA_TRAVEL_ACCESSED} from '@/data/yasuda-travel';
 import {GEISEI_TRAVEL_ACCESSED} from '@/data/geisei-travel';
 import {KITAGAWA_TRAVEL_ACCESSED} from '@/data/kitagawa-travel';
 import {UMAJI_TRAVEL_ACCESSED} from '@/data/umaji-travel';
+import {MOTOYAMA_TRAVEL_ACCESSED} from '@/data/motoyama-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1502,6 +1503,22 @@ export function MimaFacilityLookup({
                 Lodging: Umaji Onsen Rakuten main-building Japanese room photo ({UMAJI_TRAVEL_ACCESSED}).
                 Dining from Tabelog Umaji shop pages ({UMAJI_TRAVEL_ACCESSED}).
                 Onsen: 1 (same facility large bath; distinct media key; stay≠onsen). Experience: 0. Shopping/commerce: 0. Nineteenth LIVE Kochi hub.
+              </>
+            )
+          ) : town.slug === 'motoyama' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（旧本山大橋・本山町役場・赤滝・白髪山・土佐あかうしの放牧）。
+                宿泊は楽天トラベル一軒宿あせみの和洋室写真（{MOTOYAMA_TRAVEL_ACCESSED}）。
+                飲食は食べログ本山町の公開店ページ（{MOTOYAMA_TRAVEL_ACCESSED}）。
+                温泉は0件（客室シャワーのみ・stay≠onsen）。体験は0件。買物・商業は0件。高知県20つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Kyu-Motoyama Bridge, Motoyama Town Hall, Aka Falls, Mount Shiraga, Tosa Akaushi grazing).
+                Lodging: Asemi Rakuten Japanese-Western room photo ({MOTOYAMA_TRAVEL_ACCESSED}).
+                Dining from Tabelog Motoyama shop pages ({MOTOYAMA_TRAVEL_ACCESSED}).
+                Onsen: 0 (private shower stay; stay≠onsen). Experience: 0. Shopping/commerce: 0. Twentieth LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'geisei' ? (

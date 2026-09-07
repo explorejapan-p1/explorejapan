@@ -647,6 +647,17 @@ import {
   umajiTopChipForRow,
   resolveUmajiFilter
 } from './umaji-travel';
+import {
+  isMotoyamaOnsenPackRow,
+  isMotoyamaExperiencePackRow,
+  isMotoyamaStayPackRow,
+  motoyamaPackRowMatchesFilter,
+  rankMotoyamaSeeRows,
+  motoyamaSightPhoto,
+  motoyamaSourcedHook,
+  motoyamaTopChipForRow,
+  resolveMotoyamaFilter
+} from './motoyama-travel';
 
 
 
@@ -1294,6 +1305,18 @@ const UMAJI_HELPERS: LookupHelpers = {
   resolveFilter: resolveUmajiFilter
 };
 
+const MOTOYAMA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isMotoyamaOnsenPackRow,
+  isExperiencePackRow: isMotoyamaExperiencePackRow,
+  isStayPackRow: isMotoyamaStayPackRow,
+  packRowMatchesFilter: motoyamaPackRowMatchesFilter,
+  rankSeeRows: rankMotoyamaSeeRows,
+  sightPhoto: motoyamaSightPhoto,
+  sourcedHook: motoyamaSourcedHook,
+  topChipForRow: motoyamaTopChipForRow,
+  resolveFilter: resolveMotoyamaFilter
+};
+
 const YASUDA_HELPERS: LookupHelpers = {
   isOnsenPackRow: isYasudaOnsenPackRow,
   isExperiencePackRow: isYasudaExperiencePackRow,
@@ -1540,5 +1563,7 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'geisei') return GEISEI_HELPERS;
   if (slug === 'kitagawa') return KITAGAWA_HELPERS;
   if (slug === 'umaji') return UMAJI_HELPERS;
+  return MIMA_HELPERS;  if (slug === 'umaji') return UMAJI_HELPERS;
+  if (slug === 'motoyama') return MOTOYAMA_HELPERS;
   return MIMA_HELPERS;
 }
