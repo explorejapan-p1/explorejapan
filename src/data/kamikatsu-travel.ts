@@ -2,6 +2,9 @@
  * Kamikatsu travel layer. Pack tourism includes inns/cafes/shops as tourism.
  * Onsen / stay: omit without room or bath photo (honest 0).
  * Dining from 食べログ 上勝町 (C36302) public shop pages with FOOD dish heroes.
+ * PHOTO GAPS (honest 0):
+ * 宿泊/温泉/体験/商業: no room/bath 出典 — omit (買物: たけいち笑店 mapped).
+ * 観光: many pack names lack place-named Commons (八重地の棚田, 殿川内渓谷, 落合千本つつじ園, …).
  * Do not copy 勝浦 / 神山 / 上板 / 板野 / 石井 / 松茂 / 北島 / 藍住 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';

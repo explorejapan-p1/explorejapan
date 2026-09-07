@@ -3,6 +3,9 @@
  * Onsen / stay: omit without room or bath photo (honest 0).
  * Dining from 食べログ 美波町 (C36387) public shop pages with FOOD dish heroes.
  * Shopping: 道の駅 pack name with place-named Commons exterior.
+ * PHOTO GAPS (honest 0):
+ * 宿泊/温泉/体験/商業: no room/bath 出典 — omit.
+ * 観光: ぽっぽマリン — no place-named Commons usable photo yet.
  * Do not copy 牟岐 / 那賀 / 佐那河内 / 上勝 / 勝浦 / 神山 / 上板 / 板野 / 石井 / 松茂 / 北島 / 藍住 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';

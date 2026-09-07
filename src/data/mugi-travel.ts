@@ -3,6 +3,9 @@
  * Onsen / stay: omit without room or bath photo (honest 0).
  * Dining from 食べログ 牟岐町 (C36383) public shop pages with FOOD dish heroes.
  * Shopping / experience / commerce: honest 0 — no remappable pack photos this pass.
+ * PHOTO GAPS (honest 0):
+ * 宿泊/温泉/買物/商業/体験: no room/bath/shop exterior 出典 on pack names; Tabelog dining FOOD only.
+ * 観光 without Commons: pack tourism is thin (モラスコむぎ + cultural 出羽島/松坂 already mapped).
  * Do not copy 那賀 / 佐那河内 / 上勝 / 勝浦 / 神山 / 上板 / 板野 / 石井 / 松茂 / 北島 / 藍住 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
@@ -86,20 +89,19 @@ function shopping(
 }
 
 export const MUGI_TRAVEL_DINING: readonly TravelRow[] = [
-
-  dining(
-    'mugi-dining-01',
-    "つくしお好焼店",
-    "徳島県海部郡牟岐町川長天神前70-4",
-    null,
-    "https://tabelog.com/tokushima/A3602/A360203/36002586/"
-  ),
   dining(
     'mugi-dining-02',
     "牟岐朝日食堂",
     "徳島県海部郡牟岐町中村本村10-24 マーブル牟岐 1F",
     null,
     "https://tabelog.com/tokushima/A3602/A360203/36009060/"
+  ),
+  dining(
+    'mugi-dining-08',
+    "牟岐５５ラーメン",
+    "徳島県海部郡牟岐町川長関33-1",
+    null,
+    "https://tabelog.com/tokushima/A3602/A360203/36005075/"
   ),
   dining(
     'mugi-dining-03',
@@ -130,20 +132,6 @@ export const MUGI_TRAVEL_DINING: readonly TravelRow[] = [
     "https://tabelog.com/tokushima/A3602/A360203/36003189/"
   ),
   dining(
-    'mugi-dining-07',
-    "徳島スモーク",
-    "徳島県海部郡牟岐町辺川75-1",
-    null,
-    "https://tabelog.com/tokushima/A3602/A360203/36008574/"
-  ),
-  dining(
-    'mugi-dining-08',
-    "牟岐５５ラーメン",
-    "徳島県海部郡牟岐町川長関33-1",
-    null,
-    "https://tabelog.com/tokushima/A3602/A360203/36005075/"
-  ),
-  dining(
     'mugi-dining-09',
     "魚秀やかた",
     "徳島県海部郡牟岐町大字中村字杉谷13-1",
@@ -158,18 +146,32 @@ export const MUGI_TRAVEL_DINING: readonly TravelRow[] = [
     "https://tabelog.com/tokushima/A3602/A360203/36004908/"
   ),
   dining(
-    'mugi-dining-11',
-    "家形船",
-    "徳島県海部郡牟岐町大字内妻字白木34",
-    null,
-    "https://tabelog.com/tokushima/A3602/A360203/36000367/"
-  ),
-  dining(
     'mugi-dining-12',
     "HORAI 牟岐店",
     "徳島県海部郡牟岐町大字中村字本村106-10",
     null,
     "https://tabelog.com/tokushima/A3602/A360203/36005952/"
+  ),
+  dining(
+    'mugi-dining-01',
+    "つくしお好焼店",
+    "徳島県海部郡牟岐町川長天神前70-4",
+    null,
+    "https://tabelog.com/tokushima/A3602/A360203/36002586/"
+  ),
+  dining(
+    'mugi-dining-07',
+    "徳島スモーク",
+    "徳島県海部郡牟岐町辺川75-1",
+    null,
+    "https://tabelog.com/tokushima/A3602/A360203/36008574/"
+  ),
+  dining(
+    'mugi-dining-11',
+    "家形船",
+    "徳島県海部郡牟岐町大字内妻字白木34",
+    null,
+    "https://tabelog.com/tokushima/A3602/A360203/36000367/"
   ),
   dining(
     'mugi-dining-13',
@@ -219,7 +221,8 @@ export const MUGI_TRAVEL_DINING: readonly TravelRow[] = [
     "徳島県海部郡牟岐町中村本村7-3",
     null,
     "https://tabelog.com/tokushima/A3602/A360203/36002037/"
-  ),
+  )
+
 ];
 
 export const MUGI_DINING_NAME_SET: ReadonlySet<string> = new Set(
