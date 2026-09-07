@@ -332,6 +332,7 @@ import {TOSACHO, TOSACHO_PLACE_PHOTO, TOSACHO_FACILITIES, TOSACHO_EXPECTED_GEO_C
 import {OKAWA, OKAWA_PLACE_PHOTO, OKAWA_FACILITIES, OKAWA_EXPECTED_GEO_COUNT, OKAWA_EXPECTED_ROW_COUNT} from './okawa';
 import {NIYODOGAWA, NIYODOGAWA_PLACE_PHOTO, NIYODOGAWA_FACILITIES, NIYODOGAWA_EXPECTED_GEO_COUNT, NIYODOGAWA_EXPECTED_ROW_COUNT} from './niyodogawa';
 import {NAKATOSA, NAKATOSA_PLACE_PHOTO, NAKATOSA_FACILITIES, NAKATOSA_EXPECTED_GEO_COUNT, NAKATOSA_EXPECTED_ROW_COUNT} from './nakatosa';
+import {OCHI, OCHI_PLACE_PHOTO, OCHI_FACILITIES, OCHI_EXPECTED_GEO_COUNT, OCHI_EXPECTED_ROW_COUNT} from './ochi';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -704,6 +705,13 @@ import {
   NAKATOSA_TRAVEL_COMMERCE,
   NAKATOSA_TRAVEL_ALL
 } from './nakatosa-travel';
+import {
+  OCHI_TRAVEL_DINING,
+  OCHI_TRAVEL_STAY,
+  OCHI_TRAVEL_SHOPPING,
+  OCHI_TRAVEL_COMMERCE,
+  OCHI_TRAVEL_ALL
+} from './ochi-travel';
 
 
 
@@ -2986,6 +2994,37 @@ export const OKAWA_LOOKUP: LookupTown = {
 
 
 
+export const OCHI_LOOKUP: LookupTown = {
+  slug: 'ochi',
+  prefectureSlug: 'kochi',
+  jis: OCHI.jis,
+  nameJa: OCHI.nameJa,
+  nameEn: OCHI.nameEn,
+  heroPhoto: OCHI_PLACE_PHOTO,
+  photoCiteJa: '写真は横倉山展望台からの仁淀川と越知町。Koda6029、2019-12-31、CC BY-SA 4.0。File:横倉山展望台からの仁淀川と越知町.jpg。',
+  photoCiteEn: 'Photo: Niyodo River and Ochi from Mt. Yokokura observation deck. Koda6029, 2019-12-31, CC BY-SA 4.0. File:横倉山展望台からの仁淀川と越知町.jpg.',
+  rows: OCHI_FACILITIES,
+  expectedGeo: OCHI_EXPECTED_GEO_COUNT,
+  expectedRows: OCHI_EXPECTED_ROW_COUNT,
+  travelDining: OCHI_TRAVEL_DINING,
+  travelStay: OCHI_TRAVEL_STAY,
+  travelShopping: OCHI_TRAVEL_SHOPPING,
+  travelCommerce: OCHI_TRAVEL_COMMERCE,
+  travelAll: OCHI_TRAVEL_ALL,
+  coverageJa:
+    '越知町（JIS 39403）観光5・宿泊1・飲食3・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県26つ目のLIVEハブ。',
+  coverageEn:
+    'Ochi Town (JIS 39403), 5 tourism + 1 stay + 3 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Twenty-sixth LIVE Kochi hub.',
+  mapLabelJa: '越知町の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Ochi Town',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons/Snow Peak等出典座標5件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 5 sourced coordinates for town/official facilities (accessed 2026-09-08).',
+  licenseNoteJa: '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from town.ochi.kochi.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
 export const NAKATOSA_LOOKUP: LookupTown = {
   slug: 'nakatosa',
   prefectureSlug: 'kochi',
@@ -3114,7 +3153,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   tosacho: TOSACHO_LOOKUP,
   okawa: OKAWA_LOOKUP,
   niyodogawa: NIYODOGAWA_LOOKUP,
-  nakatosa: NAKATOSA_LOOKUP
+  nakatosa: NAKATOSA_LOOKUP,
+  ochi: OCHI_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

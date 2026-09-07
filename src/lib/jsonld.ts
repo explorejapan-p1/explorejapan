@@ -61,6 +61,7 @@ import {TOSACHO, TOSACHO_PLACE_PHOTO} from '@/data/tosacho';
 import {OKAWA, OKAWA_PLACE_PHOTO} from '@/data/okawa';
 import {NIYODOGAWA, NIYODOGAWA_PLACE_PHOTO} from '@/data/niyodogawa';
 import {NAKATOSA, NAKATOSA_PLACE_PHOTO} from '@/data/nakatosa';
+import {OCHI, OCHI_PLACE_PHOTO} from '@/data/ochi';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -4216,6 +4217,67 @@ export function otoyoGraph(locale: AppLocale) {
 
 
 
+
+
+export function ochiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/ochi');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('ochi');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? OCHI.nameJa : OCHI.nameEn,
+        alternateName: isJa ? OCHI.nameEn : OCHI.nameJa,
+        identifier: OCHI.jis,
+        url,
+        image: photoAbs(OCHI_PLACE_PHOTO),
+        sameAs: [OCHI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '越知甲1970番地' : '1970 Ochi-ko',
+          addressLocality: isJa ? OCHI.nameJa : OCHI.nameEn,
+          addressRegion: isJa ? OCHI.prefectureJa : OCHI.prefectureEn,
+          postalCode: OCHI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? OCHI.prefectureJa : OCHI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? OCHI.nameJa : OCHI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? OCHI.prefectureJa : OCHI.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? OCHI.nameJa : OCHI.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '越知町の案内' : 'Places in Ochi Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
 
 export function nakatosaGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'kochi/nakatosa');

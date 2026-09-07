@@ -84,6 +84,7 @@ import {TOSACHO_TRAVEL_ACCESSED} from '@/data/tosacho-travel';
 import {OKAWA_TRAVEL_ACCESSED} from '@/data/okawa-travel';
 import {NIYODOGAWA_TRAVEL_ACCESSED} from '@/data/niyodogawa-travel';
 import {NAKATOSA_TRAVEL_ACCESSED} from '@/data/nakatosa-travel';
+import {OCHI_TRAVEL_ACCESSED} from '@/data/ochi-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1572,6 +1573,20 @@ export function MimaFacilityLookup({
                 Lodging: Shirataki-no-Sato Rakuten classroom-type guest-room photo ({OKAWA_TRAVEL_ACCESSED}).
                 Dining from Tabelog Okawa Village shop pages ({OKAWA_TRAVEL_ACCESSED}).
                 Onsen: 0 (stay≠onsen). Experience: 0. Shopping/commerce: 0. Twenty-third LIVE Kochi hub.
+              </>
+            )
+          ) : town.slug === 'ochi' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ表示（横倉山、越知町役場、中仁淀橋、大樽の滝、横倉山自然の森博物館）。
+                宿泊はSnow Peakおち仁淀川キャンプフィールドの住箱客室写真（{OCHI_TRAVEL_ACCESSED}）。
+                飲食は食べログ越知町の公開店ページ（{OCHI_TRAVEL_ACCESSED}）。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Mt. Yokokura, Ochi Town Hall, Naka-Niyodo Bridge, Otaru Falls, Yokokurayama Natural Forest Museum).
+                Lodging: Snow Peak Ochi Niyodogawa Camp Field JYUBAKO room photo ({OCHI_TRAVEL_ACCESSED}).
+                Dining from Tabelog Ochi shop pages ({OCHI_TRAVEL_ACCESSED}).
               </>
             )
           ) : town.slug === 'nakatosa' ? (

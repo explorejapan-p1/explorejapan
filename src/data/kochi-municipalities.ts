@@ -10,7 +10,7 @@ export type Municipality = {
 
 /**
  * Kochi 市区町村. Codes are N03_007 / JIS X 0402 (5-digit).
- * Kochi City 39201 + Nankoku 39204 + Konan 39211 + Kami 39212 + Ino 39386 + Aki 39203 + Muroto 39202 + Tosa 39205 + Susaki 39206 + Shimanto 39210 + Tosashimizu 39209 + Sukumo 39208 + Kuroshio 39428 + Toyo 39301 + Nahari 39302 + Yasuda 39304 + Geisei 39307 + Kitagawa 39305 + Umaji 39306 + Motoyama 39341 + Otoyo 39344 + Tosacho 39363 + Okawa 39364 + Niyodogawa 39387 + Nakatosa 39401 LIVE hubs (+ remaining municipalities coming-soon).
+ * Kochi City 39201 + Nankoku 39204 + Konan 39211 + Kami 39212 + Ino 39386 + Aki 39203 + Muroto 39202 + Tosa 39205 + Susaki 39206 + Shimanto 39210 + Tosashimizu 39209 + Sukumo 39208 + Kuroshio 39428 + Toyo 39301 + Nahari 39302 + Yasuda 39304 + Geisei 39307 + Kitagawa 39305 + Umaji 39306 + Motoyama 39341 + Otoyo 39344 + Tosacho 39363 + Okawa 39364 + Niyodogawa 39387 + Nakatosa 39401 + Ochi 39403 LIVE hubs (+ remaining municipalities coming-soon; Sakawa/Tano deferred: no attributable stay room still).
  */
 export const KOCHI_MUNICIPALITIES: Municipality[] = [
   {jis: '39201', slug: 'kochi', nameJa: '高知市', nameEn: 'Kochi', status: 'ready'},
@@ -39,7 +39,7 @@ export const KOCHI_MUNICIPALITIES: Municipality[] = [
   {jis: '39387', slug: 'niyodogawa', nameJa: '仁淀川町', nameEn: 'Niyodogawa', status: 'ready'},
   {jis: '39401', slug: 'nakatosa', nameJa: '中土佐町', nameEn: 'Nakatosa', status: 'ready'},
   {jis: '39402', slug: 'sakawa', nameJa: '佐川町', nameEn: 'Sakawa', status: 'coming-soon'},
-  {jis: '39403', slug: 'ochi', nameJa: '越知町', nameEn: 'Ochi', status: 'coming-soon'},
+  {jis: '39403', slug: 'ochi', nameJa: '越知町', nameEn: 'Ochi', status: 'ready'},
   {jis: '39405', slug: 'yusuhara', nameJa: '梼原町', nameEn: 'Yusuhara', status: 'coming-soon'},
   {jis: '39410', slug: 'hidaka', nameJa: '日高村', nameEn: 'Hidaka', status: 'coming-soon'},
   {jis: '39411', slug: 'tsuno', nameJa: '津野町', nameEn: 'Tsuno', status: 'coming-soon'},
