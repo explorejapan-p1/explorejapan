@@ -45,6 +45,7 @@ import {AKI, AKI_PLACE_PHOTO} from '@/data/aki';
 import {MUROTO, MUROTO_PLACE_PHOTO} from '@/data/muroto';
 import {TOSA, TOSA_PLACE_PHOTO} from '@/data/tosa';
 import {SUSAKI, SUSAKI_PLACE_PHOTO} from '@/data/susaki';
+import {SHIMANTO, SHIMANTO_PLACE_PHOTO} from '@/data/shimanto';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -157,7 +158,9 @@ function localityJa(slug: string): string {
   if (slug === 'ino') return INO.nameJa;
   if (slug === 'aki') return AKI.nameJa;
   if (slug === 'muroto') return MUROTO.nameJa;
+  if (slug === 'tosa') return TOSA.nameJa;
   if (slug === 'susaki') return SUSAKI.nameJa;
+  if (slug === 'shimanto') return SHIMANTO.nameJa;
   return MIMA.nameJa;
 }
 
@@ -209,7 +212,9 @@ function localityEn(slug: string): string {
   if (slug === 'ino') return INO.nameEn;
   if (slug === 'aki') return AKI.nameEn;
   if (slug === 'muroto') return MUROTO.nameEn;
+  if (slug === 'tosa') return TOSA.nameEn;
   if (slug === 'susaki') return SUSAKI.nameEn;
+  if (slug === 'shimanto') return SHIMANTO.nameEn;
   return MIMA.nameEn;
 }
 
@@ -3691,6 +3696,68 @@ export function susakiGraph(locale: AppLocale) {
     ]
   };
 }
+
+
+export function shimantoGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/shimanto');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('shimanto');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? SHIMANTO.nameJa : SHIMANTO.nameEn,
+        alternateName: isJa ? SHIMANTO.nameEn : SHIMANTO.nameJa,
+        identifier: SHIMANTO.jis,
+        url,
+        image: photoAbs(SHIMANTO_PLACE_PHOTO),
+        sameAs: [SHIMANTO.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '中村大橋通四丁目10番地' : '4-10 Nakamura-ohashidori',
+          addressLocality: isJa ? SHIMANTO.nameJa : SHIMANTO.nameEn,
+          addressRegion: isJa ? SHIMANTO.prefectureJa : SHIMANTO.prefectureEn,
+          postalCode: SHIMANTO.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? SHIMANTO.prefectureJa : SHIMANTO.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? SHIMANTO.nameJa : SHIMANTO.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? SHIMANTO.prefectureJa : SHIMANTO.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? SHIMANTO.nameJa : SHIMANTO.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '四万十市の案内' : 'Places in Shimanto City',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
 
 export function murotoGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'kochi/muroto');

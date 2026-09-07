@@ -537,6 +537,17 @@ import {
   susakiSourcedHook,
   susakiTopChipForRow
 } from './susaki-travel';
+import {
+  isShimantoOnsenPackRow,
+  isShimantoExperiencePackRow,
+  isShimantoStayPackRow,
+  rankShimantoSeeRows,
+  resolveShimantoFilter,
+  shimantoPackRowMatchesFilter,
+  shimantoSightPhoto,
+  shimantoSourcedHook,
+  shimantoTopChipForRow
+} from './shimanto-travel';
 
 
 
@@ -1117,6 +1128,19 @@ const MANNO_HELPERS: LookupHelpers = {
 
 
 
+
+const SHIMANTO_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isShimantoOnsenPackRow,
+  isExperiencePackRow: isShimantoExperiencePackRow,
+  isStayPackRow: isShimantoStayPackRow,
+  packRowMatchesFilter: shimantoPackRowMatchesFilter,
+  rankSeeRows: rankShimantoSeeRows,
+  sightPhoto: shimantoSightPhoto,
+  sourcedHook: shimantoSourcedHook,
+  topChipForRow: shimantoTopChipForRow,
+  resolveFilter: resolveShimantoFilter
+};
+
 const SUSAKI_HELPERS: LookupHelpers = {
   isOnsenPackRow: isSusakiOnsenPackRow,
   isExperiencePackRow: isSusakiExperiencePackRow,
@@ -1293,5 +1317,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'muroto') return MUROTO_HELPERS;
   if (slug === 'tosa') return TOSA_HELPERS;
   if (slug === 'susaki') return SUSAKI_HELPERS;
+  if (slug === 'shimanto') return SHIMANTO_HELPERS;
   return MIMA_HELPERS;
 }

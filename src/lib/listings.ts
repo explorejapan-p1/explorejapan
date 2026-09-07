@@ -387,6 +387,14 @@ import {
   isSusakiStayPackRow,
   rankSusakiSeeRows
 } from '@/data/susaki-travel';
+import {
+  SHIMANTO_DINING_NAME_SET,
+  shimantoSightPhoto,
+  isShimantoOnsenPackRow,
+  isShimantoExperiencePackRow,
+  isShimantoStayPackRow,
+  rankShimantoSeeRows
+} from '@/data/shimanto-travel';
 
 
 
@@ -2105,6 +2113,46 @@ function mannoListings(): PublicListing[] {
 
 
 
+
+function shimantoListings(): PublicListing[] {
+  const town = lookupTown('shimanto')!;
+  const out: PublicListing[] = town.travelAll.map((row) =>
+    fromTravel(row, 'shimanto', shimantoSightPhoto(row.name_ja))
+  );
+  const seen = new Set<string>();
+  const pack: FacilityRow[] = [];
+  for (const row of town.rows) {
+    if (SHIMANTO_DINING_NAME_SET.has(row.name_ja)) continue;
+    if (
+      !isShimantoOnsenPackRow(row) &&
+      !isShimantoExperiencePackRow(row) &&
+      !isShimantoStayPackRow(row) &&
+      !isSightsCategory(row.category)
+    ) {
+      continue;
+    }
+    const key = packDedupeKey(row);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    pack.push(row);
+  }
+  const ranked = rankShimantoSeeRows(pack);
+  const onsen = pack.filter(isShimantoOnsenPackRow);
+  const experience = pack.filter(isShimantoExperiencePackRow);
+  const stay = pack.filter(isShimantoStayPackRow);
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
+    const kind: ListingKind = isShimantoOnsenPackRow(row)
+      ? 'onsen'
+      : isShimantoExperiencePackRow(row)
+        ? 'experience'
+        : isShimantoStayPackRow(row)
+          ? 'stay'
+          : 'sights';
+    out.push(fromPack(row, 'shimanto', kind, shimantoSightPhoto(row.name_ja)));
+  }
+  return out;
+}
+
 function susakiListings(): PublicListing[] {
   const town = lookupTown('susaki')!;
   const out: PublicListing[] = town.travelAll.map((row) =>
@@ -2506,7 +2554,8 @@ const CACHE: Record<ReadySlug, PublicListing[]> = {
   aki: akiListings(),
   muroto: murotoListings(),
   tosa: tosaListings(),
-  susaki: susakiListings()
+  susaki: susakiListings(),
+  shimanto: shimantoListings()
 };
 
 export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {
@@ -2514,7 +2563,7 @@ export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {
 }
 
 export function allPublicListings(): PublicListing[] {
-  return [...CACHE.mima, ...CACHE.tsurugi, ...CACHE.yoshinogawa, ...CACHE.miyoshi, ...CACHE.tokushima, ...CACHE.awa, ...CACHE.higashimiyoshi, ...CACHE.kitajima, ...CACHE.naruto, ...CACHE.matsushige, ...CACHE.ishii, ...CACHE.itano, ...CACHE.kamiita, ...CACHE.kamiyama, ...CACHE.katsuura, ...CACHE.kamikatsu, ...CACHE.sanagochi, ...CACHE.naka, ...CACHE.mugi, ...CACHE.minami, ...CACHE.aizumi, ...CACHE.kaiyo, ...CACHE.komatsushima, ...CACHE.anan, ...CACHE.takamatsu, ...CACHE.kotohira, ...CACHE.marugame, ...CACHE.kanonji, ...CACHE.sakaide, ...CACHE.naoshima, ...CACHE.shodoshima, ...CACHE.zentsuji, ...CACHE.mitoyo, ...CACHE.utazu, ...CACHE.tonosho, ...CACHE.sanuki, ...CACHE.higashikagawa, ...CACHE.miki, ...CACHE.ayagawa, ...CACHE.tadotsu, ...CACHE.manno, ...CACHE.kochi, ...CACHE.nankoku, ...CACHE.konan, ...CACHE.kami, ...CACHE.ino, ...CACHE.aki, ...CACHE.muroto, ...CACHE.tosa, ...CACHE.susaki];
+  return [...CACHE.mima, ...CACHE.tsurugi, ...CACHE.yoshinogawa, ...CACHE.miyoshi, ...CACHE.tokushima, ...CACHE.awa, ...CACHE.higashimiyoshi, ...CACHE.kitajima, ...CACHE.naruto, ...CACHE.matsushige, ...CACHE.ishii, ...CACHE.itano, ...CACHE.kamiita, ...CACHE.kamiyama, ...CACHE.katsuura, ...CACHE.kamikatsu, ...CACHE.sanagochi, ...CACHE.naka, ...CACHE.mugi, ...CACHE.minami, ...CACHE.aizumi, ...CACHE.kaiyo, ...CACHE.komatsushima, ...CACHE.anan, ...CACHE.takamatsu, ...CACHE.kotohira, ...CACHE.marugame, ...CACHE.kanonji, ...CACHE.sakaide, ...CACHE.naoshima, ...CACHE.shodoshima, ...CACHE.zentsuji, ...CACHE.mitoyo, ...CACHE.utazu, ...CACHE.tonosho, ...CACHE.sanuki, ...CACHE.higashikagawa, ...CACHE.miki, ...CACHE.ayagawa, ...CACHE.tadotsu, ...CACHE.manno, ...CACHE.kochi, ...CACHE.nankoku, ...CACHE.konan, ...CACHE.kami, ...CACHE.ino, ...CACHE.aki, ...CACHE.muroto, ...CACHE.tosa, ...CACHE.susaki, ...CACHE.shimanto];
 }
 
 export function liveListings(slug?: ReadySlug): PublicListing[] {

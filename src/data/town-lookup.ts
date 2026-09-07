@@ -316,6 +316,7 @@ import {AKI, AKI_PLACE_PHOTO, AKI_FACILITIES, AKI_EXPECTED_GEO_COUNT, AKI_EXPECT
 import {MUROTO, MUROTO_PLACE_PHOTO, MUROTO_FACILITIES, MUROTO_EXPECTED_GEO_COUNT, MUROTO_EXPECTED_ROW_COUNT} from './muroto';
 import {TOSA, TOSA_PLACE_PHOTO, TOSA_FACILITIES, TOSA_EXPECTED_GEO_COUNT, TOSA_EXPECTED_ROW_COUNT} from './tosa';
 import {SUSAKI, SUSAKI_PLACE_PHOTO, SUSAKI_FACILITIES, SUSAKI_EXPECTED_GEO_COUNT, SUSAKI_EXPECTED_ROW_COUNT} from './susaki';
+import {SHIMANTO, SHIMANTO_PLACE_PHOTO, SHIMANTO_FACILITIES, SHIMANTO_EXPECTED_GEO_COUNT, SHIMANTO_EXPECTED_ROW_COUNT} from './shimanto';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -576,6 +577,13 @@ import {
   SUSAKI_TRAVEL_COMMERCE,
   SUSAKI_TRAVEL_ALL,
 } from './susaki-travel';
+import {
+  SHIMANTO_TRAVEL_DINING,
+  SHIMANTO_TRAVEL_STAY,
+  SHIMANTO_TRAVEL_SHOPPING,
+  SHIMANTO_TRAVEL_COMMERCE,
+  SHIMANTO_TRAVEL_ALL,
+} from './shimanto-travel';
 
 
 
@@ -2091,6 +2099,40 @@ export const SUSAKI_LOOKUP: LookupTown = {
   licenseSiteEn: 'City-site listing'
 };
 
+
+export const SHIMANTO_LOOKUP: LookupTown = {
+  slug: 'shimanto',
+  prefectureSlug: 'kochi',
+  jis: SHIMANTO.jis,
+  nameJa: SHIMANTO.nameJa,
+  nameEn: SHIMANTO.nameEn,
+  heroPhoto: SHIMANTO_PLACE_PHOTO,
+  photoCiteJa: '写真は四万十川橋（赤鉄橋）。Kuruman、2015-08-31、CC BY 2.0。File:Shimanto_River_Bridge(26676794871).jpg。',
+  photoCiteEn: 'Photo: Shimanto River Bridge (Aka-tetsubashi). Kuruman, 31 Aug 2015, CC BY 2.0. File:Shimanto_River_Bridge(26676794871).jpg.',
+  rows: SHIMANTO_FACILITIES,
+  expectedGeo: SHIMANTO_EXPECTED_GEO_COUNT,
+  expectedRows: SHIMANTO_EXPECTED_ROW_COUNT,
+  travelDining: SHIMANTO_TRAVEL_DINING,
+  travelStay: SHIMANTO_TRAVEL_STAY,
+  travelShopping: SHIMANTO_TRAVEL_SHOPPING,
+  travelCommerce: SHIMANTO_TRAVEL_COMMERCE,
+  travelAll: SHIMANTO_TRAVEL_ALL,
+  coverageJa:
+    '四万十市（JIS 39210）観光6・宿泊1・飲食16・温泉1・体験1（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県10つ目のLIVEハブ。',
+  coverageEn:
+    'Shimanto City (JIS 39210), 6 tourism + 1 stay + 16 dining + 1 onsen + 1 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Tenth LIVE Kochi hub.',
+  mapLabelJa: '四万十市の出典座標8件',
+  mapLabelEn: '8 sourced coordinates in Shimanto City',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia/Commons等出典座標8件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 8 sourced coordinates for city/official facilities (accessed 2026-09-08).',
+  licenseNoteJa:
+    '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.shimanto.lg.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
 export const MUROTO_LOOKUP: LookupTown = {
   slug: 'muroto',
   prefectureSlug: 'kochi',
@@ -2452,7 +2494,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   aki: AKI_LOOKUP,
   muroto: MUROTO_LOOKUP,
   tosa: TOSA_LOOKUP,
-  susaki: SUSAKI_LOOKUP
+  susaki: SUSAKI_LOOKUP,
+  shimanto: SHIMANTO_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

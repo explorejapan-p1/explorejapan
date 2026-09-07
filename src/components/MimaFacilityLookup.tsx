@@ -68,6 +68,7 @@ import {AKI_TRAVEL_ACCESSED} from '@/data/aki-travel';
 import {MUROTO_TRAVEL_ACCESSED} from '@/data/muroto-travel';
 import {TOSA_TRAVEL_ACCESSED} from '@/data/tosa-travel';
 import {SUSAKI_TRAVEL_ACCESSED} from '@/data/susaki-travel';
+import {SHIMANTO_TRAVEL_ACCESSED} from '@/data/shimanto-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1460,6 +1461,22 @@ export function MimaFacilityLookup({
                 Lodging from Rakuten Travel room photos ({MUROTO_TRAVEL_ACCESSED}).
                 Dining from Tabelog Muroto shop pages ({MUROTO_TRAVEL_ACCESSED}).
                 Onsen: 0 (room-still stay only; no attributable bath keys). Experience: Muroto Geopark Center (Commons). Shopping/commerce: 0. Seventh LIVE Kochi hub.
+              </>
+            )
+          ) : town.slug === 'shimanto' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（四万十川橋・岩間沈下橋・佐田沈下橋・一條神社・不破八幡宮・トンボ自然公園）。
+                宿泊は楽天トラベル新ロイヤルホテル四万十の客室写真（{SHIMANTO_TRAVEL_ACCESSED}）。
+                飲食は食べログ四万十市の公開店ページ（{SHIMANTO_TRAVEL_ACCESSED}）。
+                温泉は同ホテル4階大浴場（楽天・宿泊と別キー）。体験は道の駅よって西土佐（Commons）。買物・商業は0件。高知県10つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Shimanto River Bridge, Iwama/Sada chinkabashi, Ichijo Shrine, Fuba Hachimangu, Tombo Nature Park).
+                Lodging: New Royal Hotel Shimanto Rakuten room photo ({SHIMANTO_TRAVEL_ACCESSED}).
+                Dining from Tabelog Shimanto shop pages ({SHIMANTO_TRAVEL_ACCESSED}).
+                Onsen: hotel 4F bath still (Rakuten; stay≠onsen). Experience: Michinoeki Yotte Nishitosa (Commons). Shopping/commerce: 0. Tenth LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'susaki' ? (
