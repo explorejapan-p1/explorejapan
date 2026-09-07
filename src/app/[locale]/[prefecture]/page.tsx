@@ -16,6 +16,7 @@ import {NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {KOMATSUSHIMA_PLACE_PHOTO} from '@/data/komatsushima';
 import {ANAN_PLACE_PHOTO} from '@/data/anan';
 import {TAKAMATSU_PLACE_PHOTO} from '@/data/takamatsu';
+import {KOTOHIRA_PLACE_PHOTO} from '@/data/kotohira';
 import {KAGAWA_MUNICIPALITIES} from '@/data/kagawa-municipalities';
 import {TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {PREFECTURES, PREFECTURE_BY_SLUG} from '@/data/prefectures';
@@ -49,8 +50,8 @@ export async function generateMetadata({params}: Props) {
         : 'Municipalities in Tokushima. Listings: Tokushima City, Naruto City, Mima City, Tsurugi Town, Yoshinogawa City, Miyoshi City, Awa City, Higashimiyoshi Town, Kitajima Town, Matsushige Town, Ishii Town, Itano Town, and Kamiita Town.'
       : pref.slug === 'kagawa'
         ? loc === 'ja'
-          ? '香川県の市町村。高松市。'
-          : 'Municipalities in Kagawa. Listings: Takamatsu City.'
+          ? '香川県の市町村。高松市・琴平町。'
+          : 'Municipalities in Kagawa. Listings: Takamatsu City, Kotohira Town.'
         : loc === 'ja'
           ? 'この県の市町村ページは準備中です。'
           : 'This prefecture layer is not wired yet.',
@@ -113,6 +114,8 @@ export default async function PrefecturePage({params}: Props) {
                                           ? KOMATSUSHIMA_PLACE_PHOTO
                                           : m.slug === 'anan'
                                             ? ANAN_PLACE_PHOTO
+                                            : m.slug === 'kotohira'
+                                              ? KOTOHIRA_PLACE_PHOTO
                                             : m.slug === 'takamatsu'
                                               ? TAKAMATSU_PLACE_PHOTO
                                               : MIMA_PLACE_PHOTO;

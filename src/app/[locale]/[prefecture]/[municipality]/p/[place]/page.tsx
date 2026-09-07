@@ -1,22 +1,8 @@
 import {notFound} from 'next/navigation';
 import {JsonLd} from '@/components/JsonLd';
 import {MIMA} from '@/data/mima';
-import {TSURUGI} from '@/data/tsurugi';
-import {YOSHINOGAWA} from '@/data/yoshinogawa';
-import {MIYOSHI} from '@/data/miyoshi';
-import {TOKUSHIMA_CITY} from '@/data/tokushima-city';
-import {AWA} from '@/data/awa';
-import {HIGASHIMIYOSHI} from '@/data/higashimiyoshi';
-import {KITAJIMA} from '@/data/kitajima';
-import {MATSUSHIGE} from '@/data/matsushige';
-import {ISHII} from '@/data/ishii';
-import {ITANO} from '@/data/itano';
-import {NARUTO} from '@/data/naruto';
-import {KOMATSUSHIMA} from '@/data/komatsushima';
-import {ANAN} from '@/data/anan';
-import {TAKAMATSU} from '@/data/takamatsu';
 import {prefSlugForReady} from '@/data/lookup-town';
-import {isReadySlug} from '@/data/town-lookup';
+import {isReadySlug, lookupTown} from '@/data/town-lookup';
 import {PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {Link} from '@/i18n/navigation';
 import {routing, type AppLocale} from '@/i18n/routing';
@@ -50,62 +36,9 @@ export async function generateMetadata({params}: Props) {
   const listing = listingById(place, municipality);
   if (!listing || !listing.photo) return {};
   const loc = (locale === 'en' ? 'en' : 'ja') as AppLocale;
-  const townJa =
-    municipality === 'tsurugi'
-      ? 'つるぎ町'
-      : municipality === 'yoshinogawa'
-        ? '吉野川市'
-        : municipality === 'miyoshi'
-          ? '三好市'
-          : municipality === 'tokushima'
-            ? '徳島市'
-            : municipality === 'awa'
-              ? '阿波市'
-              : municipality === 'higashimiyoshi'
-                ? '東みよし町'
-                : municipality === 'kitajima'
-                  ? '北島町'
-                  : municipality === 'naruto'
-                    ? '鳴門市'
-                    : municipality === 'matsushige'
-                      ? '松茂町'
-                      : municipality === 'ishii'
-                        ? '石井町'
-                        : municipality === 'itano'
-                          ? '板野町'
-                          : municipality === 'komatsushima'
-                            ? '小松島市'
-                            : municipality === 'anan'
-                              ? '阿南市'
-                              : '美馬市';
-  const townEn =
-    municipality === 'tsurugi'
-      ? 'Tsurugi Town'
-      : municipality === 'yoshinogawa'
-        ? 'Yoshinogawa City'
-        : municipality === 'miyoshi'
-          ? 'Miyoshi City'
-          : municipality === 'tokushima'
-            ? 'Tokushima City'
-            : municipality === 'awa'
-              ? 'Awa City'
-              : municipality === 'higashimiyoshi'
-                ? 'Higashimiyoshi Town'
-                : municipality === 'kitajima'
-                  ? 'Kitajima Town'
-                  : municipality === 'naruto'
-                    ? 'Naruto City'
-                    : municipality === 'matsushige'
-                      ? 'Matsushige Town'
-                      : municipality === 'ishii'
-                        ? 'Ishii Town'
-                        : municipality === 'itano'
-                          ? 'Itano Town'
-                          : municipality === 'komatsushima'
-                            ? 'Komatsushima City'
-                            : municipality === 'anan'
-                              ? 'Anan City'
-                              : 'Mima City';
+  const town = lookupTown(municipality);
+  const townJa = town?.nameJa ?? '美馬市';
+  const townEn = town?.nameEn ?? 'Mima City';
   const description =
     loc === 'ja'
       ? `${listing.nameJa}（${townJa}）。出典のある案内のみ。`
@@ -130,62 +63,9 @@ export default async function PlacePage({params}: Props) {
   const isJa = loc === 'ja';
   const pref = PREFECTURE_BY_SLUG.get(prefecture)!;
   const photo = listing.photo;
-  const townNameJa =
-    municipality === 'tsurugi'
-      ? TSURUGI.nameJa
-      : municipality === 'yoshinogawa'
-        ? YOSHINOGAWA.nameJa
-        : municipality === 'miyoshi'
-          ? MIYOSHI.nameJa
-          : municipality === 'tokushima'
-            ? TOKUSHIMA_CITY.nameJa
-            : municipality === 'awa'
-              ? AWA.nameJa
-              : municipality === 'higashimiyoshi'
-                ? HIGASHIMIYOSHI.nameJa
-                : municipality === 'kitajima'
-                  ? KITAJIMA.nameJa
-                  : municipality === 'naruto'
-                    ? NARUTO.nameJa
-                    : municipality === 'matsushige'
-                      ? MATSUSHIGE.nameJa
-                      : municipality === 'ishii'
-                        ? ISHII.nameJa
-                        : municipality === 'itano'
-                          ? ITANO.nameJa
-                          : municipality === 'komatsushima'
-                            ? KOMATSUSHIMA.nameJa
-                            : municipality === 'anan'
-                              ? ANAN.nameJa
-                              : MIMA.nameJa;
-  const townNameEn =
-    municipality === 'tsurugi'
-      ? TSURUGI.nameEn
-      : municipality === 'yoshinogawa'
-        ? YOSHINOGAWA.nameEn
-        : municipality === 'miyoshi'
-          ? MIYOSHI.nameEn
-          : municipality === 'tokushima'
-            ? TOKUSHIMA_CITY.nameEn
-            : municipality === 'awa'
-              ? AWA.nameEn
-              : municipality === 'higashimiyoshi'
-                ? HIGASHIMIYOSHI.nameEn
-                : municipality === 'kitajima'
-                  ? KITAJIMA.nameEn
-                  : municipality === 'naruto'
-                    ? NARUTO.nameEn
-                    : municipality === 'matsushige'
-                      ? MATSUSHIGE.nameEn
-                      : municipality === 'ishii'
-                        ? ISHII.nameEn
-                        : municipality === 'itano'
-                          ? ITANO.nameEn
-                          : municipality === 'komatsushima'
-                            ? KOMATSUSHIMA.nameEn
-                            : municipality === 'anan'
-                              ? ANAN.nameEn
-                              : MIMA.nameEn;
+  const townMeta = lookupTown(municipality);
+  const townNameJa = townMeta?.nameJa ?? MIMA.nameJa;
+  const townNameEn = townMeta?.nameEn ?? MIMA.nameEn;
   const dest =
     listing.officialUrl && listing.officialUrl.trim() !== ''
       ? listing.officialUrl

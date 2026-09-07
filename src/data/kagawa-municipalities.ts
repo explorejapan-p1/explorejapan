@@ -10,7 +10,7 @@ export type Municipality = {
 
 /**
  * Kagawa 市区町村. Codes are N03_007 / JIS X 0402 (5-digit).
- * Takamatsu is 37201 — first LIVE hub.
+ * Takamatsu 37201 + Kotohira 37403 LIVE hubs.
  */
 export const KAGAWA_MUNICIPALITIES: Municipality[] = [
   {jis: '37201', slug: 'takamatsu', nameJa: '高松市', nameEn: 'Takamatsu', status: 'ready'},
@@ -27,7 +27,7 @@ export const KAGAWA_MUNICIPALITIES: Municipality[] = [
   {jis: '37364', slug: 'naoshima', nameJa: '直島町', nameEn: 'Naoshima', status: 'coming-soon'},
   {jis: '37386', slug: 'utazu', nameJa: '宇多津町', nameEn: 'Utazu', status: 'coming-soon'},
   {jis: '37387', slug: 'ayagawa', nameJa: '綾川町', nameEn: 'Ayagawa', status: 'coming-soon'},
-  {jis: '37403', slug: 'kotohira', nameJa: '琴平町', nameEn: 'Kotohira', status: 'coming-soon'},
+  {jis: '37403', slug: 'kotohira', nameJa: '琴平町', nameEn: 'Kotohira', status: 'ready'},
   {jis: '37404', slug: 'tadotsu', nameJa: '多度津町', nameEn: 'Tadotsu', status: 'coming-soon'},
   {jis: '37406', slug: 'manno', nameJa: 'まんのう町', nameEn: 'Manno', status: 'coming-soon'}
 ];

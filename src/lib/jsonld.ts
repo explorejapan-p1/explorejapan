@@ -20,6 +20,8 @@ import {AIZUMI, AIZUMI_PLACE_PHOTO} from '@/data/aizumi';
 import {KOMATSUSHIMA, KOMATSUSHIMA_PLACE_PHOTO} from '@/data/komatsushima';
 import {ANAN, ANAN_PLACE_PHOTO} from '@/data/anan';
 import {TAKAMATSU, TAKAMATSU_PLACE_PHOTO} from '@/data/takamatsu';
+import {KOTOHIRA, KOTOHIRA_PLACE_PHOTO} from '@/data/kotohira';
+import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
@@ -108,6 +110,7 @@ function localityJa(slug: string): string {
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameJa;
   if (slug === 'anan') return ANAN.nameJa;
   if (slug === 'takamatsu') return TAKAMATSU.nameJa;
+  if (slug === 'kotohira') return KOTOHIRA.nameJa;
   return MIMA.nameJa;
 }
 
@@ -136,6 +139,7 @@ function localityEn(slug: string): string {
   if (slug === 'tokushima') return TOKUSHIMA_CITY.nameEn;
   if (slug === 'anan') return ANAN.nameEn;
   if (slug === 'takamatsu') return TAKAMATSU.nameEn;
+  if (slug === 'kotohira') return KOTOHIRA.nameEn;
   return MIMA.nameEn;
 }
 
@@ -1850,9 +1854,9 @@ export function placeGraph(listing: PublicListing, locale: AppLocale) {
             '@type': 'ListItem',
             position: 2,
             name: isJa
-              ? (listing.slug === 'takamatsu' ? TAKAMATSU.prefectureJa : MIMA.prefectureJa)
-              : (listing.slug === 'takamatsu' ? TAKAMATSU.prefectureEn : MIMA.prefectureEn),
-            item: canonicalUrl(locale, listing.slug === 'takamatsu' ? 'kagawa' : 'tokushima')
+              ? (prefSlugForReady(listing.slug) === 'kagawa' ? TAKAMATSU.prefectureJa : MIMA.prefectureJa)
+              : (prefSlugForReady(listing.slug) === 'kagawa' ? TAKAMATSU.prefectureEn : MIMA.prefectureEn),
+            item: canonicalUrl(locale, prefSlugForReady(listing.slug))
           },
           {
             '@type': 'ListItem',
@@ -1860,7 +1864,7 @@ export function placeGraph(listing: PublicListing, locale: AppLocale) {
             name: isJa ? localityJa(listing.slug) : localityEn(listing.slug),
             item: canonicalUrl(
               locale,
-              `${listing.slug === 'takamatsu' ? 'kagawa' : 'tokushima'}/${listing.slug}`
+              `${prefSlugForReady(listing.slug)}/${listing.slug}`
             )
           },
           {
@@ -2165,6 +2169,66 @@ export function takamatsuGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '高松市の案内' : 'Places in Takamatsu City',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+export function kotohiraGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kagawa/kotohira');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('kotohira');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? KOTOHIRA.nameJa : KOTOHIRA.nameEn,
+        alternateName: isJa ? KOTOHIRA.nameEn : KOTOHIRA.nameJa,
+        identifier: KOTOHIRA.jis,
+        url,
+        image: photoAbs(KOTOHIRA_PLACE_PHOTO),
+        sameAs: [KOTOHIRA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '榎井817番地10' : '817-10 Enai',
+          addressLocality: isJa ? KOTOHIRA.nameJa : KOTOHIRA.nameEn,
+          addressRegion: isJa ? KOTOHIRA.prefectureJa : KOTOHIRA.prefectureEn,
+          postalCode: KOTOHIRA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? KOTOHIRA.prefectureJa : KOTOHIRA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? KOTOHIRA.nameJa : KOTOHIRA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? KOTOHIRA.prefectureJa : KOTOHIRA.prefectureEn, item: canonicalUrl(locale, 'kagawa')},
+          {'@type': 'ListItem', position: 3, name: isJa ? KOTOHIRA.nameJa : KOTOHIRA.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '琴平町の案内' : 'Places in Kotohira Town',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

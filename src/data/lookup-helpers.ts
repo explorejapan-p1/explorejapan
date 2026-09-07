@@ -260,6 +260,17 @@ import {
   rankTakamatsuSeeRows,
   resolveTakamatsuFilter
 } from './takamatsu-travel';
+import {
+  isKotohiraOnsenPackRow,
+  isKotohiraExperiencePackRow,
+  isKotohiraStayPackRow,
+  kotohiraPackRowMatchesFilter,
+  kotohiraSightPhoto,
+  kotohiraSourcedHook,
+  kotohiraTopChipForRow,
+  rankKotohiraSeeRows,
+  resolveKotohiraFilter
+} from './kotohira-travel';
 
 
 
@@ -646,6 +657,19 @@ const TAKAMATSU_HELPERS: LookupHelpers = {
   resolveFilter: resolveTakamatsuFilter
 };
 
+
+const KOTOHIRA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isKotohiraOnsenPackRow,
+  isExperiencePackRow: isKotohiraExperiencePackRow,
+  isStayPackRow: isKotohiraStayPackRow,
+  packRowMatchesFilter: kotohiraPackRowMatchesFilter,
+  rankSeeRows: rankKotohiraSeeRows,
+  sightPhoto: kotohiraSightPhoto,
+  sourcedHook: kotohiraSourcedHook,
+  topChipForRow: kotohiraTopChipForRow,
+  resolveFilter: resolveKotohiraFilter
+};
+
 export function townHelpers(slug: ReadySlug): LookupHelpers {
 
   if (slug === 'tsurugi') return TSURUGI_HELPERS;
@@ -672,5 +696,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'komatsushima') return KOMATSUSHIMA_HELPERS;
   if (slug === 'anan') return ANAN_HELPERS;
   if (slug === 'takamatsu') return TAKAMATSU_HELPERS;
+  if (slug === 'kotohira') return KOTOHIRA_HELPERS;
   return MIMA_HELPERS;
 }
