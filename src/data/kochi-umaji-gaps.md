@@ -1,6 +1,6 @@
 # Umaji Village (馬路村) gaps (TG566 nineteenth Kochi hub)
 
-Accessed 2026-09-08 (JST). LIVE tip pending push.
+Accessed 2026-09-08 (JST). LIVE tip `7db4d87bef`.
 
 ## LIVE pills (photo-first)
 - stay: 1 (馬路温泉 / Rakuten HOTEL/149487 本館和室12畳 LARGE wa12 — stay≠onsen)
@@ -27,4 +27,4 @@ Accessed 2026-09-08 (JST). LIVE tip pending push.
 - 田野町 still deferred: no attributable room still under HARD BAR.
 
 ## CDN
-Cold CDN check after Pages deploy.
+Cold CDN PASS after Pages lag (~105s). Live `ja/kochi/umaji/` PASS: hero 馬路村, desc 馬路村。インクライン、ゆず、魚梁瀬、食。, pills stay/dining/onsen/experience/sights = 1/2/1/0/5. Pref cover umaji-cover-incline present.
