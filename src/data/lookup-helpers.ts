@@ -603,6 +603,17 @@ import {
   nahariSourcedHook,
   nahariTopChipForRow
 } from './nahari-travel';
+import {
+  isYasudaOnsenPackRow,
+  isYasudaExperiencePackRow,
+  isYasudaStayPackRow,
+  rankYasudaSeeRows,
+  resolveYasudaFilter,
+  yasudaPackRowMatchesFilter,
+  yasudaSightPhoto,
+  yasudaSourcedHook,
+  yasudaTopChipForRow
+} from './yasuda-travel';
 
 
 
@@ -1210,6 +1221,19 @@ const SUKUMO_HELPERS: LookupHelpers = {
 };
 
 
+
+const YASUDA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isYasudaOnsenPackRow,
+  isExperiencePackRow: isYasudaExperiencePackRow,
+  isStayPackRow: isYasudaStayPackRow,
+  packRowMatchesFilter: yasudaPackRowMatchesFilter,
+  rankSeeRows: rankYasudaSeeRows,
+  sightPhoto: yasudaSightPhoto,
+  sourcedHook: yasudaSourcedHook,
+  topChipForRow: yasudaTopChipForRow,
+  resolveFilter: resolveYasudaFilter
+};
+
 const NAHARI_HELPERS: LookupHelpers = {
   isOnsenPackRow: isNahariOnsenPackRow,
   isExperiencePackRow: isNahariExperiencePackRow,
@@ -1440,5 +1464,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'kuroshio') return KUROSHIO_HELPERS;
   if (slug === 'toyo') return TOYO_HELPERS;
   if (slug === 'nahari') return NAHARI_HELPERS;
+  if (slug === 'yasuda') return YASUDA_HELPERS;
   return MIMA_HELPERS;
 }

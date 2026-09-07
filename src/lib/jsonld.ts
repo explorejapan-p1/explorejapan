@@ -51,6 +51,7 @@ import {SUKUMO, SUKUMO_PLACE_PHOTO} from '@/data/sukumo';
 import {KUROSHIO, KUROSHIO_PLACE_PHOTO} from '@/data/kuroshio';
 import {TOYO, TOYO_PLACE_PHOTO} from '@/data/toyo';
 import {NAHARI, NAHARI_PLACE_PHOTO} from '@/data/nahari';
+import {YASUDA, YASUDA_PLACE_PHOTO} from '@/data/yasuda';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -171,6 +172,7 @@ function localityJa(slug: string): string {
   if (slug === 'kuroshio') return KUROSHIO.nameJa;
   if (slug === 'toyo') return TOYO.nameJa;
   if (slug === 'nahari') return NAHARI.nameJa;
+  if (slug === 'yasuda') return YASUDA.nameJa;
   return MIMA.nameJa;
 }
 
@@ -230,6 +232,7 @@ function localityEn(slug: string): string {
   if (slug === 'kuroshio') return KUROSHIO.nameEn;
   if (slug === 'toyo') return TOYO.nameEn;
   if (slug === 'nahari') return NAHARI.nameEn;
+  if (slug === 'yasuda') return YASUDA.nameEn;
   return MIMA.nameEn;
 }
 
@@ -3883,6 +3886,67 @@ export function toyoGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '東洋町の案内' : 'Places in Toyo Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+
+export function yasudaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/yasuda');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('yasuda');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? YASUDA.nameJa : YASUDA.nameEn,
+        alternateName: isJa ? YASUDA.nameEn : YASUDA.nameJa,
+        identifier: YASUDA.jis,
+        url,
+        image: photoAbs(YASUDA_PLACE_PHOTO),
+        sameAs: [YASUDA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '大字安田1850番地' : '1850 Yasuda',
+          addressLocality: isJa ? YASUDA.nameJa : YASUDA.nameEn,
+          addressRegion: isJa ? YASUDA.prefectureJa : YASUDA.prefectureEn,
+          postalCode: YASUDA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? YASUDA.prefectureJa : YASUDA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? YASUDA.nameJa : YASUDA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? YASUDA.prefectureJa : YASUDA.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? YASUDA.nameJa : YASUDA.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '安田町の案内' : 'Places in Yasuda Town',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

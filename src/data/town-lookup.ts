@@ -322,6 +322,7 @@ import {SUKUMO, SUKUMO_PLACE_PHOTO, SUKUMO_FACILITIES, SUKUMO_EXPECTED_GEO_COUNT
 import {KUROSHIO, KUROSHIO_PLACE_PHOTO, KUROSHIO_FACILITIES, KUROSHIO_EXPECTED_GEO_COUNT, KUROSHIO_EXPECTED_ROW_COUNT} from './kuroshio';
 import {TOYO, TOYO_PLACE_PHOTO, TOYO_FACILITIES, TOYO_EXPECTED_GEO_COUNT, TOYO_EXPECTED_ROW_COUNT} from './toyo';
 import {NAHARI, NAHARI_PLACE_PHOTO, NAHARI_FACILITIES, NAHARI_EXPECTED_GEO_COUNT, NAHARI_EXPECTED_ROW_COUNT} from './nahari';
+import {YASUDA, YASUDA_PLACE_PHOTO, YASUDA_FACILITIES, YASUDA_EXPECTED_GEO_COUNT, YASUDA_EXPECTED_ROW_COUNT} from './yasuda';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -624,6 +625,13 @@ import {
   NAHARI_TRAVEL_COMMERCE,
   NAHARI_TRAVEL_ALL
 } from './nahari-travel';
+import {
+  YASUDA_TRAVEL_DINING,
+  YASUDA_TRAVEL_STAY,
+  YASUDA_TRAVEL_SHOPPING,
+  YASUDA_TRAVEL_COMMERCE,
+  YASUDA_TRAVEL_ALL
+} from './yasuda-travel';
 
 
 
@@ -2269,6 +2277,38 @@ export const TOYO_LOOKUP: LookupTown = {
   licenseSiteEn: 'Town-site listing'
 };
 
+
+export const YASUDA_LOOKUP: LookupTown = {
+  slug: 'yasuda',
+  prefectureSlug: 'kochi',
+  jis: YASUDA.jis,
+  nameJa: YASUDA.nameJa,
+  nameEn: YASUDA.nameEn,
+  heroPhoto: YASUDA_PLACE_PHOTO,
+  photoCiteJa: '写真は島石ピクニック広場。panoramio、2015-11-09、CC BY 3.0。File:島石ピクニック広場_-_panoramio.jpg。',
+  photoCiteEn: 'Photo: Shimaishi Picnic Ground. panoramio, 9 Nov 2015, CC BY 3.0. File:島石ピクニック広場_-_panoramio.jpg.',
+  rows: YASUDA_FACILITIES,
+  expectedGeo: YASUDA_EXPECTED_GEO_COUNT,
+  expectedRows: YASUDA_EXPECTED_ROW_COUNT,
+  travelDining: YASUDA_TRAVEL_DINING,
+  travelStay: YASUDA_TRAVEL_STAY,
+  travelShopping: YASUDA_TRAVEL_SHOPPING,
+  travelCommerce: YASUDA_TRAVEL_COMMERCE,
+  travelAll: YASUDA_TRAVEL_ALL,
+  coverageJa:
+    '安田町（JIS 39304）観光5・宿泊1・飲食6・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県16つ目のLIVEハブ。',
+  coverageEn:
+    'Yasuda Town (JIS 39304), 5 tourism + 1 stay + 6 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Sixteenth LIVE Kochi hub.',
+  mapLabelJa: '安田町の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Yasuda Town',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons等出典座標5件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 5 sourced coordinates for town/official facilities (accessed 2026-09-08).',
+  licenseNoteJa: '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from town.yasuda.kochi.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
 export const NAHARI_LOOKUP: LookupTown = {
   slug: 'nahari',
   prefectureSlug: 'kochi',
@@ -2701,7 +2741,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   sukumo: SUKUMO_LOOKUP,
   kuroshio: KUROSHIO_LOOKUP,
   toyo: TOYO_LOOKUP,
-  nahari: NAHARI_LOOKUP
+  nahari: NAHARI_LOOKUP,
+  yasuda: YASUDA_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

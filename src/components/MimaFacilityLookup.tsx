@@ -74,6 +74,7 @@ import {SUKUMO_TRAVEL_ACCESSED} from '@/data/sukumo-travel';
 import {KUROSHIO_TRAVEL_ACCESSED} from '@/data/kuroshio-travel';
 import {TOYO_TRAVEL_ACCESSED} from '@/data/toyo-travel';
 import {NAHARI_TRAVEL_ACCESSED} from '@/data/nahari-travel';
+import {YASUDA_TRAVEL_ACCESSED} from '@/data/yasuda-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1466,6 +1467,22 @@ export function MimaFacilityLookup({
                 Lodging from Rakuten Travel room photos ({MUROTO_TRAVEL_ACCESSED}).
                 Dining from Tabelog Muroto shop pages ({MUROTO_TRAVEL_ACCESSED}).
                 Onsen: 0 (room-still stay only; no attributable bath keys). Experience: Muroto Geopark Center (Commons). Shopping/commerce: 0. Seventh LIVE Kochi hub.
+              </>
+            )
+          ) : town.slug === 'yasuda' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（島石ピクニック広場・唐浜休憩所・別所・安田駅・唐浜駅）。
+                宿泊は楽天トラベルいなかじかんの和室写真（{YASUDA_TRAVEL_ACCESSED}）。
+                飲食は食べログ安田町の公開店ページ（{YASUDA_TRAVEL_ACCESSED}）。
+                温泉は0件（客室写真の宿のみ・バスルーム/サウナ≠温泉）。体験は0件。買物・商業は0件。高知県16つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Shimaishi Picnic Ground, Karahama rest area, Bessho, Yasuda Station, Tonohama Station).
+                Lodging: Inakajikan Rakuten Japanese-room photo ({YASUDA_TRAVEL_ACCESSED}).
+                Dining from Tabelog Yasuda shop pages ({YASUDA_TRAVEL_ACCESSED}).
+                Onsen: 0 (room-still stay; bathroom/sauna ≠ onsen). Experience: 0. Shopping/commerce: 0. Sixteenth LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'nahari' ? (
