@@ -52,6 +52,7 @@ import {KUROSHIO, KUROSHIO_PLACE_PHOTO} from '@/data/kuroshio';
 import {TOYO, TOYO_PLACE_PHOTO} from '@/data/toyo';
 import {NAHARI, NAHARI_PLACE_PHOTO} from '@/data/nahari';
 import {YASUDA, YASUDA_PLACE_PHOTO} from '@/data/yasuda';
+import {GEISEI, GEISEI_PLACE_PHOTO} from '@/data/geisei';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -173,6 +174,7 @@ function localityJa(slug: string): string {
   if (slug === 'toyo') return TOYO.nameJa;
   if (slug === 'nahari') return NAHARI.nameJa;
   if (slug === 'yasuda') return YASUDA.nameJa;
+  if (slug === 'geisei') return GEISEI.nameJa;
   return MIMA.nameJa;
 }
 
@@ -233,6 +235,7 @@ function localityEn(slug: string): string {
   if (slug === 'toyo') return TOYO.nameEn;
   if (slug === 'nahari') return NAHARI.nameEn;
   if (slug === 'yasuda') return YASUDA.nameEn;
+  if (slug === 'geisei') return GEISEI.nameEn;
   return MIMA.nameEn;
 }
 
@@ -3897,6 +3900,67 @@ export function toyoGraph(locale: AppLocale) {
   };
 }
 
+
+
+export function geiseiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/geisei');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('geisei');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? GEISEI.nameJa : GEISEI.nameEn,
+        alternateName: isJa ? GEISEI.nameEn : GEISEI.nameJa,
+        identifier: GEISEI.jis,
+        url,
+        image: photoAbs(GEISEI_PLACE_PHOTO),
+        sameAs: [GEISEI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '和食甲1262番地' : '1262 Wajiki-ko',
+          addressLocality: isJa ? GEISEI.nameJa : GEISEI.nameEn,
+          addressRegion: isJa ? GEISEI.prefectureJa : GEISEI.prefectureEn,
+          postalCode: GEISEI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? GEISEI.prefectureJa : GEISEI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? GEISEI.nameJa : GEISEI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? GEISEI.prefectureJa : GEISEI.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? GEISEI.nameJa : GEISEI.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '芸西村の案内' : 'Places in Geisei Village',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
 
 export function yasudaGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'kochi/yasuda');

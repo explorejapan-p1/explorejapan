@@ -614,6 +614,18 @@ import {
   yasudaSourcedHook,
   yasudaTopChipForRow
 } from './yasuda-travel';
+import {
+  isGeiseiOnsenPackRow,
+  isGeiseiExperiencePackRow,
+  isGeiseiStayPackRow,
+  rankGeiseiSeeRows,
+  resolveGeiseiFilter,
+  geiseiPackRowMatchesFilter,
+  geiseiSightPhoto,
+  geiseiSourcedHook,
+  geiseiTopChipForRow
+} from './geisei-travel';
+
 
 
 
@@ -1222,6 +1234,19 @@ const SUKUMO_HELPERS: LookupHelpers = {
 
 
 
+
+const GEISEI_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isGeiseiOnsenPackRow,
+  isExperiencePackRow: isGeiseiExperiencePackRow,
+  isStayPackRow: isGeiseiStayPackRow,
+  packRowMatchesFilter: geiseiPackRowMatchesFilter,
+  rankSeeRows: rankGeiseiSeeRows,
+  sightPhoto: geiseiSightPhoto,
+  sourcedHook: geiseiSourcedHook,
+  topChipForRow: geiseiTopChipForRow,
+  resolveFilter: resolveGeiseiFilter
+};
+
 const YASUDA_HELPERS: LookupHelpers = {
   isOnsenPackRow: isYasudaOnsenPackRow,
   isExperiencePackRow: isYasudaExperiencePackRow,
@@ -1465,5 +1490,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'toyo') return TOYO_HELPERS;
   if (slug === 'nahari') return NAHARI_HELPERS;
   if (slug === 'yasuda') return YASUDA_HELPERS;
+  if (slug === 'geisei') return GEISEI_HELPERS;
   return MIMA_HELPERS;
 }

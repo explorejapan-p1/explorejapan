@@ -75,6 +75,7 @@ import {KUROSHIO_TRAVEL_ACCESSED} from '@/data/kuroshio-travel';
 import {TOYO_TRAVEL_ACCESSED} from '@/data/toyo-travel';
 import {NAHARI_TRAVEL_ACCESSED} from '@/data/nahari-travel';
 import {YASUDA_TRAVEL_ACCESSED} from '@/data/yasuda-travel';
+import {GEISEI_TRAVEL_ACCESSED} from '@/data/geisei-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1467,6 +1468,22 @@ export function MimaFacilityLookup({
                 Lodging from Rakuten Travel room photos ({MUROTO_TRAVEL_ACCESSED}).
                 Dining from Tabelog Muroto shop pages ({MUROTO_TRAVEL_ACCESSED}).
                 Onsen: 0 (room-still stay only; no attributable bath keys). Experience: Muroto Geopark Center (Commons). Shopping/commerce: 0. Seventh LIVE Kochi hub.
+              </>
+            )
+          ) : town.slug === 'geisei' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（琴ヶ浜・SEA HOUSE・和食駅・西分駅・芸西村役場）。
+                宿泊は楽天トラベル芸西村の家の和室写真（{GEISEI_TRAVEL_ACCESSED}）。
+                飲食は食べログ芸西村の公開店ページ（{GEISEI_TRAVEL_ACCESSED}）。
+                温泉は0件（客室写真の宿のみ・大浴場≠温泉）。体験は0件。買物・商業は0件。高知県17つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Kotogahama, SEA HOUSE, Wajiki Station, Nishibun Station, Geisei Village Hall).
+                Lodging: Geisei Village House Rakuten Japanese-room photo ({GEISEI_TRAVEL_ACCESSED}).
+                Dining from Tabelog Geisei shop pages ({GEISEI_TRAVEL_ACCESSED}).
+                Onsen: 0 (room-still stay; 大浴場 ≠ onsen). Experience: 0. Shopping/commerce: 0. Seventeenth LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'yasuda' ? (

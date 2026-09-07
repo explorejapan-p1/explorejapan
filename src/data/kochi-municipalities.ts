@@ -10,7 +10,7 @@ export type Municipality = {
 
 /**
  * Kochi 市区町村. Codes are N03_007 / JIS X 0402 (5-digit).
- * Kochi City 39201 + Nankoku 39204 + Konan 39211 + Kami 39212 + Ino 39386 + Aki 39203 + Muroto 39202 + Tosa 39205 + Susaki 39206 + Shimanto 39210 + Tosashimizu 39209 + Sukumo 39208 + Kuroshio 39428 + Toyo 39301 + Nahari 39302 + Yasuda 39304 LIVE hubs (+ remaining municipalities coming-soon).
+ * Kochi City 39201 + Nankoku 39204 + Konan 39211 + Kami 39212 + Ino 39386 + Aki 39203 + Muroto 39202 + Tosa 39205 + Susaki 39206 + Shimanto 39210 + Tosashimizu 39209 + Sukumo 39208 + Kuroshio 39428 + Toyo 39301 + Nahari 39302 + Yasuda 39304 + Geisei 39307 LIVE hubs (+ remaining municipalities coming-soon).
  */
 export const KOCHI_MUNICIPALITIES: Municipality[] = [
   {jis: '39201', slug: 'kochi', nameJa: '高知市', nameEn: 'Kochi', status: 'ready'},
@@ -30,7 +30,7 @@ export const KOCHI_MUNICIPALITIES: Municipality[] = [
   {jis: '39304', slug: 'yasuda', nameJa: '安田町', nameEn: 'Yasuda', status: 'ready'},
   {jis: '39305', slug: 'kitagawa', nameJa: '北川村', nameEn: 'Kitagawa', status: 'coming-soon'},
   {jis: '39306', slug: 'umaji', nameJa: '馬路村', nameEn: 'Umaji', status: 'coming-soon'},
-  {jis: '39307', slug: 'geisei', nameJa: '芸西村', nameEn: 'Geisei', status: 'coming-soon'},
+  {jis: '39307', slug: 'geisei', nameJa: '芸西村', nameEn: 'Geisei', status: 'ready'},
   {jis: '39341', slug: 'motoyama', nameJa: '本山町', nameEn: 'Motoyama', status: 'coming-soon'},
   {jis: '39344', slug: 'otoyo', nameJa: '大豊町', nameEn: 'Otoyo', status: 'coming-soon'},
   {jis: '39363', slug: 'tosacho', nameJa: '土佐町', nameEn: 'Tosa Town', status: 'coming-soon'},

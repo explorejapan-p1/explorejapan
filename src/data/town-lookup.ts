@@ -323,6 +323,7 @@ import {KUROSHIO, KUROSHIO_PLACE_PHOTO, KUROSHIO_FACILITIES, KUROSHIO_EXPECTED_G
 import {TOYO, TOYO_PLACE_PHOTO, TOYO_FACILITIES, TOYO_EXPECTED_GEO_COUNT, TOYO_EXPECTED_ROW_COUNT} from './toyo';
 import {NAHARI, NAHARI_PLACE_PHOTO, NAHARI_FACILITIES, NAHARI_EXPECTED_GEO_COUNT, NAHARI_EXPECTED_ROW_COUNT} from './nahari';
 import {YASUDA, YASUDA_PLACE_PHOTO, YASUDA_FACILITIES, YASUDA_EXPECTED_GEO_COUNT, YASUDA_EXPECTED_ROW_COUNT} from './yasuda';
+import {GEISEI, GEISEI_PLACE_PHOTO, GEISEI_FACILITIES, GEISEI_EXPECTED_GEO_COUNT, GEISEI_EXPECTED_ROW_COUNT} from './geisei';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -632,6 +633,13 @@ import {
   YASUDA_TRAVEL_COMMERCE,
   YASUDA_TRAVEL_ALL
 } from './yasuda-travel';
+import {
+  GEISEI_TRAVEL_DINING,
+  GEISEI_TRAVEL_STAY,
+  GEISEI_TRAVEL_SHOPPING,
+  GEISEI_TRAVEL_COMMERCE,
+  GEISEI_TRAVEL_ALL
+} from './geisei-travel';
 
 
 
@@ -2309,6 +2317,38 @@ export const YASUDA_LOOKUP: LookupTown = {
   licenseSiteEn: 'Town-site listing'
 };
 
+
+export const GEISEI_LOOKUP: LookupTown = {
+  slug: 'geisei',
+  prefectureSlug: 'kochi',
+  jis: GEISEI.jis,
+  nameJa: GEISEI.nameJa,
+  nameEn: GEISEI.nameEn,
+  heroPhoto: GEISEI_PLACE_PHOTO,
+  photoCiteJa: '写真は琴ヶ浜。Lumi iori、2019-11-04、CC BY-SA 4.0。File:Kotogahama.jpg。',
+  photoCiteEn: 'Photo: Kotogahama Beach. Lumi iori, 4 Nov 2019, CC BY-SA 4.0. File:Kotogahama.jpg.',
+  rows: GEISEI_FACILITIES,
+  expectedGeo: GEISEI_EXPECTED_GEO_COUNT,
+  expectedRows: GEISEI_EXPECTED_ROW_COUNT,
+  travelDining: GEISEI_TRAVEL_DINING,
+  travelStay: GEISEI_TRAVEL_STAY,
+  travelShopping: GEISEI_TRAVEL_SHOPPING,
+  travelCommerce: GEISEI_TRAVEL_COMMERCE,
+  travelAll: GEISEI_TRAVEL_ALL,
+  coverageJa:
+    '芸西村（JIS 39307）観光5・宿泊1・飲食3・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県17つ目のLIVEハブ。',
+  coverageEn:
+    'Geisei Village (JIS 39307), 5 tourism + 1 stay + 3 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Seventeenth LIVE Kochi hub.',
+  mapLabelJa: '芸西村の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Geisei Village',
+  mapCitePackJa: '点は村・公式ページ掲載施設のWikipedia/Commons等出典座標5件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 5 sourced coordinates for village/official facilities (accessed 2026-09-08).',
+  licenseNoteJa: '行のライセンスは村公式・公式観光サイト掲載情報。村ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are village-site listings, facts from vill.geisei.kochi.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '村公式サイト掲載情報',
+  licenseSiteEn: 'Village-site listing'
+};
+
 export const NAHARI_LOOKUP: LookupTown = {
   slug: 'nahari',
   prefectureSlug: 'kochi',
@@ -2742,7 +2782,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   kuroshio: KUROSHIO_LOOKUP,
   toyo: TOYO_LOOKUP,
   nahari: NAHARI_LOOKUP,
-  yasuda: YASUDA_LOOKUP
+  yasuda: YASUDA_LOOKUP,
+  geisei: GEISEI_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
