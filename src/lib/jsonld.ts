@@ -41,6 +41,7 @@ import {NANKOKU, NANKOKU_PLACE_PHOTO} from '@/data/nankoku';
 import {KONAN, KONAN_PLACE_PHOTO} from '@/data/konan';
 import {KAMI, KAMI_PLACE_PHOTO} from '@/data/kami';
 import {INO, INO_PLACE_PHOTO} from '@/data/ino';
+import {AKI, AKI_PLACE_PHOTO} from '@/data/aki';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -151,6 +152,7 @@ function localityJa(slug: string): string {
   if (slug === 'konan') return KONAN.nameJa;
   if (slug === 'kami') return KAMI.nameJa;
   if (slug === 'ino') return INO.nameJa;
+  if (slug === 'aki') return AKI.nameJa;
   return MIMA.nameJa;
 }
 
@@ -200,6 +202,7 @@ function localityEn(slug: string): string {
   if (slug === 'konan') return KONAN.nameEn;
   if (slug === 'kami') return KAMI.nameEn;
   if (slug === 'ino') return INO.nameEn;
+  if (slug === 'aki') return AKI.nameEn;
   return MIMA.nameEn;
 }
 
@@ -3490,6 +3493,66 @@ export function inoGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? 'いの町の案内' : 'Places in Ino Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+export function akiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/aki');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('aki');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? AKI.nameJa : AKI.nameEn,
+        alternateName: isJa ? AKI.nameEn : AKI.nameJa,
+        identifier: AKI.jis,
+        url,
+        image: photoAbs(AKI_PLACE_PHOTO),
+        sameAs: [AKI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '土居82番地1' : '82-1 Doi',
+          addressLocality: isJa ? AKI.nameJa : AKI.nameEn,
+          addressRegion: isJa ? AKI.prefectureJa : AKI.prefectureEn,
+          postalCode: AKI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? AKI.prefectureJa : AKI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? AKI.nameJa : AKI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? AKI.prefectureJa : AKI.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? AKI.nameJa : AKI.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '安芸市の案内' : 'Places in Aki City',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

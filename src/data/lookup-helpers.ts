@@ -493,6 +493,17 @@ import {
   rankInoSeeRows,
   resolveInoFilter
 } from './ino-travel';
+import {
+  akiPackRowMatchesFilter,
+  akiSightPhoto,
+  akiSourcedHook,
+  akiTopChipForRow,
+  isAkiExperiencePackRow,
+  isAkiOnsenPackRow,
+  isAkiStayPackRow,
+  rankAkiSeeRows,
+  resolveAkiFilter
+} from './aki-travel';
 
 
 
@@ -1068,6 +1079,19 @@ const MANNO_HELPERS: LookupHelpers = {
 
 
 
+
+const AKI_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isAkiOnsenPackRow,
+  isExperiencePackRow: isAkiExperiencePackRow,
+  isStayPackRow: isAkiStayPackRow,
+  packRowMatchesFilter: akiPackRowMatchesFilter,
+  rankSeeRows: rankAkiSeeRows,
+  sightPhoto: akiSightPhoto,
+  sourcedHook: akiSourcedHook,
+  topChipForRow: akiTopChipForRow,
+  resolveFilter: resolveAkiFilter
+};
+
 const INO_HELPERS: LookupHelpers = {
   resolveFilter: resolveInoFilter,
   rankSeeRows: rankInoSeeRows,
@@ -1192,5 +1216,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'konan') return KONAN_HELPERS;
   if (slug === 'kami') return KAMI_HELPERS;
   if (slug === 'ino') return INO_HELPERS;
+  if (slug === 'aki') return AKI_HELPERS;
   return MIMA_HELPERS;
 }

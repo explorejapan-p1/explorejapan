@@ -64,6 +64,7 @@ import {NANKOKU_TRAVEL_ACCESSED} from '@/data/nankoku-travel';
 import {KONAN_TRAVEL_ACCESSED} from '@/data/konan-travel';
 import {KAMI_TRAVEL_ACCESSED} from '@/data/kami-travel';
 import {INO_TRAVEL_ACCESSED} from '@/data/ino-travel';
+import {AKI_TRAVEL_ACCESSED} from '@/data/aki-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1440,7 +1441,26 @@ export function MimaFacilityLookup({
           
 
           
-          ) : town.slug === 'ino' ? (
+          
+          ) : town.slug === 'aki' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（野良時計・安芸城跡・伊尾木洞・岩崎弥太郎生家・安芸駅・安芸市立歴史民俗資料館）。
+                宿泊は楽天トラベルの客室写真（{AKI_TRAVEL_ACCESSED}）。
+                飲食は食べログ安芸市の公開店ページ（{AKI_TRAVEL_ACCESSED}）。
+                温泉は0件（客室写真の宿のみ・大浴場出典キー無し）。体験は安芸市書道美術館（Commons）。買物・商業は0件。高知県6つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Noradokei, Aki Castle ruins, Iokido Cave, Iwasaki Yataro birthplace, Aki Station, History Museum).
+                Lodging from Rakuten Travel room photos ({AKI_TRAVEL_ACCESSED}).
+                Dining from Tabelog Aki shop pages ({AKI_TRAVEL_ACCESSED}).
+                Onsen: 0 (room-still stay only; no attributable bath keys). Experience: Aki City Calligraphy Art Museum (Commons). Shopping/commerce: 0. Sixth LIVE Kochi hub.
+              </>
+            )
+
+
+) : town.slug === 'ino' ? (
             locale === 'ja' ? (
               <>
                 観光は出典写真がある施設のみ（にこ淵・いの町紙の博物館・伊野駅・名越屋沈下橋・伊野停留場・紙のこいのぼり）。

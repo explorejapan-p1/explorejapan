@@ -312,6 +312,7 @@ import {NANKOKU, NANKOKU_PLACE_PHOTO, NANKOKU_FACILITIES, NANKOKU_EXPECTED_GEO_C
 import {KONAN, KONAN_PLACE_PHOTO, KONAN_FACILITIES, KONAN_EXPECTED_GEO_COUNT, KONAN_EXPECTED_ROW_COUNT} from './konan';
 import {KAMI, KAMI_PLACE_PHOTO, KAMI_FACILITIES, KAMI_EXPECTED_GEO_COUNT, KAMI_EXPECTED_ROW_COUNT} from './kami';
 import {INO, INO_PLACE_PHOTO, INO_FACILITIES, INO_EXPECTED_GEO_COUNT, INO_EXPECTED_ROW_COUNT} from './ino';
+import {AKI, AKI_PLACE_PHOTO, AKI_FACILITIES, AKI_EXPECTED_GEO_COUNT, AKI_EXPECTED_ROW_COUNT} from './aki';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -544,6 +545,13 @@ import {
   INO_TRAVEL_COMMERCE,
   INO_TRAVEL_ALL,
 } from './ino-travel';
+import {
+  AKI_TRAVEL_DINING,
+  AKI_TRAVEL_STAY,
+  AKI_TRAVEL_SHOPPING,
+  AKI_TRAVEL_COMMERCE,
+  AKI_TRAVEL_ALL,
+} from './aki-travel';
 
 
 
@@ -1955,6 +1963,41 @@ export const INO_LOOKUP: LookupTown = {
   licenseSiteEn: 'Town-site listing'
 };
 
+
+export const AKI_LOOKUP: LookupTown = {
+  slug: 'aki',
+  prefectureSlug: 'kochi',
+  jis: AKI.jis,
+  nameJa: AKI.nameJa,
+  nameEn: AKI.nameEn,
+  heroPhoto: AKI_PLACE_PHOTO,
+  photoCiteJa: '写真は野良時計。Reggaeman、2009-05-31、CC BY-SA 3.0。File:Noradokei_02.JPG。',
+  photoCiteEn: 'Photo: Noradokei. Reggaeman, 31 May 2009, CC BY-SA 3.0. File:Noradokei_02.JPG.',
+  rows: AKI_FACILITIES,
+  expectedGeo: AKI_EXPECTED_GEO_COUNT,
+  expectedRows: AKI_EXPECTED_ROW_COUNT,
+  travelDining: AKI_TRAVEL_DINING,
+  travelStay: AKI_TRAVEL_STAY,
+  travelShopping: AKI_TRAVEL_SHOPPING,
+  travelCommerce: AKI_TRAVEL_COMMERCE,
+  travelAll: AKI_TRAVEL_ALL,
+  coverageJa:
+    '安芸市（JIS 39203）観光6・宿泊1・飲食16・体験1（出典写真がある施設のみ）。温泉・買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載。客室写真の宿のみで大浴場出典キー無しのため温泉0）。オープンデータ凍結パックは未掲載。高知県6つ目のLIVEハブ。',
+  coverageEn:
+    'Aki City (JIS 39203), 6 tourism + 1 stay + 16 dining + 1 experience with sourced photos. Onsen, shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished (room-still stay only → onsen 0). No frozen open-data pack. Sixth LIVE Kochi hub.',
+  mapLabelJa: '安芸市の出典座標7件',
+  mapLabelEn: '7 sourced coordinates in Aki City',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia/Commons等出典座標7件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 7 sourced coordinates for city/official facilities (accessed 2026-09-08).',
+  licenseNoteJa:
+    '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.aki.kochi.jp / akikanko.or.jp, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
+
 export const KAMI_LOOKUP: LookupTown = {
   slug: 'kami',
   prefectureSlug: 'kochi',
@@ -2278,7 +2321,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   nankoku: NANKOKU_LOOKUP,
   konan: KONAN_LOOKUP,
   kami: KAMI_LOOKUP,
-  ino: INO_LOOKUP
+  ino: INO_LOOKUP,
+  aki: AKI_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
