@@ -1,4 +1,4 @@
-miyoshi thin dining densify 2026-09-07
-BEFORE dining 8 → AFTER 13
-Added Tabelog FOOD close-ups: 池田屋, Cafe&Bar YAMAYA, Ｂａｒ ｇ, 珈琲館おおぼけ, 安宅屋本店 総本店
-Skipped chains/convenience/no-dish. Not perfect.
+miyoshi 宿泊 densify TG581 2026-09-07
+BEFORE stay2 — AFTER stay7
+Pack stays kept: まんなか / 桃源郷.
+Added TRAVEL_STAY + 楽天シェア exterior: サボテンアパートメント, 阿波池田駅前ホテルイレブン, STAY ISHIWAKI, hostel大黒屋, もみじ.

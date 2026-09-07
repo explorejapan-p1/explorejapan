@@ -26,7 +26,9 @@ export const MIYOSHI_TRAVEL_SOURCES = {
   mannakaHotel: 'https://mannaka.co.jp/hotel',
   tougenkyo: 'https://www.tougenkyo-iya.jp/',
   shiniyaCommons: 'https://commons.wikimedia.org/wiki/File:Shiniya_hot_spring.jpg',
-  tabelogCity: 'https://tabelog.com/tokushima/C36208/rstLst/'
+  tabelogCity: 'https://tabelog.com/tokushima/C36208/rstLst/',
+  stayNavi: 'https://www.navitime.co.jp/category/0608002/36208/',
+  rakutenTravel: 'https://travel.rakuten.co.jp/'
 } as const;
 
 /** Exact tourism-pack names shown on 温泉, not 観光. Bath/roten photo required. */
@@ -48,7 +50,63 @@ export const MIYOSHI_SIGHT_PINS = [
   'うだつの町並み・阿波池田うだつの家たばこ資料館'
 ] as const;
 
-export const MIYOSHI_TRAVEL_STAY: readonly TravelRow[] = [];
+function stay(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'stay',
+    address,
+    phone,
+    source_url,
+    accessed: MIYOSHI_TRAVEL_ACCESSED
+  };
+}
+
+/** Ranked room/exterior 出典. NAVITIME + 楽天シェア. Pack stays remain via MIYOSHI_STAY_PACK_NAMES. */
+export const MIYOSHI_TRAVEL_STAY: readonly TravelRow[] = [
+  stay(
+    'miyoshi-stay-01',
+    'ホテル サボテンアパートメント',
+    '徳島県三好市池田町サラダ1649-3',
+    '0883-72-0011',
+    'https://travel.rakuten.co.jp/HOTEL/165553/165553.html'
+  ),
+  stay(
+    'miyoshi-stay-02',
+    '阿波池田駅前ホテルイレブン',
+    '徳島県三好市池田町サラダ1835-1',
+    '0883-72-8115',
+    'https://travel.rakuten.co.jp/HOTEL/158338/158338.html'
+  ),
+  stay(
+    'miyoshi-stay-03',
+    'STAY ISHIWAKI',
+    '徳島県三好市東祖谷高野1-9',
+    '0883-87-7530',
+    'https://travel.rakuten.co.jp/HOTEL/197816/197816.html'
+  ),
+  stay(
+    'miyoshi-stay-04',
+    'hostel大黒屋',
+    '徳島県三好市池田町シマ817-1',
+    '070-9367-9092',
+    'https://travel.rakuten.co.jp/HOTEL/199086/199086.html'
+  ),
+  stay(
+    'miyoshi-stay-05',
+    'もみじ',
+    '徳島県三好市西祖谷山村西岡向110-1',
+    '0883-76-8033',
+    'https://travel.rakuten.co.jp/HOTEL/199175/199175.html'
+  )
+];
+
 
 function dining(
   id: string,
@@ -280,6 +338,8 @@ export function miyoshiTopChipForRow(row: {category: string; name_ja: string}): 
   if (isMiyoshiOnsenPackRow(row)) return 'onsen';
   if (isMiyoshiExperiencePackRow(row)) return 'experience';
   if (isMiyoshiStayPackRow(row)) return 'stay';
+  if (row.category === 'stay') return 'stay';
+  if (row.category === 'dining') return 'dining';
   if (isMiyoshiDiningPackRow(row)) return 'dining';
   if (isSightsCategory(row.category)) return 'sights';
   if (isInfraCategory(row.category)) return 'sights';

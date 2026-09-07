@@ -2,7 +2,8 @@
  * Naruto City travel layer. No frozen pack.
  * Dining from 食べログ 鳴門市 (C36202) public shop pages. FOOD dish photos required.
  * Stay from NAVITIME 鳴門市ホテル一覧 + 楽天トラベル share/room images (出典). Rank strongest first.
- * Experience: 渦の道 / ドイツ館 / 大塚国際美術館 (Commons). Do not invent pack dining/stay.
+ * Experience: 渦の道 / ドイツ館 / 大塚国際美術館 (Commons).
+ * Onsen: 鳴門温泉 露天風呂 縹 bath from アオアヲ公式 (出典). Do not invent pack dining/stay.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
@@ -24,10 +25,11 @@ export const NARUTO_TRAVEL_SOURCES = {
   doitsukan: 'https://doitsukan.com/',
   tabelogCity: 'https://tabelog.com/tokushima/C36202/rstLst/',
   stayNavi: 'https://www.navitime.co.jp/category/0608002/36202/',
-  rakutenTravel: 'https://travel.rakuten.co.jp/'
+  rakutenTravel: 'https://travel.rakuten.co.jp/',
+  aoaoOnsen: 'https://www.aoawo-naruto.com/pages/105/'
 } as const;
 
-export const NARUTO_ONSEN_PACK_NAMES = [] as const;
+export const NARUTO_ONSEN_PACK_NAMES = ['鳴門温泉 露天風呂 縹'] as const;
 export const NARUTO_ONSEN_PACK_SET: ReadonlySet<string> = new Set(NARUTO_ONSEN_PACK_NAMES);
 export const NARUTO_EXPERIENCE_PACK_NAMES = ['大鳴門橋遊歩道 渦の道', '鳴門市ドイツ館', '大塚国際美術館'] as const;
 export const NARUTO_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(NARUTO_EXPERIENCE_PACK_NAMES);
@@ -303,8 +305,9 @@ function isSightsCategory(value: string): boolean {
   return SIGHTS_SET.has(value);
 }
 
-export function isNarutoOnsenPackRow(_row: {category: string; name_ja: string}): boolean {
-  return false;
+export function isNarutoOnsenPackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return NARUTO_ONSEN_PACK_SET.has(row.name_ja);
 }
 
 export function isNarutoExperiencePackRow(row: {category: string; name_ja: string}): boolean {

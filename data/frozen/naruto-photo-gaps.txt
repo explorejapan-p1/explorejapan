@@ -1,12 +1,4 @@
-Naruto City (JIS 36202) stay harvest 2026-09-07
-Pills L→R: 宿泊/飲食/温泉/体験/観光/買物/商業
-No frozen pack (photo-only).
-
-BEFORE: 宿泊0 / 飲食14 / 温泉0 / 体験0 / 観光5 / 買物0 / 商業0
-AFTER target: 宿泊13 / 飲食14 / 温泉0 / 体験0 / 観光5 / 買物0 / 商業0
-
-宿泊 stay: 13 — NAVITIME 鳴門市ホテル一覧 + 楽天トラベル share images. Ranked strongest first.
-  Skipped future-open: Hotel O. Naruto / グランプレミア鳴門 (2026-07-31 open).
-飲食 dining: 14 — prior LIVE (unchanged this pass)
-温泉/体験/買物/商業: 0 — honest; no sourced bath/experience/shop photo this pass
-観光 sights: 5 — prior Commons (渦潮/渦の道/大鳴門橋/ドイツ館/霊山寺)
+naruto 温泉 densify TG581 2026-09-07
+BEFORE onsen0 — AFTER onsen1
+Added pack onsen 鳴門温泉 露天風呂 縹 + facility row; bath photo from アオアヲ公式 pages/105 (出典).
+Stay 13 unchanged this pass.

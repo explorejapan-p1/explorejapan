@@ -250,6 +250,42 @@ export const MIYOSHI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '新祖谷温泉の露天風呂（三好市西祖谷山村）',
     'Outdoor bath at Shin-Iya Onsen, Nishi-Iya, Miyoshi'
   ),
+  'ホテル サボテンアパートメント': sourcePhoto(
+    'miyoshi-stay-saboten.jpg',
+    'ホテル サボテンアパートメントの客室・外観写真',
+    'Hotel Saboten Apartment room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/165553/165553.html',
+    '楽天トラベル'
+  ),
+  '阿波池田駅前ホテルイレブン': sourcePhoto(
+    'miyoshi-stay-eleven.jpg',
+    '阿波池田駅前ホテルイレブンの客室・外観写真',
+    'AwaIkeda Station Hotel Eleven room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/158338/158338.html',
+    '楽天トラベル'
+  ),
+  'STAY ISHIWAKI': sourcePhoto(
+    'miyoshi-stay-ishiwaki.jpg',
+    'STAY ISHIWAKIの客室・外観写真',
+    'STAY ISHIWAKI room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/197816/197816.html',
+    '楽天トラベル'
+  ),
+  'hostel大黒屋': sourcePhoto(
+    'miyoshi-stay-daikokuya.jpg',
+    'hostel大黒屋の客室・外観写真',
+    'hostel Daikokuya room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/199086/199086.html',
+    '楽天トラベル'
+  ),
+  'もみじ': sourcePhoto(
+    'miyoshi-stay-momiji.jpg',
+    'もみじの客室・外観写真',
+    'Momiji guesthouse room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/199175/199175.html',
+    '楽天トラベル'
+  ),
+
   'お好み焼きつくし': sourcePhoto(
     'okonomiyaki-tsukushi.jpg',
     'お好み焼きつくしのお好み焼き（三好市池田町）',

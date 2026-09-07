@@ -1,15 +1,4 @@
-Komatsushima City (JIS 36203) stay harvest 2026-09-07
-Pills L→R: 宿泊/飲食/温泉/体験/観光/買物/商業
-No frozen pack (photo-only).
-
-BEFORE: 宿泊0 / 飲食25 / 温泉0 / 体験0 / 観光5 / 買物0 / 商業0
-AFTER target: 宿泊3 / 飲食25 / 温泉0 / 体験0 / 観光5 / 買物0 / 商業0
-
-宿泊 stay: 3 — NAVITIME 小松島市ホテル一覧 + 楽天シェア外観。Ranked strongest first.
-  Wired: スーパーホテル徳島・小松島天然温泉 / HOTEL AZ 徳島小松島店 / みどり旅館
-  Skipped: シルフィード (fashion/love hotel, not marketable tourism pill);
-           立江寺宿坊 (Rakuten og=temple hall, not room/exterior lodging visual).
-飲食 dining: 25 — prior LIVE (unchanged)
-温泉/体験/買物/商業: 0 — honest
-観光 sights: 5 — prior Commons/city
-Lead: @komatsushima_official → confirmed on NAVITIME/楽天/hotel pages. Never scrape IG CDN.
+komatsushima 宿泊 densify TG581 2026-09-07
+BEFORE stay3 — AFTER stay4
+Added: リゾート旅館ニューみはらし (RK145302 楽天シェア exterior).
+Skipped: シルフィード (fashion/love hotel); 立江寺宿坊 (share=temple exterior, not room — room bar).

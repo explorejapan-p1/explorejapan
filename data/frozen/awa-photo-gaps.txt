@@ -1,4 +1,3 @@
-awa 体験 densify 2026-09-07 (pass7)
-BEFORE: 宿泊1 / 飲食14 / 温泉0 / 体験0 / 観光8 / 買物0 / 商業0
-AFTER:  宿泊1 / 飲食14 / 温泉0 / 体験1 / 観光8 / 買物0 / 商業0
-体験: EXTRA-photo remap 土柱そよ風ひろば (Commons playground). Was not in prior photo-gated 観光. Not perfect.
+awa 宿泊 densify TG581 2026-09-07
+BEFORE stay1 — AFTER stay1 (honest miss)
+NAVITIME: アクセス阿波 already wired; ティアラ fashion skip; Brompton no Rakuten share.

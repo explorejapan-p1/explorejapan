@@ -382,6 +382,14 @@ export const KOMATSUSHIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>>
     'https://travel.rakuten.co.jp/HOTEL/158330/158330.html',
     '楽天トラベル'
   ),
+  'リゾート旅館ニューみはらし': sourcePhoto(
+    'komatsushima-stay-04.jpg',
+    'リゾート旅館ニューみはらしの客室・外観写真',
+    'Resort Ryokan New Miharashi room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/145302/145302.html',
+    '楽天トラベル'
+  ),
+
 };
 
 function sight(

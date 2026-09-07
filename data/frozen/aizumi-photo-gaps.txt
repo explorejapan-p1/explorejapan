@@ -1,10 +1,3 @@
-Aizumi (JIS 36403) stay harvest 2026-09-07
-Pills L→R: 宿泊/飲食/温泉/体験/観光/買物/商業
-
-BEFORE: 宿泊0 / 飲食16 / 温泉0 / 体験0 / 観光7 / 買物0 / 商業0
-AFTER: 宿泊1 / 飲食16 / 温泉0 / 体験0 / 観光7 / 買物0 / 商業0
-
-宿泊 stay: 1 — 楽天シェア room/exterior.
-  Wired: 宿はグッドリッチ 藍住
-飲食 dining: 16 — Tabelog C36403 FOOD dish close-ups (prior)
-温泉/体験/買物/商業: honest 0
+aizumi 宿泊 densify TG581 2026-09-07
+BEFORE stay1 — AFTER stay1 (honest miss)
+NAVITIME 36403 404; only グッドリッチ has attributable Rakuten share.

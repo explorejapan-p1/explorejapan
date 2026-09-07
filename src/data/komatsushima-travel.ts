@@ -82,6 +82,13 @@ export const KOMATSUSHIMA_TRAVEL_STAY: readonly TravelRow[] = [
     '徳島県小松島市小松島町外開7-5',
     '0885-32-3633',
     'https://travel.rakuten.co.jp/HOTEL/158330/158330.html'
+  ),
+  stay(
+    'komatsushima-stay-04',
+    'リゾート旅館ニューみはらし',
+    '徳島県小松島市小松島町外開7-47',
+    '0885-38-6644',
+    'https://travel.rakuten.co.jp/HOTEL/145302/145302.html'
   )
 ];
 

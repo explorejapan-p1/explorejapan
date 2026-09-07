@@ -35,13 +35,14 @@ export const NARUTO = {
     ryozenji: 'https://www.awanavi.jp/spot/1000210/',
     daiku: 'https://www.awanavi.jp/spot/1000248/',
     chokokuji: 'https://www.awanavi.jp/spot/1000211/',
+    aoaoOnsen: 'https://www.aoawo-naruto.com/pages/105/',
     tabelogCity: 'https://tabelog.com/tokushima/C36202/rstLst/',
     accessed: '2026-09-05'
   }
 } as const;
 
-export const NARUTO_EXPECTED_ROW_COUNT = 8;
-export const NARUTO_EXPECTED_GEO_COUNT = 8;
+export const NARUTO_EXPECTED_ROW_COUNT = 9;
+export const NARUTO_EXPECTED_GEO_COUNT = 9;
 
 function wikiPhoto(
   file: string,
@@ -302,6 +303,14 @@ export const NARUTO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'https://travel.rakuten.co.jp/HOTEL/6123/6123.html',
     '楽天トラベル'
   ),
+  '鳴門温泉 露天風呂 縹': sourcePhoto(
+    'naruto-onsen-aoao-roten.jpg',
+    'アオアヲナルトリゾート 鳴門温泉 露天風呂「縹」の浴場写真',
+    'Outdoor bath Hanada at Aoao Naruto Resort (Naruto Onsen)',
+    'https://www.aoawo-naruto.com/pages/105/',
+    'アオアヲナルトリゾート'
+  ),
+
   'リゾートホテル モアナコースト': sourcePhoto(
     'naruto-stay-02.jpg',
     'リゾートホテル モアナコーストの客室・外観写真',
@@ -488,5 +497,14 @@ export const NARUTO_FACILITIES: readonly FacilityRow[] = [
     NARUTO.sources.chokokuji,
     34.17072222,
     134.58494444
+  ),
+  sight(
+    'naruto-onsen-01',
+    '鳴門温泉 露天風呂 縹',
+    '徳島県鳴門市鳴門町土佐泊浦字大毛16-45',
+    '088-687-2580',
+    NARUTO.sources.aoaoOnsen,
+    34.2200534,
+    134.6329971
   )
 ];

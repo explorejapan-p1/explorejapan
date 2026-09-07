@@ -300,6 +300,21 @@ export const YOSHINOGAWA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> 
     ACCESS_HOME,
     'ビジネスホテル アクセス鴨島'
   ),
+  'セントラルホテル鴨島': sourcePhoto(
+    'yoshinogawa-stay-central.jpg',
+    'セントラルホテル鴨島の客室・外観写真',
+    'Central Hotel Kamojima room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/40401/40401.html',
+    '楽天トラベル'
+  ),
+  'ビジネスホテル ロードサイド': sourcePhoto(
+    'yoshinogawa-stay-roadside.jpg',
+    'ビジネスホテル ロードサイドの客室・外観写真',
+    'Business Hotel Roadside room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/139435/139435.html',
+    '楽天トラベル'
+  ),
+
   '中華そば 王将': sourcePhoto(
     'osho-gyoza.jpg',
     '中華そば 王将の餃子（吉野川市鴨島町）',

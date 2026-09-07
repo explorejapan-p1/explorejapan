@@ -2,3 +2,7 @@ itano 体験 densify 2026-09-07 (pass7)
 BEFORE: 宿泊1 / 飲食14 / 温泉0 / 体験0 / 観光5 / 買物1 / 商業0
 AFTER:  宿泊1 / 飲食14 / 温泉0 / 体験1 / 観光5 / 買物1 / 商業0
 体験: remap あすたむらんど徳島 (existing Commons). 観光 restore EXTRA 報国寺 (File:Gokuisan Hokokuji.JPG). Not perfect.
+
+itano 宿泊 densify TG581 2026-09-07
+BEFORE stay1 — AFTER stay1 (honest miss)
+NAVITIME: AZ already wired; LA・GITA / ハーブナチュラル still no share.
