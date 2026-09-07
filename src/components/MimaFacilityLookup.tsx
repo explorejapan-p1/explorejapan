@@ -211,17 +211,12 @@ function FacilityCard({
       >
         <div className={photo ? 'card-photo' : 'card-photo is-well'}>
           {photo ? (
-            <>
-              <img
-                src={photo.src}
-                alt={locale === 'ja' ? photo.altJa : photo.altEn}
-                width={640}
-                height={400}
-              />
-              <span className="card-photo-cite">
-                {photo.author} / {photo.license}
-              </span>
-            </>
+            <img
+              src={photo.src}
+              alt={locale === 'ja' ? photo.altJa : photo.altEn}
+              width={640}
+              height={400}
+            />
           ) : (
             <span className="card-well">
               <span className="card-well-name">{t('photoPending')}</span>

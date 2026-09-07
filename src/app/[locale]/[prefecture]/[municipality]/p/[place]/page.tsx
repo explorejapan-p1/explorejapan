@@ -214,9 +214,6 @@ export default async function PlacePage({params}: Props) {
               width={1200}
               height={800}
             />
-            <span className="card-photo-cite">
-              {photo.author} / {photo.license}
-            </span>
           </div>
           <h1>{listing.nameJa}</h1>
         </a>
