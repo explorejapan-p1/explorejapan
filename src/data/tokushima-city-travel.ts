@@ -3,6 +3,8 @@
  * Dining from 食べログ 徳島市 (C36201) public shop pages. FOOD dish photos required.
  * Stay from NAVITIME/楽天トラベル hotel listings + hotel official og/room images where available.
  * Rank strongest Instagram-style photos first. Do not invent listings or fake reviews.
+ * Sights densify: city keikan + Commons (弁天山 / 文化の森 / 眉山公園). Fun!Fun! lead → city/Commons only.
+ * Onsen / experience / shopping / commerce: honest 0 (no bath/shop 出典 this pass).
  * Do not copy 鳴門 / 阿南 / 小松島 / 美馬 TRAVEL_* rows or photos.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
@@ -33,7 +35,11 @@ export const TOKUSHIMA_CITY_SIGHT_PINS = [
   '眉山',
   '徳島城跡',
   '新町川水際公園・しんまちボードウォーク',
-  '阿波おどり会館'
+  '阿波おどり会館',
+  'あわぎん眉山ロープウエイ',
+  '弁天山',
+  '文化の森総合公園',
+  '眉山公園'
 ] as const;
 
 function stay(

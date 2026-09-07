@@ -1,0 +1,12 @@
+Matsushige (JIS 36401) stay harvest 2026-09-07
+Pills L→R: 宿泊/飲食/温泉/体験/観光/買物/商業
+
+BEFORE: 宿泊0 / 飲食14 / 温泉0 / 体験0 / 観光4 / 買物0 / 商業0
+AFTER: 宿泊7 / 飲食14 / 温泉0 / 体験0 / 観光4 / 買物0 / 商業0
+
+宿泊 stay: 7 — NAVITIME 松茂町ホテル一覧 + 楽天シェア外観。Ranked strongest first.
+  Wired: ホテルルートイン徳島空港 / ビジネスホテル ポケット / イセヤINN徳島 /
+         HOTEL SOLAE / ビジネスホテルニュースカイルート / ビジネス松葉旅館 / ビジネスホテル太平洋
+  Skipped: MYTH-777 love-hotel (not tourism stay)
+飲食 dining: 14 — Tabelog C36401 FOOD dish close-ups (prior)
+温泉/体験/買物/商業: honest 0

@@ -238,5 +238,55 @@ export const MATSUSHIGE_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> =
     TABELOG_36003575,
     '食べログ'
   ),
+  'ホテルルートイン徳島空港 ー 松茂スマートインター ー': sourcePhoto(
+    'matsushige-stay-01.jpg',
+    'ホテルルートイン徳島空港の客室・外観写真',
+    'Hotel Route Inn Tokushima Airport room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/187882/187882.html',
+    '楽天トラベル'
+  ),
+  'ビジネスホテル ポケット': sourcePhoto(
+    'matsushige-stay-02.jpg',
+    'ビジネスホテル ポケットの客室・外観写真',
+    'Business Hotel Pocket room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/109124/109124.html',
+    '楽天トラベル'
+  ),
+  'イセヤINN徳島': sourcePhoto(
+    'matsushige-stay-03.jpg',
+    'イセヤINN徳島の客室・外観写真',
+    'Iseya INN Tokushima room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/140855/140855.html',
+    '楽天トラベル'
+  ),
+  'HOTEL SOLAE': sourcePhoto(
+    'matsushige-stay-04.jpg',
+    'HOTEL SOLAEの客室・外観写真',
+    'HOTEL SOLAE room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/80662/80662.html',
+    '楽天トラベル'
+  ),
+  'ビジネスホテルニュースカイルート': sourcePhoto(
+    'matsushige-stay-05.jpg',
+    'ビジネスホテルニュースカイルートの客室・外観写真',
+    'Business Hotel New Sky Route room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/67878/67878.html',
+    '楽天トラベル'
+  ),
+  'ビジネス松葉旅館': sourcePhoto(
+    'matsushige-stay-06.jpg',
+    'ビジネス松葉旅館の客室・外観写真',
+    'Business Matsuba Ryokan room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/72668/72668.html',
+    '楽天トラベル'
+  ),
+  'ビジネスホテル太平洋': sourcePhoto(
+    'matsushige-stay-07.jpg',
+    'ビジネスホテル太平洋の客室・外観写真',
+    'Business Hotel Taiheiyo room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/144549/144549.html',
+    '楽天トラベル'
+  ),
+
 };
 

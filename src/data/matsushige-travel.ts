@@ -14,13 +14,15 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const MATSUSHIGE_TRAVEL_ACCESSED = '2026-09-05' as const;
+export const MATSUSHIGE_TRAVEL_ACCESSED = '2026-09-07' as const;
 
 export const MATSUSHIGE_TRAVEL_SOURCES = {
   home: 'https://www.town.matsushige.tokushima.jp/',
   hall: 'https://www.town.matsushige.tokushima.jp/docs/2015111800591/',
   kanko: 'https://www.town.matsushige.tokushima.jp/category/bunya/kanko_sangyo_rodo/kanko_shisetsu/',
-  tabelogCity: 'https://tabelog.com/tokushima/C36401/rstLst/'
+  tabelogCity: 'https://tabelog.com/tokushima/C36401/rstLst/',
+  stayNavi: 'https://www.navitime.co.jp/category/0608002/36401/',
+  rakutenTravel: 'https://travel.rakuten.co.jp/'
 } as const;
 
 /** Exact tourism-pack names shown on 温泉, not 観光. Bath photo required — none yet. */
@@ -44,7 +46,76 @@ export const MATSUSHIGE_SIGHT_PINS = [
   'とくしまとくとくターミナル'
 ] as const;
 
-export const MATSUSHIGE_TRAVEL_STAY: readonly TravelRow[] = [];
+function stay(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'stay',
+    address,
+    phone,
+    source_url,
+    accessed: MATSUSHIGE_TRAVEL_ACCESSED
+  };
+}
+
+/** Ranked strongest Instagram-style room/exterior 出典 first. NAVITIME + 楽天シェア画像. Love-hotel MYTH skipped. */
+export const MATSUSHIGE_TRAVEL_STAY: readonly TravelRow[] = [
+  stay(
+    'matsushige-stay-01',
+    'ホテルルートイン徳島空港 ー 松茂スマートインター ー',
+    '徳島県板野郡松茂町中喜来宮前四番越13-1',
+    '050-5211-5803',
+    'https://travel.rakuten.co.jp/HOTEL/187882/187882.html'
+  ),
+  stay(
+    'matsushige-stay-02',
+    'ビジネスホテル ポケット',
+    '徳島県板野郡松茂町笹木野八北開拓207-1',
+    '088-699-2222',
+    'https://travel.rakuten.co.jp/HOTEL/109124/109124.html'
+  ),
+  stay(
+    'matsushige-stay-03',
+    'イセヤINN徳島',
+    '徳島県板野郡松茂町笹木野八北開拓1-164',
+    '088-699-5885',
+    'https://travel.rakuten.co.jp/HOTEL/140855/140855.html'
+  ),
+  stay(
+    'matsushige-stay-04',
+    'HOTEL SOLAE',
+    '徳島県板野郡松茂町広島宮ノ前26-1',
+    '088-699-7137',
+    'https://travel.rakuten.co.jp/HOTEL/80662/80662.html'
+  ),
+  stay(
+    'matsushige-stay-05',
+    'ビジネスホテルニュースカイルート',
+    '徳島県板野郡松茂町笹木野八北開拓164-7',
+    '088-699-3988',
+    'https://travel.rakuten.co.jp/HOTEL/67878/67878.html'
+  ),
+  stay(
+    'matsushige-stay-06',
+    'ビジネス松葉旅館',
+    '徳島県板野郡松茂町笹木野八北開拓251-2',
+    '088-699-5656',
+    'https://travel.rakuten.co.jp/HOTEL/72668/72668.html'
+  ),
+  stay(
+    'matsushige-stay-07',
+    'ビジネスホテル太平洋',
+    '徳島県板野郡松茂町中喜来牛飼野東ノ越38-1',
+    '088-699-2967',
+    'https://travel.rakuten.co.jp/HOTEL/144549/144549.html'
+  )
+];
 
 function dining(
   id: string,
@@ -285,6 +356,8 @@ export function matsushigeTopChipForRow(row: {
 }): FilterId {
   if (isMatsushigeOnsenPackRow(row)) return 'onsen';
   if (isMatsushigeStayPackRow(row)) return 'stay';
+  if (row.category === 'stay') return 'stay';
+  if (row.category === 'dining') return 'dining';
   if (isSightsCategory(row.category)) return 'sights';
   if (isInfraCategory(row.category)) return 'sights';
   return row.category as FilterId;

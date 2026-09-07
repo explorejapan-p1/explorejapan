@@ -1,10 +1,10 @@
-Aizumi (36403) photo HARD BAR sweep 2026-09-07
+Aizumi (JIS 36403) stay harvest 2026-09-07
 Pills L→R: 宿泊/飲食/温泉/体験/観光/買物/商業
 
-宿泊 stay: 0 — no sourced room/bath/view photo
-飲食 dining: 16 — Tabelog FOOD dish close-ups ranked; dropped 板野鮮魚 (supermarket pack label) + サンマルクカフェ (blurry drinks)
-温泉 onsen: 0 — no sourced bath photo
-体験 experience: 0 — no sourced experience photo
-観光 sights: cover 正法寺川公園; pins 正法寺川公園→バラ園→東中富桜づつみ→東中富親水→史跡公園(Shozuijo14 path)→藍の館; Commons Shozuijo01 gravel lot rejected
-買物 shopping: 0 — no place-named remaps this pass
-商業 commerce: 0 — no place-named remaps this pass
+BEFORE: 宿泊0 / 飲食16 / 温泉0 / 体験0 / 観光7 / 買物0 / 商業0
+AFTER: 宿泊1 / 飲食16 / 温泉0 / 体験0 / 観光7 / 買物0 / 商業0
+
+宿泊 stay: 1 — 楽天シェア room/exterior.
+  Wired: 宿はグッドリッチ 藍住
+飲食 dining: 16 — Tabelog C36403 FOOD dish close-ups (prior)
+温泉/体験/買物/商業: honest 0

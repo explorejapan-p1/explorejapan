@@ -32,13 +32,16 @@ export const TOKUSHIMA_CITY = {
     boardWalk: 'https://www.city.tokushima.tokushima.jp/kankou/keikan/board_walk.html',
     awaodori: 'https://www.city.tokushima.tokushima.jp/shisetsu/bunka_art/awaodori_kaikan.html',
     castlePark: 'https://www.city.tokushima.tokushima.jp/shisetsu/park/chuo.html',
+    bentenYama: 'https://www.city.tokushima.tokushima.jp/kankou/keikan/benten_yama.html',
+    bunkaNoMori: 'https://www.city.tokushima.tokushima.jp/kankou/keikan/bunkanomori.html',
+    bizanPark: 'https://www.city.tokushima.tokushima.jp/kankou/keikan/bizan.html',
     tabelogCity: 'https://tabelog.com/tokushima/C36201/rstLst/',
     accessed: '2026-09-07'
   }
 } as const;
 
-export const TOKUSHIMA_CITY_EXPECTED_ROW_COUNT = 5;
-export const TOKUSHIMA_CITY_EXPECTED_GEO_COUNT = 5;
+export const TOKUSHIMA_CITY_EXPECTED_ROW_COUNT = 8;
+export const TOKUSHIMA_CITY_EXPECTED_GEO_COUNT = 8;
 
 function wikiPhoto(
   file: string,
@@ -146,6 +149,40 @@ export const TOKUSHIMA_CITY_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto
     '2007-10-06',
     'あわぎん眉山ロープウエイ（徳島市新町橋）',
     'Awagin Bizan Ropeway, Shinmachibashi, Tokushima'
+  ),
+
+  '弁天山': wikiPhoto(
+    'benten-yama.jpg',
+    'https://commons.wikimedia.org/wiki/File:Benten-yama_in_Tokushima,_zenkei.jpg',
+    'CC0',
+    'https://creativecommons.org/publicdomain/zero/1.0/',
+    'Saigen Jiro',
+    'https://commons.wikimedia.org/wiki/User:Saigen_Jiro',
+    '2016-07-16',
+    '弁天山全景（徳島市八万町）',
+    'Mount Benten panorama, Hachiman-cho, Tokushima'
+  ),
+  '文化の森総合公園': wikiPhoto(
+    'bunka-no-mori.jpg',
+    'https://commons.wikimedia.org/wiki/File:Tokushima_bunka-no-mori_park02s3872.jpg',
+    'CC BY 2.5',
+    'https://creativecommons.org/licenses/by/2.5/',
+    '663highland',
+    'https://commons.wikimedia.org/wiki/User:663highland',
+    '2007-10-28',
+    '文化の森総合公園（徳島市八万町）',
+    'Tokushima Bunka-no-mori Park, Hachiman-cho, Tokushima'
+  ),
+  '眉山公園': wikiPhoto(
+    'bizan-park.jpg',
+    'https://commons.wikimedia.org/wiki/File:Bizan_Park_20200405.jpg',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0/',
+    '新幹線',
+    'https://commons.wikimedia.org/wiki/User:%E6%96%B0%E5%B9%B9%E7%B7%9A',
+    '2020-04-05',
+    '眉山公園（徳島市）',
+    'Bizan Park, Tokushima'
   ),
   "いのたに 本店": sourcePhoto(
     "tokushima-36000011-dish.jpg",
@@ -852,5 +889,32 @@ export const TOKUSHIMA_CITY_FACILITIES: readonly FacilityRow[] = [
     TOKUSHIMA_CITY.sources.bizan,
     34.07013889,
     134.54508333
+  ),
+  sight(
+    'tokushima-city-sight-06',
+    '弁天山',
+    '徳島県徳島市八万町中津山',
+    null,
+    TOKUSHIMA_CITY.sources.bentenYama,
+    34.02388889,
+    134.54166667
+  ),
+  sight(
+    'tokushima-city-sight-07',
+    '文化の森総合公園',
+    '徳島県徳島市八万町向寺山',
+    null,
+    TOKUSHIMA_CITY.sources.bunkaNoMori,
+    34.0395,
+    134.52611111
+  ),
+  sight(
+    'tokushima-city-sight-08',
+    '眉山公園',
+    '徳島県徳島市眉山町大滝山',
+    null,
+    TOKUSHIMA_CITY.sources.bizanPark,
+    34.067,
+    134.53369444
   )
 ];

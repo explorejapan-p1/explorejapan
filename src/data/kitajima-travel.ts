@@ -1,6 +1,7 @@
 /**
  * Kitajima travel layer. Pack has no dining/stay categories.
- * Onsen / stay: omit without room or bath photo (honest 0).
+ * Stay: honest 0 — NAVITIME/じゃらん show no marketable lodging inside 北島町 (nearby = 松茂/徳島市).
+ * Onsen: omit without bath photo (honest 0).
  * Dining from 食べログ 北島町 (C36402) public shop pages. Do not invent pack dining.
  * Do not copy 松茂 / 藍住 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
  */
@@ -14,7 +15,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const KITAJIMA_TRAVEL_ACCESSED = '2026-09-05' as const;
+export const KITAJIMA_TRAVEL_ACCESSED = '2026-09-07' as const;
 
 export const KITAJIMA_TRAVEL_SOURCES = {
   home: 'https://www.town.kitajima.lg.jp/',

@@ -22,7 +22,8 @@ export const AIZUMI_TRAVEL_SOURCES = {
   home: 'https://www.town.aizumi.lg.jp/',
   hall: 'https://www.town.aizumi.lg.jp/',
   kanko: 'https://www.town.aizumi.lg.jp/docs/2014012100052/',
-  tabelogCity: 'https://tabelog.com/tokushima/C36403/rstLst/'
+  tabelogCity: 'https://tabelog.com/tokushima/C36403/rstLst/',
+  rakutenTravel: 'https://travel.rakuten.co.jp/'
 } as const;
 
 export const AIZUMI_ONSEN_PACK_NAMES = [] as const;
@@ -41,7 +42,34 @@ export const AIZUMI_SIGHT_PINS = [
   '歴史館「藍の館」'
 ] as const;
 
-export const AIZUMI_TRAVEL_STAY: readonly TravelRow[] = [];
+function stay(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'stay',
+    address,
+    phone,
+    source_url,
+    accessed: AIZUMI_TRAVEL_ACCESSED
+  };
+}
+
+/** Ranked strongest room/exterior 出典. 楽天シェア画像. */
+export const AIZUMI_TRAVEL_STAY: readonly TravelRow[] = [
+  stay(
+    'aizumi-stay-01',
+    '宿はグッドリッチ 藍住',
+    '徳島県板野郡藍住町徳命元村134-8',
+    '088-631-3338',
+    'https://travel.rakuten.co.jp/HOTEL/180561/180561.html'
+  )
+];
 
 function dining(
   id: string,
@@ -274,6 +302,8 @@ export function aizumiSourcedHook(
 export function aizumiTopChipForRow(row: {category: string; name_ja: string}): FilterId {
   if (isAizumiOnsenPackRow(row)) return 'onsen';
   if (isAizumiStayPackRow(row)) return 'stay';
+  if (row.category === 'stay') return 'stay';
+  if (row.category === 'dining') return 'dining';
   if (isAizumiShoppingPackRow(row)) return 'shopping';
   if (AIZUMI_DINING_NAME_SET.has(row.name_ja)) return 'dining';
   if (isSightsCategory(row.category)) return 'sights';

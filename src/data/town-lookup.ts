@@ -500,13 +500,13 @@ export const TOKUSHIMA_CITY_LOOKUP: LookupTown = {
   travelCommerce: TOKUSHIMA_CITY_TRAVEL_COMMERCE,
   travelAll: TOKUSHIMA_CITY_TRAVEL_ALL,
   coverageJa:
-    '徳島市（JIS 36201）観光5・宿泊35・飲食55（出典写真がある施設のみ）。オープンデータ凍結パックは未掲載。温泉・体験・買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。',
+    '徳島市（JIS 36201）観光8・宿泊35・飲食55（出典写真がある施設のみ）。オープンデータ凍結パックは未掲載。温泉・体験・買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。',
   coverageEn:
-    'Tokushima City (JIS 36201), 5 tourism + 35 stay + 55 dining with sourced photos. No frozen open-data pack. Onsen, experience, shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished.',
-  mapLabelJa: '徳島市の出典座標5件',
-  mapLabelEn: '5 sourced coordinates in Tokushima City',
-  mapCitePackJa: '点は市ページ掲載施設のWikipedia座標5件（accessed 2026-08-28）。',
-  mapCitePackEn: 'Points: 5 Wikipedia coordinates for city-page facilities (accessed 2026-08-28).',
+    'Tokushima City (JIS 36201), 8 tourism + 35 stay + 55 dining with sourced photos. No frozen open-data pack. Onsen, experience, shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished.',
+  mapLabelJa: '徳島市の出典座標8件',
+  mapLabelEn: '8 sourced coordinates in Tokushima City',
+  mapCitePackJa: '点は市ページ掲載施設のWikipedia座標8件（accessed 2026-09-07）。',
+  mapCitePackEn: 'Points: 8 Wikipedia coordinates for city-page facilities (accessed 2026-09-07).',
   licenseNoteJa:
     '行のライセンスは市公式サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
   licenseNoteEn:
@@ -641,9 +641,9 @@ export const MATSUSHIGE_LOOKUP: LookupTown = {
   travelCommerce: MATSUSHIGE_TRAVEL_COMMERCE,
   travelAll: MATSUSHIGE_TRAVEL_ALL,
   coverageJa:
-    '松茂町（JIS 36401）216件。GTFS停留所59、緊急避難場所56、文化財36、公共施設31、避難所15、保育13、観光5、介護1。AED・医療機関・Wi-Fiは0件（未掲載）。',
+    '松茂町（JIS 36401）宿泊7・飲食14・観光4（出典写真がある施設のみ）＋オープンデータパック216件。温泉・体験・買物・商業0。AED・医療機関・Wi-Fiは0件（未掲載）。',
   coverageEn:
-    'Matsushige Town (JIS 36401), 216 rows. GTFS stops 59, emergency sites 56, cultural property 36, public facilities 31, shelters 15, childcare 13, tourism 5, care 1. AED, hospitals, Wi-Fi: 0, unpublished.',
+    'Matsushige Town (JIS 36401), 7 stay + 14 dining + 4 tourism with sourced photos, plus open-data pack 216 rows. Onsen, experience, shopping, commerce: 0. AED, hospitals, Wi-Fi: 0, unpublished.',
   mapLabelJa: '松茂町の公式座標106件',
   mapLabelEn: '106 official coordinates in Matsushige Town',
   mapCitePackJa: '点は凍結パックの公式座標106件（accessed 2026-08-27）。',
@@ -675,9 +675,9 @@ export const KITAJIMA_LOOKUP: LookupTown = {
   travelCommerce: KITAJIMA_TRAVEL_COMMERCE,
   travelAll: KITAJIMA_TRAVEL_ALL,
   coverageJa:
-    '北島町（JIS 36402）209件。緊急避難場所50、避難所31、医療機関29、文化財28、公共施設28、AED 21、保育19、観光2、介護1。Wi-Fi・GTFSは0件（未掲載）。',
+    '北島町（JIS 36402）宿泊0（町内に市場性のある客室写真なし）・飲食14・観光1（出典写真）＋オープンデータパック209件。温泉・体験・買物・商業0。',
   coverageEn:
-    'Kitajima Town (JIS 36402), 209 rows. Emergency sites 50, shelters 31, hospitals 29, cultural property 28, public facilities 28, AED 21, childcare 19, tourism 2, care 1. Wi-Fi, GTFS: 0, unpublished.',
+    'Kitajima Town (JIS 36402), stay 0 (no marketable in-town lodging photo) + 14 dining + 1 tourism with sourced photos, plus open-data pack 209 rows. Onsen, experience, shopping, commerce: 0.',
   mapLabelJa: '北島町の公式座標116件',
   mapLabelEn: '116 official coordinates in Kitajima Town',
   mapCitePackJa: '点は凍結パックの公式座標116件（accessed 2026-08-27）。',
@@ -1060,9 +1060,9 @@ export const AIZUMI_LOOKUP: LookupTown = {
   travelCommerce: AIZUMI_TRAVEL_COMMERCE,
   travelAll: AIZUMI_TRAVEL_ALL,
   coverageJa:
-    '藍住町（JIS 36403）225件。文化財57、公共施設50、病院41、保育36、観光17、避難所12、緊急避難場所11、介護1。AED・Wi-Fi・GTFS停留所は0件（未掲載）。公式座標36件。',
+    '藍住町（JIS 36403）宿泊1・飲食16・観光7（出典写真がある施設のみ）＋オープンデータパック225件。温泉・体験・買物・商業0。AED・Wi-Fi・GTFS停留所は0件（未掲載）。',
   coverageEn:
-    'Aizumi Town (JIS 36403), 225 rows. Cultural property 57, public facility 50, hospital 41, childcare 36, tourism 17, shelter 12, emergency sites 11, care 1. AED / Wi-Fi / GTFS stops: 0, unpublished. Official coordinates: 36.',
+    'Aizumi Town (JIS 36403), 1 stay + 16 dining + 7 tourism with sourced photos, plus open-data pack 225 rows. Onsen, experience, shopping, commerce: 0. AED / Wi-Fi / GTFS stops: 0, unpublished.',
   mapLabelJa: '藍住町の公式座標36件',
   mapLabelEn: '36 official coordinates in Aizumi Town',
   mapCitePackJa: '点は凍結パックの公式座標36件（accessed 2026-08-27）。',
