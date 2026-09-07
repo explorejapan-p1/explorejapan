@@ -21,6 +21,7 @@ import {KOMATSUSHIMA, KOMATSUSHIMA_PLACE_PHOTO} from '@/data/komatsushima';
 import {ANAN, ANAN_PLACE_PHOTO} from '@/data/anan';
 import {TAKAMATSU, TAKAMATSU_PLACE_PHOTO} from '@/data/takamatsu';
 import {KOTOHIRA, KOTOHIRA_PLACE_PHOTO} from '@/data/kotohira';
+import {MARUGAME, MARUGAME_PLACE_PHOTO} from '@/data/marugame';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -111,6 +112,7 @@ function localityJa(slug: string): string {
   if (slug === 'anan') return ANAN.nameJa;
   if (slug === 'takamatsu') return TAKAMATSU.nameJa;
   if (slug === 'kotohira') return KOTOHIRA.nameJa;
+  if (slug === 'marugame') return MARUGAME.nameJa;
   return MIMA.nameJa;
 }
 
@@ -140,6 +142,7 @@ function localityEn(slug: string): string {
   if (slug === 'anan') return ANAN.nameEn;
   if (slug === 'takamatsu') return TAKAMATSU.nameEn;
   if (slug === 'kotohira') return KOTOHIRA.nameEn;
+  if (slug === 'marugame') return MARUGAME.nameEn;
   return MIMA.nameEn;
 }
 
@@ -2229,6 +2232,66 @@ export function kotohiraGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '琴平町の案内' : 'Places in Kotohira Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+export function marugameGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kagawa/marugame');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('marugame');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? MARUGAME.nameJa : MARUGAME.nameEn,
+        alternateName: isJa ? MARUGAME.nameEn : MARUGAME.nameJa,
+        identifier: MARUGAME.jis,
+        url,
+        image: photoAbs(MARUGAME_PLACE_PHOTO),
+        sameAs: [MARUGAME.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '大手町二丁目4番21号' : '2-4-21 Otemachi',
+          addressLocality: isJa ? MARUGAME.nameJa : MARUGAME.nameEn,
+          addressRegion: isJa ? MARUGAME.prefectureJa : MARUGAME.prefectureEn,
+          postalCode: MARUGAME.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? MARUGAME.prefectureJa : MARUGAME.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? MARUGAME.nameJa : MARUGAME.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? MARUGAME.prefectureJa : MARUGAME.prefectureEn, item: canonicalUrl(locale, 'kagawa')},
+          {'@type': 'ListItem', position: 3, name: isJa ? MARUGAME.nameJa : MARUGAME.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '丸亀市の案内' : 'Places in Marugame City',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

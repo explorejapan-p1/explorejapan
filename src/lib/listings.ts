@@ -195,6 +195,14 @@ import {
   rankKotohiraSeeRows,
   KOTOHIRA_DINING_NAME_SET
 } from '@/data/kotohira-travel';
+import {
+  isMarugameOnsenPackRow,
+  isMarugameExperiencePackRow,
+  isMarugameStayPackRow,
+  marugameSightPhoto,
+  rankMarugameSeeRows,
+  MARUGAME_DINING_NAME_SET
+} from '@/data/marugame-travel';
 
 
 
@@ -1304,6 +1312,47 @@ function kotohiraListings(): PublicListing[] {
   return out;
 }
 
+function marugameListings(): PublicListing[] {
+  const town = lookupTown('marugame')!;
+  const out: PublicListing[] = town.travelAll.map((row) =>
+    fromTravel(row, 'marugame', marugameSightPhoto(row.name_ja))
+  );
+  const seen = new Set<string>();
+  const pack: FacilityRow[] = [];
+  for (const row of town.rows) {
+    if (MARUGAME_DINING_NAME_SET.has(row.name_ja)) continue;
+    if (
+      !isMarugameOnsenPackRow(row) &&
+      !isMarugameExperiencePackRow(row) &&
+      !isMarugameStayPackRow(row) &&
+      !isSightsCategory(row.category)
+    ) {
+      continue;
+    }
+    const key = packDedupeKey(row);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    pack.push(row);
+  }
+  const ranked = rankMarugameSeeRows(pack);
+  const onsen = pack.filter(isMarugameOnsenPackRow);
+  const experience = pack.filter(isMarugameExperiencePackRow);
+  const stay = pack.filter(isMarugameStayPackRow);
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
+    const kind: ListingKind = isMarugameOnsenPackRow(row)
+      ? 'onsen'
+      : isMarugameExperiencePackRow(row)
+        ? 'experience'
+        : isMarugameStayPackRow(row)
+          ? 'stay'
+          : 'sights';
+    out.push(fromPack(row, 'marugame', kind, marugameSightPhoto(row.name_ja)));
+  }
+  return out;
+}
+
+
+
 const CACHE: Record<ReadySlug, PublicListing[]> = {
   mima: mimaListings(),
   tsurugi: tsurugiListings(),
@@ -1330,7 +1379,8 @@ const CACHE: Record<ReadySlug, PublicListing[]> = {
   komatsushima: komatsushimaListings(),
   anan: ananListings(),
   takamatsu: takamatsuListings(),
-  kotohira: kotohiraListings()
+  kotohira: kotohiraListings(),
+  marugame: marugameListings()
 };
 
 export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {
@@ -1338,7 +1388,7 @@ export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {
 }
 
 export function allPublicListings(): PublicListing[] {
-  return [...CACHE.mima, ...CACHE.tsurugi, ...CACHE.yoshinogawa, ...CACHE.miyoshi, ...CACHE.tokushima, ...CACHE.awa, ...CACHE.higashimiyoshi, ...CACHE.kitajima, ...CACHE.naruto, ...CACHE.matsushige, ...CACHE.ishii, ...CACHE.itano, ...CACHE.kamiita, ...CACHE.kamiyama, ...CACHE.katsuura, ...CACHE.kamikatsu, ...CACHE.sanagochi, ...CACHE.naka, ...CACHE.mugi, ...CACHE.minami, ...CACHE.aizumi, ...CACHE.kaiyo, ...CACHE.komatsushima, ...CACHE.anan, ...CACHE.takamatsu, ...CACHE.kotohira];
+  return [...CACHE.mima, ...CACHE.tsurugi, ...CACHE.yoshinogawa, ...CACHE.miyoshi, ...CACHE.tokushima, ...CACHE.awa, ...CACHE.higashimiyoshi, ...CACHE.kitajima, ...CACHE.naruto, ...CACHE.matsushige, ...CACHE.ishii, ...CACHE.itano, ...CACHE.kamiita, ...CACHE.kamiyama, ...CACHE.katsuura, ...CACHE.kamikatsu, ...CACHE.sanagochi, ...CACHE.naka, ...CACHE.mugi, ...CACHE.minami, ...CACHE.aizumi, ...CACHE.kaiyo, ...CACHE.komatsushima, ...CACHE.anan, ...CACHE.takamatsu, ...CACHE.kotohira, ...CACHE.marugame];
 }
 
 export function liveListings(slug?: ReadySlug): PublicListing[] {

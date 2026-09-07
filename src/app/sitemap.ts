@@ -32,7 +32,8 @@ const READY_HUBS = [
   'tokushima/komatsushima',
   'tokushima/anan',
   'kagawa/takamatsu',
-  'kagawa/kotohira'
+  'kagawa/kotohira',
+  'kagawa/marugame'
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

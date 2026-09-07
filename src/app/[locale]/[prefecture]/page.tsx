@@ -17,6 +17,7 @@ import {KOMATSUSHIMA_PLACE_PHOTO} from '@/data/komatsushima';
 import {ANAN_PLACE_PHOTO} from '@/data/anan';
 import {TAKAMATSU_PLACE_PHOTO} from '@/data/takamatsu';
 import {KOTOHIRA_PLACE_PHOTO} from '@/data/kotohira';
+import {MARUGAME_PLACE_PHOTO} from '@/data/marugame';
 import {KAGAWA_MUNICIPALITIES} from '@/data/kagawa-municipalities';
 import {TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {PREFECTURES, PREFECTURE_BY_SLUG} from '@/data/prefectures';
@@ -116,6 +117,8 @@ export default async function PrefecturePage({params}: Props) {
                                             ? ANAN_PLACE_PHOTO
                                             : m.slug === 'kotohira'
                                               ? KOTOHIRA_PLACE_PHOTO
+                                            : m.slug === 'marugame'
+                                              ? MARUGAME_PLACE_PHOTO
                                             : m.slug === 'takamatsu'
                                               ? TAKAMATSU_PLACE_PHOTO
                                               : MIMA_PLACE_PHOTO;

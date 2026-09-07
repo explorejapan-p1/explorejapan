@@ -10,11 +10,11 @@ export type Municipality = {
 
 /**
  * Kagawa 市区町村. Codes are N03_007 / JIS X 0402 (5-digit).
- * Takamatsu 37201 + Kotohira 37403 LIVE hubs.
+ * Takamatsu 37201 + Marugame 37202 + Kotohira 37403 LIVE hubs.
  */
 export const KAGAWA_MUNICIPALITIES: Municipality[] = [
   {jis: '37201', slug: 'takamatsu', nameJa: '高松市', nameEn: 'Takamatsu', status: 'ready'},
-  {jis: '37202', slug: 'marugame', nameJa: '丸亀市', nameEn: 'Marugame', status: 'coming-soon'},
+  {jis: '37202', slug: 'marugame', nameJa: '丸亀市', nameEn: 'Marugame', status: 'ready'},
   {jis: '37203', slug: 'sakaide', nameJa: '坂出市', nameEn: 'Sakaide', status: 'coming-soon'},
   {jis: '37204', slug: 'zentsuji', nameJa: '善通寺市', nameEn: 'Zentsuji', status: 'coming-soon'},
   {jis: '37205', slug: 'kanonji', nameJa: '観音寺市', nameEn: 'Kanonji', status: 'coming-soon'},

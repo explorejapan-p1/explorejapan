@@ -271,6 +271,17 @@ import {
   rankKotohiraSeeRows,
   resolveKotohiraFilter
 } from './kotohira-travel';
+import {
+  isMarugameOnsenPackRow,
+  isMarugameExperiencePackRow,
+  isMarugameStayPackRow,
+  marugamePackRowMatchesFilter,
+  marugameSightPhoto,
+  marugameSourcedHook,
+  marugameTopChipForRow,
+  rankMarugameSeeRows,
+  resolveMarugameFilter
+} from './marugame-travel';
 
 
 
@@ -670,6 +681,18 @@ const KOTOHIRA_HELPERS: LookupHelpers = {
   resolveFilter: resolveKotohiraFilter
 };
 
+const MARUGAME_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isMarugameOnsenPackRow,
+  isExperiencePackRow: isMarugameExperiencePackRow,
+  isStayPackRow: isMarugameStayPackRow,
+  packRowMatchesFilter: marugamePackRowMatchesFilter,
+  rankSeeRows: rankMarugameSeeRows,
+  sightPhoto: marugameSightPhoto,
+  sourcedHook: marugameSourcedHook,
+  topChipForRow: marugameTopChipForRow,
+  resolveFilter: resolveMarugameFilter
+};
+
 export function townHelpers(slug: ReadySlug): LookupHelpers {
 
   if (slug === 'tsurugi') return TSURUGI_HELPERS;
@@ -697,5 +720,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'anan') return ANAN_HELPERS;
   if (slug === 'takamatsu') return TAKAMATSU_HELPERS;
   if (slug === 'kotohira') return KOTOHIRA_HELPERS;
+  if (slug === 'marugame') return MARUGAME_HELPERS;
   return MIMA_HELPERS;
 }

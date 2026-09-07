@@ -44,6 +44,7 @@ import {KOMATSUSHIMA_TRAVEL_ACCESSED} from '@/data/komatsushima-travel';
 import {ANAN_TRAVEL_ACCESSED} from '@/data/anan-travel';
 import {TAKAMATSU_TRAVEL_ACCESSED} from '@/data/takamatsu-travel';
 import {KOTOHIRA_TRAVEL_ACCESSED} from '@/data/kotohira-travel';
+import {MARUGAME_TRAVEL_ACCESSED} from '@/data/marugame-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -952,6 +953,25 @@ export function MimaFacilityLookup({
                 Dining from Tabelog Kotohira Town shop pages ({KOTOHIRA_TRAVEL_ACCESSED}).
                 Onsen: Kotosankaku and Shikishimakan bath stills (distinct from stay room keys). Experience: Kanamaruza.
                 Shopping and commerce stay at 0 without sourced photos. Second LIVE Kagawa hub.
+              </>
+            )
+
+          ) : town.slug === 'marugame' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（丸亀城・天守・石垣・中津万象園・飯野山・丸亀港）。
+                宿泊は楽天トラベルの客室写真（{MARUGAME_TRAVEL_ACCESSED}）。
+                飲食は食べログ丸亀市の公開店ページ（{MARUGAME_TRAVEL_ACCESSED}）。
+                温泉はアパホテル・スーパーホテルの大浴場（公式風呂写真・客室キーと分離）。体験はうちわの港ミュージアム。
+                買物・商業は出典写真が無いため0件。香川県3つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Marugame Castle keep/walls, Banshō-en, Mount Iino, Marugame Port).
+                Lodging from Rakuten Travel room photos ({MARUGAME_TRAVEL_ACCESSED}).
+                Dining from Tabelog Marugame City shop pages ({MARUGAME_TRAVEL_ACCESSED}).
+                Onsen: APA and Super Hotel bath stills (distinct from stay room keys). Experience: Uchiwa Museum.
+                Shopping and commerce stay at 0 without sourced photos. Third LIVE Kagawa hub.
               </>
             )
 
