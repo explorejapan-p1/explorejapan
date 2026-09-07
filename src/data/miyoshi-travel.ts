@@ -39,7 +39,7 @@ export const MIYOSHI_EXPERIENCE_PACK_NAMES = ['大歩危峡まんなか/大歩�
 export const MIYOSHI_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(MIYOSHI_EXPERIENCE_PACK_NAMES);
 
 /** Exact tourism-pack names shown on 宿泊, not 観光. Room/bath/view photo required. */
-export const MIYOSHI_STAY_PACK_NAMES = ['峡谷の湯宿 大歩危峡まんなか', '桃源郷祖谷の山里 茅葺き民家ステイ'] as const;
+export const MIYOSHI_STAY_PACK_NAMES = ['峡谷の湯宿 大歩危峡まんなか', '桃源郷祖谷の山里 茅葺き民家ステイ', 'STAY ISHIWAKI'] as const;
 
 export const MIYOSHI_STAY_PACK_SET: ReadonlySet<string> = new Set(MIYOSHI_STAY_PACK_NAMES);
 
@@ -83,13 +83,6 @@ export const MIYOSHI_TRAVEL_STAY: readonly TravelRow[] = [
     '徳島県三好市池田町サラダ1835-1',
     '0883-72-8115',
     'https://travel.rakuten.co.jp/HOTEL/158338/158338.html'
-  ),
-  stay(
-    'miyoshi-stay-03',
-    'STAY ISHIWAKI',
-    '徳島県三好市東祖谷高野1-9',
-    '0883-87-7530',
-    'https://travel.rakuten.co.jp/HOTEL/197816/197816.html'
   ),
   stay(
     'miyoshi-stay-04',
