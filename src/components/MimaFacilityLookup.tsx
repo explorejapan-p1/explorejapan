@@ -79,6 +79,7 @@ import {GEISEI_TRAVEL_ACCESSED} from '@/data/geisei-travel';
 import {KITAGAWA_TRAVEL_ACCESSED} from '@/data/kitagawa-travel';
 import {UMAJI_TRAVEL_ACCESSED} from '@/data/umaji-travel';
 import {MOTOYAMA_TRAVEL_ACCESSED} from '@/data/motoyama-travel';
+import {OTOYO_TRAVEL_ACCESSED} from '@/data/otoyo-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1519,6 +1520,22 @@ export function MimaFacilityLookup({
                 Lodging: Asemi Rakuten Japanese-Western room photo ({MOTOYAMA_TRAVEL_ACCESSED}).
                 Dining from Tabelog Motoyama shop pages ({MOTOYAMA_TRAVEL_ACCESSED}).
                 Onsen: 0 (private shower stay; stay≠onsen). Experience: 0. Shopping/commerce: 0. Twentieth LIVE Kochi hub.
+              </>
+            )
+          ) : town.slug === 'otoyo' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（豊楽寺・龍王の滝・大豊町役場・道の駅大杉・八畝の乳イチョウ）。
+                宿泊は楽天トラベル大豊の森の和室写真（{OTOYO_TRAVEL_ACCESSED}）。
+                飲食は食べログ大豊町の公開店ページ（{OTOYO_TRAVEL_ACCESSED}）。
+                温泉は0件（客室バスのみ・stay≠onsen）。体験は0件。買物・商業は0件。高知県21つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Buraku-ji, Ryuo Falls, Otoyo Town Hall, Roadside Station Osugi, Yase milk ginkgo).
+                Lodging: Otoyonomori Rakuten Japanese-room photo ({OTOYO_TRAVEL_ACCESSED}).
+                Dining from Tabelog Otoyo shop pages ({OTOYO_TRAVEL_ACCESSED}).
+                Onsen: 0 (private bath stay; stay≠onsen). Experience: 0. Shopping/commerce: 0. Twenty-first LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'geisei' ? (

@@ -327,6 +327,7 @@ import {GEISEI, GEISEI_PLACE_PHOTO, GEISEI_FACILITIES, GEISEI_EXPECTED_GEO_COUNT
 import {KITAGAWA, KITAGAWA_PLACE_PHOTO, KITAGAWA_FACILITIES, KITAGAWA_EXPECTED_GEO_COUNT, KITAGAWA_EXPECTED_ROW_COUNT} from './kitagawa';
 import {UMAJI, UMAJI_PLACE_PHOTO, UMAJI_FACILITIES, UMAJI_EXPECTED_GEO_COUNT, UMAJI_EXPECTED_ROW_COUNT} from './umaji';
 import {MOTOYAMA, MOTOYAMA_PLACE_PHOTO, MOTOYAMA_FACILITIES, MOTOYAMA_EXPECTED_GEO_COUNT, MOTOYAMA_EXPECTED_ROW_COUNT} from './motoyama';
+import {OTOYO, OTOYO_PLACE_PHOTO, OTOYO_FACILITIES, OTOYO_EXPECTED_GEO_COUNT, OTOYO_EXPECTED_ROW_COUNT} from './otoyo';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -664,6 +665,13 @@ import {
   MOTOYAMA_TRAVEL_COMMERCE,
   MOTOYAMA_TRAVEL_ALL
 } from './motoyama-travel';
+import {
+  OTOYO_TRAVEL_DINING,
+  OTOYO_TRAVEL_STAY,
+  OTOYO_TRAVEL_SHOPPING,
+  OTOYO_TRAVEL_COMMERCE,
+  OTOYO_TRAVEL_ALL
+} from './otoyo-travel';
 
 
 
@@ -2470,6 +2478,39 @@ export const MOTOYAMA_LOOKUP: LookupTown = {
 };
 
 
+
+export const OTOYO_LOOKUP: LookupTown = {
+  slug: 'otoyo',
+  prefectureSlug: 'kochi',
+  jis: OTOYO.jis,
+  nameJa: OTOYO.nameJa,
+  nameEn: OTOYO.nameEn,
+  heroPhoto: OTOYO_PLACE_PHOTO,
+  photoCiteJa: '写真は豊楽寺。Reggaeman、2009-06-06、CC BY-SA 3.0。File:Burakuji_01.JPG。',
+  photoCiteEn: 'Photo: Buraku-ji. Reggaeman, 2009-06-06, CC BY-SA 3.0. File:Burakuji_01.JPG.',
+  rows: OTOYO_FACILITIES,
+  expectedGeo: OTOYO_EXPECTED_GEO_COUNT,
+  expectedRows: OTOYO_EXPECTED_ROW_COUNT,
+  travelDining: OTOYO_TRAVEL_DINING,
+  travelStay: OTOYO_TRAVEL_STAY,
+  travelShopping: OTOYO_TRAVEL_SHOPPING,
+  travelCommerce: OTOYO_TRAVEL_COMMERCE,
+  travelAll: OTOYO_TRAVEL_ALL,
+  coverageJa:
+    '大豊町（JIS 39344）観光5・宿泊1・飲食3・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県21つ目のLIVEハブ。',
+  coverageEn:
+    'Otoyo Town (JIS 39344), 5 tourism + 1 stay + 3 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Twenty-first LIVE Kochi hub.',
+  mapLabelJa: '大豊町の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Otoyo Town',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons/楽天等出典座標5件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 5 sourced coordinates for town/official facilities (accessed 2026-09-08).',
+  licenseNoteJa: '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from town.otoyo.kochi.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
+
 export const NAHARI_LOOKUP: LookupTown = {
   slug: 'nahari',
   prefectureSlug: 'kochi',
@@ -2907,7 +2948,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   geisei: GEISEI_LOOKUP,
   kitagawa: KITAGAWA_LOOKUP,
   umaji: UMAJI_LOOKUP,
-  motoyama: MOTOYAMA_LOOKUP
+  motoyama: MOTOYAMA_LOOKUP,
+  otoyo: OTOYO_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

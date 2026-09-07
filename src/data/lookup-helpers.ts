@@ -658,6 +658,17 @@ import {
   motoyamaTopChipForRow,
   resolveMotoyamaFilter
 } from './motoyama-travel';
+import {
+  isOtoyoOnsenPackRow,
+  isOtoyoExperiencePackRow,
+  isOtoyoStayPackRow,
+  otoyoPackRowMatchesFilter,
+  rankOtoyoSeeRows,
+  otoyoSightPhoto,
+  otoyoSourcedHook,
+  otoyoTopChipForRow,
+  resolveOtoyoFilter
+} from './otoyo-travel';
 
 
 
@@ -1317,6 +1328,19 @@ const MOTOYAMA_HELPERS: LookupHelpers = {
   resolveFilter: resolveMotoyamaFilter
 };
 
+const OTOYO_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isOtoyoOnsenPackRow,
+  isExperiencePackRow: isOtoyoExperiencePackRow,
+  isStayPackRow: isOtoyoStayPackRow,
+  packRowMatchesFilter: otoyoPackRowMatchesFilter,
+  rankSeeRows: rankOtoyoSeeRows,
+  sightPhoto: otoyoSightPhoto,
+  sourcedHook: otoyoSourcedHook,
+  topChipForRow: otoyoTopChipForRow,
+  resolveFilter: resolveOtoyoFilter
+};
+
+
 const YASUDA_HELPERS: LookupHelpers = {
   isOnsenPackRow: isYasudaOnsenPackRow,
   isExperiencePackRow: isYasudaExperiencePackRow,
@@ -1564,5 +1588,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'kitagawa') return KITAGAWA_HELPERS;
   if (slug === 'umaji') return UMAJI_HELPERS;
   if (slug === 'motoyama') return MOTOYAMA_HELPERS;
+  if (slug === 'otoyo') return OTOYO_HELPERS;
   return MIMA_HELPERS;
 }
