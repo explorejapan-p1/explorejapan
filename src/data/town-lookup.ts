@@ -675,12 +675,12 @@ export const KITAJIMA_LOOKUP: LookupTown = {
   travelCommerce: KITAJIMA_TRAVEL_COMMERCE,
   travelAll: KITAJIMA_TRAVEL_ALL,
   coverageJa:
-    '北島町（JIS 36402）宿泊0（町内に市場性のある客室写真なし）・飲食14・観光1（出典写真）＋オープンデータパック209件。温泉・体験・買物・商業0。',
+    '北島町（JIS 36402）宿泊0（町内に市場性のある客室写真なし）・飲食14・観光5（出典写真）・商業1＋オープンデータパック209件+Commons EXTRA3。温泉・体験・買物0。',
   coverageEn:
-    'Kitajima Town (JIS 36402), stay 0 (no marketable in-town lodging photo) + 14 dining + 1 tourism with sourced photos, plus open-data pack 209 rows. Onsen, experience, shopping, commerce: 0.',
-  mapLabelJa: '北島町の公式座標116件',
-  mapLabelEn: '116 official coordinates in Kitajima Town',
-  mapCitePackJa: '点は凍結パックの公式座標116件（accessed 2026-08-27）。',
+    'Kitajima Town (JIS 36402), stay 0 (no marketable in-town lodging photo) + 14 dining + 5 tourism with sourced photos + 1 commerce + open-data pack 209 + Commons EXTRA 3. Onsen/experience/shopping 0.',
+  mapLabelJa: '北島町の公式座標119件',
+  mapLabelEn: '119 official coordinates in Kitajima Town',
+  mapCitePackJa: '点は凍結パック+Commons EXTRAの公式座標119件（accessed 2026-08-27）。',
   mapCitePackEn: 'Points: 116 official coordinates from the frozen pack (accessed 2026-08-27).',
   licenseNoteJa:
     '行のライセンスは二つ。CC BY 4.0 は徳島県 Our Open Data の利用規約。「町公式サイト掲載情報」は町ページの事実の転記で、オープンデータ許諾ではありません。',

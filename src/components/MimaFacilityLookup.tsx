@@ -446,8 +446,8 @@ export function MimaFacilityLookup({
     ? editorialCards
     : rankByOurTraffic(editorialCards, traffic.views, traffic.searches);
 
-  // Photo-only visual grid for tsurugi, yoshinogawa, miyoshi, tokushima, and awa. Mima still shows 写真準備中 wells.
-  const photoOnly = town.slug !== 'mima';
+  // Photo-only visual grid + chips for all ReadySlug towns (incl. mima). No ungated pack dump on 観光.
+  const photoOnly = true;
   const gridCards =
     searching || !photoOnly
       ? cards
@@ -465,7 +465,6 @@ export function MimaFacilityLookup({
         town.travelAll.find((row) => row.id === openId);
 
   function chipCount(id: (typeof TOP_CHIPS)[number]): number {
-    const photoOnly = town.slug !== 'mima';
     const withPhoto = (rows: readonly CardRow[]) =>
       photoOnly ? rows.filter((row) => h.sightPhoto(row.name_ja) !== null).length : rows.length;
     if (id === 'sights') return withPhoto(rankedSee);

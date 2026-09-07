@@ -38,7 +38,7 @@ export const KITAJIMA_STAY_PACK_SET: ReadonlySet<string> = new Set(
   KITAJIMA_STAY_PACK_NAMES
 );
 
-export const KITAJIMA_SIGHT_PINS = ['北島チューリップ公園', 'チューリップハウス'] as const;
+export const KITAJIMA_SIGHT_PINS = ['北島チューリップ公園', 'チューリップハウス', '鯛浜橋', '旧吉野川', '北島町立図書館・創世ホール'] as const;
 
 export const KITAJIMA_TRAVEL_STAY: readonly TravelRow[] = [];
 

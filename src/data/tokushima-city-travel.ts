@@ -4,7 +4,7 @@
  * Stay from NAVITIME/楽天トラベル hotel listings + hotel official og/room images where available.
  * Rank strongest Instagram-style photos first. Do not invent listings or fake reviews.
  * Sights densify: city keikan + Commons (弁天山 / 文化の森 / 眉山公園). Fun!Fun! lead → city/Commons only.
- * Onsen / experience / shopping / commerce: honest 0 (no bath/shop 出典 this pass).
+ * Onsen / shopping / commerce: honest 0. Experience densified (ropeway/museum/glass/zoo/cruise).
  * Do not copy 鳴門 / 阿南 / 小松島 / 美馬 TRAVEL_* rows or photos.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
@@ -746,7 +746,7 @@ function isSightsCategory(value: string): boolean {
   return SIGHTS_SET.has(value);
 }
 
-export const TOKUSHIMA_CITY_EXPERIENCE_PACK_NAMES = ['あわぎん眉山ロープウエイ'] as const;
+export const TOKUSHIMA_CITY_EXPERIENCE_PACK_NAMES = ['あわぎん眉山ロープウエイ', '徳島城博物館', '徳島ガラススタジオ', 'とくしま動物園', 'ひょうたん島クルーズ'] as const;
 export const TOKUSHIMA_CITY_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(TOKUSHIMA_CITY_EXPERIENCE_PACK_NAMES);
 
 export function isTokushimaCityOnsenPackRow(_row: {category: string; name_ja: string}): boolean {

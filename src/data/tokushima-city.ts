@@ -35,13 +35,17 @@ export const TOKUSHIMA_CITY = {
     bentenYama: 'https://www.city.tokushima.tokushima.jp/kankou/keikan/benten_yama.html',
     bunkaNoMori: 'https://www.city.tokushima.tokushima.jp/kankou/keikan/bunkanomori.html',
     bizanPark: 'https://www.city.tokushima.tokushima.jp/kankou/keikan/bizan.html',
+    johaku: 'https://www.city.tokushima.tokushima.jp/johaku/',
+    glassStudio: 'https://www.city.tokushima.tokushima.jp/shisetsu/bunka_art/glass/index.html',
+    zoo: 'https://tokushimazoo.jp/',
+    hyotanCruise: 'https://www.awanavi.jp/archives/spot/2542',
     tabelogCity: 'https://tabelog.com/tokushima/C36201/rstLst/',
     accessed: '2026-09-07'
   }
 } as const;
 
-export const TOKUSHIMA_CITY_EXPECTED_ROW_COUNT = 8;
-export const TOKUSHIMA_CITY_EXPECTED_GEO_COUNT = 8;
+export const TOKUSHIMA_CITY_EXPECTED_ROW_COUNT = 12;
+export const TOKUSHIMA_CITY_EXPECTED_GEO_COUNT = 12;
 
 function wikiPhoto(
   file: string,
@@ -183,6 +187,50 @@ export const TOKUSHIMA_CITY_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto
     '2020-04-05',
     '眉山公園（徳島市）',
     'Bizan Park, Tokushima'
+  ),
+  '徳島城博物館': wikiPhoto(
+    'tokushima-castle-museum.jpg',
+    'https://commons.wikimedia.org/wiki/File:Tokushima_castle_museum02s3872.jpg',
+    'CC BY 2.5',
+    'https://creativecommons.org/licenses/by/2.5/',
+    '663highland',
+    'https://commons.wikimedia.org/wiki/User:663highland',
+    '2007-10-07',
+    '徳島城博物館（徳島市徳島町城内）',
+    'Tokushima Castle Museum, Tokushima-cho, Tokushima'
+  ),
+  '徳島ガラススタジオ': wikiPhoto(
+    'tokushima-glass-studio.jpg',
+    'https://commons.wikimedia.org/wiki/File:Tokushima_glass_studio.jpg',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0/',
+    '正やた',
+    'https://commons.wikimedia.org/wiki/File:Tokushima_glass_studio.jpg',
+    '2015-05-08',
+    '徳島ガラススタジオ（徳島市勝占町）',
+    'Tokushima Glass Studio, Katsura-cho, Tokushima'
+  ),
+  'とくしま動物園': wikiPhoto(
+    'tokushima-zoo-gate.jpg',
+    'https://commons.wikimedia.org/wiki/File:Tokushima_Zoo_Main_Entrance.JPG',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0/',
+    'KishujiRapid',
+    'https://commons.wikimedia.org/wiki/User:KishujiRapid',
+    '2016-04-17',
+    'とくしま動物園正門（徳島市）',
+    'Tokushima Zoo main gate, Tokushima'
+  ),
+  'ひょうたん島クルーズ': wikiPhoto(
+    'tokushima-hyotan-cruise.jpg',
+    'https://commons.wikimedia.org/wiki/File:Tokushima_hyoutanjima_cruise.jpg',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0/',
+    'ブルーノ・プラス',
+    'https://commons.wikimedia.org/wiki/File:Tokushima_hyoutanjima_cruise.jpg',
+    '2023-04',
+    'ひょうたん島クルーズ船（徳島市）',
+    'Hyotan-jima cruise boat, Tokushima'
   ),
   "いのたに 本店": sourcePhoto(
     "tokushima-36000011-dish.jpg",
@@ -916,5 +964,41 @@ export const TOKUSHIMA_CITY_FACILITIES: readonly FacilityRow[] = [
     TOKUSHIMA_CITY.sources.bizanPark,
     34.067,
     134.53369444
+  ),
+  sight(
+    'tokushima-city-sight-09',
+    '徳島城博物館',
+    '徳島県徳島市徳島町城内1番地の8',
+    '088-656-2525',
+    TOKUSHIMA_CITY.sources.johaku,
+    34.073528,
+    134.555639
+  ),
+  sight(
+    'tokushima-city-sight-10',
+    '徳島ガラススタジオ',
+    '徳島県徳島市勝占町',
+    '088-669-1195',
+    TOKUSHIMA_CITY.sources.glassStudio,
+    34.02005556,
+    134.555
+  ),
+  sight(
+    'tokushima-city-sight-11',
+    'とくしま動物園',
+    '徳島県徳島市',
+    '088-636-3215',
+    TOKUSHIMA_CITY.sources.zoo,
+    34.01408333,
+    134.52211111
+  ),
+  sight(
+    'tokushima-city-sight-12',
+    'ひょうたん島クルーズ',
+    '徳島県徳島市南内町（しんまちボードウォーク発着）',
+    '090-3783-2084',
+    TOKUSHIMA_CITY.sources.hyotanCruise,
+    34.07051389,
+    134.54898889
   )
 ];

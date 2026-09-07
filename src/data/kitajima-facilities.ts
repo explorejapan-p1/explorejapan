@@ -2,17 +2,31 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {
   FACILITY_CATEGORIES,
-  KITAJIMA_EXPECTED_CATEGORY_COUNTS,
-  KITAJIMA_EXPECTED_GEO_COUNT,
-  KITAJIMA_EXPECTED_HOURS_COUNT,
-  KITAJIMA_EXPECTED_MISSING_ADDRESS,
-  KITAJIMA_EXPECTED_MISSING_PHONE,
-  KITAJIMA_EXPECTED_ROW_COUNT,
   KITAJIMA_PACK_ACCESSED,
   KITAJIMA_PACK_JIS,
   type FacilityCategory,
   type FacilityRow
 } from './facility-schema';
+
+/** Frozen jsonl baselines (before Commons extras). */
+const PACK_ROW_COUNT = 209;
+const PACK_GEO_COUNT = 116;
+const PACK_HOURS_COUNT = 209;
+const PACK_MISSING_ADDRESS = 0;
+const PACK_MISSING_PHONE = 72;
+const PACK_CATEGORY_COUNTS: Record<FacilityCategory, number> = {
+  tourism: 2,
+  cultural_property: 28,
+  care: 1,
+  aed: 21,
+  shelter: 31,
+  emergency_evacuation_site: 50,
+  hospital: 29,
+  childcare: 19,
+  wifi: 0,
+  public_facility: 28,
+  gtfs_stop: 0
+};
 
 const PACK_PATH = path.join(process.cwd(), 'data', 'frozen', 'kitajima-facilities.jsonl');
 
@@ -113,17 +127,17 @@ function loadKitajimaFacilities(): readonly FacilityRow[] {
     const parsed: unknown = JSON.parse(line);
     rows.push(parseFacilityRow(parsed));
   }
-  if (rows.length !== KITAJIMA_EXPECTED_ROW_COUNT) {
-    throw new Error(`kitajima pack row count ${rows.length} != ${KITAJIMA_EXPECTED_ROW_COUNT}`);
+  if (rows.length !== PACK_ROW_COUNT) {
+    throw new Error(`kitajima pack row count ${rows.length} != ${PACK_ROW_COUNT}`);
   }
   const counts = emptyCounts();
   for (const row of rows) {
     counts[row.category] += 1;
   }
   for (const cat of FACILITY_CATEGORIES) {
-    if (counts[cat] !== KITAJIMA_EXPECTED_CATEGORY_COUNTS[cat]) {
+    if (counts[cat] !== PACK_CATEGORY_COUNTS[cat]) {
       throw new Error(
-        `kitajima pack ${cat} ${counts[cat]} != ${KITAJIMA_EXPECTED_CATEGORY_COUNTS[cat]}`
+        `kitajima pack ${cat} ${counts[cat]} != ${PACK_CATEGORY_COUNTS[cat]}`
       );
     }
   }
@@ -137,23 +151,78 @@ function loadKitajimaFacilities(): readonly FacilityRow[] {
     if (isBlank(row.address)) missingAddress += 1;
     if (isBlank(row.phone)) missingPhone += 1;
   }
-  if (geo !== KITAJIMA_EXPECTED_GEO_COUNT) {
-    throw new Error(`kitajima pack geo ${geo} != ${KITAJIMA_EXPECTED_GEO_COUNT}`);
+  if (geo !== PACK_GEO_COUNT) {
+    throw new Error(`kitajima pack geo ${geo} != ${PACK_GEO_COUNT}`);
   }
-  if (hours !== KITAJIMA_EXPECTED_HOURS_COUNT) {
-    throw new Error(`kitajima pack hours ${hours} != ${KITAJIMA_EXPECTED_HOURS_COUNT}`);
+  if (hours !== PACK_HOURS_COUNT) {
+    throw new Error(`kitajima pack hours ${hours} != ${PACK_HOURS_COUNT}`);
   }
-  if (missingAddress !== KITAJIMA_EXPECTED_MISSING_ADDRESS) {
+  if (missingAddress !== PACK_MISSING_ADDRESS) {
     throw new Error(
-      `kitajima pack address gaps ${missingAddress} != ${KITAJIMA_EXPECTED_MISSING_ADDRESS}`
+      `kitajima pack address gaps ${missingAddress} != ${PACK_MISSING_ADDRESS}`
     );
   }
-  if (missingPhone !== KITAJIMA_EXPECTED_MISSING_PHONE) {
+  if (missingPhone !== PACK_MISSING_PHONE) {
     throw new Error(
-      `kitajima pack phone gaps ${missingPhone} != ${KITAJIMA_EXPECTED_MISSING_PHONE}`
+      `kitajima pack phone gaps ${missingPhone} != ${PACK_MISSING_PHONE}`
     );
   }
   return rows;
 }
 
-export const KITAJIMA_FACILITIES: readonly FacilityRow[] = loadKitajimaFacilities();
+/** Commons-backed extras (not frozen jsonl). Real place-named 出典 only. */
+const KITAJIMA_EXTRA_FACILITIES: readonly FacilityRow[] = [
+  {
+    id: 'kitajima-extra-taihama-bashi',
+    jis: KITAJIMA_PACK_JIS,
+    name_ja: '鯛浜橋',
+    reading: 'たいはまばし',
+    category: 'tourism',
+    lat: 34.1139,
+    lon: 134.548,
+    address: '徳島県板野郡北島町鯛浜',
+    phone: null,
+    official_url: 'https://www.town.kitajima.lg.jp/',
+    hours: null,
+    source_url: 'https://commons.wikimedia.org/wiki/File:%E4%BB%8A%E5%88%87%E5%B7%9D%E3%81%A8%E9%AF%9B%E6%B5%9C%E6%A9%8B.jpg',
+    license: 'cc_by_open_data',
+    accessed: KITAJIMA_PACK_ACCESSED
+  },
+  {
+    id: 'kitajima-extra-kyu-yoshinogawa',
+    jis: KITAJIMA_PACK_JIS,
+    name_ja: '旧吉野川',
+    reading: 'きゅうよしのがわ',
+    category: 'tourism',
+    lat: 34.134675,
+    lon: 134.530092,
+    address: '徳島県板野郡北島町',
+    phone: null,
+    official_url: 'https://www.town.kitajima.lg.jp/',
+    hours: null,
+    source_url: 'https://commons.wikimedia.org/wiki/File:Kyu-Yoshinogawa_River_from_train_of_Kotoku_Line.JPG',
+    license: 'cc_by_open_data',
+    accessed: KITAJIMA_PACK_ACCESSED
+  },
+  {
+    id: 'kitajima-extra-sosei-hall',
+    jis: KITAJIMA_PACK_JIS,
+    name_ja: '北島町立図書館・創世ホール',
+    reading: 'きたじまちょうりつとしょかん・そうせいホール',
+    category: 'tourism',
+    lat: 34.125377,
+    lon: 134.546599,
+    address: '徳島県板野郡北島町新喜来字南古田91',
+    phone: null,
+    official_url: 'https://www.town.kitajima.lg.jp/',
+    hours: null,
+    source_url: 'https://commons.wikimedia.org/wiki/File:%E3%82%B5%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%95%E5%8C%97%E5%B3%B6%E3%81%A8%E5%8C%97%E5%B3%B6%E7%94%BA%E7%AB%8B%E5%9B%B3%E6%9B%B8%E9%A4%A8%E3%83%BB%E5%89%B5%E4%B8%96%E3%83%9B%E3%83%BC%E3%83%AB_-_panoramio.jpg',
+    license: 'cc_by_open_data',
+    accessed: KITAJIMA_PACK_ACCESSED
+  }
+];
+
+export const KITAJIMA_FACILITIES: readonly FacilityRow[] = [
+  ...loadKitajimaFacilities(),
+  ...KITAJIMA_EXTRA_FACILITIES
+];

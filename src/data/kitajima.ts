@@ -118,7 +118,41 @@ export const KITAJIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '北島チューリップ公園・チューリップハウス付近（北島町）',
     'Tulip House area, Kitajima Tulip Park'
   ),
+  '鯛浜橋': wikiPhoto(
+    'kitajima-taihama-bashi.jpg',
+    'https://commons.wikimedia.org/wiki/File:%E4%BB%8A%E5%88%87%E5%B7%9D%E3%81%A8%E9%AF%9B%E6%B5%9C%E6%A9%8B.jpg',
+    'Public domain',
+    'https://creativecommons.org/publicdomain/mark/1.0/',
+    'Sorrysorry',
+    'https://commons.wikimedia.org/wiki/File:%E4%BB%8A%E5%88%87%E5%B7%9D%E3%81%A8%E9%AF%9B%E6%B5%9C%E6%A9%8B.jpg',
+    '2006',
+    '今切川と鯛浜橋（北島町）',
+    'Taihama Bridge over the Imagire River, Kitajima'
+  ),
+  '旧吉野川': wikiPhoto(
+    'kitajima-kyu-yoshinogawa.jpg',
+    'https://commons.wikimedia.org/wiki/File:Kyu-Yoshinogawa_River_from_train_of_Kotoku_Line.JPG',
+    'CC BY-SA 4.0',
+    'https://creativecommons.org/licenses/by-sa/4.0/',
+    'そらみみ',
+    'https://commons.wikimedia.org/wiki/User:Soramimi',
+    '2019',
+    '高徳線列車内より望む旧吉野川（北島町）',
+    'Former Yoshino River from the Kōtoku Line, Kitajima'
+  ),
+  '北島町立図書館・創世ホール': wikiPhoto(
+    'kitajima-sosei-hall.jpg',
+    'https://commons.wikimedia.org/wiki/File:%E3%82%B5%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%95%E5%8C%97%E5%B3%B6%E3%81%A8%E5%8C%97%E5%B3%B6%E7%94%BA%E7%AB%8B%E5%9B%B3%E6%9B%B8%E9%A4%A8%E3%83%BB%E5%89%B5%E4%B8%96%E3%83%9B%E3%83%BC%E3%83%AB_-_panoramio.jpg',
+    'Public domain',
+    'https://creativecommons.org/publicdomain/mark/1.0/',
+    'shugyoso',
+    'https://commons.wikimedia.org/wiki/User:Shugyoso',
+    '2009-12-30',
+    'サンライフ北島と北島町立図書館・創世ホール（北島町）',
+    'Kitajima Town Library / Sosei Hall'
+  ),
   'アクアプラザ': wikiPhoto(
+
     'kitajima-aquaplaza.jpg',
     'https://commons.wikimedia.org/wiki/File:Aquaplaza.JPG',
     'CC0',

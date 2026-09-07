@@ -1,5 +1,5 @@
-Kitajima (JIS 36402) 観光/商業 densify 2026-09-07
-BEFORE: 宿泊0 / 飲食14 / 温泉0 / 体験0 / 観光1 / 買物0 / 商業0
-AFTER:  宿泊0 / 飲食14 / 温泉0 / 体験0 / 観光2 / 買物0 / 商業1
-観光: +チューリップハウス Commons twin. 商業: +アクアプラザ Commons.
+Kitajima (JIS 36402) 観光 densify 2026-09-07 pass4
+BEFORE: 宿泊0 / 飲食14 / 温泉0 / 体験0 / 観光2 / 買物0 / 商業1
+AFTER:  宿泊0 / 飲食14 / 温泉0 / 体験0 / 観光5 / 買物0 / 商業1
+観光: +鯛浜橋 / +旧吉野川 / +北島町立図書館・創世ホール Commons EXTRA (place-named).
 宿泊: honest 0. Not perfect.
