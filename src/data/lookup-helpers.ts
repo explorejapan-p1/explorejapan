@@ -470,6 +470,18 @@ import {
   resolveKonanFilter
 } from './konan-travel';
 
+import {
+  isKamiExperiencePackRow,
+  isKamiOnsenPackRow,
+  isKamiStayPackRow,
+  kamiPackRowMatchesFilter,
+  kamiSightPhoto,
+  kamiSourcedHook,
+  kamiTopChipForRow,
+  rankKamiSeeRows,
+  resolveKamiFilter
+} from './kami-travel';
+
 
 
 
@@ -1042,6 +1054,19 @@ const MANNO_HELPERS: LookupHelpers = {
 
 
 
+
+const KAMI_HELPERS: LookupHelpers = {
+  resolveFilter: resolveKamiFilter,
+  rankSeeRows: rankKamiSeeRows,
+  packRowMatchesFilter: kamiPackRowMatchesFilter,
+  isOnsenPackRow: isKamiOnsenPackRow,
+  isExperiencePackRow: isKamiExperiencePackRow,
+  isStayPackRow: isKamiStayPackRow,
+  sightPhoto: kamiSightPhoto,
+  sourcedHook: kamiSourcedHook,
+  topChipForRow: kamiTopChipForRow
+};
+
 const KONAN_HELPERS: LookupHelpers = {
   isOnsenPackRow: isKonanOnsenPackRow,
   isExperiencePackRow: isKonanExperiencePackRow,
@@ -1140,5 +1165,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'kochi') return KOCHI_HELPERS;
   if (slug === 'nankoku') return NANKOKU_HELPERS;
   if (slug === 'konan') return KONAN_HELPERS;
+  if (slug === 'kami') return KAMI_HELPERS;
   return MIMA_HELPERS;
 }

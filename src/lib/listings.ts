@@ -339,6 +339,14 @@ import {
   isKonanStayPackRow,
   rankKonanSeeRows
 } from '@/data/konan-travel';
+import {
+  KAMI_DINING_NAME_SET,
+  kamiSightPhoto,
+  isKamiOnsenPackRow,
+  isKamiExperiencePackRow,
+  isKamiStayPackRow,
+  rankKamiSeeRows
+} from '@/data/kami-travel';
 
 
 
@@ -2051,6 +2059,46 @@ function mannoListings(): PublicListing[] {
 
 
 
+
+function kamiListings(): PublicListing[] {
+  const town = lookupTown('kami')!;
+  const out: PublicListing[] = town.travelAll.map((row) =>
+    fromTravel(row, 'kami', kamiSightPhoto(row.name_ja))
+  );
+  const seen = new Set<string>();
+  const pack: FacilityRow[] = [];
+  for (const row of town.rows) {
+    if (KAMI_DINING_NAME_SET.has(row.name_ja)) continue;
+    if (
+      !isKamiOnsenPackRow(row) &&
+      !isKamiExperiencePackRow(row) &&
+      !isKamiStayPackRow(row) &&
+      !isSightsCategory(row.category)
+    ) {
+      continue;
+    }
+    const key = packDedupeKey(row);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    pack.push(row);
+  }
+  const ranked = rankKamiSeeRows(pack);
+  const onsen = pack.filter(isKamiOnsenPackRow);
+  const experience = pack.filter(isKamiExperiencePackRow);
+  const stay = pack.filter(isKamiStayPackRow);
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
+    const kind: ListingKind = isKamiOnsenPackRow(row)
+      ? 'onsen'
+      : isKamiExperiencePackRow(row)
+        ? 'experience'
+        : isKamiStayPackRow(row)
+          ? 'stay'
+          : 'sights';
+    out.push(fromPack(row, 'kami', kind, kamiSightPhoto(row.name_ja)));
+  }
+  return out;
+}
+
 function konanListings(): PublicListing[] {
   const town = lookupTown('konan')!;
   const out: PublicListing[] = town.travelAll.map((row) =>
@@ -2212,7 +2260,8 @@ const CACHE: Record<ReadySlug, PublicListing[]> = {
   manno: mannoListings(),
   kochi: kochiListings(),
   nankoku: nankokuListings(),
-  konan: konanListings()
+  konan: konanListings(),
+  kami: kamiListings()
 };
 
 export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {

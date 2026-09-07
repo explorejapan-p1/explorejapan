@@ -39,6 +39,7 @@ import {MANNO, MANNO_PLACE_PHOTO} from '@/data/manno';
 import {KOCHI, KOCHI_PLACE_PHOTO} from '@/data/kochi';
 import {NANKOKU, NANKOKU_PLACE_PHOTO} from '@/data/nankoku';
 import {KONAN, KONAN_PLACE_PHOTO} from '@/data/konan';
+import {KAMI, KAMI_PLACE_PHOTO} from '@/data/kami';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -147,6 +148,7 @@ function localityJa(slug: string): string {
   if (slug === 'kochi') return KOCHI.nameJa;
   if (slug === 'nankoku') return NANKOKU.nameJa;
   if (slug === 'konan') return KONAN.nameJa;
+  if (slug === 'kami') return KAMI.nameJa;
   return MIMA.nameJa;
 }
 
@@ -194,6 +196,7 @@ function localityEn(slug: string): string {
   if (slug === 'kochi') return KOCHI.nameEn;
   if (slug === 'nankoku') return NANKOKU.nameEn;
   if (slug === 'konan') return KONAN.nameEn;
+  if (slug === 'kami') return KAMI.nameEn;
   return MIMA.nameEn;
 }
 
@@ -3364,6 +3367,66 @@ export function konanGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '香南市の案内' : 'Places in Konan City',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+export function kamiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/kami');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('kami');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? KAMI.nameJa : KAMI.nameEn,
+        alternateName: isJa ? KAMI.nameEn : KAMI.nameJa,
+        identifier: KAMI.jis,
+        url,
+        image: photoAbs(KAMI_PLACE_PHOTO),
+        sameAs: [KAMI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '土佐山田町宝町1丁目2番1号' : '1-2-1 Takaracho, Tosayamada-cho',
+          addressLocality: isJa ? KAMI.nameJa : KAMI.nameEn,
+          addressRegion: isJa ? KAMI.prefectureJa : KAMI.prefectureEn,
+          postalCode: KAMI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? KAMI.prefectureJa : KAMI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? KAMI.nameJa : KAMI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? KAMI.prefectureJa : KAMI.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? KAMI.nameJa : KAMI.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '香美市の案内' : 'Places in Kami City',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

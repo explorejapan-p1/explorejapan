@@ -310,6 +310,7 @@ import {MANNO, MANNO_PLACE_PHOTO, MANNO_FACILITIES, MANNO_EXPECTED_GEO_COUNT, MA
 import {KOCHI, KOCHI_PLACE_PHOTO, KOCHI_FACILITIES, KOCHI_EXPECTED_GEO_COUNT, KOCHI_EXPECTED_ROW_COUNT} from './kochi';
 import {NANKOKU, NANKOKU_PLACE_PHOTO, NANKOKU_FACILITIES, NANKOKU_EXPECTED_GEO_COUNT, NANKOKU_EXPECTED_ROW_COUNT} from './nankoku';
 import {KONAN, KONAN_PLACE_PHOTO, KONAN_FACILITIES, KONAN_EXPECTED_GEO_COUNT, KONAN_EXPECTED_ROW_COUNT} from './konan';
+import {KAMI, KAMI_PLACE_PHOTO, KAMI_FACILITIES, KAMI_EXPECTED_GEO_COUNT, KAMI_EXPECTED_ROW_COUNT} from './kami';
 import {
   TAKAMATSU_TRAVEL_ACCESSED,
   TAKAMATSU_TRAVEL_ALL,
@@ -528,6 +529,13 @@ import {
   KONAN_TRAVEL_COMMERCE,
   KONAN_TRAVEL_ALL,
 } from './konan-travel';
+import {
+  KAMI_TRAVEL_DINING,
+  KAMI_TRAVEL_STAY,
+  KAMI_TRAVEL_SHOPPING,
+  KAMI_TRAVEL_COMMERCE,
+  KAMI_TRAVEL_ALL,
+} from './kami-travel';
 
 
 
@@ -1904,6 +1912,40 @@ export const MANNO_LOOKUP: LookupTown = {
 
 
 
+
+export const KAMI_LOOKUP: LookupTown = {
+  slug: 'kami',
+  prefectureSlug: 'kochi',
+  jis: KAMI.jis,
+  nameJa: KAMI.nameJa,
+  nameEn: KAMI.nameEn,
+  heroPhoto: KAMI_PLACE_PHOTO,
+  photoCiteJa: '写真はやなせたかし記念館（アンパンマンミュージアム）。katorisi、CC BY-SA 3.0。File:Anpanman_Museum,Kami-city,Japan.jpg。',
+  photoCiteEn: 'Photo: Yanase Takashi Memorial Hall (Anpanman Museum). katorisi, CC BY-SA 3.0. File:Anpanman_Museum,Kami-city,Japan.jpg.',
+  rows: KAMI_FACILITIES,
+  expectedGeo: KAMI_EXPECTED_GEO_COUNT,
+  expectedRows: KAMI_EXPECTED_ROW_COUNT,
+  travelDining: KAMI_TRAVEL_DINING,
+  travelStay: KAMI_TRAVEL_STAY,
+  travelShopping: KAMI_TRAVEL_SHOPPING,
+  travelCommerce: KAMI_TRAVEL_COMMERCE,
+  travelAll: KAMI_TRAVEL_ALL,
+  coverageJa:
+    '香美市（JIS 39212）観光6・宿泊1・飲食16・体験1（出典写真がある施設のみ）。温泉・買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載。客室写真の宿のみで大浴場出典キー無しのため温泉0）。オープンデータ凍結パックは未掲載。高知県4つ目のLIVEハブ。',
+  coverageEn:
+    'Kami City (JIS 39212), 6 tourism + 1 stay + 16 dining + 1 experience with sourced photos. Onsen, shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished (room-still stay only → onsen 0). No frozen open-data pack. Fourth LIVE Kochi hub.',
+  mapLabelJa: '香美市の出典座標7件',
+  mapLabelEn: '7 sourced coordinates in Kami City',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia/Commons等出典座標7件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 7 sourced coordinates for city/official facilities (accessed 2026-09-08).',
+  licenseNoteJa:
+    '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.kami.lg.jp, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
 export const KONAN_LOOKUP: LookupTown = {
   slug: 'konan',
   prefectureSlug: 'kochi',
@@ -2192,7 +2234,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   manno: MANNO_LOOKUP,
   kochi: KOCHI_LOOKUP,
   nankoku: NANKOKU_LOOKUP,
-  konan: KONAN_LOOKUP
+  konan: KONAN_LOOKUP,
+  kami: KAMI_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {

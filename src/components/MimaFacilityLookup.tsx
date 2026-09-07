@@ -62,6 +62,7 @@ import {MANNO_TRAVEL_ACCESSED} from '@/data/manno-travel';
 import {KOCHI_TRAVEL_ACCESSED} from '@/data/kochi-travel';
 import {NANKOKU_TRAVEL_ACCESSED} from '@/data/nankoku-travel';
 import {KONAN_TRAVEL_ACCESSED} from '@/data/konan-travel';
+import {KAMI_TRAVEL_ACCESSED} from '@/data/kami-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1431,6 +1432,25 @@ export function MimaFacilityLookup({
                 Lodging from Rakuten Travel room photos ({NANKOKU_TRAVEL_ACCESSED}).
                 Dining from Tabelog Nankoku shop pages ({NANKOKU_TRAVEL_ACCESSED}).
                 Onsen: 0 (business-hotel baths only). Experience: Michinoeki Nankoku Furari (Commons). Shopping/commerce: 0. Second LIVE Kochi hub.
+              </>
+            )
+
+
+          
+          ) : town.slug === 'kami' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ（やなせたかし記念館・龍河洞・土佐山田駅・大川上美良布神社・べふ峡・繁藤駅）。
+                宿泊は楽天トラベルの客室写真（{KAMI_TRAVEL_ACCESSED}）。
+                飲食は食べログ香美市の公開店ページ（{KAMI_TRAVEL_ACCESSED}）。
+                温泉は0件（客室写真の宿のみ・大浴場出典キー無し）。体験は道の駅美良布（Commons）。買物・商業は0件。高知県4つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Yanase Takashi Memorial Hall, Ryugado, Tosa-Yamada Station, Okawakami Birafu Shrine, Befukyo, Shigeto Station).
+                Lodging from Rakuten Travel room photos ({KAMI_TRAVEL_ACCESSED}).
+                Dining from Tabelog Kami shop pages ({KAMI_TRAVEL_ACCESSED}).
+                Onsen: 0 (room-still stay only; no attributable bath keys). Experience: Michinoeki Birafu (Commons). Shopping/commerce: 0. Fourth LIVE Kochi hub.
               </>
             )
 
