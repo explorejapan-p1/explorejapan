@@ -1,6 +1,7 @@
 /**
  * Itano travel layer. Pack has no dining/stay categories.
  * Onsen / stay: omit without room or bath photo (honest 0).
+ * Stay from NAVITIME 板野町ホテル一覧 + 楽天シェア room/exterior (出典).
  * あせび温泉やすらぎの郷 → 温泉 only with bath photo — none yet (honest gap).
  * 道の駅いたの → 買物 with Commons File:Michinoeli-itano.jpeg.
  * Dining from 食べログ 板野町 (C36404) public shop pages. Do not invent pack dining.
@@ -16,13 +17,15 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const ITANO_TRAVEL_ACCESSED = '2026-09-05' as const;
+export const ITANO_TRAVEL_ACCESSED = '2026-09-07' as const;
 
 export const ITANO_TRAVEL_SOURCES = {
   home: 'http://www.town.itano.tokushima.jp/',
   hall: 'http://www.town.itano.tokushima.jp/',
   kanko: 'http://www.town.itano.tokushima.jp/syokai/',
-  tabelogCity: 'https://tabelog.com/tokushima/C36404/rstLst/'
+  tabelogCity: 'https://tabelog.com/tokushima/C36404/rstLst/',
+  stayNavi: 'https://www.navitime.co.jp/category/0608002/36404/',
+  rakutenTravel: 'https://travel.rakuten.co.jp/'
 } as const;
 
 /** Exact tourism-pack names shown on 温泉, not 観光. Bath photo required — none yet. */
@@ -54,7 +57,34 @@ export const ITANO_SIGHT_PINS = [
   '板野町歴史文化公園'
 ] as const;
 
-export const ITANO_TRAVEL_STAY: readonly TravelRow[] = [];
+function stay(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'stay',
+    address,
+    phone,
+    source_url,
+    accessed: ITANO_TRAVEL_ACCESSED
+  };
+}
+
+/** Ranked strongest room/exterior 出典 first. NAVITIME + 楽天シェア. Skipped LA・GITA / ハーブナチュラル (no share). */
+export const ITANO_TRAVEL_STAY: readonly TravelRow[] = [
+  stay(
+    'itano-stay-01',
+    'HOTEL AZ 徳島板野店',
+    '徳島県板野郡板野町川端字新手崎27-1',
+    '088-672-2611',
+    'https://travel.rakuten.co.jp/HOTEL/187551/187551.html'
+  )
+];
 
 function dining(
   id: string,

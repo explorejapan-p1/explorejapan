@@ -259,5 +259,26 @@ export const KAMIYAMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     "あけぼの堂 food photo",
     TABELOG_36003485,
     '食べログ'
+  ),
+  '神山温泉ホテル四季の里': sourcePhoto(
+    'kamiyama-stay-01.jpg',
+    '神山温泉ホテル四季の里の客室・外観写真',
+    'Kamiyama Onsen Hotel Shiki-no-Sato room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/14442/14442.html',
+    '楽天トラベル'
+  ),
+  'コットン・イン 神山通り': sourcePhoto(
+    'kamiyama-stay-02.jpg',
+    'コットン・イン 神山通りの客室・外観写真',
+    'Cotton Inn Kamiyama-dori room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/201832/201832.html',
+    '楽天トラベル'
+  ),
+  '神山温泉いやしの湯': sourcePhoto(
+    'kamiyama-onsen-bath.jpg',
+    '神山温泉いやしの湯の浴場写真',
+    'Kamiyama Onsen Iyashi-no-Yu bath photo',
+    'https://www.kamiyama-spa.com/onsen/',
+    '神山温泉 ホテル四季の里'
   )
 };

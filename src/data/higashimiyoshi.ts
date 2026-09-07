@@ -221,5 +221,21 @@ export const HIGASHIMIYOSHI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto
     'Sangatsuda food photo',
     TABELOG_SANGATSUDA,
     '食べログ'
-  )
+  ),
+  'ビジネスホテル わらぐろ': sourcePhoto(
+    'higashimiyoshi-stay-01.jpg',
+    'ビジネスホテル わらぐろの客室・外観写真',
+    'Business Hotel Waraguro room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/17898/17898.html',
+    '楽天トラベル'
+  ),
+  'ファミリーロッジ旅籠屋・吉野川SA店': sourcePhoto(
+    'higashimiyoshi-stay-02.jpg',
+    'ファミリーロッジ旅籠屋・吉野川SA店の客室・外観写真',
+    'Family Lodge Hatagoya Yoshinogawa SA room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/164710/164710.html',
+    '楽天トラベル'
+  ),
+
+
 };

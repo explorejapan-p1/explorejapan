@@ -2,6 +2,7 @@
  * Higashimiyoshi travel layer. Pack has no dining/stay categories.
  * Onsen / stay: omit without room or bath photo (honest 0).
  * Dining from 食べログ 東みよし町 (C36489) public shop pages. Do not invent pack dining.
+ * Stay from NAVITIME 東みよし町ホテル一覧 + 楽天シェア room/exterior (出典).
  * Do not copy 三好市 TRAVEL_* rows or photos (祖谷 / 大歩危 / Oboke / Iya).
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
@@ -14,13 +15,15 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const HIGASHIMIYOSHI_TRAVEL_ACCESSED = '2026-09-05' as const;
+export const HIGASHIMIYOSHI_TRAVEL_ACCESSED = '2026-09-07' as const;
 
 export const HIGASHIMIYOSHI_TRAVEL_SOURCES = {
   home: 'https://www.town.higashimiyoshi.lg.jp/',
   hall: 'https://www.town.higashimiyoshi.lg.jp/',
   kanko: 'https://www.town.higashimiyoshi.lg.jp/docs/996.html',
-  tabelogCity: 'https://tabelog.com/tokushima/C36489/rstLst/'
+  tabelogCity: 'https://tabelog.com/tokushima/C36489/rstLst/',
+  stayNavi: 'https://www.navitime.co.jp/category/0608002/36489/',
+  rakutenTravel: 'https://travel.rakuten.co.jp/'
 } as const;
 
 /** Exact tourism-pack names shown on 温泉, not 観光. Bath photo required — none yet. */
@@ -44,7 +47,41 @@ export const HIGASHIMIYOSHI_SIGHT_PINS = [
   '美濃田の淵キャンプ村'
 ] as const;
 
-export const HIGASHIMIYOSHI_TRAVEL_STAY: readonly TravelRow[] = [];
+function stay(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'stay',
+    address,
+    phone,
+    source_url,
+    accessed: HIGASHIMIYOSHI_TRAVEL_ACCESSED
+  };
+}
+
+/** Ranked strongest room/exterior 出典 first. NAVITIME + 楽天シェア. Skipped おはなはん (no share). */
+export const HIGASHIMIYOSHI_TRAVEL_STAY: readonly TravelRow[] = [
+  stay(
+    'higashimiyoshi-stay-01',
+    'ビジネスホテル わらぐろ',
+    '徳島県三好郡東みよし町中庄984',
+    '0883-82-4545',
+    'https://travel.rakuten.co.jp/HOTEL/17898/17898.html'
+  ),
+  stay(
+    'higashimiyoshi-stay-02',
+    'ファミリーロッジ旅籠屋・吉野川SA店',
+    '徳島県三好郡東みよし町足代1603-3',
+    '0883-88-8500',
+    'https://travel.rakuten.co.jp/HOTEL/164710/164710.html'
+  )
+];
 
 function dining(
   id: string,

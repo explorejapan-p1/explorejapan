@@ -12,3 +12,5 @@ AFTER target: 宿泊7 / 飲食16 / 温泉0 / 体験0 / 観光3 / 買物0 / 商�
 温泉/体験/買物/商業: 0 — honest
 観光 sights: 3 — prior (thin; densify later)
 Lead: @anan.city → confirmed on 観光協会/楽天/hotel official. Never scrape IG CDN.
+
+観光 densify 2026-09-07: 3→5 via Commons 太龍寺ロープウェイ + 那賀川. Not perfect.

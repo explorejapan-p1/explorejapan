@@ -276,5 +276,12 @@ export const AWA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'https://tabelog.com/tokushima/A3603/A360301/36008059/',
     '食べログ'
   ),
+  'ビジネスホテルアクセス阿波': sourcePhoto(
+    'awa-stay-01.jpg',
+    'ビジネスホテルアクセス阿波の客室・外観写真',
+    'Business Hotel Access Awa room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/67851/67851.html',
+    '楽天トラベル'
+  ),
 
 };

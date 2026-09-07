@@ -51,7 +51,7 @@ export const MUGI_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(
   MUGI_SHOPPING_PACK_NAMES
 );
 
-export const MUGI_SIGHT_PINS = ['牟岐町モデル木造施設 モラスコむぎ', '出羽島伝統的建造物群保存地区'] as const;
+export const MUGI_SIGHT_PINS = ['牟岐町モデル木造施設 モラスコむぎ', '出羽島伝統的建造物群保存地区', '出羽島港口の東西の大波止の石積み'] as const;
 
 function stay(
   id: string,

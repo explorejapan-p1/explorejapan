@@ -30,13 +30,15 @@ export const ANAN = {
     kamoda: 'https://www.city.anan.tokushima.jp/docs/2010112900035/',
     tairyuji: 'https://www.awanavi.jp/archives/spot/1896',
     byodoji: 'https://www.awanavi.jp/archives/spot/2802',
+    tairyujiRopeway: 'https://www.awanavi.jp/archives/spot/1896',
+    nakagawa: 'https://www.city.anan.tokushima.jp/',
     tabelogCity: 'https://tabelog.com/tokushima/C36204/rstLst/',
     accessed: '2026-09-07'
   }
 } as const;
 
-export const ANAN_EXPECTED_ROW_COUNT = 3;
-export const ANAN_EXPECTED_GEO_COUNT = 3;
+export const ANAN_EXPECTED_ROW_COUNT = 5;
+export const ANAN_EXPECTED_GEO_COUNT = 5;
 
 function wikiPhoto(
   file: string,
@@ -139,6 +141,29 @@ export const ANAN_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '平等寺本堂前からの眺め（四国八十八箇所第二十二番・阿南市）',
     'View from Byōdō-ji main hall, Shikoku pilgrimage temple 22, Anan'
   ),
+  '太龍寺ロープウェイ': wikiPhoto(
+    'anan-tairyuji-ropeway.jpg',
+    'https://commons.wikimedia.org/wiki/File:Tairyuji_Ropeway_08.JPG',
+    'CC BY-SA 3.0',
+    'https://creativecommons.org/licenses/by-sa/3.0/',
+    'Reggaeman',
+    'https://commons.wikimedia.org/wiki/User:Reggaeman',
+    '2010-04-17',
+    '太龍寺ロープウェイ（阿南市）',
+    'Tairyuji Ropeway, Anan'
+  ),
+  '那賀川': wikiPhoto(
+    'anan-nakagawa.jpg',
+    'https://commons.wikimedia.org/wiki/File:%E9%82%A3%E8%B3%80%E5%B7%9D%EF%BC%88%E5%BE%B3%E5%B3%B6%E7%9C%8C%E9%98%BF%E5%8D%97%E5%B8%82%EF%BC%89.JPG',
+    'Public domain',
+    'https://creativecommons.org/publicdomain/mark/1.0/',
+    'Jsqwfthbfs',
+    'https://commons.wikimedia.org/wiki/File:%E9%82%A3%E8%B3%80%E5%B7%9D%EF%BC%88%E5%BE%B3%E5%B3%B6%E7%9C%8C%E9%98%BF%E5%8D%97%E5%B8%82%EF%BC%89.JPG',
+    '2008-04-05',
+    '那賀川（阿南市）',
+    'Naka River, Anan'
+  ),
+
   "Loup": sourcePhoto(
     "anan-36007104-dish.jpg",
     "Loupの料理写真",
@@ -358,5 +383,23 @@ export const ANAN_FACILITIES: readonly FacilityRow[] = [
     ANAN.sources.byodoji,
     33.85183333,
     134.58277778
+  ),
+  sight(
+    'anan-sight-04',
+    '太龍寺ロープウェイ',
+    '徳島県阿南市加茂町龍山',
+    null,
+    ANAN.sources.tairyujiRopeway,
+    33.8805,
+    134.525
+  ),
+  sight(
+    'anan-sight-05',
+    '那賀川',
+    '徳島県阿南市那賀川町',
+    null,
+    ANAN.sources.nakagawa,
+    33.95,
+    134.65
   )
 ];

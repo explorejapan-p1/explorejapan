@@ -260,4 +260,12 @@ export const ITANO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     TABELOG_36001723,
     '食べログ'
   ),
+  'HOTEL AZ 徳島板野店': sourcePhoto(
+    'itano-stay-01.jpg',
+    'HOTEL AZ 徳島板野店の客室・外観写真',
+    'HOTEL AZ Tokushima Itano room or exterior photo',
+    'https://travel.rakuten.co.jp/HOTEL/187551/187551.html',
+    '楽天トラベル'
+  ),
+
 };

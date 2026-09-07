@@ -2,6 +2,7 @@
  * Awa travel layer. Pack has no dining/stay categories.
  * Onsen / stay: omit without room or bath photo (honest 0).
  * Dining from 食べログ 阿波市 public shop pages. Do not invent pack dining.
+ * Stay from NAVITIME 阿波市ホテル一覧 + 楽天シェア room/exterior (出典).
  * Do not copy 美馬 / つるぎ / 吉野川 / 三好 TRAVEL_* rows or photos.
  * Do not mix 東みよし町 (36489).
  */
@@ -21,7 +22,9 @@ export const AWA_TRAVEL_SOURCES = {
   home: 'https://www.city.awa.lg.jp/',
   hall: 'https://www.city.awa.lg.jp/docs/2014032600037/',
   kanko: 'https://www.city.awa.lg.jp/category/bunya/kanko/',
-  tabelogCity: 'https://tabelog.com/tokushima/C36206/rstLst/'
+  tabelogCity: 'https://tabelog.com/tokushima/C36206/rstLst/',
+  stayNavi: 'https://www.navitime.co.jp/category/0608002/36206/',
+  rakutenTravel: 'https://travel.rakuten.co.jp/'
 } as const;
 
 /** Exact tourism-pack names shown on 温泉, not 観光. Bath photo required — none yet. */
@@ -41,7 +44,34 @@ export const AWA_SIGHT_PINS = [
   '第7番札所 十楽寺'
 ] as const;
 
-export const AWA_TRAVEL_STAY: readonly TravelRow[] = [];
+function stay(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'stay',
+    address,
+    phone,
+    source_url,
+    accessed: AWA_TRAVEL_ACCESSED
+  };
+}
+
+/** Ranked strongest room/exterior 出典 first. NAVITIME + 楽天シェア. Skipped ティアラ (fashion) / Brompton (no share). */
+export const AWA_TRAVEL_STAY: readonly TravelRow[] = [
+  stay(
+    'awa-stay-01',
+    'ビジネスホテルアクセス阿波',
+    '徳島県阿波市土成町土成寒方51-4',
+    '050-3161-9616',
+    'https://travel.rakuten.co.jp/HOTEL/67851/67851.html'
+  )
+];
 
 function dining(
   id: string,

@@ -134,6 +134,18 @@ export const MUGI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '松坂隧道（牟岐町）',
     'Matsuzaka Tunnel, Mugi Town'
   ),
+  '出羽島港口の東西の大波止の石積み': wikiPhoto(
+    'mugi-tebajima-2.jpg',
+    'https://commons.wikimedia.org/wiki/File:Tebajima_2.jpg',
+    'CC BY 3.0',
+    'https://creativecommons.org/licenses/by/3.0/',
+    'Bakkai',
+    'https://commons.wikimedia.org/wiki/User:Bakkai',
+    '2009-12-19',
+    '出羽島の港と石積み（牟岐町）',
+    'Tebajima harbor stone quay, Mugi'
+  ),
+
   "つくしお好焼店": sourcePhoto(
     'mugi-36002586-dish.jpg',
     "つくしお好焼店の料理写真",

@@ -1,0 +1,7 @@
+itano inland stay densify 2026-09-07
+BEFORE: 宿泊0 / 飲食14 / 温泉0 / 体験0 / 観光5 / 買物1 / 商業0
+AFTER target: 宿泊1 / 飲食14 / 温泉0 / 体験0 / 観光5 / 買物1 / 商業0
+
+宿泊 stay: 1 — HOTEL AZ 徳島板野店 (NAVITIME+楽天 share).
+Skipped: LA・GITA / ハーブナチュラル (no 楽天 share).
+温泉/体験/商業: honest 0. Not perfect.

@@ -2,6 +2,7 @@
  * Kamiyama travel layer. Pack tourism includes inns/onsen/restaurants without room/bath photos.
  * Onsen / stay: omit without room or bath photo (honest 0).
  * Dining from 食べログ 神山町 (C36342) public shop pages. Do not invent pack dining.
+ * Stay from NAVITIME + 楽天シェア; onsen bath from 神山温泉公式 (出典).
  * Do not copy 上板 / 板野 / 石井 / 松茂 / 北島 / 藍住 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
@@ -14,24 +15,27 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const KAMIYAMA_TRAVEL_ACCESSED = '2026-09-05' as const;
+export const KAMIYAMA_TRAVEL_ACCESSED = '2026-09-07' as const;
 
 export const KAMIYAMA_TRAVEL_SOURCES = {
   home: 'https://www.town.kamiyama.lg.jp/',
   hall: 'https://www.town.kamiyama.lg.jp/docs/2025061900079/',
   kanko: 'https://www.town.kamiyama.lg.jp/enjoy/map/index_genre@kanko.html',
-  tabelogCity: 'https://tabelog.com/tokushima/C36342/rstLst/'
+  tabelogCity: 'https://tabelog.com/tokushima/C36342/rstLst/',
+  stayNavi: 'https://www.navitime.co.jp/category/0608002/36342/',
+  rakutenTravel: 'https://travel.rakuten.co.jp/',
+  kamiyamaSpa: 'https://www.kamiyama-spa.com/'
 } as const;
 
-/** Exact tourism-pack names shown on 温泉, not 観光. Bath photo required — none yet. */
-export const KAMIYAMA_ONSEN_PACK_NAMES = [] as const;
+/** Exact tourism-pack names shown on 温泉, not 観光. Bath photo required. */
+export const KAMIYAMA_ONSEN_PACK_NAMES = ['神山温泉いやしの湯'] as const;
 
 export const KAMIYAMA_ONSEN_PACK_SET: ReadonlySet<string> = new Set(
   KAMIYAMA_ONSEN_PACK_NAMES
 );
 
-/** Exact tourism-pack names shown on 宿泊, not 観光. Room/bath photo required — none yet. */
-export const KAMIYAMA_STAY_PACK_NAMES = [] as const;
+/** Exact tourism-pack names shown on 宿泊, not 観光. Room/bath photo required. */
+export const KAMIYAMA_STAY_PACK_NAMES = ['神山温泉ホテル四季の里'] as const;
 
 export const KAMIYAMA_STAY_PACK_SET: ReadonlySet<string> = new Set(
   KAMIYAMA_STAY_PACK_NAMES
@@ -53,7 +57,34 @@ export const KAMIYAMA_SIGHT_PINS = [
   '神光寺（じんこうじ）のぼり藤'
 ] as const;
 
-export const KAMIYAMA_TRAVEL_STAY: readonly TravelRow[] = [];
+function stay(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'stay',
+    address,
+    phone,
+    source_url,
+    accessed: KAMIYAMA_TRAVEL_ACCESSED
+  };
+}
+
+/** Cotton Inn — pack stay is 神山温泉ホテル四季の里 (STAY_PACK). Skipped 養鱒場スキーランド (no share). */
+export const KAMIYAMA_TRAVEL_STAY: readonly TravelRow[] = [
+  stay(
+    'kamiyama-stay-02',
+    'コットン・イン 神山通り',
+    '徳島県名西郡神山町神領字本上角90－1',
+    '088-676-0803',
+    'https://travel.rakuten.co.jp/HOTEL/201832/201832.html'
+  )
+];
 
 function dining(
   id: string,
@@ -219,11 +250,12 @@ export function isKamiyamaExperiencePackRow(_row: {
   return false;
 }
 
-export function isKamiyamaStayPackRow(_row: {
+export function isKamiyamaStayPackRow(row: {
   category: string;
   name_ja: string;
 }): boolean {
-  return false;
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return KAMIYAMA_STAY_PACK_SET.has(row.name_ja);
 }
 
 export function isKamiyamaShoppingPackRow(row: {
