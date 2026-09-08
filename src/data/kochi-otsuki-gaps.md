@@ -1,6 +1,6 @@
 # Otsuki Town (大月町) gaps (TG566 thirty-first Kochi hub)
 
-Accessed 2026-09-08 (JST). LIVE tip pending.
+Accessed 2026-09-08 (JST). LIVE tip `24cba7e50e`.
 
 ## LIVE pills (photo-first)
 - stay: 1 (ベルリーフ大月 / Rakuten HOTEL/201933 ツインルーム② gallery mediaInfo fileName「ツインルーム②」cat 00000001 — stay≠onsen)
@@ -28,4 +28,4 @@ Accessed 2026-09-08 (JST). LIVE tip pending.
 - 佐川町・田野町 still deferred.
 
 ## CDN
-Cold CDN pending after LIVE push.
+Cold CDN PASS after Pages lag (~2m post-push). Live `ja/kochi/otsuki/` PASS: hero 大月町, desc 大月町。柏島、大堂展望台、食。, pills stay/dining/onsen/experience/sights = 1/3/0/0/5. Pref cover otsuki-cover-kashiwajima present. Shimantocho regression PASS.
