@@ -767,6 +767,19 @@ import {
   tsunoTopChipForRow,
   resolveTsunoFilter
 } from './tsuno-travel';
+import {
+  isShimantochoDiningPackRow,
+  isShimantochoExperiencePackRow,
+  isShimantochoOnsenPackRow,
+  isShimantochoShoppingPackRow,
+  isShimantochoStayPackRow,
+  shimantochoPackRowMatchesFilter,
+  rankShimantochoSeeRows,
+  shimantochoSightPhoto,
+  shimantochoSourcedHook,
+  shimantochoTopChipForRow,
+  resolveShimantochoFilter
+} from './shimantocho-travel';
 
 
 
@@ -1522,6 +1535,19 @@ const TSUNO_HELPERS: LookupHelpers = {
   resolveFilter: resolveTsunoFilter
 };
 
+const SHIMANTOCHO_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isShimantochoOnsenPackRow,
+  isExperiencePackRow: isShimantochoExperiencePackRow,
+  isStayPackRow: isShimantochoStayPackRow,
+  packRowMatchesFilter: shimantochoPackRowMatchesFilter,
+  rankSeeRows: rankShimantochoSeeRows,
+  sightPhoto: shimantochoSightPhoto,
+  sourcedHook: shimantochoSourcedHook,
+  topChipForRow: shimantochoTopChipForRow,
+  resolveFilter: resolveShimantochoFilter
+};
+
+
 const NAKATOSA_HELPERS: LookupHelpers = {
   isOnsenPackRow: isNakatosaOnsenPackRow,
   isExperiencePackRow: isNakatosaExperiencePackRow,
@@ -1793,5 +1819,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'yusuhara') return YUSUHARA_HELPERS;
   if (slug === 'hidaka') return HIDAKA_HELPERS;
   if (slug === 'tsuno') return TSUNO_HELPERS;
+  if (slug === 'shimantocho') return SHIMANTOCHO_HELPERS;
   return MIMA_HELPERS;
 }

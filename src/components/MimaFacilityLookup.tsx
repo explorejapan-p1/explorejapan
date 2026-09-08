@@ -88,6 +88,7 @@ import {OCHI_TRAVEL_ACCESSED} from '@/data/ochi-travel';
 import {YUSUHARA_TRAVEL_ACCESSED} from '@/data/yusuhara-travel';
 import {HIDAKA_TRAVEL_ACCESSED} from '@/data/hidaka-travel';
 import {TSUNO_TRAVEL_ACCESSED} from '@/data/tsuno-travel';
+import {SHIMANTOCHO_TRAVEL_ACCESSED} from '@/data/shimantocho-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1622,6 +1623,22 @@ export function MimaFacilityLookup({
                 Lodging: Vacation Rental MEI Rakuten western-room bed photo ({HIDAKA_TRAVEL_ACCESSED}).
                 Dining from Tabelog Hidaka shop pages ({HIDAKA_TRAVEL_ACCESSED}).
                 Onsen: 0 (stay≠onsen — private hinoki bath in rental). Experience: 0. Shopping/commerce: 0. Twenty-eighth LIVE Kochi hub.
+              </>
+            )
+          ) : town.slug === 'shimantocho' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ表示（一斗俵沈下橋、岩本寺、海洋堂ホビー館四万十、窪川駅、道の駅四万十大正）。
+                宿泊は楽天トラベルファミリーロッジ旅籠屋・四万十店のツインルーム客室写真（{SHIMANTOCHO_TRAVEL_ACCESSED}）。
+                飲食は食べログ四万十町の公開店ページ（{SHIMANTOCHO_TRAVEL_ACCESSED}）。
+                温泉は0件（stay≠onsen）。体験は0件。買物・商業は0件。高知県30つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Itchibaw Chinka Bridge, Iwamoto-ji, Kaiyodo Hobbykan Shimanto, Kubokawa Station, Michinoeki Shimanto Taisho).
+                Lodging: Family Lodge Hatagoya Shimanto Rakuten twin-room photo ({SHIMANTOCHO_TRAVEL_ACCESSED}).
+                Dining from Tabelog Shimanto Town shop pages ({SHIMANTOCHO_TRAVEL_ACCESSED}).
+                Onsen: 0 (stay≠onsen). Experience: 0. Shopping/commerce: 0. Thirtieth LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'tsuno' ? (

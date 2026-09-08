@@ -65,6 +65,7 @@ import {OCHI, OCHI_PLACE_PHOTO} from '@/data/ochi';
 import {YUSUHARA, YUSUHARA_PLACE_PHOTO} from '@/data/yusuhara';
 import {HIDAKA, HIDAKA_PLACE_PHOTO} from '@/data/hidaka';
 import {TSUNO, TSUNO_PLACE_PHOTO} from '@/data/tsuno';
+import {SHIMANTOCHO, SHIMANTOCHO_PLACE_PHOTO} from '@/data/shimantocho';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -4404,6 +4405,67 @@ export function hidakaGraph(locale: AppLocale) {
   };
 }
 
+
+
+export function shimantochoGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/shimantocho');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('shimantocho');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? SHIMANTOCHO.nameJa : SHIMANTOCHO.nameEn,
+        alternateName: isJa ? SHIMANTOCHO.nameEn : SHIMANTOCHO.nameJa,
+        identifier: SHIMANTOCHO.jis,
+        url,
+        image: photoAbs(SHIMANTOCHO_PLACE_PHOTO),
+        sameAs: [SHIMANTOCHO.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '琴平町16番17号' : '16-17 Kotohira-cho',
+          addressLocality: isJa ? SHIMANTOCHO.nameJa : SHIMANTOCHO.nameEn,
+          addressRegion: isJa ? SHIMANTOCHO.prefectureJa : SHIMANTOCHO.prefectureEn,
+          postalCode: SHIMANTOCHO.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? SHIMANTOCHO.prefectureJa : SHIMANTOCHO.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? SHIMANTOCHO.nameJa : SHIMANTOCHO.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? SHIMANTOCHO.prefectureJa : SHIMANTOCHO.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? SHIMANTOCHO.nameJa : SHIMANTOCHO.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '四万十町の案内' : 'Places in Shimanto Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
 
 export function tsunoGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'kochi/tsuno');

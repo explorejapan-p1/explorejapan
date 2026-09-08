@@ -10,7 +10,7 @@ export type Municipality = {
 
 /**
  * Kochi 市区町村. Codes are N03_007 / JIS X 0402 (5-digit).
- * Kochi City 39201 + Nankoku 39204 + Konan 39211 + Kami 39212 + Ino 39386 + Aki 39203 + Muroto 39202 + Tosa 39205 + Susaki 39206 + Shimanto 39210 + Tosashimizu 39209 + Sukumo 39208 + Kuroshio 39428 + Toyo 39301 + Nahari 39302 + Yasuda 39304 + Geisei 39307 + Kitagawa 39305 + Umaji 39306 + Motoyama 39341 + Otoyo 39344 + Tosacho 39363 + Okawa 39364 + Niyodogawa 39387 + Nakatosa 39401 + Ochi 39403 + Yusuhara 39405 + Hidaka 39410 + Tsuno 39411 LIVE hubs (+ remaining municipalities coming-soon; Sakawa/Tano deferred: no attributable stay room still).
+ * Kochi City 39201 + Nankoku 39204 + Konan 39211 + Kami 39212 + Ino 39386 + Aki 39203 + Muroto 39202 + Tosa 39205 + Susaki 39206 + Shimanto 39210 + Tosashimizu 39209 + Sukumo 39208 + Kuroshio 39428 + Toyo 39301 + Nahari 39302 + Yasuda 39304 + Geisei 39307 + Kitagawa 39305 + Umaji 39306 + Motoyama 39341 + Otoyo 39344 + Tosacho 39363 + Okawa 39364 + Niyodogawa 39387 + Nakatosa 39401 + Ochi 39403 + Yusuhara 39405 + Hidaka 39410 + Tsuno 39411 + Shimantocho 39412 LIVE hubs (+ remaining municipalities coming-soon; Sakawa/Tano deferred: no attributable stay room still).
  */
 export const KOCHI_MUNICIPALITIES: Municipality[] = [
   {jis: '39201', slug: 'kochi', nameJa: '高知市', nameEn: 'Kochi', status: 'ready'},
@@ -43,7 +43,7 @@ export const KOCHI_MUNICIPALITIES: Municipality[] = [
   {jis: '39405', slug: 'yusuhara', nameJa: '梼原町', nameEn: 'Yusuhara', status: 'ready'},
   {jis: '39410', slug: 'hidaka', nameJa: '日高村', nameEn: 'Hidaka', status: 'ready'},
   {jis: '39411', slug: 'tsuno', nameJa: '津野町', nameEn: 'Tsuno', status: 'ready'},
-  {jis: '39412', slug: 'shimantocho', nameJa: '四万十町', nameEn: 'Shimanto Town', status: 'coming-soon'},
+  {jis: '39412', slug: 'shimantocho', nameJa: '四万十町', nameEn: 'Shimanto Town', status: 'ready'},
   {jis: '39424', slug: 'otsuki', nameJa: '大月町', nameEn: 'Otsuki', status: 'coming-soon'},
   {jis: '39427', slug: 'mihara', nameJa: '三原村', nameEn: 'Mihara', status: 'coming-soon'},
   {jis: '39428', slug: 'kuroshio', nameJa: '黒潮町', nameEn: 'Kuroshio', status: 'ready'}

@@ -740,6 +740,15 @@ import {
   TSUNO_TRAVEL_ALL
 } from './tsuno-travel';
 
+import {SHIMANTOCHO, SHIMANTOCHO_PLACE_PHOTO, SHIMANTOCHO_FACILITIES, SHIMANTOCHO_EXPECTED_GEO_COUNT, SHIMANTOCHO_EXPECTED_ROW_COUNT} from './shimantocho';
+import {
+  SHIMANTOCHO_TRAVEL_DINING,
+  SHIMANTOCHO_TRAVEL_STAY,
+  SHIMANTOCHO_TRAVEL_SHOPPING,
+  SHIMANTOCHO_TRAVEL_COMMERCE,
+  SHIMANTOCHO_TRAVEL_ALL
+} from './shimantocho-travel';
+
 
 
 
@@ -3114,6 +3123,38 @@ export const HIDAKA_LOOKUP: LookupTown = {
   licenseSiteJa: '村公式サイト掲載情報',
   licenseSiteEn: 'Village-site listing'
 };
+
+export const SHIMANTOCHO_LOOKUP: LookupTown = {
+  slug: 'shimantocho',
+  prefectureSlug: 'kochi',
+  jis: SHIMANTOCHO.jis,
+  nameJa: SHIMANTOCHO.nameJa,
+  nameEn: SHIMANTOCHO.nameEn,
+  heroPhoto: SHIMANTOCHO_PLACE_PHOTO,
+  photoCiteJa: '写真は一斗俵沈下橋。sk01、2014-10-18、CC BY-SA 3.0。File:一斗俵沈下橋_-_panoramio.jpg。',
+  photoCiteEn: 'Photo: Itchibaw Chinka Bridge. sk01, 2014-10-18, CC BY-SA 3.0. File:一斗俵沈下橋_-_panoramio.jpg.',
+  rows: SHIMANTOCHO_FACILITIES,
+  expectedGeo: SHIMANTOCHO_EXPECTED_GEO_COUNT,
+  expectedRows: SHIMANTOCHO_EXPECTED_ROW_COUNT,
+  travelDining: SHIMANTOCHO_TRAVEL_DINING,
+  travelStay: SHIMANTOCHO_TRAVEL_STAY,
+  travelShopping: SHIMANTOCHO_TRAVEL_SHOPPING,
+  travelCommerce: SHIMANTOCHO_TRAVEL_COMMERCE,
+  travelAll: SHIMANTOCHO_TRAVEL_ALL,
+  coverageJa:
+    '四万十町（JIS 39412）観光5・宿泊1・飲食3・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県30つ目のLIVEハブ。',
+  coverageEn:
+    'Shimanto Town (JIS 39412), 5 tourism + 1 stay + 3 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Thirtieth LIVE Kochi hub.',
+  mapLabelJa: '四万十町の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Shimanto Town',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons/OSM等出典座標5件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 5 sourced coordinates for town/official facilities (accessed 2026-09-08).',
+  licenseNoteJa: '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from town.shimanto.lg.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
 export const TSUNO_LOOKUP: LookupTown = {
   slug: 'tsuno',
   prefectureSlug: 'kochi',
@@ -3280,7 +3321,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   ochi: OCHI_LOOKUP,
   yusuhara: YUSUHARA_LOOKUP,
   hidaka: HIDAKA_LOOKUP,
-  tsuno: TSUNO_LOOKUP
+  tsuno: TSUNO_LOOKUP,
+  shimantocho: SHIMANTOCHO_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
