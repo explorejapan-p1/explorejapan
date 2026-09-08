@@ -1,6 +1,6 @@
 # Shimanto Town (四万十町) gaps (TG566 thirtieth Kochi hub)
 
-Accessed 2026-09-08 (JST). LIVE tip pending.
+Accessed 2026-09-08 (JST). LIVE tip `333f808111`.
 
 ## LIVE pills (photo-first)
 - stay: 1 (ファミリーロッジ旅籠屋・四万十店 / Rakuten HOTEL/167315 ツインルーム gallery mediaInfo「ツインルーム」「幅1.5m以上のクイーンサイズのベッドが2台」cat 00000001 — stay≠onsen)
@@ -28,4 +28,4 @@ Accessed 2026-09-08 (JST). LIVE tip pending.
 - 佐川町・田野町 still deferred (no attributable stay room still).
 
 ## CDN
-Cold CDN pending after LIVE push.
+Cold CDN PASS after Pages lag (~2m post-push). Live `ja/kochi/shimantocho/` PASS: hero 四万十町, desc 四万十町。一斗俵沈下橋、岩本寺、海洋堂、食。, pills stay/dining/onsen/experience/sights = 1/3/0/0/5. Pref cover shimantocho-cover-itchibaw present. Tsuno regression PASS.
