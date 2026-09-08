@@ -751,6 +751,7 @@ import {
 
 import {OTSUKI, OTSUKI_PLACE_PHOTO, OTSUKI_FACILITIES, OTSUKI_EXPECTED_GEO_COUNT, OTSUKI_EXPECTED_ROW_COUNT} from './otsuki';
 import {MIHARA, MIHARA_PLACE_PHOTO, MIHARA_FACILITIES, MIHARA_EXPECTED_GEO_COUNT, MIHARA_EXPECTED_ROW_COUNT} from './mihara';
+import {MATSUYAMA, MATSUYAMA_PLACE_PHOTO, MATSUYAMA_FACILITIES, MATSUYAMA_EXPECTED_GEO_COUNT, MATSUYAMA_EXPECTED_ROW_COUNT} from './matsuyama';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -765,6 +766,13 @@ import {
   MIHARA_TRAVEL_COMMERCE,
   MIHARA_TRAVEL_ALL
 } from './mihara-travel';
+import {
+  MATSUYAMA_TRAVEL_DINING,
+  MATSUYAMA_TRAVEL_STAY,
+  MATSUYAMA_TRAVEL_SHOPPING,
+  MATSUYAMA_TRAVEL_COMMERCE,
+  MATSUYAMA_TRAVEL_ALL
+} from './matsuyama-travel';
 
 
 
@@ -3174,6 +3182,41 @@ export const MIHARA_LOOKUP: LookupTown = {
   licenseSiteEn: 'Village-site listing'
 };
 
+export const MATSUYAMA_LOOKUP: LookupTown = {
+  slug: 'matsuyama',
+  prefectureSlug: 'ehime',
+  jis: MATSUYAMA.jis,
+  nameJa: MATSUYAMA.nameJa,
+  nameEn: MATSUYAMA.nameEn,
+  heroPhoto: MATSUYAMA_PLACE_PHOTO,
+  photoCiteJa: '写真は松山城本丸の桜。Shiro4873、CC BY 3.0。File:Matsuyama_castle_(Iyo)2.JPG。',
+  photoCiteEn: 'Photo: Matsuyama Castle main bailey cherry blossoms. Shiro4873, CC BY 3.0. File:Matsuyama_castle_(Iyo)2.JPG.',
+  rows: MATSUYAMA_FACILITIES,
+  expectedGeo: MATSUYAMA_EXPECTED_GEO_COUNT,
+  expectedRows: MATSUYAMA_EXPECTED_ROW_COUNT,
+  travelDining: MATSUYAMA_TRAVEL_DINING,
+  travelStay: MATSUYAMA_TRAVEL_STAY,
+  travelShopping: MATSUYAMA_TRAVEL_SHOPPING,
+  travelCommerce: MATSUYAMA_TRAVEL_COMMERCE,
+  travelAll: MATSUYAMA_TRAVEL_ALL,
+  coverageJa:
+    '松山市（JIS 38201）観光6・宿泊1・飲食16・温泉1・体験1（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。愛媛県1つ目のLIVEハブ。',
+  coverageEn:
+    'Matsuyama City (JIS 38201), 6 tourism + 1 stay + 16 dining + 1 onsen + 1 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. First LIVE Ehime hub.',
+  mapLabelJa: '松山市の出典座標8件',
+  mapLabelEn: '8 sourced coordinates in Matsuyama City',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia等出典座標8件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 8 sourced coordinates for city/official facilities (accessed 2026-09-08).',
+  licenseNoteJa:
+    '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.matsuyama.ehime.jp, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
+
+
 export const OTSUKI_LOOKUP: LookupTown = {
   slug: 'otsuki',
   prefectureSlug: 'kochi',
@@ -3405,8 +3448,10 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   tsuno: TSUNO_LOOKUP,
   shimantocho: SHIMANTOCHO_LOOKUP,
   otsuki: OTSUKI_LOOKUP,
-  mihara: MIHARA_LOOKUP
+  mihara: MIHARA_LOOKUP,
+  matsuyama: MATSUYAMA_LOOKUP
 };
+
 
 export function lookupTown(slug: string): LookupTown | null {
   if (!isReadySlug(slug)) return null;

@@ -64,8 +64,10 @@ import {TSUNO_PLACE_PHOTO} from '@/data/tsuno';
 import {SHIMANTOCHO_PLACE_PHOTO} from '@/data/shimantocho';
 import {OTSUKI_PLACE_PHOTO} from '@/data/otsuki';
 import {MIHARA_PLACE_PHOTO} from '@/data/mihara';
+import {MATSUYAMA_PLACE_PHOTO} from '@/data/matsuyama';
 import {KAGAWA_MUNICIPALITIES} from '@/data/kagawa-municipalities';
 import {KOCHI_MUNICIPALITIES} from '@/data/kochi-municipalities';
+import {EHIME_MUNICIPALITIES} from '@/data/ehime-municipalities';
 import {TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {PREFECTURES, PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
@@ -87,7 +89,7 @@ export async function generateMetadata({params}: Props) {
   if (!pref) return {};
   const loc = (locale === 'en' ? 'en' : 'ja') as AppLocale;
   const name = loc === 'ja' ? pref.nameJa : pref.nameEn;
-  const live = pref.slug === 'tokushima' || pref.slug === 'kagawa' || pref.slug === 'kochi';
+  const live = pref.slug === 'tokushima' || pref.slug === 'kagawa' || pref.slug === 'kochi' || pref.slug === 'ehime';
   return shareMetadata({
     locale: loc,
     rest: pref.slug,
@@ -104,10 +106,14 @@ export async function generateMetadata({params}: Props) {
           ? loc === 'ja'
             ? '高知県の市町村。高知市。'
             : 'Municipalities in Kochi. Listings: Kochi City.'
+        : pref.slug === 'ehime'
+          ? loc === 'ja'
+            ? '愛媛県の市町村。松山市。'
+            : 'Municipalities in Ehime. Listings: Matsuyama City.'
         : loc === 'ja'
           ? 'この県の市町村ページは準備中です。'
           : 'This prefecture layer is not wired yet.',
-    image: pref.slug === 'kochi' ? KOCHI_PLACE_PHOTO : pref.slug === 'kagawa' ? TAKAMATSU_PLACE_PHOTO : MIMA_PLACE_PHOTO,
+    image: pref.slug === 'ehime' ? MATSUYAMA_PLACE_PHOTO : pref.slug === 'kochi' ? KOCHI_PLACE_PHOTO : pref.slug === 'kagawa' ? TAKAMATSU_PLACE_PHOTO : MIMA_PLACE_PHOTO,
     index: live
   });
 }
@@ -132,10 +138,10 @@ export default async function PrefecturePage({params}: Props) {
         <span>{name}</span>
       </nav>
       <h1>{name}</h1>
-      {pref.slug === 'tokushima' || pref.slug === 'kagawa' || pref.slug === 'kochi' ? (
+      {pref.slug === 'tokushima' || pref.slug === 'kagawa' || pref.slug === 'kochi' || pref.slug === 'ehime' ? (
         <>
           <ul className="muni-cards">
-            {(pref.slug === 'tokushima' ? TOKUSHIMA_MUNICIPALITIES : pref.slug === 'kagawa' ? KAGAWA_MUNICIPALITIES : KOCHI_MUNICIPALITIES).map((m) => {
+            {(pref.slug === 'tokushima' ? TOKUSHIMA_MUNICIPALITIES : pref.slug === 'kagawa' ? KAGAWA_MUNICIPALITIES : pref.slug === 'ehime' ? EHIME_MUNICIPALITIES : KOCHI_MUNICIPALITIES).map((m) => {
               const live = m.status === 'ready';
               const photo =
                 m.slug === 'tokushima'
@@ -206,7 +212,7 @@ export default async function PrefecturePage({params}: Props) {
                                                 ? KONAN_PLACE_PHOTO
                                               : m.slug === 'kami'
                                                 ? KAMI_PLACE_PHOTO
-                                              : m.slug === 'ino' ? INO_PLACE_PHOTO : m.slug === 'aki' ? AKI_PLACE_PHOTO : m.slug === 'muroto' ? MUROTO_PLACE_PHOTO : m.slug === 'tosa' ? TOSA_PLACE_PHOTO : m.slug === 'susaki' ? SUSAKI_PLACE_PHOTO : m.slug === 'shimanto' ? SHIMANTO_PLACE_PHOTO : m.slug === 'tosashimizu' ? TOSASHIMIZU_PLACE_PHOTO : m.slug === 'sukumo' ? SUKUMO_PLACE_PHOTO : m.slug === 'kuroshio' ? KUROSHIO_PLACE_PHOTO : m.slug === 'toyo' ? TOYO_PLACE_PHOTO : m.slug === 'nahari' ? NAHARI_PLACE_PHOTO : m.slug === 'yasuda' ? YASUDA_PLACE_PHOTO : m.slug === 'geisei' ? GEISEI_PLACE_PHOTO : m.slug === 'kitagawa' ? KITAGAWA_PLACE_PHOTO : m.slug === 'umaji' ? UMAJI_PLACE_PHOTO : m.slug === 'motoyama' ? MOTOYAMA_PLACE_PHOTO : m.slug === 'otoyo' ? OTOYO_PLACE_PHOTO : m.slug === 'tosacho' ? TOSACHO_PLACE_PHOTO : m.slug === 'okawa' ? OKAWA_PLACE_PHOTO : m.slug === 'niyodogawa' ? NIYODOGAWA_PLACE_PHOTO : m.slug === 'nakatosa' ? NAKATOSA_PLACE_PHOTO : m.slug === 'ochi' ? OCHI_PLACE_PHOTO : m.slug === 'yusuhara' ? YUSUHARA_PLACE_PHOTO : m.slug === 'hidaka' ? HIDAKA_PLACE_PHOTO : m.slug === 'tsuno' ? TSUNO_PLACE_PHOTO : m.slug === 'shimantocho' ? SHIMANTOCHO_PLACE_PHOTO : m.slug === 'otsuki' ? OTSUKI_PLACE_PHOTO : m.slug === 'mihara' ? MIHARA_PLACE_PHOTO : m.slug === 'takamatsu'
+                                              : m.slug === 'ino' ? INO_PLACE_PHOTO : m.slug === 'aki' ? AKI_PLACE_PHOTO : m.slug === 'muroto' ? MUROTO_PLACE_PHOTO : m.slug === 'tosa' ? TOSA_PLACE_PHOTO : m.slug === 'susaki' ? SUSAKI_PLACE_PHOTO : m.slug === 'shimanto' ? SHIMANTO_PLACE_PHOTO : m.slug === 'tosashimizu' ? TOSASHIMIZU_PLACE_PHOTO : m.slug === 'sukumo' ? SUKUMO_PLACE_PHOTO : m.slug === 'kuroshio' ? KUROSHIO_PLACE_PHOTO : m.slug === 'toyo' ? TOYO_PLACE_PHOTO : m.slug === 'nahari' ? NAHARI_PLACE_PHOTO : m.slug === 'yasuda' ? YASUDA_PLACE_PHOTO : m.slug === 'geisei' ? GEISEI_PLACE_PHOTO : m.slug === 'kitagawa' ? KITAGAWA_PLACE_PHOTO : m.slug === 'umaji' ? UMAJI_PLACE_PHOTO : m.slug === 'motoyama' ? MOTOYAMA_PLACE_PHOTO : m.slug === 'otoyo' ? OTOYO_PLACE_PHOTO : m.slug === 'tosacho' ? TOSACHO_PLACE_PHOTO : m.slug === 'okawa' ? OKAWA_PLACE_PHOTO : m.slug === 'niyodogawa' ? NIYODOGAWA_PLACE_PHOTO : m.slug === 'nakatosa' ? NAKATOSA_PLACE_PHOTO : m.slug === 'ochi' ? OCHI_PLACE_PHOTO : m.slug === 'yusuhara' ? YUSUHARA_PLACE_PHOTO : m.slug === 'hidaka' ? HIDAKA_PLACE_PHOTO : m.slug === 'tsuno' ? TSUNO_PLACE_PHOTO : m.slug === 'shimantocho' ? SHIMANTOCHO_PLACE_PHOTO : m.slug === 'otsuki' ? OTSUKI_PLACE_PHOTO : m.slug === 'mihara' ? MIHARA_PLACE_PHOTO : m.slug === 'matsuyama' ? MATSUYAMA_PLACE_PHOTO : m.slug === 'takamatsu'
                                               ? TAKAMATSU_PLACE_PHOTO
                                               : MIMA_PLACE_PHOTO;
               const href = `${BASE_PATH}/${locale}/${pref.slug}/${m.slug}/`;

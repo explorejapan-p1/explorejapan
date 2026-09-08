@@ -68,6 +68,7 @@ import {TSUNO, TSUNO_PLACE_PHOTO} from '@/data/tsuno';
 import {SHIMANTOCHO, SHIMANTOCHO_PLACE_PHOTO} from '@/data/shimantocho';
 import {OTSUKI, OTSUKI_PLACE_PHOTO} from '@/data/otsuki';
 import {MIHARA, MIHARA_PLACE_PHOTO} from '@/data/mihara';
+import {MATSUYAMA, MATSUYAMA_PLACE_PHOTO} from '@/data/matsuyama';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -190,6 +191,7 @@ function localityJa(slug: string): string {
   if (slug === 'nahari') return NAHARI.nameJa;
   if (slug === 'yasuda') return YASUDA.nameJa;
   if (slug === 'geisei') return GEISEI.nameJa;
+  if (slug === 'matsuyama') return MATSUYAMA.nameJa;
   return MIMA.nameJa;
 }
 
@@ -251,6 +253,7 @@ function localityEn(slug: string): string {
   if (slug === 'nahari') return NAHARI.nameEn;
   if (slug === 'yasuda') return YASUDA.nameEn;
   if (slug === 'geisei') return GEISEI.nameEn;
+  if (slug === 'matsuyama') return MATSUYAMA.nameEn;
   return MIMA.nameEn;
 }
 
@@ -4460,6 +4463,67 @@ export function miharaGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '三原村の案内' : 'Places in Mihara Village',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+
+export function matsuyamaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'ehime/matsuyama');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('matsuyama');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? MATSUYAMA.nameJa : MATSUYAMA.nameEn,
+        alternateName: isJa ? MATSUYAMA.nameEn : MATSUYAMA.nameJa,
+        identifier: MATSUYAMA.jis,
+        url,
+        image: photoAbs(MATSUYAMA_PLACE_PHOTO),
+        sameAs: [MATSUYAMA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '二番町四丁目7番地2' : '7-2 Nibancho 4-chome',
+          addressLocality: isJa ? MATSUYAMA.nameJa : MATSUYAMA.nameEn,
+          addressRegion: isJa ? MATSUYAMA.prefectureJa : MATSUYAMA.prefectureEn,
+          postalCode: MATSUYAMA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? MATSUYAMA.prefectureJa : MATSUYAMA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? MATSUYAMA.nameJa : MATSUYAMA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? MATSUYAMA.prefectureJa : MATSUYAMA.prefectureEn, item: canonicalUrl(locale, 'ehime')},
+          {'@type': 'ListItem', position: 3, name: isJa ? MATSUYAMA.nameJa : MATSUYAMA.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '松山市の案内' : 'Places in Matsuyama City',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',
