@@ -66,6 +66,7 @@ import {YUSUHARA, YUSUHARA_PLACE_PHOTO} from '@/data/yusuhara';
 import {HIDAKA, HIDAKA_PLACE_PHOTO} from '@/data/hidaka';
 import {TSUNO, TSUNO_PLACE_PHOTO} from '@/data/tsuno';
 import {SHIMANTOCHO, SHIMANTOCHO_PLACE_PHOTO} from '@/data/shimantocho';
+import {OTSUKI, OTSUKI_PLACE_PHOTO} from '@/data/otsuki';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -4406,6 +4407,67 @@ export function hidakaGraph(locale: AppLocale) {
 }
 
 
+
+
+export function otsukiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/otsuki');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('otsuki');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? OTSUKI.nameJa : OTSUKI.nameEn,
+        alternateName: isJa ? OTSUKI.nameEn : OTSUKI.nameJa,
+        identifier: OTSUKI.jis,
+        url,
+        image: photoAbs(OTSUKI_PLACE_PHOTO),
+        sameAs: [OTSUKI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '弘見2230番地' : '2230 Hiromi',
+          addressLocality: isJa ? OTSUKI.nameJa : OTSUKI.nameEn,
+          addressRegion: isJa ? OTSUKI.prefectureJa : OTSUKI.prefectureEn,
+          postalCode: OTSUKI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? OTSUKI.prefectureJa : OTSUKI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? OTSUKI.nameJa : OTSUKI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? OTSUKI.prefectureJa : OTSUKI.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? OTSUKI.nameJa : OTSUKI.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '大月町の案内' : 'Places in Otsuki Town',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
 
 export function shimantochoGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'kochi/shimantocho');

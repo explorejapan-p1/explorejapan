@@ -89,6 +89,7 @@ import {YUSUHARA_TRAVEL_ACCESSED} from '@/data/yusuhara-travel';
 import {HIDAKA_TRAVEL_ACCESSED} from '@/data/hidaka-travel';
 import {TSUNO_TRAVEL_ACCESSED} from '@/data/tsuno-travel';
 import {SHIMANTOCHO_TRAVEL_ACCESSED} from '@/data/shimantocho-travel';
+import {OTSUKI_TRAVEL_ACCESSED} from '@/data/otsuki-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1623,6 +1624,22 @@ export function MimaFacilityLookup({
                 Lodging: Vacation Rental MEI Rakuten western-room bed photo ({HIDAKA_TRAVEL_ACCESSED}).
                 Dining from Tabelog Hidaka shop pages ({HIDAKA_TRAVEL_ACCESSED}).
                 Onsen: 0 (stay≠onsen — private hinoki bath in rental). Experience: 0. Shopping/commerce: 0. Twenty-eighth LIVE Kochi hub.
+              </>
+            )
+          ) : town.slug === 'otsuki' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ表示（柏島、柏島石堤、柏島観光情報発信センター、大堂展望台、道の駅大月）。
+                宿泊は楽天トラベルベルリーフ大月のツインルーム客室写真（{OTSUKI_TRAVEL_ACCESSED}）。
+                飲食は食べログ大月町の公開店ページ（{OTSUKI_TRAVEL_ACCESSED}）。
+                温泉は0件（stay≠onsen）。体験は0件。買物・商業は0件。高知県31つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Kashiwajima, stone embankment, tourist info center, Odo observatory, Michinoeki Otsuki).
+                Lodging: Belleaf Otsuki Rakuten twin-room photo ({OTSUKI_TRAVEL_ACCESSED}).
+                Dining from Tabelog Otsuki Town shop pages ({OTSUKI_TRAVEL_ACCESSED}).
+                Onsen: 0 (stay≠onsen). Experience: 0. Shopping/commerce: 0. Thirty-first LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'shimantocho' ? (

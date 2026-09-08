@@ -558,6 +558,14 @@ import {
   shimantochoSightPhoto,
   rankShimantochoSeeRows
 } from '@/data/shimantocho-travel';
+import {
+  isOtsukiOnsenPackRow,
+  isOtsukiExperiencePackRow,
+  isOtsukiStayPackRow,
+  OTSUKI_DINING_NAME_SET,
+  otsukiSightPhoto,
+  rankOtsukiSeeRows
+} from '@/data/otsuki-travel';
 
 
 
@@ -2736,6 +2744,39 @@ function hidakaListings(): PublicListing[] {
 }
 
 
+
+function otsukiListings(): PublicListing[] {
+  const town = lookupTown('otsuki')!;
+  const out: PublicListing[] = town.travelAll.map((row) =>
+    fromTravel(row, 'otsuki', otsukiSightPhoto(row.name_ja))
+  );
+  const pack = town.rows.filter((row) => {
+    if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+    if (OTSUKI_DINING_NAME_SET.has(row.name_ja)) return false;
+    return (
+      !isOtsukiOnsenPackRow(row) &&
+      !isOtsukiExperiencePackRow(row) &&
+      !isOtsukiStayPackRow(row) &&
+      Boolean(otsukiSightPhoto(row.name_ja))
+    );
+  });
+  const ranked = rankOtsukiSeeRows(pack);
+  const onsen = pack.filter(isOtsukiOnsenPackRow);
+  const experience = pack.filter(isOtsukiExperiencePackRow);
+  const stay = pack.filter(isOtsukiStayPackRow);
+  for (const row of [...onsen, ...experience, ...stay, ...ranked]) {
+    const kind: ListingKind = isOtsukiOnsenPackRow(row)
+      ? 'onsen'
+      : isOtsukiExperiencePackRow(row)
+        ? 'experience'
+        : isOtsukiStayPackRow(row)
+          ? 'stay'
+          : 'sights';
+    out.push(fromPack(row, 'otsuki', kind, otsukiSightPhoto(row.name_ja)));
+  }
+  return out;
+}
+
 function shimantochoListings(): PublicListing[] {
   const town = lookupTown('shimantocho')!;
   const out: PublicListing[] = town.travelAll.map((row) =>
@@ -3502,7 +3543,8 @@ const CACHE: Record<ReadySlug, PublicListing[]> = {
   yusuhara: yusuharaListings(),
   hidaka: hidakaListings(),
   tsuno: tsunoListings(),
-  shimantocho: shimantochoListings()
+  shimantocho: shimantochoListings(),
+  otsuki: otsukiListings()
 };
 
 export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {
@@ -3510,7 +3552,7 @@ export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {
 }
 
 export function allPublicListings(): PublicListing[] {
-  return [...CACHE.mima, ...CACHE.tsurugi, ...CACHE.yoshinogawa, ...CACHE.miyoshi, ...CACHE.tokushima, ...CACHE.awa, ...CACHE.higashimiyoshi, ...CACHE.kitajima, ...CACHE.naruto, ...CACHE.matsushige, ...CACHE.ishii, ...CACHE.itano, ...CACHE.kamiita, ...CACHE.kamiyama, ...CACHE.katsuura, ...CACHE.kamikatsu, ...CACHE.sanagochi, ...CACHE.naka, ...CACHE.mugi, ...CACHE.minami, ...CACHE.aizumi, ...CACHE.kaiyo, ...CACHE.komatsushima, ...CACHE.anan, ...CACHE.takamatsu, ...CACHE.kotohira, ...CACHE.marugame, ...CACHE.kanonji, ...CACHE.sakaide, ...CACHE.naoshima, ...CACHE.shodoshima, ...CACHE.zentsuji, ...CACHE.mitoyo, ...CACHE.utazu, ...CACHE.tonosho, ...CACHE.sanuki, ...CACHE.higashikagawa, ...CACHE.miki, ...CACHE.ayagawa, ...CACHE.tadotsu, ...CACHE.manno, ...CACHE.kochi, ...CACHE.nankoku, ...CACHE.konan, ...CACHE.kami, ...CACHE.ino, ...CACHE.aki, ...CACHE.muroto, ...CACHE.tosa, ...CACHE.susaki, ...CACHE.shimanto, ...CACHE.tosashimizu, ...CACHE.sukumo, ...CACHE.kuroshio, ...CACHE.toyo, ...CACHE.nahari, ...CACHE.yasuda, ...CACHE.geisei, ...CACHE.kitagawa, ...CACHE.umaji, ...CACHE.motoyama, ...CACHE.otoyo, ...CACHE.tosacho, ...CACHE.okawa, ...CACHE.niyodogawa, ...CACHE.nakatosa, ...CACHE.ochi, ...CACHE.yusuhara, ...CACHE.hidaka, ...CACHE.tsuno, ...CACHE.shimantocho];
+  return [...CACHE.mima, ...CACHE.tsurugi, ...CACHE.yoshinogawa, ...CACHE.miyoshi, ...CACHE.tokushima, ...CACHE.awa, ...CACHE.higashimiyoshi, ...CACHE.kitajima, ...CACHE.naruto, ...CACHE.matsushige, ...CACHE.ishii, ...CACHE.itano, ...CACHE.kamiita, ...CACHE.kamiyama, ...CACHE.katsuura, ...CACHE.kamikatsu, ...CACHE.sanagochi, ...CACHE.naka, ...CACHE.mugi, ...CACHE.minami, ...CACHE.aizumi, ...CACHE.kaiyo, ...CACHE.komatsushima, ...CACHE.anan, ...CACHE.takamatsu, ...CACHE.kotohira, ...CACHE.marugame, ...CACHE.kanonji, ...CACHE.sakaide, ...CACHE.naoshima, ...CACHE.shodoshima, ...CACHE.zentsuji, ...CACHE.mitoyo, ...CACHE.utazu, ...CACHE.tonosho, ...CACHE.sanuki, ...CACHE.higashikagawa, ...CACHE.miki, ...CACHE.ayagawa, ...CACHE.tadotsu, ...CACHE.manno, ...CACHE.kochi, ...CACHE.nankoku, ...CACHE.konan, ...CACHE.kami, ...CACHE.ino, ...CACHE.aki, ...CACHE.muroto, ...CACHE.tosa, ...CACHE.susaki, ...CACHE.shimanto, ...CACHE.tosashimizu, ...CACHE.sukumo, ...CACHE.kuroshio, ...CACHE.toyo, ...CACHE.nahari, ...CACHE.yasuda, ...CACHE.geisei, ...CACHE.kitagawa, ...CACHE.umaji, ...CACHE.motoyama, ...CACHE.otoyo, ...CACHE.tosacho, ...CACHE.okawa, ...CACHE.niyodogawa, ...CACHE.nakatosa, ...CACHE.ochi, ...CACHE.yusuhara, ...CACHE.hidaka, ...CACHE.tsuno, ...CACHE.shimantocho, ...CACHE.otsuki];
 }
 
 export function liveListings(slug?: ReadySlug): PublicListing[] {

@@ -749,6 +749,15 @@ import {
   SHIMANTOCHO_TRAVEL_ALL
 } from './shimantocho-travel';
 
+import {OTSUKI, OTSUKI_PLACE_PHOTO, OTSUKI_FACILITIES, OTSUKI_EXPECTED_GEO_COUNT, OTSUKI_EXPECTED_ROW_COUNT} from './otsuki';
+import {
+  OTSUKI_TRAVEL_DINING,
+  OTSUKI_TRAVEL_STAY,
+  OTSUKI_TRAVEL_SHOPPING,
+  OTSUKI_TRAVEL_COMMERCE,
+  OTSUKI_TRAVEL_ALL
+} from './otsuki-travel';
+
 
 
 
@@ -3124,6 +3133,38 @@ export const HIDAKA_LOOKUP: LookupTown = {
   licenseSiteEn: 'Village-site listing'
 };
 
+
+export const OTSUKI_LOOKUP: LookupTown = {
+  slug: 'otsuki',
+  prefectureSlug: 'kochi',
+  jis: OTSUKI.jis,
+  nameJa: OTSUKI.nameJa,
+  nameEn: OTSUKI.nameEn,
+  heroPhoto: OTSUKI_PLACE_PHOTO,
+  photoCiteJa: '写真は柏島全景。Saigen Jiro、2020-12-28、CC0。File:Kashiwajima_(Otsuki),_zenkei-1.jpg。',
+  photoCiteEn: 'Photo: Kashiwajima overview. Saigen Jiro, 2020-12-28, CC0. File:Kashiwajima_(Otsuki),_zenkei-1.jpg.',
+  rows: OTSUKI_FACILITIES,
+  expectedGeo: OTSUKI_EXPECTED_GEO_COUNT,
+  expectedRows: OTSUKI_EXPECTED_ROW_COUNT,
+  travelDining: OTSUKI_TRAVEL_DINING,
+  travelStay: OTSUKI_TRAVEL_STAY,
+  travelShopping: OTSUKI_TRAVEL_SHOPPING,
+  travelCommerce: OTSUKI_TRAVEL_COMMERCE,
+  travelAll: OTSUKI_TRAVEL_ALL,
+  coverageJa:
+    '大月町（JIS 39424）観光5・宿泊1・飲食3・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県31つ目のLIVEハブ。',
+  coverageEn:
+    'Otsuki Town (JIS 39424), 5 tourism + 1 stay + 3 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Thirty-first LIVE Kochi hub.',
+  mapLabelJa: '大月町の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Otsuki Town',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons/OSM等出典座標5件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 5 sourced coordinates for town/official facilities (accessed 2026-09-08).',
+  licenseNoteJa: '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from town.otsuki.kochi.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
 export const SHIMANTOCHO_LOOKUP: LookupTown = {
   slug: 'shimantocho',
   prefectureSlug: 'kochi',
@@ -3322,7 +3363,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   yusuhara: YUSUHARA_LOOKUP,
   hidaka: HIDAKA_LOOKUP,
   tsuno: TSUNO_LOOKUP,
-  shimantocho: SHIMANTOCHO_LOOKUP
+  shimantocho: SHIMANTOCHO_LOOKUP,
+  otsuki: OTSUKI_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
