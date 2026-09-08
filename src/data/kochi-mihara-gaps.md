@@ -1,6 +1,6 @@
 # Mihara Village (三原村) gaps (TG566 thirty-second Kochi hub)
 
-Accessed 2026-09-08 (JST). LIVE tip pending.
+Accessed 2026-09-08 (JST). LIVE tip `870a750dd0e`.
 
 ## LIVE pills (photo-first)
 - stay: 1 (農家民宿 森本まる / やまびこ stay page washitsu with stacked futons — stay≠onsen; Rakuten くろうさぎ cat 00000001「室内」was empty tatami FAIL)
@@ -26,6 +26,7 @@ Accessed 2026-09-08 (JST). LIVE tip pending.
 - Dining honest thin 1 with dish JPG.
 - townHelpers early-return must include mihara before MIMA fallback.
 - 佐川町・田野町 still deferred (no attributable stay room still).
+- Kochi shippable fleet DONE except deferred sakawa+tano.
 
 ## CDN
-Cold CDN note pending after push.
+Cold CDN PASS after Pages lag (~90s post-push). Live `ja/kochi/mihara/` PASS: hero 三原村, desc 三原村。星ヶ丘公園、五社神社、食。, pills stay/dining/onsen/experience/sights = 1/1/0/0/3. Pref cover mihara-cover-hoshigaoka present. Otsuki regression PASS.
