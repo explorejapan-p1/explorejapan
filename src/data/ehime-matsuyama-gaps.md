@@ -26,3 +26,11 @@ Accessed 2026-09-08.
 - More stay rooms if attributable without spa-as-stay confusion.
 - Additional sights with Commons if needed to thicken 見る.
 - Onsen beyond 道後温泉本館 only if distinct attributable facility photo keys (stay≠onsen).
+
+## CDN cold PASS
+- URL: https://explorejapan-p1.github.io/explorejapan/ja/ehime/matsuyama/
+- robots: index, follow
+- desc: 松山市。松山城、道後温泉、坊っちゃん列車、食。 (NOT 美馬)
+- hero h1: 松山市
+- pills: stay1 dining16 onsen1 experience1 sights6 shopping0 commerce0
+- tip: ad864a4dd9794e2c2c0506e5a37f5eb90f28fe9c
