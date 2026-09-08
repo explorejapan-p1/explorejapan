@@ -90,6 +90,7 @@ import {HIDAKA_TRAVEL_ACCESSED} from '@/data/hidaka-travel';
 import {TSUNO_TRAVEL_ACCESSED} from '@/data/tsuno-travel';
 import {SHIMANTOCHO_TRAVEL_ACCESSED} from '@/data/shimantocho-travel';
 import {OTSUKI_TRAVEL_ACCESSED} from '@/data/otsuki-travel';
+import {MIHARA_TRAVEL_ACCESSED} from '@/data/mihara-travel';
 import {MUGI_TRAVEL_ACCESSED} from '@/data/mugi-travel';
 import {NARUTO_TRAVEL_ACCESSED} from '@/data/naruto-travel';
 import {
@@ -1640,6 +1641,22 @@ export function MimaFacilityLookup({
                 Lodging: Belleaf Otsuki Rakuten twin-room photo ({OTSUKI_TRAVEL_ACCESSED}).
                 Dining from Tabelog Otsuki Town shop pages ({OTSUKI_TRAVEL_ACCESSED}).
                 Onsen: 0 (stay≠onsen). Experience: 0. Shopping/commerce: 0. Thirty-first LIVE Kochi hub.
+              </>
+            )
+          ) : town.slug === 'mihara' ? (
+            locale === 'ja' ? (
+              <>
+                観光は出典写真がある施設のみ表示（星ヶ丘公園、五社神社、三原村役場）。
+                宿泊は三原村集落活動センターやまびこ掲載の農家民宿森本まる和室（布団）客室写真（{MIHARA_TRAVEL_ACCESSED}）。
+                飲食は食べログ三原村の公開店ページ（{MIHARA_TRAVEL_ACCESSED}）。
+                温泉は0件（stay≠onsen）。体験は0件。買物・商業は0件。高知県32つ目のLIVEハブ。
+              </>
+            ) : (
+              <>
+                Tourism shows only facilities with a sourced photo (Hoshigaoka Park, Gosha Shrine, Mihara Village Hall).
+                Lodging: Farmstay Morimoto Maru washitsu futon photo from Mihara Yamabiko ({MIHARA_TRAVEL_ACCESSED}).
+                Dining from Tabelog Mihara Village shop pages ({MIHARA_TRAVEL_ACCESSED}).
+                Onsen: 0 (stay≠onsen). Experience: 0. Shopping/commerce: 0. Thirty-second LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'shimantocho' ? (

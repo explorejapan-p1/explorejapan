@@ -67,6 +67,7 @@ import {HIDAKA, HIDAKA_PLACE_PHOTO} from '@/data/hidaka';
 import {TSUNO, TSUNO_PLACE_PHOTO} from '@/data/tsuno';
 import {SHIMANTOCHO, SHIMANTOCHO_PLACE_PHOTO} from '@/data/shimantocho';
 import {OTSUKI, OTSUKI_PLACE_PHOTO} from '@/data/otsuki';
+import {MIHARA, MIHARA_PLACE_PHOTO} from '@/data/mihara';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -4408,6 +4409,67 @@ export function hidakaGraph(locale: AppLocale) {
 
 
 
+
+
+export function miharaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'kochi/mihara');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('mihara');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? MIHARA.nameJa : MIHARA.nameEn,
+        alternateName: isJa ? MIHARA.nameEn : MIHARA.nameJa,
+        identifier: MIHARA.jis,
+        url,
+        image: photoAbs(MIHARA_PLACE_PHOTO),
+        sameAs: [MIHARA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '来栖野346' : '346 Kurusuno',
+          addressLocality: isJa ? MIHARA.nameJa : MIHARA.nameEn,
+          addressRegion: isJa ? MIHARA.prefectureJa : MIHARA.prefectureEn,
+          postalCode: MIHARA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? MIHARA.prefectureJa : MIHARA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? MIHARA.nameJa : MIHARA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? MIHARA.prefectureJa : MIHARA.prefectureEn, item: canonicalUrl(locale, 'kochi')},
+          {'@type': 'ListItem', position: 3, name: isJa ? MIHARA.nameJa : MIHARA.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '三原村の案内' : 'Places in Mihara Village',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
 
 export function otsukiGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'kochi/otsuki');

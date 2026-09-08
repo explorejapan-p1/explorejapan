@@ -750,6 +750,7 @@ import {
 } from './shimantocho-travel';
 
 import {OTSUKI, OTSUKI_PLACE_PHOTO, OTSUKI_FACILITIES, OTSUKI_EXPECTED_GEO_COUNT, OTSUKI_EXPECTED_ROW_COUNT} from './otsuki';
+import {MIHARA, MIHARA_PLACE_PHOTO, MIHARA_FACILITIES, MIHARA_EXPECTED_GEO_COUNT, MIHARA_EXPECTED_ROW_COUNT} from './mihara';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -757,6 +758,13 @@ import {
   OTSUKI_TRAVEL_COMMERCE,
   OTSUKI_TRAVEL_ALL
 } from './otsuki-travel';
+import {
+  MIHARA_TRAVEL_DINING,
+  MIHARA_TRAVEL_STAY,
+  MIHARA_TRAVEL_SHOPPING,
+  MIHARA_TRAVEL_COMMERCE,
+  MIHARA_TRAVEL_ALL
+} from './mihara-travel';
 
 
 
@@ -3134,6 +3142,38 @@ export const HIDAKA_LOOKUP: LookupTown = {
 };
 
 
+
+export const MIHARA_LOOKUP: LookupTown = {
+  slug: 'mihara',
+  prefectureSlug: 'kochi',
+  jis: MIHARA.jis,
+  nameJa: MIHARA.nameJa,
+  nameEn: MIHARA.nameEn,
+  heroPhoto: MIHARA_PLACE_PHOTO,
+  photoCiteJa: '写真は星ヶ丘公園。Lumi iori、2019-06-15、CC BY-SA 4.0。File:高知県三原村 星ヶ丘公園.jpg。',
+  photoCiteEn: 'Photo: Hoshigaoka Park. Lumi iori, 2019-06-15, CC BY-SA 4.0. File:高知県三原村 星ヶ丘公園.jpg.',
+  rows: MIHARA_FACILITIES,
+  expectedGeo: MIHARA_EXPECTED_GEO_COUNT,
+  expectedRows: MIHARA_EXPECTED_ROW_COUNT,
+  travelDining: MIHARA_TRAVEL_DINING,
+  travelStay: MIHARA_TRAVEL_STAY,
+  travelShopping: MIHARA_TRAVEL_SHOPPING,
+  travelCommerce: MIHARA_TRAVEL_COMMERCE,
+  travelAll: MIHARA_TRAVEL_ALL,
+  coverageJa:
+    '三原村（JIS 39427）観光3・宿泊1・飲食1・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県32つ目のLIVEハブ。',
+  coverageEn:
+    'Mihara Village (JIS 39427), 3 tourism + 1 stay + 1 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Thirty-second LIVE Kochi hub.',
+  mapLabelJa: '三原村の出典座標3件',
+  mapLabelEn: '3 sourced coordinates in Mihara Village',
+  mapCitePackJa: '点は村・公式ページ掲載施設のCommons/MapFan/OSM等出典座標3件（accessed 2026-09-08）。',
+  mapCitePackEn: 'Points: 3 sourced coordinates for village/official facilities (accessed 2026-09-08).',
+  licenseNoteJa: '行のライセンスは村公式・公式観光サイト掲載情報。村ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn: 'Rows are village-site listings, facts from vill.mihara.kochi.jp / sourced pages, not under Our Open Data.',
+  licenseSiteJa: '村公式サイト掲載情報',
+  licenseSiteEn: 'Village-site listing'
+};
+
 export const OTSUKI_LOOKUP: LookupTown = {
   slug: 'otsuki',
   prefectureSlug: 'kochi',
@@ -3364,7 +3404,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   hidaka: HIDAKA_LOOKUP,
   tsuno: TSUNO_LOOKUP,
   shimantocho: SHIMANTOCHO_LOOKUP,
-  otsuki: OTSUKI_LOOKUP
+  otsuki: OTSUKI_LOOKUP,
+  mihara: MIHARA_LOOKUP
 };
 
 export function lookupTown(slug: string): LookupTown | null {
