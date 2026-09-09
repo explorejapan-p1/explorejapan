@@ -656,6 +656,14 @@ import {
   seiyoSightPhoto,
   rankSeiyoSeeRows,
 } from '@/data/seiyo-travel';
+import {
+  TOON_DINING_NAME_SET,
+  isToonOnsenPackRow,
+  isToonExperiencePackRow,
+  isToonStayPackRow,
+  toonSightPhoto,
+  rankToonSeeRows,
+} from '@/data/toon-travel';
 
 
 
@@ -3681,6 +3689,46 @@ function seiyoListings(): PublicListing[] {
   return out;
 }
 
+function toonListings(): PublicListing[] {
+  const town = lookupTown('toon')!;
+  const out: PublicListing[] = town.travelAll.map((row) =>
+    fromTravel(row, 'toon', toonSightPhoto(row.name_ja))
+  );
+  const seen = new Set<string>();
+  const pack: FacilityRow[] = [];
+  for (const row of town.rows) {
+    if (TOON_DINING_NAME_SET.has(row.name_ja)) continue;
+    if (
+      !isToonOnsenPackRow(row) &&
+      !isToonExperiencePackRow(row) &&
+      !isToonStayPackRow(row) &&
+      !isSightsCategory(row.category)
+    ) {
+      continue;
+    }
+    const key = packDedupeKey(row);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    pack.push(row);
+  }
+  const ranked = rankToonSeeRows(pack);
+  const onsen = pack.filter(isToonOnsenPackRow);
+  const experience = pack.filter(isToonExperiencePackRow);
+  const stay = pack.filter(isToonStayPackRow);
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
+    const kind: ListingKind = isToonOnsenPackRow(row)
+      ? 'onsen'
+      : isToonExperiencePackRow(row)
+        ? 'experience'
+        : isToonStayPackRow(row)
+          ? 'stay'
+          : 'sights';
+    out.push(fromPack(row, 'toon', kind, toonSightPhoto(row.name_ja)));
+  }
+  return out;
+}
+
+
 function shikokuchuoListings(): PublicListing[] {
   const town = lookupTown('shikokuchuo')!;
   const out: PublicListing[] = town.travelAll.map((row) =>
@@ -4076,7 +4124,8 @@ const CACHE: Record<ReadySlug, PublicListing[]> = {
   ozu: ozuListings(),
   iyo: iyoListings(),
   shikokuchuo: shikokuchuoListings(),
-  seiyo: seiyoListings()
+  seiyo: seiyoListings(),
+  toon: toonListings()
 };
 
 export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {

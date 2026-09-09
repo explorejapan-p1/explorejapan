@@ -917,6 +917,17 @@ import {
   seiyoTopChipForRow,
   resolveSeiyoFilter,
 } from './seiyo-travel';
+import {
+  isToonOnsenPackRow,
+  isToonExperiencePackRow,
+  isToonStayPackRow,
+  toonPackRowMatchesFilter,
+  rankToonSeeRows,
+  toonSightPhoto,
+  toonSourcedHook,
+  toonTopChipForRow,
+  resolveToonFilter,
+} from './toon-travel';
 
 
 
@@ -1720,6 +1731,18 @@ const SEIYO_HELPERS: LookupHelpers = {
   resolveFilter: resolveSeiyoFilter
 };
 
+const TOON_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isToonOnsenPackRow,
+  isExperiencePackRow: isToonExperiencePackRow,
+  isStayPackRow: isToonStayPackRow,
+  packRowMatchesFilter: toonPackRowMatchesFilter,
+  rankSeeRows: rankToonSeeRows,
+  sightPhoto: toonSightPhoto,
+  sourcedHook: toonSourcedHook,
+  topChipForRow: toonTopChipForRow,
+  resolveFilter: resolveToonFilter
+};
+
 const SHIKOKUCHUO_HELPERS: LookupHelpers = {
   isOnsenPackRow: isShikokuchuoOnsenPackRow,
   isExperiencePackRow: isShikokuchuoExperiencePackRow,
@@ -2125,5 +2148,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'iyo') return IYO_HELPERS;
   if (slug === 'shikokuchuo') return SHIKOKUCHUO_HELPERS;
   if (slug === 'seiyo') return SEIYO_HELPERS;
+  if (slug === 'toon') return TOON_HELPERS;
   return MIMA_HELPERS;
 }

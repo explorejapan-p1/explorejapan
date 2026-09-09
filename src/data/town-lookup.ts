@@ -761,6 +761,7 @@ import {OZU, OZU_PLACE_PHOTO, OZU_FACILITIES, OZU_EXPECTED_GEO_COUNT, OZU_EXPECT
 import {IYO, IYO_PLACE_PHOTO, IYO_FACILITIES, IYO_EXPECTED_GEO_COUNT, IYO_EXPECTED_ROW_COUNT} from './iyo';
 import {SHIKOKUCHUO, SHIKOKUCHUO_PLACE_PHOTO, SHIKOKUCHUO_FACILITIES, SHIKOKUCHUO_EXPECTED_GEO_COUNT, SHIKOKUCHUO_EXPECTED_ROW_COUNT} from './shikokuchuo';
 import {SEIYO, SEIYO_PLACE_PHOTO, SEIYO_FACILITIES, SEIYO_EXPECTED_GEO_COUNT, SEIYO_EXPECTED_ROW_COUNT} from './seiyo';
+import {TOON, TOON_PLACE_PHOTO, TOON_FACILITIES, TOON_EXPECTED_GEO_COUNT, TOON_EXPECTED_ROW_COUNT} from './toon';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -845,6 +846,13 @@ import {
   SEIYO_TRAVEL_COMMERCE,
   SEIYO_TRAVEL_ALL
 } from './seiyo-travel';
+import {
+  TOON_TRAVEL_DINING,
+  TOON_TRAVEL_STAY,
+  TOON_TRAVEL_SHOPPING,
+  TOON_TRAVEL_COMMERCE,
+  TOON_TRAVEL_ALL
+} from './toon-travel';
 
 
 
@@ -3432,6 +3440,40 @@ export const SEIYO_LOOKUP: LookupTown = {
   licenseSiteEn: 'City-site listing'
 };
 
+export const TOON_LOOKUP: LookupTown = {
+  slug: 'toon',
+  prefectureSlug: 'ehime',
+  jis: TOON.jis,
+  nameJa: TOON.nameJa,
+  nameEn: TOON.nameEn,
+  heroPhoto: TOON_PLACE_PHOTO,
+  photoCiteJa: '写真は白猪の滝。Dokudami、2022-11-09、CC BY-SA 4.0。File:Sirainotaki_20221109_1.jpg。',
+  photoCiteEn: 'Photo: Shirai Falls. Dokudami, 2022-11-09, CC BY-SA 4.0. File:Sirainotaki_20221109_1.jpg.',
+  rows: TOON_FACILITIES,
+  expectedGeo: TOON_EXPECTED_GEO_COUNT,
+  expectedRows: TOON_EXPECTED_ROW_COUNT,
+  travelDining: TOON_TRAVEL_DINING,
+  travelStay: TOON_TRAVEL_STAY,
+  travelShopping: TOON_TRAVEL_SHOPPING,
+  travelCommerce: TOON_TRAVEL_COMMERCE,
+  travelAll: TOON_TRAVEL_ALL,
+  coverageJa:
+    '東温市（JIS 38215）観光4・宿泊6・飲食16・温泉1・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。愛媛県11つ目のLIVEハブ。',
+  coverageEn:
+    'Toon City (JIS 38215), 4 tourism + 6 stay + 16 dining + 1 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Eleventh LIVE Ehime hub.',
+  mapLabelJa: '東温市の出典座標4件',
+  mapLabelEn: '4 sourced coordinates in Toon City',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia/Commons等出典座標4件（accessed 2026-09-09）。',
+  mapCitePackEn: 'Points: 4 sourced coordinates for city/official facilities (accessed 2026-09-09).',
+  licenseNoteJa:
+    '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.toon.ehime.jp, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
+
 export const SHIKOKUCHUO_LOOKUP: LookupTown = {
   slug: 'shikokuchuo',
   prefectureSlug: 'ehime',
@@ -3838,7 +3880,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   ozu: OZU_LOOKUP,
   iyo: IYO_LOOKUP,
   shikokuchuo: SHIKOKUCHUO_LOOKUP,
-  seiyo: SEIYO_LOOKUP
+  seiyo: SEIYO_LOOKUP,
+  toon: TOON_LOOKUP
 };
 
 
