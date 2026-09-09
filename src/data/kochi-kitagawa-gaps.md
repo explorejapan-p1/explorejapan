@@ -1,18 +1,21 @@
-# Kitagawa Village (北川村) gaps (TG566 eighteenth Kochi hub)
+# Kitagawa Village (北川村) gaps (TG610 densify)
 
-Accessed 2026-09-08 (JST). LIVE tip `cfeb867ba8`.
+Accessed 2026-09-09 (JST). LIVE tip `58b2850a00`.
 
-## LIVE pills (photo-first)
+## LIVE pills (photo-first) — after TG610 densify
 - stay: 1 (北川村温泉 ゆずの宿 / Rakuten HOTEL/167471 客室和洋 — stay≠onsen)
-- dining: 3 (Tabelog C39305 640 dish JPGs; skipped cafe・sweets・bakery・lodging・洋菓子・喫茶 / no-640 交流センター)
+- dining: 4 (Tabelog C39305 640×3 + ゆずの宿 レストラン Rakuten 食事 appetizer still)
 - onsen: 1 (同施設「温泉大浴場」 still; distinct mediaInfo key from stay room)
-- experience: 0
-- sights: 5 (モネの庭 cover + 中岡慎太郎館 + 中岡慎太郎生家 + 北川村役場 + 魚梁瀬ダム)
+- experience: 1 (モネの庭 散策 / Commons File:Monet-Marumottan-hikari02.jpg — distinct from cover 水の庭)
+- sights: 7 (モネの庭 cover + 中岡慎太郎館 + 生家 + 役場 + 魚梁瀬ダム + 堀ヶ生橋 + 中岡慎太郎像)
 - shop: 0
 - commerce: 0
 
+## Before (cold docs)
+- stay/dining/onsen/experience/sights = 1/3/1/0/5
+
 ## Cover
-北川村モネの庭マルモッタン 水の庭 (Commons File:Monet-Marumottan-mizu02.jpg, CC BY-SA 4.0, Earthboud1960). Hero-title = 北川村 only (TG588/591). 中岡慎太郎生家 Nominatim miss → reused 中岡慎太郎館 coords.
+北川村モネの庭マルモッタン 水の庭 (Commons File:Monet-Marumottan-mizu02.jpg, CC BY-SA 4.0, Earthboud1960). Hero-title = 北川村 only.
 
 ## Hall
 〒781-6441 高知県安芸郡北川村野友甲1530番地 / 0887-32-1212 / JIS 39305 / JLIS 393053 / https://www.kitagawamura.jp/
@@ -21,9 +24,4 @@ Accessed 2026-09-08 (JST). LIVE tip `cfeb867ba8`.
 北川村。モネの庭、中岡慎太郎、魚梁瀬、食。
 
 ## Notes
-- 田野町 deferred: lodging exists but no attributable Rakuten/Commons room still under HARD BAR.
-- Dining thin OK (honest 3; village list is cafe/bakery/lodging-heavy).
-- Stay room still and onsen large bath are separate Rakuten mediaInfo keys (HARD BAR stay≠onsen).
-
-## CDN
-Cold CDN PASS after Pages lag (~45s). Live `ja/kochi/kitagawa/` PASS: hero 北川村, desc 北川村。モネの庭、中岡慎太郎、魚梁瀬、食。, pills stay/dining/onsen/experience/sights = 1/3/1/0/5. Pref cover kitagawa-cover-monet present.
+- HARD BAR stay/onsen PASS kept. Dining cafe/bakery/sweets still no 640 — skipped. Domain HOLD. No shimanto/okawa/geisei/umaji regression.

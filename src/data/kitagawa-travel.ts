@@ -1,31 +1,35 @@
 /**
  * Kitagawa Village travel layer. No frozen pack.
- * Dining from 食べログ 北川村 (C39305) — thin village honest 3 with 640 dish JPGs (skipped cafe・sweets・bakery・lodging・洋菓子・喫茶 / no-640 交流センター). Stay: 北川村温泉 ゆずの宿 Rakuten 客室和洋. Onsen: 同施設 温泉大浴場 still (stay≠onsen). Experience: 0.
+ * Dining: Tabelog C39305 640×3 + ゆずの宿 レストラン Rakuten 食事 still. Stay: ゆずの宿 客室和洋. Onsen: 大浴場 (stay≠onsen). Experience: モネの庭 散策. TG610 densify.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {KITAGAWA, KITAGAWA_SIGHT_PHOTOS} from './kitagawa';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const KITAGAWA_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const KITAGAWA_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const KITAGAWA_TRAVEL_SOURCES = {
   home: 'https://www.kitagawamura.jp/', hall: 'https://ja.wikipedia.org/wiki/%E5%8C%97%E5%B7%9D%E6%9D%91',
   kankou: 'https://kitagawakanko.jp/',
   monet: 'https://commons.wikimedia.org/wiki/File:Monet-Marumottan-mizu02.jpg',
   tabelogCity: 'https://tabelog.com/kochi/C39305/rstLst/',
-  yuzunoyado: 'https://travel.rakuten.co.jp/HOTEL/167471/167471.html'
+  yuzunoyado: 'https://travel.rakuten.co.jp/HOTEL/167471/167471.html',
+  monetTour: 'https://kitagawakanko.jp/tourism/monet.html',
+  rintetsu: 'https://kitagawakanko.jp/rintetsu/index.html',
+  horigao: 'https://commons.wikimedia.org/wiki/File:%E5%A0%80%E3%83%B6%E7%94%9F%E6%A9%8B_-_panoramio.jpg',
+  nakaokaStatue: 'https://commons.wikimedia.org/wiki/File:Statue_of_Nakaoka_Shintaro.jpg'
 } as const;
 
 export const KITAGAWA_ONSEN_PACK_NAMES = ['北川村温泉 ゆずの宿 大浴場'] as const;
 export const KITAGAWA_ONSEN_PACK_SET: ReadonlySet<string> = new Set(KITAGAWA_ONSEN_PACK_NAMES);
-export const KITAGAWA_EXPERIENCE_PACK_NAMES = [] as const;
+export const KITAGAWA_EXPERIENCE_PACK_NAMES = ['モネの庭 散策'] as const;
 export const KITAGAWA_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(KITAGAWA_EXPERIENCE_PACK_NAMES);
 export const KITAGAWA_STAY_PACK_NAMES = [] as const;
 export const KITAGAWA_STAY_PACK_SET: ReadonlySet<string> = new Set(KITAGAWA_STAY_PACK_NAMES);
 export const KITAGAWA_SHOPPING_PACK_NAMES = [] as const;
 export const KITAGAWA_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(KITAGAWA_SHOPPING_PACK_NAMES);
 
-export const KITAGAWA_SIGHT_PINS = ['北川村モネの庭マルモッタン','中岡慎太郎館','中岡慎太郎生家','北川村役場','魚梁瀬ダム'] as const;
+export const KITAGAWA_SIGHT_PINS = ['北川村モネの庭マルモッタン','中岡慎太郎館','中岡慎太郎生家','北川村役場','魚梁瀬ダム','堀ヶ生橋','中岡慎太郎像'] as const;
 
 function stay(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: KITAGAWA_TRAVEL_ACCESSED};
@@ -41,6 +45,7 @@ export const KITAGAWA_TRAVEL_DINING: readonly TravelRow[] = [
   dining('kitagawa-dining-01', 'レストラン モネの家', '高知県安芸郡北川村野友甲1100', '0887-32-1233', 'https://tabelog.com/kochi/A3902/A390202/39000118/'),
   dining('kitagawa-dining-02', '慎太郎食堂', '高知県安芸郡北川村柏木494', '0887-38-2413', 'https://tabelog.com/kochi/A3902/A390202/39007075/'),
   dining('kitagawa-dining-03', 'いごっそラーメン店長', '高知県安芸郡北川村野友乙', '090-9094-8057', 'https://tabelog.com/kochi/A3902/A390202/39004173/'),
+  dining('kitagawa-dining-04', 'ゆずの宿 レストラン', '高知県安芸郡北川村小島121', '0887-30-1526', 'https://travel.rakuten.co.jp/HOTEL/167471/gallery.html'),
 ];
 
 export const KITAGAWA_DINING_NAME_SET: ReadonlySet<string> = new Set(KITAGAWA_TRAVEL_DINING.map((row) => row.name_ja));
