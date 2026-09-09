@@ -75,6 +75,7 @@ import {YAWATAHAMA, YAWATAHAMA_PLACE_PHOTO} from '@/data/yawatahama';
 import {NIIHAMA, NIIHAMA_PLACE_PHOTO} from '@/data/niihama';
 import {SAIJO, SAIJO_PLACE_PHOTO} from '@/data/saijo';
 import {OZU, OZU_PLACE_PHOTO} from '@/data/ozu';
+import {IYO, IYO_PLACE_PHOTO} from '@/data/iyo';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -204,6 +205,7 @@ function localityJa(slug: string): string {
   if (slug === 'niihama') return NIIHAMA.nameJa;
   if (slug === 'saijo') return SAIJO.nameJa;
   if (slug === 'ozu') return OZU.nameJa;
+  if (slug === 'iyo') return IYO.nameJa;
   return MIMA.nameJa;
 }
 
@@ -272,6 +274,7 @@ function localityEn(slug: string): string {
   if (slug === 'niihama') return NIIHAMA.nameEn;
   if (slug === 'saijo') return SAIJO.nameEn;
   if (slug === 'ozu') return OZU.nameEn;
+  if (slug === 'iyo') return IYO.nameEn;
   return MIMA.nameEn;
 }
 
@@ -4557,6 +4560,58 @@ export function yawatahamaGraph(locale: AppLocale) {
 }
 
 
+
+
+export function iyoGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'ehime/iyo');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('iyo');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? IYO.nameJa : IYO.nameEn,
+        alternateName: isJa ? IYO.nameEn : IYO.nameJa,
+        identifier: IYO.jis,
+        url,
+        image: photoAbs(IYO_PLACE_PHOTO),
+        sameAs: [IYO.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '米湊820番地' : '820 Minato',
+          addressLocality: isJa ? IYO.nameJa : IYO.nameEn,
+          addressRegion: isJa ? IYO.prefectureJa : IYO.prefectureEn,
+          postalCode: IYO.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? IYO.prefectureJa : IYO.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? IYO.nameJa : IYO.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? IYO.prefectureJa : IYO.prefectureEn, item: canonicalUrl(locale, 'ehime')},
+          {'@type': 'ListItem', position: 3, name: isJa ? IYO.nameJa : IYO.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
 
 export function ozuGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'ehime/ozu');

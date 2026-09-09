@@ -632,6 +632,14 @@ import {
   ozuSightPhoto,
   rankOzuSeeRows,
 } from '@/data/ozu-travel';
+import {
+  IYO_DINING_NAME_SET,
+  isIyoOnsenPackRow,
+  isIyoExperiencePackRow,
+  isIyoStayPackRow,
+  iyoSightPhoto,
+  rankIyoSeeRows,
+} from '@/data/iyo-travel';
 
 
 
@@ -3615,6 +3623,46 @@ function uwajimaListings(): PublicListing[] {
 
 
 
+
+function iyoListings(): PublicListing[] {
+  const town = lookupTown('iyo')!;
+  const out: PublicListing[] = town.travelAll.map((row) =>
+    fromTravel(row, 'iyo', iyoSightPhoto(row.name_ja))
+  );
+  const seen = new Set<string>();
+  const pack: FacilityRow[] = [];
+  for (const row of town.rows) {
+    if (IYO_DINING_NAME_SET.has(row.name_ja)) continue;
+    if (
+      !isIyoOnsenPackRow(row) &&
+      !isIyoExperiencePackRow(row) &&
+      !isIyoStayPackRow(row) &&
+      !isSightsCategory(row.category)
+    ) {
+      continue;
+    }
+    const key = packDedupeKey(row);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    pack.push(row);
+  }
+  const ranked = rankIyoSeeRows(pack);
+  const onsen = pack.filter(isIyoOnsenPackRow);
+  const experience = pack.filter(isIyoExperiencePackRow);
+  const stay = pack.filter(isIyoStayPackRow);
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
+    const kind: ListingKind = isIyoOnsenPackRow(row)
+      ? 'onsen'
+      : isIyoExperiencePackRow(row)
+        ? 'experience'
+        : isIyoStayPackRow(row)
+          ? 'stay'
+          : 'sights';
+    out.push(fromPack(row, 'iyo', kind, iyoSightPhoto(row.name_ja)));
+  }
+  return out;
+}
+
 function ozuListings(): PublicListing[] {
   const town = lookupTown('ozu')!;
   const out: PublicListing[] = town.travelAll.map((row) =>
@@ -3929,7 +3977,8 @@ const CACHE: Record<ReadySlug, PublicListing[]> = {
   yawatahama: yawatahamaListings(),
   niihama: niihamaListings(),
   saijo: saijoListings(),
-  ozu: ozuListings()
+  ozu: ozuListings(),
+  iyo: iyoListings()
 };
 
 export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {

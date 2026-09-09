@@ -758,6 +758,7 @@ import {YAWATAHAMA, YAWATAHAMA_PLACE_PHOTO, YAWATAHAMA_FACILITIES, YAWATAHAMA_EX
 import {NIIHAMA, NIIHAMA_PLACE_PHOTO, NIIHAMA_FACILITIES, NIIHAMA_EXPECTED_GEO_COUNT, NIIHAMA_EXPECTED_ROW_COUNT} from './niihama';
 import {SAIJO, SAIJO_PLACE_PHOTO, SAIJO_FACILITIES, SAIJO_EXPECTED_GEO_COUNT, SAIJO_EXPECTED_ROW_COUNT} from './saijo';
 import {OZU, OZU_PLACE_PHOTO, OZU_FACILITIES, OZU_EXPECTED_GEO_COUNT, OZU_EXPECTED_ROW_COUNT} from './ozu';
+import {IYO, IYO_PLACE_PHOTO, IYO_FACILITIES, IYO_EXPECTED_GEO_COUNT, IYO_EXPECTED_ROW_COUNT} from './iyo';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -821,6 +822,13 @@ import {
   OZU_TRAVEL_COMMERCE,
   OZU_TRAVEL_ALL,
 } from './ozu-travel';
+import {
+  IYO_TRAVEL_DINING,
+  IYO_TRAVEL_STAY,
+  IYO_TRAVEL_SHOPPING,
+  IYO_TRAVEL_COMMERCE,
+  IYO_TRAVEL_ALL,
+} from './iyo-travel';
 
 
 
@@ -3372,6 +3380,40 @@ export const NIIHAMA_LOOKUP: LookupTown = {
 
 
 
+
+export const IYO_LOOKUP: LookupTown = {
+  slug: 'iyo',
+  prefectureSlug: 'ehime',
+  jis: IYO.jis,
+  nameJa: IYO.nameJa,
+  nameEn: IYO.nameEn,
+  heroPhoto: IYO_PLACE_PHOTO,
+  photoCiteJa: '写真は五色浜公園。CT-May、2024-08-11、CC0。File:Goshikihama_Park_20240811_(2).jpg。',
+  photoCiteEn: 'Photo: Goshikihama Park. CT-May, 2024-08-11, CC0. File:Goshikihama_Park_20240811_(2).jpg.',
+  rows: IYO_FACILITIES,
+  expectedGeo: IYO_EXPECTED_GEO_COUNT,
+  expectedRows: IYO_EXPECTED_ROW_COUNT,
+  travelDining: IYO_TRAVEL_DINING,
+  travelStay: IYO_TRAVEL_STAY,
+  travelShopping: IYO_TRAVEL_SHOPPING,
+  travelCommerce: IYO_TRAVEL_COMMERCE,
+  travelAll: IYO_TRAVEL_ALL,
+  coverageJa:
+    '伊予市（JIS 38210）観光4・宿泊5・飲食16・温泉4・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。愛媛県8つ目のLIVEハブ。',
+  coverageEn:
+    'Iyo City (JIS 38210), 4 tourism + 5 stay + 16 dining + 4 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Eighth LIVE Ehime hub.',
+  mapLabelJa: '伊予市の出典座標4件',
+  mapLabelEn: '4 sourced coordinates in Iyo City',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia/Commons等出典座標4件（accessed 2026-09-09）。',
+  mapCitePackEn: 'Points: 4 sourced coordinates for city/official facilities (accessed 2026-09-09).',
+  licenseNoteJa:
+    '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.iyo.lg.jp, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
 export const OZU_LOOKUP: LookupTown = {
   slug: 'ozu',
   prefectureSlug: 'ehime',
@@ -3709,7 +3751,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   yawatahama: YAWATAHAMA_LOOKUP,
   niihama: NIIHAMA_LOOKUP,
   saijo: SAIJO_LOOKUP,
-  ozu: OZU_LOOKUP
+  ozu: OZU_LOOKUP,
+  iyo: IYO_LOOKUP
 };
 
 

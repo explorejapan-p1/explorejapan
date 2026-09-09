@@ -884,6 +884,18 @@ import {
   ozuTopChipForRow,
   resolveOzuFilter,
 } from './ozu-travel';
+import {
+  isIyoOnsenPackRow,
+  isIyoExperiencePackRow,
+  isIyoStayPackRow,
+  iyoPackRowMatchesFilter,
+  rankIyoSeeRows,
+  iyoSightPhoto,
+  iyoSourcedHook,
+  iyoTopChipForRow,
+  resolveIyoFilter,
+} from './iyo-travel';
+
 
 
 
@@ -1671,6 +1683,19 @@ const MIHARA_HELPERS: LookupHelpers = {
 
 
 
+
+const IYO_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isIyoOnsenPackRow,
+  isExperiencePackRow: isIyoExperiencePackRow,
+  isStayPackRow: isIyoStayPackRow,
+  packRowMatchesFilter: iyoPackRowMatchesFilter,
+  rankSeeRows: rankIyoSeeRows,
+  sightPhoto: iyoSightPhoto,
+  sourcedHook: iyoSourcedHook,
+  topChipForRow: iyoTopChipForRow,
+  resolveFilter: resolveIyoFilter
+};
+
 const OZU_HELPERS: LookupHelpers = {
   isOnsenPackRow: isOzuOnsenPackRow,
   isExperiencePackRow: isOzuExperiencePackRow,
@@ -2049,5 +2074,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'niihama') return NIIHAMA_HELPERS;
   if (slug === 'saijo') return SAIJO_HELPERS;
   if (slug === 'ozu') return OZU_HELPERS;
+  if (slug === 'iyo') return IYO_HELPERS;
   return MIMA_HELPERS;
 }
