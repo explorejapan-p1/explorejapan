@@ -16,7 +16,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const AIZUMI_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const AIZUMI_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const AIZUMI_TRAVEL_SOURCES = {
   home: 'https://www.town.aizumi.lg.jp/',
@@ -69,6 +69,13 @@ export const AIZUMI_TRAVEL_STAY: readonly TravelRow[] = [
     '徳島県板野郡藍住町徳命元村134-8',
     '088-631-3338',
     'https://travel.rakuten.co.jp/HOTEL/180561/180561.html'
+  ),
+  stay(
+    'aizumi-stay-02',
+    'おくむら旅館',
+    '徳島県板野郡藍住町奥野字前川74',
+    '088-692-2230',
+    'https://travel.rakuten.co.jp/HOTEL/183434/183434.html'
   )
 ];
 

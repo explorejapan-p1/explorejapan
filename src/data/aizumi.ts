@@ -290,10 +290,17 @@ export const AIZUMI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   ),
   '宿はグッドリッチ 藍住': sourcePhoto(
     'aizumi-stay-01.jpg',
-    '宿はグッドリッチ 藍住の客室・外観写真',
-    'Yado wa Goodrich Aizumi room or exterior photo',
+    '宿はグッドリッチ 藍住の客室写真',
+    '宿はグッドリッチ 藍住 room photo',
     'https://travel.rakuten.co.jp/HOTEL/180561/180561.html',
     '楽天トラベル'
   ),
 
+  'おくむら旅館': sourcePhoto(
+    'aizumi-stay-02.jpg',
+    'おくむら旅館の客室写真',
+    'おくむら旅館 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/183434/183434.html',
+    '楽天トラベル'
+  ),
 };

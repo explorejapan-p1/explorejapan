@@ -47,7 +47,8 @@ export const TOKUSHIMA_CITY = {
   }
 } as const;
 
-export const TOKUSHIMA_CITY_EXPECTED_ROW_COUNT = 13;
+/** Base tourism rows before EXTRA bath densify. */
+export const TOKUSHIMA_CITY_EXPECTED_ROW_COUNT = 19;
 export const TOKUSHIMA_CITY_EXPECTED_GEO_COUNT = 13;
 
 function wikiPhoto(
@@ -620,33 +621,33 @@ export const TOKUSHIMA_CITY_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto
     "https://tabelog.com/tokushima/A3601/A360101/36002138/",
     '食べログ'
   ),
-  "JRホテルクレメント徳島": sourcePhoto(
-    "tokushima-stay-clement-room.jpg",
-    "JRホテルクレメント徳島の客室・外観写真",
-    "JRホテルクレメント徳島 room or exterior photo",
-    "https://www.jrclement.co.jp/tokushima/",
-    "JRホテルクレメント徳島公式"
+  'JRホテルクレメント徳島': sourcePhoto(
+    'tokushima-stay-clement-room.jpg',
+    'JRホテルクレメント徳島の客室写真',
+    'JRホテルクレメント徳島 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/4721/4721.html',
+    '楽天トラベル'
   ),
-  "ホテルサンルート徳島": sourcePhoto(
-    "tokushima-stay-sunroute-room.jpg",
-    "ホテルサンルート徳島の客室・外観写真",
-    "ホテルサンルート徳島 room or exterior photo",
-    "https://sotetsu-hotels.com/sunroute/tokushima/",
-    "ホテルサンルート徳島公式"
+  'ホテルサンルート徳島': sourcePhoto(
+    'tokushima-stay-sunroute-room.jpg',
+    'ホテルサンルート徳島の客室写真',
+    'ホテルサンルート徳島 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/79371/79371.html',
+    '楽天トラベル'
   ),
-  "ダイワロイネットホテル徳島駅前": sourcePhoto(
-    "tokushima-stay-daiwa-og.jpg",
-    "ダイワロイネットホテル徳島駅前の客室・外観写真",
-    "ダイワロイネットホテル徳島駅前 room or exterior photo",
-    "https://www.daiwaroynet.jp/tokushima-ekimae/",
-    "ダイワロイネットホテルズ公式"
+  'ダイワロイネットホテル徳島駅前': sourcePhoto(
+    'tokushima-stay-daiwa-roynet.jpg',
+    'ダイワロイネットホテル徳島駅前の客室写真',
+    'ダイワロイネットホテル徳島駅前 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/149130/149130.html',
+    '楽天トラベル'
   ),
-  "アパホテル〈徳島駅前〉": sourcePhoto(
-    "tokushima-stay-09.jpg",
-    "アパホテル〈徳島駅前〉の客室・外観写真",
-    "アパホテル〈徳島駅前〉 room or exterior photo",
-    "https://web.travel.rakuten.co.jp/share/HOTEL/19105/19105.jpg",
-    "楽天トラベル"
+  'アパホテル〈徳島駅前〉': sourcePhoto(
+    'tokushima-stay-09.jpg',
+    'アパホテル〈徳島駅前〉の客室・外観写真',
+    'アパホテル〈徳島駅前〉 room or exterior photo',
+    'https://web.travel.rakuten.co.jp/share/HOTEL/19105/19105.jpg',
+    '楽天トラベル'
   ),
   "東横INN徳島駅前": sourcePhoto(
     "tokushima-stay-toyoko-og.jpg",
@@ -662,26 +663,26 @@ export const TOKUSHIMA_CITY_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto
     "https://web.travel.rakuten.co.jp/share/HOTEL/71949/71949.jpg",
     "楽天トラベル"
   ),
-  "スマイルホテル徳島": sourcePhoto(
-    "tokushima-stay-smile.jpg",
-    "スマイルホテル徳島の客室・外観写真",
-    "スマイルホテル徳島 room or exterior photo",
-    "https://www.smile-hotels.com/hotels/tokushima/",
-    "スマイルホテル徳島公式"
+  'スマイルホテル徳島': sourcePhoto(
+    'tokushima-stay-smile.jpg',
+    'スマイルホテル徳島の客室写真',
+    'スマイルホテル徳島 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/532/532.html',
+    '楽天トラベル'
   ),
-  "ホテル グランドパレス徳島": sourcePhoto(
-    "tokushima-stay-11.jpg",
-    "ホテル グランドパレス徳島の客室・外観写真",
-    "ホテル グランドパレス徳島 room or exterior photo",
-    "https://web.travel.rakuten.co.jp/share/HOTEL/8830/8830.jpg",
-    "楽天トラベル"
+  'ホテル グランドパレス徳島': sourcePhoto(
+    'tokushima-stay-grand-palace.jpg',
+    'ホテル グランドパレス徳島の客室写真',
+    'ホテル グランドパレス徳島 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/9417/9417.html',
+    '楽天トラベル'
   ),
-  "アグネスホテル徳島": sourcePhoto(
-    "tokushima-stay-10.jpg",
-    "アグネスホテル徳島の客室・外観写真",
-    "アグネスホテル徳島 room or exterior photo",
-    "https://web.travel.rakuten.co.jp/share/HOTEL/9417/9417.jpg",
-    "楽天トラベル"
+  'アグネスホテル徳島': sourcePhoto(
+    'tokushima-stay-agnes.jpg',
+    'アグネスホテル徳島の客室写真',
+    'アグネスホテル徳島 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/19105/19105.html',
+    '楽天トラベル'
   ),
   "徳島ワシントンホテルプラザ": sourcePhoto(
     "tokushima-stay-14.jpg",
@@ -697,12 +698,12 @@ export const TOKUSHIMA_CITY_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto
     "https://web.travel.rakuten.co.jp/share/HOTEL/532/532.jpg",
     "楽天トラベル"
   ),
-  "アグネスホテル プラス": sourcePhoto(
-    "tokushima-stay-18.jpg",
-    "アグネスホテル プラスの客室・外観写真",
-    "アグネスホテル プラス room or exterior photo",
-    "https://web.travel.rakuten.co.jp/share/HOTEL/1530/1530.jpg",
-    "楽天トラベル"
+  'アグネスホテル プラス': sourcePhoto(
+    'tokushima-stay-agnes-plus.jpg',
+    'アグネスホテル プラスの客室写真',
+    'アグネスホテル プラス room photo',
+    'https://travel.rakuten.co.jp/HOTEL/130110/130110.html',
+    '楽天トラベル'
   ),
   "ホテル フォーシーズン徳島": sourcePhoto(
     "tokushima-stay-24.jpg",
@@ -711,12 +712,12 @@ export const TOKUSHIMA_CITY_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto
     "https://web.travel.rakuten.co.jp/share/HOTEL/151296/151296.jpg",
     "楽天トラベル"
   ),
-  "阿波観光ホテル": sourcePhoto(
-    "tokushima-stay-08.jpg",
-    "阿波観光ホテルの客室・外観写真",
-    "阿波観光ホテル room or exterior photo",
-    "https://web.travel.rakuten.co.jp/share/HOTEL/7503/7503.jpg",
-    "楽天トラベル"
+  '阿波観光ホテル': sourcePhoto(
+    'tokushima-stay-awa-kanko.jpg',
+    '阿波観光ホテルの客室写真',
+    '阿波観光ホテル room photo',
+    'https://travel.rakuten.co.jp/HOTEL/357/357.html',
+    '楽天トラベル'
   ),
   "Tabist Hotel Tiki": sourcePhoto(
     "tokushima-stay-41.jpg",
@@ -809,12 +810,12 @@ export const TOKUSHIMA_CITY_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto
     "https://img.travel.rakuten.co.jp/share/image_up/8723/LARGE/hBi1vE.jpeg",
     "楽天トラベル"
   ),
-  "センチュリープラザホテル": sourcePhoto(
-    "tokushima-stay-19.jpg",
-    "センチュリープラザホテルの客室・外観写真",
-    "センチュリープラザホテル room or exterior photo",
-    "https://web.travel.rakuten.co.jp/share/HOTEL/84972/84972.jpg",
-    "楽天トラベル"
+  'センチュリープラザホテル': sourcePhoto(
+    'tokushima-stay-century.jpg',
+    'センチュリープラザホテルの客室写真',
+    'センチュリープラザホテル room photo',
+    'https://travel.rakuten.co.jp/HOTEL/1530/1530.html',
+    '楽天トラベル'
   ),
   "ビジネスホテル アバァンティ(AVANTI)": sourcePhoto(
     "tokushima-stay-21.jpg",
@@ -933,11 +934,102 @@ export const TOKUSHIMA_CITY_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto
     'Amico East Building exterior, Tokushima'
   ),
   '天然温泉びざんの湯': sourcePhoto(
-    'bizan-no-yu-bath.jpg',
-    '天然温泉びざんの湯の浴場（ホテルサンルート徳島）',
-    'Bizan-no-Yu natural hot spring bath, Hotel Sunroute Tokushima',
-    'https://sotetsu-hotels.com/sunroute/tokushima/',
-    'ホテルサンルート徳島'
+    'tokushima-onsen-bizan.jpg',
+    '天然温泉びざんの湯の浴場写真',
+    '天然温泉びざんの湯 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/79371/79371.html',
+    '楽天トラベル'
+  ),
+  'ハイパーイン メイアップ徳島': sourcePhoto(
+    'tokushima-stay-mayup.jpg',
+    'ハイパーイン メイアップ徳島の客室写真',
+    'ハイパーイン メイアップ徳島 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/17801/17801.html',
+    '楽天トラベル'
+  ),
+  'ビジネスホテル パレス２１': sourcePhoto(
+    'tokushima-stay-palace21.jpg',
+    'ビジネスホテル パレス２１の客室写真',
+    'ビジネスホテル パレス２１ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/29720/29720.html',
+    '楽天トラベル'
+  ),
+  '阿波の国・昴宿よしの': sourcePhoto(
+    'tokushima-stay-yoshino.jpg',
+    '阿波の国・昴宿よしのの客室写真',
+    '阿波の国・昴宿よしの room photo',
+    'https://travel.rakuten.co.jp/HOTEL/74531/74531.html',
+    '楽天トラベル'
+  ),
+  'ホテルたいよう農園 徳島県庁前': sourcePhoto(
+    'tokushima-stay-taiyo.jpg',
+    'ホテルたいよう農園 徳島県庁前の客室写真',
+    'ホテルたいよう農園 徳島県庁前 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/76869/76869.html',
+    '楽天トラベル'
+  ),
+  '天空のスカイビューホテル 眉山海月': sourcePhoto(
+    'tokushima-stay-bizan-umizuki.jpg',
+    '天空のスカイビューホテル 眉山海月の客室写真',
+    '天空のスカイビューホテル 眉山海月 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/187619/187619.html',
+    '楽天トラベル'
+  ),
+  'ホテル偕幸': sourcePhoto(
+    'tokushima-stay-kaiko.jpg',
+    'ホテル偕幸の客室写真',
+    'ホテル偕幸 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/197157/197157.html',
+    '楽天トラベル'
+  ),
+  'ＣＯＺＹ ＣＯＭＦＯＲＴＳ ＨＯＴＥＬ（コージーコンフォーツホテル）': sourcePhoto(
+    'tokushima-stay-cozy.jpg',
+    'ＣＯＺＹ ＣＯＭＦＯＲＴＳ ＨＯＴＥＬ（コージーコンフォーツホテル）の客室写真',
+    'ＣＯＺＹ ＣＯＭＦＯＲＴＳ ＨＯＴＥＬ（コージーコンフォーツホテル） room photo',
+    'https://travel.rakuten.co.jp/HOTEL/202210/202210.html',
+    '楽天トラベル'
+  ),
+  '阿波観光ホテル 大浴場': sourcePhoto(
+    'tokushima-onsen-awa-kanko.jpg',
+    '阿波観光ホテル 大浴場の浴場写真',
+    '阿波観光ホテル 大浴場 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/357/357.html',
+    '楽天トラベル'
+  ),
+  'センチュリープラザホテル 女湯': sourcePhoto(
+    'tokushima-onsen-century.jpg',
+    'センチュリープラザホテル 女湯の浴場写真',
+    'センチュリープラザホテル 女湯 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/1530/1530.html',
+    '楽天トラベル'
+  ),
+  'ホテル サンシャイン徳島 大浴場': sourcePhoto(
+    'tokushima-onsen-sunshine.jpg',
+    'ホテル サンシャイン徳島 大浴場の浴場写真',
+    'ホテル サンシャイン徳島 大浴場 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/32020/32020.html',
+    '楽天トラベル'
+  ),
+  '阿波の国・昴宿よしの 大浴場': sourcePhoto(
+    'tokushima-onsen-yoshino.jpg',
+    '阿波の国・昴宿よしの 大浴場の浴場写真',
+    '阿波の国・昴宿よしの 大浴場 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/74531/74531.html',
+    '楽天トラベル'
+  ),
+  'アグネスホテル プラス 大浴場': sourcePhoto(
+    'tokushima-onsen-agnes-plus.jpg',
+    'アグネスホテル プラス 大浴場の浴場写真',
+    'アグネスホテル プラス 大浴場 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/130110/130110.html',
+    '楽天トラベル'
+  ),
+  '天空のスカイビューホテル 眉山海月 露天風呂': sourcePhoto(
+    'tokushima-onsen-bizan-umizuki.jpg',
+    '天空のスカイビューホテル 眉山海月 露天風呂の浴場写真',
+    '天空のスカイビューホテル 眉山海月 露天風呂 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/187619/187619.html',
+    '楽天トラベル'
   ),
 };
 
@@ -969,7 +1061,7 @@ function sight(
 }
 
 /** Photo-only tourism rows copied from city pages. No frozen jsonl. Wikipedia coords. */
-export const TOKUSHIMA_CITY_FACILITIES: readonly FacilityRow[] = [
+const TOKUSHIMA_CITY_BASE_FACILITIES: readonly FacilityRow[] = [
   sight(
     'tokushima-city-sight-01',
     '眉山',
@@ -1088,3 +1180,108 @@ export const TOKUSHIMA_CITY_FACILITIES: readonly FacilityRow[] = [
     134.5512
   )
 ];
+
+const TOKUSHIMA_CITY_EXTRA_FACILITIES: readonly FacilityRow[] = [
+  {
+    id: 'tokushima-city-extra-onsen-01',
+    jis: TOKUSHIMA_CITY.jis,
+    name_ja: "阿波観光ホテル 大浴場",
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: "徳島県徳島市一番町3-16-3",
+    phone: null,
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/357/357.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/357/357.html',
+    license: '楽天トラベル掲載情報',
+    accessed: '2026-09-09'
+  },
+  {
+    id: 'tokushima-city-extra-onsen-02',
+    jis: TOKUSHIMA_CITY.jis,
+    name_ja: "センチュリープラザホテル 女湯",
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: "徳島県徳島市南昭和町1-46-1",
+    phone: null,
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/1530/1530.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/1530/1530.html',
+    license: '楽天トラベル掲載情報',
+    accessed: '2026-09-09'
+  },
+  {
+    id: 'tokushima-city-extra-onsen-03',
+    jis: TOKUSHIMA_CITY.jis,
+    name_ja: "ホテル サンシャイン徳島 大浴場",
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: "徳島県徳島市南出来島町2丁目9",
+    phone: null,
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/32020/32020.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/32020/32020.html',
+    license: '楽天トラベル掲載情報',
+    accessed: '2026-09-09'
+  },
+  {
+    id: 'tokushima-city-extra-onsen-04',
+    jis: TOKUSHIMA_CITY.jis,
+    name_ja: "阿波の国・昴宿よしの 大浴場",
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: "徳島県徳島市一番町3-18",
+    phone: null,
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/74531/74531.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/74531/74531.html',
+    license: '楽天トラベル掲載情報',
+    accessed: '2026-09-09'
+  },
+  {
+    id: 'tokushima-city-extra-onsen-05',
+    jis: TOKUSHIMA_CITY.jis,
+    name_ja: "アグネスホテル プラス 大浴場",
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: "徳島県徳島市寺島本町西1-34",
+    phone: null,
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/130110/130110.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/130110/130110.html',
+    license: '楽天トラベル掲載情報',
+    accessed: '2026-09-09'
+  },
+  {
+    id: 'tokushima-city-extra-onsen-06',
+    jis: TOKUSHIMA_CITY.jis,
+    name_ja: "天空のスカイビューホテル 眉山海月 露天風呂",
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: "徳島県徳島市八万町中津山3-70",
+    phone: null,
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/187619/187619.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/187619/187619.html',
+    license: '楽天トラベル掲載情報',
+    accessed: '2026-09-09'
+  }
+];
+
+export const TOKUSHIMA_CITY_FACILITIES: readonly FacilityRow[] = [
+  ...TOKUSHIMA_CITY_BASE_FACILITIES,
+  ...TOKUSHIMA_CITY_EXTRA_FACILITIES
+];
+

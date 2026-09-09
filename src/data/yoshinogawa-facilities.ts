@@ -3,16 +3,30 @@ import path from 'node:path';
 import {
   FACILITY_CATEGORIES,
   PACK_ACCESSED,
-  YOSHINOGAWA_EXPECTED_CATEGORY_COUNTS,
-  YOSHINOGAWA_EXPECTED_GEO_COUNT,
-  YOSHINOGAWA_EXPECTED_HOURS_COUNT,
-  YOSHINOGAWA_EXPECTED_MISSING_ADDRESS,
-  YOSHINOGAWA_EXPECTED_MISSING_PHONE,
-  YOSHINOGAWA_EXPECTED_ROW_COUNT,
   YOSHINOGAWA_PACK_JIS,
   type FacilityCategory,
   type FacilityRow
 } from './facility-schema';
+
+/** Frozen jsonl baselines (before EXTRA bath rows). */
+const PACK_ROW_COUNT = 335;
+const PACK_GEO_COUNT = 29;
+const PACK_HOURS_COUNT = 108;
+const PACK_MISSING_ADDRESS = 112;
+const PACK_MISSING_PHONE = 286;
+const PACK_CATEGORY_COUNTS: Record<FacilityCategory, number> = {
+  tourism: 38,
+  cultural_property: 77,
+  care: 0,
+  aed: 0,
+  shelter: 96,
+  emergency_evacuation_site: 48,
+  hospital: 0,
+  childcare: 26,
+  wifi: 0,
+  public_facility: 21,
+  gtfs_stop: 29
+};
 
 const PACK_PATH = path.join(process.cwd(), 'data', 'frozen', 'yoshinogawa-facilities.jsonl');
 
@@ -113,16 +127,16 @@ function loadYoshinogawaFacilities(): readonly FacilityRow[] {
     const parsed: unknown = JSON.parse(line);
     rows.push(parseFacilityRow(parsed));
   }
-  if (rows.length !== YOSHINOGAWA_EXPECTED_ROW_COUNT) {
-    throw new Error(`yoshinogawa pack row count ${rows.length} != ${YOSHINOGAWA_EXPECTED_ROW_COUNT}`);
+  if (rows.length !== PACK_ROW_COUNT) {
+    throw new Error(`yoshinogawa pack row count ${rows.length} != ${PACK_ROW_COUNT}`);
   }
   const counts = emptyCounts();
   for (const row of rows) {
     counts[row.category] += 1;
   }
   for (const cat of FACILITY_CATEGORIES) {
-    if (counts[cat] !== YOSHINOGAWA_EXPECTED_CATEGORY_COUNTS[cat]) {
-      throw new Error(`yoshinogawa pack ${cat} ${counts[cat]} != ${YOSHINOGAWA_EXPECTED_CATEGORY_COUNTS[cat]}`);
+    if (counts[cat] !== PACK_CATEGORY_COUNTS[cat]) {
+      throw new Error(`yoshinogawa pack ${cat} ${counts[cat]} != ${PACK_CATEGORY_COUNTS[cat]}`);
     }
   }
   let geo = 0;
@@ -135,19 +149,41 @@ function loadYoshinogawaFacilities(): readonly FacilityRow[] {
     if (isBlank(row.address)) missingAddress += 1;
     if (isBlank(row.phone)) missingPhone += 1;
   }
-  if (geo !== YOSHINOGAWA_EXPECTED_GEO_COUNT) {
-    throw new Error(`yoshinogawa pack geo ${geo} != ${YOSHINOGAWA_EXPECTED_GEO_COUNT}`);
+  if (geo !== PACK_GEO_COUNT) {
+    throw new Error(`yoshinogawa pack geo ${geo} != ${PACK_GEO_COUNT}`);
   }
-  if (hours !== YOSHINOGAWA_EXPECTED_HOURS_COUNT) {
-    throw new Error(`yoshinogawa pack hours ${hours} != ${YOSHINOGAWA_EXPECTED_HOURS_COUNT}`);
+  if (hours !== PACK_HOURS_COUNT) {
+    throw new Error(`yoshinogawa pack hours ${hours} != ${PACK_HOURS_COUNT}`);
   }
-  if (missingAddress !== YOSHINOGAWA_EXPECTED_MISSING_ADDRESS) {
-    throw new Error(`yoshinogawa pack address gaps ${missingAddress} != ${YOSHINOGAWA_EXPECTED_MISSING_ADDRESS}`);
+  if (missingAddress !== PACK_MISSING_ADDRESS) {
+    throw new Error(`yoshinogawa pack address gaps ${missingAddress} != ${PACK_MISSING_ADDRESS}`);
   }
-  if (missingPhone !== YOSHINOGAWA_EXPECTED_MISSING_PHONE) {
-    throw new Error(`yoshinogawa pack phone gaps ${missingPhone} != ${YOSHINOGAWA_EXPECTED_MISSING_PHONE}`);
+  if (missingPhone !== PACK_MISSING_PHONE) {
+    throw new Error(`yoshinogawa pack phone gaps ${missingPhone} != ${PACK_MISSING_PHONE}`);
   }
   return rows;
 }
 
-export const YOSHINOGAWA_FACILITIES: readonly FacilityRow[] = loadYoshinogawaFacilities();
+const YOSHINOGAWA_EXTRA_FACILITIES: readonly FacilityRow[] = [
+  {
+    id: 'yoshinogawa-extra-dokomo-bath',
+    jis: YOSHINOGAWA_PACK_JIS,
+    name_ja: '農家民宿どこも山 五右衛門風呂',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県吉野川市美郷字丸山14-2',
+    phone: null,
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/187358/187358.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/187358/187358.html',
+    license: '楽天トラベル掲載情報',
+    accessed: '2026-09-09'
+  }
+];
+
+export const YOSHINOGAWA_FACILITIES: readonly FacilityRow[] = [
+  ...loadYoshinogawaFacilities(),
+  ...YOSHINOGAWA_EXTRA_FACILITIES
+];

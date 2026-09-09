@@ -280,11 +280,11 @@ export const YOSHINOGAWA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> 
     'Boroboro Falls, Misato, Yoshinogawa'
   ),
   'ふいご温泉': sourcePhoto(
-    'fuigo-onsen-bath.jpg',
-    'ふいご温泉の大浴場（吉野川市山川町）',
-    'Fuigo Onsen large bath, Yamakawa-cho, Yoshinogawa',
-    FUIGO_ROOM,
-    'ふいご温泉'
+    'yoshinogawa-onsen-fuigo.jpg',
+    'ふいご温泉の浴場写真',
+    'ふいご温泉 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/171863/171863.html',
+    '楽天トラベル'
   ),
   '美郷の湯': sourcePhoto(
     'misato-2.jpg',
@@ -294,23 +294,23 @@ export const YOSHINOGAWA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> 
     '四季芳る・美郷の湯'
   ),
   'ビジネスホテル アクセス鴨島': sourcePhoto(
-    'access-kamojima-room.jpg',
-    'ビジネスホテル アクセス鴨島の客室（吉野川市鴨島町）',
-    'Guest room at Business Hotel Access Kamojima, Yoshinogawa',
-    ACCESS_HOME,
-    'ビジネスホテル アクセス鴨島'
+    'yoshinogawa-stay-access.jpg',
+    'ビジネスホテル アクセス鴨島の客室写真',
+    'ビジネスホテル アクセス鴨島 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/28344/28344.html',
+    '楽天トラベル'
   ),
   'セントラルホテル鴨島': sourcePhoto(
     'yoshinogawa-stay-central.jpg',
-    'セントラルホテル鴨島の客室・外観写真',
-    'Central Hotel Kamojima room or exterior photo',
+    'セントラルホテル鴨島の客室写真',
+    'セントラルホテル鴨島 room photo',
     'https://travel.rakuten.co.jp/HOTEL/40401/40401.html',
     '楽天トラベル'
   ),
   'ビジネスホテル ロードサイド': sourcePhoto(
     'yoshinogawa-stay-roadside.jpg',
-    'ビジネスホテル ロードサイドの客室・外観写真',
-    'Business Hotel Roadside room or exterior photo',
+    'ビジネスホテル ロードサイドの客室写真',
+    'ビジネスホテル ロードサイド room photo',
     'https://travel.rakuten.co.jp/HOTEL/139435/139435.html',
     '楽天トラベル'
   ),
@@ -407,4 +407,32 @@ export const YOSHINOGAWA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> 
     '食べログ'
   ),
 
+  'Guest House チャンネルカン': sourcePhoto(
+    'yoshinogawa-stay-channel.jpg',
+    'Guest House チャンネルカンの客室写真',
+    'Guest House チャンネルカン room photo',
+    'https://travel.rakuten.co.jp/HOTEL/151106/151106.html',
+    '楽天トラベル'
+  ),
+  'どこも山': sourcePhoto(
+    'yoshinogawa-stay-dokomo.jpg',
+    'どこも山の客室写真',
+    'どこも山 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/187358/187358.html',
+    '楽天トラベル'
+  ),
+  'パインハウス': sourcePhoto(
+    'yoshinogawa-stay-pine.jpg',
+    'パインハウスの客室写真',
+    'パインハウス room photo',
+    'https://travel.rakuten.co.jp/HOTEL/191219/191219.html',
+    '楽天トラベル'
+  ),
+  '農家民宿どこも山 五右衛門風呂': sourcePhoto(
+    'yoshinogawa-onsen-dokomo.jpg',
+    '農家民宿どこも山 五右衛門風呂の浴場写真',
+    '農家民宿どこも山 五右衛門風呂 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/187358/187358.html',
+    '楽天トラベル'
+  ),
 };

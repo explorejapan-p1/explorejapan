@@ -18,7 +18,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const TOKUSHIMA_CITY_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const TOKUSHIMA_CITY_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const TOKUSHIMA_CITY_TRAVEL_SOURCES = {
   kanko: 'https://www.tokushima-kankou.or.jp/',
@@ -309,6 +309,55 @@ export const TOKUSHIMA_CITY_TRAVEL_STAY: readonly TravelRow[] = [
     "088-654-7878",
     "https://web.travel.rakuten.co.jp/share/HOTEL/172414/172414.jpg"
   ),
+  stay(
+    "tokushima-city-stay-36",
+    "ハイパーイン メイアップ徳島",
+    "徳島県徳島市幸町3-108",
+    null,
+    "https://travel.rakuten.co.jp/HOTEL/17801/17801.html"
+  ),
+  stay(
+    "tokushima-city-stay-37",
+    "ビジネスホテル パレス２１",
+    "徳島県徳島市中洲町1-26",
+    null,
+    "https://travel.rakuten.co.jp/HOTEL/29720/29720.html"
+  ),
+  stay(
+    "tokushima-city-stay-38",
+    "阿波の国・昴宿よしの",
+    "徳島県徳島市一番町3-18",
+    null,
+    "https://travel.rakuten.co.jp/HOTEL/74531/74531.html"
+  ),
+  stay(
+    "tokushima-city-stay-39",
+    "ホテルたいよう農園 徳島県庁前",
+    "徳島県徳島市昭和町1-15",
+    null,
+    "https://travel.rakuten.co.jp/HOTEL/76869/76869.html"
+  ),
+  stay(
+    "tokushima-city-stay-40",
+    "天空のスカイビューホテル 眉山海月",
+    "徳島県徳島市八万町中津山3-70",
+    null,
+    "https://travel.rakuten.co.jp/HOTEL/187619/187619.html"
+  ),
+  stay(
+    "tokushima-city-stay-41",
+    "ホテル偕幸",
+    "徳島県徳島市伊賀町1-8",
+    null,
+    "https://travel.rakuten.co.jp/HOTEL/197157/197157.html"
+  ),
+  stay(
+    "tokushima-city-stay-42",
+    "ＣＯＺＹ ＣＯＭＦＯＲＴＳ ＨＯＴＥＬ（コージーコンフォーツホテル）",
+    "徳島県徳島市仲之町1-40",
+    null,
+    "https://travel.rakuten.co.jp/HOTEL/202210/202210.html"
+  )
 ];
 
 function dining(
@@ -835,7 +884,15 @@ function isSightsCategory(value: string): boolean {
 export const TOKUSHIMA_CITY_EXPERIENCE_PACK_NAMES = ['あわぎん眉山ロープウエイ', '徳島城博物館', '徳島ガラススタジオ', 'とくしま動物園', 'ひょうたん島クルーズ'] as const;
 export const TOKUSHIMA_CITY_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(TOKUSHIMA_CITY_EXPERIENCE_PACK_NAMES);
 
-export const TOKUSHIMA_CITY_ONSEN_PACK_NAMES = ['天然温泉びざんの湯'] as const;
+export const TOKUSHIMA_CITY_ONSEN_PACK_NAMES = [
+  "天然温泉びざんの湯",
+  "阿波観光ホテル 大浴場",
+  "センチュリープラザホテル 女湯",
+  "ホテル サンシャイン徳島 大浴場",
+  "阿波の国・昴宿よしの 大浴場",
+  "アグネスホテル プラス 大浴場",
+  "天空のスカイビューホテル 眉山海月 露天風呂"
+] as const;
 export const TOKUSHIMA_CITY_ONSEN_PACK_SET: ReadonlySet<string> = new Set(TOKUSHIMA_CITY_ONSEN_PACK_NAMES);
 
 export function isTokushimaCityOnsenPackRow(row: {category: string; name_ja: string}): boolean {

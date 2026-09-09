@@ -15,7 +15,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const YOSHINOGAWA_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const YOSHINOGAWA_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const YOSHINOGAWA_TRAVEL_SOURCES = {
   stayList: 'https://www.city.yoshinogawa.lg.jp/docs/2010101500109/',
@@ -24,7 +24,8 @@ export const YOSHINOGAWA_TRAVEL_SOURCES = {
   fuigoRoom: 'https://fuigo-onsen.com/room.html',
   misato: 'https://misato-spica.com/',
   access: 'https://access-kamojima.com/',
-  tabelogCity: 'https://tabelog.com/tokushima/C36205/rstLst/'
+  tabelogCity: 'https://tabelog.com/tokushima/C36205/rstLst/',
+  rakutenTravel: 'https://travel.rakuten.co.jp/'
 } as const;
 
 /** Exact tourism-pack names shown on 温泉, not 観光. */
@@ -33,7 +34,8 @@ export const YOSHINOGAWA_ONSEN_PACK_NAMES = [
   'ふいご温泉',
   '美郷の湯',
   '保養センター上桜温泉',
-  'ヘルスランド美郷'
+  'ヘルスランド美郷',
+  '農家民宿どこも山 五右衛門風呂'
 ] as const;
 
 export const YOSHINOGAWA_ONSEN_PACK_SET: ReadonlySet<string> = new Set(
