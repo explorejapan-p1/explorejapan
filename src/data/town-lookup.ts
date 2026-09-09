@@ -2438,11 +2438,11 @@ export const YASUDA_LOOKUP: LookupTown = {
   travelCommerce: YASUDA_TRAVEL_COMMERCE,
   travelAll: YASUDA_TRAVEL_ALL,
   coverageJa:
-    '安田町（JIS 39304）観光5・宿泊1・飲食6・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県16つ目のLIVEハブ。',
+    '安田町（JIS 39304）観光7・宿泊1・飲食6・温泉0・体験1（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県16つ目のLIVEハブ。',
   coverageEn:
-    'Yasuda Town (JIS 39304), 5 tourism + 1 stay + 6 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Sixteenth LIVE Kochi hub.',
-  mapLabelJa: '安田町の出典座標5件',
-  mapLabelEn: '5 sourced coordinates in Yasuda Town',
+    'Yasuda Town (JIS 39304), 7 tourism + 1 stay + 6 dining + 0 onsen + 1 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Sixteenth LIVE Kochi hub.',
+  mapLabelJa: '安田町の出典座標8件',
+  mapLabelEn: '8 sourced coordinates in Yasuda Town',
   mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons等出典座標5件（accessed 2026-09-09）。',
   mapCitePackEn: 'Points: 7 sourced coordinates for town/official facilities (accessed 2026-09-09).',
   licenseNoteJa: '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',

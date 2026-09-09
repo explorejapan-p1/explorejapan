@@ -1,31 +1,34 @@
 /**
  * Yasuda Town travel layer. No frozen pack.
- * Dining from 食べログ 安田町 (C39304) — thin town honest 6 with 640 dish JPGs (skipped lodging/cafe/sweets/bento/sake / no-640 / cake). Stay: いなかじかん Rakuten 和室. Onsen: 0 (バスルーム/サウナ≠温泉; stay≠onsen). Experience: 0.
+ * Dining: Tabelog C39304 honest 6 (pool exhausted: lodging/cafe/bento/sake/facility). Stay: いなかじかん. Onsen: 0. Experience: 神峯寺 遍路参拝. Sights +役場/大迎トンネル. TG610 densify.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {YASUDA, YASUDA_SIGHT_PHOTOS} from './yasuda';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const YASUDA_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const YASUDA_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const YASUDA_TRAVEL_SOURCES = {
   home: 'https://www.town.yasuda.kochi.jp/', hall: 'https://ja.wikipedia.org/wiki/%E5%AE%89%E7%94%B0%E7%94%BA',
   kankou: 'https://www.town.yasuda.kochi.jp/',
   shimaishi: 'https://commons.wikimedia.org/wiki/File:%E5%B3%B6%E7%9F%B3%E3%83%94%E3%82%AF%E3%83%8B%E3%83%83%E3%82%AF%E5%BA%83%E5%A0%B4_-_panoramio.jpg',
   tabelogCity: 'https://tabelog.com/kochi/C39304/rstLst/',
-  inakajikan: 'https://travel.rakuten.co.jp/HOTEL/197146/197146.html'
+  inakajikan: 'https://travel.rakuten.co.jp/HOTEL/197146/197146.html',
+  townHall: 'https://commons.wikimedia.org/wiki/File:Yasuda_town-office.jpg',
+  kounomine: 'https://commons.wikimedia.org/wiki/File:Kounomineji_20240312_1.jpg',
+  oomukae: 'https://commons.wikimedia.org/wiki/File:Oomukae_tunnel.JPG'
 } as const;
 
 export const YASUDA_ONSEN_PACK_NAMES = [] as const;
 export const YASUDA_ONSEN_PACK_SET: ReadonlySet<string> = new Set(YASUDA_ONSEN_PACK_NAMES);
-export const YASUDA_EXPERIENCE_PACK_NAMES = [] as const;
+export const YASUDA_EXPERIENCE_PACK_NAMES = ['神峯寺 遍路参拝'] as const;
 export const YASUDA_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(YASUDA_EXPERIENCE_PACK_NAMES);
 export const YASUDA_STAY_PACK_NAMES = [] as const;
 export const YASUDA_STAY_PACK_SET: ReadonlySet<string> = new Set(YASUDA_STAY_PACK_NAMES);
 export const YASUDA_SHOPPING_PACK_NAMES = [] as const;
 export const YASUDA_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(YASUDA_SHOPPING_PACK_NAMES);
 
-export const YASUDA_SIGHT_PINS = ['島石ピクニック広場','唐浜休憩所','別所','安田駅','唐浜駅'] as const;
+export const YASUDA_SIGHT_PINS = ['島石ピクニック広場','唐浜休憩所','別所','安田駅','唐浜駅','安田町役場','大迎トンネル'] as const;
 
 function stay(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: YASUDA_TRAVEL_ACCESSED};
