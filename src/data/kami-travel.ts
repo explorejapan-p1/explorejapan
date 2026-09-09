@@ -1,6 +1,6 @@
 /**
  * Kami City travel layer. No frozen pack.
- * Dining from 食べログ 香美市 (C39212). Stay: The Sixth Diary Kahoku Rakuten room. Onsen: honest 0 (no attributable 大浴場 keys; stay room ≠ onsen). Experience: 道の駅美良布.
+ * Dining from 食べログ 香美市 (C39212). Stay: TG610 densify Rakuten 部屋 stills. Onsen: honest 0 (no attributable 大浴場 keys; stay room ≠ onsen). Experience: 道の駅美良布.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
@@ -31,7 +31,12 @@ function stay(id: string, name_ja: string, address: string | null, phone: string
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: KAMI_TRAVEL_ACCESSED};
 }
 export const KAMI_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('kami-stay-01', 'ザ・シックスダイアリーかほくホテルアンドリゾート', '高知県香美市香北町美良布1224-2', '0887-59-2380', 'https://travel.rakuten.co.jp/HOTEL/172327/172327.html')
+  stay('kami-stay-01', 'ザ・シックスダイアリーかほくホテルアンドリゾート', '高知県香美市香北町美良布1224-2', '0887-59-2380', 'https://travel.rakuten.co.jp/HOTEL/172327/172327.html'),
+  stay('kami-stay-02', '物部川のほとりの温泉宿　夢の温泉', '高知県香美市土佐山田町宮ノ口364', '0887-52-2334', 'https://travel.rakuten.co.jp/HOTEL/13467/13467.html'),
+  stay('kami-stay-03', '癒しの湯宿　龍河温泉', '高知県香美市土佐山田町佐古薮430-1', '0887-53-4126', 'https://travel.rakuten.co.jp/HOTEL/13810/13810.html'),
+  stay('kami-stay-04', 'ほっと平山', '高知県香美市土佐山田町平山459', '0887-53-2076', 'https://travel.rakuten.co.jp/HOTEL/153431/153431.html'),
+  stay('kami-stay-05', '湖畔遊', '高知県香美市香北町有瀬100', null, 'https://travel.rakuten.co.jp/HOTEL/173097/173097.html'),
+  stay('kami-stay-06', 'ａｈａｃｃｏ　びらふ', '高知県香美市香北町美良布2686', '090-8943-4898', 'https://travel.rakuten.co.jp/HOTEL/194298/194298.html'),
 ];
 
 function dining(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {

@@ -122,8 +122,50 @@ export const AKI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   'ホテルＴＡＭＡＩ': sourcePhoto(
     'aki-stay-tamai.jpg',
     'ホテルＴＡＭＡＩの客室写真',
-    'Hotel TAMAI room photo',
+    'ホテルＴＡＭＡＩ room photo',
     'https://travel.rakuten.co.jp/HOTEL/20497/20497.html',
+    '楽天トラベル'
+  ),
+  '山登家旅館': sourcePhoto(
+    'aki-stay-yamato.jpg',
+    '山登家旅館の客室写真',
+    '山登家旅館 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/171978/171978.html',
+    '楽天トラベル'
+  ),
+  '一棟貸宿　有縁　ｕｅｎ': sourcePhoto(
+    'aki-stay-uen.jpg',
+    '一棟貸宿　有縁　ｕｅｎの客室写真',
+    '一棟貸宿　有縁　ｕｅｎ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/199158/199158.html',
+    '楽天トラベル'
+  ),
+  'ジローのおうち': sourcePhoto(
+    'aki-stay-jiro.jpg',
+    'ジローのおうちの客室写真',
+    'ジローのおうち room photo',
+    'https://travel.rakuten.co.jp/HOTEL/189184/189184.html',
+    '楽天トラベル'
+  ),
+  'Ｐｒｉｖａｔｅ　ｖｉｌｌａ　ＹＵＨＩＭＩ　夕日見の丘': sourcePhoto(
+    'aki-stay-yuhimi.jpg',
+    'Ｐｒｉｖａｔｅ　ｖｉｌｌａ　ＹＵＨＩＭＩ　夕日見の丘の客室写真',
+    'Ｐｒｉｖａｔｅ　ｖｉｌｌａ　ＹＵＨＩＭＩ　夕日見の丘 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/193275/193275.html',
+    '楽天トラベル'
+  ),
+  'ＶＩＬＬＡ　ＵＲＡＲＡ　ＴＨＥ　ＣＯＡＳＴ': sourcePhoto(
+    'aki-stay-urara.jpg',
+    'ＶＩＬＬＡ　ＵＲＡＲＡ　ＴＨＥ　ＣＯＡＳＴの客室写真',
+    'ＶＩＬＬＡ　ＵＲＡＲＡ　ＴＨＥ　ＣＯＡＳＴ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/189577/189577.html',
+    '楽天トラベル'
+  ),
+  'ビジネスホテル　弁長': sourcePhoto(
+    'aki-stay-bencho.jpg',
+    'ビジネスホテル　弁長の客室写真',
+    'ビジネスホテル　弁長 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/109004/109004.html',
     '楽天トラベル'
   ),
   '食酒家 KITENA': sourcePhoto('aki-39008213-dish.jpg', '食酒家 KITENAの料理写真', '食酒家 KITENA food photo', TABELOG_39008213, '食べログ'),

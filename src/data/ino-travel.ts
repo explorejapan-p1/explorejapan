@@ -1,6 +1,6 @@
 /**
  * Ino Town travel layer. No frozen pack.
- * Dining from 食べログ いの町 (C39386). Stay: Kamenoi Hotel Kochi Rakuten room. Onsen: honest 0 (no attributable 大浴場 keys; stay room ≠ onsen). Experience: 道の駅土佐和紙工芸村.
+ * Dining from 食べログ いの町 (C39386). Stay: TG610 densify Rakuten 部屋 stills. Onsen: honest 0 (no attributable 大浴場 keys; stay room ≠ onsen). Experience: 道の駅土佐和紙工芸村.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
@@ -31,7 +31,11 @@ function stay(id: string, name_ja: string, address: string | null, phone: string
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: INO_TRAVEL_ACCESSED};
 }
 export const INO_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('ino-stay-01', '亀の井ホテル 高知', '高知県吾川郡いの町波川1569', '088-892-1580', 'https://travel.rakuten.co.jp/HOTEL/44261/44261.html')
+  stay('ino-stay-01', '亀の井ホテル 高知', '高知県吾川郡いの町波川1569', '088-892-1580', 'https://travel.rakuten.co.jp/HOTEL/44261/44261.html'),
+  stay('ino-stay-02', 'ＶＩＬＬＡ　ＭＯＩＴＯＳ　ＮＩＹＯＤＯ', '高知県吾川郡いの町神谷3572-1', '080-6399-4681', 'https://travel.rakuten.co.jp/HOTEL/193128/193128.html'),
+  stay('ino-stay-03', '坂の上の家／民泊', '高知県吾川郡いの町鹿敷541', '090-9775-9504', 'https://travel.rakuten.co.jp/HOTEL/174639/174639.html'),
+  stay('ino-stay-04', '土佐和紙工芸村「くらうど」', '高知県吾川郡いの町鹿敷1226', null, 'https://travel.rakuten.co.jp/HOTEL/75287/75287.html'),
+  stay('ino-stay-05', 'Ｃａｓｏｌａｒｅ　Ｖｅｒｄｅ　Ｂｌｕ', '高知県吾川郡いの町下八川甲202', null, 'https://travel.rakuten.co.jp/HOTEL/192236/192236.html'),
 ];
 
 function dining(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {

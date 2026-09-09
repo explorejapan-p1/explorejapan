@@ -121,8 +121,36 @@ export const INO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   '亀の井ホテル 高知': sourcePhoto(
     'ino-stay-kamenoi.jpg',
     '亀の井ホテル 高知の客室写真',
-    'Kamenoi Hotel Kochi room photo',
+    '亀の井ホテル 高知 room photo',
     'https://travel.rakuten.co.jp/HOTEL/44261/44261.html',
+    '楽天トラベル'
+  ),
+  'ＶＩＬＬＡ　ＭＯＩＴＯＳ　ＮＩＹＯＤＯ': sourcePhoto(
+    'ino-stay-moitos.jpg',
+    'ＶＩＬＬＡ　ＭＯＩＴＯＳ　ＮＩＹＯＤＯの客室写真',
+    'ＶＩＬＬＡ　ＭＯＩＴＯＳ　ＮＩＹＯＤＯ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/193128/193128.html',
+    '楽天トラベル'
+  ),
+  '坂の上の家／民泊': sourcePhoto(
+    'ino-stay-sakanoue.jpg',
+    '坂の上の家／民泊の客室写真',
+    '坂の上の家／民泊 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/174639/174639.html',
+    '楽天トラベル'
+  ),
+  '土佐和紙工芸村「くらうど」': sourcePhoto(
+    'ino-stay-cloud.jpg',
+    '土佐和紙工芸村「くらうど」の客室写真',
+    '土佐和紙工芸村「くらうど」 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/75287/75287.html',
+    '楽天トラベル'
+  ),
+  'Ｃａｓｏｌａｒｅ　Ｖｅｒｄｅ　Ｂｌｕ': sourcePhoto(
+    'ino-stay-casolare.jpg',
+    'Ｃａｓｏｌａｒｅ　Ｖｅｒｄｅ　Ｂｌｕの客室写真',
+    'Ｃａｓｏｌａｒｅ　Ｖｅｒｄｅ　Ｂｌｕ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/192236/192236.html',
     '楽天トラベル'
   ),
   '街角食堂 ハラハチ': sourcePhoto('ino-39007065-dish.jpg', '街角食堂 ハラハチの料理写真', '街角食堂 ハラハチ food photo', TABELOG_39007065, '食べログ'),

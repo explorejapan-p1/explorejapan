@@ -1,6 +1,6 @@
 /**
  * Aki City travel layer. No frozen pack.
- * Dining from 食べログ 安芸市 (C39203). Stay: Hotel TAMAI Rakuten room. Onsen: honest 0 (no attributable 大浴場 keys; stay room ≠ onsen). Experience: 安芸市書道美術館.
+ * Dining from 食べログ 安芸市 (C39203). Stay: TG610 densify Rakuten 部屋 stills. Onsen: honest 0 (no attributable 大浴場 keys; stay room ≠ onsen). Experience: 安芸市書道美術館.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
@@ -31,7 +31,13 @@ function stay(id: string, name_ja: string, address: string | null, phone: string
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: AKI_TRAVEL_ACCESSED};
 }
 export const AKI_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('aki-stay-01', 'ホテルＴＡＭＡＩ', '高知県安芸市矢ノ丸1-6', '0887-35-2111', 'https://travel.rakuten.co.jp/HOTEL/20497/20497.html')
+  stay('aki-stay-01', 'ホテルＴＡＭＡＩ', '高知県安芸市矢ノ丸1-6', '0887-35-2111', 'https://travel.rakuten.co.jp/HOTEL/20497/20497.html'),
+  stay('aki-stay-02', '山登家旅館', '高知県安芸市本町1-1-34', '0887-35-2018', 'https://travel.rakuten.co.jp/HOTEL/171978/171978.html'),
+  stay('aki-stay-03', '一棟貸宿　有縁　ｕｅｎ', '高知県安芸市本町1-2-28', '070-9024-8690', 'https://travel.rakuten.co.jp/HOTEL/199158/199158.html'),
+  stay('aki-stay-04', 'ジローのおうち', '高知県安芸市畑山甲1001-2', null, 'https://travel.rakuten.co.jp/HOTEL/189184/189184.html'),
+  stay('aki-stay-05', 'Ｐｒｉｖａｔｅ　ｖｉｌｌａ　ＹＵＨＩＭＩ　夕日見の丘', '高知県安芸市赤野甲3083-2', '070-8433-8890', 'https://travel.rakuten.co.jp/HOTEL/193275/193275.html'),
+  stay('aki-stay-06', 'ＶＩＬＬＡ　ＵＲＡＲＡ　ＴＨＥ　ＣＯＡＳＴ', '高知県安芸市赤野甲899-19', '070-8453-7770', 'https://travel.rakuten.co.jp/HOTEL/189577/189577.html'),
+  stay('aki-stay-07', 'ビジネスホテル　弁長', '高知県安芸市矢ノ丸1-7-19', '0887-34-1177', 'https://travel.rakuten.co.jp/HOTEL/109004/109004.html'),
 ];
 
 function dining(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {

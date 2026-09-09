@@ -1,7 +1,7 @@
 /**
  * Kami City sourced facts. Do not invent population.
  * Hall / JIS from city HP (accessed 2026-09-08). JIS 39212. Fourth Kochi hub after 高知市・南国市・香南市.
- * No frozen pack — photo-only tourism + Tabelog dining + Rakuten stay. Honest 0 onsen (no attributable 大浴場 photo keys; stay uses room still ≠ onsen) / shop / commerce.
+ * No frozen pack — photo-only tourism + Tabelog dining + TG610 Rakuten stay densify. Honest 0 onsen (no attributable 大浴場 photo keys; stay uses room still ≠ onsen) / shop / commerce.
  */
 import type {FacilityRow} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
@@ -121,8 +121,43 @@ export const KAMI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   'ザ・シックスダイアリーかほくホテルアンドリゾート': sourcePhoto(
     'kami-stay-sixthdiary.jpg',
     'ザ・シックスダイアリーかほくホテルアンドリゾートの客室写真',
-    'The Sixth Diary Kahoku Hotel and Resort room photo',
+    'ザ・シックスダイアリーかほくホテルアンドリゾート room photo',
     'https://travel.rakuten.co.jp/HOTEL/172327/172327.html',
+    '楽天トラベル'
+  ),
+  '物部川のほとりの温泉宿　夢の温泉': sourcePhoto(
+    'kami-stay-yumenoyu.jpg',
+    '物部川のほとりの温泉宿　夢の温泉の客室写真',
+    '物部川のほとりの温泉宿　夢の温泉 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/13467/13467.html',
+    '楽天トラベル'
+  ),
+  '癒しの湯宿　龍河温泉': sourcePhoto(
+    'kami-stay-ryuga.jpg',
+    '癒しの湯宿　龍河温泉の客室写真',
+    '癒しの湯宿　龍河温泉 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/13810/13810.html',
+    '楽天トラベル'
+  ),
+  'ほっと平山': sourcePhoto(
+    'kami-stay-hottohira.jpg',
+    'ほっと平山の客室写真',
+    'ほっと平山 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/153431/153431.html',
+    '楽天トラベル'
+  ),
+  '湖畔遊': sourcePhoto(
+    'kami-stay-kohanyu.jpg',
+    '湖畔遊の客室写真',
+    '湖畔遊 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/173097/173097.html',
+    '楽天トラベル'
+  ),
+  'ａｈａｃｃｏ　びらふ': sourcePhoto(
+    'kami-stay-ahacco.jpg',
+    'ａｈａｃｃｏ　びらふの客室写真',
+    'ａｈａｃｃｏ　びらふ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/194298/194298.html',
     '楽天トラベル'
   ),
   'TOSACO TAP STAND': sourcePhoto('kami-39008143-dish.jpg', 'TOSACO TAP STANDの料理写真', 'TOSACO TAP STAND food photo', TABELOG_39008143, '食べログ'),
