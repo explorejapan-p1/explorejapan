@@ -104,6 +104,41 @@ export const TADOTSU_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'https://travel.rakuten.co.jp/HOTEL/137791/137791.html',
     '楽天トラベル'
   ),
+  '古民家ステイ　香露軒': sourcePhoto(
+    'tadotsu-stay-koroken.jpg',
+    '古民家ステイ　香露軒の客室写真',
+    '古民家ステイ　香露軒 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/162766/162766.html',
+    '楽天トラベル'
+  ),
+  '空と家　本棟　＾': sourcePhoto(
+    'tadotsu-stay-soratoie.jpg',
+    '空と家　本棟　＾の客室写真',
+    '空と家　本棟　＾ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/190305/190305.html',
+    '楽天トラベル'
+  ),
+  'ＺＥＲＯ　ＢＡＳＥ　ｖｉｌｌａ　（泊Ｒｕｔｔｏ）': sourcePhoto(
+    'tadotsu-stay-zerobase.jpg',
+    'ＺＥＲＯ　ＢＡＳＥ　ｖｉｌｌａ　（泊Ｒｕｔｔｏ）の客室写真',
+    'ＺＥＲＯ　ＢＡＳＥ　ｖｉｌｌａ　（泊Ｒｕｔｔｏ） room photo',
+    'https://travel.rakuten.co.jp/HOTEL/191454/191454.html',
+    '楽天トラベル'
+  ),
+  'マホロバハウス': sourcePhoto(
+    'tadotsu-stay-mahoroba.jpg',
+    'マホロバハウスの客室写真',
+    'マホロバハウス room photo',
+    'https://travel.rakuten.co.jp/HOTEL/199115/199115.html',
+    '楽天トラベル'
+  ),
+  'ペットと泊まれる宿　純華／民泊': sourcePhoto(
+    'tadotsu-stay-junka.jpg',
+    'ペットと泊まれる宿　純華／民泊の客室写真',
+    'ペットと泊まれる宿　純華／民泊 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/200719/200719.html',
+    '楽天トラベル'
+  ),
   '焼き肉専門店 成屋': sourcePhoto('tadotsu-37009890-dish.jpg', '焼き肉専門店 成屋の料理写真', '焼き肉専門店 成屋 food photo', TABELOG_37009890, '食べログ'),
   'Base65Plus': sourcePhoto('tadotsu-37014118-dish.jpg', 'Base65Plusの料理写真', 'Base65Plus food photo', TABELOG_37014118, '食べログ'),
   '海食処 笑門家': sourcePhoto('tadotsu-37003262-dish.jpg', '海食処 笑門家の料理写真', '海食処 笑門家 food photo', TABELOG_37003262, '食べログ'),

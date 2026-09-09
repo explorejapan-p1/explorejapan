@@ -1,13 +1,13 @@
 /**
  * Tadotsu Town travel layer. No frozen pack.
- * Dining from 食べログ 多度津町 (C37404). Stay: Hotel Toyota Rakuten room. Onsen honest 0. Experience: 桃陵公園 Commons.
+ * Dining from 食べログ 多度津町 (C37404). Stay: Rakuten 部屋 stills (TG610 densify). Onsen honest 0 (private baths only). Experience: 桃陵公園 Commons.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {TADOTSU, TADOTSU_SIGHT_PHOTOS} from './tadotsu';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const TADOTSU_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const TADOTSU_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const TADOTSU_TRAVEL_SOURCES = {
   home: 'https://www.town.tadotsu.lg.jp/', hall: 'https://www.town.tadotsu.lg.jp/',
   kankou: 'https://www.town.tadotsu.lg.jp/',
@@ -31,7 +31,12 @@ function stay(id: string, name_ja: string, address: string | null, phone: string
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: TADOTSU_TRAVEL_ACCESSED};
 }
 export const TADOTSU_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('tadotsu-stay-01', 'ホテル　トヨタ', '香川県仲多度郡多度津町栄町3-2-10', '0877-33-0088', 'https://travel.rakuten.co.jp/HOTEL/137791/137791.html')
+  stay('tadotsu-stay-01', 'ホテル　トヨタ', '香川県仲多度郡多度津町栄町3-2-10', '0877-33-0088', 'https://travel.rakuten.co.jp/HOTEL/137791/137791.html'),
+  stay('tadotsu-stay-02', '古民家ステイ　香露軒', '香川県仲多度郡多度津町西浜1-15', '090-7144-6803', 'https://travel.rakuten.co.jp/HOTEL/162766/162766.html'),
+  stay('tadotsu-stay-03', '空と家　本棟　＾', '香川県仲多度郡多度津町本通1-7-8', '070-1561-8087', 'https://travel.rakuten.co.jp/HOTEL/190305/190305.html'),
+  stay('tadotsu-stay-04', 'ＺＥＲＯ　ＢＡＳＥ　ｖｉｌｌａ　（泊Ｒｕｔｔｏ）', '香川県仲多度郡多度津町寿町甲170-2', '080-2976-4641', 'https://travel.rakuten.co.jp/HOTEL/191454/191454.html'),
+  stay('tadotsu-stay-05', 'マホロバハウス', '香川県仲多度郡多度津町東浜4-24', '070-9294-2249', 'https://travel.rakuten.co.jp/HOTEL/199115/199115.html'),
+  stay('tadotsu-stay-06', 'ペットと泊まれる宿　純華／民泊', '香川県仲多度郡多度津町本通1-6-29', '090-5918-8531', 'https://travel.rakuten.co.jp/HOTEL/200719/200719.html')
 ];
 
 function dining(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {

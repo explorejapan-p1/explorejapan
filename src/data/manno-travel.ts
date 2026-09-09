@@ -1,13 +1,13 @@
 /**
  * Manno Town travel layer. No frozen pack.
- * Dining from 食べログ まんのう町 (C37406). Stay: Yuyamaso Asan Rakuten room. Onsen: distinct bath key. Experience: 道の駅ことなみ.
+ * Dining from 食べログ まんのう町 (C37406). Stay: Rakuten 部屋 stills (TG610 densify). Onsen: 湯山荘大浴場 only (清流庵 private villa tub dropped). Experience: 道の駅ことなみ.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {MANNO, MANNO_SIGHT_PHOTOS} from './manno';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const MANNO_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const MANNO_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const MANNO_TRAVEL_SOURCES = {
   home: 'https://www.town.manno.lg.jp/', hall: 'https://www.town.manno.lg.jp/',
   kankou: 'https://www.town.manno.lg.jp/',
@@ -31,7 +31,9 @@ function stay(id: string, name_ja: string, address: string | null, phone: string
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: MANNO_TRAVEL_ACCESSED};
 }
 export const MANNO_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('manno-stay-01', '湯山荘　阿讃琴南', '香川県仲多度郡まんのう町勝浦１', null, 'https://travel.rakuten.co.jp/HOTEL/161204/161204.html')
+  stay('manno-stay-01', '湯山荘　阿讃琴南', '香川県仲多度郡まんのう町勝浦１', null, 'https://travel.rakuten.co.jp/HOTEL/161204/161204.html'),
+  stay('manno-stay-02', '清流庵', '香川県仲多度郡まんのう町炭所西2545-1', '090-4331-9074', 'https://travel.rakuten.co.jp/HOTEL/183456/183456.html'),
+  stay('manno-stay-03', 'ＭＹＴＨ－Ｙ【大人専用１８禁・ハピホテ提携】', '香川県仲多度郡まんのう町追上421-3', null, 'https://travel.rakuten.co.jp/HOTEL/163465/163465.html')
 ];
 
 function dining(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {

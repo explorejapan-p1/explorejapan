@@ -124,6 +124,20 @@ export const MANNO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'https://travel.rakuten.co.jp/HOTEL/161204/161204.html',
     '楽天トラベル'
   ),
+  '清流庵': sourcePhoto(
+    'manno-stay-seiryuan.jpg',
+    '清流庵の客室写真',
+    '清流庵 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/183456/183456.html',
+    '楽天トラベル'
+  ),
+  'ＭＹＴＨ－Ｙ【大人専用１８禁・ハピホテ提携】': sourcePhoto(
+    'manno-stay-myth.jpg',
+    'ＭＹＴＨ－Ｙ【大人専用１８禁・ハピホテ提携】の客室写真',
+    'ＭＹＴＨ－Ｙ【大人専用１８禁・ハピホテ提携】 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/163465/163465.html',
+    '楽天トラベル'
+  ),
   '湯山荘　阿讃琴南 大浴場': sourcePhoto(
     'manno-onsen-asan.jpg',
     '湯山荘　阿讃琴南の大浴場写真',
