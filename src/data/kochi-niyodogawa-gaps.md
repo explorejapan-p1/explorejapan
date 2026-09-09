@@ -1,6 +1,6 @@
 # Niyodogawa Town (仁淀川町) gaps (TG610 densify)
 
-Accessed 2026-09-09 (JST). Branch `feat/unpublished-v0-mima`.
+Accessed 2026-09-09 (JST). LIVE tip `5494108228c`. Branch `feat/unpublished-v0-mima`.
 
 ## LIVE pills (photo-first) after densify
 - stay: 1
@@ -12,3 +12,6 @@ Accessed 2026-09-09 (JST). Branch `feat/unpublished-v0-mima`.
 
 ## Exhaustion dossier
 `/workspace/p1/data/kochi-niyodogawa-tg607.md`
+
+## CDN
+Cold CDN PASS. Live pills stay/dining/onsen/experience/sights = 1/8/0/0/7. Tip `5494108228c`.
