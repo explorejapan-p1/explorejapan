@@ -1,7 +1,7 @@
 /**
  * Okawa Village sourced facts. Do not invent population.
  * Hall / JIS from village HP / JIS X 0402 (accessed 2026-09-08). JIS 39364. Twenty-third Kochi hub after 高知市・南国市・香南市・香美市・いの町・安芸市・室戸市・土佐市・須崎市・四万十市・土佐清水市・宿毛市・黒潮町・東洋町・奈半利町・安田町・芸西村・北川村・馬路村・本山町・大豊町・土佐町 (田野町 deferred: no attributable stay room still).
- * No frozen pack — photo-only tourism + Tabelog dining + Rakuten stay. Stay: 自然王国 白滝の里 教室タイプ LARGE (noplan-k1 → mediaInfo「教室」cat 00000001). Onsen: 0 (stay≠onsen). Shop/commerce honest 0. Dining honest thin 1.
+ * No frozen pack — photo-only tourism + Tabelog/official dining + Rakuten stay + official experience. Stay: 自然王国 白滝の里 教室タイプ LARGE. Dining: 結いの里 + 里の茶屋. Experience: 白滝の里 手作り体験. Onsen: 0 (communal 浴室 still exists but not 温泉; stay≠onsen). Shop/commerce honest 0. TG610 densify sights+dining+exp.
  */
 import type {FacilityRow} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
@@ -30,21 +30,21 @@ export const OKAWA = {
     kogane: 'https://commons.wikimedia.org/wiki/File:%E5%B0%8F%E9%87%91%E6%BB%9D_-_panoramio.jpg',
     tabelogCity: 'https://tabelog.com/kochi/C39364/rstLst/',
     shirataki: 'https://travel.rakuten.co.jp/HOTEL/16467/16467.html',
-    accessed: '2026-09-08'
+    accessed: '2026-09-09'
   }
 } as const;
 
-export const OKAWA_EXPECTED_ROW_COUNT = 5;
-export const OKAWA_EXPECTED_GEO_COUNT = 5;
+export const OKAWA_EXPECTED_ROW_COUNT = 7;
+export const OKAWA_EXPECTED_GEO_COUNT = 7;
 
 function wikiPhoto(
   file: string, commons: string, license: string, licenseUrl: string,
   author: string, authorUrl: string, taken: string, altJa: string, altEn: string
 ): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-08', altJa, altEn};
+  return {src:`/explorejapan/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-09', altJa, altEn};
 }
 function sourcePhoto(file: string, altJa: string, altEn: string, page: string, author: string): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-08', altJa, altEn};
+  return {src:`/explorejapan/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-09', altJa, altEn};
 }
 
 /** Cover: Kogane Falls. Hero title remains municipality name only. */
@@ -58,6 +58,9 @@ export const OKAWA_PLACE_PHOTO = wikiPhoto(
 
 const TABELOG_39006661 = 'https://tabelog.com/kochi/A3901/A390104/39006661/';
 const RAKUTEN_16467 = 'https://travel.rakuten.co.jp/HOTEL/16467/16467.html';
+const SIRATAKI_STAY = 'https://www.sirataki.or.jp/pages/page006.php';
+const SIRATAKI_EXP = 'https://www.sirataki.or.jp/pages/page007.php';
+const KOBOKAWA = 'https://commons.wikimedia.org/wiki/File:%E5%A4%A7%E5%B7%9D%E6%9D%91%E5%B0%8F%E5%8C%97%E5%B7%9D%E3%81%AE%E6%BB%9D.jpg';
 
 export const OKAWA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   '小金滝': OKAWA_PLACE_PHOTO,
@@ -97,6 +100,27 @@ export const OKAWA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '楽天トラベル'
   ),
   '結いの里': sourcePhoto('okawa-39006661-dish.jpg', '結いの里の料理写真', 'Yui-no-sato food photo', TABELOG_39006661, '食べログ'),
+  '小北川の滝': wikiPhoto(
+    'okawa-kobokawa-falls.jpg',
+    KOBOKAWA,
+    'CC BY 3.0', 'https://creativecommons.org/licenses/by/3.0',
+    'r18 INO (PACHIMO)', KOBOKAWA, '2015-03-18',
+    '小北川の滝', 'Kobokawa Falls'
+  ),
+  '里の茶屋': sourcePhoto(
+    'okawa-sato-no-chaya-dish.jpg',
+    '里の茶屋のふるさと料理写真',
+    'Sato-no-chaya hometown set-meal photo',
+    SIRATAKI_STAY,
+    '自然王国白滝の里'
+  ),
+  '白滝の里 手作り体験': sourcePhoto(
+    'okawa-exp-tezukuri.jpg',
+    '白滝の里こんにゃく手作り体験の写真',
+    'Shirataki-no-Sato handmade konnyaku experience photo',
+    SIRATAKI_EXP,
+    '自然王国白滝の里'
+  ),
 };
 
 function sight(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string, lat: number, lon: number): FacilityRow {
@@ -108,5 +132,7 @@ export const OKAWA_FACILITIES: readonly FacilityRow[] = [
   sight('okawa-sight-02', '大川村役場', '高知県土佐郡大川村小松27-1', '0887-84-2211', 'https://commons.wikimedia.org/wiki/File:Okawa_village_hall.JPG', 33.7839842, 133.4666395),
   sight('okawa-sight-03', '村のえき', '高知県土佐郡大川村船戸239', '0887-84-2233', 'https://commons.wikimedia.org/wiki/File:%E6%9D%91%E3%81%AE%E3%81%88%E3%81%8D_-_panoramio.jpg', 33.782264, 133.474597),
   sight('okawa-sight-04', '翁の滝', '高知県土佐郡大川村朝谷', null, 'https://commons.wikimedia.org/wiki/File:%E7%BF%81%E3%81%AE%E6%BB%9D_-_panoramio.jpg', 33.81752, 133.440135),
-  sight('okawa-sight-05', '自然王国白滝の里', '高知県土佐郡大川村朝谷26', '0887-84-2201', 'https://commons.wikimedia.org/wiki/File:%E8%87%AA%E7%84%B6%E7%8E%8B%E5%9B%BD_%E7%99%BD%E6%BB%9D%E3%81%AE%E9%87%8C%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E5%A0%B4_-_panoramio.jpg', 33.818783, 133.463839)
+  sight('okawa-sight-05', '自然王国白滝の里', '高知県土佐郡大川村朝谷26', '0887-84-2201', 'https://commons.wikimedia.org/wiki/File:%E8%87%AA%E7%84%B6%E7%8E%8B%E5%9B%BD_%E7%99%BD%E6%BB%9D%E3%81%AE%E9%87%8C%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E5%A0%B4_-_panoramio.jpg', 33.818783, 133.463839),
+  sight('okawa-sight-06', '小北川の滝', '高知県土佐郡大川村', null, KOBOKAWA, 33.799144, 133.370681),
+  sight('okawa-experience-01', '白滝の里 手作り体験', '高知県土佐郡大川村朝谷26', '0887-84-2201', SIRATAKI_EXP, 33.818783, 133.463839)
 ];

@@ -1,31 +1,33 @@
 /**
  * Okawa Village travel layer. No frozen pack.
- * Dining from 食べログ 大川村 (C39364) — honest 1 with 640 dish JPG (結いの里; skipped 旅館民宿・ホテル). Stay: 自然王国 白滝の里 Rakuten 教室タイプ LARGE (noplan-k1 mediaInfo「教室」). Onsen: 0 (stay≠onsen). Experience: 0.
+ * Dining: 食べログ 結いの里 + official 里の茶屋 dish still. Stay: 自然王国 白滝の里 Rakuten 教室タイプ. Onsen: 0 (communal 浴室≠温泉; stay≠onsen). Experience: 白滝の里 手作り体験 (official). TG610 densify.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {OKAWA, OKAWA_SIGHT_PHOTOS} from './okawa';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const OKAWA_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const OKAWA_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const OKAWA_TRAVEL_SOURCES = {
   home: 'https://www.vill.okawa.kochi.jp/', hall: 'https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%B7%9D%E6%9D%91',
   kankou: 'https://www.vill.okawa.kochi.jp/life/dtl.php?hdnKey=1216',
   kogane: 'https://commons.wikimedia.org/wiki/File:%E5%B0%8F%E9%87%91%E6%BB%9D_-_panoramio.jpg',
   tabelogCity: 'https://tabelog.com/kochi/C39364/rstLst/',
-  shirataki: 'https://travel.rakuten.co.jp/HOTEL/16467/16467.html'
+  shirataki: 'https://travel.rakuten.co.jp/HOTEL/16467/16467.html',
+  satochaya: 'https://www.sirataki.or.jp/pages/page006.php',
+  tezukuri: 'https://www.sirataki.or.jp/pages/page007.php'
 } as const;
 
 export const OKAWA_ONSEN_PACK_NAMES = [] as const;
 export const OKAWA_ONSEN_PACK_SET: ReadonlySet<string> = new Set(OKAWA_ONSEN_PACK_NAMES);
-export const OKAWA_EXPERIENCE_PACK_NAMES = [] as const;
+export const OKAWA_EXPERIENCE_PACK_NAMES = ['白滝の里 手作り体験'] as const;
 export const OKAWA_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(OKAWA_EXPERIENCE_PACK_NAMES);
 export const OKAWA_STAY_PACK_NAMES = [] as const;
 export const OKAWA_STAY_PACK_SET: ReadonlySet<string> = new Set(OKAWA_STAY_PACK_NAMES);
 export const OKAWA_SHOPPING_PACK_NAMES = [] as const;
 export const OKAWA_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(OKAWA_SHOPPING_PACK_NAMES);
 
-export const OKAWA_SIGHT_PINS = ['小金滝','大川村役場','村のえき','翁の滝','自然王国白滝の里'] as const;
+export const OKAWA_SIGHT_PINS = ['小金滝','小北川の滝','大川村役場','村のえき','翁の滝','自然王国白滝の里'] as const;
 
 function stay(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: OKAWA_TRAVEL_ACCESSED};
@@ -39,6 +41,7 @@ function dining(id: string, name_ja: string, address: string | null, phone: stri
 }
 export const OKAWA_TRAVEL_DINING: readonly TravelRow[] = [
   dining('okawa-dining-01', '結いの里', '高知県土佐郡大川村船戸239', '0887-84-2233', 'https://tabelog.com/kochi/A3901/A390104/39006661/'),
+  dining('okawa-dining-02', '里の茶屋', '高知県土佐郡大川村朝谷26', '0887-84-2201', 'https://www.sirataki.or.jp/pages/page006.php'),
 ];
 
 export const OKAWA_DINING_NAME_SET: ReadonlySet<string> = new Set(OKAWA_TRAVEL_DINING.map((row) => row.name_ja));
