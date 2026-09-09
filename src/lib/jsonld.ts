@@ -71,6 +71,7 @@ import {MIHARA, MIHARA_PLACE_PHOTO} from '@/data/mihara';
 import {MATSUYAMA, MATSUYAMA_PLACE_PHOTO} from '@/data/matsuyama';
 import {IMABARI, IMABARI_PLACE_PHOTO} from '@/data/imabari';
 import {UWAJIMA, UWAJIMA_PLACE_PHOTO} from '@/data/uwajima';
+import {YAWATAHAMA, YAWATAHAMA_PLACE_PHOTO} from '@/data/yawatahama';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -196,6 +197,7 @@ function localityJa(slug: string): string {
   if (slug === 'matsuyama') return MATSUYAMA.nameJa;
   if (slug === 'imabari') return IMABARI.nameJa;
   if (slug === 'uwajima') return UWAJIMA.nameJa;
+  if (slug === 'yawatahama') return YAWATAHAMA.nameJa;
   return MIMA.nameJa;
 }
 
@@ -260,6 +262,7 @@ function localityEn(slug: string): string {
   if (slug === 'matsuyama') return MATSUYAMA.nameEn;
   if (slug === 'imabari') return IMABARI.nameEn;
   if (slug === 'uwajima') return UWAJIMA.nameEn;
+  if (slug === 'yawatahama') return YAWATAHAMA.nameEn;
   return MIMA.nameEn;
 }
 
@@ -4482,6 +4485,67 @@ export function miharaGraph(locale: AppLocale) {
 
 
 
+
+
+export function yawatahamaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'ehime/yawatahama');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('yawatahama');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? YAWATAHAMA.nameJa : YAWATAHAMA.nameEn,
+        alternateName: isJa ? YAWATAHAMA.nameEn : YAWATAHAMA.nameJa,
+        identifier: YAWATAHAMA.jis,
+        url,
+        image: photoAbs(YAWATAHAMA_PLACE_PHOTO),
+        sameAs: [YAWATAHAMA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '北浜一丁目1番1号' : '1-1-1 Kitahama',
+          addressLocality: isJa ? YAWATAHAMA.nameJa : YAWATAHAMA.nameEn,
+          addressRegion: isJa ? YAWATAHAMA.prefectureJa : YAWATAHAMA.prefectureEn,
+          postalCode: YAWATAHAMA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? YAWATAHAMA.prefectureJa : YAWATAHAMA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? YAWATAHAMA.nameJa : YAWATAHAMA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? YAWATAHAMA.prefectureJa : YAWATAHAMA.prefectureEn, item: canonicalUrl(locale, 'ehime')},
+          {'@type': 'ListItem', position: 3, name: isJa ? YAWATAHAMA.nameJa : YAWATAHAMA.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '八幡浜市の案内' : 'Places in Yawatahama City',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
 
 export function uwajimaGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'ehime/uwajima');

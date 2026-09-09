@@ -754,6 +754,7 @@ import {MIHARA, MIHARA_PLACE_PHOTO, MIHARA_FACILITIES, MIHARA_EXPECTED_GEO_COUNT
 import {MATSUYAMA, MATSUYAMA_PLACE_PHOTO, MATSUYAMA_FACILITIES, MATSUYAMA_EXPECTED_GEO_COUNT, MATSUYAMA_EXPECTED_ROW_COUNT} from './matsuyama';
 import {IMABARI, IMABARI_PLACE_PHOTO, IMABARI_FACILITIES, IMABARI_EXPECTED_GEO_COUNT, IMABARI_EXPECTED_ROW_COUNT} from './imabari';
 import {UWAJIMA, UWAJIMA_PLACE_PHOTO, UWAJIMA_FACILITIES, UWAJIMA_EXPECTED_GEO_COUNT, UWAJIMA_EXPECTED_ROW_COUNT} from './uwajima';
+import {YAWATAHAMA, YAWATAHAMA_PLACE_PHOTO, YAWATAHAMA_FACILITIES, YAWATAHAMA_EXPECTED_GEO_COUNT, YAWATAHAMA_EXPECTED_ROW_COUNT} from './yawatahama';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -789,6 +790,13 @@ import {
   UWAJIMA_TRAVEL_COMMERCE,
   UWAJIMA_TRAVEL_ALL
 } from './uwajima-travel';
+import {
+  YAWATAHAMA_TRAVEL_DINING,
+  YAWATAHAMA_TRAVEL_STAY,
+  YAWATAHAMA_TRAVEL_SHOPPING,
+  YAWATAHAMA_TRAVEL_COMMERCE,
+  YAWATAHAMA_TRAVEL_ALL,
+} from './yawatahama-travel';
 
 
 
@@ -3268,6 +3276,40 @@ export const IMABARI_LOOKUP: LookupTown = {
 };
 
 
+
+export const YAWATAHAMA_LOOKUP: LookupTown = {
+  slug: 'yawatahama',
+  prefectureSlug: 'ehime',
+  jis: YAWATAHAMA.jis,
+  nameJa: YAWATAHAMA.nameJa,
+  nameEn: YAWATAHAMA.nameEn,
+  heroPhoto: YAWATAHAMA_PLACE_PHOTO,
+  photoCiteJa: '写真は道の駅・みなとオアシス 八幡浜みなっと。キアラア、CC0。File:道の駅八幡浜みなっと3.jpg。',
+  photoCiteEn: 'Photo: Michinoeki Yawatahama Minatto. キアラア, CC0. File:道の駅八幡浜みなっと3.jpg.',
+  rows: YAWATAHAMA_FACILITIES,
+  expectedGeo: YAWATAHAMA_EXPECTED_GEO_COUNT,
+  expectedRows: YAWATAHAMA_EXPECTED_ROW_COUNT,
+  travelDining: YAWATAHAMA_TRAVEL_DINING,
+  travelStay: YAWATAHAMA_TRAVEL_STAY,
+  travelShopping: YAWATAHAMA_TRAVEL_SHOPPING,
+  travelCommerce: YAWATAHAMA_TRAVEL_COMMERCE,
+  travelAll: YAWATAHAMA_TRAVEL_ALL,
+  coverageJa:
+    '八幡浜市（JIS 38204）観光5・宿泊6・飲食16・温泉4・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。愛媛県4つ目のLIVEハブ。',
+  coverageEn:
+    'Yawatahama City (JIS 38204), 5 tourism + 6 stay + 16 dining + 4 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Fourth LIVE Ehime hub.',
+  mapLabelJa: '八幡浜市の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Yawatahama City',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia/Commons等出典座標5件（accessed 2026-09-09）。',
+  mapCitePackEn: 'Points: 5 sourced coordinates for city/official facilities (accessed 2026-09-09).',
+  licenseNoteJa:
+    '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.yawatahama.ehime.jp, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
 export const UWAJIMA_LOOKUP: LookupTown = {
   slug: 'uwajima',
   prefectureSlug: 'ehime',
@@ -3535,7 +3577,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   mihara: MIHARA_LOOKUP,
   matsuyama: MATSUYAMA_LOOKUP,
   imabari: IMABARI_LOOKUP,
-  uwajima: UWAJIMA_LOOKUP
+  uwajima: UWAJIMA_LOOKUP,
+  yawatahama: YAWATAHAMA_LOOKUP
 };
 
 

@@ -838,6 +838,19 @@ import {
   uwajimaTopChipForRow,
   resolveUwajimaFilter
 } from './uwajima-travel';
+import {
+  isYawatahamaDiningPackRow,
+  isYawatahamaExperiencePackRow,
+  isYawatahamaOnsenPackRow,
+  isYawatahamaShoppingPackRow,
+  isYawatahamaStayPackRow,
+  yawatahamaPackRowMatchesFilter,
+  rankYawatahamaSeeRows,
+  yawatahamaSightPhoto,
+  yawatahamaSourcedHook,
+  yawatahamaTopChipForRow,
+  resolveYawatahamaFilter,
+} from './yawatahama-travel';
 
 
 
@@ -1621,6 +1634,19 @@ const MIHARA_HELPERS: LookupHelpers = {
 
 
 
+
+const YAWATAHAMA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isYawatahamaOnsenPackRow,
+  isExperiencePackRow: isYawatahamaExperiencePackRow,
+  isStayPackRow: isYawatahamaStayPackRow,
+  packRowMatchesFilter: yawatahamaPackRowMatchesFilter,
+  rankSeeRows: rankYawatahamaSeeRows,
+  sightPhoto: yawatahamaSightPhoto,
+  sourcedHook: yawatahamaSourcedHook,
+  topChipForRow: yawatahamaTopChipForRow,
+  resolveFilter: resolveYawatahamaFilter
+};
+
 const UWAJIMA_HELPERS: LookupHelpers = {
   isOnsenPackRow: isUwajimaOnsenPackRow,
   isExperiencePackRow: isUwajimaExperiencePackRow,
@@ -1947,5 +1973,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'matsuyama') return MATSUYAMA_HELPERS;
   if (slug === 'imabari') return IMABARI_HELPERS;
   if (slug === 'uwajima') return UWAJIMA_HELPERS;
+  if (slug === 'yawatahama') return YAWATAHAMA_HELPERS;
   return MIMA_HELPERS;
 }
