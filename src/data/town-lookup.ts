@@ -759,6 +759,7 @@ import {NIIHAMA, NIIHAMA_PLACE_PHOTO, NIIHAMA_FACILITIES, NIIHAMA_EXPECTED_GEO_C
 import {SAIJO, SAIJO_PLACE_PHOTO, SAIJO_FACILITIES, SAIJO_EXPECTED_GEO_COUNT, SAIJO_EXPECTED_ROW_COUNT} from './saijo';
 import {OZU, OZU_PLACE_PHOTO, OZU_FACILITIES, OZU_EXPECTED_GEO_COUNT, OZU_EXPECTED_ROW_COUNT} from './ozu';
 import {IYO, IYO_PLACE_PHOTO, IYO_FACILITIES, IYO_EXPECTED_GEO_COUNT, IYO_EXPECTED_ROW_COUNT} from './iyo';
+import {SHIKOKUCHUO, SHIKOKUCHUO_PLACE_PHOTO, SHIKOKUCHUO_FACILITIES, SHIKOKUCHUO_EXPECTED_GEO_COUNT, SHIKOKUCHUO_EXPECTED_ROW_COUNT} from './shikokuchuo';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -829,6 +830,13 @@ import {
   IYO_TRAVEL_COMMERCE,
   IYO_TRAVEL_ALL,
 } from './iyo-travel';
+import {
+  SHIKOKUCHUO_TRAVEL_DINING,
+  SHIKOKUCHUO_TRAVEL_STAY,
+  SHIKOKUCHUO_TRAVEL_SHOPPING,
+  SHIKOKUCHUO_TRAVEL_COMMERCE,
+  SHIKOKUCHUO_TRAVEL_ALL
+} from './shikokuchuo-travel';
 
 
 
@@ -3381,6 +3389,40 @@ export const NIIHAMA_LOOKUP: LookupTown = {
 
 
 
+
+export const SHIKOKUCHUO_LOOKUP: LookupTown = {
+  slug: 'shikokuchuo',
+  prefectureSlug: 'ehime',
+  jis: SHIKOKUCHUO.jis,
+  nameJa: SHIKOKUCHUO.nameJa,
+  nameEn: SHIKOKUCHUO.nameEn,
+  heroPhoto: SHIKOKUCHUO_PLACE_PHOTO,
+  photoCiteJa: '写真は翠波高原。Dokudami、2016-08-26、CC BY-SA 4.0。File:Suiha10.jpg。',
+  photoCiteEn: 'Photo: Suiha Highland. Dokudami, 2016-08-26, CC BY-SA 4.0. File:Suiha10.jpg.',
+  rows: SHIKOKUCHUO_FACILITIES,
+  expectedGeo: SHIKOKUCHUO_EXPECTED_GEO_COUNT,
+  expectedRows: SHIKOKUCHUO_EXPECTED_ROW_COUNT,
+  travelDining: SHIKOKUCHUO_TRAVEL_DINING,
+  travelStay: SHIKOKUCHUO_TRAVEL_STAY,
+  travelShopping: SHIKOKUCHUO_TRAVEL_SHOPPING,
+  travelCommerce: SHIKOKUCHUO_TRAVEL_COMMERCE,
+  travelAll: SHIKOKUCHUO_TRAVEL_ALL,
+  coverageJa:
+    '四国中央市（JIS 38213）観光4・宿泊13・飲食16・温泉3・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。愛媛県9つ目のLIVEハブ。',
+  coverageEn:
+    'Shikokuchuo City (JIS 38213), 4 tourism + 13 stay + 16 dining + 3 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Ninth LIVE Ehime hub.',
+  mapLabelJa: '四国中央市の出典座標4件',
+  mapLabelEn: '4 sourced coordinates in Shikokuchuo City',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia/Commons等出典座標4件（accessed 2026-09-09）。',
+  mapCitePackEn: 'Points: 4 sourced coordinates for city/official facilities (accessed 2026-09-09).',
+  licenseNoteJa:
+    '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.shikokuchuo.ehime.jp, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
 export const IYO_LOOKUP: LookupTown = {
   slug: 'iyo',
   prefectureSlug: 'ehime',
@@ -3470,8 +3512,8 @@ export const SAIJO_LOOKUP: LookupTown = {
     'Saijo City (JIS 38206), 6 tourism + 22 stay + 16 dining + 12 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Sixth LIVE Ehime hub.',
   mapLabelJa: '西条市の出典座標2件',
   mapLabelEn: '2 sourced coordinates in Saijo City',
-  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia/Commons等出典座標2件（accessed 2026-09-09）。',
-  mapCitePackEn: 'Points: 2 sourced coordinates for city/official facilities (accessed 2026-09-09).',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia/Commons等出典座標4件（accessed 2026-09-09）。',
+  mapCitePackEn: 'Points: 4 sourced coordinates for city/official facilities (accessed 2026-09-09).',
   licenseNoteJa:
     '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
   licenseNoteEn:
@@ -3752,7 +3794,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   niihama: NIIHAMA_LOOKUP,
   saijo: SAIJO_LOOKUP,
   ozu: OZU_LOOKUP,
-  iyo: IYO_LOOKUP
+  iyo: IYO_LOOKUP,
+  shikokuchuo: SHIKOKUCHUO_LOOKUP
 };
 
 

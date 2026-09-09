@@ -640,6 +640,14 @@ import {
   iyoSightPhoto,
   rankIyoSeeRows,
 } from '@/data/iyo-travel';
+import {
+  SHIKOKUCHUO_DINING_NAME_SET,
+  isShikokuchuoOnsenPackRow,
+  isShikokuchuoExperiencePackRow,
+  isShikokuchuoStayPackRow,
+  shikokuchuoSightPhoto,
+  rankShikokuchuoSeeRows,
+} from '@/data/shikokuchuo-travel';
 
 
 
@@ -3624,6 +3632,46 @@ function uwajimaListings(): PublicListing[] {
 
 
 
+
+function shikokuchuoListings(): PublicListing[] {
+  const town = lookupTown('shikokuchuo')!;
+  const out: PublicListing[] = town.travelAll.map((row) =>
+    fromTravel(row, 'shikokuchuo', shikokuchuoSightPhoto(row.name_ja))
+  );
+  const seen = new Set<string>();
+  const pack: FacilityRow[] = [];
+  for (const row of town.rows) {
+    if (SHIKOKUCHUO_DINING_NAME_SET.has(row.name_ja)) continue;
+    if (
+      !isShikokuchuoOnsenPackRow(row) &&
+      !isShikokuchuoExperiencePackRow(row) &&
+      !isShikokuchuoStayPackRow(row) &&
+      !isSightsCategory(row.category)
+    ) {
+      continue;
+    }
+    const key = packDedupeKey(row);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    pack.push(row);
+  }
+  const ranked = rankShikokuchuoSeeRows(pack);
+  const onsen = pack.filter(isShikokuchuoOnsenPackRow);
+  const experience = pack.filter(isShikokuchuoExperiencePackRow);
+  const stay = pack.filter(isShikokuchuoStayPackRow);
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
+    const kind: ListingKind = isShikokuchuoOnsenPackRow(row)
+      ? 'onsen'
+      : isShikokuchuoExperiencePackRow(row)
+        ? 'experience'
+        : isShikokuchuoStayPackRow(row)
+          ? 'stay'
+          : 'sights';
+    out.push(fromPack(row, 'shikokuchuo', kind, shikokuchuoSightPhoto(row.name_ja)));
+  }
+  return out;
+}
+
 function iyoListings(): PublicListing[] {
   const town = lookupTown('iyo')!;
   const out: PublicListing[] = town.travelAll.map((row) =>
@@ -3978,7 +4026,8 @@ const CACHE: Record<ReadySlug, PublicListing[]> = {
   niihama: niihamaListings(),
   saijo: saijoListings(),
   ozu: ozuListings(),
-  iyo: iyoListings()
+  iyo: iyoListings(),
+  shikokuchuo: shikokuchuoListings()
 };
 
 export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {

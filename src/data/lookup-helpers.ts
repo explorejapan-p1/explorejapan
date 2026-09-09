@@ -895,6 +895,17 @@ import {
   iyoTopChipForRow,
   resolveIyoFilter,
 } from './iyo-travel';
+import {
+  isShikokuchuoOnsenPackRow,
+  isShikokuchuoExperiencePackRow,
+  isShikokuchuoStayPackRow,
+  shikokuchuoPackRowMatchesFilter,
+  rankShikokuchuoSeeRows,
+  shikokuchuoSightPhoto,
+  shikokuchuoSourcedHook,
+  shikokuchuoTopChipForRow,
+  resolveShikokuchuoFilter,
+} from './shikokuchuo-travel';
 
 
 
@@ -1684,6 +1695,19 @@ const MIHARA_HELPERS: LookupHelpers = {
 
 
 
+
+const SHIKOKUCHUO_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isShikokuchuoOnsenPackRow,
+  isExperiencePackRow: isShikokuchuoExperiencePackRow,
+  isStayPackRow: isShikokuchuoStayPackRow,
+  packRowMatchesFilter: shikokuchuoPackRowMatchesFilter,
+  rankSeeRows: rankShikokuchuoSeeRows,
+  sightPhoto: shikokuchuoSightPhoto,
+  sourcedHook: shikokuchuoSourcedHook,
+  topChipForRow: shikokuchuoTopChipForRow,
+  resolveFilter: resolveShikokuchuoFilter
+};
+
 const IYO_HELPERS: LookupHelpers = {
   isOnsenPackRow: isIyoOnsenPackRow,
   isExperiencePackRow: isIyoExperiencePackRow,
@@ -2075,5 +2099,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'saijo') return SAIJO_HELPERS;
   if (slug === 'ozu') return OZU_HELPERS;
   if (slug === 'iyo') return IYO_HELPERS;
+  if (slug === 'shikokuchuo') return SHIKOKUCHUO_HELPERS;
   return MIMA_HELPERS;
 }

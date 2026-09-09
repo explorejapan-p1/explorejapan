@@ -10,4 +10,5 @@
 :HL["/explorejapan/media/saijo-komatsu-oasis.jpg","image"]
 :HL["/explorejapan/media/ozu-castle.jpg","image"]
 :HL["/explorejapan/media/iyo-goshikihama-park.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"ja","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"ehime","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"qSN_HdmSixEW_-1RMzCrC"}
+:HL["/explorejapan/media/shikokuchuo-suiha-kogen.jpg","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"ja","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"ehime","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"4-0BaIFJtOR-XIr67KWGc"}
