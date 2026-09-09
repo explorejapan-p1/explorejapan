@@ -10,7 +10,7 @@ export type Municipality = {
 
 /**
  * Ehime 市区町村. Codes are N03_007 / JIS X 0402 (5-digit).
- * Matsuyama/Imabari/Uwajima/Yawatahama/Niihama/Saijo/Ozu/Iyo/Shikokuchuo LIVE hubs (+ remaining municipalities coming-soon).
+ * Matsuyama/Imabari/Uwajima/Yawatahama/Niihama/Saijo/Ozu/Iyo/Shikokuchuo/Seiyo LIVE hubs (+ remaining municipalities coming-soon).
  */
 export const EHIME_MUNICIPALITIES: Municipality[] = [
   {jis: '38201', slug: 'matsuyama', nameJa: '松山市', nameEn: 'Matsuyama', status: 'ready'},
@@ -22,7 +22,7 @@ export const EHIME_MUNICIPALITIES: Municipality[] = [
   {jis: '38207', slug: 'ozu', nameJa: '大洲市', nameEn: 'Ozu', status: 'ready'},
   {jis: '38210', slug: 'iyo', nameJa: '伊予市', nameEn: 'Iyo', status: 'ready'},
   {jis: '38213', slug: 'shikokuchuo', nameJa: '四国中央市', nameEn: 'Shikokuchuo', status: 'ready'},
-  {jis: '38214', slug: 'seiyo', nameJa: '西予市', nameEn: 'Seiyo', status: 'coming-soon'},
+  {jis: '38214', slug: 'seiyo', nameJa: '西予市', nameEn: 'Seiyo', status: 'ready'},
   {jis: '38215', slug: 'toon', nameJa: '東温市', nameEn: 'Toon', status: 'coming-soon'},
   {jis: '38356', slug: 'kamijima', nameJa: '上島町', nameEn: 'Kamijima', status: 'coming-soon'},
   {jis: '38386', slug: 'kumakogen', nameJa: '久万高原町', nameEn: 'Kumakogen', status: 'coming-soon'},

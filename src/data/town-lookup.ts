@@ -760,6 +760,7 @@ import {SAIJO, SAIJO_PLACE_PHOTO, SAIJO_FACILITIES, SAIJO_EXPECTED_GEO_COUNT, SA
 import {OZU, OZU_PLACE_PHOTO, OZU_FACILITIES, OZU_EXPECTED_GEO_COUNT, OZU_EXPECTED_ROW_COUNT} from './ozu';
 import {IYO, IYO_PLACE_PHOTO, IYO_FACILITIES, IYO_EXPECTED_GEO_COUNT, IYO_EXPECTED_ROW_COUNT} from './iyo';
 import {SHIKOKUCHUO, SHIKOKUCHUO_PLACE_PHOTO, SHIKOKUCHUO_FACILITIES, SHIKOKUCHUO_EXPECTED_GEO_COUNT, SHIKOKUCHUO_EXPECTED_ROW_COUNT} from './shikokuchuo';
+import {SEIYO, SEIYO_PLACE_PHOTO, SEIYO_FACILITIES, SEIYO_EXPECTED_GEO_COUNT, SEIYO_EXPECTED_ROW_COUNT} from './seiyo';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -837,6 +838,13 @@ import {
   SHIKOKUCHUO_TRAVEL_COMMERCE,
   SHIKOKUCHUO_TRAVEL_ALL
 } from './shikokuchuo-travel';
+import {
+  SEIYO_TRAVEL_DINING,
+  SEIYO_TRAVEL_STAY,
+  SEIYO_TRAVEL_SHOPPING,
+  SEIYO_TRAVEL_COMMERCE,
+  SEIYO_TRAVEL_ALL
+} from './seiyo-travel';
 
 
 
@@ -3390,6 +3398,40 @@ export const NIIHAMA_LOOKUP: LookupTown = {
 
 
 
+
+export const SEIYO_LOOKUP: LookupTown = {
+  slug: 'seiyo',
+  prefectureSlug: 'ehime',
+  jis: SEIYO.jis,
+  nameJa: SEIYO.nameJa,
+  nameEn: SEIYO.nameEn,
+  heroPhoto: SEIYO_PLACE_PHOTO,
+  photoCiteJa: '写真は開明学校。Reggaeman、2010-11-27、CC BY-SA 3.0。File:Kaimei_Gakko_01.JPG。',
+  photoCiteEn: 'Photo: Kaimei School. Reggaeman, 2010-11-27, CC BY-SA 3.0. File:Kaimei_Gakko_01.JPG.',
+  rows: SEIYO_FACILITIES,
+  expectedGeo: SEIYO_EXPECTED_GEO_COUNT,
+  expectedRows: SEIYO_EXPECTED_ROW_COUNT,
+  travelDining: SEIYO_TRAVEL_DINING,
+  travelStay: SEIYO_TRAVEL_STAY,
+  travelShopping: SEIYO_TRAVEL_SHOPPING,
+  travelCommerce: SEIYO_TRAVEL_COMMERCE,
+  travelAll: SEIYO_TRAVEL_ALL,
+  coverageJa:
+    '西予市（JIS 38214）観光4・宿泊7・飲食16・温泉3・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。愛媛県10つ目のLIVEハブ。',
+  coverageEn:
+    'Seiyo City (JIS 38214), 4 tourism + 7 stay + 16 dining + 3 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Tenth LIVE Ehime hub.',
+  mapLabelJa: '西予市の出典座標4件',
+  mapLabelEn: '4 sourced coordinates in Seiyo City',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia/Commons等出典座標4件（accessed 2026-09-09）。',
+  mapCitePackEn: 'Points: 4 sourced coordinates for city/official facilities (accessed 2026-09-09).',
+  licenseNoteJa:
+    '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.seiyo.ehime.jp, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
 export const SHIKOKUCHUO_LOOKUP: LookupTown = {
   slug: 'shikokuchuo',
   prefectureSlug: 'ehime',
@@ -3795,7 +3837,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   saijo: SAIJO_LOOKUP,
   ozu: OZU_LOOKUP,
   iyo: IYO_LOOKUP,
-  shikokuchuo: SHIKOKUCHUO_LOOKUP
+  shikokuchuo: SHIKOKUCHUO_LOOKUP,
+  seiyo: SEIYO_LOOKUP
 };
 
 

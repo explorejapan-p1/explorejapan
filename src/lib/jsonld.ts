@@ -77,6 +77,7 @@ import {SAIJO, SAIJO_PLACE_PHOTO} from '@/data/saijo';
 import {OZU, OZU_PLACE_PHOTO} from '@/data/ozu';
 import {IYO, IYO_PLACE_PHOTO} from '@/data/iyo';
 import {SHIKOKUCHUO, SHIKOKUCHUO_PLACE_PHOTO} from '@/data/shikokuchuo';
+import {SEIYO, SEIYO_PLACE_PHOTO} from '@/data/seiyo';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -208,6 +209,7 @@ function localityJa(slug: string): string {
   if (slug === 'ozu') return OZU.nameJa;
   if (slug === 'iyo') return IYO.nameJa;
   if (slug === 'shikokuchuo') return SHIKOKUCHUO.nameJa;
+  if (slug === 'seiyo') return SEIYO.nameJa;
   return MIMA.nameJa;
 }
 
@@ -278,6 +280,7 @@ function localityEn(slug: string): string {
   if (slug === 'ozu') return OZU.nameEn;
   if (slug === 'iyo') return IYO.nameEn;
   if (slug === 'shikokuchuo') return SHIKOKUCHUO.nameEn;
+  if (slug === 'seiyo') return SEIYO.nameEn;
   return MIMA.nameEn;
 }
 
@@ -4565,6 +4568,58 @@ export function yawatahamaGraph(locale: AppLocale) {
 
 
 
+
+
+export function seiyoGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'ehime/seiyo');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('seiyo');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? SEIYO.nameJa : SEIYO.nameEn,
+        alternateName: isJa ? SEIYO.nameEn : SEIYO.nameJa,
+        identifier: SEIYO.jis,
+        url,
+        image: photoAbs(SEIYO_PLACE_PHOTO),
+        sameAs: [SEIYO.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '宇和町卯之町三丁目434番地1' : '3-434-1 Unomachi, Uwa-cho',
+          addressLocality: isJa ? SEIYO.nameJa : SEIYO.nameEn,
+          addressRegion: isJa ? SEIYO.prefectureJa : SEIYO.prefectureEn,
+          postalCode: SEIYO.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? SEIYO.prefectureJa : SEIYO.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? SEIYO.nameJa : SEIYO.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? SEIYO.prefectureJa : SEIYO.prefectureEn, item: canonicalUrl(locale, 'ehime')},
+          {'@type': 'ListItem', position: 3, name: isJa ? SEIYO.nameJa : SEIYO.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
 
 export function shikokuchuoGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'ehime/shikokuchuo');

@@ -648,6 +648,14 @@ import {
   shikokuchuoSightPhoto,
   rankShikokuchuoSeeRows,
 } from '@/data/shikokuchuo-travel';
+import {
+  SEIYO_DINING_NAME_SET,
+  isSeiyoOnsenPackRow,
+  isSeiyoExperiencePackRow,
+  isSeiyoStayPackRow,
+  seiyoSightPhoto,
+  rankSeiyoSeeRows,
+} from '@/data/seiyo-travel';
 
 
 
@@ -3633,6 +3641,46 @@ function uwajimaListings(): PublicListing[] {
 
 
 
+
+function seiyoListings(): PublicListing[] {
+  const town = lookupTown('seiyo')!;
+  const out: PublicListing[] = town.travelAll.map((row) =>
+    fromTravel(row, 'seiyo', seiyoSightPhoto(row.name_ja))
+  );
+  const seen = new Set<string>();
+  const pack: FacilityRow[] = [];
+  for (const row of town.rows) {
+    if (SEIYO_DINING_NAME_SET.has(row.name_ja)) continue;
+    if (
+      !isSeiyoOnsenPackRow(row) &&
+      !isSeiyoExperiencePackRow(row) &&
+      !isSeiyoStayPackRow(row) &&
+      !isSightsCategory(row.category)
+    ) {
+      continue;
+    }
+    const key = packDedupeKey(row);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    pack.push(row);
+  }
+  const ranked = rankSeiyoSeeRows(pack);
+  const onsen = pack.filter(isSeiyoOnsenPackRow);
+  const experience = pack.filter(isSeiyoExperiencePackRow);
+  const stay = pack.filter(isSeiyoStayPackRow);
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
+    const kind: ListingKind = isSeiyoOnsenPackRow(row)
+      ? 'onsen'
+      : isSeiyoExperiencePackRow(row)
+        ? 'experience'
+        : isSeiyoStayPackRow(row)
+          ? 'stay'
+          : 'sights';
+    out.push(fromPack(row, 'seiyo', kind, seiyoSightPhoto(row.name_ja)));
+  }
+  return out;
+}
+
 function shikokuchuoListings(): PublicListing[] {
   const town = lookupTown('shikokuchuo')!;
   const out: PublicListing[] = town.travelAll.map((row) =>
@@ -4027,7 +4075,8 @@ const CACHE: Record<ReadySlug, PublicListing[]> = {
   saijo: saijoListings(),
   ozu: ozuListings(),
   iyo: iyoListings(),
-  shikokuchuo: shikokuchuoListings()
+  shikokuchuo: shikokuchuoListings(),
+  seiyo: seiyoListings()
 };
 
 export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {
