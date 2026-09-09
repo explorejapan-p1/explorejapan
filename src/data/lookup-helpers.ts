@@ -939,6 +939,17 @@ import {
   kamijimaTopChipForRow,
   resolveKamijimaFilter
 } from './kamijima-travel';
+import {
+  isKumakogenOnsenPackRow,
+  isKumakogenExperiencePackRow,
+  isKumakogenStayPackRow,
+  kumakogenPackRowMatchesFilter,
+  rankKumakogenSeeRows,
+  kumakogenSightPhoto,
+  kumakogenSourcedHook,
+  kumakogenTopChipForRow,
+  resolveKumakogenFilter,
+} from './kumakogen-travel';
 
 
 
@@ -1755,6 +1766,18 @@ const KAMIJIMA_HELPERS: LookupHelpers = {
   resolveFilter: resolveKamijimaFilter
 };
 
+const KUMAKOGEN_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isKumakogenOnsenPackRow,
+  isExperiencePackRow: isKumakogenExperiencePackRow,
+  isStayPackRow: isKumakogenStayPackRow,
+  packRowMatchesFilter: kumakogenPackRowMatchesFilter,
+  rankSeeRows: rankKumakogenSeeRows,
+  sightPhoto: kumakogenSightPhoto,
+  sourcedHook: kumakogenSourcedHook,
+  topChipForRow: kumakogenTopChipForRow,
+  resolveFilter: resolveKumakogenFilter
+};
+
 const TOON_HELPERS: LookupHelpers = {
   isOnsenPackRow: isToonOnsenPackRow,
   isExperiencePackRow: isToonExperiencePackRow,
@@ -2174,5 +2197,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'seiyo') return SEIYO_HELPERS;
   if (slug === 'toon') return TOON_HELPERS;
   if (slug === 'kamijima') return KAMIJIMA_HELPERS;
+  if (slug === 'kumakogen') return KUMAKOGEN_HELPERS;
   return MIMA_HELPERS;
 }

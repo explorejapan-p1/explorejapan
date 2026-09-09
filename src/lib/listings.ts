@@ -672,6 +672,14 @@ import {
   kamijimaSightPhoto,
   rankKamijimaSeeRows
 } from '@/data/kamijima-travel';
+import {
+  KUMAKOGEN_DINING_NAME_SET,
+  isKumakogenOnsenPackRow,
+  isKumakogenExperiencePackRow,
+  isKumakogenStayPackRow,
+  kumakogenSightPhoto,
+  rankKumakogenSeeRows
+} from '@/data/kumakogen-travel';
 
 
 
@@ -3698,6 +3706,46 @@ function seiyoListings(): PublicListing[] {
 }
 
 
+
+function kumakogenListings(): PublicListing[] {
+  const town = lookupTown('kumakogen')!;
+  const out: PublicListing[] = town.travelAll.map((row) =>
+    fromTravel(row, 'kumakogen', kumakogenSightPhoto(row.name_ja))
+  );
+  const seen = new Set<string>();
+  const pack: FacilityRow[] = [];
+  for (const row of town.rows) {
+    if (KUMAKOGEN_DINING_NAME_SET.has(row.name_ja)) continue;
+    if (
+      !isKumakogenOnsenPackRow(row) &&
+      !isKumakogenExperiencePackRow(row) &&
+      !isKumakogenStayPackRow(row) &&
+      !isSightsCategory(row.category)
+    ) {
+      continue;
+    }
+    const key = packDedupeKey(row);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    pack.push(row);
+  }
+  const ranked = rankKumakogenSeeRows(pack);
+  const onsen = pack.filter(isKumakogenOnsenPackRow);
+  const experience = pack.filter(isKumakogenExperiencePackRow);
+  const stay = pack.filter(isKumakogenStayPackRow);
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
+    const kind: ListingKind = isKumakogenOnsenPackRow(row)
+      ? 'onsen'
+      : isKumakogenExperiencePackRow(row)
+        ? 'experience'
+        : isKumakogenStayPackRow(row)
+          ? 'stay'
+          : 'sights';
+    out.push(fromPack(row, 'kumakogen', kind, kumakogenSightPhoto(row.name_ja)));
+  }
+  return out;
+}
+
 function kamijimaListings(): PublicListing[] {
   const town = lookupTown('kamijima')!;
   const out: PublicListing[] = town.travelAll.map((row) =>
@@ -4174,7 +4222,8 @@ const CACHE: Record<ReadySlug, PublicListing[]> = {
   shikokuchuo: shikokuchuoListings(),
   seiyo: seiyoListings(),
   toon: toonListings(),
-  kamijima: kamijimaListings()
+  kamijima: kamijimaListings(),
+  kumakogen: kumakogenListings()
 };
 
 export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {

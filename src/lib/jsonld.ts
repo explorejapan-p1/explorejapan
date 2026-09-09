@@ -80,6 +80,7 @@ import {SHIKOKUCHUO, SHIKOKUCHUO_PLACE_PHOTO} from '@/data/shikokuchuo';
 import {SEIYO, SEIYO_PLACE_PHOTO} from '@/data/seiyo';
 import {TOON, TOON_PLACE_PHOTO} from '@/data/toon';
 import {KAMIJIMA, KAMIJIMA_PLACE_PHOTO} from '@/data/kamijima';
+import {KUMAKOGEN, KUMAKOGEN_PLACE_PHOTO} from '@/data/kumakogen';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -214,6 +215,7 @@ function localityJa(slug: string): string {
   if (slug === 'seiyo') return SEIYO.nameJa;
   if (slug === 'toon') return TOON.nameJa;
   if (slug === 'kamijima') return KAMIJIMA.nameJa;
+  if (slug === 'kumakogen') return KUMAKOGEN.nameJa;
   return MIMA.nameJa;
 }
 
@@ -287,6 +289,7 @@ function localityEn(slug: string): string {
   if (slug === 'seiyo') return SEIYO.nameEn;
   if (slug === 'toon') return TOON.nameEn;
   if (slug === 'kamijima') return KAMIJIMA.nameEn;
+  if (slug === 'kumakogen') return KUMAKOGEN.nameEn;
   return MIMA.nameEn;
 }
 
@@ -4627,6 +4630,58 @@ export function seiyoGraph(locale: AppLocale) {
   };
 }
 
+
+
+export function kumakogenGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'ehime/kumakogen');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('kumakogen');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? KUMAKOGEN.nameJa : KUMAKOGEN.nameEn,
+        alternateName: isJa ? KUMAKOGEN.nameEn : KUMAKOGEN.nameJa,
+        identifier: KUMAKOGEN.jis,
+        url,
+        image: photoAbs(KUMAKOGEN_PLACE_PHOTO),
+        sameAs: [KUMAKOGEN.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '久万212番地' : '212 Kuma',
+          addressLocality: isJa ? KUMAKOGEN.nameJa : KUMAKOGEN.nameEn,
+          addressRegion: isJa ? KUMAKOGEN.prefectureJa : KUMAKOGEN.prefectureEn,
+          postalCode: KUMAKOGEN.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? KUMAKOGEN.prefectureJa : KUMAKOGEN.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? KUMAKOGEN.nameJa : KUMAKOGEN.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? KUMAKOGEN.prefectureJa : KUMAKOGEN.prefectureEn, item: canonicalUrl(locale, 'ehime')},
+          {'@type': 'ListItem', position: 3, name: isJa ? KUMAKOGEN.nameJa : KUMAKOGEN.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
 
 export function kamijimaGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'ehime/kamijima');

@@ -763,6 +763,7 @@ import {SHIKOKUCHUO, SHIKOKUCHUO_PLACE_PHOTO, SHIKOKUCHUO_FACILITIES, SHIKOKUCHU
 import {SEIYO, SEIYO_PLACE_PHOTO, SEIYO_FACILITIES, SEIYO_EXPECTED_GEO_COUNT, SEIYO_EXPECTED_ROW_COUNT} from './seiyo';
 import {TOON, TOON_PLACE_PHOTO, TOON_FACILITIES, TOON_EXPECTED_GEO_COUNT, TOON_EXPECTED_ROW_COUNT} from './toon';
 import {KAMIJIMA, KAMIJIMA_PLACE_PHOTO, KAMIJIMA_FACILITIES, KAMIJIMA_EXPECTED_GEO_COUNT, KAMIJIMA_EXPECTED_ROW_COUNT} from './kamijima';
+import {KUMAKOGEN, KUMAKOGEN_PLACE_PHOTO, KUMAKOGEN_FACILITIES, KUMAKOGEN_EXPECTED_GEO_COUNT, KUMAKOGEN_EXPECTED_ROW_COUNT} from './kumakogen';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -861,6 +862,13 @@ import {
   KAMIJIMA_TRAVEL_COMMERCE,
   KAMIJIMA_TRAVEL_ALL
 } from './kamijima-travel';
+import {
+  KUMAKOGEN_TRAVEL_DINING,
+  KUMAKOGEN_TRAVEL_STAY,
+  KUMAKOGEN_TRAVEL_SHOPPING,
+  KUMAKOGEN_TRAVEL_COMMERCE,
+  KUMAKOGEN_TRAVEL_ALL
+} from './kumakogen-travel';
 
 
 
@@ -3481,6 +3489,40 @@ export const TOON_LOOKUP: LookupTown = {
   licenseSiteEn: 'City-site listing'
 };
 
+
+export const KUMAKOGEN_LOOKUP: LookupTown = {
+  slug: 'kumakogen',
+  prefectureSlug: 'ehime',
+  jis: KUMAKOGEN.jis,
+  nameJa: KUMAKOGEN.nameJa,
+  nameEn: KUMAKOGEN.nameEn,
+  heroPhoto: KUMAKOGEN_PLACE_PHOTO,
+  photoCiteJa: '写真は古岩屋。Dokudami、2021-11-09、CC BY-SA 4.0。File:Huruiwaya20211109 2.jpg。',
+  photoCiteEn: 'Photo: Furuiwaya. Dokudami, 2021-11-09, CC BY-SA 4.0. File:Huruiwaya20211109 2.jpg.',
+  rows: KUMAKOGEN_FACILITIES,
+  expectedGeo: KUMAKOGEN_EXPECTED_GEO_COUNT,
+  expectedRows: KUMAKOGEN_EXPECTED_ROW_COUNT,
+  travelDining: KUMAKOGEN_TRAVEL_DINING,
+  travelStay: KUMAKOGEN_TRAVEL_STAY,
+  travelShopping: KUMAKOGEN_TRAVEL_SHOPPING,
+  travelCommerce: KUMAKOGEN_TRAVEL_COMMERCE,
+  travelAll: KUMAKOGEN_TRAVEL_ALL,
+  coverageJa:
+    '久万高原町（JIS 38386）観光4・宿泊4・飲食16・温泉4・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。愛媛県13つ目のLIVEハブ。',
+  coverageEn:
+    'Kumakogen Town (JIS 38386), 4 tourism + 4 stay + 16 dining + 4 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Thirteenth LIVE Ehime hub.',
+  mapLabelJa: '久万高原町の出典座標4件',
+  mapLabelEn: '4 sourced coordinates in Kumakogen Town',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons等出典座標4件（accessed 2026-09-10）。',
+  mapCitePackEn: 'Points: 4 sourced coordinates for town/official facilities (accessed 2026-09-10).',
+  licenseNoteJa:
+    '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are town-site listings, facts from kumakogen.jp, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
 export const KAMIJIMA_LOOKUP: LookupTown = {
   slug: 'kamijima',
   prefectureSlug: 'ehime',
@@ -3923,7 +3965,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   shikokuchuo: SHIKOKUCHUO_LOOKUP,
   seiyo: SEIYO_LOOKUP,
   toon: TOON_LOOKUP,
-  kamijima: KAMIJIMA_LOOKUP
+  kamijima: KAMIJIMA_LOOKUP,
+  kumakogen: KUMAKOGEN_LOOKUP
 };
 
 
