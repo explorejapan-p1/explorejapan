@@ -7,7 +7,7 @@ import type {MimaPlacePhoto} from './mima';
 import {MATSUYAMA, MATSUYAMA_SIGHT_PHOTOS} from './matsuyama';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const MATSUYAMA_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const MATSUYAMA_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const MATSUYAMA_TRAVEL_SOURCES = {
   home: 'https://www.city.matsuyama.ehime.jp/', hall: 'https://www.city.matsuyama.ehime.jp/shisetsu/shinos/annai.html',
   kankou: 'https://matsuyama-sightseeing.com/',
@@ -16,7 +16,7 @@ export const MATSUYAMA_TRAVEL_SOURCES = {
   candeo: 'https://travel.rakuten.co.jp/HOTEL/148952/148952.html'
 } as const;
 
-export const MATSUYAMA_ONSEN_PACK_NAMES = ['道後温泉本館'] as const;
+export const MATSUYAMA_ONSEN_PACK_NAMES = ["道後温泉本館", "道後温泉 道後グランドホテル 大浴場", "道後プリンスホテル〜旬華趣湯 あったらいいな、が湧く湯宿〜 ゆのね", "道後温泉 道後舘 大浴場", "チェックイン松山 大浴場", "道後温泉 ふなや 大浴場", "道後温泉 大和屋本店 露天風呂", "道後温泉 ホテル椿館 露天風呂", "ホテル泰平 松山城下の天然温泉「橄欖の湯」―奥道後温泉引き湯― 露天風呂", "道後温泉 花ゆづき 天望露天風呂", "道後温泉 茶玻瑠 露天風呂", "天然温泉 松山ニューグランドホテル 大浴場", "道後温泉 オールドイングランド 道後山の手ホテル 大浴場", "奥道後 壱湯の守（いちゆのもり） 岩湯", "ホテルＮｏ．１松山 大浴場", "東道後のそらともり 大浴場", "たかのこのホテル 露天風呂", "大江戸温泉物語 道後 露天風呂", "ＣＡＮＤＥＯ ＨＯＴＥＬＳ（カンデオホテルズ）松山大街道 露天風呂", "リブマックスリゾート奥道後 大浴場", "天然温泉 石手の湯 ドーミーイン松山（ドーミーイン・御宿野乃 ホテルズグループ） 大浴場", "道後温泉 八千代 大浴場", "道後温泉 ホテル古湧園 遥 露天風呂", "道後ｈａｋｕｒｏ 大浴場", "レフ松山市駅 ｂｙ ベッセルホテルズ｜ＲＥＦ松山市駅｜サウナ付大浴場（松山市駅隣接） 大浴場"] as const;
 export const MATSUYAMA_ONSEN_PACK_SET: ReadonlySet<string> = new Set(MATSUYAMA_ONSEN_PACK_NAMES);
 export const MATSUYAMA_EXPERIENCE_PACK_NAMES = ['坊っちゃん列車'] as const;
 export const MATSUYAMA_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(MATSUYAMA_EXPERIENCE_PACK_NAMES);
@@ -31,7 +31,37 @@ function stay(id: string, name_ja: string, address: string | null, phone: string
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: MATSUYAMA_TRAVEL_ACCESSED};
 }
 export const MATSUYAMA_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('matsuyama-stay-01', 'カンデオホテルズ松山大街道', '愛媛県松山市大街道2-5-12', '089-913-8866', 'https://travel.rakuten.co.jp/HOTEL/148952/148952.html')
+  stay('matsuyama-stay-001', "道後温泉 道後グランドホテル", "愛媛県松山市道後湯之町16-21", null, "https://travel.rakuten.co.jp/HOTEL/6001/6001.html"),
+  stay('matsuyama-stay-002', "ホテルマイステイズ松山", "愛媛県松山市大手町1-10-10", null, "https://travel.rakuten.co.jp/HOTEL/6276/6276.html"),
+  stay('matsuyama-stay-003', "道後プリンスホテル〜旬華趣湯 あったらいいな、が湧く湯宿〜", "愛媛県松山市道後姫塚100", null, "https://travel.rakuten.co.jp/HOTEL/8384/8384.html"),
+  stay('matsuyama-stay-004', "道後温泉 道後舘", "愛媛県松山市道後多幸町7-26", null, "https://travel.rakuten.co.jp/HOTEL/10788/10788.html"),
+  stay('matsuyama-stay-005', "チェックイン松山", "愛媛県松山市三番町2-7-3", null, "https://travel.rakuten.co.jp/HOTEL/11211/11211.html"),
+  stay('matsuyama-stay-006', "道後温泉 ふなや", "愛媛県松山市道後湯之町1-33", null, "https://travel.rakuten.co.jp/HOTEL/11332/11332.html"),
+  stay('matsuyama-stay-007', "道後温泉 大和屋本店", "愛媛県松山市道後湯之町20-8", null, "https://travel.rakuten.co.jp/HOTEL/13429/13429.html"),
+  stay('matsuyama-stay-008', "道後温泉 ホテル椿館", "愛媛県松山市道後鷺谷町5-32", null, "https://travel.rakuten.co.jp/HOTEL/13653/13653.html"),
+  stay('matsuyama-stay-009', "ホテル泰平 松山城下の天然温泉「橄欖の湯」―奥道後温泉引き湯―", "愛媛県松山市平和通3-1-15", null, "https://travel.rakuten.co.jp/HOTEL/15420/15420.html"),
+  stay('matsuyama-stay-010', "道後温泉 花ゆづき", "愛媛県松山市道後湯月町4-16", null, "https://travel.rakuten.co.jp/HOTEL/16719/16719.html"),
+  stay('matsuyama-stay-011', "道後温泉 茶玻瑠", "愛媛県松山市道後湯月町4-4", null, "https://travel.rakuten.co.jp/HOTEL/17668/17668.html"),
+  stay('matsuyama-stay-012', "天然温泉 松山ニューグランドホテル", "愛媛県松山市二番町３丁目４－１０", null, "https://travel.rakuten.co.jp/HOTEL/19414/19414.html"),
+  stay('matsuyama-stay-013', "道後温泉 オールドイングランド 道後山の手ホテル", "愛媛県松山市道後鷺谷町1-13", null, "https://travel.rakuten.co.jp/HOTEL/20469/20469.html"),
+  stay('matsuyama-stay-014', "奥道後 壱湯の守（いちゆのもり）", "愛媛県松山市末町267", null, "https://travel.rakuten.co.jp/HOTEL/27716/27716.html"),
+  stay('matsuyama-stay-015', "ホテルＮｏ．１松山", "愛媛県松山市千舟町2-7-3", null, "https://travel.rakuten.co.jp/HOTEL/43995/43995.html"),
+  stay('matsuyama-stay-016', "東道後のそらともり", "愛媛県松山市南久米町3-1", null, "https://travel.rakuten.co.jp/HOTEL/80639/80639.html"),
+  stay('matsuyama-stay-017', "ホテル道後やや", "愛媛県松山市道後多幸町6-1", null, "https://travel.rakuten.co.jp/HOTEL/108156/108156.html"),
+  stay('matsuyama-stay-018', "たかのこのホテル", "愛媛県松山市鷹子町737-2", null, "https://travel.rakuten.co.jp/HOTEL/140784/140784.html"),
+  stay('matsuyama-stay-019', "大江戸温泉物語 道後", "愛媛県松山市道後姫塚112-1", null, "https://travel.rakuten.co.jp/HOTEL/147473/147473.html"),
+  stay('matsuyama-stay-020', "ネストホテル松山", "愛媛県松山市二番町1-7-1", null, "https://travel.rakuten.co.jp/HOTEL/147840/147840.html"),
+  stay('matsuyama-stay-021', "ＣＡＮＤＥＯ ＨＯＴＥＬＳ（カンデオホテルズ）松山大街道", "愛媛県松山市大街道2-5-12", null, "https://travel.rakuten.co.jp/HOTEL/148952/148952.html"),
+  stay('matsuyama-stay-022', "ダイワロイネットホテル松山", "愛媛県松山市一番町2-6-5", null, "https://travel.rakuten.co.jp/HOTEL/151213/151213.html"),
+  stay('matsuyama-stay-023', "リブマックスリゾート奥道後", "愛媛県松山市末町300-1", null, "https://travel.rakuten.co.jp/HOTEL/158312/158312.html"),
+  stay('matsuyama-stay-024', "天然温泉 石手の湯 ドーミーイン松山（ドーミーイン・御宿野乃 ホテルズグループ）", "愛媛県松山市大街道2-6-5", null, "https://travel.rakuten.co.jp/HOTEL/165105/165105.html"),
+  stay('matsuyama-stay-025', "道後温泉 八千代", "愛媛県松山市道後多幸町6-34", null, "https://travel.rakuten.co.jp/HOTEL/166206/166206.html"),
+  stay('matsuyama-stay-026', "道後温泉 ホテル古湧園 遥", "愛媛県松山市道後鷺谷町1-1", null, "https://travel.rakuten.co.jp/HOTEL/176808/176808.html"),
+  stay('matsuyama-stay-027', "道後ｈａｋｕｒｏ", "愛媛県松山市道後鷺谷町3-1", null, "https://travel.rakuten.co.jp/HOTEL/179083/179083.html"),
+  stay('matsuyama-stay-028', "コンフォートホテル松山", "愛媛県松山市花園町3-18", null, "https://travel.rakuten.co.jp/HOTEL/180563/180563.html"),
+  stay('matsuyama-stay-029', "レフ松山市駅 ｂｙ ベッセルホテルズ｜ＲＥＦ松山市駅｜サウナ付大浴場（松山市駅隣接）", "愛媛県松山市湊町5-2-2", null, "https://travel.rakuten.co.jp/HOTEL/183045/183045.html"),
+  stay('matsuyama-stay-030', "日和ホテル松山", "愛媛県松山市一番町３丁目３－１", null, "https://travel.rakuten.co.jp/HOTEL/198319/198319.html"),
+  stay('matsuyama-stay-031', "アパホテル〈松山市駅前〉（２０２６年７月ＯＰＥＮ）", "愛媛県松山市湊町6-3-2", null, "https://travel.rakuten.co.jp/HOTEL/199177/199177.html"),
 ];
 
 function dining(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {
