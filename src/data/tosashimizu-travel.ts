@@ -1,13 +1,13 @@
 /**
  * Tosashimizu City travel layer. No frozen pack.
- * Dining from 食べログ 土佐清水市 (C39209). Stay: TheMana Village Rakuten room still. Onsen: 露天風呂 still (stay≠onsen). Experience: ジョン万次郎資料館.
+ * Dining from 食べログ 土佐清水市 (C39209). Stay: TG610 densify Rakuten 部屋 stills.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {TOSASHIMIZU, TOSASHIMIZU_SIGHT_PHOTOS} from './tosashimizu';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const TOSASHIMIZU_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const TOSASHIMIZU_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const TOSASHIMIZU_TRAVEL_SOURCES = {
   home: 'https://www.city.tosashimizu.lg.jp/', hall: 'https://ja.wikipedia.org/wiki/%E5%9C%9F%E4%BD%90%E6%B8%85%E6%B0%B4%E5%B8%82',
   kankou: 'https://www.city.tosashimizu.lg.jp/',
@@ -31,7 +31,16 @@ function stay(id: string, name_ja: string, address: string | null, phone: string
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: TOSASHIMIZU_TRAVEL_ACCESSED};
 }
 export const TOSASHIMIZU_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('tosashimizu-stay-01', 'ＴｈｅＭａｎａ　Ｖｉｌｌａｇｅ', '高知県土佐清水市足摺岬783', '0880-88-1111', 'https://travel.rakuten.co.jp/HOTEL/74616/74616.html')
+  stay('tosashimizu-stay-01', 'ＴｈｅＭａｎａ　Ｖｉｌｌａｇｅ', '高知県土佐清水市足摺岬783', '0880-88-1111', 'https://travel.rakuten.co.jp/HOTEL/74616/74616.html'),
+  stay('tosashimizu-stay-02', 'あしずり温泉郷　足摺国際ホテル', '高知県土佐清水市足摺岬662', '0880-88-0201', 'https://travel.rakuten.co.jp/HOTEL/8329/8329.html'),
+  stay('tosashimizu-stay-03', 'あしずり温泉郷　足摺サニーサイドホテル', '高知県土佐清水市松尾19-2', '0880-88-0331', 'https://travel.rakuten.co.jp/HOTEL/14660/14660.html'),
+  stay('tosashimizu-stay-04', 'アシズリテルメ', '高知県土佐清水市足摺岬1433-3', '0880-88-0301', 'https://travel.rakuten.co.jp/HOTEL/193166/193166.html'),
+  stay('tosashimizu-stay-05', 'あしずり温泉郷　ホテル足摺園', '高知県土佐清水市足摺岬478-5', '0880-88-0033', 'https://travel.rakuten.co.jp/HOTEL/12632/12632.html'),
+  stay('tosashimizu-stay-06', '民宿　冠', '高知県土佐清水市足摺岬634', '0880-88-0059', 'https://travel.rakuten.co.jp/HOTEL/164914/164914.html'),
+  stay('tosashimizu-stay-07', '足摺岬　民宿　福田家', '高知県土佐清水市足摺岬1409-3', null, 'https://travel.rakuten.co.jp/HOTEL/29205/29205.html'),
+  stay('tosashimizu-stay-08', 'ＯＵＣＨＩ　ＨＯＴＥＬ　日々', '高知県土佐清水市浦尻31-11', '090-9456-0563', 'https://travel.rakuten.co.jp/HOTEL/165052/165052.html'),
+  stay('tosashimizu-stay-09', 'ゲストハウス大岐ビーチ', '高知県土佐清水市大岐884-23', '050-7123-3331', 'https://travel.rakuten.co.jp/HOTEL/158794/158794.html'),
+  stay('tosashimizu-stay-10', 'スノーピーク土佐清水キャンプフィールド', '高知県土佐清水市三崎字エジリ4145-1', '0880-87-9789', 'https://travel.rakuten.co.jp/HOTEL/188424/188424.html'),
 ];
 
 function dining(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {

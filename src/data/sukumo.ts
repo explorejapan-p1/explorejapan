@@ -132,6 +132,62 @@ export const SUKUMO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'https://travel.rakuten.co.jp/HOTEL/153227/153227.html',
     '楽天トラベル'
   ),
+  '秋沢ホテル': sourcePhoto(
+    'sukumo-stay-akizawa.jpg',
+    '秋沢ホテルの客室写真',
+    '秋沢ホテル room photo',
+    'https://travel.rakuten.co.jp/HOTEL/4858/4858.html',
+    '楽天トラベル'
+  ),
+  'ホテルアバン宿毛': sourcePhoto(
+    'sukumo-stay-avan.jpg',
+    'ホテルアバン宿毛の客室写真',
+    'ホテルアバン宿毛 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/17785/17785.html',
+    '楽天トラベル'
+  ),
+  'ホテル　マツヤ': sourcePhoto(
+    'sukumo-stay-matsuya.jpg',
+    'ホテル　マツヤの客室写真',
+    'ホテル　マツヤ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/5413/5413.html',
+    '楽天トラベル'
+  ),
+  'ホテル　あさひ': sourcePhoto(
+    'sukumo-stay-asahi.jpg',
+    'ホテル　あさひの客室写真',
+    'ホテル　あさひ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/149313/149313.html',
+    '楽天トラベル'
+  ),
+  'ＧＲＡＮＨＩＬＬＳ　ＹＡＳＨＩ': sourcePhoto(
+    'sukumo-stay-granhills.jpg',
+    'ＧＲＡＮＨＩＬＬＳ　ＹＡＳＨＩの客室写真',
+    'ＧＲＡＮＨＩＬＬＳ　ＹＡＳＨＩ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/193042/193042.html',
+    '楽天トラベル'
+  ),
+  'ゲストハウス　みんちゅう': sourcePhoto(
+    'sukumo-stay-minchu.jpg',
+    'ゲストハウス　みんちゅうの客室写真',
+    'ゲストハウス　みんちゅう room photo',
+    'https://travel.rakuten.co.jp/HOTEL/189207/189207.html',
+    '楽天トラベル'
+  ),
+  'ゲストハウス　ＡＬＢＥＲＧＵＥ　ＳＡＫＵＲＡ': sourcePhoto(
+    'sukumo-stay-albergue.jpg',
+    'ゲストハウス　ＡＬＢＥＲＧＵＥ　ＳＡＫＵＲＡの客室写真',
+    'ゲストハウス　ＡＬＢＥＲＧＵＥ　ＳＡＫＵＲＡ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/191989/191989.html',
+    '楽天トラベル'
+  ),
+  'すくもＢＯＸ': sourcePhoto(
+    'sukumo-stay-box.jpg',
+    'すくもＢＯＸの客室写真',
+    'すくもＢＯＸ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/192401/192401.html',
+    '楽天トラベル'
+  ),
   'まなべ': sourcePhoto('sukumo-39005745-dish.jpg', 'まなべの料理写真', 'まなべ food photo', TABELOG_39005745, '食べログ'),
   '居酒屋 いごっそ': sourcePhoto('sukumo-39005748-dish.jpg', '居酒屋 いごっその料理写真', '居酒屋 いごっそ food photo', TABELOG_39005748, '食べログ'),
   '天下茶屋': sourcePhoto('sukumo-39005752-dish.jpg', '天下茶屋の料理写真', '天下茶屋 food photo', TABELOG_39005752, '食べログ'),

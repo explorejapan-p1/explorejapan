@@ -1,13 +1,13 @@
 /**
  * Kuroshio Town travel layer. No frozen pack.
- * Dining from 食べログ 黒潮町 (C39428). Stay: ネスト・ウエストガーデン土佐 Rakuten スタンダードツイン. Onsen: 0 (no bath mediaInfo key). Experience: 土佐西南大規模公園.
+ * Dining from 食べログ 黒潮町 (C39428). Stay: TG610 densify Rakuten 部屋 stills.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {KUROSHIO, KUROSHIO_SIGHT_PHOTOS} from './kuroshio';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const KUROSHIO_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const KUROSHIO_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const KUROSHIO_TRAVEL_SOURCES = {
   home: 'https://www.town.kuroshio.lg.jp/', hall: 'https://ja.wikipedia.org/wiki/%E9%BB%92%E6%BD%AE%E7%94%BA',
   kankou: 'https://www.town.kuroshio.lg.jp/',
@@ -31,7 +31,12 @@ function stay(id: string, name_ja: string, address: string | null, phone: string
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: KUROSHIO_TRAVEL_ACCESSED};
 }
 export const KUROSHIO_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('kuroshio-stay-01', 'ネスト・ウエストガーデン土佐', '高知県幡多郡黒潮町入野184', '0880-43-0101', 'https://travel.rakuten.co.jp/HOTEL/75381/75381.html')
+  stay('kuroshio-stay-01', 'ネスト・ウエストガーデン土佐', '高知県幡多郡黒潮町入野184', '0880-43-0101', 'https://travel.rakuten.co.jp/HOTEL/75381/75381.html'),
+  stay('kuroshio-stay-02', '土佐佐賀温泉　こぶしのさと', '高知県幡多郡黒潮町拳ノ川2161', '050-5482-3321', 'https://travel.rakuten.co.jp/HOTEL/197340/197340.html'),
+  stay('kuroshio-stay-03', 'うみと暮らす宿　たかはま', '高知県幡多郡黒潮町伊田3', '0880-44-1046', 'https://travel.rakuten.co.jp/HOTEL/184064/184064.html'),
+  stay('kuroshio-stay-04', '民泊パレス', '高知県幡多郡黒潮町入野1856', '080-3165-1806', 'https://travel.rakuten.co.jp/HOTEL/190211/190211.html'),
+  stay('kuroshio-stay-05', '加持ノ宿　黒潮町の一棟貸し宿', '高知県幡多郡黒潮町加持2672', '090-8829-8860', 'https://travel.rakuten.co.jp/HOTEL/193343/193343.html'),
+  stay('kuroshio-stay-06', 'Ｓｕｒｆ　Ｈｏｕｓｅ　ＲＥＡＬＩＳＴＡ', '高知県幡多郡黒潮町浮鞭539-15', '090-4265-3131', 'https://travel.rakuten.co.jp/HOTEL/194587/194587.html'),
 ];
 
 function dining(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {

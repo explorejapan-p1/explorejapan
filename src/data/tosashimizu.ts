@@ -132,6 +132,69 @@ export const TOSASHIMIZU_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> 
     'https://travel.rakuten.co.jp/HOTEL/74616/74616.html',
     '楽天トラベル'
   ),
+  'あしずり温泉郷　足摺国際ホテル': sourcePhoto(
+    'tosashimizu-stay-kokusai.jpg',
+    'あしずり温泉郷　足摺国際ホテルの客室写真',
+    'あしずり温泉郷　足摺国際ホテル room photo',
+    'https://travel.rakuten.co.jp/HOTEL/8329/8329.html',
+    '楽天トラベル'
+  ),
+  'あしずり温泉郷　足摺サニーサイドホテル': sourcePhoto(
+    'tosashimizu-stay-sunnyside.jpg',
+    'あしずり温泉郷　足摺サニーサイドホテルの客室写真',
+    'あしずり温泉郷　足摺サニーサイドホテル room photo',
+    'https://travel.rakuten.co.jp/HOTEL/14660/14660.html',
+    '楽天トラベル'
+  ),
+  'アシズリテルメ': sourcePhoto(
+    'tosashimizu-stay-terme.jpg',
+    'アシズリテルメの客室写真',
+    'アシズリテルメ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/193166/193166.html',
+    '楽天トラベル'
+  ),
+  'あしずり温泉郷　ホテル足摺園': sourcePhoto(
+    'tosashimizu-stay-ashizurien.jpg',
+    'あしずり温泉郷　ホテル足摺園の客室写真',
+    'あしずり温泉郷　ホテル足摺園 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/12632/12632.html',
+    '楽天トラベル'
+  ),
+  '民宿　冠': sourcePhoto(
+    'tosashimizu-stay-kanmuri.jpg',
+    '民宿　冠の客室写真',
+    '民宿　冠 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/164914/164914.html',
+    '楽天トラベル'
+  ),
+  '足摺岬　民宿　福田家': sourcePhoto(
+    'tosashimizu-stay-fukudaya.jpg',
+    '足摺岬　民宿　福田家の客室写真',
+    '足摺岬　民宿　福田家 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/29205/29205.html',
+    '楽天トラベル'
+  ),
+  'ＯＵＣＨＩ　ＨＯＴＥＬ　日々': sourcePhoto(
+    'tosashimizu-stay-ouchi.jpg',
+    'ＯＵＣＨＩ　ＨＯＴＥＬ　日々の客室写真',
+    'ＯＵＣＨＩ　ＨＯＴＥＬ　日々 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/165052/165052.html',
+    '楽天トラベル'
+  ),
+  'ゲストハウス大岐ビーチ': sourcePhoto(
+    'tosashimizu-stay-oki.jpg',
+    'ゲストハウス大岐ビーチの客室写真',
+    'ゲストハウス大岐ビーチ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/158794/158794.html',
+    '楽天トラベル'
+  ),
+  'スノーピーク土佐清水キャンプフィールド': sourcePhoto(
+    'tosashimizu-stay-snowpeak.jpg',
+    'スノーピーク土佐清水キャンプフィールドの客室写真',
+    'スノーピーク土佐清水キャンプフィールド room photo',
+    'https://travel.rakuten.co.jp/HOTEL/188424/188424.html',
+    '楽天トラベル'
+  ),
   'Azzurrissimo': sourcePhoto('tosashimizu-39007932-dish.jpg', 'Azzurrissimoの料理写真', 'Azzurrissimo food photo', TABELOG_39007932, '食べログ'),
   '満鮨': sourcePhoto('tosashimizu-39004766-dish.jpg', '満鮨の料理写真', '満鮨 food photo', TABELOG_39004766, '食べログ'),
   'てっぱん たなべ': sourcePhoto('tosashimizu-39007154-dish.jpg', 'てっぱん たなべの料理写真', 'てっぱん たなべ food photo', TABELOG_39007154, '食べログ'),

@@ -1,13 +1,13 @@
 /**
  * Sukumo City travel layer. No frozen pack.
- * Dining from 食べログ 宿毛市 (C39208). Stay: 宿毛リゾート椰子の湯 Rakuten 洋室 still. Onsen: 三段の棚田状露天風呂 still (stay≠onsen). Experience: 道の駅すくも.
+ * Dining from 食べログ 宿毛市 (C39208). Stay: TG610 densify Rakuten 部屋 stills.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {SUKUMO, SUKUMO_SIGHT_PHOTOS} from './sukumo';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const SUKUMO_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const SUKUMO_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const SUKUMO_TRAVEL_SOURCES = {
   home: 'https://www.city.sukumo.kochi.jp/', hall: 'https://ja.wikipedia.org/wiki/%E5%AE%BF%E6%AF%9B%E5%B8%82',
   kankou: 'https://www.city.sukumo.kochi.jp/',
@@ -31,7 +31,15 @@ function stay(id: string, name_ja: string, address: string | null, phone: string
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: SUKUMO_TRAVEL_ACCESSED};
 }
 export const SUKUMO_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('sukumo-stay-01', '宿毛リゾート椰子の湯', '高知県宿毛市大島17-27', '0880-65-8185', 'https://travel.rakuten.co.jp/HOTEL/153227/153227.html')
+  stay('sukumo-stay-01', '宿毛リゾート椰子の湯', '高知県宿毛市大島17-27', '0880-65-8185', 'https://travel.rakuten.co.jp/HOTEL/153227/153227.html'),
+  stay('sukumo-stay-02', '秋沢ホテル', '高知県宿毛市幸町6-43', '0880-63-2129', 'https://travel.rakuten.co.jp/HOTEL/4858/4858.html'),
+  stay('sukumo-stay-03', 'ホテルアバン宿毛', '高知県宿毛市宿毛1108', '0880-63-1180', 'https://travel.rakuten.co.jp/HOTEL/17785/17785.html'),
+  stay('sukumo-stay-04', 'ホテル　マツヤ', '高知県宿毛市宿毛5343-10', '0880-63-1185', 'https://travel.rakuten.co.jp/HOTEL/5413/5413.html'),
+  stay('sukumo-stay-05', 'ホテル　あさひ', '高知県宿毛市高砂7-12', '0880-65-6707', 'https://travel.rakuten.co.jp/HOTEL/149313/149313.html'),
+  stay('sukumo-stay-06', 'ＧＲＡＮＨＩＬＬＳ　ＹＡＳＨＩ', '高知県宿毛市大島17-28', '0880-65-8666', 'https://travel.rakuten.co.jp/HOTEL/193042/193042.html'),
+  stay('sukumo-stay-07', 'ゲストハウス　みんちゅう', '高知県宿毛市高砂22-17', '0880-79-0885', 'https://travel.rakuten.co.jp/HOTEL/189207/189207.html'),
+  stay('sukumo-stay-08', 'ゲストハウス　ＡＬＢＥＲＧＵＥ　ＳＡＫＵＲＡ', '高知県宿毛市片島4-5-16', '0880-63-9841', 'https://travel.rakuten.co.jp/HOTEL/191989/191989.html'),
+  stay('sukumo-stay-09', 'すくもＢＯＸ', '高知県宿毛市片島9-7', null, 'https://travel.rakuten.co.jp/HOTEL/192401/192401.html'),
 ];
 
 function dining(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {

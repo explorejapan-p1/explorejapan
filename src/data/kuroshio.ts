@@ -117,6 +117,41 @@ export const KUROSHIO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'https://travel.rakuten.co.jp/HOTEL/75381/75381.html',
     '楽天トラベル'
   ),
+  '土佐佐賀温泉　こぶしのさと': sourcePhoto(
+    'kuroshio-stay-kobushi.jpg',
+    '土佐佐賀温泉　こぶしのさとの客室写真',
+    '土佐佐賀温泉　こぶしのさと room photo',
+    'https://travel.rakuten.co.jp/HOTEL/197340/197340.html',
+    '楽天トラベル'
+  ),
+  'うみと暮らす宿　たかはま': sourcePhoto(
+    'kuroshio-stay-takahama.jpg',
+    'うみと暮らす宿　たかはまの客室写真',
+    'うみと暮らす宿　たかはま room photo',
+    'https://travel.rakuten.co.jp/HOTEL/184064/184064.html',
+    '楽天トラベル'
+  ),
+  '民泊パレス': sourcePhoto(
+    'kuroshio-stay-palace.jpg',
+    '民泊パレスの客室写真',
+    '民泊パレス room photo',
+    'https://travel.rakuten.co.jp/HOTEL/190211/190211.html',
+    '楽天トラベル'
+  ),
+  '加持ノ宿　黒潮町の一棟貸し宿': sourcePhoto(
+    'kuroshio-stay-kamochi.jpg',
+    '加持ノ宿　黒潮町の一棟貸し宿の客室写真',
+    '加持ノ宿　黒潮町の一棟貸し宿 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/193343/193343.html',
+    '楽天トラベル'
+  ),
+  'Ｓｕｒｆ　Ｈｏｕｓｅ　ＲＥＡＬＩＳＴＡ': sourcePhoto(
+    'kuroshio-stay-realista.jpg',
+    'Ｓｕｒｆ　Ｈｏｕｓｅ　ＲＥＡＬＩＳＴＡの客室写真',
+    'Ｓｕｒｆ　Ｈｏｕｓｅ　ＲＥＡＬＩＳＴＡ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/194587/194587.html',
+    '楽天トラベル'
+  ),
   '農園': sourcePhoto('kuroshio-39008616-dish.jpg', '農園の料理写真', '農園 food photo', TABELOG_39008616, '食べログ'),
   '居酒屋ぽこぺん': sourcePhoto('kuroshio-39005069-dish.jpg', '居酒屋ぽこぺんの料理写真', '居酒屋ぽこぺん food photo', TABELOG_39005069, '食べログ'),
   'いろりや': sourcePhoto('kuroshio-39008427-dish.jpg', 'いろりやの料理写真', 'いろりや food photo', TABELOG_39008427, '食べログ'),
