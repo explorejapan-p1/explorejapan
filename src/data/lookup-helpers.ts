@@ -851,6 +851,17 @@ import {
   yawatahamaTopChipForRow,
   resolveYawatahamaFilter,
 } from './yawatahama-travel';
+import {
+  isNiihamaOnsenPackRow,
+  isNiihamaExperiencePackRow,
+  isNiihamaStayPackRow,
+  niihamaPackRowMatchesFilter,
+  rankNiihamaSeeRows,
+  niihamaSightPhoto,
+  niihamaSourcedHook,
+  niihamaTopChipForRow,
+  resolveNiihamaFilter
+} from './niihama-travel';
 
 
 
@@ -1635,6 +1646,19 @@ const MIHARA_HELPERS: LookupHelpers = {
 
 
 
+
+const NIIHAMA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isNiihamaOnsenPackRow,
+  isExperiencePackRow: isNiihamaExperiencePackRow,
+  isStayPackRow: isNiihamaStayPackRow,
+  packRowMatchesFilter: niihamaPackRowMatchesFilter,
+  rankSeeRows: rankNiihamaSeeRows,
+  sightPhoto: niihamaSightPhoto,
+  sourcedHook: niihamaSourcedHook,
+  topChipForRow: niihamaTopChipForRow,
+  resolveFilter: resolveNiihamaFilter
+};
+
 const YAWATAHAMA_HELPERS: LookupHelpers = {
   isOnsenPackRow: isYawatahamaOnsenPackRow,
   isExperiencePackRow: isYawatahamaExperiencePackRow,
@@ -1974,5 +1998,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'imabari') return IMABARI_HELPERS;
   if (slug === 'uwajima') return UWAJIMA_HELPERS;
   if (slug === 'yawatahama') return YAWATAHAMA_HELPERS;
+  if (slug === 'niihama') return NIIHAMA_HELPERS;
   return MIMA_HELPERS;
 }

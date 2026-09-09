@@ -10,14 +10,14 @@ export type Municipality = {
 
 /**
  * Ehime 市区町村. Codes are N03_007 / JIS X 0402 (5-digit).
- * Matsuyama/Imabari/Uwajima LIVE hubs (+ remaining municipalities coming-soon).
+ * Matsuyama/Imabari/Uwajima/Yawatahama/Niihama LIVE hubs (+ remaining municipalities coming-soon).
  */
 export const EHIME_MUNICIPALITIES: Municipality[] = [
   {jis: '38201', slug: 'matsuyama', nameJa: '松山市', nameEn: 'Matsuyama', status: 'ready'},
   {jis: '38202', slug: 'imabari', nameJa: '今治市', nameEn: 'Imabari', status: 'ready'},
   {jis: '38203', slug: 'uwajima', nameJa: '宇和島市', nameEn: 'Uwajima', status: 'ready'},
   {jis: '38204', slug: 'yawatahama', nameJa: '八幡浜市', nameEn: 'Yawatahama', status: 'ready'},
-  {jis: '38205', slug: 'niihama', nameJa: '新居浜市', nameEn: 'Niihama', status: 'coming-soon'},
+  {jis: '38205', slug: 'niihama', nameJa: '新居浜市', nameEn: 'Niihama', status: 'ready'},
   {jis: '38206', slug: 'saijo', nameJa: '西条市', nameEn: 'Saijo', status: 'coming-soon'},
   {jis: '38207', slug: 'ozu', nameJa: '大洲市', nameEn: 'Ozu', status: 'coming-soon'},
   {jis: '38210', slug: 'iyo', nameJa: '伊予市', nameEn: 'Iyo', status: 'coming-soon'},

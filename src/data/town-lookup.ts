@@ -755,6 +755,7 @@ import {MATSUYAMA, MATSUYAMA_PLACE_PHOTO, MATSUYAMA_FACILITIES, MATSUYAMA_EXPECT
 import {IMABARI, IMABARI_PLACE_PHOTO, IMABARI_FACILITIES, IMABARI_EXPECTED_GEO_COUNT, IMABARI_EXPECTED_ROW_COUNT} from './imabari';
 import {UWAJIMA, UWAJIMA_PLACE_PHOTO, UWAJIMA_FACILITIES, UWAJIMA_EXPECTED_GEO_COUNT, UWAJIMA_EXPECTED_ROW_COUNT} from './uwajima';
 import {YAWATAHAMA, YAWATAHAMA_PLACE_PHOTO, YAWATAHAMA_FACILITIES, YAWATAHAMA_EXPECTED_GEO_COUNT, YAWATAHAMA_EXPECTED_ROW_COUNT} from './yawatahama';
+import {NIIHAMA, NIIHAMA_PLACE_PHOTO, NIIHAMA_FACILITIES, NIIHAMA_EXPECTED_GEO_COUNT, NIIHAMA_EXPECTED_ROW_COUNT} from './niihama';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -797,6 +798,13 @@ import {
   YAWATAHAMA_TRAVEL_COMMERCE,
   YAWATAHAMA_TRAVEL_ALL,
 } from './yawatahama-travel';
+import {
+  NIIHAMA_TRAVEL_DINING,
+  NIIHAMA_TRAVEL_STAY,
+  NIIHAMA_TRAVEL_SHOPPING,
+  NIIHAMA_TRAVEL_COMMERCE,
+  NIIHAMA_TRAVEL_ALL,
+} from './niihama-travel';
 
 
 
@@ -3310,6 +3318,41 @@ export const YAWATAHAMA_LOOKUP: LookupTown = {
   licenseSiteEn: 'City-site listing'
 };
 
+
+
+export const NIIHAMA_LOOKUP: LookupTown = {
+  slug: 'niihama',
+  prefectureSlug: 'ehime',
+  jis: NIIHAMA.jis,
+  nameJa: NIIHAMA.nameJa,
+  nameEn: NIIHAMA.nameEn,
+  heroPhoto: NIIHAMA_PLACE_PHOTO,
+  photoCiteJa: '写真は道の駅マイントピア別子。As6022014、Public domain。File:Roadside Station Mine topia Besshi.jpg。',
+  photoCiteEn: 'Photo: Michinoeki Minetopia Besshi. As6022014, Public domain. File:Roadside Station Mine topia Besshi.jpg.',
+  rows: NIIHAMA_FACILITIES,
+  expectedGeo: NIIHAMA_EXPECTED_GEO_COUNT,
+  expectedRows: NIIHAMA_EXPECTED_ROW_COUNT,
+  travelDining: NIIHAMA_TRAVEL_DINING,
+  travelStay: NIIHAMA_TRAVEL_STAY,
+  travelShopping: NIIHAMA_TRAVEL_SHOPPING,
+  travelCommerce: NIIHAMA_TRAVEL_COMMERCE,
+  travelAll: NIIHAMA_TRAVEL_ALL,
+  coverageJa:
+    '新居浜市（JIS 38205）観光5・宿泊11・飲食16・温泉8・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。愛媛県5つ目のLIVEハブ。',
+  coverageEn:
+    'Niihama City (JIS 38205), 5 tourism + 11 stay + 16 dining + 8 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Fifth LIVE Ehime hub.',
+  mapLabelJa: '新居浜市の出典座標4件',
+  mapLabelEn: '4 sourced coordinates in Niihama City',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia/Commons等出典座標4件（accessed 2026-09-09）。',
+  mapCitePackEn: 'Points: 4 sourced coordinates for city/official facilities (accessed 2026-09-09).',
+  licenseNoteJa:
+    '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.niihama.lg.jp, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
 export const UWAJIMA_LOOKUP: LookupTown = {
   slug: 'uwajima',
   prefectureSlug: 'ehime',
@@ -3578,7 +3621,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   matsuyama: MATSUYAMA_LOOKUP,
   imabari: IMABARI_LOOKUP,
   uwajima: UWAJIMA_LOOKUP,
-  yawatahama: YAWATAHAMA_LOOKUP
+  yawatahama: YAWATAHAMA_LOOKUP,
+  niihama: NIIHAMA_LOOKUP
 };
 
 

@@ -72,6 +72,7 @@ import {MATSUYAMA, MATSUYAMA_PLACE_PHOTO} from '@/data/matsuyama';
 import {IMABARI, IMABARI_PLACE_PHOTO} from '@/data/imabari';
 import {UWAJIMA, UWAJIMA_PLACE_PHOTO} from '@/data/uwajima';
 import {YAWATAHAMA, YAWATAHAMA_PLACE_PHOTO} from '@/data/yawatahama';
+import {NIIHAMA, NIIHAMA_PLACE_PHOTO} from '@/data/niihama';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -198,6 +199,7 @@ function localityJa(slug: string): string {
   if (slug === 'imabari') return IMABARI.nameJa;
   if (slug === 'uwajima') return UWAJIMA.nameJa;
   if (slug === 'yawatahama') return YAWATAHAMA.nameJa;
+  if (slug === 'niihama') return NIIHAMA.nameJa;
   return MIMA.nameJa;
 }
 
@@ -263,6 +265,7 @@ function localityEn(slug: string): string {
   if (slug === 'imabari') return IMABARI.nameEn;
   if (slug === 'uwajima') return UWAJIMA.nameEn;
   if (slug === 'yawatahama') return YAWATAHAMA.nameEn;
+  if (slug === 'niihama') return NIIHAMA.nameEn;
   return MIMA.nameEn;
 }
 
@@ -4536,6 +4539,66 @@ export function yawatahamaGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '八幡浜市の案内' : 'Places in Yawatahama City',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+export function niihamaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'ehime/niihama');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('niihama');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? NIIHAMA.nameJa : NIIHAMA.nameEn,
+        alternateName: isJa ? NIIHAMA.nameEn : NIIHAMA.nameJa,
+        identifier: NIIHAMA.jis,
+        url,
+        image: photoAbs(NIIHAMA_PLACE_PHOTO),
+        sameAs: [NIIHAMA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '一宮町一丁目5番1号' : '1-5-1 Ichinomiya-cho',
+          addressLocality: isJa ? NIIHAMA.nameJa : NIIHAMA.nameEn,
+          addressRegion: isJa ? NIIHAMA.prefectureJa : NIIHAMA.prefectureEn,
+          postalCode: NIIHAMA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? NIIHAMA.prefectureJa : NIIHAMA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? NIIHAMA.nameJa : NIIHAMA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? NIIHAMA.prefectureJa : NIIHAMA.prefectureEn, item: canonicalUrl(locale, 'ehime')},
+          {'@type': 'ListItem', position: 3, name: isJa ? NIIHAMA.nameJa : NIIHAMA.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '八幡浜市の案内' : 'Places in Niihama City',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',
