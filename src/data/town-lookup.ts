@@ -1172,9 +1172,9 @@ export const KITAJIMA_LOOKUP: LookupTown = {
   travelCommerce: KITAJIMA_TRAVEL_COMMERCE,
   travelAll: KITAJIMA_TRAVEL_ALL,
   coverageJa:
-    '北島町（JIS 36402）宿泊0（町内に市場性のある客室写真なし）・飲食14・観光5（出典写真）・商業1＋オープンデータパック209件+Commons EXTRA3。温泉・体験・買物0。',
+    '北島町（JIS 36402）宿泊1（楽天客室）・飲食14・観光5（出典写真）・商業1＋オープンデータパック209件+Commons EXTRA。温泉0・体験1・買物0。',
   coverageEn:
-    'Kitajima Town (JIS 36402), stay 0 (no marketable in-town lodging photo) + 14 dining + 5 tourism with sourced photos + 1 commerce + open-data pack 209 + Commons EXTRA 3. Onsen/experience/shopping 0.',
+    'Kitajima Town (JIS 36402), stay 1 (Rakuten room) + 14 dining + 5 tourism with sourced photos + 1 commerce + open-data pack 209 + Commons EXTRA. Onsen 0 / experience 1 / shopping 0.',
   mapLabelJa: '北島町の公式座標119件',
   mapLabelEn: '119 official coordinates in Kitajima Town',
   mapCitePackJa: '点は凍結パック+Commons EXTRAの公式座標119件（accessed 2026-08-27）。',
@@ -1208,9 +1208,9 @@ export const ISHII_LOOKUP: LookupTown = {
   travelCommerce: ISHII_TRAVEL_COMMERCE,
   travelAll: ISHII_TRAVEL_ALL,
   coverageJa:
-    '石井町（JIS 36341）179件。緊急避難場所45、文化財34、AED 26、公共施設23、避難所20、保育20、観光9、介護2。医療機関・Wi-Fi・GTFSは0件（未掲載）。',
+    '石井町（JIS 36341）179件。宿泊1（懐和の里公式客間）。緊急避難場所45、文化財34、AED 26、公共施設23、避難所20、保育20、観光9、介護2。医療機関・Wi-Fi・GTFSは0件（未掲載）。',
   coverageEn:
-    'Ishii Town (JIS 36341), 179 rows. Emergency sites 45, cultural property 34, AED 26, public facilities 23, shelters 20, childcare 20, tourism 9, care 2. Hospitals, Wi-Fi, GTFS: 0, unpublished.',
+    'Ishii Town (JIS 36341), 179 rows. Stay 1 (Kaiwa-no-sato official room). Emergency sites 45, cultural property 34, AED 26, public facilities 23, shelters 20, childcare 20, tourism 9, care 2. Hospitals, Wi-Fi, GTFS: 0, unpublished.',
   mapLabelJa: '石井町の公式座標88件',
   mapLabelEn: '88 official coordinates in Ishii Town',
   mapCitePackJa: '点は凍結パックの公式座標88件（accessed 2026-08-25）。',
@@ -1280,12 +1280,12 @@ export const KAMIITA_LOOKUP: LookupTown = {
   travelCommerce: KAMIITA_TRAVEL_COMMERCE,
   travelAll: KAMIITA_TRAVEL_ALL,
   coverageJa:
-    '上板町（JIS 36405）97件。AED 30、文化財14、緊急避難場所13、避難所10、公共施設10、保育10、観光9、介護1。医療機関・Wi-Fi・GTFSは0件（未掲載）。',
+    '上板町（JIS 36405）98件（pack97+楽天 EXTRA1）。AED 30、文化財14、緊急避難場所13、避難所10、公共施設10、保育10、観光10、介護1。宿泊2・温泉1（楽天客室/大浴場）。医療機関・Wi-Fi・GTFSは0件（未掲載）。',
   coverageEn:
-    'Kamiita Town (JIS 36405), 97 rows. AED 30, cultural property 14, emergency sites 13, shelters 10, public facilities 10, childcare 10, tourism 9, care 1. Hospitals, Wi-Fi, GTFS: 0, unpublished.',
-  mapLabelJa: '上板町の公式座標34件',
-  mapLabelEn: '34 official coordinates in Kamiita Town',
-  mapCitePackJa: '点は凍結パックの公式座標34件（accessed 2026-08-25）。',
+    'Kamiita Town (JIS 36405), 98 rows (pack97+Rakuten EXTRA1). AED 30, cultural property 14, emergency sites 13, shelters 10, public facilities 10, childcare 10, tourism 10, care 1. Stay 2 + onsen 1 (Rakuten room/bath). Hospitals, Wi-Fi, GTFS: 0, unpublished.',
+  mapLabelJa: '上板町の公式座標35件',
+  mapLabelEn: '35 official coordinates in Kamiita Town',
+  mapCitePackJa: '点は凍結パック+楽天 EXTRAの公式座標35件（accessed 2026-08-25）。',
   mapCitePackEn: 'Points: 34 official coordinates from the frozen pack (accessed 2026-08-25).',
   licenseNoteJa:
     '行のライセンスは二つ。CC BY 4.0 は徳島県 Our Open Data の利用規約。「町公式サイト掲載情報」は町ページの事実の転記で、オープンデータ許諾ではありません。',

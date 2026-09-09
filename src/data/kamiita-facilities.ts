@@ -2,17 +2,31 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {
   FACILITY_CATEGORIES,
-  KAMIITA_EXPECTED_CATEGORY_COUNTS,
-  KAMIITA_EXPECTED_GEO_COUNT,
-  KAMIITA_EXPECTED_HOURS_COUNT,
-  KAMIITA_EXPECTED_MISSING_ADDRESS,
-  KAMIITA_EXPECTED_MISSING_PHONE,
-  KAMIITA_EXPECTED_ROW_COUNT,
   KAMIITA_PACK_ACCESSED,
   KAMIITA_PACK_JIS,
   type FacilityCategory,
   type FacilityRow
 } from './facility-schema';
+
+/** Frozen jsonl baselines (before Rakuten/Commons extras). */
+const PACK_ROW_COUNT = 97;
+const PACK_GEO_COUNT = 34;
+const PACK_HOURS_COUNT = 87;
+const PACK_MISSING_ADDRESS = 39;
+const PACK_MISSING_PHONE = 53;
+const PACK_CATEGORY_COUNTS: Record<FacilityCategory, number> = {
+  tourism: 9,
+  cultural_property: 14,
+  care: 1,
+  aed: 30,
+  shelter: 10,
+  emergency_evacuation_site: 13,
+  hospital: 0,
+  childcare: 10,
+  wifi: 0,
+  public_facility: 10,
+  gtfs_stop: 0
+};
 
 const PACK_PATH = path.join(process.cwd(), 'data', 'frozen', 'kamiita-facilities.jsonl');
 
@@ -113,17 +127,17 @@ function loadItanoFacilities(): readonly FacilityRow[] {
     const parsed: unknown = JSON.parse(line);
     rows.push(parseFacilityRow(parsed));
   }
-  if (rows.length !== KAMIITA_EXPECTED_ROW_COUNT) {
-    throw new Error(`kamiita pack row count ${rows.length} != ${KAMIITA_EXPECTED_ROW_COUNT}`);
+  if (rows.length !== PACK_ROW_COUNT) {
+    throw new Error(`kamiita pack row count ${rows.length} != ${PACK_ROW_COUNT}`);
   }
   const counts = emptyCounts();
   for (const row of rows) {
     counts[row.category] += 1;
   }
   for (const cat of FACILITY_CATEGORIES) {
-    if (counts[cat] !== KAMIITA_EXPECTED_CATEGORY_COUNTS[cat]) {
+    if (counts[cat] !== PACK_CATEGORY_COUNTS[cat]) {
       throw new Error(
-        `kamiita pack ${cat} ${counts[cat]} != ${KAMIITA_EXPECTED_CATEGORY_COUNTS[cat]}`
+        `kamiita pack ${cat} ${counts[cat]} != ${PACK_CATEGORY_COUNTS[cat]}`
       );
     }
   }
@@ -137,23 +151,46 @@ function loadItanoFacilities(): readonly FacilityRow[] {
     if (isBlank(row.address)) missingAddress += 1;
     if (isBlank(row.phone)) missingPhone += 1;
   }
-  if (geo !== KAMIITA_EXPECTED_GEO_COUNT) {
-    throw new Error(`kamiita pack geo ${geo} != ${KAMIITA_EXPECTED_GEO_COUNT}`);
+  if (geo !== PACK_GEO_COUNT) {
+    throw new Error(`kamiita pack geo ${geo} != ${PACK_GEO_COUNT}`);
   }
-  if (hours !== KAMIITA_EXPECTED_HOURS_COUNT) {
-    throw new Error(`kamiita pack hours ${hours} != ${KAMIITA_EXPECTED_HOURS_COUNT}`);
+  if (hours !== PACK_HOURS_COUNT) {
+    throw new Error(`kamiita pack hours ${hours} != ${PACK_HOURS_COUNT}`);
   }
-  if (missingAddress !== KAMIITA_EXPECTED_MISSING_ADDRESS) {
+  if (missingAddress !== PACK_MISSING_ADDRESS) {
     throw new Error(
-      `kamiita pack address gaps ${missingAddress} != ${KAMIITA_EXPECTED_MISSING_ADDRESS}`
+      `kamiita pack address gaps ${missingAddress} != ${PACK_MISSING_ADDRESS}`
     );
   }
-  if (missingPhone !== KAMIITA_EXPECTED_MISSING_PHONE) {
+  if (missingPhone !== PACK_MISSING_PHONE) {
     throw new Error(
-      `kamiita pack phone gaps ${missingPhone} != ${KAMIITA_EXPECTED_MISSING_PHONE}`
+      `kamiita pack phone gaps ${missingPhone} != ${PACK_MISSING_PHONE}`
     );
   }
   return rows;
 }
 
-export const KAMIITA_FACILITIES: readonly FacilityRow[] = loadItanoFacilities();
+/** Commons/Rakuten-backed extras (not frozen jsonl). Real place-named 出典 only. */
+const KAMIITA_EXTRA_FACILITIES: readonly FacilityRow[] = [
+  {
+    id: 'kamiita-extra-anrakuji-bath',
+    jis: KAMIITA_PACK_JIS,
+    name_ja: '温泉山　安楽寺　薬師の里 大浴場',
+    reading: 'おんせんざんあんらくじやくしのさとだいよくじょう',
+    category: 'tourism',
+    lat: 34.1217,
+    lon: 134.4058,
+    address: '徳島県板野郡上板町引野字寺の西北8',
+    phone: '088-694-2046',
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/164637/164637.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/164637/gallery.html',
+    license: 'cc_by_open_data',
+    accessed: KAMIITA_PACK_ACCESSED
+  }
+];
+
+export const KAMIITA_FACILITIES: readonly FacilityRow[] = [
+  ...loadItanoFacilities(),
+  ...KAMIITA_EXTRA_FACILITIES
+];

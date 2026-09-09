@@ -173,6 +173,27 @@ export const KAMIITA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '乳保神社のイチョウ（上板町）',
     'Ginkgo at Nyūho Shrine, Kamiita Town'
   ),
+  '温泉山　安楽寺　薬師の里': sourcePhoto(
+    'kamiita-stay-anrakuji.jpg',
+    '温泉山　安楽寺　薬師の里の客室写真',
+    'Onsenzan Anrakuji Yakushi-no-sato room photo',
+    'https://travel.rakuten.co.jp/HOTEL/164637/164637.html',
+    '楽天トラベル'
+  ),
+  'ＨＯＴＥＬ　ＭＯＲＩＭＯＴＯＹＡ　板野店': sourcePhoto(
+    'kamiita-stay-morimotoya.jpg',
+    'ＨＯＴＥＬ　ＭＯＲＩＭＯＴＯＹＡ　板野店の客室写真',
+    'HOTEL MORIMOTOYA Itano room photo',
+    'https://travel.rakuten.co.jp/HOTEL/193447/193447.html',
+    '楽天トラベル'
+  ),
+  '温泉山　安楽寺　薬師の里 大浴場': sourcePhoto(
+    'kamiita-onsen-anrakuji.jpg',
+    '温泉山　安楽寺　薬師の里の大浴場写真',
+    'Onsenzan Anrakuji Yakushi-no-sato bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/164637/gallery.html',
+    '楽天トラベル'
+  ),
   "亀井製麺所": sourcePhoto(
     'kamiita-36007182-dish.jpg',
     "亀井製麺所の料理写真",

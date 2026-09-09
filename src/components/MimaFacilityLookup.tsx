@@ -782,15 +782,16 @@ export function MimaFacilityLookup({
               <>
                 飲食は食べログ石井町の公開店ページ（
                 {ISHII_TRAVEL_ACCESSED}）。
-                宿泊・温泉は客室・浴場の出典写真が無いため0件。
-                体験・買物・商業の公式一覧は未掲載のため0件。
+                宿泊は懐和の里公式の客間写真（町役場も紹介）。
+                温泉は0件（施設浴場の出典写真なし）。ファッションホテルは未掲載。
+                体験は野鳥の森。買物・商業は出典写真が無いため0件。
                 カードは出典写真があるものだけ。点数は持ちません。
               </>
             ) : (
               <>
                 Dining from Tabelog Ishii Town shop pages (
-                {ISHII_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
-                Experience, shopping, and commerce stay at 0 — no official list.
+                {ISHII_TRAVEL_ACCESSED}). Lodging from Kaiwa-no-sato official guest-room photo (town-listed).
+                Onsen: 0 — no facility bath still. Fashion hotel skipped. Experience: Yacho-no-mori. Shopping/commerce: 0.
                 Cards show only listings with a sourced photo. No public scores.
               </>
             )
@@ -819,15 +820,16 @@ export function MimaFacilityLookup({
               <>
                 飲食は食べログ上板町の公開店ページ（
                 {KAMIITA_TRAVEL_ACCESSED}）。
-                宿泊・温泉は客室・浴場の出典写真が無いため0件。
-                体験・買物・商業の公式一覧は未掲載のため0件。
+                宿泊は楽天トラベルの客室写真（安楽寺薬師の里・ＭＯＲＩＭＯＴＯＹＡ）。
+                温泉は安楽寺大浴場のみ（客室キーと分離）。共用ユニットバスは未掲載。
+                体験は技の館。買物・商業は出典写真が無いため0件。
                 カードは出典写真があるものだけ。点数は持ちません。
               </>
             ) : (
               <>
                 Dining from Tabelog Kamiita Town shop pages (
-                {KAMIITA_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
-                Experience, shopping, and commerce stay at 0 — no official list.
+                {KAMIITA_TRAVEL_ACCESSED}). Lodging from Rakuten Travel room photos (Anrakuji / MORIMOTOYA).
+                Onsen: Anrakuji bath only (distinct from stay key); shared unit bath dropped. Experience: Waza-no-yakata. Shopping/commerce: 0.
                 Cards show only listings with a sourced photo. No public scores.
               </>
             )
@@ -1297,15 +1299,16 @@ export function MimaFacilityLookup({
               <>
                 飲食は食べログ北島町の公開店ページ（
                 {KITAJIMA_TRAVEL_ACCESSED}）。
-                宿泊・温泉は客室・浴場の出典写真が無いため0件。
-                体験・買物・商業の公式一覧は未掲載のため0件。
+                宿泊は楽天トラベルの客室写真（Ｋｉｔａｊｉｍａ　Ｈｏｕｓｅ／民泊）。
+                温泉は0件（施設浴場の出典写真なし）。
+                体験はアクアプラザ。買物は0件。商業は出典があるもののみ。
                 カードは出典写真があるものだけ。点数は持ちません。
               </>
             ) : (
               <>
                 Dining from Tabelog Kitajima Town shop pages (
-                {KITAJIMA_TRAVEL_ACCESSED}). Lodging and onsen stay at 0 — no sourced room or bath photo.
-                Experience, shopping, and commerce stay at 0 — no official list.
+                {KITAJIMA_TRAVEL_ACCESSED}). Lodging from Rakuten Travel room photo (Kitajima House).
+                Onsen: 0 — no facility bath still. Experience: Aquaplaza. Shopping: 0. Commerce when sourced.
                 Cards show only listings with a sourced photo. No public scores.
               </>
             )

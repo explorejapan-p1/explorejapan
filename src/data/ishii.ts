@@ -162,6 +162,13 @@ export const ISHII_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '童学寺（石井町）',
     'Dōgaku-ji Temple, Ishii Town'
   ),
+  '懐和の里': sourcePhoto(
+    'ishii-stay-kaiwa.jpg',
+    '懐和の里の客間写真',
+    'Kaiwa-no-sato guest room photo',
+    'http://wwwe.pikara.ne.jp/kaiwanosato/',
+    '懐和の里公式'
+  ),
   '十三八': sourcePhoto(
     'ishii-36001237-dish.jpg',
     '十三八の料理写真',

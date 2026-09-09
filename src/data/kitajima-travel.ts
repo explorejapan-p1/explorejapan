@@ -1,7 +1,7 @@
 /**
  * Kitajima travel layer. Pack has no dining/stay categories.
- * Stay: honest 0 — NAVITIME/じゃらん show no marketable lodging inside 北島町 (nearby = 松茂/徳島市).
- * Onsen: omit without bath photo (honest 0).
+ * Stay: Rakuten 部屋 still — Ｋｉｔａｊｉｍａ　Ｈｏｕｓｅ／民泊 (TG610 densify).
+ * Onsen: honest 0 — no facility bath still.
  * Dining from 食べログ 北島町 (C36402) public shop pages. Do not invent pack dining.
  * Do not copy 松茂 / 藍住 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
  */
@@ -15,13 +15,14 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const KITAJIMA_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const KITAJIMA_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const KITAJIMA_TRAVEL_SOURCES = {
   home: 'https://www.town.kitajima.lg.jp/',
   hall: 'https://www.town.kitajima.lg.jp/mobile/chosei/chosha/',
   kanko: 'https://www.town.kitajima.lg.jp/docs/61.html',
-  tabelogCity: 'https://tabelog.com/tokushima/C36402/rstLst/'
+  tabelogCity: 'https://tabelog.com/tokushima/C36402/rstLst/',
+  kitajimaHouse: 'https://travel.rakuten.co.jp/HOTEL/200262/200262.html'
 } as const;
 
 /** Exact tourism-pack names shown on 温泉, not 観光. Bath photo required — none yet. */
@@ -42,7 +43,33 @@ export const KITAJIMA_STAY_PACK_SET: ReadonlySet<string> = new Set(
 
 export const KITAJIMA_SIGHT_PINS = ['北島チューリップ公園', 'チューリップハウス', '鯛浜橋', '旧吉野川', '北島町立図書館・創世ホール'] as const;
 
-export const KITAJIMA_TRAVEL_STAY: readonly TravelRow[] = [];
+function stay(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'stay',
+    address,
+    phone,
+    source_url,
+    accessed: KITAJIMA_TRAVEL_ACCESSED
+  };
+}
+
+export const KITAJIMA_TRAVEL_STAY: readonly TravelRow[] = [
+  stay(
+    'kitajima-stay-01',
+    'Ｋｉｔａｊｉｍａ　Ｈｏｕｓｅ／民泊',
+    '徳島県板野郡北島町中村字井利ノ口6-1　ユニキューブミナミＢ棟',
+    '080-9989-7774',
+    'https://travel.rakuten.co.jp/HOTEL/200262/200262.html'
+  )
+];
 
 function dining(
   id: string,

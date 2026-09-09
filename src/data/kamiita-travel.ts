@@ -1,6 +1,7 @@
 /**
  * Kamiita travel layer. Pack has no dining/stay categories.
- * Onsen / stay: omit without room or bath photo (honest 0).
+ * Stay: Rakuten 部屋 stills — 安楽寺薬師の里 / MORIMOTOYA (TG610 densify). Rian dropped (no 部屋 still).
+ * Onsen: 安楽寺 大浴場 only (MORIMOTOYA shared unit bath dropped HARD BAR).
  * Dining from 食べログ 上板町 (C36405) public shop pages. Do not invent pack dining.
  * Do not copy 板野 / 石井 / 松茂 / 北島 / 藍住 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
  */
@@ -14,17 +15,19 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const KAMIITA_TRAVEL_ACCESSED = '2026-09-05' as const;
+export const KAMIITA_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const KAMIITA_TRAVEL_SOURCES = {
   home: 'https://www.townkamiita.jp/',
   hall: 'https://www.townkamiita.jp/',
   kanko: 'https://www.townkamiita.jp/illustmap',
-  tabelogCity: 'https://tabelog.com/tokushima/C36405/rstLst/'
+  tabelogCity: 'https://tabelog.com/tokushima/C36405/rstLst/',
+  anrakuji: 'https://travel.rakuten.co.jp/HOTEL/164637/164637.html',
+  morimotoya: 'https://travel.rakuten.co.jp/HOTEL/193447/193447.html'
 } as const;
 
 /** Exact tourism-pack names shown on 温泉, not 観光. Bath photo required — none yet. */
-export const KAMIITA_ONSEN_PACK_NAMES = [] as const;
+export const KAMIITA_ONSEN_PACK_NAMES = ['温泉山　安楽寺　薬師の里 大浴場'] as const;
 
 export const KAMIITA_ONSEN_PACK_SET: ReadonlySet<string> = new Set(
   KAMIITA_ONSEN_PACK_NAMES
@@ -56,7 +59,40 @@ export const KAMIITA_SIGHT_PINS = [
   '第十の堰'
 ] as const;
 
-export const KAMIITA_TRAVEL_STAY: readonly TravelRow[] = [];
+function stay(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'stay',
+    address,
+    phone,
+    source_url,
+    accessed: KAMIITA_TRAVEL_ACCESSED
+  };
+}
+
+export const KAMIITA_TRAVEL_STAY: readonly TravelRow[] = [
+  stay(
+    'kamiita-stay-01',
+    '温泉山　安楽寺　薬師の里',
+    '徳島県板野郡上板町引野字寺の西北8',
+    '088-694-2046',
+    'https://travel.rakuten.co.jp/HOTEL/164637/164637.html'
+  ),
+  stay(
+    'kamiita-stay-02',
+    'ＨＯＴＥＬ　ＭＯＲＩＭＯＴＯＹＡ　板野店',
+    '徳島県板野郡上板町西分字山下11-3',
+    '088-694-8210',
+    'https://travel.rakuten.co.jp/HOTEL/193447/193447.html'
+  )
+];
 
 function dining(
   id: string,

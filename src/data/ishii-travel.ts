@@ -1,6 +1,7 @@
 /**
  * Ishii travel layer. Pack has no dining/stay categories.
- * Onsen / stay: omit without room or bath photo (honest 0).
+ * Stay: 懐和の里 official 客間 still (TG610 densify). No Rakuten in-muni room stills.
+ * Onsen: honest 0 — no facility bath still. Fashion hotel skipped.
  * Dining from 食べログ 石井町 (C36341) public shop pages. Do not invent pack dining.
  * Do not copy 松茂 / 北島 / 藍住 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
  */
@@ -14,13 +15,14 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const ISHII_TRAVEL_ACCESSED = '2026-09-05' as const;
+export const ISHII_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const ISHII_TRAVEL_SOURCES = {
   home: 'https://www.town.ishii.lg.jp/',
   hall: 'https://www.town.ishii.lg.jp/docs/2018110500219/',
   kanko: 'https://www.town.ishii.lg.jp/navi/kanko/',
-  tabelogCity: 'https://tabelog.com/tokushima/C36341/rstLst/'
+  tabelogCity: 'https://tabelog.com/tokushima/C36341/rstLst/',
+  kaiwa: 'http://wwwe.pikara.ne.jp/kaiwanosato/'
 } as const;
 
 /** Exact tourism-pack names shown on 温泉, not 観光. Bath photo required — none yet. */
@@ -48,7 +50,33 @@ export const ISHII_SIGHT_PINS = [
   '童学寺庭園「逍遙園」'
 ] as const;
 
-export const ISHII_TRAVEL_STAY: readonly TravelRow[] = [];
+function stay(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'stay',
+    address,
+    phone,
+    source_url,
+    accessed: ISHII_TRAVEL_ACCESSED
+  };
+}
+
+export const ISHII_TRAVEL_STAY: readonly TravelRow[] = [
+  stay(
+    'ishii-stay-01',
+    '懐和の里',
+    '徳島県名西郡石井町高原字池北240-1',
+    '090-1008-0834',
+    'http://wwwe.pikara.ne.jp/kaiwanosato/'
+  )
+];
 
 function dining(
   id: string,

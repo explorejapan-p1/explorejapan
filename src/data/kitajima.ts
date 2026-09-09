@@ -163,6 +163,13 @@ export const KITAJIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'アクアプラザ北島（北島町）',
     'Aquaplaza Kitajima'
   ),
+  'Ｋｉｔａｊｉｍａ　Ｈｏｕｓｅ／民泊': sourcePhoto(
+    'kitajima-stay-kitajima-house.jpg',
+    'Ｋｉｔａｊｉｍａ　Ｈｏｕｓｅ／民泊の客室写真',
+    'Kitajima House room photo',
+    'https://travel.rakuten.co.jp/HOTEL/200262/200262.html',
+    '楽天トラベル'
+  ),
   '焼肉レストラン 炙家bis  北島店': sourcePhoto(
     'aburiya-bis-kitajima-dish.jpg',
     '焼肉レストラン 炙家bis 北島店の料理写真',
