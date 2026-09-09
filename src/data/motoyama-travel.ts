@@ -1,19 +1,21 @@
 /**
  * Motoyama Town travel layer. No frozen pack.
- * Dining from 食べログ 本山町 (C39341) — honest 3 with 640 dish JPGs (skipped Montbell store / supermarket / phone不明 / dish0). Stay: 一軒宿あせみ Rakuten 和洋室 LARGE (noplan-asemi). Onsen: 0 (private shower; stay≠onsen). Experience: 0.
+ * Dining: Tabelog C39341 (3 kept + 居酒屋にっさん・汗見川食堂カドヤ・Kitchen クルネ・レストラン ハーベステラス). Stay: 一軒宿あせみ. Onsen: 0 (private shower; stay≠onsen). Experience: 0 honest (カヌー/クライミング/モンベル no HARD BAR activity still). TG610 densify.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {MOTOYAMA, MOTOYAMA_SIGHT_PHOTOS} from './motoyama';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const MOTOYAMA_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const MOTOYAMA_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const MOTOYAMA_TRAVEL_SOURCES = {
   home: 'https://www.town.motoyama.kochi.jp/', hall: 'https://ja.wikipedia.org/wiki/%E6%9C%AC%E5%B1%B1%E7%94%BA',
   kankou: 'https://www.town.motoyama.kochi.jp/kanko_bunka_sports/index.html',
   bridge: 'https://commons.wikimedia.org/wiki/File:%E6%97%A7%E6%9C%AC%E5%B1%B1%E5%A4%A7%E6%A9%8B.jpg',
   tabelogCity: 'https://tabelog.com/kochi/C39341/rstLst/',
-  asemi: 'https://travel.rakuten.co.jp/HOTEL/199462/199462.html'
+  asemi: 'https://travel.rakuten.co.jp/HOTEL/199462/199462.html',
+  yamazakiDam: 'https://commons.wikimedia.org/wiki/File:Yamazaki_Dam_right_view.jpg',
+  townscape: 'https://commons.wikimedia.org/wiki/File:Japan_-_Kochi_Motoyama,_july_2010_(4981093637).jpg'
 } as const;
 
 export const MOTOYAMA_ONSEN_PACK_NAMES = [] as const;
@@ -25,7 +27,7 @@ export const MOTOYAMA_STAY_PACK_SET: ReadonlySet<string> = new Set(MOTOYAMA_STAY
 export const MOTOYAMA_SHOPPING_PACK_NAMES = [] as const;
 export const MOTOYAMA_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(MOTOYAMA_SHOPPING_PACK_NAMES);
 
-export const MOTOYAMA_SIGHT_PINS = ['旧本山大橋','本山町役場','赤滝','白髪山','土佐あかうしの放牧'] as const;
+export const MOTOYAMA_SIGHT_PINS = ['旧本山大橋','本山町役場','赤滝','白髪山','土佐あかうしの放牧','山崎ダム','本山町眺望'] as const;
 
 function stay(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: MOTOYAMA_TRAVEL_ACCESSED};
@@ -41,6 +43,10 @@ export const MOTOYAMA_TRAVEL_DINING: readonly TravelRow[] = [
   dining('motoyama-dining-01', 'まるごと・あかうし!', '高知県長岡郡本山町本山763-1', '080-5760-8108', 'https://tabelog.com/kochi/A3901/A390104/39008806/'),
   dining('motoyama-dining-02', 'いち松', '高知県長岡郡本山町本山752-3', '0887-76-3667', 'https://tabelog.com/kochi/A3901/A390104/39004214/'),
   dining('motoyama-dining-03', '味楽', '高知県長岡郡本山町寺家232', '0887-82-0833', 'https://tabelog.com/kochi/A3901/A390104/39005430/'),
+  dining('motoyama-dining-04', '居酒屋にっさん', '高知県長岡郡本山町本山536', '0887-76-2906', 'https://tabelog.com/kochi/A3901/A390104/39006880/'),
+  dining('motoyama-dining-05', '汗見川食堂カドヤ', '高知県長岡郡本山町吉野202-7', '090-3610-8664', 'https://tabelog.com/kochi/A3901/A390104/39008621/'),
+  dining('motoyama-dining-06', 'Kitchen クルネ', '高知県長岡郡本山町本山474', '0887-72-9718', 'https://tabelog.com/kochi/A3901/A390104/39008877/'),
+  dining('motoyama-dining-07', 'レストラン ハーベステラス', '高知県長岡郡本山町本山2133-1', '0887-72-9672', 'https://tabelog.com/kochi/A3901/A390104/39007049/'),
 ];
 
 export const MOTOYAMA_DINING_NAME_SET: ReadonlySet<string> = new Set(MOTOYAMA_TRAVEL_DINING.map((row) => row.name_ja));
