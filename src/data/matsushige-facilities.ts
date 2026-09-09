@@ -171,7 +171,7 @@ function loadMatsushigeFacilities(): readonly FacilityRow[] {
   return rows;
 }
 
-/** Commons-backed extras (not frozen jsonl). Real place-named 出典 only. */
+/** EXTRA tourism rows (not frozen jsonl). Commons sights + bath stills — HARD BAR stay≠onsen. */
 const MATSUSHIGE_EXTRA_FACILITIES: readonly FacilityRow[] = [
   {
     id: 'matsushige-extra-kagasuno',
@@ -202,6 +202,38 @@ const MATSUSHIGE_EXTRA_FACILITIES: readonly FacilityRow[] = [
     official_url: 'https://www.town.matsushige.tokushima.jp/',
     hours: null,
     source_url: 'https://commons.wikimedia.org/wiki/File:Hudouin0.jpg',
+    license: 'cc_by_open_data',
+    accessed: MATSUSHIGE_PACK_ACCESSED
+  },
+  {
+    id: 'matsushige-extra-routeinn-tabibito',
+    jis: MATSUSHIGE_PACK_JIS,
+    name_ja: 'ホテルルートイン徳島空港 旅人の湯',
+    reading: 'ほてるるーといんとくしまくうこうたびびとのゆ',
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県板野郡松茂町中喜来宮前四番越13-1',
+    phone: '050-5211-5803',
+    official_url: 'https://www.route-inn.co.jp/hotel_list/tokushima/index_hotel_id_715/facilities/',
+    hours: '15:00〜2:00 / 5:00〜10:00',
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/187882/187882.html',
+    license: 'cc_by_open_data',
+    accessed: MATSUSHIGE_PACK_ACCESSED
+  },
+  {
+    id: 'matsushige-extra-taiheiyo-daiyoku',
+    jis: MATSUSHIGE_PACK_JIS,
+    name_ja: 'ビジネスホテル太平洋 大浴場',
+    reading: 'びじねすほてるたいへいようだいよくじょう',
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県板野郡松茂町中喜来牛飼野東ノ越38-1',
+    phone: '088-699-2967',
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/144549/144549.html',
+    hours: '16:00〜22:00',
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/144549/144549.html',
     license: 'cc_by_open_data',
     accessed: MATSUSHIGE_PACK_ACCESSED
   }

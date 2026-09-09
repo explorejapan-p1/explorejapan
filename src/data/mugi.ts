@@ -26,7 +26,7 @@ export const MUGI = {
     home: 'https://www.town.tokushima-mugi.lg.jp/',
     hall: 'https://www.town.tokushima-mugi.lg.jp/doc/2024122001101/',
     kanko: 'https://www.town.tokushima-mugi.lg.jp/category/bunya/kanko/',
-    accessed: '2026-09-07'
+    accessed: '2026-09-09'
   }
 } as const;
 
@@ -49,7 +49,7 @@ function wikiPhoto(
     author,
     authorUrl,
     taken,
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -70,7 +70,7 @@ function sourcePhoto(
     author,
     authorUrl: page,
     taken: '2026',
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -303,16 +303,23 @@ export const MUGI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   ),
   '砂美かたやま': sourcePhoto(
     'mugi-stay-01.jpg',
-    '砂美かたやまの客室・外観写真',
-    '砂美かたやま room or exterior photo',
+    '砂美かたやまの客室写真',
+    'Sami Katayama room photo',
     'https://travel.rakuten.co.jp/HOTEL/164686/164686.html',
     '楽天トラベル'
   ),
   'Casa TEBA': sourcePhoto(
     'mugi-stay-02.jpg',
-    'Casa TEBAの客室・外観写真',
-    'Casa TEBA room or exterior photo',
+    'Casa TEBAの客室写真',
+    'Casa TEBA room photo',
     'https://travel.rakuten.co.jp/HOTEL/195745/195745.html',
+    '楽天トラベル'
+  ),
+  '砂美かたやま 大浴場': sourcePhoto(
+    'mugi-onsen-katayama.jpg',
+    '砂美かたやまの大浴場写真',
+    'Sami Katayama large bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/164686/164686.html',
     '楽天トラベル'
   ),
 

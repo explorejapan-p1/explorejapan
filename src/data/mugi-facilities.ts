@@ -170,7 +170,7 @@ function loadNakaFacilities(): readonly FacilityRow[] {
   return rows;
 }
 
-/** Commons-backed extras (not frozen jsonl). Real place-named 出典 only. */
+/** EXTRA tourism rows (not frozen jsonl). Commons sights + bath stills — HARD BAR stay≠onsen. */
 const MUGI_EXTRA_FACILITIES: readonly FacilityRow[] = [
   {
     id: 'mugi-extra-hachiman',
@@ -201,6 +201,22 @@ const MUGI_EXTRA_FACILITIES: readonly FacilityRow[] = [
     official_url: 'https://www.town.tokushima-mugi.lg.jp/',
     hours: null,
     source_url: 'https://commons.wikimedia.org/wiki/File:Mugi_river_Tokushima.jpg',
+    license: 'cc_by_open_data',
+    accessed: MUGI_PACK_ACCESSED
+  },
+  {
+    id: 'mugi-extra-katayama-daiyoku',
+    jis: MUGI_PACK_JIS,
+    name_ja: '砂美かたやま 大浴場',
+    reading: 'さみかたやまだいよくじょう',
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県海部郡牟岐町灘下浜辺6-1',
+    phone: '0884-72-1727',
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/164686/164686.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/164686/164686.html',
     license: 'cc_by_open_data',
     accessed: MUGI_PACK_ACCESSED
   }

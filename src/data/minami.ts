@@ -26,7 +26,7 @@ export const MINAMI = {
     home: 'https://www.town.minami.lg.jp/',
     hall: 'https://www.town.minami.lg.jp/',
     kanko: 'https://www.town.minami.lg.jp/docs/182.html',
-    accessed: '2026-09-07'
+    accessed: '2026-09-09'
   }
 } as const;
 
@@ -49,7 +49,7 @@ function wikiPhoto(
     author,
     authorUrl,
     taken,
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -70,7 +70,7 @@ function sourcePhoto(
     author,
     authorUrl: page,
     taken: '2026',
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -452,38 +452,52 @@ export const MINAMI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     "https://tabelog.com/tokushima/A3602/A360203/36009045/",
     '食べログ'
   ),
-  'えびす洞温泉 ホテル 白い燈台': sourcePhoto(
+    'えびす洞温泉 ホテル 白い燈台': sourcePhoto(
     'minami-stay-01.jpg',
-    'えびす洞温泉 ホテル 白い燈台の客室・外観写真',
-    'えびす洞温泉 ホテル 白い燈台 room or exterior photo',
+    'えびす洞温泉 ホテル 白い燈台の客室写真',
+    'Ebisu-do Onsen Hotel Shiroi Todai room photo',
     'https://travel.rakuten.co.jp/HOTEL/4799/4799.html',
     '楽天トラベル'
   ),
   'ビジネスホテル・ケアンズ': sourcePhoto(
     'minami-stay-02.jpg',
-    'ビジネスホテル・ケアンズの客室・外観写真',
-    'ビジネスホテル・ケアンズ room or exterior photo',
+    'ビジネスホテル・ケアンズの客室写真',
+    'Business Hotel Cairns room photo',
     'https://travel.rakuten.co.jp/HOTEL/30831/30831.html',
     '楽天トラベル'
   ),
   '南阿波サンラインモビレージ': sourcePhoto(
     'minami-stay-03.jpg',
-    '南阿波サンラインモビレージの客室・外観写真',
-    '南阿波サンラインモビレージ room or exterior photo',
+    '南阿波サンラインモビレージの客室写真',
+    'Minami Awa Sunline Mobillage room photo',
     'https://travel.rakuten.co.jp/HOTEL/108774/108774.html',
     '楽天トラベル'
   ),
   '花乃宿': sourcePhoto(
     'minami-stay-04.jpg',
-    '花乃宿の客室・外観写真',
-    '花乃宿 room or exterior photo',
+    '花乃宿の客室写真',
+    'Hana-no-Yado room photo',
     'https://travel.rakuten.co.jp/HOTEL/196323/196323.html',
     '楽天トラベル'
   ),
   '民宿 明山荘': sourcePhoto(
     'minami-stay-05.jpg',
-    '民宿 明山荘の客室・外観写真',
-    '民宿 明山荘 room or exterior photo',
+    '民宿 明山荘の客室写真',
+    'Minshuku Meizan-so room photo',
+    'https://travel.rakuten.co.jp/HOTEL/184182/184182.html',
+    '楽天トラベル'
+  ),
+  'えびす洞温泉 ホテル 白い燈台 展望露天風呂': sourcePhoto(
+    'minami-onsen-shiroitodai.jpg',
+    'えびす洞温泉 ホテル 白い燈台の展望露天風呂写真',
+    'Ebisu-do Onsen Hotel Shiroi Todai outdoor bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/4799/4799.html',
+    '楽天トラベル'
+  ),
+  '民宿 明山荘 大浴場': sourcePhoto(
+    'minami-onsen-meizan.jpg',
+    '民宿 明山荘の大浴場写真',
+    'Minshuku Meizan-so large bath photo',
     'https://travel.rakuten.co.jp/HOTEL/184182/184182.html',
     '楽天トラベル'
   ),

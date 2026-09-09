@@ -1,12 +1,9 @@
 /**
  * Mugi travel layer. Pack tourism has Mollusco without room/bath photos for stay/onsen.
- * Stay from NAVITIME 宿泊一覧 + 楽天トラベル share/room images (出典). Rank strongest first.
- * Onsen: omit without bath photo (honest 0).
+ * Stay: Rakuten 部屋 stills — 砂美かたやま / Casa TEBA (TG610 densify upgrade).
+ * Onsen: EXTRA 砂美かたやま 大浴場 (HARD BAR stay≠onsen).
  * Dining from 食べログ 牟岐町 (C36383) public shop pages with FOOD dish heroes.
  * Experience: モラスコむぎ remapped (museum). Shopping/commerce honest 0.
- * PHOTO GAPS (honest 0):
- * 宿泊/温泉/買物/商業/体験: no room/bath/shop exterior 出典 on pack names; Tabelog dining FOOD only.
- * 観光 without Commons: pack tourism is thin (モラスコむぎ + cultural 出羽島/松坂 already mapped).
  * Do not copy 那賀 / 佐那河内 / 上勝 / 勝浦 / 神山 / 上板 / 板野 / 石井 / 松茂 / 北島 / 藍住 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
@@ -19,7 +16,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const MUGI_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const MUGI_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const MUGI_TRAVEL_SOURCES = {
   home: 'https://www.town.tokushima-mugi.lg.jp/',
@@ -30,8 +27,8 @@ export const MUGI_TRAVEL_SOURCES = {
   tabelogCity: 'https://tabelog.com/tokushima/C36383/rstLst/'
 } as const;
 
-/** Exact tourism-pack names shown on 温泉, not 観光. Bath photo required — none yet. */
-export const MUGI_ONSEN_PACK_NAMES = [] as const;
+/** Exact tourism-pack names shown on 温泉, not 観光. Bath photo required. */
+export const MUGI_ONSEN_PACK_NAMES = ['砂美かたやま 大浴場'] as const;
 export const MUGI_EXPERIENCE_PACK_NAMES = ['牟岐町モデル木造施設 モラスコむぎ'] as const;
 export const MUGI_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(MUGI_EXPERIENCE_PACK_NAMES);
 
@@ -73,7 +70,7 @@ function stay(
   };
 }
 
-/** Ranked strongest room/exterior 出典 first. NAVITIME + 楽天シェア画像. */
+/** Ranked strongest room 出典 first. Only two Rakuten share in-muni stays. */
 export const MUGI_TRAVEL_STAY: readonly TravelRow[] = [
   stay(
     'mugi-stay-01',

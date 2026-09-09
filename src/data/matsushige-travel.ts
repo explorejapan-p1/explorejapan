@@ -1,6 +1,8 @@
 /**
  * Matsushige travel layer. Pack has no dining/stay categories.
- * Experience: 松茂町歴史民俗資料館・人形浄瑠璃芝居資料館 remapped (Commons). Onsen honest 0.
+ * Stay: Rakuten 部屋 stills — Route Inn + 7 business inns (+多津美) (TG610 densify).
+ * Onsen: EXTRA 旅人の湯 / 太平洋 大浴場 (HARD BAR stay≠onsen). Love-hotel MYTH skipped.
+ * Experience: 松茂町歴史民俗資料館・人形浄瑠璃芝居資料館 remapped (Commons).
  * Dining from 食べログ 松茂町 (C36401) public shop pages. Do not invent pack dining.
  * Do not copy 北島 / 藍住 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
  */
@@ -14,7 +16,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const MATSUSHIGE_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const MATSUSHIGE_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const MATSUSHIGE_TRAVEL_SOURCES = {
   home: 'https://www.town.matsushige.tokushima.jp/',
@@ -25,8 +27,11 @@ export const MATSUSHIGE_TRAVEL_SOURCES = {
   rakutenTravel: 'https://travel.rakuten.co.jp/'
 } as const;
 
-/** Exact tourism-pack names shown on 温泉, not 観光. Bath photo required — none yet. */
-export const MATSUSHIGE_ONSEN_PACK_NAMES = [] as const;
+/** Exact tourism-pack names shown on 温泉, not 観光. Bath photo required. */
+export const MATSUSHIGE_ONSEN_PACK_NAMES = [
+  'ホテルルートイン徳島空港 旅人の湯',
+  'ビジネスホテル太平洋 大浴場'
+] as const;
 
 export const MATSUSHIGE_ONSEN_PACK_SET: ReadonlySet<string> = new Set(
   MATSUSHIGE_ONSEN_PACK_NAMES
@@ -67,7 +72,7 @@ function stay(
   };
 }
 
-/** Ranked strongest Instagram-style room/exterior 出典 first. NAVITIME + 楽天シェア画像. Love-hotel MYTH skipped. */
+/** Ranked strongest room 出典 first. Love-hotel MYTH skipped. */
 export const MATSUSHIGE_TRAVEL_STAY: readonly TravelRow[] = [
   stay(
     'matsushige-stay-01',
@@ -117,6 +122,13 @@ export const MATSUSHIGE_TRAVEL_STAY: readonly TravelRow[] = [
     '徳島県板野郡松茂町中喜来牛飼野東ノ越38-1',
     '088-699-2967',
     'https://travel.rakuten.co.jp/HOTEL/144549/144549.html'
+  ),
+  stay(
+    'matsushige-stay-08',
+    'ビジネス旅館 多津美',
+    '徳島県板野郡松茂町笹木野八北開拓254-1',
+    null,
+    'https://travel.rakuten.co.jp/HOTEL/32465/32465.html'
   )
 ];
 

@@ -176,13 +176,13 @@ export const KITAJIMA_EXPECTED_CATEGORY_COUNTS = {
 
 export const MATSUSHIGE_PACK_JIS = '36401';
 export const MATSUSHIGE_PACK_ACCESSED = '2026-08-27';
-export const MATSUSHIGE_EXPECTED_ROW_COUNT = 218;
+export const MATSUSHIGE_EXPECTED_ROW_COUNT = 220;
 export const MATSUSHIGE_EXPECTED_GEO_COUNT = 108;
 export const MATSUSHIGE_EXPECTED_HOURS_COUNT = 216;
 export const MATSUSHIGE_EXPECTED_MISSING_ADDRESS = 88;
 export const MATSUSHIGE_EXPECTED_MISSING_PHONE = 109;
 export const MATSUSHIGE_EXPECTED_CATEGORY_COUNTS = {
-  tourism: 7,
+  tourism: 9,
   cultural_property: 36,
   care: 1,
   aed: 0,
@@ -516,13 +516,13 @@ export const AIZUMI_EXPECTED_CATEGORY_COUNTS = {
 
 export const MINAMI_PACK_JIS = '36387';
 export const MINAMI_PACK_ACCESSED = '2026-08-27';
-export const MINAMI_EXPECTED_ROW_COUNT = 316;
+export const MINAMI_EXPECTED_ROW_COUNT = 318;
 export const MINAMI_EXPECTED_GEO_COUNT = 212;
 export const MINAMI_EXPECTED_HOURS_COUNT = 316;
 export const MINAMI_EXPECTED_MISSING_ADDRESS = 9;
 export const MINAMI_EXPECTED_MISSING_PHONE = 214;
 export const MINAMI_EXPECTED_CATEGORY_COUNTS = {
-  tourism: 8,
+  tourism: 10,
   cultural_property: 41,
   care: 1,
   aed: 19,
@@ -537,13 +537,13 @@ export const MINAMI_EXPECTED_CATEGORY_COUNTS = {
 
 export const MUGI_PACK_JIS = '36383';
 export const MUGI_PACK_ACCESSED = '2026-08-27';
-export const MUGI_EXPECTED_ROW_COUNT = 161;
+export const MUGI_EXPECTED_ROW_COUNT = 162;
 export const MUGI_EXPECTED_GEO_COUNT = 124;
 export const MUGI_EXPECTED_HOURS_COUNT = 159;
 export const MUGI_EXPECTED_MISSING_ADDRESS = 7;
 export const MUGI_EXPECTED_MISSING_PHONE = 120;
 export const MUGI_EXPECTED_CATEGORY_COUNTS = {
-  tourism: 3,
+  tourism: 4,
   cultural_property: 22,
   care: 1,
   aed: 0,

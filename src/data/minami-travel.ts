@@ -1,11 +1,11 @@
 /**
  * Minami travel layer. Pack tourism has inns/camps without room or bath photos.
- * Stay from NAVITIME 宿泊一覧 + 楽天トラベル share/room images (出典). Rank strongest first.
- * Onsen: omit without bath photo (honest 0).
+ * Stay: Rakuten 部屋 stills — 白い燈台 / ケアンズ / モビレージ / 花乃宿 / 明山荘 (TG610 densify).
+ * Onsen: EXTRA 白い燈台 展望露天風呂 / 明山荘 大浴場 (HARD BAR stay≠onsen).
  * Dining from 食べログ 美波町 (C36387) public shop pages with FOOD dish heroes.
  * Shopping: 道の駅 pack name with place-named Commons exterior.
  * Experience: 日和佐うみがめ博物館カレッタ remapped (Commons).
- * PHOTO GAPS: 温泉/商業 honest 0; ぽっぽマリン Commons miss.
+ * PHOTO GAPS: 薬王寺温泉 醫王の湯 AwaNavi exterior only (no facility bath still); 商業 honest 0.
  * Do not copy 牟岐 / 那賀 / 佐那河内 / 上勝 / 勝浦 / 神山 / 上板 / 板野 / 石井 / 松茂 / 北島 / 藍住 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
@@ -18,7 +18,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const MINAMI_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const MINAMI_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const MINAMI_TRAVEL_SOURCES = {
   home: 'https://www.town.minami.lg.jp/',
@@ -29,8 +29,11 @@ export const MINAMI_TRAVEL_SOURCES = {
   tabelogCity: 'https://tabelog.com/tokushima/C36387/rstLst/'
 } as const;
 
-/** Exact tourism-pack names shown on 温泉, not 観光. Bath photo required — none yet. */
-export const MINAMI_ONSEN_PACK_NAMES = [] as const;
+/** Exact tourism-pack names shown on 温泉, not 観光. Bath photo required. */
+export const MINAMI_ONSEN_PACK_NAMES = [
+  'えびす洞温泉 ホテル 白い燈台 展望露天風呂',
+  '民宿 明山荘 大浴場'
+] as const;
 
 export const MINAMI_ONSEN_PACK_SET: ReadonlySet<string> = new Set(
   MINAMI_ONSEN_PACK_NAMES
@@ -78,7 +81,7 @@ function stay(
   };
 }
 
-/** Ranked strongest room/exterior 出典 first. NAVITIME + 楽天シェア画像. */
+/** Ranked strongest room 出典 first. Skipped dining-name collisions さくら庵 / 樹園. */
 export const MINAMI_TRAVEL_STAY: readonly TravelRow[] = [
   stay(
     'minami-stay-01',
