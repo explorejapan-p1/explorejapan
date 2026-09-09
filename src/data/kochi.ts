@@ -30,7 +30,7 @@ export const KOCHI = {
     castle: 'https://ja.wikipedia.org/wiki/%E9%AB%98%E7%9F%A5%E5%9F%8E',
     tabelogCity: 'https://tabelog.com/kochi/C39201/rstLst/',
     pacific: 'https://travel.rakuten.co.jp/HOTEL/8584/8584.html',
-    accessed: '2026-09-08'
+    accessed: '2026-09-09'
   }
 } as const;
 
@@ -41,10 +41,10 @@ function wikiPhoto(
   file: string, commons: string, license: string, licenseUrl: string,
   author: string, authorUrl: string, taken: string, altJa: string, altEn: string
 ): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-08', altJa, altEn};
+  return {src:`/explorejapan/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-09', altJa, altEn};
 }
 function sourcePhoto(file: string, altJa: string, altEn: string, page: string, author: string): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-08', altJa, altEn};
+  return {src:`/explorejapan/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-09', altJa, altEn};
 }
 
 /** Cover: Kochi Castle tenshu. */
@@ -131,13 +131,6 @@ export const KOCHI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'katorisi', 'https://commons.wikimedia.org/wiki/User:Katorisi', '2010-09-06',
     'ひろめ市場', 'Hirome Market, Kochi'
   ),
-  '高知パシフィックホテル': sourcePhoto(
-    'kochi-stay-pacific.jpg',
-    '高知パシフィックホテルの客室写真',
-    'Kochi Pacific Hotel room photo',
-    'https://travel.rakuten.co.jp/HOTEL/8584/8584.html',
-    '楽天トラベル'
-  ),
   'ラ・プリマ・ヴォルタ': sourcePhoto('kochi-39004068-dish.jpg', 'ラ・プリマ・ヴォルタの料理写真', 'ラ・プリマ・ヴォルタ food photo', TABELOG_39004068, '食べログ'),
   '将人': sourcePhoto('kochi-39007487-dish.jpg', '将人の料理写真', '将人 food photo', TABELOG_39007487, '食べログ'),
   'IHARA': sourcePhoto('kochi-39007924-dish.jpg', 'IHARAの料理写真', 'IHARA food photo', TABELOG_39007924, '食べログ'),
@@ -154,6 +147,224 @@ export const KOCHI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   'かもん亭': sourcePhoto('kochi-39001888-dish.jpg', 'かもん亭の料理写真', 'かもん亭 food photo', TABELOG_39001888, '食べログ'),
   '土佐あかうしとワイン プティ・ヴェール': sourcePhoto('kochi-39003723-dish.jpg', '土佐あかうしとワイン プティ・ヴェールの料理写真', '土佐あかうしとワイン プティ・ヴェール food photo', TABELOG_39003723, '食べログ'),
   'すごろく': sourcePhoto('kochi-39001021-dish.jpg', 'すごろくの料理写真', 'すごろく food photo', TABELOG_39001021, '食べログ'),
+  '高知パシフィックホテル': sourcePhoto(
+    'kochi-stay-pacific.jpg',
+    '高知パシフィックホテルの客室写真',
+    '高知パシフィックホテル room photo',
+    'https://travel.rakuten.co.jp/HOTEL/8584/8584.html',
+    '楽天トラベル'
+  ),
+  'アパホテル〈高知〉': sourcePhoto(
+    'kochi-stay-apa.jpg',
+    'アパホテル〈高知〉の客室写真',
+    'アパホテル〈高知〉 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/10808/10808.html',
+    '楽天トラベル'
+  ),
+  'ウェルカムホテル高知': sourcePhoto(
+    'kochi-stay-welcome.jpg',
+    'ウェルカムホテル高知の客室写真',
+    'ウェルカムホテル高知 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/111254/111254.html',
+    '楽天トラベル'
+  ),
+  'オリエントホテル高知': sourcePhoto(
+    'kochi-stay-orient.jpg',
+    'オリエントホテル高知の客室写真',
+    'オリエントホテル高知 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/9484/9484.html',
+    '楽天トラベル'
+  ),
+  'コンフォートホテル高知': sourcePhoto(
+    'kochi-stay-comfort.jpg',
+    'コンフォートホテル高知の客室写真',
+    'コンフォートホテル高知 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/167682/167682.html',
+    '楽天トラベル'
+  ),
+  'サウスブリーズホテル　高知海月': sourcePhoto(
+    'kochi-stay-southbreeze.jpg',
+    'サウスブリーズホテル　高知海月の客室写真',
+    'サウスブリーズホテル　高知海月 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/8682/8682.html',
+    '楽天トラベル'
+  ),
+  'スーパーホテル高知': sourcePhoto(
+    'kochi-stay-superhotel.jpg',
+    'スーパーホテル高知の客室写真',
+    'スーパーホテル高知 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/40671/40671.html',
+    '楽天トラベル'
+  ),
+  'セブンデイズホテル': sourcePhoto(
+    'kochi-stay-sevendays.jpg',
+    'セブンデイズホテルの客室写真',
+    'セブンデイズホテル room photo',
+    'https://travel.rakuten.co.jp/HOTEL/54658/54658.html',
+    '楽天トラベル'
+  ),
+  'セブンデイズホテルプラス': sourcePhoto(
+    'kochi-stay-sevendays-plus.jpg',
+    'セブンデイズホテルプラスの客室写真',
+    'セブンデイズホテルプラス room photo',
+    'https://travel.rakuten.co.jp/HOTEL/54659/54659.html',
+    '楽天トラベル'
+  ),
+  'ツーリストイン高知': sourcePhoto(
+    'kochi-stay-touristinn.jpg',
+    'ツーリストイン高知の客室写真',
+    'ツーリストイン高知 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/40847/40847.html',
+    '楽天トラベル'
+  ),
+  'ドーミーイン高知': sourcePhoto(
+    'kochi-stay-dormy.jpg',
+    'ドーミーイン高知の客室写真',
+    'ドーミーイン高知 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/165939/165939.html',
+    '楽天トラベル'
+  ),
+  'ブライトパークホテル': sourcePhoto(
+    'kochi-stay-brightpark.jpg',
+    'ブライトパークホテルの客室写真',
+    'ブライトパークホテル room photo',
+    'https://travel.rakuten.co.jp/HOTEL/5660/5660.html',
+    '楽天トラベル'
+  ),
+  'プチホテル高知': sourcePhoto(
+    'kochi-stay-petit.jpg',
+    'プチホテル高知の客室写真',
+    'プチホテル高知 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/16491/16491.html',
+    '楽天トラベル'
+  ),
+  'ホテル　ファースト': sourcePhoto(
+    'kochi-stay-first.jpg',
+    'ホテル　ファーストの客室写真',
+    'ホテル　ファースト room photo',
+    'https://travel.rakuten.co.jp/HOTEL/18183/18183.html',
+    '楽天トラベル'
+  ),
+  'ホテル　港屋': sourcePhoto(
+    'kochi-stay-minatoya.jpg',
+    'ホテル　港屋の客室写真',
+    'ホテル　港屋 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/1516/1516.html',
+    '楽天トラベル'
+  ),
+  'ホテルアベスト高知': sourcePhoto(
+    'kochi-stay-abest.jpg',
+    'ホテルアベスト高知の客室写真',
+    'ホテルアベスト高知 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/1553/1553.html',
+    '楽天トラベル'
+  ),
+  'ホテルエリアワン高知': sourcePhoto(
+    'kochi-stay-areaone.jpg',
+    'ホテルエリアワン高知の客室写真',
+    'ホテルエリアワン高知 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/153328/153328.html',
+    '楽天トラベル'
+  ),
+  'ホテルベストプライス高知': sourcePhoto(
+    'kochi-stay-bestprice.jpg',
+    'ホテルベストプライス高知の客室写真',
+    'ホテルベストプライス高知 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/182859/182859.html',
+    '楽天トラベル'
+  ),
+  'ホテル土佐路・たかす': sourcePhoto(
+    'kochi-stay-tosaji.jpg',
+    'ホテル土佐路・たかすの客室写真',
+    'ホテル土佐路・たかす room photo',
+    'https://travel.rakuten.co.jp/HOTEL/43847/43847.html',
+    '楽天トラベル'
+  ),
+  'ホテルＮｏ．１高知': sourcePhoto(
+    'kochi-stay-no1.jpg',
+    'ホテルＮｏ．１高知の客室写真',
+    'ホテルＮｏ．１高知 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/16704/16704.html',
+    '楽天トラベル'
+  ),
+  'リッチモンドホテル高知': sourcePhoto(
+    'kochi-stay-richmond.jpg',
+    'リッチモンドホテル高知の客室写真',
+    'リッチモンドホテル高知 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/67907/67907.html',
+    '楽天トラベル'
+  ),
+  'リバーサイドホテル松栄': sourcePhoto(
+    'kochi-stay-matsue.jpg',
+    'リバーサイドホテル松栄の客室写真',
+    'リバーサイドホテル松栄 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/4866/4866.html',
+    '楽天トラベル'
+  ),
+  '三翠園': sourcePhoto(
+    'kochi-stay-sansuien.jpg',
+    '三翠園の客室写真',
+    '三翠園 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/17777/17777.html',
+    '楽天トラベル'
+  ),
+  '土佐御苑': sourcePhoto(
+    'kochi-stay-tosagyoen.jpg',
+    '土佐御苑の客室写真',
+    '土佐御苑 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/10680/10680.html',
+    '楽天トラベル'
+  ),
+  '城西館': sourcePhoto(
+    'kochi-stay-joseikan.jpg',
+    '城西館の客室写真',
+    '城西館 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/8075/8075.html',
+    '楽天トラベル'
+  ),
+  '天然温泉　はるのの湯': sourcePhoto(
+    'kochi-stay-haruno.jpg',
+    '天然温泉　はるのの湯の客室写真',
+    '天然温泉　はるのの湯 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/106082/106082.html',
+    '楽天トラベル'
+  ),
+  '西鉄イン高知　はりまや橋': sourcePhoto(
+    'kochi-stay-nishitetsu.jpg',
+    '西鉄イン高知　はりまや橋の客室写真',
+    '西鉄イン高知　はりまや橋 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/70876/70876.html',
+    '楽天トラベル'
+  ),
+  '高知サンライズホテル': sourcePhoto(
+    'kochi-stay-sunrise.jpg',
+    '高知サンライズホテルの客室写真',
+    '高知サンライズホテル room photo',
+    'https://travel.rakuten.co.jp/HOTEL/5362/5362.html',
+    '楽天トラベル'
+  ),
+  '高知ホテル': sourcePhoto(
+    'kochi-stay-kochihotel.jpg',
+    '高知ホテルの客室写真',
+    '高知ホテル room photo',
+    'https://travel.rakuten.co.jp/HOTEL/10771/10771.html',
+    '楽天トラベル'
+  ),
+  'ＡＮＡクラウンプラザホテル高知': sourcePhoto(
+    'kochi-stay-ana-crown.jpg',
+    'ＡＮＡクラウンプラザホテル高知の客室写真',
+    'ＡＮＡクラウンプラザホテル高知 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/1436/1436.html',
+    '楽天トラベル'
+  ),
+  'ＪＲクレメントイン高知': sourcePhoto(
+    'kochi-stay-clement.jpg',
+    'ＪＲクレメントイン高知の客室写真',
+    'ＪＲクレメントイン高知 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/181087/181087.html',
+    '楽天トラベル'
+  ),
+
 };
 
 function sight(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string, lat: number, lon: number): FacilityRow {

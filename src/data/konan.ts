@@ -30,7 +30,7 @@ export const KONAN = {
     ekingura: 'https://ja.wikipedia.org/wiki/%E5%BC%98%E7%80%AC%E9%87%91%E8%94%B5',
     tabelogCity: 'https://tabelog.com/kochi/C39211/rstLst/',
     kajuen: 'https://travel.rakuten.co.jp/HOTEL/13721/13721.html',
-    accessed: '2026-09-08'
+    accessed: '2026-09-09'
   }
 } as const;
 
@@ -41,10 +41,10 @@ function wikiPhoto(
   file: string, commons: string, license: string, licenseUrl: string,
   author: string, authorUrl: string, taken: string, altJa: string, altEn: string
 ): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-08', altJa, altEn};
+  return {src:`/explorejapan/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-09', altJa, altEn};
 }
 function sourcePhoto(file: string, altJa: string, altEn: string, page: string, author: string): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-08', altJa, altEn};
+  return {src:`/explorejapan/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-09', altJa, altEn};
 }
 
 /** Cover: Ekingura (赤岡). */
@@ -117,13 +117,6 @@ export const KONAN_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'Bakkai', '//commons.wikimedia.org/wiki/User:Bakkai', '2006-12-14',
     '道の駅やす', 'Michinoeki Yasu, Konan'
   ),
-  'リゾートホテル海辺の果樹園': sourcePhoto(
-    'konan-stay-kajuen.jpg',
-    'リゾートホテル海辺の果樹園の客室写真',
-    'Resort Hotel Seaside Orchard room photo',
-    'https://travel.rakuten.co.jp/HOTEL/13721/13721.html',
-    '楽天トラベル'
-  ),
   '百家': sourcePhoto('konan-39003507-dish.jpg', '百家の料理写真', '百家 food photo', TABELOG_39003507, '食べログ'),
   'ふく手羽 のいち店': sourcePhoto('konan-39007459-dish.jpg', 'ふく手羽 のいち店の料理写真', 'ふく手羽 のいち店 food photo', TABELOG_39007459, '食べログ'),
   'カフェド昭': sourcePhoto('konan-39002467-dish.jpg', 'カフェド昭の料理写真', 'カフェド昭 food photo', TABELOG_39002467, '食べログ'),
@@ -140,6 +133,35 @@ export const KONAN_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   '澤餅茶屋': sourcePhoto('konan-39000367-dish.jpg', '澤餅茶屋の料理写真', '澤餅茶屋 food photo', TABELOG_39000367, '食べログ'),
   'バル亀之助': sourcePhoto('konan-39003322-dish.jpg', 'バル亀之助の料理写真', 'バル亀之助 food photo', TABELOG_39003322, '食べログ'),
   '苺屋': sourcePhoto('konan-39003727-dish.jpg', '苺屋の料理写真', '苺屋 food photo', TABELOG_39003727, '食べログ'),
+  'リゾートホテル海辺の果樹園': sourcePhoto(
+    'konan-stay-kajuen.jpg',
+    'リゾートホテル海辺の果樹園の客室写真',
+    'リゾートホテル海辺の果樹園 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/13721/13721.html',
+    '楽天トラベル'
+  ),
+  'ゲストハウス水仙': sourcePhoto(
+    'konan-stay-suisen.jpg',
+    'ゲストハウス水仙の客室写真',
+    'ゲストハウス水仙 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/198024/198024.html',
+    '楽天トラベル'
+  ),
+  '香南市サイクリングターミナル　海のやどしおや宿': sourcePhoto(
+    'konan-stay-shioya.jpg',
+    '香南市サイクリングターミナル　海のやどしおや宿の客室写真',
+    '香南市サイクリングターミナル　海のやどしおや宿 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/44005/44005.html',
+    '楽天トラベル'
+  ),
+  '高知黒潮ホテル': sourcePhoto(
+    'konan-stay-kuroshio.jpg',
+    '高知黒潮ホテルの客室写真',
+    '高知黒潮ホテル room photo',
+    'https://travel.rakuten.co.jp/HOTEL/15239/15239.html',
+    '楽天トラベル'
+  ),
+
 };
 
 function sight(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string, lat: number, lon: number): FacilityRow {

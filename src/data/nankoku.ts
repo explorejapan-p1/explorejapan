@@ -30,7 +30,7 @@ export const NANKOKU = {
     kokubunji: 'https://ja.wikipedia.org/wiki/%E5%9C%9F%E4%BD%90%E5%9B%BD%E5%88%86%E5%AF%BA',
     tabelogCity: 'https://tabelog.com/kochi/C39204/rstLst/',
     southern: 'https://travel.rakuten.co.jp/HOTEL/1807/1807.html',
-    accessed: '2026-09-08'
+    accessed: '2026-09-09'
   }
 } as const;
 
@@ -41,10 +41,10 @@ function wikiPhoto(
   file: string, commons: string, license: string, licenseUrl: string,
   author: string, authorUrl: string, taken: string, altJa: string, altEn: string
 ): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-08', altJa, altEn};
+  return {src:`/explorejapan/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-09', altJa, altEn};
 }
 function sourcePhoto(file: string, altJa: string, altEn: string, page: string, author: string): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-08', altJa, altEn};
+  return {src:`/explorejapan/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-09', altJa, altEn};
 }
 
 /** Cover: Tosa Kokubun-ji Daishi-dō. */
@@ -117,13 +117,6 @@ export const NANKOKU_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'iloverjoa', 'https://web.archive.org/web/20161101193958/http://www.panoramio.com/user/4453381?with_photo_id=124901350', '',
     '道の駅南国 風良里', 'Michinoeki Nankoku Furari'
   ),
-  'サザンシティホテル': sourcePhoto(
-    'nankoku-stay-southern.jpg',
-    'サザンシティホテルの客室写真',
-    'Southern City Hotel room photo',
-    'https://travel.rakuten.co.jp/HOTEL/1807/1807.html',
-    '楽天トラベル'
-  ),
   'かいだ屋': sourcePhoto('nankoku-39000043-dish.jpg', 'かいだ屋の料理写真', 'かいだ屋 food photo', TABELOG_39000043, '食べログ'),
   '多国籍食堂 錆と煤': sourcePhoto('nankoku-39006430-dish.jpg', '多国籍食堂 錆と煤の料理写真', '多国籍食堂 錆と煤 food photo', TABELOG_39006430, '食べログ'),
   'うなぎ処福': sourcePhoto('nankoku-39000612-dish.jpg', 'うなぎ処福の料理写真', 'うなぎ処福 food photo', TABELOG_39000612, '食べログ'),
@@ -140,6 +133,42 @@ export const NANKOKU_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   'ボラレ': sourcePhoto('nankoku-39008285-dish.jpg', 'ボラレの料理写真', 'ボラレ food photo', TABELOG_39008285, '食べログ'),
   'モンシェルトントン': sourcePhoto('nankoku-39000530-dish.jpg', 'モンシェルトントンの料理写真', 'モンシェルトントン food photo', TABELOG_39000530, '食べログ'),
   'レストランエリエール': sourcePhoto('nankoku-39003026-dish.jpg', 'レストランエリエールの料理写真', 'レストランエリエール food photo', TABELOG_39003026, '食べログ'),
+  'サザンシティホテル': sourcePhoto(
+    'nankoku-stay-southern.jpg',
+    'サザンシティホテルの客室写真',
+    'サザンシティホテル room photo',
+    'https://travel.rakuten.co.jp/HOTEL/1807/1807.html',
+    '楽天トラベル'
+  ),
+  'アールビジネスホテル': sourcePhoto(
+    'nankoku-stay-r-business.jpg',
+    'アールビジネスホテルの客室写真',
+    'アールビジネスホテル room photo',
+    'https://travel.rakuten.co.jp/HOTEL/130740/130740.html',
+    '楽天トラベル'
+  ),
+  'ビジネスホテル空港': sourcePhoto(
+    'nankoku-stay-kuko.jpg',
+    'ビジネスホテル空港の客室写真',
+    'ビジネスホテル空港 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/9490/9490.html',
+    '楽天トラベル'
+  ),
+  'ペンション　お宿': sourcePhoto(
+    'nankoku-stay-oyado.jpg',
+    'ペンション　お宿の客室写真',
+    'ペンション　お宿 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/50634/50634.html',
+    '楽天トラベル'
+  ),
+  '南国ビジネスホテル': sourcePhoto(
+    'nankoku-stay-nankoku-biz.jpg',
+    '南国ビジネスホテルの客室写真',
+    '南国ビジネスホテル room photo',
+    'https://travel.rakuten.co.jp/HOTEL/20498/20498.html',
+    '楽天トラベル'
+  ),
+
 };
 
 function sight(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string, lat: number, lon: number): FacilityRow {

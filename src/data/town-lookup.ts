@@ -2795,9 +2795,9 @@ export const KONAN_LOOKUP: LookupTown = {
   travelCommerce: KONAN_TRAVEL_COMMERCE,
   travelAll: KONAN_TRAVEL_ALL,
   coverageJa:
-    '香南市（JIS 39211）観光6・宿泊1・飲食16・体験1（出典写真がある施設のみ）。温泉・買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載。ユニットバスのみのため温泉0）。オープンデータ凍結パックは未掲載。高知県3つ目のLIVEハブ。',
+    '香南市（JIS 39211）観光6・宿泊4・飲食16・体験1（出典写真がある施設のみ。宿泊は楽天部屋スティル）。温泉・買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載。黒潮ホテル大浴場は温泉キー未配線）。オープンデータ凍結パックは未掲載。',
   coverageEn:
-    'Konan City (JIS 39211), 6 tourism + 1 stay + 16 dining + 1 experience with sourced photos. Onsen, shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished (unit baths only → onsen 0). No frozen open-data pack. Third LIVE Kochi hub.',
+    'Konan City (JIS 39211), 6 tourism + 4 stay + 16 dining + 1 experience with sourced photos (stay = Rakuten room stills). Onsen, shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished (Kuroshio Hotel bath not wired as onsen key this wave). No frozen open-data pack.',
   mapLabelJa: '香南市の出典座標7件',
   mapLabelEn: '7 sourced coordinates in Konan City',
   mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia等出典座標7件（accessed 2026-09-08）。',
@@ -2828,9 +2828,9 @@ export const NANKOKU_LOOKUP: LookupTown = {
   travelCommerce: NANKOKU_TRAVEL_COMMERCE,
   travelAll: NANKOKU_TRAVEL_ALL,
   coverageJa:
-    '南国市（JIS 39204）観光6・宿泊1・飲食16・体験1（出典写真がある施設のみ）。温泉・買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載。ビジネスホテル浴室のみのため温泉0）。オープンデータ凍結パックは未掲載。高知県2つ目のLIVEハブ。',
+    '南国市（JIS 39204）観光6・宿泊5・飲食16・体験1（出典写真がある施設のみ。宿泊は楽天部屋スティル）。温泉・買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。',
   coverageEn:
-    'Nankoku City (JIS 39204), 6 tourism + 1 stay + 16 dining + 1 experience with sourced photos. Onsen, shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished (business-hotel baths only → onsen 0). No frozen open-data pack. Second LIVE Kochi hub.',
+    'Nankoku City (JIS 39204), 6 tourism + 5 stay + 16 dining + 1 experience with sourced photos (stay = Rakuten room stills). Onsen, shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack.',
   mapLabelJa: '南国市の出典座標7件',
   mapLabelEn: '7 sourced coordinates in Nankoku City',
   mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia等出典座標7件（accessed 2026-09-08）。',
@@ -2861,9 +2861,9 @@ export const KOCHI_LOOKUP: LookupTown = {
   travelCommerce: KOCHI_TRAVEL_COMMERCE,
   travelAll: KOCHI_TRAVEL_ALL,
   coverageJa:
-    '高知市（JIS 39201）観光8・宿泊1・飲食16・体験1（出典写真がある施設のみ）。温泉・買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載。ビジネスホテル浴室のみのため温泉0）。オープンデータ凍結パックは未掲載。高知県1つ目のLIVEハブ。',
+    '高知市（JIS 39201）観光8・宿泊31・飲食16・体験1（出典写真がある施設のみ。宿泊は楽天部屋スティル）。温泉・買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載。ビジネスホテル浴室のみのため温泉0）。オープンデータ凍結パックは未掲載。高知県1つ目のLIVEハブ。',
   coverageEn:
-    'Kochi City (JIS 39201), 8 tourism + 1 stay + 16 dining + 1 experience with sourced photos. Onsen, shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished (business-hotel baths only → onsen 0). No frozen open-data pack. First LIVE Kochi hub.',
+    'Kochi City (JIS 39201), 8 tourism + 31 stay + 16 dining + 1 experience with sourced photos (stay = Rakuten room stills). Onsen, shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished (business-hotel baths only → onsen 0). No frozen open-data pack. First LIVE Kochi hub.',
   mapLabelJa: '高知市の出典座標9件',
   mapLabelEn: '9 sourced coordinates in Kochi City',
   mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia等出典座標9件（accessed 2026-09-08）。',

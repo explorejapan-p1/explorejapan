@@ -1,13 +1,13 @@
 /**
  * Konan City travel layer. No frozen pack.
- * Dining from 食べログ 香南市 (C39211). Stay: Resort Hotel Seaside Orchard Rakuten room. Onsen: honest 0 (unit baths only). Experience: 道の駅やす.
+ * Dining from 食べログ 香南市 (C39211). Stay: 4 Rakuten room stills (TG610). Onsen: honest 0 this wave (黒潮ホテル bath not wired). Experience: 道の駅やす.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {KONAN, KONAN_SIGHT_PHOTOS} from './konan';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const KONAN_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const KONAN_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const KONAN_TRAVEL_SOURCES = {
   home: 'https://www.city.kochi-konan.lg.jp/', hall: 'https://www.city.kochi-konan.lg.jp/shiseijoho/konanshinogaiyo/index.html',
   kankou: 'https://www.city.kochi-konan.lg.jp/',
@@ -31,7 +31,10 @@ function stay(id: string, name_ja: string, address: string | null, phone: string
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: KONAN_TRAVEL_ACCESSED};
 }
 export const KONAN_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('konan-stay-01', 'リゾートホテル海辺の果樹園', '高知県香南市夜須町手結山506-1', '0887-55-4111', 'https://travel.rakuten.co.jp/HOTEL/13721/13721.html')
+  stay('konan-stay-01', 'リゾートホテル海辺の果樹園', '高知県香南市夜須町手結山506-1', '0887-55-4111', 'https://travel.rakuten.co.jp/HOTEL/13721/13721.html'),
+  stay('konan-stay-02', 'ゲストハウス水仙', '高知県香南市野市町西野242-21', '080-1622-4917', 'https://travel.rakuten.co.jp/HOTEL/198024/198024.html'),
+  stay('konan-stay-03', '香南市サイクリングターミナル　海のやどしおや宿', '高知県香南市夜須町手結山1304', '0887-55-3196', 'https://travel.rakuten.co.jp/HOTEL/44005/44005.html'),
+  stay('konan-stay-04', '高知黒潮ホテル', '高知県香南市野市町東野1630', '0887-56-5800', 'https://travel.rakuten.co.jp/HOTEL/15239/15239.html')
 ];
 
 function dining(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {

@@ -1,13 +1,13 @@
 /**
  * Kochi City travel layer. No frozen pack.
- * Dining from 食べログ 高知市 (C39201). Stay: Kochi Pacific Hotel Rakuten room. Onsen: honest 0 (unit baths only). Experience: ひろめ市場.
+ * Dining from 食べログ 高知市 (C39201). Stay: 31 Rakuten room stills (TG610). Onsen: honest 0 (unit baths only; bath keys not wired). Experience: ひろめ市場.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {KOCHI, KOCHI_SIGHT_PHOTOS} from './kochi';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const KOCHI_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const KOCHI_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const KOCHI_TRAVEL_SOURCES = {
   home: 'https://www.city.kochi.kochi.jp/', hall: 'https://www.city.kochi.kochi.jp/',
   kankou: 'https://www.city.kochi.kochi.jp/',
@@ -31,7 +31,37 @@ function stay(id: string, name_ja: string, address: string | null, phone: string
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: KOCHI_TRAVEL_ACCESSED};
 }
 export const KOCHI_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('kochi-stay-01', '高知パシフィックホテル', '高知県高知市駅前町1-15', '088-884-0777', 'https://travel.rakuten.co.jp/HOTEL/8584/8584.html')
+  stay('kochi-stay-01', '高知パシフィックホテル', '高知県高知市駅前町1-15', '088-884-0777', 'https://travel.rakuten.co.jp/HOTEL/8584/8584.html'),
+  stay('kochi-stay-02', 'アパホテル〈高知〉', '高知県高知市廿代町1-18', '088-825-0100', 'https://travel.rakuten.co.jp/HOTEL/10808/10808.html'),
+  stay('kochi-stay-03', 'ウェルカムホテル高知', '高知県高知市追手筋1-8-25', '088-823-3555', 'https://travel.rakuten.co.jp/HOTEL/111254/111254.html'),
+  stay('kochi-stay-04', 'オリエントホテル高知', '高知県高知市升形5-37', '088-822-6565', 'https://travel.rakuten.co.jp/HOTEL/9484/9484.html'),
+  stay('kochi-stay-05', 'コンフォートホテル高知', '高知県高知市北本町2-2-12', '088-884-2811', 'https://travel.rakuten.co.jp/HOTEL/167682/167682.html'),
+  stay('kochi-stay-06', 'サウスブリーズホテル　高知海月', '高知県高知市農人町5-29', '088-885-5051', 'https://travel.rakuten.co.jp/HOTEL/8682/8682.html'),
+  stay('kochi-stay-07', 'スーパーホテル高知', '高知県高知市北本町1-3-20', '088-802-9000', 'https://travel.rakuten.co.jp/HOTEL/40671/40671.html'),
+  stay('kochi-stay-08', 'セブンデイズホテル', '高知県高知市はりまや町2-13-17', '088-884-7100', 'https://travel.rakuten.co.jp/HOTEL/54658/54658.html'),
+  stay('kochi-stay-09', 'セブンデイズホテルプラス', '高知県高知市はりまや町2-13-6', '088-884-7111', 'https://travel.rakuten.co.jp/HOTEL/54659/54659.html'),
+  stay('kochi-stay-10', 'ツーリストイン高知', '高知県高知市大川筋1-5-5', '088-820-5151', 'https://travel.rakuten.co.jp/HOTEL/40847/40847.html'),
+  stay('kochi-stay-11', 'ドーミーイン高知', '高知県高知市帯屋町1-9-12', '088-872-5489', 'https://travel.rakuten.co.jp/HOTEL/165939/165939.html'),
+  stay('kochi-stay-12', 'ブライトパークホテル', '高知県高知市追手筋1-5-13', '088-823-4351', 'https://travel.rakuten.co.jp/HOTEL/5660/5660.html'),
+  stay('kochi-stay-13', 'プチホテル高知', '高知県高知市北本町1-8-13', '088-826-8156', 'https://travel.rakuten.co.jp/HOTEL/16491/16491.html'),
+  stay('kochi-stay-14', 'ホテル　ファースト', '高知県高知市はりまや町3-15-10', '088-861-6688', 'https://travel.rakuten.co.jp/HOTEL/18183/18183.html'),
+  stay('kochi-stay-15', 'ホテル　港屋', '高知県高知市相生町2-12', '088-883-6000', 'https://travel.rakuten.co.jp/HOTEL/1516/1516.html'),
+  stay('kochi-stay-16', 'ホテルアベスト高知', '高知県高知市南はりまや町1-7-14', '088-885-0077', 'https://travel.rakuten.co.jp/HOTEL/1553/1553.html'),
+  stay('kochi-stay-17', 'ホテルエリアワン高知', '高知県高知市はりまや町3-18-10', '088-880-1919', 'https://travel.rakuten.co.jp/HOTEL/153328/153328.html'),
+  stay('kochi-stay-18', 'ホテルベストプライス高知', '高知県高知市南宝永町16-12', '088-861-1223', 'https://travel.rakuten.co.jp/HOTEL/182859/182859.html'),
+  stay('kochi-stay-19', 'ホテル土佐路・たかす', '高知県高知市高須2-6-55', '088-882-7700', 'https://travel.rakuten.co.jp/HOTEL/43847/43847.html'),
+  stay('kochi-stay-20', 'ホテルＮｏ．１高知', '高知県高知市廿代町16-8', '088-873-3333', 'https://travel.rakuten.co.jp/HOTEL/16704/16704.html'),
+  stay('kochi-stay-21', 'リッチモンドホテル高知', '高知県高知市帯屋町１丁目９－４', '088-820-1122', 'https://travel.rakuten.co.jp/HOTEL/67907/67907.html'),
+  stay('kochi-stay-22', 'リバーサイドホテル松栄', '高知県高知市天神町8-1', '088-832-3211', 'https://travel.rakuten.co.jp/HOTEL/4866/4866.html'),
+  stay('kochi-stay-23', '三翠園', '高知県高知市鷹匠町1-3-35', '088-822-0131', 'https://travel.rakuten.co.jp/HOTEL/17777/17777.html'),
+  stay('kochi-stay-24', '土佐御苑', '高知県高知市大川筋1-4-8', '088-822-4491', 'https://travel.rakuten.co.jp/HOTEL/10680/10680.html'),
+  stay('kochi-stay-25', '城西館', '高知県高知市上町2-5-34', '088-875-0111', 'https://travel.rakuten.co.jp/HOTEL/8075/8075.html'),
+  stay('kochi-stay-26', '天然温泉　はるのの湯', '高知県高知市春野町西分3546', '088-894-5400', 'https://travel.rakuten.co.jp/HOTEL/106082/106082.html'),
+  stay('kochi-stay-27', '西鉄イン高知　はりまや橋', '高知県高知市はりまや町１丁目１－３', '088-875-5454', 'https://travel.rakuten.co.jp/HOTEL/70876/70876.html'),
+  stay('kochi-stay-28', '高知サンライズホテル', '高知県高知市本町2-2-31', '088-822-1281', 'https://travel.rakuten.co.jp/HOTEL/5362/5362.html'),
+  stay('kochi-stay-29', '高知ホテル', '高知県高知市駅前町4-10', '088-822-8008', 'https://travel.rakuten.co.jp/HOTEL/10771/10771.html'),
+  stay('kochi-stay-30', 'ＡＮＡクラウンプラザホテル高知', '高知県高知市本町4-2-50', '088-873-1111', 'https://travel.rakuten.co.jp/HOTEL/1436/1436.html'),
+  stay('kochi-stay-31', 'ＪＲクレメントイン高知', '高知県高知市北本町1-10-59', '088-855-3111', 'https://travel.rakuten.co.jp/HOTEL/181087/181087.html')
 ];
 
 function dining(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {

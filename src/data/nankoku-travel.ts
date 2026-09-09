@@ -1,13 +1,13 @@
 /**
  * Nankoku City travel layer. No frozen pack.
- * Dining from 食べログ 南国市 (C39204). Stay: Southern City Hotel Rakuten room. Onsen: honest 0 (unit baths only). Experience: 道の駅南国 風良里.
+ * Dining from 食べログ 南国市 (C39204). Stay: 5 Rakuten room stills (TG610). Onsen: honest 0. Experience: 道の駅南国 風良里.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {NANKOKU, NANKOKU_SIGHT_PHOTOS} from './nankoku';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const NANKOKU_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const NANKOKU_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const NANKOKU_TRAVEL_SOURCES = {
   home: 'https://www.city.nankoku.lg.jp/', hall: 'https://www.city.nankoku.lg.jp/life/life_dtl.php?hdnKey=3247',
   kankou: 'https://www.city.nankoku.lg.jp/',
@@ -31,7 +31,11 @@ function stay(id: string, name_ja: string, address: string | null, phone: string
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: NANKOKU_TRAVEL_ACCESSED};
 }
 export const NANKOKU_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('nankoku-stay-01', 'サザンシティホテル', '高知県南国市明見933', '088-863-2000', 'https://travel.rakuten.co.jp/HOTEL/1807/1807.html')
+  stay('nankoku-stay-01', 'サザンシティホテル', '高知県南国市明見933', '088-863-2000', 'https://travel.rakuten.co.jp/HOTEL/1807/1807.html'),
+  stay('nankoku-stay-02', 'アールビジネスホテル', '高知県南国市明見821-1', '088-863-7770', 'https://travel.rakuten.co.jp/HOTEL/130740/130740.html'),
+  stay('nankoku-stay-03', 'ビジネスホテル空港', '高知県南国市篠原203-1', '088-864-1101', 'https://travel.rakuten.co.jp/HOTEL/9490/9490.html'),
+  stay('nankoku-stay-04', 'ペンション　お宿', '高知県南国市大そね甲2518-1', '080-5666-1901', 'https://travel.rakuten.co.jp/HOTEL/50634/50634.html'),
+  stay('nankoku-stay-05', '南国ビジネスホテル', '高知県南国市篠原930-1', '088-863-4611', 'https://travel.rakuten.co.jp/HOTEL/20498/20498.html')
 ];
 
 function dining(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {
