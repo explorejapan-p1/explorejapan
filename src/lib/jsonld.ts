@@ -73,6 +73,7 @@ import {IMABARI, IMABARI_PLACE_PHOTO} from '@/data/imabari';
 import {UWAJIMA, UWAJIMA_PLACE_PHOTO} from '@/data/uwajima';
 import {YAWATAHAMA, YAWATAHAMA_PLACE_PHOTO} from '@/data/yawatahama';
 import {NIIHAMA, NIIHAMA_PLACE_PHOTO} from '@/data/niihama';
+import {SAIJO, SAIJO_PLACE_PHOTO} from '@/data/saijo';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -200,6 +201,7 @@ function localityJa(slug: string): string {
   if (slug === 'uwajima') return UWAJIMA.nameJa;
   if (slug === 'yawatahama') return YAWATAHAMA.nameJa;
   if (slug === 'niihama') return NIIHAMA.nameJa;
+  if (slug === 'saijo') return SAIJO.nameJa;
   return MIMA.nameJa;
 }
 
@@ -266,6 +268,7 @@ function localityEn(slug: string): string {
   if (slug === 'uwajima') return UWAJIMA.nameEn;
   if (slug === 'yawatahama') return YAWATAHAMA.nameEn;
   if (slug === 'niihama') return NIIHAMA.nameEn;
+  if (slug === 'saijo') return SAIJO.nameEn;
   return MIMA.nameEn;
 }
 
@@ -4539,6 +4542,67 @@ export function yawatahamaGraph(locale: AppLocale) {
       {
         '@type': 'ItemList',
         name: isJa ? '八幡浜市の案内' : 'Places in Yawatahama City',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
+
+
+export function saijoGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'ehime/saijo');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('saijo');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? SAIJO.nameJa : SAIJO.nameEn,
+        alternateName: isJa ? SAIJO.nameEn : SAIJO.nameJa,
+        identifier: SAIJO.jis,
+        url,
+        image: photoAbs(SAIJO_PLACE_PHOTO),
+        sameAs: [SAIJO.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '明屋敷164番地' : '164 Akeiyashiki',
+          addressLocality: isJa ? SAIJO.nameJa : SAIJO.nameEn,
+          addressRegion: isJa ? SAIJO.prefectureJa : SAIJO.prefectureEn,
+          postalCode: SAIJO.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? SAIJO.prefectureJa : SAIJO.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? SAIJO.nameJa : SAIJO.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? SAIJO.prefectureJa : SAIJO.prefectureEn, item: canonicalUrl(locale, 'ehime')},
+          {'@type': 'ListItem', position: 3, name: isJa ? SAIJO.nameJa : SAIJO.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '西条市の案内' : 'Places in Saijo City',
         numberOfItems: featured.length,
         itemListElement: featured.map((row, index) => ({
           '@type': 'ListItem',

@@ -862,6 +862,18 @@ import {
   niihamaTopChipForRow,
   resolveNiihamaFilter
 } from './niihama-travel';
+import {
+  isSaijoOnsenPackRow,
+  isSaijoExperiencePackRow,
+  isSaijoStayPackRow,
+  rankSaijoSeeRows,
+  saijoPackRowMatchesFilter,
+  resolveSaijoFilter,
+  saijoSightPhoto,
+  saijoSourcedHook,
+  saijoTopChipForRow,
+} from './saijo-travel';
+
 
 
 
@@ -1647,6 +1659,19 @@ const MIHARA_HELPERS: LookupHelpers = {
 
 
 
+
+const SAIJO_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isSaijoOnsenPackRow,
+  isExperiencePackRow: isSaijoExperiencePackRow,
+  isStayPackRow: isSaijoStayPackRow,
+  packRowMatchesFilter: saijoPackRowMatchesFilter,
+  rankSeeRows: rankSaijoSeeRows,
+  sightPhoto: saijoSightPhoto,
+  sourcedHook: saijoSourcedHook,
+  topChipForRow: saijoTopChipForRow,
+  resolveFilter: resolveSaijoFilter
+};
+
 const NIIHAMA_HELPERS: LookupHelpers = {
   isOnsenPackRow: isNiihamaOnsenPackRow,
   isExperiencePackRow: isNiihamaExperiencePackRow,
@@ -1999,5 +2024,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'uwajima') return UWAJIMA_HELPERS;
   if (slug === 'yawatahama') return YAWATAHAMA_HELPERS;
   if (slug === 'niihama') return NIIHAMA_HELPERS;
+  if (slug === 'saijo') return SAIJO_HELPERS;
   return MIMA_HELPERS;
 }

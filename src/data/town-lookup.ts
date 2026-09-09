@@ -756,6 +756,7 @@ import {IMABARI, IMABARI_PLACE_PHOTO, IMABARI_FACILITIES, IMABARI_EXPECTED_GEO_C
 import {UWAJIMA, UWAJIMA_PLACE_PHOTO, UWAJIMA_FACILITIES, UWAJIMA_EXPECTED_GEO_COUNT, UWAJIMA_EXPECTED_ROW_COUNT} from './uwajima';
 import {YAWATAHAMA, YAWATAHAMA_PLACE_PHOTO, YAWATAHAMA_FACILITIES, YAWATAHAMA_EXPECTED_GEO_COUNT, YAWATAHAMA_EXPECTED_ROW_COUNT} from './yawatahama';
 import {NIIHAMA, NIIHAMA_PLACE_PHOTO, NIIHAMA_FACILITIES, NIIHAMA_EXPECTED_GEO_COUNT, NIIHAMA_EXPECTED_ROW_COUNT} from './niihama';
+import {SAIJO, SAIJO_PLACE_PHOTO, SAIJO_FACILITIES, SAIJO_EXPECTED_GEO_COUNT, SAIJO_EXPECTED_ROW_COUNT} from './saijo';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -805,6 +806,13 @@ import {
   NIIHAMA_TRAVEL_COMMERCE,
   NIIHAMA_TRAVEL_ALL,
 } from './niihama-travel';
+import {
+  SAIJO_TRAVEL_DINING,
+  SAIJO_TRAVEL_STAY,
+  SAIJO_TRAVEL_SHOPPING,
+  SAIJO_TRAVEL_COMMERCE,
+  SAIJO_TRAVEL_ALL,
+} from './saijo-travel';
 
 
 
@@ -3353,6 +3361,41 @@ export const NIIHAMA_LOOKUP: LookupTown = {
   licenseSiteEn: 'City-site listing'
 };
 
+
+
+export const SAIJO_LOOKUP: LookupTown = {
+  slug: 'saijo',
+  prefectureSlug: 'ehime',
+  jis: SAIJO.jis,
+  nameJa: SAIJO.nameJa,
+  nameEn: SAIJO.nameEn,
+  heroPhoto: SAIJO_PLACE_PHOTO,
+  photoCiteJa: '写真は道の駅小松オアシス。Dokudami、CC BY-SA 4.0。File:Komatuoasisu20220422 6.jpg。',
+  photoCiteEn: 'Photo: Michinoeki Komatsu Oasis. Dokudami, CC BY-SA 4.0. File:Komatuoasisu20220422 6.jpg.',
+  rows: SAIJO_FACILITIES,
+  expectedGeo: SAIJO_EXPECTED_GEO_COUNT,
+  expectedRows: SAIJO_EXPECTED_ROW_COUNT,
+  travelDining: SAIJO_TRAVEL_DINING,
+  travelStay: SAIJO_TRAVEL_STAY,
+  travelShopping: SAIJO_TRAVEL_SHOPPING,
+  travelCommerce: SAIJO_TRAVEL_COMMERCE,
+  travelAll: SAIJO_TRAVEL_ALL,
+  coverageJa:
+    '西条市（JIS 38206）観光6・宿泊22・飲食16・温泉12・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。愛媛県6つ目のLIVEハブ。',
+  coverageEn:
+    'Saijo City (JIS 38206), 6 tourism + 22 stay + 16 dining + 12 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Sixth LIVE Ehime hub.',
+  mapLabelJa: '西条市の出典座標2件',
+  mapLabelEn: '2 sourced coordinates in Saijo City',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia/Commons等出典座標2件（accessed 2026-09-09）。',
+  mapCitePackEn: 'Points: 2 sourced coordinates for city/official facilities (accessed 2026-09-09).',
+  licenseNoteJa:
+    '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.saijo.ehime.jp, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
 export const UWAJIMA_LOOKUP: LookupTown = {
   slug: 'uwajima',
   prefectureSlug: 'ehime',
@@ -3622,7 +3665,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   imabari: IMABARI_LOOKUP,
   uwajima: UWAJIMA_LOOKUP,
   yawatahama: YAWATAHAMA_LOOKUP,
-  niihama: NIIHAMA_LOOKUP
+  niihama: NIIHAMA_LOOKUP,
+  saijo: SAIJO_LOOKUP
 };
 
 
