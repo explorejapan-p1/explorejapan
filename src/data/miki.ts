@@ -1,7 +1,7 @@
 /**
  * Miki Town sourced facts. Do not invent population.
  * Hall / JIS from town HP (accessed 2026-09-07). JIS 37341. Fourteenth Kagawa hub after Takamatsu + Kotohira + Marugame + Kanonji + Sakaide + Naoshima + Shodoshima + Zentsuji + Mitoyo + Utazu + Tonosho + Sanuki + Higashikagawa.
- * No frozen pack — photo-only tourism + Tabelog dining + Rakuten stay (AZ room). Honest 0 onsen (unit bath only) / shop / commerce.
+ * No frozen pack — photo-only tourism + Tabelog dining + Rakuten stay (AZ room). Onsen: TRESTA白山 露天風呂 (Rakuten). Shop/commerce honest 0.
  */
 import type {FacilityRow} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
@@ -30,12 +30,12 @@ export const MIKI = {
     jodoji: 'https://ja.wikipedia.org/wiki/%E6%B5%84%E5%9C%9F%E5%AF%BA_(%E9%A6%99%E5%B7%9D%E7%9C%8C%E4%B8%89%E6%9C%A8%E7%94%BA)',
     tabelogCity: 'https://tabelog.com/kagawa/C37341/rstLst/',
     az: 'https://travel.rakuten.co.jp/HOTEL/197767/197767.html',
-    accessed: '2026-09-07'
+    accessed: '2026-09-09'
   }
 } as const;
 
-export const MIKI_EXPECTED_ROW_COUNT = 9;
-export const MIKI_EXPECTED_GEO_COUNT = 9;
+export const MIKI_EXPECTED_ROW_COUNT = 10;
+export const MIKI_EXPECTED_GEO_COUNT = 10;
 
 function wikiPhoto(
   file: string,
@@ -56,7 +56,7 @@ function wikiPhoto(
     author,
     authorUrl,
     taken,
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -77,7 +77,7 @@ function sourcePhoto(
     author,
     authorUrl: page,
     taken: '2026',
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -115,6 +115,7 @@ const TABELOG_37005441 = 'https://tabelog.com/kagawa/A3701/A370102/37001523/';
 
 /** Exact travel/sight name_ja only. No Tokushima/other-Kagawa Files. */
 export const MIKI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
+
   '浄土寺': MIKI_PLACE_PHOTO,
   '虹の滝（男滝）': wikiPhoto(
     'miki-kounotaki-odaki.jpg',
@@ -204,13 +205,6 @@ export const MIKI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'トレスタ白山アイスアリーナ（三木町）',
     'Tresta Shirayama Ice Arena, Miki'
   ),
-  'ＨＯＴＥＬ　ＡＺ　香川三木店': sourcePhoto(
-    'miki-stay-az.jpg',
-    'ＨＯＴＥＬ　ＡＺ　香川三木店の客室写真',
-    'HOTEL AZ Kagawa Miki room photo',
-    'https://travel.rakuten.co.jp/HOTEL/197767/gallery.html',
-    '楽天トラベル'
-  ),
   '三木酒場 にのころ': sourcePhoto('miki-37010311-dish.jpg', '三木酒場 にのころの料理写真', '三木酒場 にのころ food photo', TABELOG_37010311, '食べログ'),
   '絆': sourcePhoto('miki-37002866-dish.jpg', '絆の料理写真', '絆 food photo', TABELOG_37002866, '食べログ'),
   '味泉': sourcePhoto('miki-37013715-dish.jpg', '味泉の料理写真', '味泉 food photo', TABELOG_37013715, '食べログ'),
@@ -227,6 +221,36 @@ export const MIKI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   'らん': sourcePhoto('miki-37010984-dish.jpg', 'らんの料理写真', 'らん food photo', TABELOG_37010984, '食べログ'),
   '元祖かっしゃ焼 三木店': sourcePhoto('miki-37003826-dish.jpg', '元祖かっしゃ焼 三木店の料理写真', '元祖かっしゃ焼 三木店 food photo', TABELOG_37003826, '食べログ'),
   'みき': sourcePhoto('miki-37005441-dish.jpg', 'みきの料理写真', 'みき food photo', TABELOG_37005441, '食べログ'),
+
+  "屋島灘温泉 ＴＲＥＳＴＡ白山": sourcePhoto(
+    "miki-stay-tresta.jpg",
+    "屋島灘温泉 ＴＲＥＳＴＡ白山の客室写真",
+    "屋島灘温泉 ＴＲＥＳＴＡ白山 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/70305/70305.html",
+    '楽天トラベル'
+  ),
+  "ＨＯＴＥＬ　ＡＺ　香川三木店": sourcePhoto(
+    "miki-stay-az.jpg",
+    "ＨＯＴＥＬ　ＡＺ　香川三木店の客室写真",
+    "ＨＯＴＥＬ　ＡＺ　香川三木店 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/197767/197767.html",
+    '楽天トラベル'
+  ),
+  "Ｍｉｋｉ里山グランピング": sourcePhoto(
+    "miki-stay-satoyama.jpg",
+    "Ｍｉｋｉ里山グランピングの客室写真",
+    "Ｍｉｋｉ里山グランピング room photo",
+    "https://travel.rakuten.co.jp/HOTEL/191742/191742.html",
+    '楽天トラベル'
+  ),
+  "屋島灘温泉 ＴＲＥＳＴＡ白山 露天風呂": sourcePhoto(
+    "miki-onsen-tresta.jpg",
+    "屋島灘温泉 ＴＲＥＳＴＡ白山 露天風呂の写真",
+    "屋島灘温泉 ＴＲＥＳＴＡ白山 露天風呂 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/70305/gallery.html",
+    '楽天トラベル'
+  ),
+
 };
 
 function sight(
@@ -235,8 +259,8 @@ function sight(
   address: string | null,
   phone: string | null,
   source_url: string,
-  lat: number,
-  lon: number
+  lat: number | null,
+  lon: number | null
 ): FacilityRow {
   return {
     id,
@@ -256,7 +280,7 @@ function sight(
   };
 }
 
-/** Photo-only tourism / experience rows. No frozen jsonl. Onsen honest 0. */
+/** Photo-only tourism / onsen / experience rows. No frozen jsonl. */
 export const MIKI_FACILITIES: readonly FacilityRow[] = [
   sight('miki-sight-01', '浄土寺', '香川県木田郡三木町井戸429', null, 'https://ja.wikipedia.org/wiki/%E6%B5%84%E5%9C%9F%E5%AF%BA_(%E9%A6%99%E5%B7%9D%E7%9C%8C%E4%B8%89%E6%9C%A8%E7%94%BA)', 34.2507105, 134.1554873),
   sight('miki-sight-02', '虹の滝（男滝）', '香川県木田郡三木町小蓑', null, 'https://www.town.miki.lg.jp/', 34.1810564, 134.1172126),
@@ -266,5 +290,6 @@ export const MIKI_FACILITIES: readonly FacilityRow[] = [
   sight('miki-sight-06', '男井間池', '香川県木田郡三木町池戸', null, 'https://www.town.miki.lg.jp/', 34.2892048, 134.1300523),
   sight('miki-sight-07', '池戸八幡神社', '香川県木田郡三木町池戸1383-2', null, 'https://www.town.miki.lg.jp/', 34.2870374, 134.1246904),
   sight('miki-sight-08', '白山', '香川県木田郡三木町', null, 'https://www.town.miki.lg.jp/', 34.2666958, 134.1507862),
-  sight('miki-experience-01', 'トレスタ白山アイスアリーナ', '香川県木田郡三木町下高岡972-30', null, 'https://www.town.miki.lg.jp/', 34.269308, 134.148333)
+  sight('miki-experience-01', 'トレスタ白山アイスアリーナ', '香川県木田郡三木町下高岡972-30', null, 'https://www.town.miki.lg.jp/', 34.269308, 134.148333),
+  sight('miki-onsen-01', "屋島灘温泉 ＴＲＥＳＴＡ白山 露天風呂", "香川県木田郡三木町下高岡972-30", null, "https://travel.rakuten.co.jp/HOTEL/70305/gallery.html", 34.269308, 134.148333),
 ];

@@ -31,7 +31,7 @@ export const HIGASHIKAGAWA = {
     tabelogCity: 'https://tabelog.com/kagawa/C37207/rstLst/',
     vessel: 'https://travel.rakuten.co.jp/HOTEL/140768/140768.html',
     az: 'https://travel.rakuten.co.jp/HOTEL/158467/158467.html',
-    accessed: '2026-09-07'
+    accessed: '2026-09-09'
   }
 } as const;
 
@@ -57,7 +57,7 @@ function wikiPhoto(
     author,
     authorUrl,
     taken,
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -78,7 +78,7 @@ function sourcePhoto(
     author,
     authorUrl: page,
     taken: '2026',
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -99,6 +99,7 @@ export const HIGASHIKAGAWA_PLACE_PHOTO = wikiPhoto(
 
 /** Exact travel/sight name_ja only. No Tokushima/other-Kagawa Files. */
 export const HIGASHIKAGAWA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
+
   '引田城跡': HIGASHIKAGAWA_PLACE_PHOTO,
   '引田のまち並み': wikiPhoto(
     'higashikagawa-hiketa-town.jpg',
@@ -165,27 +166,6 @@ export const HIGASHIKAGAWA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>
     '2022',
     '讃州井筒屋敷（東かがわ市引田）',
     'Sanshu Izutsu Yashiki, Hiketa, Higashikagawa'
-  ),
-  '瀬戸内リゾート　ベッセルおおち': sourcePhoto(
-    'higashikagawa-stay-vessel.jpg',
-    '瀬戸内リゾート　ベッセルおおちの和室写真',
-    'Setouchi Resort Vessel Oochi Japanese-style room photo',
-    'https://travel.rakuten.co.jp/HOTEL/140768/gallery.html',
-    '楽天トラベル'
-  ),
-  'ＨＯＴＥＬ　ＡＺ　香川東かがわ店': sourcePhoto(
-    'higashikagawa-stay-az.jpg',
-    'ＨＯＴＥＬ　ＡＺ　香川東かがわ店のツインルーム写真',
-    'HOTEL AZ Kagawa Higashikagawa twin room photo',
-    'https://travel.rakuten.co.jp/HOTEL/158467/gallery.html',
-    '楽天トラベル'
-  ),
-  '瀬戸内リゾート　ベッセルおおち 大浴場': sourcePhoto(
-    'higashikagawa-onsen-vessel.jpg',
-    '瀬戸内リゾート　ベッセルおおち大浴場の露天風呂写真',
-    'Setouchi Resort Vessel Oochi large bath open-air photo',
-    'https://travel.rakuten.co.jp/HOTEL/140768/gallery.html',
-    '楽天トラベル'
   ),
   '魚源': sourcePhoto(
     'higashikagawa-37010244-dish.jpg',
@@ -299,6 +279,71 @@ export const HIGASHIKAGAWA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>
     'https://tabelog.com/kagawa/A3704/A370402/37012155/',
     '食べログ'
   ),
+
+  "クラフトホテル瀬戸内": sourcePhoto(
+    "higashikagawa-stay-craft.jpg",
+    "クラフトホテル瀬戸内の客室写真",
+    "クラフトホテル瀬戸内 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/192093/192093.html",
+    '楽天トラベル'
+  ),
+  "ゲストハウス アミーマンボス": sourcePhoto(
+    "higashikagawa-stay-amiman.jpg",
+    "ゲストハウス アミーマンボスの客室写真",
+    "ゲストハウス アミーマンボス room photo",
+    "https://travel.rakuten.co.jp/HOTEL/160769/160769.html",
+    '楽天トラベル'
+  ),
+  "ゲストハウス Ｋｅ’ｏＫｅ’ｏ": sourcePhoto(
+    "higashikagawa-stay-keokeo.jpg",
+    "ゲストハウス Ｋｅ’ｏＫｅ’ｏの客室写真",
+    "ゲストハウス Ｋｅ’ｏＫｅ’ｏ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/195528/195528.html",
+    '楽天トラベル'
+  ),
+  "ゲストハウスまりん": sourcePhoto(
+    "higashikagawa-stay-marin.jpg",
+    "ゲストハウスまりんの客室写真",
+    "ゲストハウスまりん room photo",
+    "https://travel.rakuten.co.jp/HOTEL/171554/171554.html",
+    '楽天トラベル'
+  ),
+  "ゲストハウス三本松港": sourcePhoto(
+    "higashikagawa-stay-sanbon.jpg",
+    "ゲストハウス三本松港の客室写真",
+    "ゲストハウス三本松港 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/195586/195586.html",
+    '楽天トラベル'
+  ),
+  "瀬戸内リゾート　ベッセルおおち": sourcePhoto(
+    "higashikagawa-stay-vessel.jpg",
+    "瀬戸内リゾート　ベッセルおおちの客室写真",
+    "瀬戸内リゾート　ベッセルおおち room photo",
+    "https://travel.rakuten.co.jp/HOTEL/140768/140768.html",
+    '楽天トラベル'
+  ),
+  "ＨＯＴＥＬ　ＡＺ　香川東かがわ店": sourcePhoto(
+    "higashikagawa-stay-az.jpg",
+    "ＨＯＴＥＬ　ＡＺ　香川東かがわ店の客室写真",
+    "ＨＯＴＥＬ　ＡＺ　香川東かがわ店 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/158467/158467.html",
+    '楽天トラベル'
+  ),
+  "Ｓｅｔｏ家ＴＳＵＤＡ": sourcePhoto(
+    "higashikagawa-stay-setoya.jpg",
+    "Ｓｅｔｏ家ＴＳＵＤＡの客室写真",
+    "Ｓｅｔｏ家ＴＳＵＤＡ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/197716/197716.html",
+    '楽天トラベル'
+  ),
+  "瀬戸内リゾート　ベッセルおおち 大浴場": sourcePhoto(
+    "higashikagawa-onsen-vessel.jpg",
+    "瀬戸内リゾート　ベッセルおおち 大浴場の写真",
+    "瀬戸内リゾート　ベッセルおおち 大浴場 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/140768/gallery.html",
+    '楽天トラベル'
+  ),
+
 };
 
 
@@ -308,8 +353,8 @@ function sight(
   address: string | null,
   phone: string | null,
   source_url: string,
-  lat: number,
-  lon: number
+  lat: number | null,
+  lon: number | null
 ): FacilityRow {
   return {
     id,
@@ -338,5 +383,5 @@ export const HIGASHIKAGAWA_FACILITIES: readonly FacilityRow[] = [
   sight('higashikagawa-sight-05', '釈王寺', '香川県東かがわ市', null, 'https://higashikagawa.net/', 34.26061111, 134.31038889),
   sight('higashikagawa-sight-06', '與田寺', '香川県東かがわ市西村', null, 'https://higashikagawa.net/', 34.2419325, 134.3210854),
   sight('higashikagawa-experience-01', '讃州井筒屋敷', '香川県東かがわ市引田2163', null, 'https://higashikagawa.net/', 34.2276376, 134.4034141),
-  sight('higashikagawa-onsen-01', '瀬戸内リゾート　ベッセルおおち 大浴場', '香川県東かがわ市馬篠1200', '0879-26-1126', 'https://travel.rakuten.co.jp/HOTEL/140768/gallery.html', 34.2745301, 134.2979011)
+  sight('higashikagawa-onsen-01', "瀬戸内リゾート　ベッセルおおち 大浴場", "香川県東かがわ市馬篠1200", "0879-26-1126", "https://travel.rakuten.co.jp/HOTEL/140768/gallery.html", 34.2745301, 134.2979011),
 ];

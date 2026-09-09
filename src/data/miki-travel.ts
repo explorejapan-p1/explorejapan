@@ -15,7 +15,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const MIKI_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const MIKI_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const MIKI_TRAVEL_SOURCES = {
   home: 'https://www.town.miki.lg.jp/',
@@ -26,7 +26,7 @@ export const MIKI_TRAVEL_SOURCES = {
   az: 'https://travel.rakuten.co.jp/HOTEL/197767/197767.html'
 } as const;
 
-export const MIKI_ONSEN_PACK_NAMES = [] as const;
+export const MIKI_ONSEN_PACK_NAMES = ["屋島灘温泉 ＴＲＥＳＴＡ白山 露天風呂"] as const;
 export const MIKI_ONSEN_PACK_SET: ReadonlySet<string> = new Set(MIKI_ONSEN_PACK_NAMES);
 export const MIKI_EXPERIENCE_PACK_NAMES = ['トレスタ白山アイスアリーナ'] as const;
 export const MIKI_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(MIKI_EXPERIENCE_PACK_NAMES);
@@ -65,7 +65,9 @@ function stay(
 }
 
 export const MIKI_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('miki-stay-01', 'ＨＯＴＥＬ　ＡＺ　香川三木店', '香川県木田郡三木町大字鹿伏289', '087-816-3111', 'https://travel.rakuten.co.jp/HOTEL/197767/197767.html')
+  stay("miki-stay-01", "屋島灘温泉 ＴＲＥＳＴＡ白山", "香川県木田郡三木町下高岡972-30", null, "https://travel.rakuten.co.jp/HOTEL/70305/70305.html"),
+  stay("miki-stay-02", "ＨＯＴＥＬ　ＡＺ　香川三木店", "香川県木田郡三木町大字鹿伏289", "087-816-3111", "https://travel.rakuten.co.jp/HOTEL/197767/197767.html"),
+  stay("miki-stay-03", "Ｍｉｋｉ里山グランピング", "香川県木田郡三木町朝倉字上乃生2102-2", null, "https://travel.rakuten.co.jp/HOTEL/191742/191742.html"),
 ];
 
 function dining(

@@ -30,7 +30,7 @@ export const AYAGAWA = {
     tenmangu: 'https://ja.wikipedia.org/wiki/%E7%80%A7%E5%AE%AE%E5%A4%A9%E6%BA%80%E5%AE%AE',
     tabelogCity: 'https://tabelog.com/kagawa/C37387/rstLst/',
     precious: 'https://travel.rakuten.co.jp/HOTEL/192304/192304.html',
-    accessed: '2026-09-07'
+    accessed: '2026-09-09'
   }
 } as const;
 
@@ -41,10 +41,10 @@ function wikiPhoto(
   file: string, commons: string, license: string, licenseUrl: string,
   author: string, authorUrl: string, taken: string, altJa: string, altEn: string
 ): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-07', altJa, altEn};
+  return {src:`/explorejapan/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-09', altJa, altEn};
 }
 function sourcePhoto(file: string, altJa: string, altEn: string, page: string, author: string): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-07', altJa, altEn};
+  return {src:`/explorejapan/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-09', altJa, altEn};
 }
 
 /** Cover: Takinomiya Tenmangu — strongest attributable Ayagawa landmark. */
@@ -75,6 +75,7 @@ const TABELOG_37011073 = 'https://tabelog.com/kagawa/A3702/A370202/37000077/';
 
 /** Exact travel/sight name_ja only. */
 export const AYAGAWA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
+
   '滝宮天満宮': AYAGAWA_PLACE_PHOTO,
   '瀧宮神社': wikiPhoto(
     'ayagawa-takinomiya-jinja.jpg',
@@ -118,13 +119,6 @@ export const AYAGAWA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'osami', 'https://commons.wikimedia.org/wiki/User:Osami', '2007',
     '道の駅滝宮（綾川町）', 'Michinoeki Takinomiya, Ayagawa'
   ),
-  'Ｐｒｅｃｉｏｕｓ　Ｈｏｔｅｌ　綾川': sourcePhoto(
-    'ayagawa-stay-precious.jpg',
-    'Ｐｒｅｃｉｏｕｓ　Ｈｏｔｅｌ　綾川の客室写真',
-    'Precious Hotel Ayagawa room photo',
-    'https://travel.rakuten.co.jp/HOTEL/192304/192304.html',
-    '楽天トラベル'
-  ),
   '大衆酒場 つばめ': sourcePhoto('ayagawa-37014666-dish.jpg', '大衆酒場 つばめの料理写真', '大衆酒場 つばめ food photo', TABELOG_37014666, '食べログ'),
   'もみじ温泉': sourcePhoto('ayagawa-37005247-dish.jpg', 'もみじ温泉の料理写真', 'もみじ温泉 food photo', TABELOG_37005247, '食べログ'),
   'あきちゃん': sourcePhoto('ayagawa-37010657-dish.jpg', 'あきちゃんの料理写真', 'あきちゃん food photo', TABELOG_37010657, '食べログ'),
@@ -141,9 +135,25 @@ export const AYAGAWA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   'こっこハウス綾川': sourcePhoto('ayagawa-37013475-dish.jpg', 'こっこハウス綾川の料理写真', 'こっこハウス綾川 food photo', TABELOG_37013475, '食べログ'),
   '山ちゃん': sourcePhoto('ayagawa-37012766-dish.jpg', '山ちゃんの料理写真', '山ちゃん food photo', TABELOG_37012766, '食べログ'),
   '手打うどん たむら': sourcePhoto('ayagawa-37011073-dish.jpg', '手打うどん たむらの料理写真', '手打うどん たむら food photo', TABELOG_37011073, '食べログ'),
+
+  "マウンテン・ドーム": sourcePhoto(
+    "ayagawa-stay-mountain.jpg",
+    "マウンテン・ドームの客室写真",
+    "マウンテン・ドーム room photo",
+    "https://travel.rakuten.co.jp/HOTEL/16401/16401.html",
+    '楽天トラベル'
+  ),
+  "Ｐｒｅｃｉｏｕｓ　Ｈｏｔｅｌ　綾川": sourcePhoto(
+    "ayagawa-stay-precious.jpg",
+    "Ｐｒｅｃｉｏｕｓ　Ｈｏｔｅｌ　綾川の客室写真",
+    "Ｐｒｅｃｉｏｕｓ　Ｈｏｔｅｌ　綾川 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/192304/192304.html",
+    '楽天トラベル'
+  ),
+
 };
 
-function sight(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string, lat: number, lon: number): FacilityRow {
+function sight(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string, lat: number | null, lon: number | null): FacilityRow {
   return {id, jis: AYAGAWA.jis, name_ja, reading: null, category: 'tourism', lat, lon, address, phone, official_url: source_url, hours: null, source_url, license: '町公式・公式観光サイト掲載情報', accessed: AYAGAWA.sources.accessed};
 }
 
@@ -154,5 +164,5 @@ export const AYAGAWA_FACILITIES: readonly FacilityRow[] = [
   sight('ayagawa-sight-04', '堤山（羽床富士）', '香川県綾歌郡綾川町羽床', null, 'https://www.town.ayagawa.lg.jp/', 34.234285, 133.8990314),
   sight('ayagawa-sight-05', '菩提院', '香川県綾歌郡綾川町', null, 'https://ja.wikipedia.org/wiki/%E8%8F%A9%E6%8F%90%E9%99%A2', 34.23722222, 133.92897222),
   sight('ayagawa-sight-06', '金毘羅灯籠（滝宮）', '香川県綾歌郡綾川町滝宮', null, 'https://www.town.ayagawa.lg.jp/', 34.2492, 133.9205),
-  sight('ayagawa-experience-01', '道の駅滝宮', '香川県綾歌郡綾川町滝宮1578', null, 'https://www.town.ayagawa.lg.jp/', 34.2504761, 133.9167193)
+  sight('ayagawa-experience-01', '道の駅滝宮', '香川県綾歌郡綾川町滝宮1578', null, 'https://www.town.ayagawa.lg.jp/', 34.2504761, 133.9167193),
 ];

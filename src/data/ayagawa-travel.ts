@@ -7,7 +7,7 @@ import type {MimaPlacePhoto} from './mima';
 import {AYAGAWA, AYAGAWA_SIGHT_PHOTOS} from './ayagawa';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const AYAGAWA_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const AYAGAWA_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const AYAGAWA_TRAVEL_SOURCES = {
   home: 'https://www.town.ayagawa.lg.jp/', hall: 'https://www.town.ayagawa.lg.jp/',
   kankou: 'https://www.town.ayagawa.lg.jp/',
@@ -31,7 +31,8 @@ function stay(id: string, name_ja: string, address: string | null, phone: string
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: AYAGAWA_TRAVEL_ACCESSED};
 }
 export const AYAGAWA_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('ayagawa-stay-01', 'Ｐｒｅｃｉｏｕｓ　Ｈｏｔｅｌ　綾川', '香川県綾歌郡綾川町滝宮169-3', '087-810-1155', 'https://travel.rakuten.co.jp/HOTEL/192304/192304.html')
+  stay("ayagawa-stay-01", "マウンテン・ドーム", "香川県綾歌郡綾川町枌所東3711番地", null, "https://travel.rakuten.co.jp/HOTEL/16401/16401.html"),
+  stay("ayagawa-stay-02", "Ｐｒｅｃｉｏｕｓ　Ｈｏｔｅｌ　綾川", "香川県綾歌郡綾川町滝宮169-3", "087-810-1155", "https://travel.rakuten.co.jp/HOTEL/192304/192304.html"),
 ];
 
 function dining(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {

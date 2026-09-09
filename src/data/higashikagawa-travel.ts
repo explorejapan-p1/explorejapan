@@ -15,7 +15,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const HIGASHIKAGAWA_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const HIGASHIKAGAWA_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const HIGASHIKAGAWA_TRAVEL_SOURCES = {
   home: 'https://www.higashikagawa.jp/',
@@ -26,7 +26,7 @@ export const HIGASHIKAGAWA_TRAVEL_SOURCES = {
   az: 'https://travel.rakuten.co.jp/HOTEL/158467/158467.html'
 } as const;
 
-export const HIGASHIKAGAWA_ONSEN_PACK_NAMES = ['瀬戸内リゾート　ベッセルおおち 大浴場'] as const;
+export const HIGASHIKAGAWA_ONSEN_PACK_NAMES = ["瀬戸内リゾート　ベッセルおおち 大浴場"] as const;
 export const HIGASHIKAGAWA_ONSEN_PACK_SET: ReadonlySet<string> = new Set(HIGASHIKAGAWA_ONSEN_PACK_NAMES);
 export const HIGASHIKAGAWA_EXPERIENCE_PACK_NAMES = ['讃州井筒屋敷'] as const;
 export const HIGASHIKAGAWA_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(HIGASHIKAGAWA_EXPERIENCE_PACK_NAMES);
@@ -63,8 +63,14 @@ function stay(
 }
 
 export const HIGASHIKAGAWA_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('higashikagawa-stay-01', '瀬戸内リゾート　ベッセルおおち', '香川県東かがわ市馬篠1200', '0879-26-1126', 'https://travel.rakuten.co.jp/HOTEL/140768/140768.html'),
-  stay('higashikagawa-stay-02', 'ＨＯＴＥＬ　ＡＺ　香川東かがわ店', '香川県東かがわ市湊字水入1856-2', '0879-26-0331', 'https://travel.rakuten.co.jp/HOTEL/158467/158467.html')
+  stay("higashikagawa-stay-01", "クラフトホテル瀬戸内", "香川県東かがわ市三本松1880", null, "https://travel.rakuten.co.jp/HOTEL/192093/192093.html"),
+  stay("higashikagawa-stay-02", "ゲストハウス アミーマンボス", "香川県東かがわ市引田4373", null, "https://travel.rakuten.co.jp/HOTEL/160769/160769.html"),
+  stay("higashikagawa-stay-03", "ゲストハウス Ｋｅ’ｏＫｅ’ｏ", "香川県東かがわ市横内236-13", null, "https://travel.rakuten.co.jp/HOTEL/195528/195528.html"),
+  stay("higashikagawa-stay-04", "ゲストハウスまりん", "香川県東かがわ市引田2245-1 民宿まりん", null, "https://travel.rakuten.co.jp/HOTEL/171554/171554.html"),
+  stay("higashikagawa-stay-05", "ゲストハウス三本松港", "香川県東かがわ市三本松42-8　ゲストハウス三本松港", null, "https://travel.rakuten.co.jp/HOTEL/195586/195586.html"),
+  stay("higashikagawa-stay-06", "瀬戸内リゾート　ベッセルおおち", "香川県東かがわ市馬篠1200", "0879-26-1126", "https://travel.rakuten.co.jp/HOTEL/140768/140768.html"),
+  stay("higashikagawa-stay-07", "ＨＯＴＥＬ　ＡＺ　香川東かがわ店", "香川県東かがわ市湊字水入1856-2", "0879-26-0331", "https://travel.rakuten.co.jp/HOTEL/158467/158467.html"),
+  stay("higashikagawa-stay-08", "Ｓｅｔｏ家ＴＳＵＤＡ", "香川県東かがわ市馬篠650-1", null, "https://travel.rakuten.co.jp/HOTEL/197716/197716.html"),
 ];
 
 function dining(
