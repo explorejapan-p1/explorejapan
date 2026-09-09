@@ -99,11 +99,12 @@ import {IYO, IYO_PLACE_PHOTO} from '@/data/iyo';
 import {SHIKOKUCHUO, SHIKOKUCHUO_PLACE_PHOTO} from '@/data/shikokuchuo';
 import {SEIYO, SEIYO_PLACE_PHOTO} from '@/data/seiyo';
 import {TOON, TOON_PLACE_PHOTO} from '@/data/toon';
+import {KAMIJIMA, KAMIJIMA_PLACE_PHOTO} from '@/data/kamijima';
 import {Link} from '@/i18n/navigation';
 import type {AppLocale} from '@/i18n/routing';
 import {projectMimaOfficialMap} from '@/lib/geo';
 import {JsonLd} from '@/components/JsonLd';
-import {mimaGraph, tsurugiGraph, yoshinogawaGraph, miyoshiGraph, tokushimaCityGraph, awaGraph, higashimiyoshiGraph, kitajimaGraph, narutoGraph, matsushigeGraph, ishiiGraph, itanoGraph, kamiitaGraph, kamiyamaGraph, katsuuraGraph, kamikatsuGraph, sanagochiGraph, nakaGraph, minamiGraph, kaiyoGraph, aizumiGraph, mugiGraph, komatsushimaGraph, ananGraph, takamatsuGraph, kotohiraGraph, marugameGraph, kanonjiGraph, sakaideGraph, naoshimaGraph, shodoshimaGraph, zentsujiGraph, mitoyoGraph, utazuGraph, tonoshoGraph, sanukiGraph, higashikagawaGraph, mikiGraph, ayagawaGraph, tadotsuGraph, mannoGraph, kochiGraph, nankokuGraph, konanGraph, kamiGraph, inoGraph, akiGraph, murotoGraph, tosaGraph, susakiGraph, shimantoGraph, tosashimizuGraph, sukumoGraph, kuroshioGraph, toyoGraph, nahariGraph, yasudaGraph, geiseiGraph, kitagawaGraph, umajiGraph, motoyamaGraph, otoyoGraph, tosachoGraph, okawaGraph, niyodogawaGraph, nakatosaGraph, ochiGraph, yusuharaGraph, hidakaGraph, tsunoGraph, shimantochoGraph, otsukiGraph, miharaGraph, matsuyamaGraph, imabariGraph, uwajimaGraph, yawatahamaGraph, niihamaGraph, saijoGraph, ozuGraph, iyoGraph, shikokuchuoGraph, seiyoGraph, toonGraph} from '@/lib/jsonld';
+import {mimaGraph, tsurugiGraph, yoshinogawaGraph, miyoshiGraph, tokushimaCityGraph, awaGraph, higashimiyoshiGraph, kitajimaGraph, narutoGraph, matsushigeGraph, ishiiGraph, itanoGraph, kamiitaGraph, kamiyamaGraph, katsuuraGraph, kamikatsuGraph, sanagochiGraph, nakaGraph, minamiGraph, kaiyoGraph, aizumiGraph, mugiGraph, komatsushimaGraph, ananGraph, takamatsuGraph, kotohiraGraph, marugameGraph, kanonjiGraph, sakaideGraph, naoshimaGraph, shodoshimaGraph, zentsujiGraph, mitoyoGraph, utazuGraph, tonoshoGraph, sanukiGraph, higashikagawaGraph, mikiGraph, ayagawaGraph, tadotsuGraph, mannoGraph, kochiGraph, nankokuGraph, konanGraph, kamiGraph, inoGraph, akiGraph, murotoGraph, tosaGraph, susakiGraph, shimantoGraph, tosashimizuGraph, sukumoGraph, kuroshioGraph, toyoGraph, nahariGraph, yasudaGraph, geiseiGraph, kitagawaGraph, umajiGraph, motoyamaGraph, otoyoGraph, tosachoGraph, okawaGraph, niyodogawaGraph, nakatosaGraph, ochiGraph, yusuharaGraph, hidakaGraph, tsunoGraph, shimantochoGraph, otsukiGraph, miharaGraph, matsuyamaGraph, imabariGraph, uwajimaGraph, yawatahamaGraph, niihamaGraph, saijoGraph, ozuGraph, iyoGraph, shikokuchuoGraph, seiyoGraph, toonGraph, kamijimaGraph} from '@/lib/jsonld';
 import {shareMetadata} from '@/lib/seo';
 
 type Props = {
@@ -299,6 +300,8 @@ export async function generateMetadata({params}: Props) {
                                                             ? SEIYO_PLACE_PHOTO
                                                           : muni.slug === 'toon'
                                                             ? TOON_PLACE_PHOTO
+                                                          : muni.slug === 'kamijima'
+                                                            ? KAMIJIMA_PLACE_PHOTO
                                                           : MIMA_PLACE_PHOTO;
   const description = live
     ? muni.slug === 'tsurugi'
@@ -633,6 +636,10 @@ export async function generateMetadata({params}: Props) {
                                         ? loc === 'ja'
                                           ? '東温市。白猪の滝、滑川渓谷、坊っちゃん劇場、食。'
                                           : 'Toon City — Shirai Falls, Namekawa Gorge, Botchan Theater, food.'
+                                        : muni.slug === 'kamijima'
+                                        ? loc === 'ja'
+                                          ? '上島町。積善山、岩城橋、弓削大橋、食。'
+                                          : 'Kamijima Town — Mt. Sekizen, Iwagi Bridge, Yuge Bridge, food.'
           : loc === 'ja'
             ? '四国のまほろば 美馬市。うだつの町並み、食、宿。'
             : 'Mima City, Tokushima — Udatsu townscape, food, and stays.'
@@ -752,7 +759,7 @@ export default async function MunicipalityPage({params}: Props) {
 
   return (
     <>
-      <JsonLd data={town.slug === 'tokushima' ? tokushimaCityGraph(graphLocale) : town.slug === 'tsurugi' ? tsurugiGraph(graphLocale) : town.slug === 'yoshinogawa' ? yoshinogawaGraph(graphLocale) : town.slug === 'miyoshi' ? miyoshiGraph(graphLocale) : town.slug === 'awa' ? awaGraph(graphLocale) : town.slug === 'higashimiyoshi' ? higashimiyoshiGraph(graphLocale) : town.slug === 'kitajima' ? kitajimaGraph(graphLocale) : town.slug === 'naruto' ? narutoGraph(graphLocale) : town.slug === 'matsushige' ? matsushigeGraph(graphLocale) : town.slug === 'ishii' ? ishiiGraph(graphLocale) : town.slug === 'itano' ? itanoGraph(graphLocale) : town.slug === 'kamiita' ? kamiitaGraph(graphLocale) : town.slug === 'kamiyama' ? kamiyamaGraph(graphLocale) : town.slug === 'katsuura' ? katsuuraGraph(graphLocale) : town.slug === 'kamikatsu' ? kamikatsuGraph(graphLocale) : town.slug === 'sanagochi' ? sanagochiGraph(graphLocale) : town.slug === 'naka' ? nakaGraph(graphLocale) : town.slug === 'minami' ? minamiGraph(graphLocale) : town.slug === 'kaiyo' ? kaiyoGraph(graphLocale) : town.slug === 'mugi' ? mugiGraph(graphLocale) : town.slug === 'aizumi' ? aizumiGraph(graphLocale) : town.slug === 'komatsushima' ? komatsushimaGraph(graphLocale) : town.slug === 'anan' ? ananGraph(graphLocale) : town.slug === 'takamatsu' ? takamatsuGraph(graphLocale) : town.slug === 'kotohira' ? kotohiraGraph(graphLocale) : town.slug === 'marugame' ? marugameGraph(graphLocale) : town.slug === 'kanonji' ? kanonjiGraph(graphLocale) : town.slug === 'sakaide' ? sakaideGraph(graphLocale) : town.slug === 'naoshima' ? naoshimaGraph(graphLocale) : town.slug === 'shodoshima' ? shodoshimaGraph(graphLocale) : town.slug === 'zentsuji' ? zentsujiGraph(graphLocale) : town.slug === 'mitoyo' ? mitoyoGraph(graphLocale) : town.slug === 'utazu' ? utazuGraph(graphLocale) : town.slug === 'tonosho' ? tonoshoGraph(graphLocale) : town.slug === 'sanuki' ? sanukiGraph(graphLocale) : town.slug === 'higashikagawa' ? higashikagawaGraph(graphLocale) : town.slug === 'miki' ? mikiGraph(graphLocale) : town.slug === 'ayagawa' ? ayagawaGraph(graphLocale) : town.slug === 'tadotsu' ? tadotsuGraph(graphLocale) : town.slug === 'manno' ? mannoGraph(graphLocale) : town.slug === 'kochi' ? kochiGraph(graphLocale) : town.slug === 'nankoku' ? nankokuGraph(graphLocale) : town.slug === 'konan' ? konanGraph(graphLocale) : town.slug === 'kami' ? kamiGraph(graphLocale) : town.slug === 'ino' ? inoGraph(graphLocale) : town.slug === 'aki' ? akiGraph(graphLocale) : town.slug === 'muroto' ? murotoGraph(graphLocale) : town.slug === 'tosa' ? tosaGraph(graphLocale) : town.slug === 'susaki' ? susakiGraph(graphLocale) : town.slug === 'shimanto' ? shimantoGraph(graphLocale) : town.slug === 'tosashimizu' ? tosashimizuGraph(graphLocale) : town.slug === 'sukumo' ? sukumoGraph(graphLocale) : town.slug === 'kuroshio' ? kuroshioGraph(graphLocale) : town.slug === 'toyo' ? toyoGraph(graphLocale) : town.slug === 'nahari' ? nahariGraph(graphLocale) : town.slug === 'yasuda' ? yasudaGraph(graphLocale) : town.slug === 'geisei' ? geiseiGraph(graphLocale) : town.slug === 'kitagawa' ? kitagawaGraph(graphLocale) : town.slug === 'umaji' ? umajiGraph(graphLocale) : town.slug === 'motoyama' ? motoyamaGraph(graphLocale) : town.slug === 'otoyo' ? otoyoGraph(graphLocale) : town.slug === 'tosacho' ? tosachoGraph(graphLocale) : town.slug === 'okawa' ? okawaGraph(graphLocale) : town.slug === 'niyodogawa' ? niyodogawaGraph(graphLocale) : town.slug === 'nakatosa' ? nakatosaGraph(graphLocale) : town.slug === 'ochi' ? ochiGraph(graphLocale) : town.slug === 'yusuhara' ? yusuharaGraph(graphLocale) : town.slug === 'hidaka' ? hidakaGraph(graphLocale) : town.slug === 'tsuno' ? tsunoGraph(graphLocale) : town.slug === 'shimantocho' ? shimantochoGraph(graphLocale) : town.slug === 'otsuki' ? otsukiGraph(graphLocale) : town.slug === 'mihara' ? miharaGraph(graphLocale) : town.slug === 'matsuyama' ? matsuyamaGraph(graphLocale) : town.slug === 'imabari' ? imabariGraph(graphLocale) : town.slug === 'uwajima' ? uwajimaGraph(graphLocale) : town.slug === 'yawatahama' ? yawatahamaGraph(graphLocale) : town.slug === 'niihama' ? niihamaGraph(graphLocale) : town.slug === 'saijo' ? saijoGraph(graphLocale) : town.slug === 'ozu' ? ozuGraph(graphLocale) : town.slug === 'iyo' ? iyoGraph(graphLocale) : town.slug === 'shikokuchuo' ? shikokuchuoGraph(graphLocale) : town.slug === 'seiyo' ? seiyoGraph(graphLocale) : town.slug === 'toon' ? toonGraph(graphLocale) : mimaGraph(graphLocale)} />
+      <JsonLd data={town.slug === 'tokushima' ? tokushimaCityGraph(graphLocale) : town.slug === 'tsurugi' ? tsurugiGraph(graphLocale) : town.slug === 'yoshinogawa' ? yoshinogawaGraph(graphLocale) : town.slug === 'miyoshi' ? miyoshiGraph(graphLocale) : town.slug === 'awa' ? awaGraph(graphLocale) : town.slug === 'higashimiyoshi' ? higashimiyoshiGraph(graphLocale) : town.slug === 'kitajima' ? kitajimaGraph(graphLocale) : town.slug === 'naruto' ? narutoGraph(graphLocale) : town.slug === 'matsushige' ? matsushigeGraph(graphLocale) : town.slug === 'ishii' ? ishiiGraph(graphLocale) : town.slug === 'itano' ? itanoGraph(graphLocale) : town.slug === 'kamiita' ? kamiitaGraph(graphLocale) : town.slug === 'kamiyama' ? kamiyamaGraph(graphLocale) : town.slug === 'katsuura' ? katsuuraGraph(graphLocale) : town.slug === 'kamikatsu' ? kamikatsuGraph(graphLocale) : town.slug === 'sanagochi' ? sanagochiGraph(graphLocale) : town.slug === 'naka' ? nakaGraph(graphLocale) : town.slug === 'minami' ? minamiGraph(graphLocale) : town.slug === 'kaiyo' ? kaiyoGraph(graphLocale) : town.slug === 'mugi' ? mugiGraph(graphLocale) : town.slug === 'aizumi' ? aizumiGraph(graphLocale) : town.slug === 'komatsushima' ? komatsushimaGraph(graphLocale) : town.slug === 'anan' ? ananGraph(graphLocale) : town.slug === 'takamatsu' ? takamatsuGraph(graphLocale) : town.slug === 'kotohira' ? kotohiraGraph(graphLocale) : town.slug === 'marugame' ? marugameGraph(graphLocale) : town.slug === 'kanonji' ? kanonjiGraph(graphLocale) : town.slug === 'sakaide' ? sakaideGraph(graphLocale) : town.slug === 'naoshima' ? naoshimaGraph(graphLocale) : town.slug === 'shodoshima' ? shodoshimaGraph(graphLocale) : town.slug === 'zentsuji' ? zentsujiGraph(graphLocale) : town.slug === 'mitoyo' ? mitoyoGraph(graphLocale) : town.slug === 'utazu' ? utazuGraph(graphLocale) : town.slug === 'tonosho' ? tonoshoGraph(graphLocale) : town.slug === 'sanuki' ? sanukiGraph(graphLocale) : town.slug === 'higashikagawa' ? higashikagawaGraph(graphLocale) : town.slug === 'miki' ? mikiGraph(graphLocale) : town.slug === 'ayagawa' ? ayagawaGraph(graphLocale) : town.slug === 'tadotsu' ? tadotsuGraph(graphLocale) : town.slug === 'manno' ? mannoGraph(graphLocale) : town.slug === 'kochi' ? kochiGraph(graphLocale) : town.slug === 'nankoku' ? nankokuGraph(graphLocale) : town.slug === 'konan' ? konanGraph(graphLocale) : town.slug === 'kami' ? kamiGraph(graphLocale) : town.slug === 'ino' ? inoGraph(graphLocale) : town.slug === 'aki' ? akiGraph(graphLocale) : town.slug === 'muroto' ? murotoGraph(graphLocale) : town.slug === 'tosa' ? tosaGraph(graphLocale) : town.slug === 'susaki' ? susakiGraph(graphLocale) : town.slug === 'shimanto' ? shimantoGraph(graphLocale) : town.slug === 'tosashimizu' ? tosashimizuGraph(graphLocale) : town.slug === 'sukumo' ? sukumoGraph(graphLocale) : town.slug === 'kuroshio' ? kuroshioGraph(graphLocale) : town.slug === 'toyo' ? toyoGraph(graphLocale) : town.slug === 'nahari' ? nahariGraph(graphLocale) : town.slug === 'yasuda' ? yasudaGraph(graphLocale) : town.slug === 'geisei' ? geiseiGraph(graphLocale) : town.slug === 'kitagawa' ? kitagawaGraph(graphLocale) : town.slug === 'umaji' ? umajiGraph(graphLocale) : town.slug === 'motoyama' ? motoyamaGraph(graphLocale) : town.slug === 'otoyo' ? otoyoGraph(graphLocale) : town.slug === 'tosacho' ? tosachoGraph(graphLocale) : town.slug === 'okawa' ? okawaGraph(graphLocale) : town.slug === 'niyodogawa' ? niyodogawaGraph(graphLocale) : town.slug === 'nakatosa' ? nakatosaGraph(graphLocale) : town.slug === 'ochi' ? ochiGraph(graphLocale) : town.slug === 'yusuhara' ? yusuharaGraph(graphLocale) : town.slug === 'hidaka' ? hidakaGraph(graphLocale) : town.slug === 'tsuno' ? tsunoGraph(graphLocale) : town.slug === 'shimantocho' ? shimantochoGraph(graphLocale) : town.slug === 'otsuki' ? otsukiGraph(graphLocale) : town.slug === 'mihara' ? miharaGraph(graphLocale) : town.slug === 'matsuyama' ? matsuyamaGraph(graphLocale) : town.slug === 'imabari' ? imabariGraph(graphLocale) : town.slug === 'uwajima' ? uwajimaGraph(graphLocale) : town.slug === 'yawatahama' ? yawatahamaGraph(graphLocale) : town.slug === 'niihama' ? niihamaGraph(graphLocale) : town.slug === 'saijo' ? saijoGraph(graphLocale) : town.slug === 'ozu' ? ozuGraph(graphLocale) : town.slug === 'iyo' ? iyoGraph(graphLocale) : town.slug === 'shikokuchuo' ? shikokuchuoGraph(graphLocale) : town.slug === 'seiyo' ? seiyoGraph(graphLocale) : town.slug === 'toon' ? toonGraph(graphLocale) : town.slug === 'kamijima' ? kamijimaGraph(graphLocale) : mimaGraph(graphLocale)} />
       <MimaFacilityLookup
         locale={locale}
         town={town}
@@ -771,30 +778,30 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {TOKUSHIMA_CITY.nameJa} / {TOKUSHIMA_CITY.nameEn}（{TOKUSHIMA_CITY.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/tokushima">{isJa ? TOKUSHIMA_CITY.prefectureJa : TOKUSHIMA_CITY.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{TOKUSHIMA_CITY.jis}</strong>
               {isJa ? '（鳴門市 36202 ではない）' : ' (not Naruto City 36202)'}
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{TOKUSHIMA_CITY.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '市役所' : 'City hall'}</th>
+            <th scope="row">{isJa ? '市役所' : 'City hall'}</th>
             <td>
               〒{TOKUSHIMA_CITY.hall.postalCode} {isJa ? TOKUSHIMA_CITY.hall.addressJa : TOKUSHIMA_CITY.hall.addressEn}
               <br />
@@ -823,30 +830,30 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {AWA.nameJa} / {AWA.nameEn}（{AWA.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/tokushima">{isJa ? AWA.prefectureJa : AWA.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{AWA.jis}</strong>
               {isJa ? '（三好市 36208・東みよし町 36489 ではない）' : ' (not Miyoshi 36208 / Higashimiyoshi 36489)'}
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{AWA.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '市役所' : 'City hall'}</th>
+            <th scope="row">{isJa ? '市役所' : 'City hall'}</th>
             <td>
               〒{AWA.hall.postalCode} {isJa ? AWA.hall.addressJa : AWA.hall.addressEn}
               <br />
@@ -875,30 +882,30 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {MIYOSHI.nameJa} / {MIYOSHI.nameEn}（{MIYOSHI.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/tokushima">{isJa ? MIYOSHI.prefectureJa : MIYOSHI.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{MIYOSHI.jis}</strong>
               {isJa ? '（東みよし町 36489 ではない）' : ' (not Higashimiyoshi Town 36489)'}
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{MIYOSHI.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '市役所' : 'City hall'}</th>
+            <th scope="row">{isJa ? '市役所' : 'City hall'}</th>
             <td>
               〒{MIYOSHI.hall.postalCode} {isJa ? MIYOSHI.hall.addressJa : MIYOSHI.hall.addressEn}
               <br />
@@ -926,29 +933,29 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {YOSHINOGAWA.nameJa} / {YOSHINOGAWA.nameEn}（{YOSHINOGAWA.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/tokushima">{isJa ? YOSHINOGAWA.prefectureJa : YOSHINOGAWA.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{YOSHINOGAWA.jis}</strong>
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{YOSHINOGAWA.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '市役所' : 'City hall'}</th>
+            <th scope="row">{isJa ? '市役所' : 'City hall'}</th>
             <td>
               〒{YOSHINOGAWA.hall.postalCode} {isJa ? YOSHINOGAWA.hall.addressJa : YOSHINOGAWA.hall.addressEn}
               <br />
@@ -975,30 +982,30 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {HIGASHIMIYOSHI.nameJa} / {HIGASHIMIYOSHI.nameEn}（{HIGASHIMIYOSHI.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/tokushima">{isJa ? HIGASHIMIYOSHI.prefectureJa : HIGASHIMIYOSHI.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{HIGASHIMIYOSHI.jis}</strong>
               {isJa ? '（三好市 36208 ではない）' : ' (not Miyoshi City 36208)'}
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{HIGASHIMIYOSHI.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <th scope="row">{isJa ? '町役場' : 'Town hall'}</th>
             <td>
               〒{HIGASHIMIYOSHI.hall.postalCode} {isJa ? HIGASHIMIYOSHI.hall.addressJa : HIGASHIMIYOSHI.hall.addressEn}
               <br />
@@ -1027,30 +1034,30 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {NARUTO.nameJa} / {NARUTO.nameEn}（{NARUTO.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/tokushima">{isJa ? NARUTO.prefectureJa : NARUTO.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{NARUTO.jis}</strong>
               {isJa ? '（徳島市 36201・北島 36402・松茂 36401 ではない）' : ' (not Tokushima 36201 / Kitajima 36402 / Matsushige 36401)'}
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{NARUTO.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '市役所' : 'City hall'}</th>
+            <th scope="row">{isJa ? '市役所' : 'City hall'}</th>
             <td>
               〒{NARUTO.hall.postalCode} {isJa ? NARUTO.hall.addressJa : NARUTO.hall.addressEn}
               <br />
@@ -1078,30 +1085,30 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {ISHII.nameJa} / {ISHII.nameEn}（{ISHII.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/tokushima">{isJa ? ISHII.prefectureJa : ISHII.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{ISHII.jis}</strong>
               {isJa ? '（松茂 36401・北島 36402・藍住 36403 ではない）' : ' (not Matsushige 36401 / Kitajima 36402 / Aizumi 36403)'}
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{ISHII.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <th scope="row">{isJa ? '町役場' : 'Town hall'}</th>
             <td>
               〒{ISHII.hall.postalCode} {isJa ? ISHII.hall.addressJa : ISHII.hall.addressEn}
               <br />
@@ -1129,30 +1136,30 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {ITANO.nameJa} / {ITANO.nameEn}（{ITANO.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/tokushima">{isJa ? ITANO.prefectureJa : ITANO.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{ITANO.jis}</strong>
               {isJa ? '（松茂 36401・北島 36402・藍住 36403・石井 36341 ではない）' : ' (not Matsushige 36401 / Kitajima 36402 / Aizumi 36403 / Ishii 36341)'}
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{ITANO.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <th scope="row">{isJa ? '町役場' : 'Town hall'}</th>
             <td>
               〒{ITANO.hall.postalCode} {isJa ? ITANO.hall.addressJa : ITANO.hall.addressEn}
               <br />
@@ -1180,30 +1187,30 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {KAMIITA.nameJa} / {KAMIITA.nameEn}（{KAMIITA.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/tokushima">{isJa ? KAMIITA.prefectureJa : KAMIITA.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{KAMIITA.jis}</strong>
               {isJa ? '（松茂 36401・北島 36402・藍住 36403・板野 36404・石井 36341 ではない）' : ' (not Matsushige 36401 / Kitajima 36402 / Aizumi 36403 / Itano 36404 / Ishii 36341)'}
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{KAMIITA.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <th scope="row">{isJa ? '町役場' : 'Town hall'}</th>
             <td>
               〒{KAMIITA.hall.postalCode} {isJa ? KAMIITA.hall.addressJa : KAMIITA.hall.addressEn}
               <br />
@@ -1232,30 +1239,30 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {KAMIYAMA.nameJa} / {KAMIYAMA.nameEn}（{KAMIYAMA.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/tokushima">{isJa ? KAMIYAMA.prefectureJa : KAMIYAMA.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{KAMIYAMA.jis}</strong>
               {isJa ? '（石井 36341・上板 36405・板野 36404・藍住 36403 ではない）' : ' (not Ishii 36341 / Kamiita 36405 / Itano 36404 / Aizumi 36403)'}
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{KAMIYAMA.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <th scope="row">{isJa ? '町役場' : 'Town hall'}</th>
             <td>
               〒{KAMIYAMA.hall.postalCode} {isJa ? KAMIYAMA.hall.addressJa : KAMIYAMA.hall.addressEn}
               <br />
@@ -1283,30 +1290,30 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {KATSUURA.nameJa} / {KATSUURA.nameEn}（{KATSUURA.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/tokushima">{isJa ? KATSUURA.prefectureJa : KATSUURA.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{KATSUURA.jis}</strong>
               {isJa ? '（神山 36342・上板 36405・板野 36404・藍住 36403 ではない）' : ' (not Kamiyama 36342 / Kamiita 36405 / Itano 36404 / Aizumi 36403)'}
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{KATSUURA.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <th scope="row">{isJa ? '町役場' : 'Town hall'}</th>
             <td>
               〒{KATSUURA.hall.postalCode} {isJa ? KATSUURA.hall.addressJa : KATSUURA.hall.addressEn}
               <br />
@@ -1335,30 +1342,30 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {KAMIKATSU.nameJa} / {KAMIKATSU.nameEn}（{KAMIKATSU.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/tokushima">{isJa ? KAMIKATSU.prefectureJa : KAMIKATSU.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{KAMIKATSU.jis}</strong>
               {isJa ? '（勝浦 36301・神山 36342・藍住 36403 ではない）' : ' (not Katsuura 36301 / Kamiyama 36342 / Aizumi 36403)'}
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{KAMIKATSU.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <th scope="row">{isJa ? '町役場' : 'Town hall'}</th>
             <td>
               〒{KAMIKATSU.hall.postalCode} {isJa ? KAMIKATSU.hall.addressJa : KAMIKATSU.hall.addressEn}
               <br />
@@ -1387,30 +1394,30 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {SANAGOCHI.nameJa} / {SANAGOCHI.nameEn}（{SANAGOCHI.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/tokushima">{isJa ? SANAGOCHI.prefectureJa : SANAGOCHI.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{SANAGOCHI.jis}</strong>
               {isJa ? '（上勝 36302・勝浦 36301・藍住 36403 ではない）' : ' (not Kamikatsu 36302 / Katsuura 36301 / Aizumi 36403)'}
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{SANAGOCHI.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '村役場' : 'Village hall'}</th>
+            <th scope="row">{isJa ? '村役場' : 'Village hall'}</th>
             <td>
               〒{SANAGOCHI.hall.postalCode} {isJa ? SANAGOCHI.hall.addressJa : SANAGOCHI.hall.addressEn}
               <br />
@@ -1441,30 +1448,30 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {NAKA.nameJa} / {NAKA.nameEn}（{NAKA.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/tokushima">{isJa ? NAKA.prefectureJa : NAKA.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{NAKA.jis}</strong>
               {isJa ? '（佐那河内 36321・上勝 36302・藍住 36403 ではない）' : ' (not Sanagochi 36321 / Kamikatsu 36302 / Aizumi 36403)'}
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{NAKA.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <th scope="row">{isJa ? '町役場' : 'Town hall'}</th>
             <td>
               〒{NAKA.hall.postalCode} {isJa ? NAKA.hall.addressJa : NAKA.hall.addressEn}
               <br />
@@ -1494,30 +1501,30 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {MINAMI.nameJa} / {MINAMI.nameEn}（{MINAMI.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/tokushima">{isJa ? MINAMI.prefectureJa : MINAMI.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{MINAMI.jis}</strong>
               {isJa ? '（佐那河内 36321・上勝 36302・藍住 36403 ではない）' : ' (not Sanagochi 36321 / Kamikatsu 36302 / Aizumi 36403)'}
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{MINAMI.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <th scope="row">{isJa ? '町役場' : 'Town hall'}</th>
             <td>
               〒{MINAMI.hall.postalCode} {isJa ? MINAMI.hall.addressJa : MINAMI.hall.addressEn}
               <br />
@@ -1548,11 +1555,11 @@ export default async function MunicipalityPage({params}: Props) {
         <summary>{isJa ? '町の資料' : 'Town facts'}</summary>
       <table className="facts">
         <tbody>
-          <tr><th>{isJa ? '公式名' : 'Official name'}</th><td>{KAIYO.nameJa} / {KAIYO.nameEn}（{KAIYO.reading}）</td></tr>
-          <tr><th>{isJa ? '都道府県' : 'Prefecture'}</th><td><Link href="/tokushima">{isJa ? KAIYO.prefectureJa : KAIYO.prefectureEn}</Link></td></tr>
-          <tr><th>JIS / N03_007</th><td><strong>{KAIYO.jis}</strong>{isJa ? '（牟岐 36383・美波 36387・那賀 36368 ではない）' : ' (not Mugi 36383 / Minami 36387 / Naka 36368)'}</td></tr>
-          <tr><th>J-LIS</th><td>{KAIYO.jlis}</td></tr>
-          <tr><th>{isJa ? '町役場' : 'Town hall'}</th><td>〒{KAIYO.hall.postalCode} {isJa ? KAIYO.hall.addressJa : KAIYO.hall.addressEn}<br />{KAIYO.hall.phone} · <a href={KAIYO.sameAs}>sameAs {KAIYO.sameAs}</a></td></tr>
+          <tr><th scope="row">{isJa ? '公式名' : 'Official name'}</th><td>{KAIYO.nameJa} / {KAIYO.nameEn}（{KAIYO.reading}）</td></tr>
+          <tr><th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th><td><Link href="/tokushima">{isJa ? KAIYO.prefectureJa : KAIYO.prefectureEn}</Link></td></tr>
+          <tr><th scope="row">JIS / N03_007</th><td><strong>{KAIYO.jis}</strong>{isJa ? '（牟岐 36383・美波 36387・那賀 36368 ではない）' : ' (not Mugi 36383 / Minami 36387 / Naka 36368)'}</td></tr>
+          <tr><th scope="row">J-LIS</th><td>{KAIYO.jlis}</td></tr>
+          <tr><th scope="row">{isJa ? '町役場' : 'Town hall'}</th><td>〒{KAIYO.hall.postalCode} {isJa ? KAIYO.hall.addressJa : KAIYO.hall.addressEn}<br />{KAIYO.hall.phone} · <a href={KAIYO.sameAs}>sameAs {KAIYO.sameAs}</a></td></tr>
         </tbody>
       </table>
       <p>
@@ -1573,23 +1580,23 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>{MUGI.nameJa} / {MUGI.nameEn}（{MUGI.reading}）</td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td><Link href="/tokushima">{isJa ? MUGI.prefectureJa : MUGI.prefectureEn}</Link></td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{MUGI.jis}</strong>
               {isJa ? '（那賀 36368・美波 36387・海陽 36388 ではない）' : ' (not Naka 36368 / Minami 36387 / Kaiyo 36388)'}
             </td>
           </tr>
-          <tr><th>J-LIS</th><td>{MUGI.jlis}</td></tr>
+          <tr><th scope="row">J-LIS</th><td>{MUGI.jlis}</td></tr>
           <tr>
-            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <th scope="row">{isJa ? '町役場' : 'Town hall'}</th>
             <td>
               〒{MUGI.hall.postalCode} {isJa ? MUGI.hall.addressJa : MUGI.hall.addressEn}
               <br />
@@ -1619,30 +1626,30 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {AIZUMI.nameJa} / {AIZUMI.nameEn}（{AIZUMI.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/tokushima">{isJa ? AIZUMI.prefectureJa : AIZUMI.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{AIZUMI.jis}</strong>
               {isJa ? '（松茂 36401・北島 36402・板野 36404 ではない）' : ' (not Matsushige 36401 / Kitajima 36402 / Itano 36404)'}
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{AIZUMI.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <th scope="row">{isJa ? '町役場' : 'Town hall'}</th>
             <td>
               〒{AIZUMI.hall.postalCode} {isJa ? AIZUMI.hall.addressJa : AIZUMI.hall.addressEn}
               <br />
@@ -1671,30 +1678,30 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {KOMATSUSHIMA.nameJa} / {KOMATSUSHIMA.nameEn}（{KOMATSUSHIMA.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/tokushima">{isJa ? KOMATSUSHIMA.prefectureJa : KOMATSUSHIMA.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{KOMATSUSHIMA.jis}</strong>
               {isJa ? '（鳴門 36202・徳島市 36201・阿南 36204 ではない）' : ' (not Naruto 36202 / Tokushima 36201 / Anan 36204)'}
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{KOMATSUSHIMA.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '市役所' : 'City hall'}</th>
+            <th scope="row">{isJa ? '市役所' : 'City hall'}</th>
             <td>
               〒{KOMATSUSHIMA.hall.postalCode} {isJa ? KOMATSUSHIMA.hall.addressJa : KOMATSUSHIMA.hall.addressEn}
               <br />
@@ -1725,30 +1732,30 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {ANAN.nameJa} / {ANAN.nameEn}（{ANAN.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/tokushima">{isJa ? ANAN.prefectureJa : ANAN.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{ANAN.jis}</strong>
               {isJa ? '（小松島 36203・鳴門 36202・徳島市 36201 ではない）' : ' (not Komatsushima 36203 / Naruto 36202 / Tokushima 36201)'}
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{ANAN.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '市役所' : 'City hall'}</th>
+            <th scope="row">{isJa ? '市役所' : 'City hall'}</th>
             <td>
               〒{ANAN.hall.postalCode} {isJa ? ANAN.hall.addressJa : ANAN.hall.addressEn}
               <br />
@@ -1777,30 +1784,30 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {MATSUSHIGE.nameJa} / {MATSUSHIGE.nameEn}（{MATSUSHIGE.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/tokushima">{isJa ? MATSUSHIGE.prefectureJa : MATSUSHIGE.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{MATSUSHIGE.jis}</strong>
               {isJa ? '（北島 36402・藍住 36403 ではない）' : ' (not Kitajima 36402 / Aizumi 36403)'}
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{MATSUSHIGE.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <th scope="row">{isJa ? '町役場' : 'Town hall'}</th>
             <td>
               〒{MATSUSHIGE.hall.postalCode} {isJa ? MATSUSHIGE.hall.addressJa : MATSUSHIGE.hall.addressEn}
               <br />
@@ -1827,30 +1834,30 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {KITAJIMA.nameJa} / {KITAJIMA.nameEn}（{KITAJIMA.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/tokushima">{isJa ? KITAJIMA.prefectureJa : KITAJIMA.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{KITAJIMA.jis}</strong>
               {isJa ? '（松茂 36401・藍住 36403 ではない）' : ' (not Matsushige 36401 / Aizumi 36403)'}
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{KITAJIMA.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <th scope="row">{isJa ? '町役場' : 'Town hall'}</th>
             <td>
               〒{KITAJIMA.hall.postalCode} {isJa ? KITAJIMA.hall.addressJa : KITAJIMA.hall.addressEn}
               <br />
@@ -1877,29 +1884,29 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {TSURUGI.nameJa} / {TSURUGI.nameEn}（{TSURUGI.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/tokushima">{isJa ? TSURUGI.prefectureJa : TSURUGI.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{TSURUGI.jis}</strong>
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{TSURUGI.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <th scope="row">{isJa ? '町役場' : 'Town hall'}</th>
             <td>
               〒{TSURUGI.hall.postalCode} {isJa ? TSURUGI.hall.addressJa : TSURUGI.hall.addressEn}
               <br />
@@ -1925,30 +1932,30 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {TAKAMATSU.nameJa} / {TAKAMATSU.nameEn}（{TAKAMATSU.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/kagawa">{isJa ? TAKAMATSU.prefectureJa : TAKAMATSU.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{TAKAMATSU.jis}</strong>
               {isJa ? '（香川県県庁所在地）' : ' (Kagawa prefectural capital)'}
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{TAKAMATSU.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '市役所' : 'City hall'}</th>
+            <th scope="row">{isJa ? '市役所' : 'City hall'}</th>
             <td>
               〒{TAKAMATSU.hall.postalCode} {isJa ? TAKAMATSU.hall.addressJa : TAKAMATSU.hall.addressEn}
               <br />
@@ -1976,30 +1983,30 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {KOTOHIRA.nameJa} / {KOTOHIRA.nameEn}（{KOTOHIRA.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/kagawa">{isJa ? KOTOHIRA.prefectureJa : KOTOHIRA.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{KOTOHIRA.jis}</strong>
               {isJa ? '（仲多度郡）' : ' (Nakatado District)'}
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{KOTOHIRA.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <th scope="row">{isJa ? '町役場' : 'Town hall'}</th>
             <td>
               〒{KOTOHIRA.hall.postalCode} {isJa ? KOTOHIRA.hall.addressJa : KOTOHIRA.hall.addressEn}
               <br />
@@ -2027,29 +2034,29 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {MARUGAME.nameJa} / {MARUGAME.nameEn}（{MARUGAME.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/kagawa">{isJa ? MARUGAME.prefectureJa : MARUGAME.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{MARUGAME.jis}</strong>
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{MARUGAME.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '市役所' : 'City hall'}</th>
+            <th scope="row">{isJa ? '市役所' : 'City hall'}</th>
             <td>
               〒{MARUGAME.hall.postalCode} {isJa ? MARUGAME.hall.addressJa : MARUGAME.hall.addressEn}
               <br />
@@ -2077,29 +2084,29 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {KANONJI.nameJa} / {KANONJI.nameEn}（{KANONJI.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/kagawa">{isJa ? KANONJI.prefectureJa : KANONJI.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{KANONJI.jis}</strong>
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{KANONJI.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '市役所' : 'City hall'}</th>
+            <th scope="row">{isJa ? '市役所' : 'City hall'}</th>
             <td>
               〒{KANONJI.hall.postalCode} {isJa ? KANONJI.hall.addressJa : KANONJI.hall.addressEn}
               <br />
@@ -2127,29 +2134,29 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {SAKAIDE.nameJa} / {SAKAIDE.nameEn}（{SAKAIDE.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/kagawa">{isJa ? SAKAIDE.prefectureJa : SAKAIDE.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{SAKAIDE.jis}</strong>
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{SAKAIDE.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '市役所' : 'City hall'}</th>
+            <th scope="row">{isJa ? '市役所' : 'City hall'}</th>
             <td>
               〒{SAKAIDE.hall.postalCode} {isJa ? SAKAIDE.hall.addressJa : SAKAIDE.hall.addressEn}
               <br />
@@ -2177,29 +2184,29 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {NAOSHIMA.nameJa} / {NAOSHIMA.nameEn}（{NAOSHIMA.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/kagawa">{isJa ? NAOSHIMA.prefectureJa : NAOSHIMA.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{NAOSHIMA.jis}</strong>
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{NAOSHIMA.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <th scope="row">{isJa ? '町役場' : 'Town hall'}</th>
             <td>
               〒{NAOSHIMA.hall.postalCode} {isJa ? NAOSHIMA.hall.addressJa : NAOSHIMA.hall.addressEn}
               <br />
@@ -2227,29 +2234,29 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {SHODOSHIMA.nameJa} / {SHODOSHIMA.nameEn}（{SHODOSHIMA.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/kagawa">{isJa ? SHODOSHIMA.prefectureJa : SHODOSHIMA.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{SHODOSHIMA.jis}</strong>
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{SHODOSHIMA.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <th scope="row">{isJa ? '町役場' : 'Town hall'}</th>
             <td>
               〒{SHODOSHIMA.hall.postalCode} {isJa ? SHODOSHIMA.hall.addressJa : SHODOSHIMA.hall.addressEn}
               <br />
@@ -2277,29 +2284,29 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {ZENTSUJI.nameJa} / {ZENTSUJI.nameEn}（{ZENTSUJI.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/kagawa">{isJa ? ZENTSUJI.prefectureJa : ZENTSUJI.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{ZENTSUJI.jis}</strong>
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{ZENTSUJI.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '市役所' : 'City hall'}</th>
+            <th scope="row">{isJa ? '市役所' : 'City hall'}</th>
             <td>
               〒{ZENTSUJI.hall.postalCode} {isJa ? ZENTSUJI.hall.addressJa : ZENTSUJI.hall.addressEn}
               <br />
@@ -2328,29 +2335,29 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {MITOYO.nameJa} / {MITOYO.nameEn}（{MITOYO.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/kagawa">{isJa ? MITOYO.prefectureJa : MITOYO.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{MITOYO.jis}</strong>
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{MITOYO.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '市役所' : 'City hall'}</th>
+            <th scope="row">{isJa ? '市役所' : 'City hall'}</th>
             <td>
               〒{MITOYO.hall.postalCode} {isJa ? MITOYO.hall.addressJa : MITOYO.hall.addressEn}
               <br />
@@ -2380,29 +2387,29 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {UTAZU.nameJa} / {UTAZU.nameEn}（{UTAZU.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/kagawa">{isJa ? UTAZU.prefectureJa : UTAZU.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{UTAZU.jis}</strong>
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{UTAZU.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <th scope="row">{isJa ? '町役場' : 'Town hall'}</th>
             <td>
               〒{UTAZU.hall.postalCode} {isJa ? UTAZU.hall.addressJa : UTAZU.hall.addressEn}
               <br />
@@ -2432,29 +2439,29 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {TONOSHO.nameJa} / {TONOSHO.nameEn}（{TONOSHO.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/kagawa">{isJa ? TONOSHO.prefectureJa : TONOSHO.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{TONOSHO.jis}</strong>
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{TONOSHO.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <th scope="row">{isJa ? '町役場' : 'Town hall'}</th>
             <td>
               〒{TONOSHO.hall.postalCode} {isJa ? TONOSHO.hall.addressJa : TONOSHO.hall.addressEn}
               <br />
@@ -2484,29 +2491,29 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {SANUKI.nameJa} / {SANUKI.nameEn}（{SANUKI.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/kagawa">{isJa ? SANUKI.prefectureJa : SANUKI.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{SANUKI.jis}</strong>
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{SANUKI.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '市役所' : 'City hall'}</th>
+            <th scope="row">{isJa ? '市役所' : 'City hall'}</th>
             <td>
               〒{SANUKI.hall.postalCode} {isJa ? SANUKI.hall.addressJa : SANUKI.hall.addressEn}
               <br />
@@ -2532,29 +2539,29 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {HIGASHIKAGAWA.nameJa} / {HIGASHIKAGAWA.nameEn}（{HIGASHIKAGAWA.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/kagawa">{isJa ? HIGASHIKAGAWA.prefectureJa : HIGASHIKAGAWA.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{HIGASHIKAGAWA.jis}</strong>
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{HIGASHIKAGAWA.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '市役所' : 'City hall'}</th>
+            <th scope="row">{isJa ? '市役所' : 'City hall'}</th>
             <td>
               〒{HIGASHIKAGAWA.hall.postalCode} {isJa ? HIGASHIKAGAWA.hall.addressJa : HIGASHIKAGAWA.hall.addressEn}
               <br />
@@ -2583,29 +2590,29 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {MIKI.nameJa} / {MIKI.nameEn}（{MIKI.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/kagawa">{isJa ? MIKI.prefectureJa : MIKI.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{MIKI.jis}</strong>
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{MIKI.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <th scope="row">{isJa ? '町役場' : 'Town hall'}</th>
             <td>
               〒{MIKI.hall.postalCode} {isJa ? MIKI.hall.addressJa : MIKI.hall.addressEn}
               <br />
@@ -2634,29 +2641,29 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {AYAGAWA.nameJa} / {AYAGAWA.nameEn}（{AYAGAWA.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/kagawa">{isJa ? AYAGAWA.prefectureJa : AYAGAWA.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{AYAGAWA.jis}</strong>
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{AYAGAWA.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <th scope="row">{isJa ? '町役場' : 'Town hall'}</th>
             <td>
               〒{AYAGAWA.hall.postalCode} {isJa ? AYAGAWA.hall.addressJa : AYAGAWA.hall.addressEn}
               <br />
@@ -2684,29 +2691,29 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {TADOTSU.nameJa} / {TADOTSU.nameEn}（{TADOTSU.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/kagawa">{isJa ? TADOTSU.prefectureJa : TADOTSU.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{TADOTSU.jis}</strong>
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{TADOTSU.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <th scope="row">{isJa ? '町役場' : 'Town hall'}</th>
             <td>
               〒{TADOTSU.hall.postalCode} {isJa ? TADOTSU.hall.addressJa : TADOTSU.hall.addressEn}
               <br />
@@ -2734,29 +2741,29 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {MANNO.nameJa} / {MANNO.nameEn}（{MANNO.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/kagawa">{isJa ? MANNO.prefectureJa : MANNO.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{MANNO.jis}</strong>
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>{MANNO.jlis}</td>
           </tr>
           <tr>
-            <th>{isJa ? '町役場' : 'Town hall'}</th>
+            <th scope="row">{isJa ? '町役場' : 'Town hall'}</th>
             <td>
               〒{MANNO.hall.postalCode} {isJa ? MANNO.hall.addressJa : MANNO.hall.addressEn}
               <br />
@@ -3431,6 +3438,61 @@ export default async function MunicipalityPage({params}: Props) {
           </p>
         </details>
 
+
+) : town.slug === 'kamijima' ? (
+        <details className="facts-fold">
+          <summary>{isJa ? '上島町の基礎情報' : 'Kamijima Town facts'}</summary>
+          <table className="facts">
+            <tbody>
+              <tr>
+                <th scope="row">{isJa ? '名称' : 'Name'}</th>
+                <td>
+              {KAMIJIMA.nameJa} / {KAMIJIMA.nameEn}（{KAMIJIMA.reading}）
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
+                <td>
+              <Link href="/ehime">{isJa ? KAMIJIMA.prefectureJa : KAMIJIMA.prefectureEn}</Link>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">JIS</th>
+                <td>
+              <strong>{KAMIJIMA.jis}</strong>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">JLIS</th>
+                <td>{KAMIJIMA.jlis}</td>
+              </tr>
+              <tr>
+                <th scope="row">{isJa ? '役場' : 'Hall'}</th>
+                <td>
+              〒{KAMIJIMA.hall.postalCode} {isJa ? KAMIJIMA.hall.addressJa : KAMIJIMA.hall.addressEn}
+              {' · '}
+              {KAMIJIMA.hall.phone} · <a href={KAMIJIMA.sameAs}>sameAs {KAMIJIMA.sameAs}</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p className="facts-sources">
+        <a href={KAMIJIMA.sources.hall}>{isJa ? '町役場案内' : 'Hall guide'}</a>
+        {' · '}
+        <a href={KAMIJIMA.sources.home}>{isJa ? '町ホームページ' : 'Town homepage'}</a>
+        {' · '}
+        <a href={KAMIJIMA.sources.kanko}>{isJa ? '公式観光' : 'Official sightseeing'}</a>
+        {' · '}
+        <a href={KAMIJIMA.sources.sekizen}>{isJa ? '積善山' : 'Mt. Sekizen'}</a>
+        {' · '}
+        <a href={KAMIJIMA.sources.iwagiBridge}>{isJa ? '岩城橋' : 'Iwagi Bridge'}</a>
+          </p>
+          <p className="facts-note">
+          {isJa
+          ? `数字のアクセス日は ${KAMIJIMA.sources.accessed}。人口は未掲載（出典ページを混ぜません）。愛媛県12つ目のLIVEハブ。`
+          : `Figures accessed ${KAMIJIMA.sources.accessed}. Population is unpublished (universes are not mixed). Twelfth LIVE Ehime hub.`}
+          </p>
+        </details>
 ) : town.slug === 'toon' ? (
         <details className="facts-fold">
           <summary>{isJa ? '東温市の基礎情報' : 'Toon City facts'}</summary>
@@ -3657,19 +3719,19 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <tbody>
           <tr>
-            <th>{isJa ? '公式名' : 'Official name'}</th>
+            <th scope="row">{isJa ? '公式名' : 'Official name'}</th>
             <td>
               {MIMA.nameJa} / {MIMA.nameEn}（{MIMA.reading}）
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '都道府県' : 'Prefecture'}</th>
+            <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
             <td>
               <Link href="/tokushima">{isJa ? MIMA.prefectureJa : MIMA.prefectureEn}</Link>
             </td>
           </tr>
           <tr>
-            <th>JIS / N03_007</th>
+            <th scope="row">JIS / N03_007</th>
             <td>
               <strong>{MIMA.jis}</strong>
               {isJa
@@ -3678,21 +3740,21 @@ export default async function MunicipalityPage({params}: Props) {
             </td>
           </tr>
           <tr>
-            <th>J-LIS</th>
+            <th scope="row">J-LIS</th>
             <td>
               {MIMA.jlis}{' '}
               <a href={MIMA.sources.jlis}>{isJa ? '徳島県内市町村コード' : 'Tokushima J-LIS table'}</a>
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '面積' : 'Area'}</th>
+            <th scope="row">{isJa ? '面積' : 'Area'}</th>
             <td>
               {MIMA.areaKm2} km²（{isJa ? '国土地理院 面積調 令和7年4月1日' : 'GSI area survey, 1 Apr 2025'}）{' '}
               <a href={MIMA.sources.gsiArea}>GSI</a>
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '合併' : 'Merger'}</th>
+            <th scope="row">{isJa ? '合併' : 'Merger'}</th>
             <td>
               {isJa
                 ? `${MIMA.merger.eraJa}、${MIMA.merger.formerJa}が新設合併`
@@ -3700,7 +3762,7 @@ export default async function MunicipalityPage({params}: Props) {
             </td>
           </tr>
           <tr>
-            <th>{isJa ? '市役所' : 'City hall'}</th>
+            <th scope="row">{isJa ? '市役所' : 'City hall'}</th>
             <td>
               〒{MIMA.hall.postalCode} {isJa ? MIMA.hall.addressJa : MIMA.hall.addressEn}
               <br />
@@ -3719,11 +3781,11 @@ export default async function MunicipalityPage({params}: Props) {
       <table className="facts">
         <thead>
           <tr>
-            <th>{isJa ? 'スナップショット' : 'Snapshot'}</th>
-            <th>{isJa ? '人口' : 'Population'}</th>
-            <th>{isJa ? '世帯' : 'Households'}</th>
-            <th>{isJa ? '時点' : 'As of'}</th>
-            <th>{isJa ? '出典' : 'Source'}</th>
+            <th scope="row">{isJa ? 'スナップショット' : 'Snapshot'}</th>
+            <th scope="row">{isJa ? '人口' : 'Population'}</th>
+            <th scope="row">{isJa ? '世帯' : 'Households'}</th>
+            <th scope="row">{isJa ? '時点' : 'As of'}</th>
+            <th scope="row">{isJa ? '出典' : 'Source'}</th>
           </tr>
         </thead>
         <tbody>

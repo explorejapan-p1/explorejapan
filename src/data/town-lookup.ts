@@ -762,6 +762,7 @@ import {IYO, IYO_PLACE_PHOTO, IYO_FACILITIES, IYO_EXPECTED_GEO_COUNT, IYO_EXPECT
 import {SHIKOKUCHUO, SHIKOKUCHUO_PLACE_PHOTO, SHIKOKUCHUO_FACILITIES, SHIKOKUCHUO_EXPECTED_GEO_COUNT, SHIKOKUCHUO_EXPECTED_ROW_COUNT} from './shikokuchuo';
 import {SEIYO, SEIYO_PLACE_PHOTO, SEIYO_FACILITIES, SEIYO_EXPECTED_GEO_COUNT, SEIYO_EXPECTED_ROW_COUNT} from './seiyo';
 import {TOON, TOON_PLACE_PHOTO, TOON_FACILITIES, TOON_EXPECTED_GEO_COUNT, TOON_EXPECTED_ROW_COUNT} from './toon';
+import {KAMIJIMA, KAMIJIMA_PLACE_PHOTO, KAMIJIMA_FACILITIES, KAMIJIMA_EXPECTED_GEO_COUNT, KAMIJIMA_EXPECTED_ROW_COUNT} from './kamijima';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -853,6 +854,13 @@ import {
   TOON_TRAVEL_COMMERCE,
   TOON_TRAVEL_ALL
 } from './toon-travel';
+import {
+  KAMIJIMA_TRAVEL_DINING,
+  KAMIJIMA_TRAVEL_STAY,
+  KAMIJIMA_TRAVEL_SHOPPING,
+  KAMIJIMA_TRAVEL_COMMERCE,
+  KAMIJIMA_TRAVEL_ALL
+} from './kamijima-travel';
 
 
 
@@ -3473,6 +3481,39 @@ export const TOON_LOOKUP: LookupTown = {
   licenseSiteEn: 'City-site listing'
 };
 
+export const KAMIJIMA_LOOKUP: LookupTown = {
+  slug: 'kamijima',
+  prefectureSlug: 'ehime',
+  jis: KAMIJIMA.jis,
+  nameJa: KAMIJIMA.nameJa,
+  nameEn: KAMIJIMA.nameEn,
+  heroPhoto: KAMIJIMA_PLACE_PHOTO,
+  photoCiteJa: '写真は積善山展望台。上島町 観光写真提供サービス、2015-04-13、Public domain。File:積善山展望台.jpg。',
+  photoCiteEn: 'Photo: Sekizen Observatory. Kamijima Town tourism photo service, 2015-04-13, Public domain. File:積善山展望台.jpg.',
+  rows: KAMIJIMA_FACILITIES,
+  expectedGeo: KAMIJIMA_EXPECTED_GEO_COUNT,
+  expectedRows: KAMIJIMA_EXPECTED_ROW_COUNT,
+  travelDining: KAMIJIMA_TRAVEL_DINING,
+  travelStay: KAMIJIMA_TRAVEL_STAY,
+  travelShopping: KAMIJIMA_TRAVEL_SHOPPING,
+  travelCommerce: KAMIJIMA_TRAVEL_COMMERCE,
+  travelAll: KAMIJIMA_TRAVEL_ALL,
+  coverageJa:
+    '上島町（JIS 38356）観光4・宿泊1・飲食16・温泉1・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。愛媛県12つ目のLIVEハブ。',
+  coverageEn:
+    'Kamijima Town (JIS 38356), 4 tourism + 1 stay + 16 dining + 1 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Twelfth LIVE Ehime hub.',
+  mapLabelJa: '上島町の出典座標4件',
+  mapLabelEn: '4 sourced coordinates in Kamijima Town',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons等出典座標4件（accessed 2026-09-09）。',
+  mapCitePackEn: 'Points: 4 sourced coordinates for town/official facilities (accessed 2026-09-09).',
+  licenseNoteJa:
+    '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are town-site listings, facts from town.kamijima.lg.jp, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
 
 export const SHIKOKUCHUO_LOOKUP: LookupTown = {
   slug: 'shikokuchuo',
@@ -3881,7 +3922,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   iyo: IYO_LOOKUP,
   shikokuchuo: SHIKOKUCHUO_LOOKUP,
   seiyo: SEIYO_LOOKUP,
-  toon: TOON_LOOKUP
+  toon: TOON_LOOKUP,
+  kamijima: KAMIJIMA_LOOKUP
 };
 
 

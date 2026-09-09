@@ -928,6 +928,17 @@ import {
   toonTopChipForRow,
   resolveToonFilter,
 } from './toon-travel';
+import {
+  isKamijimaOnsenPackRow,
+  isKamijimaExperiencePackRow,
+  isKamijimaStayPackRow,
+  kamijimaPackRowMatchesFilter,
+  rankKamijimaSeeRows,
+  kamijimaSightPhoto,
+  kamijimaSourcedHook,
+  kamijimaTopChipForRow,
+  resolveKamijimaFilter
+} from './kamijima-travel';
 
 
 
@@ -1731,6 +1742,19 @@ const SEIYO_HELPERS: LookupHelpers = {
   resolveFilter: resolveSeiyoFilter
 };
 
+
+const KAMIJIMA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isKamijimaOnsenPackRow,
+  isExperiencePackRow: isKamijimaExperiencePackRow,
+  isStayPackRow: isKamijimaStayPackRow,
+  packRowMatchesFilter: kamijimaPackRowMatchesFilter,
+  rankSeeRows: rankKamijimaSeeRows,
+  sightPhoto: kamijimaSightPhoto,
+  sourcedHook: kamijimaSourcedHook,
+  topChipForRow: kamijimaTopChipForRow,
+  resolveFilter: resolveKamijimaFilter
+};
+
 const TOON_HELPERS: LookupHelpers = {
   isOnsenPackRow: isToonOnsenPackRow,
   isExperiencePackRow: isToonExperiencePackRow,
@@ -2149,5 +2173,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'shikokuchuo') return SHIKOKUCHUO_HELPERS;
   if (slug === 'seiyo') return SEIYO_HELPERS;
   if (slug === 'toon') return TOON_HELPERS;
+  if (slug === 'kamijima') return KAMIJIMA_HELPERS;
   return MIMA_HELPERS;
 }
