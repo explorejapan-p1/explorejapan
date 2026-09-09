@@ -34,3 +34,5 @@ Cold CDN PASS after Pages lag (~2m post-push). Live `ja/kochi/shimantocho/` PASS
 - dining 3→8 (さくら・武蔵・食堂ヒラグシ・駒鳥・焼き肉 にくよし)
 - sights 5→6 (道の駅あぐり窪川 Commons CC BY 3.0)
 - stay1/onsen0/exp0 unchanged
+
+Tip LIVE `d5b391a1378`.

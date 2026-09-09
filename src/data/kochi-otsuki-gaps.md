@@ -34,3 +34,5 @@ Cold CDN PASS after Pages lag (~2m post-push). Live `ja/kochi/otsuki/` PASS: her
 - dining 3→5 (なぎさ・土佐 力豚屋)
 - sights 5→6 (竜ヶ浜キャンプ場 Commons CC BY-SA 3.0; NAVITIME GPS)
 - stay1/onsen0/exp0 unchanged
+
+Tip LIVE `d5b391a1378`.
