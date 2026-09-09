@@ -1,31 +1,35 @@
 /**
  * Umaji Village travel layer. No frozen pack.
- * Dining from 食べログ 馬路村 (C39306) — thin village honest 2 with 640 dish JPGs (skipped bakery・lodging・bento・温泉レストラン / Kochi-city spillover). Stay: 馬路温泉 Rakuten 本館和室12畳 LARGE (wa12). Onsen: 同施設 大浴場 still (stay≠onsen). Experience: 0.
+ * Dining: Tabelog C39306 (やまなみ食堂・杉の家) + うまじ温泉 レストラン Rakuten 食事 still (day dining; TG610 miss-zero). Stay: 馬路温泉 wa12. Onsen: 大浴場 (stay≠onsen). Experience: 馬路森林鉄道 乗車体験. TG610 densify.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {UMAJI, UMAJI_SIGHT_PHOTOS} from './umaji';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const UMAJI_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const UMAJI_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const UMAJI_TRAVEL_SOURCES = {
   home: 'https://vill.umaji.lg.jp/', hall: 'https://ja.wikipedia.org/wiki/%E9%A6%AC%E8%B7%AF%E6%9D%91',
   kankou: 'https://vill.umaji.lg.jp/',
   incline: 'https://commons.wikimedia.org/wiki/File:Umaji_Incline1.jpg',
   tabelogCity: 'https://tabelog.com/kochi/C39306/rstLst/',
-  umajionsen: 'https://travel.rakuten.co.jp/HOTEL/149487/149487.html'
+  umajionsen: 'https://travel.rakuten.co.jp/HOTEL/149487/149487.html',
+  restaurant: 'http://umaji.gr.jp/restaurant.php',
+  rintetsu: 'https://umajimura.jp/spot/umaji-rintetsu/',
+  yanaseDam: 'https://commons.wikimedia.org/wiki/File:%E9%AD%9A%E6%A2%81%E7%80%AC%E3%83%80%E3%83%A0%E6%B9%96_-_panoramio_(1).jpg',
+  tengumori: 'https://commons.wikimedia.org/wiki/File:Mount_Tengumori_2014-05-22.jpg'
 } as const;
 
 export const UMAJI_ONSEN_PACK_NAMES = ['馬路温泉 大浴場'] as const;
 export const UMAJI_ONSEN_PACK_SET: ReadonlySet<string> = new Set(UMAJI_ONSEN_PACK_NAMES);
-export const UMAJI_EXPERIENCE_PACK_NAMES = [] as const;
+export const UMAJI_EXPERIENCE_PACK_NAMES = ['馬路森林鉄道 乗車体験'] as const;
 export const UMAJI_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(UMAJI_EXPERIENCE_PACK_NAMES);
 export const UMAJI_STAY_PACK_NAMES = [] as const;
 export const UMAJI_STAY_PACK_SET: ReadonlySet<string> = new Set(UMAJI_STAY_PACK_NAMES);
 export const UMAJI_SHOPPING_PACK_NAMES = [] as const;
 export const UMAJI_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(UMAJI_SHOPPING_PACK_NAMES);
 
-export const UMAJI_SIGHT_PINS = ['馬路村インクライン','馬路村役場','魚梁瀬丸山公園','西川渓谷','魚梁瀬森林鉄道'] as const;
+export const UMAJI_SIGHT_PINS = ['馬路村インクライン','馬路村役場','魚梁瀬丸山公園','西川渓谷','魚梁瀬森林鉄道','魚梁瀬ダム湖','天狗森'] as const;
 
 function stay(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: UMAJI_TRAVEL_ACCESSED};
@@ -40,6 +44,7 @@ function dining(id: string, name_ja: string, address: string | null, phone: stri
 export const UMAJI_TRAVEL_DINING: readonly TravelRow[] = [
   dining('umaji-dining-01', 'やまなみ食堂', '高知県安芸郡馬路村馬路421', '0887-44-2625', 'https://tabelog.com/kochi/A3902/A390202/39003551/'),
   dining('umaji-dining-02', '魚梁瀬の食堂 杉の家', '高知県安芸郡馬路村魚梁瀬', '0887-43-2070', 'https://tabelog.com/kochi/A3902/A390202/39007999/'),
+  dining('umaji-dining-03', 'うまじ温泉 レストラン', '高知県安芸郡馬路村馬路3564-1', '0887-44-2026', 'http://umaji.gr.jp/restaurant.php'),
 ];
 
 export const UMAJI_DINING_NAME_SET: ReadonlySet<string> = new Set(UMAJI_TRAVEL_DINING.map((row) => row.name_ja));
