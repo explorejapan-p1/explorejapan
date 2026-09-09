@@ -1,13 +1,13 @@
 /**
  * Otsuki Town travel layer. No frozen pack.
- * Dining from 食べログ 大月町 (C39424) — honest 3 with 640 dish JPG (魚ごころ・お好みきみ・谷鮮魚食堂; skipped 旅館・民宿・ペンション・道の駅・弁当・鮮魚店・たこ焼). Stay: ベルリーフ大月 Rakuten ツインルーム② (gallery mediaInfo fileName「ツインルーム②」cat 00000001). Onsen: 0 (stay≠onsen). Experience: 0.
+ * Dining densify TG610: Tabelog C39424 (3 kept + なぎさ・土佐 力豚屋). Stay: ベルリーフ大月. Onsen: 0 (stay≠onsen). Experience: 0.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {OTSUKI, OTSUKI_SIGHT_PHOTOS} from './otsuki';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const OTSUKI_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const OTSUKI_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const OTSUKI_TRAVEL_SOURCES = {
   home: 'https://www.town.otsuki.kochi.jp/', hall: 'https://www.town.otsuki.kochi.jp/index2.php',
   kashiwajima: 'https://commons.wikimedia.org/wiki/File:Kashiwajima_(Otsuki),_zenkei-1.jpg',
@@ -24,7 +24,7 @@ export const OTSUKI_STAY_PACK_SET: ReadonlySet<string> = new Set(OTSUKI_STAY_PAC
 export const OTSUKI_SHOPPING_PACK_NAMES = [] as const;
 export const OTSUKI_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(OTSUKI_SHOPPING_PACK_NAMES);
 
-export const OTSUKI_SIGHT_PINS = ['柏島','柏島石堤','柏島観光情報発信センター','大堂展望台','道の駅大月'] as const;
+export const OTSUKI_SIGHT_PINS = ['柏島','柏島石堤','柏島観光情報発信センター','大堂展望台','道の駅大月','竜ヶ浜キャンプ場'] as const;
 
 function stay(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: OTSUKI_TRAVEL_ACCESSED};
@@ -40,6 +40,8 @@ export const OTSUKI_TRAVEL_DINING: readonly TravelRow[] = [
   dining('otsuki-dining-01', '魚ごころ', '高知県幡多郡大月町柏島1096-2', '0880-76-0077', 'https://tabelog.com/kochi/A3904/A390404/39003905/'),
   dining('otsuki-dining-02', 'お好みきみ', '高知県幡多郡大月町柏島149-2', '0880-76-0453', 'https://tabelog.com/kochi/A3904/A390404/39005685/'),
   dining('otsuki-dining-03', '谷鮮魚食堂', '高知県幡多郡大月町弘見2693-1', '0880-79-0816', 'https://tabelog.com/kochi/A3904/A390404/39009012/'),
+  dining('otsuki-dining-04', 'なぎさ', '高知県幡多郡大月町大字平山13-33', null, 'https://tabelog.com/kochi/A3904/A390404/39004919/'),
+  dining('otsuki-dining-05', '土佐 力豚屋', '高知県幡多郡大月町弘見2693-1', '0880-79-0815', 'https://tabelog.com/kochi/A3904/A390404/39007917/'),
 ];
 
 export const OTSUKI_DINING_NAME_SET: ReadonlySet<string> = new Set(OTSUKI_TRAVEL_DINING.map((row) => row.name_ja));

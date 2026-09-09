@@ -1,13 +1,13 @@
 /**
  * Shimanto Town travel layer. No frozen pack.
- * Dining from 食べログ 四万十町 (C39412) — honest 3 with 640 dish JPG (Pizzeria Lo-co・コバコ・ボルゲリ; skipped 美馬旅館・小僧寿し・ほっかほっか亭・宿泊処・民宿かわせみ・道の駅カフェ・パン屋). Stay: ファミリーロッジ旅籠屋・四万十店 Rakuten ツインルーム (gallery mediaInfo「ツインルーム」「幅1.5m以上のクイーンサイズのベッドが2台」cat 00000001). Onsen: 0 (stay≠onsen). Experience: 0.
+ * Dining densify TG610: Tabelog C39412 (3 kept + さくら・武蔵・食堂ヒラグシ・駒鳥・焼き肉 にくよし). Stay: ファミリーロッジ旅籠屋・四万十店. Onsen: 0 (stay≠onsen). Experience: 0.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {SHIMANTOCHO, SHIMANTOCHO_SIGHT_PHOTOS} from './shimantocho';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const SHIMANTOCHO_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const SHIMANTOCHO_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const SHIMANTOCHO_TRAVEL_SOURCES = {
   home: 'https://www.town.shimanto.lg.jp/', hall: 'https://www.town.shimanto.lg.jp/yakuba/',
   itchibaw: 'https://commons.wikimedia.org/wiki/File:%E4%B8%80%E6%96%97%E4%BF%B5%E6%B2%88%E4%B8%8B%E6%A9%8B_-_panoramio.jpg',
@@ -24,7 +24,7 @@ export const SHIMANTOCHO_STAY_PACK_SET: ReadonlySet<string> = new Set(SHIMANTOCH
 export const SHIMANTOCHO_SHOPPING_PACK_NAMES = [] as const;
 export const SHIMANTOCHO_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(SHIMANTOCHO_SHOPPING_PACK_NAMES);
 
-export const SHIMANTOCHO_SIGHT_PINS = ['一斗俵沈下橋','岩本寺','海洋堂ホビー館四万十','窪川駅','道の駅四万十大正'] as const;
+export const SHIMANTOCHO_SIGHT_PINS = ['一斗俵沈下橋','岩本寺','海洋堂ホビー館四万十','窪川駅','道の駅四万十大正','道の駅あぐり窪川'] as const;
 
 function stay(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: SHIMANTOCHO_TRAVEL_ACCESSED};
@@ -40,6 +40,11 @@ export const SHIMANTOCHO_TRAVEL_DINING: readonly TravelRow[] = [
   dining('shimantocho-dining-01', 'Pizzeria Lo-co', '高知県高岡郡四万十町新開町2-1', '090-1570-0065', 'https://tabelog.com/kochi/A3904/A390402/39004802/'),
   dining('shimantocho-dining-02', 'コバコ', '高知県高岡郡四万十町本町2-1', '080-2037-7889', 'https://tabelog.com/kochi/A3904/A390402/39007371/'),
   dining('shimantocho-dining-03', 'ボルゲリ', '高知県高岡郡四万十町榊山町6-20', '0880-22-0811', 'https://tabelog.com/kochi/A3904/A390402/39005618/'),
+  dining('shimantocho-dining-04', 'さくら', '高知県高岡郡四万十町茂串町5-8', '0880-22-0516', 'https://tabelog.com/kochi/A3904/A390402/39002862/'),
+  dining('shimantocho-dining-05', '武蔵', '高知県高岡郡四万十町本町7-21', '0880-22-0634', 'https://tabelog.com/kochi/A3904/A390402/39002973/'),
+  dining('shimantocho-dining-06', '食堂ヒラグシ', '高知県高岡郡四万十町平串411', '0880-22-8132', 'https://tabelog.com/kochi/A3904/A390402/39001825/'),
+  dining('shimantocho-dining-07', '駒鳥', '高知県高岡郡四万十町本町2-18', '0880-22-0374', 'https://tabelog.com/kochi/A3904/A390402/39003346/'),
+  dining('shimantocho-dining-08', '焼き肉 にくよし', '高知県高岡郡四万十町古市8-26', '0880-22-0807', 'https://tabelog.com/kochi/A3904/A390402/39006450/'),
 ];
 
 export const SHIMANTOCHO_DINING_NAME_SET: ReadonlySet<string> = new Set(SHIMANTOCHO_TRAVEL_DINING.map((row) => row.name_ja));

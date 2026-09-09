@@ -29,3 +29,8 @@ Accessed 2026-09-08 (JST). LIVE tip `24cba7e50e`.
 
 ## CDN
 Cold CDN PASS after Pages lag (~2m post-push). Live `ja/kochi/otsuki/` PASS: hero 大月町, desc 大月町。柏島、大堂展望台、食。, pills stay/dining/onsen/experience/sights = 1/3/0/0/5. Pref cover otsuki-cover-kashiwajima present. Shimantocho regression PASS.
+
+## TG610 densify (2026-09-09)
+- dining 3→5 (なぎさ・土佐 力豚屋)
+- sights 5→6 (竜ヶ浜キャンプ場 Commons CC BY-SA 3.0; NAVITIME GPS)
+- stay1/onsen0/exp0 unchanged
