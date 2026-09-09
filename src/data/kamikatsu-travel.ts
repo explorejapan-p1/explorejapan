@@ -1,10 +1,9 @@
 /**
  * Kamikatsu travel layer. Pack tourism includes inns/cafes/shops as tourism.
- * Onsen / stay: omit without room or bath photo (honest 0).
+ * Stay: HOTEL WHY + 月ヶ谷温泉「月の宿」 Rakuten 部屋 still (TG610 densify).
+ * Onsen: EXTRA 月ヶ谷温泉 月の宿 大浴場 bath still (HARD BAR stay≠onsen).
  * Dining from 食べログ 上勝町 (C36302) public shop pages with FOOD dish heroes.
- * PHOTO GAPS (honest 0):
- * 宿泊/温泉/体験/商業: no room/bath 出典 — omit (買物: たけいち笑店 mapped).
- * 観光: many pack names lack place-named Commons (八重地の棚田, 殿川内渓谷, 落合千本つつじ園, …).
+ * PHOTO GAPS: other pack lodgings (Villa/Rolling Room/山挨/花びより/山西/あさひ/…) lack room 出典 — omit.
  * Do not copy 勝浦 / 神山 / 上板 / 板野 / 石井 / 松茂 / 北島 / 藍住 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
@@ -17,17 +16,21 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const KAMIKATSU_TRAVEL_ACCESSED = '2026-09-05' as const;
+export const KAMIKATSU_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const KAMIKATSU_TRAVEL_SOURCES = {
   home: 'https://www.kamikatsu.jp/',
   hall: 'https://www.kamikatsu.jp/',
   kanko: 'https://www.tourism-kamikatsu.jp/',
-  tabelogCity: 'https://tabelog.com/tokushima/C36302/rstLst/'
+  tabelogCity: 'https://tabelog.com/tokushima/C36302/rstLst/',
+  hotelWhy: 'https://why-kamikatsu.jp/pages/stay',
+  tsukigaya: 'https://travel.rakuten.co.jp/HOTEL/50245/50245.html'
 } as const;
 
-/** Exact tourism-pack names shown on 温泉, not 観光. Bath photo required — none yet. */
-export const KAMIKATSU_ONSEN_PACK_NAMES = [] as const;
+/** Exact tourism-pack names shown on 温泉, not 観光. Bath photo required. */
+export const KAMIKATSU_ONSEN_PACK_NAMES = [
+  '月ヶ谷温泉 月の宿 大浴場'
+] as const;
 
 export const KAMIKATSU_ONSEN_PACK_SET: ReadonlySet<string> = new Set(
   KAMIKATSU_ONSEN_PACK_NAMES
@@ -81,7 +84,7 @@ function stay(
   };
 }
 
-/** Ranked strongest official room/exterior 出典. HOTEL WHY official stay gallery. */
+/** Ranked strongest room 出典. Dining already uses 月ヶ谷温泉 月の宿 — stay uses 「」 form. */
 export const KAMIKATSU_TRAVEL_STAY: readonly TravelRow[] = [
   stay(
     'kamikatsu-stay-01',
@@ -89,6 +92,13 @@ export const KAMIKATSU_TRAVEL_STAY: readonly TravelRow[] = [
     '徳島県勝浦郡上勝町大字福原字下日浦7番地2',
     '070-2616-9012',
     'https://why-kamikatsu.jp/pages/stay'
+  ),
+  stay(
+    'kamikatsu-stay-02',
+    '月ヶ谷温泉「月の宿」',
+    '徳島県勝浦郡上勝町福原平間71-1',
+    '0885-46-0203',
+    'https://travel.rakuten.co.jp/HOTEL/50245/50245.html'
   )
 ];
 

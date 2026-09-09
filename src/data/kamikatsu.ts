@@ -291,4 +291,18 @@ export const KAMIKATSU_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = 
     TABELOG_36000691,
     '食べログ'
   ),
+  '月ヶ谷温泉「月の宿」': sourcePhoto(
+    'kamikatsu-stay-tsukigaya.jpg',
+    '月ヶ谷温泉「月の宿」の客室写真',
+    'Tsukigaya Onsen Tsukinoyado room photo',
+    'https://travel.rakuten.co.jp/HOTEL/50245/50245.html',
+    '楽天トラベル'
+  ),
+  '月ヶ谷温泉 月の宿 大浴場': sourcePhoto(
+    'kamikatsu-onsen-tsukigaya.jpg',
+    '月ヶ谷温泉「月の宿」の大浴場写真',
+    'Tsukigaya Onsen Tsukinoyado bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/50245/50245.html',
+    '楽天トラベル'
+  ),
 };

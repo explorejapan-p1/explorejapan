@@ -90,13 +90,13 @@ export const YOSHINOGAWA_EXPECTED_CATEGORY_COUNTS = {
 
 
 export const AWA_PACK_JIS = '36206';
-export const AWA_EXPECTED_ROW_COUNT = 307;
+export const AWA_EXPECTED_ROW_COUNT = 308;
 export const AWA_EXPECTED_GEO_COUNT = 171;
 export const AWA_EXPECTED_HOURS_COUNT = 83;
 export const AWA_EXPECTED_MISSING_ADDRESS = 36;
 export const AWA_EXPECTED_MISSING_PHONE = 156;
 export const AWA_EXPECTED_CATEGORY_COUNTS = {
-  tourism: 30,
+  tourism: 31,
   cultural_property: 3,
   care: 0,
   aed: 52,
@@ -312,13 +312,13 @@ export const KATSUURA_EXPECTED_CATEGORY_COUNTS = {
 
 export const KAMIKATSU_PACK_JIS = '36302';
 export const KAMIKATSU_PACK_ACCESSED = '2026-08-25';
-export const KAMIKATSU_EXPECTED_ROW_COUNT = 157;
+export const KAMIKATSU_EXPECTED_ROW_COUNT = 158;
 export const KAMIKATSU_EXPECTED_GEO_COUNT = 74;
 export const KAMIKATSU_EXPECTED_HOURS_COUNT = 97;
 export const KAMIKATSU_EXPECTED_MISSING_ADDRESS = 125;
 export const KAMIKATSU_EXPECTED_MISSING_PHONE = 148;
 export const KAMIKATSU_EXPECTED_CATEGORY_COUNTS = {
-  tourism: 62,
+  tourism: 63,
   cultural_property: 3,
   care: 7,
   aed: 0,

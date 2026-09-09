@@ -3,16 +3,30 @@ import path from 'node:path';
 import {
   FACILITY_CATEGORIES,
   PACK_ACCESSED,
-  AWA_EXPECTED_CATEGORY_COUNTS,
-  AWA_EXPECTED_GEO_COUNT,
-  AWA_EXPECTED_HOURS_COUNT,
-  AWA_EXPECTED_MISSING_ADDRESS,
-  AWA_EXPECTED_MISSING_PHONE,
-  AWA_EXPECTED_ROW_COUNT,
   AWA_PACK_JIS,
   type FacilityCategory,
   type FacilityRow
 } from './facility-schema';
+
+/** Frozen jsonl baselines (before EXTRA bath rows). */
+const PACK_ROW_COUNT = 307;
+const PACK_GEO_COUNT = 171;
+const PACK_HOURS_COUNT = 83;
+const PACK_MISSING_ADDRESS = 36;
+const PACK_MISSING_PHONE = 156;
+const PACK_CATEGORY_COUNTS: Record<FacilityCategory, number> = {
+  tourism: 30,
+  cultural_property: 3,
+  care: 0,
+  aed: 52,
+  shelter: 33,
+  emergency_evacuation_site: 24,
+  hospital: 0,
+  childcare: 31,
+  wifi: 33,
+  public_facility: 101,
+  gtfs_stop: 0
+};
 
 const PACK_PATH = path.join(process.cwd(), 'data', 'frozen', 'awa-facilities.jsonl');
 
@@ -113,16 +127,16 @@ function loadAwaFacilities(): readonly FacilityRow[] {
     const parsed: unknown = JSON.parse(line);
     rows.push(parseFacilityRow(parsed));
   }
-  if (rows.length !== AWA_EXPECTED_ROW_COUNT) {
-    throw new Error(`awa pack row count ${rows.length} != ${AWA_EXPECTED_ROW_COUNT}`);
+  if (rows.length !== PACK_ROW_COUNT) {
+    throw new Error(`awa pack row count ${rows.length} != ${PACK_ROW_COUNT}`);
   }
   const counts = emptyCounts();
   for (const row of rows) {
     counts[row.category] += 1;
   }
   for (const cat of FACILITY_CATEGORIES) {
-    if (counts[cat] !== AWA_EXPECTED_CATEGORY_COUNTS[cat]) {
-      throw new Error(`awa pack ${cat} ${counts[cat]} != ${AWA_EXPECTED_CATEGORY_COUNTS[cat]}`);
+    if (counts[cat] !== PACK_CATEGORY_COUNTS[cat]) {
+      throw new Error(`awa pack ${cat} ${counts[cat]} != ${PACK_CATEGORY_COUNTS[cat]}`);
     }
   }
   let geo = 0;
@@ -135,19 +149,43 @@ function loadAwaFacilities(): readonly FacilityRow[] {
     if (isBlank(row.address)) missingAddress += 1;
     if (isBlank(row.phone)) missingPhone += 1;
   }
-  if (geo !== AWA_EXPECTED_GEO_COUNT) {
-    throw new Error(`awa pack geo ${geo} != ${AWA_EXPECTED_GEO_COUNT}`);
+  if (geo !== PACK_GEO_COUNT) {
+    throw new Error(`awa pack geo ${geo} != ${PACK_GEO_COUNT}`);
   }
-  if (hours !== AWA_EXPECTED_HOURS_COUNT) {
-    throw new Error(`awa pack hours ${hours} != ${AWA_EXPECTED_HOURS_COUNT}`);
+  if (hours !== PACK_HOURS_COUNT) {
+    throw new Error(`awa pack hours ${hours} != ${PACK_HOURS_COUNT}`);
   }
-  if (missingAddress !== AWA_EXPECTED_MISSING_ADDRESS) {
-    throw new Error(`awa pack address gaps ${missingAddress} != ${AWA_EXPECTED_MISSING_ADDRESS}`);
+  if (missingAddress !== PACK_MISSING_ADDRESS) {
+    throw new Error(`awa pack address gaps ${missingAddress} != ${PACK_MISSING_ADDRESS}`);
   }
-  if (missingPhone !== AWA_EXPECTED_MISSING_PHONE) {
-    throw new Error(`awa pack phone gaps ${missingPhone} != ${AWA_EXPECTED_MISSING_PHONE}`);
+  if (missingPhone !== PACK_MISSING_PHONE) {
+    throw new Error(`awa pack phone gaps ${missingPhone} != ${PACK_MISSING_PHONE}`);
   }
   return rows;
 }
 
-export const AWA_FACILITIES: readonly FacilityRow[] = loadAwaFacilities();
+
+/** EXTRA tourism rows (not frozen jsonl). Bath stills — HARD BAR stay≠onsen. */
+const AWA_EXTRA_FACILITIES: readonly FacilityRow[] = [
+  {
+    id: 'awa-extra-dochuland-bath',
+    jis: AWA_PACK_JIS,
+    name_ja: '土柱ランド新温泉 大浴場',
+    reading: 'どちゅうらんどしんおんせんだいよくじょう',
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県阿波市阿波町桜ノ岡165',
+    phone: '0883-35-3431',
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/13994/13994.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/13994/13994.html',
+    license: 'cc_by_open_data',
+    accessed: PACK_ACCESSED
+  }
+];
+
+export const AWA_FACILITIES: readonly FacilityRow[] = [
+  ...loadAwaFacilities(),
+  ...AWA_EXTRA_FACILITIES
+];

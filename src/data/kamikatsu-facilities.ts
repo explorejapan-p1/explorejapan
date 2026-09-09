@@ -2,17 +2,31 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {
   FACILITY_CATEGORIES,
-  KAMIKATSU_EXPECTED_CATEGORY_COUNTS,
-  KAMIKATSU_EXPECTED_GEO_COUNT,
-  KAMIKATSU_EXPECTED_HOURS_COUNT,
-  KAMIKATSU_EXPECTED_MISSING_ADDRESS,
-  KAMIKATSU_EXPECTED_MISSING_PHONE,
-  KAMIKATSU_EXPECTED_ROW_COUNT,
   KAMIKATSU_PACK_ACCESSED,
   KAMIKATSU_PACK_JIS,
   type FacilityCategory,
   type FacilityRow
 } from './facility-schema';
+
+/** Frozen jsonl baselines (before EXTRA bath rows). */
+const PACK_ROW_COUNT = 157;
+const PACK_GEO_COUNT = 74;
+const PACK_HOURS_COUNT = 97;
+const PACK_MISSING_ADDRESS = 125;
+const PACK_MISSING_PHONE = 148;
+const PACK_CATEGORY_COUNTS: Record<FacilityCategory, number> = {
+  tourism: 62,
+  cultural_property: 3,
+  care: 7,
+  aed: 0,
+  shelter: 9,
+  emergency_evacuation_site: 5,
+  hospital: 2,
+  childcare: 3,
+  wifi: 0,
+  public_facility: 2,
+  gtfs_stop: 64
+};
 
 const PACK_PATH = path.join(process.cwd(), 'data', 'frozen', 'kamikatsu-facilities.jsonl');
 
@@ -113,17 +127,17 @@ function loadKamikatsuFacilities(): readonly FacilityRow[] {
     const parsed: unknown = JSON.parse(line);
     rows.push(parseFacilityRow(parsed));
   }
-  if (rows.length !== KAMIKATSU_EXPECTED_ROW_COUNT) {
-    throw new Error(`kamikatsu pack row count ${rows.length} != ${KAMIKATSU_EXPECTED_ROW_COUNT}`);
+  if (rows.length !== PACK_ROW_COUNT) {
+    throw new Error(`kamikatsu pack row count ${rows.length} != ${PACK_ROW_COUNT}`);
   }
   const counts = emptyCounts();
   for (const row of rows) {
     counts[row.category] += 1;
   }
   for (const cat of FACILITY_CATEGORIES) {
-    if (counts[cat] !== KAMIKATSU_EXPECTED_CATEGORY_COUNTS[cat]) {
+    if (counts[cat] !== PACK_CATEGORY_COUNTS[cat]) {
       throw new Error(
-        `kamikatsu pack ${cat} ${counts[cat]} != ${KAMIKATSU_EXPECTED_CATEGORY_COUNTS[cat]}`
+        `kamikatsu pack ${cat} ${counts[cat]} != ${PACK_CATEGORY_COUNTS[cat]}`
       );
     }
   }
@@ -137,23 +151,47 @@ function loadKamikatsuFacilities(): readonly FacilityRow[] {
     if (isBlank(row.address)) missingAddress += 1;
     if (isBlank(row.phone)) missingPhone += 1;
   }
-  if (geo !== KAMIKATSU_EXPECTED_GEO_COUNT) {
-    throw new Error(`kamikatsu pack geo ${geo} != ${KAMIKATSU_EXPECTED_GEO_COUNT}`);
+  if (geo !== PACK_GEO_COUNT) {
+    throw new Error(`kamikatsu pack geo ${geo} != ${PACK_GEO_COUNT}`);
   }
-  if (hours !== KAMIKATSU_EXPECTED_HOURS_COUNT) {
-    throw new Error(`kamikatsu pack hours ${hours} != ${KAMIKATSU_EXPECTED_HOURS_COUNT}`);
+  if (hours !== PACK_HOURS_COUNT) {
+    throw new Error(`kamikatsu pack hours ${hours} != ${PACK_HOURS_COUNT}`);
   }
-  if (missingAddress !== KAMIKATSU_EXPECTED_MISSING_ADDRESS) {
+  if (missingAddress !== PACK_MISSING_ADDRESS) {
     throw new Error(
-      `kamikatsu pack address gaps ${missingAddress} != ${KAMIKATSU_EXPECTED_MISSING_ADDRESS}`
+      `kamikatsu pack address gaps ${missingAddress} != ${PACK_MISSING_ADDRESS}`
     );
   }
-  if (missingPhone !== KAMIKATSU_EXPECTED_MISSING_PHONE) {
+  if (missingPhone !== PACK_MISSING_PHONE) {
     throw new Error(
-      `kamikatsu pack phone gaps ${missingPhone} != ${KAMIKATSU_EXPECTED_MISSING_PHONE}`
+      `kamikatsu pack phone gaps ${missingPhone} != ${PACK_MISSING_PHONE}`
     );
   }
   return rows;
 }
 
-export const KAMIKATSU_FACILITIES: readonly FacilityRow[] = loadKamikatsuFacilities();
+
+/** EXTRA tourism rows (not frozen jsonl). Bath stills — HARD BAR stay≠onsen. */
+const KAMIKATSU_EXTRA_FACILITIES: readonly FacilityRow[] = [
+  {
+    id: 'kamikatsu-extra-tsukigaya-bath',
+    jis: KAMIKATSU_PACK_JIS,
+    name_ja: '月ヶ谷温泉 月の宿 大浴場',
+    reading: 'つきがやおんせんつきのやどだいよくじょう',
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県勝浦郡上勝町福原平間71-1',
+    phone: '0885-46-0203',
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/50245/50245.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/50245/50245.html',
+    license: 'cc_by_open_data',
+    accessed: KAMIKATSU_PACK_ACCESSED
+  }
+];
+
+export const KAMIKATSU_FACILITIES: readonly FacilityRow[] = [
+  ...loadKamikatsuFacilities(),
+  ...KAMIKATSU_EXTRA_FACILITIES
+];

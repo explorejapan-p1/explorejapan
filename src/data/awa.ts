@@ -294,5 +294,33 @@ export const AWA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'https://travel.rakuten.co.jp/HOTEL/67851/67851.html',
     '楽天トラベル'
   ),
+  '癒しの宿 土柱ランド新温泉': sourcePhoto(
+    'awa-stay-dochuland.jpg',
+    '癒しの宿 土柱ランド新温泉の客室写真',
+    'Dochuland Shin-onsen room photo',
+    'https://travel.rakuten.co.jp/HOTEL/13994/13994.html',
+    '楽天トラベル'
+  ),
+  '土柱どんどん': sourcePhoto(
+    'awa-stay-dondon.jpg',
+    '土柱どんどんの客室写真',
+    'Dochu Dondon room photo',
+    'https://travel.rakuten.co.jp/HOTEL/104728/104728.html',
+    '楽天トラベル'
+  ),
+  '土柱ランド新温泉 大浴場': sourcePhoto(
+    'awa-onsen-dochuland.jpg',
+    '土柱ランド新温泉の大浴場写真',
+    'Dochuland Shin-onsen bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/13994/13994.html',
+    '楽天トラベル'
+  ),
+  '天然温泉 御所の郷': sourcePhoto(
+    'awa-onsen-gosho.jpg',
+    '天然温泉 御所の郷の浴場写真',
+    'Gosho-no-Sato facility bath photo',
+    'https://goshonosato.com/spa/',
+    '天然温泉 御所の郷'
+  ),
 
 };

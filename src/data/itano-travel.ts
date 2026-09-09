@@ -1,8 +1,7 @@
 /**
  * Itano travel layer. Pack has no dining/stay categories.
- * Onsen / stay: omit without room or bath photo (honest 0).
- * Stay from NAVITIME 板野町ホテル一覧 + 楽天シェア room/exterior (出典).
- * あせび温泉やすらぎの郷 → 温泉 only with bath photo — none yet (honest gap).
+ * Stay: HOTEL AZ only (TG610 wave3). Skipped LA・GITA / ハーブナチュラル (no Rakuten room share).
+ * Onsen: あせび温泉やすらぎの郷 — town page is flyer composite only; no clean facility bath still (honest 0).
  * 道の駅いたの → 買物 with Commons File:Michinoeli-itano.jpeg.
  * Dining from 食べログ 板野町 (C36404) public shop pages. Do not invent pack dining.
  * Do not copy 石井 / 松茂 / 北島 / 藍住 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
@@ -17,7 +16,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const ITANO_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const ITANO_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const ITANO_TRAVEL_SOURCES = {
   home: 'http://www.town.itano.tokushima.jp/',
