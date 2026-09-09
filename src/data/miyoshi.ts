@@ -219,49 +219,206 @@ export const MIYOSHI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'Iya Kazura Bridge, Nishi-Iya, Miyoshi'
   ),
   '峡谷の湯宿 大歩危峡まんなか': sourcePhoto(
-    'mannaka-room.jpg',
-    '峡谷の湯宿 大歩危峡まんなかの客室（三好市山城町）',
-    'Guest room at Oboke-kyo Mannaka, Yamashiro-cho, Miyoshi',
-    MANNAKA_HOTEL,
-    '峡谷の湯宿 大歩危峡まんなか'
+    'miyoshi-stay-01.jpg',
+    '峡谷の湯宿 大歩危峡まんなかの客室写真',
+    '峡谷の湯宿 大歩危峡まんなか room photo',
+    'https://travel.rakuten.co.jp/HOTEL/53066/53066.html',
+    '楽天トラベル'
   ),
   '桃源郷祖谷の山里 茅葺き民家ステイ': sourcePhoto(
-    'tougenkyo-house.jpg',
-    '桃源郷祖谷の山里の民家内観（三好市東祖谷）',
-    'Interior of a Tougenkyo Iya thatched house, Higashi-Iya, Miyoshi',
-    TOUGENKYO,
-    '桃源郷祖谷の山里'
-  ),
-  '和の宿 ホテル祖谷温泉': sourcePhoto(
-    'iya-onsen-roten.jpg',
-    '和の宿 ホテル祖谷温泉の露天風呂（三好市池田町）',
-    'Outdoor bath at Hotel Iya Onsen, Ikeda-cho, Miyoshi',
-    IYA_ONSEN_ROTEN,
-    '和の宿 ホテル祖谷温泉'
-  ),
-  '湯元新祖谷温泉 ホテルかずら橋': wikiPhoto(
-    'shiniya-roten.jpg',
-    'https://commons.wikimedia.org/wiki/File:Shiniya_hot_spring.jpg',
-    'CC BY-SA 4.0',
-    'https://creativecommons.org/licenses/by-sa/4.0/',
-    'ブルーノ・プラス',
-    'https://commons.wikimedia.org/wiki/User:%E3%83%96%E3%83%AB%E3%83%BC%E3%83%8E%E3%83%BB%E3%83%97%E3%83%A9%E3%82%B9',
-    '2023-04',
-    '新祖谷温泉の露天風呂（三好市西祖谷山村）',
-    'Outdoor bath at Shin-Iya Onsen, Nishi-Iya, Miyoshi'
+    'miyoshi-stay-02.jpg',
+    '桃源郷祖谷の山里 茅葺き民家ステイの客室写真',
+    '桃源郷祖谷の山里 茅葺き民家ステイ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/148902/148902.html',
+    '楽天トラベル'
   ),
   'ホテル サボテンアパートメント': sourcePhoto(
-    'miyoshi-stay-saboten.jpg',
-    'ホテル サボテンアパートメントの客室・外観写真',
-    'Hotel Saboten Apartment room or exterior photo',
+    'miyoshi-stay-03.jpg',
+    'ホテル サボテンアパートメントの客室写真',
+    'ホテル サボテンアパートメント room photo',
     'https://travel.rakuten.co.jp/HOTEL/165553/165553.html',
     '楽天トラベル'
   ),
   '阿波池田駅前ホテルイレブン': sourcePhoto(
-    'miyoshi-stay-eleven.jpg',
-    '阿波池田駅前ホテルイレブンの客室・外観写真',
-    'AwaIkeda Station Hotel Eleven room or exterior photo',
+    'miyoshi-stay-04.jpg',
+    '阿波池田駅前ホテルイレブンの客室写真',
+    '阿波池田駅前ホテルイレブン room photo',
     'https://travel.rakuten.co.jp/HOTEL/158338/158338.html',
+    '楽天トラベル'
+  ),
+  'hostel大黒屋': sourcePhoto(
+    'miyoshi-stay-05.jpg',
+    'hostel大黒屋の客室写真',
+    'hostel大黒屋 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/199086/199086.html',
+    '楽天トラベル'
+  ),
+  'hostel 大黒屋': sourcePhoto(
+    'miyoshi-stay-05.jpg',
+    'hostel 大黒屋の客室写真',
+    'hostel 大黒屋 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/199086/199086.html',
+    '楽天トラベル'
+  ),
+  '和の宿 ホテル祖谷温泉': sourcePhoto(
+    'miyoshi-stay-06.jpg',
+    '和の宿 ホテル祖谷温泉の客室写真',
+    '和の宿 ホテル祖谷温泉 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/13663/13663.html',
+    '楽天トラベル'
+  ),
+  '白地温泉 小西旅館': sourcePhoto(
+    'miyoshi-stay-07.jpg',
+    '白地温泉 小西旅館の客室写真',
+    '白地温泉 小西旅館 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/14619/14619.html',
+    '楽天トラベル'
+  ),
+  '白地温泉小西旅館': sourcePhoto(
+    'miyoshi-stay-07.jpg',
+    '白地温泉小西旅館の客室写真',
+    '白地温泉小西旅館 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/14619/14619.html',
+    '楽天トラベル'
+  ),
+  '民宿 白地荘': sourcePhoto(
+    'miyoshi-stay-08.jpg',
+    '民宿 白地荘の客室写真',
+    '民宿 白地荘 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/17989/17989.html',
+    '楽天トラベル'
+  ),
+  '湯元新祖谷温泉 ホテルかずら橋': sourcePhoto(
+    'miyoshi-stay-09.jpg',
+    '湯元新祖谷温泉 ホテルかずら橋の客室写真',
+    '湯元新祖谷温泉 ホテルかずら橋 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/20228/20228.html',
+    '楽天トラベル'
+  ),
+  'ふくや旅館': sourcePhoto(
+    'miyoshi-stay-10.jpg',
+    'ふくや旅館の客室写真',
+    'ふくや旅館 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/50194/50194.html',
+    '楽天トラベル'
+  ),
+  '祖谷渓温泉 ホテル秘境の湯': sourcePhoto(
+    'miyoshi-stay-11.jpg',
+    '祖谷渓温泉 ホテル秘境の湯の客室写真',
+    '祖谷渓温泉 ホテル秘境の湯 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/52860/52860.html',
+    '楽天トラベル'
+  ),
+  '大歩危温泉 サンリバー大歩危': sourcePhoto(
+    'miyoshi-stay-12.jpg',
+    '大歩危温泉 サンリバー大歩危の客室写真',
+    '大歩危温泉 サンリバー大歩危 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/54677/54677.html',
+    '楽天トラベル'
+  ),
+  '渓谷の隠れ宿 祖谷美人': sourcePhoto(
+    'miyoshi-stay-13.jpg',
+    '渓谷の隠れ宿 祖谷美人の客室写真',
+    '渓谷の隠れ宿 祖谷美人 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/56704/56704.html',
+    '楽天トラベル'
+  ),
+  '祖谷の宿 かずらや': sourcePhoto(
+    'miyoshi-stay-14.jpg',
+    '祖谷の宿 かずらやの客室写真',
+    '祖谷の宿 かずらや room photo',
+    'https://travel.rakuten.co.jp/HOTEL/67957/67957.html',
+    '楽天トラベル'
+  ),
+  '寿し六旅館': sourcePhoto(
+    'miyoshi-stay-15.jpg',
+    '寿し六旅館の客室写真',
+    '寿し六旅館 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/129667/129667.html',
+    '楽天トラベル'
+  ),
+  '祖谷観光旅館': sourcePhoto(
+    'miyoshi-stay-16.jpg',
+    '祖谷観光旅館の客室写真',
+    '祖谷観光旅館 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/142344/142344.html',
+    '楽天トラベル'
+  ),
+  '祖谷の里 民宿お山荘': sourcePhoto(
+    'miyoshi-stay-17.jpg',
+    '祖谷の里 民宿お山荘の客室写真',
+    '祖谷の里 民宿お山荘 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/142530/142530.html',
+    '楽天トラベル'
+  ),
+  '農家民宿 歩危農園': sourcePhoto(
+    'miyoshi-stay-18.jpg',
+    '農家民宿 歩危農園の客室写真',
+    '農家民宿 歩危農園 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/142570/142570.html',
+    '楽天トラベル'
+  ),
+  '勇楼 旅館': sourcePhoto(
+    'miyoshi-stay-19.jpg',
+    '勇楼 旅館の客室写真',
+    '勇楼 旅館 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/143371/143371.html',
+    '楽天トラベル'
+  ),
+  '勇楼旅館': sourcePhoto(
+    'miyoshi-stay-19.jpg',
+    '勇楼旅館の客室写真',
+    '勇楼旅館 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/143371/143371.html',
+    '楽天トラベル'
+  ),
+  '楽校の宿あるせ': sourcePhoto(
+    'miyoshi-stay-21.jpg',
+    '楽校の宿あるせの客室写真',
+    '楽校の宿あるせ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/153416/153416.html',
+    '楽天トラベル'
+  ),
+  '古民家宿 4S STAY 阿波池田駅前': sourcePhoto(
+    'miyoshi-stay-22.jpg',
+    '古民家宿 4S STAY 阿波池田駅前の客室写真',
+    '古民家宿 4S STAY 阿波池田駅前 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/171859/171859.html',
+    '楽天トラベル'
+  ),
+  '本町旅宿 4S STAY 阿波池田 本町通り': sourcePhoto(
+    'miyoshi-stay-23.jpg',
+    '本町旅宿 4S STAY 阿波池田 本町通りの客室写真',
+    '本町旅宿 4S STAY 阿波池田 本町通り room photo',
+    'https://travel.rakuten.co.jp/HOTEL/180706/180706.html',
+    '楽天トラベル'
+  ),
+  'ビジネスホテル阿波池田 いれぶん2': sourcePhoto(
+    'miyoshi-stay-24.jpg',
+    'ビジネスホテル阿波池田 いれぶん2の客室写真',
+    'ビジネスホテル阿波池田 いれぶん2 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/189166/189166.html',
+    '楽天トラベル'
+  ),
+  '彩り旅宿 4S STAY 池田温泉横': sourcePhoto(
+    'miyoshi-stay-25.jpg',
+    '彩り旅宿 4S STAY 池田温泉横の客室写真',
+    '彩り旅宿 4S STAY 池田温泉横 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/191760/191760.html',
+    '楽天トラベル'
+  ),
+  'Ｇｕｅｓｔｈｏｕｓｅ ＫＡＺＵＲＡＢＡＳＨＩ': sourcePhoto(
+    'miyoshi-stay-26.jpg',
+    'Ｇｕｅｓｔｈｏｕｓｅ ＫＡＺＵＲＡＢＡＳＨＩの客室写真',
+    'Ｇｕｅｓｔｈｏｕｓｅ ＫＡＺＵＲＡＢＡＳＨＩ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/192586/192586.html',
+    '楽天トラベル'
+  ),
+  'もみじ': sourcePhoto(
+    'miyoshi-stay-momiji.jpg',
+    'もみじの客室写真',
+    'もみじ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/199175/199175.html',
     '楽天トラベル'
   ),
   'STAY ISHIWAKI': sourcePhoto(
@@ -271,18 +428,102 @@ export const MIYOSHI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'https://travel.rakuten.co.jp/HOTEL/197816/197816.html',
     '楽天トラベル'
   ),
-  'hostel大黒屋': sourcePhoto(
-    'miyoshi-stay-daikokuya.jpg',
-    'hostel大黒屋の客室・外観写真',
-    'hostel Daikokuya room or exterior photo',
-    'https://travel.rakuten.co.jp/HOTEL/199086/199086.html',
+  '和の宿 ホテル祖谷温泉 絹泡夢想の湯': sourcePhoto(
+    'miyoshi-onsen-iyaonsen.jpg',
+    '和の宿 ホテル祖谷温泉 絹泡夢想の湯の浴場写真',
+    '和の宿 ホテル祖谷温泉 絹泡夢想の湯 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/13663/13663.html',
     '楽天トラベル'
   ),
-  'もみじ': sourcePhoto(
-    'miyoshi-stay-momiji.jpg',
-    'もみじの客室・外観写真',
-    'Momiji guesthouse room or exterior photo',
-    'https://travel.rakuten.co.jp/HOTEL/199175/199175.html',
+  '白地温泉 小西旅館 展望風呂': sourcePhoto(
+    'miyoshi-onsen-konishi.jpg',
+    '白地温泉 小西旅館 展望風呂の浴場写真',
+    '白地温泉 小西旅館 展望風呂 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/14619/14619.html',
+    '楽天トラベル'
+  ),
+  '民宿 白地荘 大浴場': sourcePhoto(
+    'miyoshi-onsen-shirajiso.jpg',
+    '民宿 白地荘 大浴場の浴場写真',
+    '民宿 白地荘 大浴場 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/17989/17989.html',
+    '楽天トラベル'
+  ),
+  '湯元新祖谷温泉 ホテルかずら橋 露天風呂': sourcePhoto(
+    'miyoshi-onsen-kazurabashi.jpg',
+    '湯元新祖谷温泉 ホテルかずら橋 露天風呂の浴場写真',
+    '湯元新祖谷温泉 ホテルかずら橋 露天風呂 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/20228/20228.html',
+    '楽天トラベル'
+  ),
+  '祖谷渓温泉 ホテル秘境の湯 大浴場': sourcePhoto(
+    'miyoshi-onsen-hikyo.jpg',
+    '祖谷渓温泉 ホテル秘境の湯 大浴場の浴場写真',
+    '祖谷渓温泉 ホテル秘境の湯 大浴場 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/52860/52860.html',
+    '楽天トラベル'
+  ),
+  '峡谷の湯宿 大歩危峡まんなか 露天風呂': sourcePhoto(
+    'miyoshi-onsen-mannaka.jpg',
+    '峡谷の湯宿 大歩危峡まんなか 露天風呂の浴場写真',
+    '峡谷の湯宿 大歩危峡まんなか 露天風呂 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/53066/53066.html',
+    '楽天トラベル'
+  ),
+  '大歩危温泉 サンリバー大歩危 大浴場': sourcePhoto(
+    'miyoshi-onsen-sunriver.jpg',
+    '大歩危温泉 サンリバー大歩危 大浴場の浴場写真',
+    '大歩危温泉 サンリバー大歩危 大浴場 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/54677/54677.html',
+    '楽天トラベル'
+  ),
+  '渓谷の隠れ宿 祖谷美人 露天風呂': sourcePhoto(
+    'miyoshi-onsen-iyabijin.jpg',
+    '渓谷の隠れ宿 祖谷美人 露天風呂の浴場写真',
+    '渓谷の隠れ宿 祖谷美人 露天風呂 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/56704/56704.html',
+    '楽天トラベル'
+  ),
+  '祖谷の宿 かずらや 露天風呂': sourcePhoto(
+    'miyoshi-onsen-kazuraya.jpg',
+    '祖谷の宿 かずらや 露天風呂の浴場写真',
+    '祖谷の宿 かずらや 露天風呂 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/67957/67957.html',
+    '楽天トラベル'
+  ),
+  '寿し六旅館 貸切風呂': sourcePhoto(
+    'miyoshi-onsen-sushi6.jpg',
+    '寿し六旅館 貸切風呂の浴場写真',
+    '寿し六旅館 貸切風呂 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/129667/129667.html',
+    '楽天トラベル'
+  ),
+  '祖谷観光旅館 大浴場': sourcePhoto(
+    'miyoshi-onsen-iyakanko.jpg',
+    '祖谷観光旅館 大浴場の浴場写真',
+    '祖谷観光旅館 大浴場 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/142344/142344.html',
+    '楽天トラベル'
+  ),
+  '祖谷の里 民宿お山荘 大浴場': sourcePhoto(
+    'miyoshi-onsen-oyamaso.jpg',
+    '祖谷の里 民宿お山荘 大浴場の浴場写真',
+    '祖谷の里 民宿お山荘 大浴場 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/142530/142530.html',
+    '楽天トラベル'
+  ),
+  '本町旅宿 4S STAY 阿波池田 本町通り 大浴場': sourcePhoto(
+    'miyoshi-onsen-4s-honmachi.jpg',
+    '本町旅宿 4S STAY 阿波池田 本町通り 大浴場の浴場写真',
+    '本町旅宿 4S STAY 阿波池田 本町通り 大浴場 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/180706/180706.html',
+    '楽天トラベル'
+  ),
+  'Ｇｕｅｓｔｈｏｕｓｅ ＫＡＺＵＲＡＢＡＳＨＩ 大浴場': sourcePhoto(
+    'miyoshi-onsen-gh-kazura.jpg',
+    'Ｇｕｅｓｔｈｏｕｓｅ ＫＡＺＵＲＡＢＡＳＨＩ 大浴場の浴場写真',
+    'Ｇｕｅｓｔｈｏｕｓｅ ＫＡＺＵＲＡＢＡＳＨＩ 大浴場 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/192586/192586.html',
     '楽天トラベル'
   ),
 

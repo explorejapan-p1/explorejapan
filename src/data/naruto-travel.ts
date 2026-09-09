@@ -1,9 +1,9 @@
 /**
  * Naruto City travel layer. No frozen pack.
- * Dining from 食べログ 鳴門市 (C36202) public shop pages. FOOD dish photos required.
- * Stay from NAVITIME 鳴門市ホテル一覧 + 楽天トラベル share/room images (出典). Rank strongest first.
- * Experience: 渦の道 / ドイツ館 / 大塚国際美術館 (Commons).
- * Onsen: 鳴門温泉 露天風呂 縹 bath from アオアヲ公式 (出典). Do not invent pack dining/stay.
+ * Stay: Rakuten 部屋 stills densified (TG610 wave7).
+ * Onsen: EXTRA facility bath stills (HARD BAR stay≠onsen) + kept 鳴門温泉 露天風呂 縹.
+ * Dining from 食べログ 鳴門市 (C36202). Experience: 渦の道 / ドイツ館 / 大塚国際美術館.
+ * Do not invent pack dining/stay.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
@@ -15,7 +15,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const NARUTO_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const NARUTO_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const NARUTO_TRAVEL_SOURCES = {
   home: 'https://www.city.naruto.tokushima.jp/',
@@ -29,7 +29,19 @@ export const NARUTO_TRAVEL_SOURCES = {
   aoaoOnsen: 'https://www.aoawo-naruto.com/pages/105/'
 } as const;
 
-export const NARUTO_ONSEN_PACK_NAMES = ['鳴門温泉 露天風呂 縹'] as const;
+export const NARUTO_ONSEN_PACK_NAMES = [
+  '鳴門温泉 露天風呂 縹',
+  'アオアヲナルトリゾート 露天風呂',
+  'ホテル ファーストシーズン鳴門 大浴場',
+  'リゾートホテル モアナコースト 露天風呂',
+  'ベイリゾートホテル 鳴門海月 大浴場',
+  '公園水野 大浴場',
+  'グランドエクシブ鳴門 ザ・ロッジ 露天風呂',
+  '鳴門グランドホテル海月 大浴場',
+  '鳴門海月別亭 シーサイドホテル鯛丸海月 露天風呂',
+  'NEXEL α鳴門 大浴場',
+  'オーシャンヴィラ鳴門 大浴場'
+] as const;
 export const NARUTO_ONSEN_PACK_SET: ReadonlySet<string> = new Set(NARUTO_ONSEN_PACK_NAMES);
 export const NARUTO_EXPERIENCE_PACK_NAMES = ['大鳴門橋遊歩道 渦の道', '鳴門市ドイツ館', '大塚国際美術館'] as const;
 export const NARUTO_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(NARUTO_EXPERIENCE_PACK_NAMES);
@@ -68,92 +80,155 @@ export const NARUTO_TRAVEL_STAY: readonly TravelRow[] = [
     'naruto-stay-01',
     'アオアヲナルトリゾート',
     '徳島県鳴門市鳴門町土佐泊浦字大毛16-45',
-    '088-687-2580',
+    null,
     'https://travel.rakuten.co.jp/HOTEL/6123/6123.html'
   ),
   stay(
     'naruto-stay-02',
     'リゾートホテル モアナコースト',
     '徳島県鳴門市鳴門町土佐泊浦字高砂186-16',
-    '088-687-2255',
+    null,
     'https://travel.rakuten.co.jp/HOTEL/7769/7769.html'
   ),
   stay(
     'naruto-stay-03',
     'ホテルロータススーペリアリゾート鳴門',
     '徳島県鳴門市鳴門町土佐泊浦大毛234-16',
-    '088-677-9413',
+    null,
     'https://travel.rakuten.co.jp/HOTEL/153466/153466.html'
   ),
   stay(
     'naruto-stay-04',
     'ホテル ネクセル 鳴門',
     '徳島県鳴門市撫養町斎田大堤55',
-    '088-683-1230',
+    null,
     'https://travel.rakuten.co.jp/HOTEL/158397/158397.html'
   ),
   stay(
     'naruto-stay-05',
     'ホテルエリアワン鳴門',
     '徳島県鳴門市撫養町小桑島前浜168-1',
-    '088-686-0211',
+    null,
     'https://travel.rakuten.co.jp/HOTEL/16170/16170.html'
   ),
   stay(
     'naruto-stay-06',
     'ホテルクラウンヒルズ鳴門 高速鳴門前',
     '徳島県鳴門市撫養町大桑島すべり岩浜51-1',
-    '088-685-8883',
+    null,
     'https://travel.rakuten.co.jp/HOTEL/128426/128426.html'
   ),
   stay(
     'naruto-stay-07',
     'グランドエクシブ鳴門 ザ・ロッジ',
     '徳島県鳴門市北灘町折野大川筋182',
-    '088-682-0246',
+    null,
     'https://travel.rakuten.co.jp/HOTEL/108677/108677.html'
   ),
   stay(
     'naruto-stay-08',
     'ホテル ファーストシーズン鳴門',
     '徳島県鳴門市撫養町斉田字大堤228番地',
-    '088-686-3261',
+    null,
     'https://travel.rakuten.co.jp/HOTEL/7505/7505.html'
   ),
   stay(
     'naruto-stay-09',
     'ビジネスホテル鳴門',
     '徳島県鳴門市撫養町斉田字大堤104-105',
-    '088-686-2555',
+    null,
     'https://travel.rakuten.co.jp/HOTEL/10747/10747.html'
   ),
   stay(
     'naruto-stay-10',
     'ホテル カクイン鳴門',
     '徳島県鳴門市撫養町斎田字大堤208番地',
-    '088-685-1115',
+    null,
     'https://travel.rakuten.co.jp/HOTEL/183411/183411.html'
   ),
   stay(
     'naruto-stay-11',
+    'ファミリーロッジ旅籠屋・鳴門駅前店',
+    '徳島県鳴門市撫養町小桑島前浜277-2',
+    null,
+    'https://travel.rakuten.co.jp/HOTEL/146872/146872.html'
+  ),
+  stay(
+    'naruto-stay-12',
+    'NEXEL α鳴門',
+    '徳島県鳴門市撫養町小桑島前浜65',
+    null,
+    'https://travel.rakuten.co.jp/HOTEL/176981/176981.html'
+  ),
+  stay(
+    'naruto-stay-13',
+    'ベイリゾートホテル 鳴門海月',
+    '徳島県鳴門市鳴門町土佐泊浦福池65-7',
+    null,
+    'https://travel.rakuten.co.jp/HOTEL/17766/17766.html'
+  ),
+  stay(
+    'naruto-stay-14',
+    '公園水野',
+    '徳島県鳴門市鳴門町土佐泊浦福池65',
+    null,
+    'https://travel.rakuten.co.jp/HOTEL/37460/37460.html'
+  ),
+  stay(
+    'naruto-stay-15',
+    '鳴門グランドホテル海月',
+    '徳島県鳴門市鳴門町土佐泊浦大毛82-88',
+    null,
+    'https://travel.rakuten.co.jp/HOTEL/149301/149301.html'
+  ),
+  stay(
+    'naruto-stay-16',
+    '鳴門海月別亭 シーサイドホテル鯛丸海月',
+    '徳島県鳴門市鳴門町土佐泊浦福池15-33',
+    null,
+    'https://travel.rakuten.co.jp/HOTEL/151154/151154.html'
+  ),
+  stay(
+    'naruto-stay-17',
+    '料理・旅館大鳥居苑',
+    '徳島県鳴門市大麻町板東西山田33-4',
+    null,
+    'https://travel.rakuten.co.jp/HOTEL/178232/178232.html'
+  ),
+  stay(
+    'naruto-stay-18',
+    'オーシャンヴィラ鳴門',
+    '徳島県鳴門市里浦町里浦字坂田432-211',
+    null,
+    'https://travel.rakuten.co.jp/HOTEL/196501/196501.html'
+  ),
+  stay(
+    'naruto-stay-19',
+    '花見山・ハウスアンダーナッハ',
+    '徳島県鳴門市鳴門町土佐泊浦字大毛234-35',
+    null,
+    'https://travel.rakuten.co.jp/HOTEL/197123/197123.html'
+  ),
+  stay(
+    'naruto-stay-20',
+    'Ｈｏｔｅｌ Ｏ． Ｎａｒｕｔｏ（２０２６年７月３１日オープン）',
+    '徳島県鳴門市鳴門町高島山路99-3',
+    null,
+    'https://travel.rakuten.co.jp/HOTEL/199409/199409.html'
+  ),
+  stay(
+    'naruto-stay-21',
+    'グランプレミア鳴門 〜オーシャンビューテント＆ヴィラ〜 （２０２６年７月３１日オープン）',
+    '徳島県鳴門市鳴門町高島山路99-6',
+    null,
+    'https://travel.rakuten.co.jp/HOTEL/199410/199410.html'
+  ),
+  stay(
+    'naruto-stay-22',
     'ホテルリッジ',
     '徳島県鳴門市瀬戸町大島田字中山1-1',
     '088-688-1212',
     'https://travel.rakuten.co.jp/HOTEL/76857/76857.html'
-  ),
-  stay(
-    'naruto-stay-12',
-    'ファミリーロッジ旅籠屋・鳴門駅前店',
-    '徳島県鳴門市撫養町小桑島前浜277-2',
-    '088-686-8857',
-    'https://travel.rakuten.co.jp/HOTEL/146872/146872.html'
-  ),
-  stay(
-    'naruto-stay-13',
-    'NEXEL α鳴門',
-    '徳島県鳴門市撫養町小桑島前浜65',
-    '088-685-2277',
-    'https://travel.rakuten.co.jp/HOTEL/176981/176981.html'
   )
 ];
 

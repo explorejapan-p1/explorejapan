@@ -1,9 +1,8 @@
 /**
- * Miyoshi travel layer. Pack has no dining/stay categories.
- * Onsen / stay names already in the frozen tourism pack stay on 温泉 / 宿泊 via exact name_ja.
- * Dining is copied from 三好市観光協会 public shop pages. Do not invent pack dining.
- * Do not copy 美馬 / つるぎ / 吉野川 TRAVEL_* rows or photos.
- * Do not mix 東みよし町 (36489).
+ * Miyoshi City travel layer.
+ * Stay: Rakuten 部屋 stills densified (TG610 wave7) + pack STAY ISHIWAKI + もみじ NO_ROOM keep.
+ * Onsen: EXTRA facility bath stills (HARD BAR stay≠onsen) — distinct keys from stay hotel names.
+ * Pack lodging names formerly used as onsen chips moved to stay with room stills.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
@@ -32,14 +31,51 @@ export const MIYOSHI_TRAVEL_SOURCES = {
 } as const;
 
 /** Exact tourism-pack names shown on 温泉, not 観光. Bath/roten photo required. */
-export const MIYOSHI_ONSEN_PACK_NAMES = ['和の宿 ホテル祖谷温泉', '湯元新祖谷温泉 ホテルかずら橋'] as const;
+export const MIYOSHI_ONSEN_PACK_NAMES = [
+  '和の宿 ホテル祖谷温泉 絹泡夢想の湯',
+  '白地温泉 小西旅館 展望風呂',
+  '民宿 白地荘 大浴場',
+  '湯元新祖谷温泉 ホテルかずら橋 露天風呂',
+  '祖谷渓温泉 ホテル秘境の湯 大浴場',
+  '峡谷の湯宿 大歩危峡まんなか 露天風呂',
+  '大歩危温泉 サンリバー大歩危 大浴場',
+  '渓谷の隠れ宿 祖谷美人 露天風呂',
+  '祖谷の宿 かずらや 露天風呂',
+  '寿し六旅館 貸切風呂',
+  '祖谷観光旅館 大浴場',
+  '祖谷の里 民宿お山荘 大浴場',
+  '本町旅宿 4S STAY 阿波池田 本町通り 大浴場',
+  'Ｇｕｅｓｔｈｏｕｓｅ ＫＡＺＵＲＡＢＡＳＨＩ 大浴場'
+] as const;
 
 export const MIYOSHI_ONSEN_PACK_SET: ReadonlySet<string> = new Set(MIYOSHI_ONSEN_PACK_NAMES);
 export const MIYOSHI_EXPERIENCE_PACK_NAMES = ['大歩危峡まんなか/大歩危峡観光遊覧船', '箸蔵山ロープウェイ株式会社'] as const;
 export const MIYOSHI_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(MIYOSHI_EXPERIENCE_PACK_NAMES);
 
 /** Exact tourism-pack names shown on 宿泊, not 観光. Room/bath/view photo required. */
-export const MIYOSHI_STAY_PACK_NAMES = ['峡谷の湯宿 大歩危峡まんなか', '桃源郷祖谷の山里 茅葺き民家ステイ', 'STAY ISHIWAKI'] as const;
+export const MIYOSHI_STAY_PACK_NAMES = [
+  '峡谷の湯宿 大歩危峡まんなか',
+  '桃源郷祖谷の山里 茅葺き民家ステイ',
+  'hostel 大黒屋',
+  '和の宿 ホテル祖谷温泉',
+  '白地温泉小西旅館',
+  '民宿 白地荘',
+  '湯元新祖谷温泉 ホテルかずら橋',
+  'ふくや旅館',
+  '祖谷渓温泉 ホテル秘境の湯',
+  '大歩危温泉 サンリバー大歩危',
+  '渓谷の隠れ宿 祖谷美人',
+  '祖谷の宿 かずらや',
+  '祖谷観光旅館',
+  '農家民宿 歩危農園',
+  '勇楼旅館',
+  '楽校の宿あるせ',
+  '古民家宿 4S STAY 阿波池田駅前',
+  '本町旅宿 4S STAY 阿波池田 本町通り',
+  'ビジネスホテル阿波池田 いれぶん2',
+  '彩り旅宿 4S STAY 池田温泉横',
+  'STAY ISHIWAKI'
+] as const;
 
 export const MIYOSHI_STAY_PACK_SET: ReadonlySet<string> = new Set(MIYOSHI_STAY_PACK_NAMES);
 
@@ -74,25 +110,39 @@ export const MIYOSHI_TRAVEL_STAY: readonly TravelRow[] = [
     'miyoshi-stay-01',
     'ホテル サボテンアパートメント',
     '徳島県三好市池田町サラダ1649-3',
-    '0883-72-0011',
+    null,
     'https://travel.rakuten.co.jp/HOTEL/165553/165553.html'
   ),
   stay(
     'miyoshi-stay-02',
     '阿波池田駅前ホテルイレブン',
     '徳島県三好市池田町サラダ1835-1',
-    '0883-72-8115',
+    null,
     'https://travel.rakuten.co.jp/HOTEL/158338/158338.html'
   ),
   stay(
+    'miyoshi-stay-03',
+    '寿し六旅館',
+    '徳島県三好市池田町2178-5',
+    null,
+    'https://travel.rakuten.co.jp/HOTEL/129667/129667.html'
+  ),
+  stay(
     'miyoshi-stay-04',
-    'hostel大黒屋',
-    '徳島県三好市池田町シマ817-1',
-    '070-9367-9092',
-    'https://travel.rakuten.co.jp/HOTEL/199086/199086.html'
+    '祖谷の里 民宿お山荘',
+    '徳島県三好市西祖谷山村閑定91-2',
+    null,
+    'https://travel.rakuten.co.jp/HOTEL/142530/142530.html'
   ),
   stay(
     'miyoshi-stay-05',
+    'Ｇｕｅｓｔｈｏｕｓｅ ＫＡＺＵＲＡＢＡＳＨＩ',
+    '徳島県三好市西祖谷山村善徳161-13',
+    null,
+    'https://travel.rakuten.co.jp/HOTEL/192586/192586.html'
+  ),
+  stay(
+    'miyoshi-stay-06',
     'もみじ',
     '徳島県三好市西祖谷山村西岡向110-1',
     '0883-76-8033',

@@ -29,7 +29,7 @@ export const LOOKUP_CATEGORIES = [
 ] as const satisfies readonly FacilityCategory[];
 
 export const EXPECTED_CATEGORY_COUNTS = {
-  tourism: 116,
+  tourism: 119,
   cultural_property: 110,
   care: 80,
   aed: 72,
@@ -42,7 +42,7 @@ export const EXPECTED_CATEGORY_COUNTS = {
   gtfs_stop: 0
 } as const satisfies Record<FacilityCategory, number>;
 
-export const EXPECTED_ROW_COUNT = 515;
+export const EXPECTED_ROW_COUNT = 518;
 export const MIMA_PACK_JIS = '36207';
 export const PACK_ACCESSED = '2026-08-25';
 
@@ -111,13 +111,13 @@ export const AWA_EXPECTED_CATEGORY_COUNTS = {
 
 
 export const MIYOSHI_PACK_JIS = '36208';
-export const MIYOSHI_EXPECTED_ROW_COUNT = 1042;
+export const MIYOSHI_EXPECTED_ROW_COUNT = 1056;
 export const MIYOSHI_EXPECTED_GEO_COUNT = 636;
 export const MIYOSHI_EXPECTED_HOURS_COUNT = 494;
 export const MIYOSHI_EXPECTED_MISSING_ADDRESS = 548;
 export const MIYOSHI_EXPECTED_MISSING_PHONE = 791;
 export const MIYOSHI_EXPECTED_CATEGORY_COUNTS = {
-  tourism: 221,
+  tourism: 235,
   cultural_property: 184,
   care: 0,
   aed: 0,

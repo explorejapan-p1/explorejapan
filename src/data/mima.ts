@@ -213,6 +213,26 @@ const TSURUGISAN_HUTTE_PHOTO = {
 const GOURMET_PAGE = 'https://mimakankou.or.jp/gourmet/';
 const HOTEL_PAGE = 'https://mimakankou.or.jp/hoteltop/';
 
+function rakutenPhoto(
+  file: string,
+  altJa: string,
+  altEn: string,
+  page: string
+): MimaPlacePhoto {
+  return {
+    src: `/explorejapan/media/${file}`,
+    commons: page,
+    license: '出典',
+    licenseUrl: page,
+    author: '楽天トラベル',
+    authorUrl: page,
+    taken: '2026',
+    accessed: '2026-09-09',
+    altJa,
+    altEn
+  };
+}
+
 function bureauPhoto(
   file: string,
   taken: string,
@@ -293,12 +313,11 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   '名馬「池月」伝説': IKEZUKI_PHOTO,
   '三木家住宅': MIKI_PHOTO,
   '三木家住宅（みきけじゅうたく） 〔国指定重要文化財〕': MIKI_PHOTO,
-  'ブルーヴィラあなぶき': bureauPhoto(
-    'blue-villa-anabuki-dish.jpg',
-    '2024',
-    'ブルーヴィラあなぶき 阿波尾鶏の天丼（美馬市）',
-    'Blue Villa Anabuki tendon set, Mima',
-    GOURMET_PAGE
+  'ブルーヴィラあなぶき': rakutenPhoto(
+    'mima-stay-08.jpg',
+    'ブルーヴィラあなぶきの客室写真',
+    'Blue Villa Anabuki room photo',
+    'https://travel.rakuten.co.jp/HOTEL/167767/167767.html'
   ),
   '割烹旅館田岡': bureauPhoto(
     'kappo-ryokan-taoka-dish.jpg',
@@ -390,12 +409,11 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'https://www.city.mima.lg.jp/kanko/map/list/11492.html'
   ),
   '剣山頂上ヒュッテ': TSURUGISAN_HUTTE_PHOTO,
-  'ADLIV': bureauPhoto(
-    'adliv.jpg',
-    '2021',
-    'ADLIV（美馬市脇町）',
-    'ADLIV lodging, Wakimachi, Mima',
-    HOTEL_PAGE
+  'ADLIV': rakutenPhoto(
+    'mima-stay-01.jpg',
+    'ADLIVの客室写真',
+    'ADLIV room photo',
+    'https://travel.rakuten.co.jp/HOTEL/193080/193080.html'
   ),
   'オートキャンプ場 四国三郎の郷': bureauPhoto(
     'shikoku-saburo-no-sato.jpg',
@@ -404,33 +422,71 @@ export const MIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'Shikoku Saburo no Sato auto campground, Mima',
     HOTEL_PAGE
   ),
-  '清月屋敷': bureauPhoto(
-    'seigetsu-yashiki.jpg',
-    '2021',
-    '清月屋敷（美馬市穴吹町）',
-    'Seigetsu Yashiki, Anabuki, Mima',
-    HOTEL_PAGE
+  '清月屋敷': rakutenPhoto(
+    'mima-stay-02.jpg',
+    '清月屋敷の客室写真',
+    '清月屋敷 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/183424/183424.html'
   ),
-  'ビジネスホテル稲田苑': bureauPhoto(
-    'business-hotel-inadaen.jpg',
-    '2020',
-    'ビジネスホテル稲田苑（美馬市脇町）',
-    'Business Hotel Inadaen, Wakimachi, Mima',
-    HOTEL_PAGE
+  'ビジネスホテル稲田苑': rakutenPhoto(
+    'mima-stay-03.jpg',
+    'ビジネスホテル稲田苑の客室写真',
+    'ビジネスホテル稲田苑 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/20372/20372.html'
   ),
-  'ビジネスホテルマツカ': bureauPhoto(
-    'business-hotel-matsuka.jpg',
-    '2020',
-    'ビジネスホテルマツカ（美馬市脇町）',
-    'Business Hotel Matsuka, Wakimachi, Mima',
-    HOTEL_PAGE
+  'ビジネスホテルマツカ': rakutenPhoto(
+    'mima-stay-04.jpg',
+    'ビジネスホテルマツカの客室写真',
+    'ビジネスホテルマツカ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/9409/9409.html'
   ),
-  'Paysage Moriguchi': bureauPhoto(
-    'paysage-moriguchi.jpg',
-    '2021',
-    'Paysage Moriguchi（美馬市脇町）',
-    'Paysage Moriguchi, Wakimachi, Mima',
-    HOTEL_PAGE
+  'Paysage Moriguchi': rakutenPhoto(
+    'mima-stay-05.jpg',
+    'Paysage Moriguchiの客室写真',
+    'Paysage Moriguchi room photo',
+    'https://travel.rakuten.co.jp/HOTEL/181667/181667.html'
+  ),
+  '脇プラザホテル': rakutenPhoto(
+    'mima-stay-06.jpg',
+    '脇プラザホテルの客室写真',
+    '脇プラザホテル room photo',
+    'https://travel.rakuten.co.jp/HOTEL/17790/17790.html'
+  ),
+  '山人の里': rakutenPhoto(
+    'mima-stay-07.jpg',
+    '山人の里の客室写真',
+    '山人の里 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/163094/163094.html'
+  ),
+  '農家民宿 ゆずの里いづみ ＾': rakutenPhoto(
+    'mima-stay-09.jpg',
+    '農家民宿 ゆずの里いづみ ＾の客室写真',
+    '農家民宿 ゆずの里いづみ ＾ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/173443/173443.html'
+  ),
+  'ロムのお宿／民泊': rakutenPhoto(
+    'mima-stay-10.jpg',
+    'ロムのお宿／民泊の客室写真',
+    'ロムのお宿／民泊 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/194425/194425.html'
+  ),
+  '油屋 美馬館 大浴場': rakutenPhoto(
+    'mima-onsen-aburaya.jpg',
+    '油屋 美馬館 大浴場の浴場写真',
+    '油屋 美馬館 大浴場 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/67468/67468.html'
+  ),
+  'ブルーヴィラあなぶき 大浴場': rakutenPhoto(
+    'mima-onsen-bluevilla.jpg',
+    'ブルーヴィラあなぶき 大浴場の浴場写真',
+    'ブルーヴィラあなぶき 大浴場 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/167767/167767.html'
+  ),
+  '清月屋敷 大浴場': rakutenPhoto(
+    'mima-onsen-seigetsu.jpg',
+    '清月屋敷 大浴場の浴場写真',
+    '清月屋敷 大浴場 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/183424/183424.html'
   ),
   '樺太開拓の志士・岡本監輔': cityPhoto(
     'mima-kanko-11490.jpg',

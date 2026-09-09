@@ -1,12 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {
-  EXPECTED_CATEGORY_COUNTS,
-  EXPECTED_GEO_COUNT,
-  EXPECTED_HOURS_COUNT,
-  EXPECTED_MISSING_ADDRESS,
-  EXPECTED_MISSING_PHONE,
-  EXPECTED_ROW_COUNT,
   FACILITY_CATEGORIES,
   MIMA_PACK_JIS,
   PACK_ACCESSED,
@@ -15,6 +9,26 @@ import {
   type FacilityRow,
   type OfficialMapPoint
 } from './facility-schema';
+
+/** Frozen jsonl baselines (before EXTRA bath rows). */
+const PACK_ROW_COUNT = 515;
+const PACK_GEO_COUNT = 61;
+const PACK_HOURS_COUNT = 178;
+const PACK_MISSING_ADDRESS = 110;
+const PACK_MISSING_PHONE = 374;
+const PACK_CATEGORY_COUNTS: Record<FacilityCategory, number> = {
+  tourism: 116,
+  cultural_property: 110,
+  care: 80,
+  aed: 72,
+  shelter: 45,
+  emergency_evacuation_site: 40,
+  hospital: 23,
+  childcare: 16,
+  wifi: 9,
+  public_facility: 4,
+  gtfs_stop: 0
+};
 
 const PACK_PATH = path.join(process.cwd(), 'data', 'frozen', 'mima-facilities.jsonl');
 
@@ -139,35 +153,89 @@ function loadMimaFacilities(): readonly FacilityRow[] {
     const parsed: unknown = JSON.parse(line);
     rows.push(parseFacilityRow(parsed));
   }
-  if (rows.length !== EXPECTED_ROW_COUNT) {
-    throw new Error(`mima pack row count ${rows.length} != ${EXPECTED_ROW_COUNT}`);
+  if (rows.length !== PACK_ROW_COUNT) {
+    throw new Error(`mima pack row count ${rows.length} != ${PACK_ROW_COUNT}`);
   }
   const counts = emptyCounts();
   for (const row of rows) {
     counts[row.category] += 1;
   }
   for (const cat of FACILITY_CATEGORIES) {
-    if (counts[cat] !== EXPECTED_CATEGORY_COUNTS[cat]) {
-      throw new Error(`mima pack ${cat} ${counts[cat]} != ${EXPECTED_CATEGORY_COUNTS[cat]}`);
+    if (counts[cat] !== PACK_CATEGORY_COUNTS[cat]) {
+      throw new Error(`mima pack ${cat} ${counts[cat]} != ${PACK_CATEGORY_COUNTS[cat]}`);
     }
   }
   const gaps = tallyGaps(rows);
-  if (gaps.geo !== EXPECTED_GEO_COUNT) {
-    throw new Error(`mima pack geo ${gaps.geo} != ${EXPECTED_GEO_COUNT}`);
+  if (gaps.geo !== PACK_GEO_COUNT) {
+    throw new Error(`mima pack geo ${gaps.geo} != ${PACK_GEO_COUNT}`);
   }
-  if (gaps.hours !== EXPECTED_HOURS_COUNT) {
-    throw new Error(`mima pack hours ${gaps.hours} != ${EXPECTED_HOURS_COUNT}`);
+  if (gaps.hours !== PACK_HOURS_COUNT) {
+    throw new Error(`mima pack hours ${gaps.hours} != ${PACK_HOURS_COUNT}`);
   }
-  if (gaps.missingAddress !== EXPECTED_MISSING_ADDRESS) {
-    throw new Error(`mima pack address gaps ${gaps.missingAddress} != ${EXPECTED_MISSING_ADDRESS}`);
+  if (gaps.missingAddress !== PACK_MISSING_ADDRESS) {
+    throw new Error(`mima pack address gaps ${gaps.missingAddress} != ${PACK_MISSING_ADDRESS}`);
   }
-  if (gaps.missingPhone !== EXPECTED_MISSING_PHONE) {
-    throw new Error(`mima pack phone gaps ${gaps.missingPhone} != ${EXPECTED_MISSING_PHONE}`);
+  if (gaps.missingPhone !== PACK_MISSING_PHONE) {
+    throw new Error(`mima pack phone gaps ${gaps.missingPhone} != ${PACK_MISSING_PHONE}`);
   }
   return rows;
 }
 
-export const MIMA_FACILITIES: readonly FacilityRow[] = loadMimaFacilities();
+const MIMA_EXTRA_FACILITIES: readonly FacilityRow[] = [
+  {
+    id: 'mima-extra-aburaya',
+    jis: MIMA_PACK_JIS,
+    name_ja: '油屋 美馬館 大浴場',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '美馬市穴吹町穴吹市ノ下100-6',
+    phone: null,
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/67468/67468.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/67468/67468.html',
+    license: '楽天トラベル掲載情報',
+    accessed: '2026-09-09'
+  },
+  {
+    id: 'mima-extra-bluevilla',
+    jis: MIMA_PACK_JIS,
+    name_ja: 'ブルーヴィラあなぶき 大浴場',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '美馬市穴吹町口山丸山1',
+    phone: null,
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/167767/167767.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/167767/167767.html',
+    license: '楽天トラベル掲載情報',
+    accessed: '2026-09-09'
+  },
+  {
+    id: 'mima-extra-seigetsu',
+    jis: MIMA_PACK_JIS,
+    name_ja: '清月屋敷 大浴場',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '美馬市穴吹町穴吹字市ノ下100-6',
+    phone: null,
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/183424/183424.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/183424/183424.html',
+    license: '楽天トラベル掲載情報',
+    accessed: '2026-09-09'
+  }
+];
+
+export const MIMA_FACILITIES: readonly FacilityRow[] = [
+  ...loadMimaFacilities(),
+  ...MIMA_EXTRA_FACILITIES
+];
 
 export function facilityGapBoard(
   rows: readonly FacilityRow[] = MIMA_FACILITIES

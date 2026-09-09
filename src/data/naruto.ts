@@ -41,7 +41,7 @@ export const NARUTO = {
   }
 } as const;
 
-export const NARUTO_EXPECTED_ROW_COUNT = 9;
+export const NARUTO_EXPECTED_ROW_COUNT = 19;
 export const NARUTO_EXPECTED_GEO_COUNT = 9;
 
 function wikiPhoto(
@@ -298,9 +298,156 @@ export const NARUTO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   ),
   'アオアヲナルトリゾート': sourcePhoto(
     'naruto-stay-01.jpg',
-    'アオアヲナルトリゾートの客室・外観写真',
-    'アオアヲナルトリゾート room or exterior photo',
+    'アオアヲナルトリゾートの客室写真',
+    'アオアヲナルトリゾート room photo',
     'https://travel.rakuten.co.jp/HOTEL/6123/6123.html',
+    '楽天トラベル'
+  ),
+  'リゾートホテル モアナコースト': sourcePhoto(
+    'naruto-stay-02.jpg',
+    'リゾートホテル モアナコーストの客室写真',
+    'リゾートホテル モアナコースト room photo',
+    'https://travel.rakuten.co.jp/HOTEL/7769/7769.html',
+    '楽天トラベル'
+  ),
+  'ホテルロータススーペリアリゾート鳴門': sourcePhoto(
+    'naruto-stay-03.jpg',
+    'ホテルロータススーペリアリゾート鳴門の客室写真',
+    'ホテルロータススーペリアリゾート鳴門 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/153466/153466.html',
+    '楽天トラベル'
+  ),
+  'ホテル ネクセル 鳴門': sourcePhoto(
+    'naruto-stay-04.jpg',
+    'ホテル ネクセル 鳴門の客室写真',
+    'ホテル ネクセル 鳴門 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/158397/158397.html',
+    '楽天トラベル'
+  ),
+  'ホテルエリアワン鳴門': sourcePhoto(
+    'naruto-stay-05.jpg',
+    'ホテルエリアワン鳴門の客室写真',
+    'ホテルエリアワン鳴門 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/16170/16170.html',
+    '楽天トラベル'
+  ),
+  'ホテルクラウンヒルズ鳴門 高速鳴門前': sourcePhoto(
+    'naruto-stay-06.jpg',
+    'ホテルクラウンヒルズ鳴門 高速鳴門前の客室写真',
+    'ホテルクラウンヒルズ鳴門 高速鳴門前 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/128426/128426.html',
+    '楽天トラベル'
+  ),
+  'グランドエクシブ鳴門 ザ・ロッジ': sourcePhoto(
+    'naruto-stay-07.jpg',
+    'グランドエクシブ鳴門 ザ・ロッジの客室写真',
+    'グランドエクシブ鳴門 ザ・ロッジ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/108677/108677.html',
+    '楽天トラベル'
+  ),
+  'ホテル ファーストシーズン鳴門': sourcePhoto(
+    'naruto-stay-08.jpg',
+    'ホテル ファーストシーズン鳴門の客室写真',
+    'ホテル ファーストシーズン鳴門 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/7505/7505.html',
+    '楽天トラベル'
+  ),
+  'ビジネスホテル鳴門': sourcePhoto(
+    'naruto-stay-09.jpg',
+    'ビジネスホテル鳴門の客室写真',
+    'ビジネスホテル鳴門 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/10747/10747.html',
+    '楽天トラベル'
+  ),
+  'ホテル カクイン鳴門': sourcePhoto(
+    'naruto-stay-10.jpg',
+    'ホテル カクイン鳴門の客室写真',
+    'ホテル カクイン鳴門 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/183411/183411.html',
+    '楽天トラベル'
+  ),
+  'ファミリーロッジ旅籠屋・鳴門駅前店': sourcePhoto(
+    'naruto-stay-11.jpg',
+    'ファミリーロッジ旅籠屋・鳴門駅前店の客室写真',
+    'ファミリーロッジ旅籠屋・鳴門駅前店 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/146872/146872.html',
+    '楽天トラベル'
+  ),
+  'NEXEL α鳴門': sourcePhoto(
+    'naruto-stay-12.jpg',
+    'NEXEL α鳴門の客室写真',
+    'NEXEL α鳴門 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/176981/176981.html',
+    '楽天トラベル'
+  ),
+  'ベイリゾートホテル 鳴門海月': sourcePhoto(
+    'naruto-stay-13.jpg',
+    'ベイリゾートホテル 鳴門海月の客室写真',
+    'ベイリゾートホテル 鳴門海月 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/17766/17766.html',
+    '楽天トラベル'
+  ),
+  '公園水野': sourcePhoto(
+    'naruto-stay-14.jpg',
+    '公園水野の客室写真',
+    '公園水野 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/37460/37460.html',
+    '楽天トラベル'
+  ),
+  '鳴門グランドホテル海月': sourcePhoto(
+    'naruto-stay-15.jpg',
+    '鳴門グランドホテル海月の客室写真',
+    '鳴門グランドホテル海月 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/149301/149301.html',
+    '楽天トラベル'
+  ),
+  '鳴門海月別亭 シーサイドホテル鯛丸海月': sourcePhoto(
+    'naruto-stay-16.jpg',
+    '鳴門海月別亭 シーサイドホテル鯛丸海月の客室写真',
+    '鳴門海月別亭 シーサイドホテル鯛丸海月 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/151154/151154.html',
+    '楽天トラベル'
+  ),
+  '料理・旅館大鳥居苑': sourcePhoto(
+    'naruto-stay-17.jpg',
+    '料理・旅館大鳥居苑の客室写真',
+    '料理・旅館大鳥居苑 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/178232/178232.html',
+    '楽天トラベル'
+  ),
+  'オーシャンヴィラ鳴門': sourcePhoto(
+    'naruto-stay-18.jpg',
+    'オーシャンヴィラ鳴門の客室写真',
+    'オーシャンヴィラ鳴門 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/196501/196501.html',
+    '楽天トラベル'
+  ),
+  '花見山・ハウスアンダーナッハ': sourcePhoto(
+    'naruto-stay-19.jpg',
+    '花見山・ハウスアンダーナッハの客室写真',
+    '花見山・ハウスアンダーナッハ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/197123/197123.html',
+    '楽天トラベル'
+  ),
+  'Ｈｏｔｅｌ Ｏ． Ｎａｒｕｔｏ（２０２６年７月３１日オープン）': sourcePhoto(
+    'naruto-stay-20.jpg',
+    'Ｈｏｔｅｌ Ｏ． Ｎａｒｕｔｏ（２０２６年７月３１日オープン）の客室写真',
+    'Ｈｏｔｅｌ Ｏ． Ｎａｒｕｔｏ（２０２６年７月３１日オープン） room photo',
+    'https://travel.rakuten.co.jp/HOTEL/199409/199409.html',
+    '楽天トラベル'
+  ),
+  'グランプレミア鳴門 〜オーシャンビューテント＆ヴィラ〜 （２０２６年７月３１日オープン）': sourcePhoto(
+    'naruto-stay-21.jpg',
+    'グランプレミア鳴門 〜オーシャンビューテント＆ヴィラ〜 （２０２６年７月３１日オープン）の客室写真',
+    'グランプレミア鳴門 〜オーシャンビューテント＆ヴィラ〜 （２０２６年７月３１日オープン） room photo',
+    'https://travel.rakuten.co.jp/HOTEL/199410/199410.html',
+    '楽天トラベル'
+  ),
+  'ホテルリッジ': sourcePhoto(
+    'naruto-stay-ridge.jpg',
+    'ホテルリッジの客室写真',
+    'ホテルリッジ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/76857/76857.html',
     '楽天トラベル'
   ),
   '鳴門温泉 露天風呂 縹': sourcePhoto(
@@ -310,89 +457,74 @@ export const NARUTO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'https://www.aoawo-naruto.com/pages/105/',
     'アオアヲナルトリゾート'
   ),
-
-  'リゾートホテル モアナコースト': sourcePhoto(
-    'naruto-stay-02.jpg',
-    'リゾートホテル モアナコーストの客室・外観写真',
-    'リゾートホテル モアナコースト room or exterior photo',
-    'https://travel.rakuten.co.jp/HOTEL/7769/7769.html',
+  'アオアヲナルトリゾート 露天風呂': sourcePhoto(
+    'naruto-onsen-aoao.jpg',
+    'アオアヲナルトリゾート 露天風呂の浴場写真',
+    'アオアヲナルトリゾート 露天風呂 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/6123/6123.html',
     '楽天トラベル'
   ),
-  'ホテルロータススーペリアリゾート鳴門': sourcePhoto(
-    'naruto-stay-03.jpg',
-    'ホテルロータススーペリアリゾート鳴門の客室・外観写真',
-    'ホテルロータススーペリアリゾート鳴門 room or exterior photo',
-    'https://travel.rakuten.co.jp/HOTEL/153466/153466.html',
-    '楽天トラベル'
-  ),
-  'ホテル ネクセル 鳴門': sourcePhoto(
-    'naruto-stay-04.jpg',
-    'ホテル ネクセル 鳴門の客室・外観写真',
-    'ホテル ネクセル 鳴門 room or exterior photo',
-    'https://travel.rakuten.co.jp/HOTEL/158397/158397.html',
-    '楽天トラベル'
-  ),
-  'ホテルエリアワン鳴門': sourcePhoto(
-    'naruto-stay-05.jpg',
-    'ホテルエリアワン鳴門の客室・外観写真',
-    'ホテルエリアワン鳴門 room or exterior photo',
-    'https://travel.rakuten.co.jp/HOTEL/16170/16170.html',
-    '楽天トラベル'
-  ),
-  'ホテルクラウンヒルズ鳴門 高速鳴門前': sourcePhoto(
-    'naruto-stay-06.jpg',
-    'ホテルクラウンヒルズ鳴門 高速鳴門前の客室・外観写真',
-    'ホテルクラウンヒルズ鳴門 room or exterior photo',
-    'https://travel.rakuten.co.jp/HOTEL/128426/128426.html',
-    '楽天トラベル'
-  ),
-  'グランドエクシブ鳴門 ザ・ロッジ': sourcePhoto(
-    'naruto-stay-07.jpg',
-    'グランドエクシブ鳴門 ザ・ロッジの客室・外観写真',
-    'グランドエクシブ鳴門 ザ・ロッジ room or exterior photo',
-    'https://travel.rakuten.co.jp/HOTEL/108677/108677.html',
-    '楽天トラベル'
-  ),
-  'ホテル ファーストシーズン鳴門': sourcePhoto(
-    'naruto-stay-08.jpg',
-    'ホテル ファーストシーズン鳴門の客室・外観写真',
-    'ホテル ファーストシーズン鳴門 room or exterior photo',
+  'ホテル ファーストシーズン鳴門 大浴場': sourcePhoto(
+    'naruto-onsen-firstseason.jpg',
+    'ホテル ファーストシーズン鳴門 大浴場の浴場写真',
+    'ホテル ファーストシーズン鳴門 大浴場 bath photo',
     'https://travel.rakuten.co.jp/HOTEL/7505/7505.html',
     '楽天トラベル'
   ),
-  'ビジネスホテル鳴門': sourcePhoto(
-    'naruto-stay-09.jpg',
-    'ビジネスホテル鳴門の客室・外観写真',
-    'ビジネスホテル鳴門 room or exterior photo',
-    'https://travel.rakuten.co.jp/HOTEL/10747/10747.html',
+  'リゾートホテル モアナコースト 露天風呂': sourcePhoto(
+    'naruto-onsen-moana.jpg',
+    'リゾートホテル モアナコースト 露天風呂の浴場写真',
+    'リゾートホテル モアナコースト 露天風呂 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/7769/7769.html',
     '楽天トラベル'
   ),
-  'ホテル カクイン鳴門': sourcePhoto(
-    'naruto-stay-10.jpg',
-    'ホテル カクイン鳴門の客室・外観写真',
-    'ホテル カクイン鳴門 room or exterior photo',
-    'https://travel.rakuten.co.jp/HOTEL/183411/183411.html',
+  'ベイリゾートホテル 鳴門海月 大浴場': sourcePhoto(
+    'naruto-onsen-umizuki.jpg',
+    'ベイリゾートホテル 鳴門海月 大浴場の浴場写真',
+    'ベイリゾートホテル 鳴門海月 大浴場 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/17766/17766.html',
     '楽天トラベル'
   ),
-  'ホテルリッジ': sourcePhoto(
-    'naruto-stay-11.jpg',
-    'ホテルリッジの客室・外観写真',
-    'ホテルリッジ room or exterior photo',
-    'https://travel.rakuten.co.jp/HOTEL/76857/76857.html',
+  '公園水野 大浴場': sourcePhoto(
+    'naruto-onsen-mizuno.jpg',
+    '公園水野 大浴場の浴場写真',
+    '公園水野 大浴場 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/37460/37460.html',
     '楽天トラベル'
   ),
-  'ファミリーロッジ旅籠屋・鳴門駅前店': sourcePhoto(
-    'naruto-stay-12.jpg',
-    'ファミリーロッジ旅籠屋・鳴門駅前店の客室・外観写真',
-    'ファミリーロッジ旅籠屋・鳴門駅前店 room or exterior photo',
-    'https://travel.rakuten.co.jp/HOTEL/146872/146872.html',
+  'グランドエクシブ鳴門 ザ・ロッジ 露天風呂': sourcePhoto(
+    'naruto-onsen-xiv.jpg',
+    'グランドエクシブ鳴門 ザ・ロッジ 露天風呂の浴場写真',
+    'グランドエクシブ鳴門 ザ・ロッジ 露天風呂 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/108677/108677.html',
     '楽天トラベル'
   ),
-  'NEXEL α鳴門': sourcePhoto(
-    'naruto-stay-13.jpg',
-    'NEXEL α鳴門の客室・外観写真',
-    'NEXEL α鳴門 room or exterior photo',
+  '鳴門グランドホテル海月 大浴場': sourcePhoto(
+    'naruto-onsen-grand-umizuki.jpg',
+    '鳴門グランドホテル海月 大浴場の浴場写真',
+    '鳴門グランドホテル海月 大浴場 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/149301/149301.html',
+    '楽天トラベル'
+  ),
+  '鳴門海月別亭 シーサイドホテル鯛丸海月 露天風呂': sourcePhoto(
+    'naruto-onsen-taimaru.jpg',
+    '鳴門海月別亭 シーサイドホテル鯛丸海月 露天風呂の浴場写真',
+    '鳴門海月別亭 シーサイドホテル鯛丸海月 露天風呂 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/151154/151154.html',
+    '楽天トラベル'
+  ),
+  'NEXEL α鳴門 大浴場': sourcePhoto(
+    'naruto-onsen-nexel-alpha.jpg',
+    'NEXEL α鳴門 大浴場の浴場写真',
+    'NEXEL α鳴門 大浴場 bath photo',
     'https://travel.rakuten.co.jp/HOTEL/176981/176981.html',
+    '楽天トラベル'
+  ),
+  'オーシャンヴィラ鳴門 大浴場': sourcePhoto(
+    'naruto-onsen-oceanvilla.jpg',
+    'オーシャンヴィラ鳴門 大浴場の浴場写真',
+    'オーシャンヴィラ鳴門 大浴場 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/196501/196501.html',
     '楽天トラベル'
   ),
 };
@@ -506,5 +638,165 @@ export const NARUTO_FACILITIES: readonly FacilityRow[] = [
     NARUTO.sources.aoaoOnsen,
     34.2200534,
     134.6329971
-  )
+  ),
+  {
+    id: 'naruto-extra-aoao',
+    jis: NARUTO.jis,
+    name_ja: 'アオアヲナルトリゾート 露天風呂',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県鳴門市鳴門町土佐泊浦字大毛16-45',
+    phone: null,
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/6123/6123.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/6123/6123.html',
+    license: '楽天トラベル掲載情報',
+    accessed: NARUTO.sources.accessed
+  },
+  {
+    id: 'naruto-extra-firstseason',
+    jis: NARUTO.jis,
+    name_ja: 'ホテル ファーストシーズン鳴門 大浴場',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県鳴門市撫養町斉田字大堤228番地',
+    phone: null,
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/7505/7505.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/7505/7505.html',
+    license: '楽天トラベル掲載情報',
+    accessed: NARUTO.sources.accessed
+  },
+  {
+    id: 'naruto-extra-moana',
+    jis: NARUTO.jis,
+    name_ja: 'リゾートホテル モアナコースト 露天風呂',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県鳴門市鳴門町土佐泊浦字高砂186-16',
+    phone: null,
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/7769/7769.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/7769/7769.html',
+    license: '楽天トラベル掲載情報',
+    accessed: NARUTO.sources.accessed
+  },
+  {
+    id: 'naruto-extra-umizuki',
+    jis: NARUTO.jis,
+    name_ja: 'ベイリゾートホテル 鳴門海月 大浴場',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県鳴門市鳴門町土佐泊浦福池65-7',
+    phone: null,
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/17766/17766.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/17766/17766.html',
+    license: '楽天トラベル掲載情報',
+    accessed: NARUTO.sources.accessed
+  },
+  {
+    id: 'naruto-extra-mizuno',
+    jis: NARUTO.jis,
+    name_ja: '公園水野 大浴場',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県鳴門市鳴門町土佐泊浦福池65',
+    phone: null,
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/37460/37460.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/37460/37460.html',
+    license: '楽天トラベル掲載情報',
+    accessed: NARUTO.sources.accessed
+  },
+  {
+    id: 'naruto-extra-xiv',
+    jis: NARUTO.jis,
+    name_ja: 'グランドエクシブ鳴門 ザ・ロッジ 露天風呂',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県鳴門市北灘町折野大川筋182',
+    phone: null,
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/108677/108677.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/108677/108677.html',
+    license: '楽天トラベル掲載情報',
+    accessed: NARUTO.sources.accessed
+  },
+  {
+    id: 'naruto-extra-grand-umizuki',
+    jis: NARUTO.jis,
+    name_ja: '鳴門グランドホテル海月 大浴場',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県鳴門市鳴門町土佐泊浦大毛82-88',
+    phone: null,
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/149301/149301.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/149301/149301.html',
+    license: '楽天トラベル掲載情報',
+    accessed: NARUTO.sources.accessed
+  },
+  {
+    id: 'naruto-extra-taimaru',
+    jis: NARUTO.jis,
+    name_ja: '鳴門海月別亭 シーサイドホテル鯛丸海月 露天風呂',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県鳴門市鳴門町土佐泊浦福池15-33',
+    phone: null,
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/151154/151154.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/151154/151154.html',
+    license: '楽天トラベル掲載情報',
+    accessed: NARUTO.sources.accessed
+  },
+  {
+    id: 'naruto-extra-nexel-alpha',
+    jis: NARUTO.jis,
+    name_ja: 'NEXEL α鳴門 大浴場',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県鳴門市撫養町小桑島前浜65',
+    phone: null,
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/176981/176981.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/176981/176981.html',
+    license: '楽天トラベル掲載情報',
+    accessed: NARUTO.sources.accessed
+  },
+  {
+    id: 'naruto-extra-oceanvilla',
+    jis: NARUTO.jis,
+    name_ja: 'オーシャンヴィラ鳴門 大浴場',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県鳴門市里浦町里浦字坂田432-211',
+    phone: null,
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/196501/196501.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/196501/196501.html',
+    license: '楽天トラベル掲載情報',
+    accessed: NARUTO.sources.accessed
+  }
 ];

@@ -78,13 +78,20 @@ export type TravelRow = {
 
 export const TRAVEL_COUNTS = {
   dining: 12,
-  stay: 7,
+  stay: 12,
   shopping: 7,
   commerce: 2
 } as const satisfies Record<TravelKind, number>;
 
 /** Exact tourism-pack names. Do not broaden. */
 export const ONSEN_PACK_NAME = 'つるぎの湯 大桜' as const;
+export const ONSEN_PACK_NAMES = [
+  'つるぎの湯 大桜',
+  '油屋 美馬館 大浴場',
+  'ブルーヴィラあなぶき 大浴場',
+  '清月屋敷 大浴場'
+] as const;
+export const ONSEN_PACK_SET: ReadonlySet<string> = new Set(ONSEN_PACK_NAMES);
 export const EXPERIENCE_PACK_NAME = '美馬市伝統工芸体験館 美来工房' as const;
 export const UDATSU_PACK_NAME = 'うだつの町並み' as const;
 export const YOSHIDA_PACK_NAME = '吉田家住宅' as const;
@@ -157,25 +164,25 @@ export const TRAVEL_DINING: readonly TravelRow[] = [
 
 export const TRAVEL_STAY: readonly TravelRow[] = [
   stay(
-    'mima-stay-04',
+    'mima-stay-01',
     '剣山頂上ヒュッテ',
     '美馬市木屋平字川井カケ570',
     '080-2997-8482'
   ),
   stay(
-    'mima-stay-01',
+    'mima-stay-02',
     'ADLIV',
     '美馬市脇町大字猪尻字若宮南131-2',
     '0883-52-1643'
   ),
   stay(
-    'mima-stay-02',
+    'mima-stay-03',
     'オートキャンプ場 四国三郎の郷',
     '美馬市美馬町境目39-10',
     '0883-55-2002'
   ),
   stay(
-    'mima-stay-03',
+    'mima-stay-04',
     '清月屋敷',
     '美馬市穴吹町穴吹市ノ下100-6',
     '0883-53-7733'
@@ -197,6 +204,36 @@ export const TRAVEL_STAY: readonly TravelRow[] = [
     'Paysage Moriguchi',
     '美馬市脇町大字脇町148-4',
     '0883-52-1578'
+  ),
+  stay(
+    'mima-stay-08',
+    '脇プラザホテル',
+    '美馬市脇町拝原2020-3',
+    '—'
+  ),
+  stay(
+    'mima-stay-09',
+    '山人の里',
+    '美馬市美馬町狙ヶ内26-3',
+    '—'
+  ),
+  stay(
+    'mima-stay-10',
+    'ブルーヴィラあなぶき',
+    '美馬市穴吹町口山丸山1',
+    '—'
+  ),
+  stay(
+    'mima-stay-11',
+    '農家民宿 ゆずの里いづみ ＾',
+    '美馬市穴吹町口山中野宮520',
+    '—'
+  ),
+  stay(
+    'mima-stay-12',
+    'ロムのお宿／民泊',
+    '美馬市脇町脇町33',
+    '—'
   )
 ];
 
@@ -333,7 +370,7 @@ export const TOP_CHIP_COUNTS = {
   stay: TRAVEL_COUNTS.stay,
   shopping: TRAVEL_COUNTS.shopping,
   commerce: TRAVEL_COUNTS.commerce,
-  onsen: 1,
+  onsen: 4,
   experience: 1
 } as const;
 
@@ -349,7 +386,7 @@ export function isOnsenPackRow(row: {
   if (row.category !== 'tourism' && row.category !== 'cultural_property') {
     return false;
   }
-  return row.name_ja === ONSEN_PACK_NAME;
+  return ONSEN_PACK_SET.has(row.name_ja);
 }
 
 /** Tourism/cultural only. Do not invent extra workshops. */
