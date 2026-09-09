@@ -1,31 +1,90 @@
-# Tosa Town (土佐町) gaps (TG566 twenty-second Kochi hub)
+# TG610 Tosa Town (土佐町) densify — exhaustion dossier
 
-Accessed 2026-09-08 (JST). LIVE tip `b61bc4676d`.
+Accessed 2026-09-09 (JST). Branch `feat/unpublished-v0-mima`. Hub `/ja/kochi/tosacho/` (JIS 39363).
 
-## LIVE pills (photo-first)
-- stay: 1 (さめうら荘レイクサイドホテル / Rakuten HOTEL/180726 和室 LARGE mediaInfo【和室一例】ef0621… — stay≠onsen)
-- dining: 3 (Tabelog C39363 640 dish JPGs: 柳屋食堂 / cafeかのん / ラーメン土佐町439; skipped コンビニ・旅館・ホテル・dish0)
-- onsen: 0 (in-room bath; no attributable large-bath still; stay≠onsen)
-- experience: 0
-- sights: 5 (道の駅土佐さめうら cover + 役場 + 上吉野川橋 + 田井 + 土居のパノラマ)
-- shop: 0
-- commerce: 0
+## Before (cold LIVE)
+- pills: stay **1** / dining **3** / onsen **0** / experience **0** / sights **5** / shop **0** / commerce **0**
 
-## Cover
-道の駅土佐さめうら (Commons File:Roadside_Station_Tosa_Sameura.jpg, Public domain, As6022014). Hero-title = 土佐町 only (TG588/591).
+## After (tip pending)
+- pills: stay **1** / dining **10** / onsen **0** / experience **1** / sights **7** / shop **0** / commerce **0**
+- Stay 1 kept. Onsen honest 0 (ギャラリー風呂 = バスルーム一例; stay≠onsen; 温泉 label absent).
 
-## Hall
-〒781-3492 高知県土佐郡土佐町土居194番地 / 0887-82-0480（町公式フッター） / JIS 39363 / JLIS 393630 / https://www.town.tosa.kochi.jp/
+## Sources audited
+- 食べログ C39363 rstLst (20) + food photo lists
+- 楽天 HOTEL/180726 gallery mediaInfo（部屋6 / 風呂1 / 食事26 / レストラン11 / 外観・周辺7 incl. レイクサップ体験）
+- 町公式 https://www.town.tosa.kochi.jp/
+- Wikimedia Commons Category:Tosa,_Kochi_(town) + File:瀬戸川渓谷_-_panoramio.jpg / File:稲叢山登山口_-_panoramio.jpg
 
-## Desc
-土佐町。さめうら湖、道の駅、食。
+## Dining
+### Kept (3)
+柳屋食堂 / cafeかのん / ラーメン土佐町439
+
+### NEW (7)
+- 土佐さめうらBBQテラス — Tabelog 39008448 640 dish
+- 牛長 — Tabelog 39009152 640 dish
+- イールファームのうなぎ家 — Tabelog 39008118 640 dish
+- 田舎料理 与作 — Tabelog 39003191 640 dish
+- オンベリーコ — Tabelog 39006121 640 dish
+- りぐる — Tabelog 39005849 640 dish
+- さめうら荘レイクサイドホテル レストラン — Rakuten gallery 夕食「あじさい御膳」still（day dining; name ≠ stay）
+
+### Dining honest misses
+| Name / note | Why skipped |
+| --- | --- |
+| 美松 / ZOE / 湖の駅 さめうらレイクタウン | cafe class |
+| 珈琲茶房甘味処 地蔵庵 | sweets |
+| 手焼きせんべい べるりん | senbei/snack shop |
+| 冨士見館 / 清水屋旅館 | lodging |
+| 末広ショッピングセンター / LAWSON | convenience/supermarket |
+| 土佐酒造 | その他 / brewery shop |
+| 道の駅 土佐さめうら Tabelog | cover already sight; dining covered via BBQテラス/与作/hotel restaurant |
+
+## Stay
+### Kept
+- さめうら荘レイクサイドホテル（Rakuten 和室 LARGE）
+
+### Stay honest misses
+| Name | Why skipped |
+| --- | --- |
+| Same HOTEL/180726 other rooms | same facility |
+| 冨士見館 / 清水屋旅館 | no HARD BAR room still this pass |
+
+## Onsen
+- Honest **0**: gallery 風呂 key = バスルーム一例（湖眺望）; not labeled 温泉; stay≠onsen.
+
+## Experience
+### NEW (1)
+- さめうら湖 レイクサップ体験 — Rakuten gallery「みんなでワイワイ♪さめうら湖でレイクサップ体験！」still; Nominatim さめうら湖 33.7723305, 133.5106674; operator phone 0887-82-1020
+
+### Experience honest misses
+| Name | Why skipped |
+| --- | --- |
+| Additional SUP stills | same activity — do not double-count |
+
+## Sights
+### Kept (5)
+道の駅土佐さめうら / 土佐町役場 / 上吉野川橋 / 田井 / 土居のパノラマ
+
+### NEW (2)
+- 瀬戸川渓谷 — Commons File:瀬戸川渓谷_-_panoramio.jpg (CC BY 3.0, r18 INO (PACHIMO); GPS 33.725239, 133.399989)
+- 稲叢山登山口 — Commons File:稲叢山登山口_-_panoramio.jpg (CC BY 3.0, r18 INO (PACHIMO); GPS 33.742669, 133.367572)
+
+### Sights honest misses
+| Name | Why skipped |
+| --- | --- |
+| 土佐町地蔵寺パノラマ | extreme 1280×257 strip — poor card still |
+| 立割/高須/溜井の棚田 | Commons CC0 stills but no Nominatim GPS this pass |
+| 瀬戸川渓谷展望台 | near-duplicate of 瀬戸川渓谷 |
+| Sameura Dam / Amegaeri Falls / Zingamori | deferred; no HARD BAR still+GPS pair prioritized this pass |
+| 旗・章・地図 | non-sight |
+
+## Shop / commerce
+- Honest **0**.
 
 ## Notes
-- HARD BAR stay PASS: mediaInfo【和室一例】 LARGE still on Rakuten share CDN (tatami washitsu ef0621…).
-- Onsen honest 0 (in-room バストイレ; stay≠onsen).
-- Dining thin OK (honest 3 with dish JPGs).
-- townHelpers early-return must include tosacho before MIMA fallback.
-- 田野町 still deferred: no attributable room still under HARD BAR.
+- Domain HOLD. OFFER_SEND false. No merge / SNS / spend.
+- Do not regress prior densified hubs.
+- Mirror: `/workspace/explorejapan/src/data/kochi-tosacho-gaps.md`
 
 ## CDN
-Cold CDN PASS after Pages lag (~60s post-push). Live `ja/kochi/tosacho/` PASS: hero 土佐町, desc 土佐町。さめうら湖、道の駅、食。, pills stay/dining/onsen/experience/sights = 1/3/0/0/5. Pref cover tosacho-cover-sameura present.
+Cold LIVE pending tip after Pages lag. Expect stay **1** / dining **10** / onsen **0** / experience **1** / sights **7**.

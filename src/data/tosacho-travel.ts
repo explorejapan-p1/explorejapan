@@ -1,13 +1,13 @@
 /**
  * Tosa Town travel layer. No frozen pack.
- * Dining from 食べログ 土佐町 (C39363) — honest 3 with 640 dish JPGs (skipped コンビニ・旅館・ホテル・dish0). Stay: さめうら荘レイクサイドホテル Rakuten 和室 LARGE (mediaInfo【和室一例】). Onsen: 0 (in-room bath; stay≠onsen). Experience: 0.
+ * Dining: Tabelog C39363 (3 kept + BBQテラス・牛長・うなぎ家・与作・オンベリーコ・りぐる) + さめうら荘レストラン Rakuten 食事. Stay: さめうら荘. Onsen: 0 (バスルーム; stay≠onsen). Experience: さめうら湖 レイクサップ体験. TG610 densify.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {TOSACHO, TOSACHO_SIGHT_PHOTOS} from './tosacho';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const TOSACHO_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const TOSACHO_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const TOSACHO_TRAVEL_SOURCES = {
   home: 'https://www.town.tosacho.kochi.jp/', hall: 'https://ja.wikipedia.org/wiki/%E5%A4%A7%E8%B1%8A%E7%94%BA',
   kankou: 'https://www.town.tosacho.kochi.jp/kanko/',
@@ -18,14 +18,14 @@ export const TOSACHO_TRAVEL_SOURCES = {
 
 export const TOSACHO_ONSEN_PACK_NAMES = [] as const;
 export const TOSACHO_ONSEN_PACK_SET: ReadonlySet<string> = new Set(TOSACHO_ONSEN_PACK_NAMES);
-export const TOSACHO_EXPERIENCE_PACK_NAMES = [] as const;
+export const TOSACHO_EXPERIENCE_PACK_NAMES = ['さめうら湖 レイクサップ体験'] as const;
 export const TOSACHO_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(TOSACHO_EXPERIENCE_PACK_NAMES);
 export const TOSACHO_STAY_PACK_NAMES = [] as const;
 export const TOSACHO_STAY_PACK_SET: ReadonlySet<string> = new Set(TOSACHO_STAY_PACK_NAMES);
 export const TOSACHO_SHOPPING_PACK_NAMES = [] as const;
 export const TOSACHO_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(TOSACHO_SHOPPING_PACK_NAMES);
 
-export const TOSACHO_SIGHT_PINS = ['道の駅土佐さめうら','土佐町役場','上吉野川橋','田井','土居のパノラマ'] as const;
+export const TOSACHO_SIGHT_PINS = ['道の駅土佐さめうら','土佐町役場','上吉野川橋','田井','土居のパノラマ','瀬戸川渓谷','稲叢山登山口'] as const;
 
 function stay(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: TOSACHO_TRAVEL_ACCESSED};
@@ -41,6 +41,13 @@ export const TOSACHO_TRAVEL_DINING: readonly TravelRow[] = [
   dining('tosacho-dining-01', '柳屋食堂', '高知県土佐郡土佐町田井1501', '0887-82-0152', 'https://tabelog.com/kochi/A3901/A390104/39005848/'),
   dining('tosacho-dining-02', 'cafeかのん', '高知県土佐郡土佐町田井1716-1', '0887-82-2634', 'https://tabelog.com/kochi/A3901/A390104/39005839/'),
   dining('tosacho-dining-03', 'ラーメン土佐町439', '高知県土佐郡土佐町田井1208-11', '0887-72-9567', 'https://tabelog.com/kochi/A3901/A390104/39008037/'),
+  dining('tosacho-dining-04', '土佐さめうらBBQテラス', '高知県土佐郡土佐町田井448-2 道の駅', '0887-82-1680', 'https://tabelog.com/kochi/A3901/A390104/39008448/'),
+  dining('tosacho-dining-05', '牛長', '高知県土佐郡土佐町田井1235-5', '0887-82-0897', 'https://tabelog.com/kochi/A3901/A390104/39009152/'),
+  dining('tosacho-dining-06', 'イールファームのうなぎ家', '高知県土佐郡土佐町田井451-1', '0887-72-9538', 'https://tabelog.com/kochi/A3901/A390104/39008118/'),
+  dining('tosacho-dining-07', '田舎料理 与作', '高知県土佐郡土佐町田井448-2 道の駅　土佐さめうら', '0887-82-1278', 'https://tabelog.com/kochi/A3901/A390104/39003191/'),
+  dining('tosacho-dining-08', 'オンベリーコ', '高知県土佐郡土佐町田井1353-2 末広ショッピングセンター', '0887-72-9186', 'https://tabelog.com/kochi/A3901/A390104/39006121/'),
+  dining('tosacho-dining-09', 'りぐる', '高知県土佐郡土佐町田井849-2', '0887-82-1845', 'https://tabelog.com/kochi/A3901/A390104/39005849/'),
+  dining('tosacho-dining-10', 'さめうら荘レイクサイドホテル レストラン', '高知県土佐郡土佐町田井146-1', '0887-82-1020', 'https://travel.rakuten.co.jp/HOTEL/180726/gallery.html'),
 ];
 
 export const TOSACHO_DINING_NAME_SET: ReadonlySet<string> = new Set(TOSACHO_TRAVEL_DINING.map((row) => row.name_ja));

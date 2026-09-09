@@ -5,7 +5,7 @@ Accessed 2026-09-09 (JST). Branch `feat/unpublished-v0-mima`. Hub `/ja/kochi/mot
 ## Before (cold LIVE)
 - pills: stay **1** / dining **3** / onsen **0** / experience **0** / sights **5** / shop **0** / commerce **0**
 
-## After (tip pending build) (local docs pending)
+## After (tip `f289b0527ee`) (local docs PASS)
 - pills: stay **1** / dining **7** / onsen **0** / experience **0** / sights **7** / shop **0** / commerce **0**
 - Stay 1 kept. Onsen stays honest 0 (Asemi private shower only; gallery mediaInfo empty; stay≠onsen).
 
@@ -82,4 +82,4 @@ Accessed 2026-09-09 (JST). Branch `feat/unpublished-v0-mima`. Hub `/ja/kochi/mot
 - Mirror gaps: `/workspace/explorejapan/src/data/kochi-motoyama-gaps.md` + this file.
 
 ## CDN
-Cold LIVE pending tip after Pages lag. Expect stay **1** / dining **7** / onsen **0** / experience **0** / sights **7**.
+Cold LIVE tip `f289b0527ee` — poll Pages for stay **1** / dining **7** / onsen **0** / experience **0** / sights **7**.

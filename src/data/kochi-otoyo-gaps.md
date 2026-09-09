@@ -5,7 +5,7 @@ Accessed 2026-09-09 (JST). Branch `feat/unpublished-v0-mima`. Hub `/ja/kochi/oto
 ## Before (cold LIVE)
 - pills: stay **1** / dining **3** / onsen **0** / experience **0** / sights **5** / shop **0** / commerce **0**
 
-## After (tip pending)
+## After (tip `2c523b30ae6`) (local docs PASS)
 - pills: stay **1** / dining **7** / onsen **0** / experience **1** / sights **7** / shop **0** / commerce **0**
 - Stay 1 kept. Onsen honest 0 (private バスルーム; stay≠onsen).
 
@@ -82,4 +82,4 @@ Accessed 2026-09-09 (JST). Branch `feat/unpublished-v0-mima`. Hub `/ja/kochi/oto
 - Mirror: `/workspace/explorejapan/src/data/kochi-otoyo-gaps.md`
 
 ## CDN
-Cold LIVE pending tip after Pages lag. Expect stay **1** / dining **7** / onsen **0** / experience **1** / sights **7**.
+Cold LIVE tip `2c523b30ae6` — poll Pages for stay **1** / dining **7** / onsen **0** / experience **1** / sights **7**.
