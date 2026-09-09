@@ -1,7 +1,7 @@
 /**
  * Shimanto City sourced facts. Do not invent population.
  * Hall / JIS from city Wikipedia / city HP facts (accessed 2026-09-08). JIS 39210. Tenth Kochi hub after 高知市・南国市・香南市・香美市・いの町・安芸市・室戸市・土佐市・須崎市.
- * No frozen pack — photo-only tourism + Tabelog dining + Rakuten stay/onsen. Stay uses Royal Hotel room still; onsen uses attributable 4F bath still (stay≠onsen). Shop/commerce honest 0.
+ * No frozen pack — photo-only tourism + Tabelog dining + Rakuten stay densify TG604 (room stills) + onsen. Onsen uses Royal 4F bath still (stay≠onsen). Shop/commerce honest 0.
  */
 import type {FacilityRow} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
@@ -32,7 +32,7 @@ export const SHIMANTO = {
     fuba: 'https://ja.wikipedia.org/wiki/%E4%B8%8D%E7%A0%B4%E5%85%AB%E5%B9%A1%E5%AE%AE',
     tabelogCity: 'https://tabelog.com/kochi/C39210/rstLst/',
     royal: 'https://travel.rakuten.co.jp/HOTEL/9419/9419.html',
-    accessed: '2026-09-08'
+    accessed: '2026-09-09'
   }
 } as const;
 
@@ -43,10 +43,10 @@ function wikiPhoto(
   file: string, commons: string, license: string, licenseUrl: string,
   author: string, authorUrl: string, taken: string, altJa: string, altEn: string
 ): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-08', altJa, altEn};
+  return {src:`/explorejapan/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-09', altJa, altEn};
 }
 function sourcePhoto(file: string, altJa: string, altEn: string, page: string, author: string): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-08', altJa, altEn};
+  return {src:`/explorejapan/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-09', altJa, altEn};
 }
 
 /** Cover: Shimanto River Bridge (赤鉄橋). */
@@ -124,6 +124,111 @@ export const SHIMANTO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '新ロイヤルホテル四万十の客室写真',
     'New Royal Hotel Shimanto room photo',
     'https://travel.rakuten.co.jp/HOTEL/9419/9419.html',
+    '楽天トラベル'
+  ),
+  'ホテルサンリバー四万十': sourcePhoto(
+    'shimanto-stay-sunriver.jpg',
+    'ホテルサンリバー四万十の客室写真',
+    'Hotel Sunriver Shimanto room photo',
+    'https://travel.rakuten.co.jp/HOTEL/165910/165910.html',
+    '楽天トラベル'
+  ),
+  '中村プリンスホテル': sourcePhoto(
+    'shimanto-stay-prince.jpg',
+    '中村プリンスホテルの客室写真',
+    'Nakamura Prince Hotel room photo',
+    'https://travel.rakuten.co.jp/HOTEL/8989/8989.html',
+    '楽天トラベル'
+  ),
+  'ホテルクラウンヒルズ中村': sourcePhoto(
+    'shimanto-stay-crownhills.jpg',
+    'ホテルクラウンヒルズ中村の客室写真',
+    'Hotel Crown Hills Nakamura room photo',
+    'https://travel.rakuten.co.jp/HOTEL/70893/70893.html',
+    '楽天トラベル'
+  ),
+  '中村第一ホテル': sourcePhoto(
+    'shimanto-stay-daiichi.jpg',
+    '中村第一ホテルの客室写真',
+    'Nakamura Daiichi Hotel room photo',
+    'https://travel.rakuten.co.jp/HOTEL/11023/11023.html',
+    '楽天トラベル'
+  ),
+  'ホテルココモ': sourcePhoto(
+    'shimanto-stay-cocomo.jpg',
+    'ホテルココモの客室写真',
+    'Hotel Cocomo room photo',
+    'https://travel.rakuten.co.jp/HOTEL/184394/184394.html',
+    '楽天トラベル'
+  ),
+  '四万十の宿': sourcePhoto(
+    'shimanto-stay-shimantonoyado.jpg',
+    '四万十の宿の客室写真',
+    'Shimanto no Yado room photo',
+    'https://travel.rakuten.co.jp/HOTEL/16245/16245.html',
+    '楽天トラベル'
+  ),
+  'なごみ宿 安住庵': sourcePhoto(
+    'shimanto-stay-anjuann.jpg',
+    'なごみ宿 安住庵の客室写真',
+    'Nagomi-yado Anjuann room photo',
+    'https://travel.rakuten.co.jp/HOTEL/10838/10838.html',
+    '楽天トラベル'
+  ),
+  '山みず木': sourcePhoto(
+    'shimanto-stay-yamamizuki.jpg',
+    '山みず木の客室写真',
+    'Yamamizuki room photo',
+    'https://travel.rakuten.co.jp/HOTEL/146135/146135.html',
+    '楽天トラベル'
+  ),
+  '四万十りばーさいど': sourcePhoto(
+    'shimanto-stay-riversaide.jpg',
+    '四万十りばーさいどの客室写真',
+    'Shimanto Riverside room photo',
+    'https://travel.rakuten.co.jp/HOTEL/44089/44089.html',
+    '楽天トラベル'
+  ),
+  '四万十川の隠れコテージ おりや': sourcePhoto(
+    'shimanto-stay-oriya.jpg',
+    '四万十川の隠れコテージ おりやの客室写真',
+    'Oriya cottage room photo',
+    'https://travel.rakuten.co.jp/HOTEL/164466/164466.html',
+    '楽天トラベル'
+  ),
+  '古民家宿 寝つきいいキツネ': sourcePhoto(
+    'shimanto-stay-kitsune.jpg',
+    '古民家宿 寝つきいいキツネの客室写真',
+    'Netsukii Kitsune room photo',
+    'https://travel.rakuten.co.jp/HOTEL/170072/170072.html',
+    '楽天トラベル'
+  ),
+  '貸切宿ほとり': sourcePhoto(
+    'shimanto-stay-hotori.jpg',
+    '貸切宿ほとりの客室写真',
+    'Hotori rental stay room photo',
+    'https://travel.rakuten.co.jp/HOTEL/188758/188758.html',
+    '楽天トラベル'
+  ),
+  'さんいんどう': sourcePhoto(
+    'shimanto-stay-saindo.jpg',
+    'さんいんどうの客室写真',
+    'Saindo room photo',
+    'https://travel.rakuten.co.jp/HOTEL/192726/192726.html',
+    '楽天トラベル'
+  ),
+  '民宿 鈴': sourcePhoto(
+    'shimanto-stay-suzu.jpg',
+    '民宿 鈴の客室写真',
+    'Minshuku Suzu room photo',
+    'https://travel.rakuten.co.jp/HOTEL/19883/19883.html',
+    '楽天トラベル'
+  ),
+  '民宿 こばん': sourcePhoto(
+    'shimanto-stay-koban.jpg',
+    '民宿 こばんの客室写真',
+    'Minshuku Koban room photo',
+    'https://travel.rakuten.co.jp/HOTEL/147866/147866.html',
     '楽天トラベル'
   ),
   '新ロイヤルホテル四万十 大浴場': sourcePhoto(

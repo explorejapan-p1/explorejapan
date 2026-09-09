@@ -1839,16 +1839,16 @@ export function MimaFacilityLookup({
             locale === 'ja' ? (
               <>
                 観光は出典写真がある施設のみ（四万十川橋・岩間沈下橋・佐田沈下橋・一條神社・不破八幡宮・トンボ自然公園）。
-                宿泊は楽天トラベル新ロイヤルホテル四万十の客室写真（{SHIMANTO_TRAVEL_ACCESSED}）。
+                宿泊は楽天トラベル客室写真16件（四万十市観光協会宿泊一覧＋楽天四万十リスト照合・{SHIMANTO_TRAVEL_ACCESSED}）。
                 飲食は食べログ四万十市の公開店ページ（{SHIMANTO_TRAVEL_ACCESSED}）。
-                温泉は同ホテル4階大浴場（楽天・宿泊と別キー）。体験は道の駅よって西土佐（Commons）。買物・商業は0件。高知県10つ目のLIVEハブ。
+                温泉は新ロイヤルホテル四万十四階大浴場（楽天・宿泊と別キー）。体験は道の駅よって西土佐（Commons）。買物・商業は0件。高知県10つ目のLIVEハブ。
               </>
             ) : (
               <>
                 Tourism shows only facilities with a sourced photo (Shimanto River Bridge, Iwama/Sada chinkabashi, Ichijo Shrine, Fuba Hachimangu, Tombo Nature Park).
-                Lodging: New Royal Hotel Shimanto Rakuten room photo ({SHIMANTO_TRAVEL_ACCESSED}).
+                Lodging: 16 Rakuten room stills (city tourism stay list + Rakuten Shimanto list; {SHIMANTO_TRAVEL_ACCESSED}).
                 Dining from Tabelog Shimanto shop pages ({SHIMANTO_TRAVEL_ACCESSED}).
-                Onsen: hotel 4F bath still (Rakuten; stay≠onsen). Experience: Michinoeki Yotte Nishitosa (Commons). Shopping/commerce: 0. Tenth LIVE Kochi hub.
+                Onsen: New Royal Hotel 4F bath still (Rakuten; stay≠onsen). Experience: Michinoeki Yotte Nishitosa (Commons). Shopping/commerce: 0. Tenth LIVE Kochi hub.
               </>
             )
           ) : town.slug === 'susaki' ? (
