@@ -1,13 +1,13 @@
 /**
  * Nakatosa Town travel layer. No frozen pack.
- * Dining from 食べログ 中土佐町 (C39401) — honest 3 with 640 dish JPG (浜ちゃん・ふるさと・おもや; skipped 旅館・民宿・ホテル・商店). Stay: 四万十源流の里 Rakuten 本館和室 LARGE (mediaInfo「本館和室」cat 00000001). Onsen: 0 (stay≠onsen). Experience: 0.
+ * Dining: Tabelog C39401 (3 kept + 讃岐・高知屋・浜焼き海王・黒潮工房・ポン吉・あずま・彩翔・住吉町・茶伊菜). Stay: 四万十源流の里. Onsen: 0 (stay≠onsen). Experience: 0. TG610 densify.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {NAKATOSA, NAKATOSA_SIGHT_PHOTOS} from './nakatosa';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const NAKATOSA_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const NAKATOSA_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const NAKATOSA_TRAVEL_SOURCES = {
   home: 'https://www.town.nakatosa.lg.jp/', hall: 'https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%9C%9F%E4%BD%90%E7%94%BA',
   stayList: 'https://www.town.nakatosa.lg.jp/life/detail.php?hdnKey=511',
@@ -25,7 +25,7 @@ export const NAKATOSA_STAY_PACK_SET: ReadonlySet<string> = new Set(NAKATOSA_STAY
 export const NAKATOSA_SHOPPING_PACK_NAMES = [] as const;
 export const NAKATOSA_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(NAKATOSA_SHOPPING_PACK_NAMES);
 
-export const NAKATOSA_SIGHT_PINS = ['双名島','中土佐町役場','久礼大正町市場','道の駅なかとさ','中土佐町立美術館'] as const;
+export const NAKATOSA_SIGHT_PINS = ['双名島','中土佐町役場','久礼大正町市場','道の駅なかとさ','中土佐町立美術館','久礼八幡宮','久礼湾'] as const;
 
 function stay(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: NAKATOSA_TRAVEL_ACCESSED};
@@ -41,6 +41,15 @@ export const NAKATOSA_TRAVEL_DINING: readonly TravelRow[] = [
   dining('nakatosa-dining-01', '市場のめし屋 浜ちゃん', '高知県高岡郡中土佐町久礼大正町 久礼大正町市場内', '0889-52-2060', 'https://tabelog.com/kochi/A3903/A390301/39000360/'),
   dining('nakatosa-dining-02', 'お好み焼き・ラーメン ふるさと', '高知県高岡郡中土佐町久礼6778-3', '0889-52-3825', 'https://tabelog.com/kochi/A3903/A390301/39003609/'),
   dining('nakatosa-dining-03', 'おもや', '高知県高岡郡中土佐町久礼6619-6', '0889-52-2012', 'https://tabelog.com/kochi/A3903/A390301/39006072/'),
+  dining('nakatosa-dining-04', '讃岐', '高知県高岡郡中土佐町久礼2212-1', '0889-52-2122', 'https://tabelog.com/kochi/A3903/A390301/39003353/'),
+  dining('nakatosa-dining-05', '高知屋', '高知県高岡郡中土佐町久礼6543-2', '0889-52-3399', 'https://tabelog.com/kochi/A3903/A390301/39000414/'),
+  dining('nakatosa-dining-06', '浜焼き 海王', '高知県高岡郡中土佐町久礼8645-2 道の駅 なかとさ', '0889-59-2200', 'https://tabelog.com/kochi/A3903/A390301/39007257/'),
+  dining('nakatosa-dining-07', '黒潮工房', '高知県高岡郡中土佐町久礼8009-11', '0889-52-3500', 'https://tabelog.com/kochi/A3903/A390301/39000298/'),
+  dining('nakatosa-dining-08', '串焼き ポン吉', '高知県高岡郡中土佐町久礼大正町6372-1', '090-2380-5545', 'https://tabelog.com/kochi/A3903/A390301/39007164/'),
+  dining('nakatosa-dining-09', '和食宴 あずま', '高知県高岡郡中土佐町久礼6179-2', '0889-52-2237', 'https://tabelog.com/kochi/A3903/A390301/39000433/'),
+  dining('nakatosa-dining-10', '彩翔', '高知県高岡郡中土佐町久礼6755', '0889-52-2377', 'https://tabelog.com/kochi/A3903/A390301/39008421/'),
+  dining('nakatosa-dining-11', 'ファミリー居酒屋御惣菜住吉町', '高知県高岡郡中土佐町久礼6496', '0889-52-4888', 'https://tabelog.com/kochi/A3903/A390301/39001183/'),
+  dining('nakatosa-dining-12', 'らーめんハウス 茶伊菜', '高知県高岡郡中土佐町久礼6639-5', '0889-52-4280', 'https://tabelog.com/kochi/A3903/A390301/39000858/'),
 ];
 
 export const NAKATOSA_DINING_NAME_SET: ReadonlySet<string> = new Set(NAKATOSA_TRAVEL_DINING.map((row) => row.name_ja));

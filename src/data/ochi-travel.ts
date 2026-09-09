@@ -1,13 +1,13 @@
 /**
  * Ochi Town travel layer. No frozen pack.
- * Dining from 食べログ 越知町 (C39403) — honest 3 with 640 dish JPG (自由軒本店・ドライブイン片岡・フクロー飲食店; skipped 物産館・精肉・鮮魚・商店). Stay: スノーピークおち仁淀川キャンプフィールド 住箱 interior (official Snow Peak campfield photo). Onsen: 0 (stay≠onsen). Experience: 0.
+ * Dining: Tabelog C39403 (3 kept + 麺や倉橋・かどた・味楽・仙八・花・狩女). Stay: スノーピークおち仁淀川. Onsen: 0 (stay≠onsen). Experience: 0. TG610 densify.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {OCHI, OCHI_SIGHT_PHOTOS} from './ochi';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const OCHI_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const OCHI_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const OCHI_TRAVEL_SOURCES = {
   home: 'https://www.town.ochi.kochi.jp/', hall: 'https://ja.wikipedia.org/wiki/%E8%B6%8A%E7%9F%A5%E7%94%BA',
   stayList: 'https://www.town.ochi.kochi.jp/kankou/stayafter/',
@@ -25,7 +25,7 @@ export const OCHI_STAY_PACK_SET: ReadonlySet<string> = new Set(OCHI_STAY_PACK_NA
 export const OCHI_SHOPPING_PACK_NAMES = [] as const;
 export const OCHI_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(OCHI_SHOPPING_PACK_NAMES);
 
-export const OCHI_SIGHT_PINS = ['横倉山','越知町役場','中仁淀橋','大樽の滝','横倉山自然の森博物館'] as const;
+export const OCHI_SIGHT_PINS = ['横倉山','越知町役場','中仁淀橋','大樽の滝','横倉山自然の森博物館','平家の宮','安徳天皇侍従能登守教経石碑'] as const;
 
 function stay(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: OCHI_TRAVEL_ACCESSED};
@@ -41,6 +41,12 @@ export const OCHI_TRAVEL_DINING: readonly TravelRow[] = [
   dining('ochi-dining-01', '自由軒 本店', '高知県高岡郡越知町野老山2882', '0889-26-0198', 'https://tabelog.com/kochi/A3903/A390302/39000097/'),
   dining('ochi-dining-02', 'ドライブイン片岡', '高知県高岡郡越知町越知丙737', '0889-26-0357', 'https://tabelog.com/kochi/A3903/A390302/39003552/'),
   dining('ochi-dining-03', 'フクロー飲食店', '高知県高岡郡越知町越知甲2143', null, 'https://tabelog.com/kochi/A3903/A390302/39002386/'),
+  dining('ochi-dining-04', '麺や倉橋', '高知県高岡郡越知町越知丙746', '0889-20-9595', 'https://tabelog.com/kochi/A3903/A390302/39006664/'),
+  dining('ochi-dining-05', '居食屋 かどた', '高知県高岡郡越知町越知甲1737-2', '0889-26-0241', 'https://tabelog.com/kochi/A3903/A390302/39004044/'),
+  dining('ochi-dining-06', '味楽', '高知県高岡郡越知町越知甲2333-4', '0889-26-3381', 'https://tabelog.com/kochi/A3903/A390302/39000919/'),
+  dining('ochi-dining-07', '仙八', '高知県高岡郡越知町越知甲1951-18', '0889-26-3270', 'https://tabelog.com/kochi/A3903/A390302/39007611/'),
+  dining('ochi-dining-08', '花', '高知県高岡郡越知町越知甲1997', '0889-26-3272', 'https://tabelog.com/kochi/A3903/A390302/39003331/'),
+  dining('ochi-dining-09', '狩女', '高知県高岡郡越知町越知甲1538-1', '0889-26-3456', 'https://tabelog.com/kochi/A3903/A390302/39000620/'),
 ];
 
 export const OCHI_DINING_NAME_SET: ReadonlySet<string> = new Set(OCHI_TRAVEL_DINING.map((row) => row.name_ja));

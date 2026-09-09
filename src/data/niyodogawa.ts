@@ -1,7 +1,7 @@
 /**
  * Niyodogawa Town sourced facts. Do not invent population.
  * Hall / JIS from town HP / JIS X 0402 (accessed 2026-09-08). JIS 39387. Twenty-fourth Kochi hub after 高知市・南国市・香南市・香美市・いの町・安芸市・室戸市・土佐市・須崎市・四万十市・土佐清水市・宿毛市・黒潮町・東洋町・奈半利町・安田町・芸西村・北川村・馬路村・本山町・大豊町・土佐町・大川村 (田野町 deferred: no attributable stay room still).
- * No frozen pack — photo-only tourism + Tabelog dining + Rakuten stay. Stay: 中津渓谷 ゆの森 本館和室 LARGE (plan LARGE a6e422c3 = mediaInfo「本館和室」). Onsen: 0 (facility has baths; stay≠onsen; no onsen pack row). Shop/commerce honest 0.
+ * No frozen pack — photo-only tourism + Tabelog dining + Rakuten stay + Commons sights. Stay: 中津渓谷 ゆの森. Dining densify TG610. Onsen: 0 (stay≠onsen). Shop/commerce honest 0.
  */
 import type {FacilityRow} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
@@ -30,21 +30,21 @@ export const NIYODOGAWA = {
     nakatsu: 'https://commons.wikimedia.org/wiki/File:%E4%B8%AD%E6%B4%A5%E6%B8%93%E8%B0%B7_-_panoramio.jpg',
     tabelogCity: 'https://tabelog.com/kochi/C39387/rstLst/',
     yunomori: 'https://travel.rakuten.co.jp/HOTEL/107685/107685.html',
-    accessed: '2026-09-08'
+    accessed: '2026-09-09'
   }
 } as const;
 
-export const NIYODOGAWA_EXPECTED_ROW_COUNT = 5;
-export const NIYODOGAWA_EXPECTED_GEO_COUNT = 5;
+export const NIYODOGAWA_EXPECTED_ROW_COUNT = 7;
+export const NIYODOGAWA_EXPECTED_GEO_COUNT = 7;
 
 function wikiPhoto(
   file: string, commons: string, license: string, licenseUrl: string,
   author: string, authorUrl: string, taken: string, altJa: string, altEn: string
 ): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-08', altJa, altEn};
+  return {src:`/explorejapan/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-09', altJa, altEn};
 }
 function sourcePhoto(file: string, altJa: string, altEn: string, page: string, author: string): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-08', altJa, altEn};
+  return {src:`/explorejapan/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-09', altJa, altEn};
 }
 
 /** Cover: Nakatsu Gorge. Hero title remains municipality name only. */
@@ -60,6 +60,14 @@ const TABELOG_39007425 = 'https://tabelog.com/kochi/A3903/A390302/39007425/';
 const TABELOG_39008745 = 'https://tabelog.com/kochi/A3903/A390302/39008745/';
 const TABELOG_39006963 = 'https://tabelog.com/kochi/A3903/A390302/39006963/';
 const RAKUTEN_107685 = 'https://travel.rakuten.co.jp/HOTEL/107685/107685.html';
+const TABELOG_39004941 = 'https://tabelog.com/kochi/A3903/A390302/39004941/';
+const TABELOG_39005049 = 'https://tabelog.com/kochi/A3903/A390302/39005049/';
+const TABELOG_39006702 = 'https://tabelog.com/kochi/A3903/A390303/39006702/';
+const TABELOG_39000532 = 'https://tabelog.com/kochi/A3903/A390302/39000532/';
+const TABELOG_39006194 = 'https://tabelog.com/kochi/A3903/A390302/39006194/';
+const COMMONS_KAZENOSATO = 'https://commons.wikimedia.org/wiki/File:%E9%A2%A8%E3%81%AE%E9%87%8C%E5%85%AC%E5%9C%92_-_panoramio.jpg';
+const COMMONS_KUKIBASHI = 'https://commons.wikimedia.org/wiki/File:%E4%B9%85%E5%96%9C%E6%A9%8B%E2%80%95%E6%B2%88%E4%B8%8B%E6%A9%8B.jpg';
+
 
 export const NIYODOGAWA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   '中津渓谷': NIYODOGAWA_PLACE_PHOTO,
@@ -101,6 +109,25 @@ export const NIYODOGAWA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> =
   'きたはら': sourcePhoto('niyodogawa-39007425-dish.jpg', 'きたはらの料理写真', 'Kitahara food photo', TABELOG_39007425, '食べログ'),
   'スープカレー トランス': sourcePhoto('niyodogawa-39008745-dish.jpg', 'スープカレー トランスの料理写真', 'Soup Curry Trans food photo', TABELOG_39008745, '食べログ'),
   '味処 おさき': sourcePhoto('niyodogawa-39006963-dish.jpg', '味処 おさきの料理写真', 'Ajidokoro Osaki food photo', TABELOG_39006963, '食べログ'),
+  'PONTE': sourcePhoto('niyodogawa-39004941-dish.jpg', 'PONTEの料理写真', 'PONTE food photo', TABELOG_39004941, '食べログ'),
+  'いけがわ４３９交流館': sourcePhoto('niyodogawa-39005049-dish.jpg', 'いけがわ４３９交流館の料理写真', 'Ikegawa 439 exchange hall food photo', TABELOG_39005049, '食べログ'),
+  'レストランによど': sourcePhoto('niyodogawa-39006702-dish.jpg', 'レストランによどの料理写真', 'Restaurant Niyodo food photo', TABELOG_39006702, '食べログ'),
+  'ドライブイン引地橋': sourcePhoto('niyodogawa-39000532-dish.jpg', 'ドライブイン引地橋の料理写真', 'Drive-in Hikijibashi food photo', TABELOG_39000532, '食べログ'),
+  'えびす茶屋': sourcePhoto('niyodogawa-39006194-dish.jpg', 'えびす茶屋の料理写真', 'Ebisu Chaya food photo', TABELOG_39006194, '食べログ'),
+  '風の里公園': wikiPhoto(
+    'niyodogawa-kazenosato.jpg',
+    COMMONS_KAZENOSATO,
+    'CC BY 3.0', 'https://creativecommons.org/licenses/by/3.0',
+    'r18 INO (PACHIMO)', COMMONS_KAZENOSATO, '2014-10-18',
+    '風の里公園', 'Kaze-no-Sato Park'
+  ),
+  '久喜橋': wikiPhoto(
+    'niyodogawa-kukibashi.jpg',
+    COMMONS_KUKIBASHI,
+    'CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0',
+    '谷本 一郎', COMMONS_KUKIBASHI, '2018-09-01',
+    '久喜橋（沈下橋）', 'Kuki Bridge (submersible bridge)'
+  ),
 };
 
 function sight(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string, lat: number, lon: number): FacilityRow {
@@ -112,5 +139,7 @@ export const NIYODOGAWA_FACILITIES: readonly FacilityRow[] = [
   sight('niyodogawa-sight-02', '仁淀川町役場', '高知県吾川郡仁淀川町大崎200番地', '0889-35-0111', 'https://commons.wikimedia.org/wiki/File:Niyodogawa_Town_Office.jpg', 33.575325, 133.168232),
   sight('niyodogawa-sight-03', '雨竜の滝', '高知県吾川郡仁淀川町名野川', null, 'https://commons.wikimedia.org/wiki/File:%E9%9B%A8%E7%AB%9C%E3%81%AE%E6%BB%9D_-_panoramio.jpg', 33.563808, 133.125225),
   sight('niyodogawa-sight-04', '長者の棚田', '高知県吾川郡仁淀川町長者', null, 'https://commons.wikimedia.org/wiki/File:%E9%95%B7%E8%80%85%E3%81%AE%E6%A3%9A%E7%94%B0_01.jpg', 33.49912222, 133.12916111),
-  sight('niyodogawa-sight-05', '大渡ダム', '高知県吾川郡仁淀川町', null, 'https://commons.wikimedia.org/wiki/File:Odo_Dam.jpg', 33.544617, 133.114992)
+  sight('niyodogawa-sight-05', '大渡ダム', '高知県吾川郡仁淀川町', null, 'https://commons.wikimedia.org/wiki/File:Odo_Dam.jpg', 33.544617, 133.114992),
+  sight('niyodogawa-sight-06', '風の里公園', '高知県吾川郡仁淀川町', null, COMMONS_KAZENOSATO, 33.45929444, 133.14520833),
+  sight('niyodogawa-sight-07', '久喜橋', '高知県吾川郡仁淀川町', null, COMMONS_KUKIBASHI, 33.568291, 133.159973)
 ];

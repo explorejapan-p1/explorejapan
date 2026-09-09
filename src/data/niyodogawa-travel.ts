@@ -1,13 +1,13 @@
 /**
  * Niyodogawa Town travel layer. No frozen pack.
- * Dining from 食べログ 仁淀川町 (C39387) — honest 3 with dish JPGs (きたはら / スープカレー トランス / 味処 おさき; skipped 民宿・ホテル内・dish0). Stay: 中津渓谷 ゆの森 Rakuten 本館和室 LARGE (plan LARGE a6e422c3 = mediaInfo「本館和室」). Onsen: 0 (stay≠onsen). Experience: 0.
+ * Dining: Tabelog C39387 (3 kept + PONTE・いけがわ439・レストランによど・ドライブイン引地橋・えびす茶屋). Stay: 中津渓谷 ゆの森. Onsen: 0 (stay≠onsen). Experience: 0. TG610 densify.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {NIYODOGAWA, NIYODOGAWA_SIGHT_PHOTOS} from './niyodogawa';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const NIYODOGAWA_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const NIYODOGAWA_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const NIYODOGAWA_TRAVEL_SOURCES = {
   home: 'https://www.town.niyodogawa.lg.jp/', hall: 'https://ja.wikipedia.org/wiki/%E4%BB%81%E6%B7%80%E5%B7%9D%E7%94%BA',
   kankou: 'https://www.town.niyodogawa.lg.jp/',
@@ -25,7 +25,7 @@ export const NIYODOGAWA_STAY_PACK_SET: ReadonlySet<string> = new Set(NIYODOGAWA_
 export const NIYODOGAWA_SHOPPING_PACK_NAMES = [] as const;
 export const NIYODOGAWA_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(NIYODOGAWA_SHOPPING_PACK_NAMES);
 
-export const NIYODOGAWA_SIGHT_PINS = ['中津渓谷','仁淀川町役場','雨竜の滝','長者の棚田','大渡ダム'] as const;
+export const NIYODOGAWA_SIGHT_PINS = ['中津渓谷','仁淀川町役場','雨竜の滝','長者の棚田','大渡ダム','風の里公園','久喜橋'] as const;
 
 function stay(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: NIYODOGAWA_TRAVEL_ACCESSED};
@@ -41,6 +41,11 @@ export const NIYODOGAWA_TRAVEL_DINING: readonly TravelRow[] = [
   dining('niyodogawa-dining-01', 'きたはら', '高知県吾川郡仁淀川町大崎238-3', '0889-20-2123', 'https://tabelog.com/kochi/A3903/A390302/39007425/'),
   dining('niyodogawa-dining-02', 'スープカレー トランス', '高知県吾川郡仁淀川町大崎474-12', '070-8515-4504', 'https://tabelog.com/kochi/A3903/A390302/39008745/'),
   dining('niyodogawa-dining-03', '味処 おさき', '高知県吾川郡仁淀川町大崎325', '0889-35-0309', 'https://tabelog.com/kochi/A3903/A390302/39006963/'),
+  dining('niyodogawa-dining-04', 'PONTE', '高知県吾川郡仁淀川町名野川258-1 中津渓谷ゆの森 1F', '0889-36-0680', 'https://tabelog.com/kochi/A3903/A390302/39004941/'),
+  dining('niyodogawa-dining-05', 'いけがわ４３９交流館', '高知県吾川郡仁淀川町北浦450-2', '0889-34-3988', 'https://tabelog.com/kochi/A3903/A390302/39005049/'),
+  dining('niyodogawa-dining-06', 'レストランによど', '高知県吾川郡仁淀川町高瀬3869', '0889-32-2771', 'https://tabelog.com/kochi/A3903/A390303/39006702/'),
+  dining('niyodogawa-dining-07', 'ドライブイン引地橋', '高知県吾川郡仁淀川町引地', '0889-35-1289', 'https://tabelog.com/kochi/A3903/A390302/39000532/'),
+  dining('niyodogawa-dining-08', 'えびす茶屋', '高知県吾川郡仁淀川町名野川456', '0889-36-0456', 'https://tabelog.com/kochi/A3903/A390302/39006194/'),
 ];
 
 export const NIYODOGAWA_DINING_NAME_SET: ReadonlySet<string> = new Set(NIYODOGAWA_TRAVEL_DINING.map((row) => row.name_ja));
