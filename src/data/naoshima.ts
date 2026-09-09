@@ -36,7 +36,7 @@ export const NAOSHIMA = {
 } as const;
 
 export const NAOSHIMA_EXPECTED_ROW_COUNT = 11;
-export const NAOSHIMA_EXPECTED_GEO_COUNT = 11;
+export const NAOSHIMA_EXPECTED_GEO_COUNT = 10;
 
 function wikiPhoto(
   file: string,
@@ -214,25 +214,179 @@ export const NAOSHIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '直島銭湯「I♥湯」（直島町）',
     'Naoshima Bath I♥湯, Naoshima'
   ),
-  'ベネッセハウス': sourcePhoto(
-    'naoshima-stay-benesse.jpg',
-    'ベネッセハウスの客室写真（ビーチスイート）',
-    'Benesse House Beach Suite room photo',
-    'https://travel.rakuten.co.jp/HOTEL/107793/gallery.html',
+  "はなみずき": sourcePhoto(
+    "naoshima-stay-h177776.jpg",
+    "はなみずきの客室写真",
+    "\u306f\u306a\u307f\u305a\u304d room photo",
+    "https://travel.rakuten.co.jp/HOTEL/177776/177776.html",
     '楽天トラベル'
   ),
-  '直島ふるさと海の家 つつじ荘': sourcePhoto(
-    'naoshima-stay-tsutsuji.jpg',
-    '直島ふるさと海の家 つつじ荘の客室写真（和風コテージ）',
-    'Naoshima Tsutsuji-so Japanese cottage room photo',
-    'https://travel.rakuten.co.jp/HOTEL/111253/gallery.html',
+  "ほっこり民宿 清ｓａｙａ": sourcePhoto(
+    "naoshima-stay-h151329.jpg",
+    "ほっこり民宿 清ｓａｙａの客室写真",
+    "\u307b\u3063\u3053\u308a\u6c11\u5bbf \u6e05\uff53\uff41\uff59\uff41 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/151329/151329.html",
     '楽天トラベル'
   ),
-  '直島ふるさと海の家 つつじ荘 貸切風呂': sourcePhoto(
-    'naoshima-onsen-tsutsuji.jpg',
-    '直島ふるさと海の家 つつじ荘の貸切風呂写真',
-    'Naoshima Tsutsuji-so private bath photo',
-    'https://travel.rakuten.co.jp/HOTEL/111253/gallery.html',
+  "やどセブンビーチ ＾": sourcePhoto(
+    "naoshima-stay-h169438.jpg",
+    "やどセブンビーチ ＾の客室写真",
+    "\u3084\u3069\u30bb\u30d6\u30f3\u30d3\u30fc\u30c1 \uff3e room photo",
+    "https://travel.rakuten.co.jp/HOTEL/169438/169438.html",
+    '楽天トラベル'
+  ),
+  "よこんぼ２ ペットと泊まれる宿 ＾": sourcePhoto(
+    "naoshima-stay-h186554.jpg",
+    "よこんぼ２ ペットと泊まれる宿 ＾の客室写真",
+    "\u3088\u3053\u3093\u307c\uff12 \u30da\u30c3\u30c8\u3068\u6cca\u307e\u308c\u308b\u5bbf \uff3e room photo",
+    "https://travel.rakuten.co.jp/HOTEL/186554/186554.html",
+    '楽天トラベル'
+  ),
+  "クイントハウス直島": sourcePhoto(
+    "naoshima-stay-h184653.jpg",
+    "クイントハウス直島の客室写真",
+    "\u30af\u30a4\u30f3\u30c8\u30cf\u30a6\u30b9\u76f4\u5cf6 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/184653/184653.html",
+    '楽天トラベル'
+  ),
+  "ゲストハウス 島宿あいすなお": sourcePhoto(
+    "naoshima-stay-h151331.jpg",
+    "ゲストハウス 島宿あいすなおの客室写真",
+    "\u30b2\u30b9\u30c8\u30cf\u30a6\u30b9 \u5cf6\u5bbf\u3042\u3044\u3059\u306a\u304a room photo",
+    "https://travel.rakuten.co.jp/HOTEL/151331/151331.html",
+    '楽天トラベル'
+  ),
+  "ゲストハウス ＰＬＥＮＯ ＾": sourcePhoto(
+    "naoshima-stay-h185909.jpg",
+    "ゲストハウス ＰＬＥＮＯ ＾の客室写真",
+    "\u30b2\u30b9\u30c8\u30cf\u30a6\u30b9 \uff30\uff2c\uff25\uff2e\uff2f \uff3e room photo",
+    "https://travel.rakuten.co.jp/HOTEL/185909/185909.html",
+    '楽天トラベル'
+  ),
+  "ベネッセハウス": sourcePhoto(
+    "naoshima-stay-benesse.jpg",
+    "ベネッセハウスの客室写真",
+    "\u30d9\u30cd\u30c3\u30bb\u30cf\u30a6\u30b9 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/107793/107793.html",
+    '楽天トラベル'
+  ),
+  "マローラおばさんの家（やどセブンビーチ別館） ＾": sourcePhoto(
+    "naoshima-stay-h169439.jpg",
+    "マローラおばさんの家（やどセブンビーチ別館） ＾の客室写真",
+    "\u30de\u30ed\u30fc\u30e9\u304a\u3070\u3055\u3093\u306e\u5bb6\uff08\u3084\u3069\u30bb\u30d6\u30f3\u30d3\u30fc\u30c1\u5225\u9928\uff09 \uff3e room photo",
+    "https://travel.rakuten.co.jp/HOTEL/169439/169439.html",
+    '楽天トラベル'
+  ),
+  "民宿 おやじの海": sourcePhoto(
+    "naoshima-stay-h109394.jpg",
+    "民宿 おやじの海の客室写真",
+    "\u6c11\u5bbf \u304a\u3084\u3058\u306e\u6d77 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/109394/109394.html",
+    '楽天トラベル'
+  ),
+  "民宿 西村屋": sourcePhoto(
+    "naoshima-stay-h168636.jpg",
+    "民宿 西村屋の客室写真",
+    "\u6c11\u5bbf \u897f\u6751\u5c4b room photo",
+    "https://travel.rakuten.co.jp/HOTEL/168636/168636.html",
+    '楽天トラベル'
+  ),
+  "民宿シーズン": sourcePhoto(
+    "naoshima-stay-h153636.jpg",
+    "民宿シーズンの客室写真",
+    "\u6c11\u5bbf\u30b7\u30fc\u30ba\u30f3 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/153636/153636.html",
+    '楽天トラベル'
+  ),
+  "民宿竹の家": sourcePhoto(
+    "naoshima-stay-h151145.jpg",
+    "民宿竹の家の客室写真",
+    "\u6c11\u5bbf\u7af9\u306e\u5bb6 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/151145/151145.html",
+    '楽天トラベル'
+  ),
+  "直島 海辺の宿 波へい": sourcePhoto(
+    "naoshima-stay-h153635.jpg",
+    "直島 海辺の宿 波へいの客室写真",
+    "\u76f4\u5cf6 \u6d77\u8fba\u306e\u5bbf \u6ce2\u3078\u3044 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/153635/153635.html",
+    '楽天トラベル'
+  ),
+  "直島ふるさと海の家 つつじ荘": sourcePhoto(
+    "naoshima-stay-tsutsuji.jpg",
+    "直島ふるさと海の家 つつじ荘の客室写真",
+    "\u76f4\u5cf6\u3075\u308b\u3055\u3068\u6d77\u306e\u5bb6 \u3064\u3064\u3058\u8358 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/111253/111253.html",
+    '楽天トラベル'
+  ),
+  "直島宿泊所めん宿 浦 ＾": sourcePhoto(
+    "naoshima-stay-h185498.jpg",
+    "直島宿泊所めん宿 浦 ＾の客室写真",
+    "\u76f4\u5cf6\u5bbf\u6cca\u6240\u3081\u3093\u5bbf \u6d66 \uff3e room photo",
+    "https://travel.rakuten.co.jp/HOTEL/185498/185498.html",
+    '楽天トラベル'
+  ),
+  "Ｅｐｉｓｏｄｅ１": sourcePhoto(
+    "naoshima-stay-h141197.jpg",
+    "Ｅｐｉｓｏｄｅ１の客室写真",
+    "\uff25\uff50\uff49\uff53\uff4f\uff44\uff45\uff11 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/141197/141197.html",
+    '楽天トラベル'
+  ),
+  "ＧＵＥＳＴＨＯＵＳＥ ＢａｍｂｏｏＶｉｌｌａｇｅ": sourcePhoto(
+    "naoshima-stay-h160872.jpg",
+    "ＧＵＥＳＴＨＯＵＳＥ ＢａｍｂｏｏＶｉｌｌａｇｅの客室写真",
+    "\uff27\uff35\uff25\uff33\uff34\uff28\uff2f\uff35\uff33\uff25 \uff22\uff41\uff4d\uff42\uff4f\uff4f\uff36\uff49\uff4c\uff4c\uff41\uff47\uff45 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/160872/160872.html",
+    '楽天トラベル'
+  ),
+  "ＧｕｅｓｔＨｏｕｓｅ海っ子": sourcePhoto(
+    "naoshima-stay-h151328.jpg",
+    "ＧｕｅｓｔＨｏｕｓｅ海っ子の客室写真",
+    "\uff27\uff55\uff45\uff53\uff54\uff28\uff4f\uff55\uff53\uff45\u6d77\u3063\u5b50 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/151328/151328.html",
+    '楽天トラベル'
+  ),
+  "Ｌａ Ｃｕｒａｃｉｏｎ（ラ・クラシオン）": sourcePhoto(
+    "naoshima-stay-h158374.jpg",
+    "Ｌａ Ｃｕｒａｃｉｏｎ（ラ・クラシオン）の客室写真",
+    "\uff2c\uff41 \uff23\uff55\uff52\uff41\uff43\uff49\uff4f\uff4e\uff08\u30e9\u30fb\u30af\u30e9\u30b7\u30aa\u30f3\uff09 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/158374/158374.html",
+    '楽天トラベル'
+  ),
+  "ＭＹ ＬＯＤＧＥ ｎａｏｓｈｉｍａ": sourcePhoto(
+    "naoshima-stay-h179899.jpg",
+    "ＭＹ ＬＯＤＧＥ ｎａｏｓｈｉｍａの客室写真",
+    "\uff2d\uff39 \uff2c\uff2f\uff24\uff27\uff25 \uff4e\uff41\uff4f\uff53\uff48\uff49\uff4d\uff41 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/179899/179899.html",
+    '楽天トラベル'
+  ),
+  "ＳＰＡＲＫＹ’ｓ Ｈｏｕｓｅ": sourcePhoto(
+    "naoshima-stay-h167287.jpg",
+    "ＳＰＡＲＫＹ’ｓ Ｈｏｕｓｅの客室写真",
+    "\uff33\uff30\uff21\uff32\uff2b\uff39\u2019\uff53 \uff28\uff4f\uff55\uff53\uff45 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/167287/167287.html",
+    '楽天トラベル'
+  ),
+  "Ｙｅｌｌｏｗ Ｈｏｕｓｅ": sourcePhoto(
+    "naoshima-stay-h188473.jpg",
+    "Ｙｅｌｌｏｗ Ｈｏｕｓｅの客室写真",
+    "\uff39\uff45\uff4c\uff4c\uff4f\uff57 \uff28\uff4f\uff55\uff53\uff45 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/188473/188473.html",
+    '楽天トラベル'
+  ),
+  "ｋｏｋｏｃｈｉ": sourcePhoto(
+    "naoshima-stay-h178219.jpg",
+    "ｋｏｋｏｃｈｉの客室写真",
+    "\uff4b\uff4f\uff4b\uff4f\uff43\uff48\uff49 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/178219/178219.html",
+    '楽天トラベル'
+  ),
+  "直島ふるさと海の家 つつじ荘 貸切風呂": sourcePhoto(
+    "naoshima-onsen-tsutsuji.jpg",
+    "直島ふるさと海の家 つつじ荘 貸切風呂の写真",
+    "\u76f4\u5cf6\u3075\u308b\u3055\u3068\u6d77\u306e\u5bb6 \u3064\u3064\u3058\u8358 \u8cb8\u5207\u98a8\u5442 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/111253/gallery.html",
     '楽天トラベル'
   ),
   '地中カフェ': sourcePhoto('naoshima-37000602-dish.jpg', '地中カフェの料理写真', 'Chichu Cafe food photo', TABELOG_37000602, '食べログ'),
@@ -257,8 +411,8 @@ function sight(
   address: string | null,
   phone: string | null,
   source_url: string,
-  lat: number,
-  lon: number
+  lat: number | null,
+  lon: number | null
 ): FacilityRow {
   return {
     id,
@@ -290,5 +444,5 @@ export const NAOSHIMA_FACILITIES: readonly FacilityRow[] = [
   sight('naoshima-sight-08', '琴弾地海水浴場', '香川県香川郡直島町琴弾地', null, 'https://naoshima.net/', 34.4490, 134.0000),
   sight('naoshima-sight-09', 'ANDO MUSEUM', '香川県香川郡直島町本村', null, 'https://benesse-artsite.jp/art/ando-museum.html', 34.4540, 133.9955),
   sight('naoshima-exp-01', '直島銭湯「I♥湯」', '香川県香川郡直島町2252-2', null, 'https://benesse-artsite.jp/art/naoshima-bath.html', 34.4565, 133.9935),
-  sight('naoshima-onsen-01', '直島ふるさと海の家 つつじ荘 貸切風呂', '香川県香川郡直島町352-1', '087-892-2838', 'https://travel.rakuten.co.jp/HOTEL/111253/gallery.html', 34.4405, 134.0020)
+  sight('naoshima-onsen-01', "直島ふるさと海の家 つつじ荘 貸切風呂", "香川県香川郡直島町352-1", null, "https://travel.rakuten.co.jp/HOTEL/111253/gallery.html", null, null),
 ];

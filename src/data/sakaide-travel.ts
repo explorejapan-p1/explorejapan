@@ -15,7 +15,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const SAKAIDE_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const SAKAIDE_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const SAKAIDE_TRAVEL_SOURCES = {
   home: 'https://www.city.sakaide.lg.jp/',
@@ -28,7 +28,7 @@ export const SAKAIDE_TRAVEL_SOURCES = {
   plaza: 'https://travel.rakuten.co.jp/HOTEL/17901/17901.html'
 } as const;
 
-export const SAKAIDE_ONSEN_PACK_NAMES = ['ホテルルートイン坂出北インター 大浴場', '坂出グランドホテル 大浴場'] as const;
+export const SAKAIDE_ONSEN_PACK_NAMES = ["ビジネスホテル美咲 大浴場", "ホテルルートイン坂出北インター 大浴場", "休暇村 讃岐五色台 大浴場", "坂出グランドホテル 大浴場", "旅館 久米ひまわり荘 大浴場", "旅館川久米 大浴場", "湯元さぬき瀬戸大橋温泉 せとうちそう 大浴場", "美咲旅館 大浴場"] as const;
 export const SAKAIDE_ONSEN_PACK_SET: ReadonlySet<string> = new Set(SAKAIDE_ONSEN_PACK_NAMES);
 export const SAKAIDE_EXPERIENCE_PACK_NAMES = ['道の駅瀬戸大橋記念公園'] as const;
 export const SAKAIDE_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(SAKAIDE_EXPERIENCE_PACK_NAMES);
@@ -69,9 +69,27 @@ function stay(
 
 /** Ranked strongest Instagram-style room 出典 first. */
 export const SAKAIDE_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('sakaide-stay-01', 'ホテルルートイン坂出北インター', '香川県坂出市西大浜北4-5-31', '0877-59-1110', 'https://travel.rakuten.co.jp/HOTEL/70208/70208.html'),
-  stay('sakaide-stay-02', '坂出グランドホテル', '香川県坂出市西大浜北1-2-33', '0877-44-1000', 'https://travel.rakuten.co.jp/HOTEL/15414/15414.html'),
-  stay('sakaide-stay-03', '坂出プラザホテル', '香川県坂出市西大浜北3-2-43', '0877-45-6565', 'https://travel.rakuten.co.jp/HOTEL/17901/17901.html')
+  stay('sakaide-stay-001', "いろりの宿 木乃古 ＾", "香川県坂出市王越町木沢469-1　Ｉｒｏｒｉ　ｎｏ　Ｙａｄｏ　Ｋｉｎｏｋｏ", null, "https://travel.rakuten.co.jp/HOTEL/186296/186296.html"),
+  stay('sakaide-stay-002', "お遍路ハウス八十場／民泊", "香川県坂出市西庄町1702　ＯｈｅｎｒｏＨｏｕｓｅ　Ｙａｓｏｂａ", null, "https://travel.rakuten.co.jp/HOTEL/194429/194429.html"),
+  stay('sakaide-stay-003', "がもう家", "香川県坂出市加茂町825", null, "https://travel.rakuten.co.jp/HOTEL/192225/192225.html"),
+  stay('sakaide-stay-004', "ゲストハウス 坂出駅前館", "香川県坂出市京町1-5-1", null, "https://travel.rakuten.co.jp/HOTEL/196872/196872.html"),
+  stay('sakaide-stay-005', "ビジネスホテル美咲", "香川県坂出市西大浜北2-3-1", null, "https://travel.rakuten.co.jp/HOTEL/53401/53401.html"),
+  stay('sakaide-stay-006', "ホテル ニューセンチュリー坂出", "香川県坂出市久米町1-25-8", null, "https://travel.rakuten.co.jp/HOTEL/19775/19775.html"),
+  stay('sakaide-stay-007', "ホテルルートイン坂出北インター", "香川県坂出市西大浜北4-5-31", null, "https://travel.rakuten.co.jp/HOTEL/70208/70208.html"),
+  stay('sakaide-stay-008', "リゾートホテル ＪＲ坂出駅から徒歩７分 ＾", "香川県坂出市本町2-9-1　ＲＥＮＴビル", null, "https://travel.rakuten.co.jp/HOTEL/190936/190936.html"),
+  stay('sakaide-stay-009', "休暇村 讃岐五色台", "香川県坂出市大屋冨町3042", null, "https://travel.rakuten.co.jp/HOTEL/76780/76780.html"),
+  stay('sakaide-stay-010', "坂出グランドホテル", "香川県坂出市西大浜北1-2-33", null, "https://travel.rakuten.co.jp/HOTEL/15414/15414.html"),
+  stay('sakaide-stay-011', "坂出プラザホテル", "香川県坂出市西大浜北3-2-43", null, "https://travel.rakuten.co.jp/HOTEL/17901/17901.html"),
+  stay('sakaide-stay-012', "旅館 みき", "香川県坂出市本町3丁目3-25", "0877-46-5441", "https://travel.rakuten.co.jp/HOTEL/107653/107653.html"),
+  stay('sakaide-stay-013', "旅館 久米ひまわり荘", "香川県坂出市西大浜南3-1-15", null, "https://travel.rakuten.co.jp/HOTEL/56170/56170.html"),
+  stay('sakaide-stay-014', "旅館川久米", "香川県坂出市元町1丁目7-12", null, "https://travel.rakuten.co.jp/HOTEL/76783/76783.html"),
+  stay('sakaide-stay-015', "湯元さぬき瀬戸大橋温泉 せとうちそう", "香川県坂出市常盤町2-1-20", null, "https://travel.rakuten.co.jp/HOTEL/8175/8175.html"),
+  stay('sakaide-stay-016', "美咲旅館", "香川県坂出市西大浜北2-4-38", null, "https://travel.rakuten.co.jp/HOTEL/53400/53400.html"),
+  stay('sakaide-stay-017', "ＢＡＹ ＭＡＲＩＮＡ ログハウス ＾", "香川県坂出市大屋冨町3100　ＢＡＹ　ＭＡＲＩＮＡ　Ｌｏｇｈｏｕｓｅ", null, "https://travel.rakuten.co.jp/HOTEL/171129/171129.html"),
+  stay('sakaide-stay-018', "ＨＯＴＥＬ Ｒ９ Ｔｈｅ Ｙａｒｄ 坂出", "香川県坂出市西大浜北3-3-45", null, "https://travel.rakuten.co.jp/HOTEL/193223/193223.html"),
+  stay('sakaide-stay-019', "ＭＹＴＨ‐Ｓ【大人専用１８禁・ハピホテ提携】", "香川県坂出市西大浜北2-47-23", null, "https://travel.rakuten.co.jp/HOTEL/163466/163466.html"),
+  stay('sakaide-stay-020', "ＭＹＴＨ－Ｊ【大人専用１８禁・ハピホテ提携】", "香川県坂出市西大浜北4-5-14", null, "https://travel.rakuten.co.jp/HOTEL/163468/163468.html"),
+  stay('sakaide-stay-021', "ＭＹＴＨ－Ｗ【大人専用１８禁・ハピホテ提携】", "香川県坂出市西大浜北1-3-32", null, "https://travel.rakuten.co.jp/HOTEL/163467/163467.html"),
 ];
 
 function dining(

@@ -15,7 +15,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const NAOSHIMA_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const NAOSHIMA_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const NAOSHIMA_TRAVEL_SOURCES = {
   home: 'https://www.town.naoshima.lg.jp/',
@@ -27,7 +27,7 @@ export const NAOSHIMA_TRAVEL_SOURCES = {
   tsutsuji: 'https://travel.rakuten.co.jp/HOTEL/111253/111253.html'
 } as const;
 
-export const NAOSHIMA_ONSEN_PACK_NAMES = ['直島ふるさと海の家 つつじ荘 貸切風呂'] as const;
+export const NAOSHIMA_ONSEN_PACK_NAMES = ["直島ふるさと海の家 つつじ荘 貸切風呂"] as const;
 export const NAOSHIMA_ONSEN_PACK_SET: ReadonlySet<string> = new Set(NAOSHIMA_ONSEN_PACK_NAMES);
 export const NAOSHIMA_EXPERIENCE_PACK_NAMES = ['直島銭湯「I♥湯」'] as const;
 export const NAOSHIMA_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(NAOSHIMA_EXPERIENCE_PACK_NAMES);
@@ -68,8 +68,30 @@ function stay(
 
 /** Ranked strongest Instagram-style room 出典 first. */
 export const NAOSHIMA_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('naoshima-stay-01', 'ベネッセハウス', '香川県香川郡直島町琴弾地', '087-892-3223', 'https://travel.rakuten.co.jp/HOTEL/107793/107793.html'),
-  stay('naoshima-stay-02', '直島ふるさと海の家 つつじ荘', '香川県香川郡直島町352-1', '087-892-2838', 'https://travel.rakuten.co.jp/HOTEL/111253/111253.html')
+  stay('naoshima-stay-001', "はなみずき", "香川県香川郡直島町一円3652-3", null, "https://travel.rakuten.co.jp/HOTEL/177776/177776.html"),
+  stay('naoshima-stay-002', "ほっこり民宿 清ｓａｙａ", "香川県香川郡直島町2310-168", null, "https://travel.rakuten.co.jp/HOTEL/151329/151329.html"),
+  stay('naoshima-stay-003', "やどセブンビーチ ＾", "香川県香川郡直島町2310-19　ｙａｄｏ　Ｓｅｖｅｎ　Ｂｅａｃｈ", null, "https://travel.rakuten.co.jp/HOTEL/169438/169438.html"),
+  stay('naoshima-stay-004', "よこんぼ２ ペットと泊まれる宿 ＾", "香川県香川郡直島町3756-4　よこんぼ2　ペットと泊まれる宿", null, "https://travel.rakuten.co.jp/HOTEL/186554/186554.html"),
+  stay('naoshima-stay-005', "クイントハウス直島", "香川県香川郡直島町2255", null, "https://travel.rakuten.co.jp/HOTEL/184653/184653.html"),
+  stay('naoshima-stay-006', "ゲストハウス 島宿あいすなお", "香川県香川郡直島町765", null, "https://travel.rakuten.co.jp/HOTEL/151331/151331.html"),
+  stay('naoshima-stay-007', "ゲストハウス ＰＬＥＮＯ ＾", "香川県香川郡直島町890-3", null, "https://travel.rakuten.co.jp/HOTEL/185909/185909.html"),
+  stay('naoshima-stay-008', "ベネッセハウス", "香川県香川郡直島町琴弾地", null, "https://travel.rakuten.co.jp/HOTEL/107793/107793.html"),
+  stay('naoshima-stay-009', "マローラおばさんの家（やどセブンビーチ別館） ＾", "香川県香川郡直島町2310-19　Ｍｒｓ．　Ｍａｒｏｕｌｌａ＇ｓ　ＨＯＵＳＥ", null, "https://travel.rakuten.co.jp/HOTEL/169439/169439.html"),
+  stay('naoshima-stay-010', "民宿 おやじの海", "香川県香川郡直島町本村774", null, "https://travel.rakuten.co.jp/HOTEL/109394/109394.html"),
+  stay('naoshima-stay-011', "民宿 西村屋", "香川県香川郡直島町746", null, "https://travel.rakuten.co.jp/HOTEL/168636/168636.html"),
+  stay('naoshima-stay-012', "民宿シーズン", "香川県香川郡直島町84", null, "https://travel.rakuten.co.jp/HOTEL/153636/153636.html"),
+  stay('naoshima-stay-013', "民宿竹の家", "香川県香川郡直島町1119-1", null, "https://travel.rakuten.co.jp/HOTEL/151145/151145.html"),
+  stay('naoshima-stay-014', "直島 海辺の宿 波へい", "香川県香川郡直島町39-10", null, "https://travel.rakuten.co.jp/HOTEL/153635/153635.html"),
+  stay('naoshima-stay-015', "直島ふるさと海の家 つつじ荘", "香川県香川郡直島町352-1", null, "https://travel.rakuten.co.jp/HOTEL/111253/111253.html"),
+  stay('naoshima-stay-016', "直島宿泊所めん宿 浦 ＾", "香川県香川郡直島町4780-7", null, "https://travel.rakuten.co.jp/HOTEL/185498/185498.html"),
+  stay('naoshima-stay-017', "Ｅｐｉｓｏｄｅ１", "香川県香川郡直島町4780-13", null, "https://travel.rakuten.co.jp/HOTEL/141197/141197.html"),
+  stay('naoshima-stay-018', "ＧＵＥＳＴＨＯＵＳＥ ＢａｍｂｏｏＶｉｌｌａｇｅ", "香川県香川郡直島町3299-2", null, "https://travel.rakuten.co.jp/HOTEL/160872/160872.html"),
+  stay('naoshima-stay-019', "ＧｕｅｓｔＨｏｕｓｅ海っ子", "香川県香川郡直島町4777-8", null, "https://travel.rakuten.co.jp/HOTEL/151328/151328.html"),
+  stay('naoshima-stay-020', "Ｌａ Ｃｕｒａｃｉｏｎ（ラ・クラシオン）", "香川県香川郡直島町積浦4780-8", null, "https://travel.rakuten.co.jp/HOTEL/158374/158374.html"),
+  stay('naoshima-stay-021', "ＭＹ ＬＯＤＧＥ ｎａｏｓｈｉｍａ", "香川県香川郡直島町3718-56", null, "https://travel.rakuten.co.jp/HOTEL/179899/179899.html"),
+  stay('naoshima-stay-022', "ＳＰＡＲＫＹ’ｓ Ｈｏｕｓｅ", "香川県香川郡直島町家の上１９１５", null, "https://travel.rakuten.co.jp/HOTEL/167287/167287.html"),
+  stay('naoshima-stay-023', "Ｙｅｌｌｏｗ Ｈｏｕｓｅ", "香川県香川郡直島町4777-11", null, "https://travel.rakuten.co.jp/HOTEL/188473/188473.html"),
+  stay('naoshima-stay-024', "ｋｏｋｏｃｈｉ", "香川県香川郡直島町3698-6", null, "https://travel.rakuten.co.jp/HOTEL/178219/178219.html"),
 ];
 
 function dining(

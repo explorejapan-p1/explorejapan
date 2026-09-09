@@ -36,8 +36,8 @@ export const SAKAIDE = {
   }
 } as const;
 
-export const SAKAIDE_EXPECTED_ROW_COUNT = 12;
-export const SAKAIDE_EXPECTED_GEO_COUNT = 12;
+export const SAKAIDE_EXPECTED_ROW_COUNT = 18;
+export const SAKAIDE_EXPECTED_GEO_COUNT = 10;
 
 function wikiPhoto(
   file: string,
@@ -215,39 +215,207 @@ export const SAKAIDE_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '道の駅瀬戸大橋記念公園（坂出市）',
     'Michinoeki Seto-Ohashi Kinen-koen, Sakaide'
   ),
-  'ホテルルートイン坂出北インター': sourcePhoto(
-    'sakaide-stay-routeinn.jpg',
-    'ホテルルートイン坂出北インターの客室写真',
-    'Hotel Route Inn Sakaide Kita Inter room photo',
-    'https://travel.rakuten.co.jp/HOTEL/70208/gallery.html',
+  "いろりの宿 木乃古 ＾": sourcePhoto(
+    "sakaide-stay-h186296.jpg",
+    "いろりの宿 木乃古 ＾の客室写真",
+    "\u3044\u308d\u308a\u306e\u5bbf \u6728\u4e43\u53e4 \uff3e room photo",
+    "https://travel.rakuten.co.jp/HOTEL/186296/186296.html",
     '楽天トラベル'
   ),
-  '坂出グランドホテル': sourcePhoto(
-    'sakaide-stay-grand.jpg',
-    '坂出グランドホテルの客室写真',
-    'Sakaide Grand Hotel room photo',
-    'https://travel.rakuten.co.jp/HOTEL/15414/gallery.html',
+  "お遍路ハウス八十場／民泊": sourcePhoto(
+    "sakaide-stay-h194429.jpg",
+    "お遍路ハウス八十場／民泊の客室写真",
+    "\u304a\u904d\u8def\u30cf\u30a6\u30b9\u516b\u5341\u5834\uff0f\u6c11\u6cca room photo",
+    "https://travel.rakuten.co.jp/HOTEL/194429/194429.html",
     '楽天トラベル'
   ),
-  '坂出プラザホテル': sourcePhoto(
-    'sakaide-stay-plaza.jpg',
-    '坂出プラザホテルの客室写真',
-    'Sakaide Plaza Hotel room photo',
-    'https://travel.rakuten.co.jp/HOTEL/17901/gallery.html',
+  "がもう家": sourcePhoto(
+    "sakaide-stay-h192225.jpg",
+    "がもう家の客室写真",
+    "\u304c\u3082\u3046\u5bb6 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/192225/192225.html",
     '楽天トラベル'
   ),
-  'ホテルルートイン坂出北インター 大浴場': sourcePhoto(
-    'sakaide-onsen-routeinn.jpg',
-    'ホテルルートイン坂出北インターの大浴場写真',
-    'Hotel Route Inn Sakaide Kita Inter bath photo',
-    'https://travel.rakuten.co.jp/HOTEL/70208/gallery.html',
+  "ゲストハウス 坂出駅前館": sourcePhoto(
+    "sakaide-stay-h196872.jpg",
+    "ゲストハウス 坂出駅前館の客室写真",
+    "\u30b2\u30b9\u30c8\u30cf\u30a6\u30b9 \u5742\u51fa\u99c5\u524d\u9928 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/196872/196872.html",
     '楽天トラベル'
   ),
-  '坂出グランドホテル 大浴場': sourcePhoto(
-    'sakaide-onsen-grand.jpg',
-    '坂出グランドホテルの大浴場写真',
-    'Sakaide Grand Hotel bath photo',
-    'https://travel.rakuten.co.jp/HOTEL/15414/gallery.html',
+  "ビジネスホテル美咲": sourcePhoto(
+    "sakaide-stay-h53401.jpg",
+    "ビジネスホテル美咲の客室写真",
+    "\u30d3\u30b8\u30cd\u30b9\u30db\u30c6\u30eb\u7f8e\u54b2 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/53401/53401.html",
+    '楽天トラベル'
+  ),
+  "ホテル ニューセンチュリー坂出": sourcePhoto(
+    "sakaide-stay-h19775.jpg",
+    "ホテル ニューセンチュリー坂出の客室写真",
+    "\u30db\u30c6\u30eb \u30cb\u30e5\u30fc\u30bb\u30f3\u30c1\u30e5\u30ea\u30fc\u5742\u51fa room photo",
+    "https://travel.rakuten.co.jp/HOTEL/19775/19775.html",
+    '楽天トラベル'
+  ),
+  "ホテルルートイン坂出北インター": sourcePhoto(
+    "sakaide-stay-routeinn.jpg",
+    "ホテルルートイン坂出北インターの客室写真",
+    "\u30db\u30c6\u30eb\u30eb\u30fc\u30c8\u30a4\u30f3\u5742\u51fa\u5317\u30a4\u30f3\u30bf\u30fc room photo",
+    "https://travel.rakuten.co.jp/HOTEL/70208/70208.html",
+    '楽天トラベル'
+  ),
+  "リゾートホテル ＪＲ坂出駅から徒歩７分 ＾": sourcePhoto(
+    "sakaide-stay-h190936.jpg",
+    "リゾートホテル ＪＲ坂出駅から徒歩７分 ＾の客室写真",
+    "\u30ea\u30be\u30fc\u30c8\u30db\u30c6\u30eb \uff2a\uff32\u5742\u51fa\u99c5\u304b\u3089\u5f92\u6b69\uff17\u5206 \uff3e room photo",
+    "https://travel.rakuten.co.jp/HOTEL/190936/190936.html",
+    '楽天トラベル'
+  ),
+  "休暇村 讃岐五色台": sourcePhoto(
+    "sakaide-stay-h76780.jpg",
+    "休暇村 讃岐五色台の客室写真",
+    "\u4f11\u6687\u6751 \u8b83\u5c90\u4e94\u8272\u53f0 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/76780/76780.html",
+    '楽天トラベル'
+  ),
+  "坂出グランドホテル": sourcePhoto(
+    "sakaide-stay-grand.jpg",
+    "坂出グランドホテルの客室写真",
+    "\u5742\u51fa\u30b0\u30e9\u30f3\u30c9\u30db\u30c6\u30eb room photo",
+    "https://travel.rakuten.co.jp/HOTEL/15414/15414.html",
+    '楽天トラベル'
+  ),
+  "坂出プラザホテル": sourcePhoto(
+    "sakaide-stay-plaza.jpg",
+    "坂出プラザホテルの客室写真",
+    "\u5742\u51fa\u30d7\u30e9\u30b6\u30db\u30c6\u30eb room photo",
+    "https://travel.rakuten.co.jp/HOTEL/17901/17901.html",
+    '楽天トラベル'
+  ),
+  "旅館 みき": sourcePhoto(
+    "sakaide-stay-h107653.jpg",
+    "旅館 みきの客室写真",
+    "\u65c5\u9928 \u307f\u304d room photo",
+    "https://travel.rakuten.co.jp/HOTEL/107653/107653.html",
+    '楽天トラベル'
+  ),
+  "旅館 久米ひまわり荘": sourcePhoto(
+    "sakaide-stay-h56170.jpg",
+    "旅館 久米ひまわり荘の客室写真",
+    "\u65c5\u9928 \u4e45\u7c73\u3072\u307e\u308f\u308a\u8358 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/56170/56170.html",
+    '楽天トラベル'
+  ),
+  "旅館川久米": sourcePhoto(
+    "sakaide-stay-h76783.jpg",
+    "旅館川久米の客室写真",
+    "\u65c5\u9928\u5ddd\u4e45\u7c73 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/76783/76783.html",
+    '楽天トラベル'
+  ),
+  "湯元さぬき瀬戸大橋温泉 せとうちそう": sourcePhoto(
+    "sakaide-stay-h8175.jpg",
+    "湯元さぬき瀬戸大橋温泉 せとうちそうの客室写真",
+    "\u6e6f\u5143\u3055\u306c\u304d\u702c\u6238\u5927\u6a4b\u6e29\u6cc9 \u305b\u3068\u3046\u3061\u305d\u3046 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/8175/8175.html",
+    '楽天トラベル'
+  ),
+  "美咲旅館": sourcePhoto(
+    "sakaide-stay-h53400.jpg",
+    "美咲旅館の客室写真",
+    "\u7f8e\u54b2\u65c5\u9928 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/53400/53400.html",
+    '楽天トラベル'
+  ),
+  "ＢＡＹ ＭＡＲＩＮＡ ログハウス ＾": sourcePhoto(
+    "sakaide-stay-h171129.jpg",
+    "ＢＡＹ ＭＡＲＩＮＡ ログハウス ＾の客室写真",
+    "\uff22\uff21\uff39 \uff2d\uff21\uff32\uff29\uff2e\uff21 \u30ed\u30b0\u30cf\u30a6\u30b9 \uff3e room photo",
+    "https://travel.rakuten.co.jp/HOTEL/171129/171129.html",
+    '楽天トラベル'
+  ),
+  "ＨＯＴＥＬ Ｒ９ Ｔｈｅ Ｙａｒｄ 坂出": sourcePhoto(
+    "sakaide-stay-h193223.jpg",
+    "ＨＯＴＥＬ Ｒ９ Ｔｈｅ Ｙａｒｄ 坂出の客室写真",
+    "\uff28\uff2f\uff34\uff25\uff2c \uff32\uff19 \uff34\uff48\uff45 \uff39\uff41\uff52\uff44 \u5742\u51fa room photo",
+    "https://travel.rakuten.co.jp/HOTEL/193223/193223.html",
+    '楽天トラベル'
+  ),
+  "ＭＹＴＨ‐Ｓ【大人専用１８禁・ハピホテ提携】": sourcePhoto(
+    "sakaide-stay-h163466.jpg",
+    "ＭＹＴＨ‐Ｓ【大人専用１８禁・ハピホテ提携】の客室写真",
+    "\uff2d\uff39\uff34\uff28\u2010\uff33\u3010\u5927\u4eba\u5c02\u7528\uff11\uff18\u7981\u30fb\u30cf\u30d4\u30db\u30c6\u63d0\u643a\u3011 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/163466/163466.html",
+    '楽天トラベル'
+  ),
+  "ＭＹＴＨ－Ｊ【大人専用１８禁・ハピホテ提携】": sourcePhoto(
+    "sakaide-stay-h163468.jpg",
+    "ＭＹＴＨ－Ｊ【大人専用１８禁・ハピホテ提携】の客室写真",
+    "\uff2d\uff39\uff34\uff28\uff0d\uff2a\u3010\u5927\u4eba\u5c02\u7528\uff11\uff18\u7981\u30fb\u30cf\u30d4\u30db\u30c6\u63d0\u643a\u3011 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/163468/163468.html",
+    '楽天トラベル'
+  ),
+  "ＭＹＴＨ－Ｗ【大人専用１８禁・ハピホテ提携】": sourcePhoto(
+    "sakaide-stay-h163467.jpg",
+    "ＭＹＴＨ－Ｗ【大人専用１８禁・ハピホテ提携】の客室写真",
+    "\uff2d\uff39\uff34\uff28\uff0d\uff37\u3010\u5927\u4eba\u5c02\u7528\uff11\uff18\u7981\u30fb\u30cf\u30d4\u30db\u30c6\u63d0\u643a\u3011 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/163467/163467.html",
+    '楽天トラベル'
+  ),
+  "ビジネスホテル美咲 大浴場": sourcePhoto(
+    "sakaide-onsen-h53401.jpg",
+    "ビジネスホテル美咲 大浴場の写真",
+    "\u30d3\u30b8\u30cd\u30b9\u30db\u30c6\u30eb\u7f8e\u54b2 \u5927\u6d74\u5834 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/53401/gallery.html",
+    '楽天トラベル'
+  ),
+  "ホテルルートイン坂出北インター 大浴場": sourcePhoto(
+    "sakaide-onsen-routeinn.jpg",
+    "ホテルルートイン坂出北インター 大浴場の写真",
+    "\u30db\u30c6\u30eb\u30eb\u30fc\u30c8\u30a4\u30f3\u5742\u51fa\u5317\u30a4\u30f3\u30bf\u30fc \u5927\u6d74\u5834 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/70208/gallery.html",
+    '楽天トラベル'
+  ),
+  "休暇村 讃岐五色台 大浴場": sourcePhoto(
+    "sakaide-onsen-h76780.jpg",
+    "休暇村 讃岐五色台 大浴場の写真",
+    "\u4f11\u6687\u6751 \u8b83\u5c90\u4e94\u8272\u53f0 \u5927\u6d74\u5834 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/76780/gallery.html",
+    '楽天トラベル'
+  ),
+  "坂出グランドホテル 大浴場": sourcePhoto(
+    "sakaide-onsen-grand.jpg",
+    "坂出グランドホテル 大浴場の写真",
+    "\u5742\u51fa\u30b0\u30e9\u30f3\u30c9\u30db\u30c6\u30eb \u5927\u6d74\u5834 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/15414/gallery.html",
+    '楽天トラベル'
+  ),
+  "旅館 久米ひまわり荘 大浴場": sourcePhoto(
+    "sakaide-onsen-h56170.jpg",
+    "旅館 久米ひまわり荘 大浴場の写真",
+    "\u65c5\u9928 \u4e45\u7c73\u3072\u307e\u308f\u308a\u8358 \u5927\u6d74\u5834 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/56170/gallery.html",
+    '楽天トラベル'
+  ),
+  "旅館川久米 大浴場": sourcePhoto(
+    "sakaide-onsen-h76783.jpg",
+    "旅館川久米 大浴場の写真",
+    "\u65c5\u9928\u5ddd\u4e45\u7c73 \u5927\u6d74\u5834 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/76783/gallery.html",
+    '楽天トラベル'
+  ),
+  "湯元さぬき瀬戸大橋温泉 せとうちそう 大浴場": sourcePhoto(
+    "sakaide-onsen-h8175.jpg",
+    "湯元さぬき瀬戸大橋温泉 せとうちそう 大浴場の写真",
+    "\u6e6f\u5143\u3055\u306c\u304d\u702c\u6238\u5927\u6a4b\u6e29\u6cc9 \u305b\u3068\u3046\u3061\u305d\u3046 \u5927\u6d74\u5834 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/8175/gallery.html",
+    '楽天トラベル'
+  ),
+  "美咲旅館 大浴場": sourcePhoto(
+    "sakaide-onsen-h53400.jpg",
+    "美咲旅館 大浴場の写真",
+    "\u7f8e\u54b2\u65c5\u9928 \u5927\u6d74\u5834 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/53400/gallery.html",
     '楽天トラベル'
   ),
   '讃岐うどん がもう': sourcePhoto('sakaide-37000019-dish.jpg', '讃岐うどん がもうの料理写真', '讃岐うどん がもう food photo', TABELOG_37000019, '食べログ'),
@@ -272,8 +440,8 @@ function sight(
   address: string | null,
   phone: string | null,
   source_url: string,
-  lat: number,
-  lon: number
+  lat: number | null,
+  lon: number | null
 ): FacilityRow {
   return {
     id,
@@ -305,6 +473,12 @@ export const SAKAIDE_FACILITIES: readonly FacilityRow[] = [
   sight('sakaide-sight-08', '白峯寺', '香川県坂出市青海町263', '0877-47-0355', SAKAIDE.sources.kankou, 34.333528, 133.926764),
   sight('sakaide-sight-09', '沙弥島', '香川県坂出市沙弥島', '0877-45-1122', 'https://sakaide-kankou.com/spots/855/', 34.348611, 133.822222),
   sight('sakaide-exp-01', '道の駅瀬戸大橋記念公園', '香川県坂出市番の州緑町6-13', '0877-45-2344', SAKAIDE.sources.seto, 34.35267, 133.82603),
-  sight('sakaide-onsen-01', 'ホテルルートイン坂出北インター 大浴場', '香川県坂出市西大浜北4-5-31', '0877-59-1110', 'https://travel.rakuten.co.jp/HOTEL/70208/gallery.html', 34.33750, 133.85520),
-  sight('sakaide-onsen-02', '坂出グランドホテル 大浴場', '香川県坂出市西大浜北1-2-33', '0877-44-1000', 'https://travel.rakuten.co.jp/HOTEL/15414/gallery.html', 34.33580, 133.85150)
+  sight('sakaide-onsen-01', "ビジネスホテル美咲 大浴場", "香川県坂出市西大浜北2-3-1", null, "https://travel.rakuten.co.jp/HOTEL/53401/gallery.html", null, null),
+  sight('sakaide-onsen-02', "ホテルルートイン坂出北インター 大浴場", "香川県坂出市西大浜北4-5-31", null, "https://travel.rakuten.co.jp/HOTEL/70208/gallery.html", null, null),
+  sight('sakaide-onsen-03', "休暇村 讃岐五色台 大浴場", "香川県坂出市大屋冨町3042", null, "https://travel.rakuten.co.jp/HOTEL/76780/gallery.html", null, null),
+  sight('sakaide-onsen-04', "坂出グランドホテル 大浴場", "香川県坂出市西大浜北1-2-33", null, "https://travel.rakuten.co.jp/HOTEL/15414/gallery.html", null, null),
+  sight('sakaide-onsen-05', "旅館 久米ひまわり荘 大浴場", "香川県坂出市西大浜南3-1-15", null, "https://travel.rakuten.co.jp/HOTEL/56170/gallery.html", null, null),
+  sight('sakaide-onsen-06', "旅館川久米 大浴場", "香川県坂出市元町1丁目7-12", null, "https://travel.rakuten.co.jp/HOTEL/76783/gallery.html", null, null),
+  sight('sakaide-onsen-07', "湯元さぬき瀬戸大橋温泉 せとうちそう 大浴場", "香川県坂出市常盤町2-1-20", null, "https://travel.rakuten.co.jp/HOTEL/8175/gallery.html", null, null),
+  sight('sakaide-onsen-08', "美咲旅館 大浴場", "香川県坂出市西大浜北2-4-38", null, "https://travel.rakuten.co.jp/HOTEL/53400/gallery.html", null, null),
 ];

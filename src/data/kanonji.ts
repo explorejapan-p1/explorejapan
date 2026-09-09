@@ -36,8 +36,8 @@ export const KANONJI = {
   }
 } as const;
 
-export const KANONJI_EXPECTED_ROW_COUNT = 12;
-export const KANONJI_EXPECTED_GEO_COUNT = 12;
+export const KANONJI_EXPECTED_ROW_COUNT = 14;
+export const KANONJI_EXPECTED_GEO_COUNT = 10;
 
 function wikiPhoto(
   file: string,
@@ -215,35 +215,133 @@ export const KANONJI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '道の駅ことひき（観音寺市）',
     'Michinoeki Kotohiki, Kanonji'
   ),
-  'ホテルルートイン観音寺': sourcePhoto(
-    'kanonji-stay-routeinn.jpg',
-    'ホテルルートイン観音寺の客室写真',
-    'Hotel Route Inn Kanonji room photo',
-    'https://travel.rakuten.co.jp/HOTEL/197475/gallery.html',
-    '楽天トラベル'
-  ),
-  '観音寺グランドホテル': sourcePhoto(
-    'kanonji-stay-grand.jpg',
-    '観音寺グランドホテルの客室写真',
-    'Kanonji Grand Hotel room photo',
-    'https://travel.rakuten.co.jp/HOTEL/5647/gallery.html',
-    '楽天トラベル'
-  ),
-  'ホテルルートイン観音寺 大浴場': sourcePhoto(
-    'kanonji-onsen-routeinn.jpg',
-    'ホテルルートイン観音寺の大浴場写真',
-    'Hotel Route Inn Kanonji bath photo',
-    'https://travel.rakuten.co.jp/HOTEL/197475/gallery.html',
-    '楽天トラベル'
-  ),
-  '亀の井ホテル 観音寺 大浴場': sourcePhoto(
-    'kanonji-onsen-kamenoi.jpg',
-    '亀の井ホテル 観音寺の大浴場写真',
-    'Kamenoi Hotel Kanonji bath photo',
-    'https://travel.rakuten.co.jp/HOTEL/44292/44292.html',
-    '楽天トラベル'
-  ),
 
+  "グランプレミア瀬戸内 〜四国・香川のリゾートグランピング＆ヴィラ〜": sourcePhoto(
+    "kanonji-stay-h184058.jpg",
+    "グランプレミア瀬戸内 〜四国・香川のリゾートグランピング＆ヴィラ〜の客室写真",
+    "\u30b0\u30e9\u30f3\u30d7\u30ec\u30df\u30a2\u702c\u6238\u5185 \u301c\u56db\u56fd\u30fb\u9999\u5ddd\u306e\u30ea\u30be\u30fc\u30c8\u30b0\u30e9\u30f3\u30d4\u30f3\u30b0\uff06\u30f4\u30a3\u30e9\u301c room photo",
+    "https://travel.rakuten.co.jp/HOTEL/184058/184058.html",
+    '楽天トラベル'
+  ),
+  "スマイルホテル観音寺（旧：ホテルシェトワ観音寺）": sourcePhoto(
+    "kanonji-stay-h181149.jpg",
+    "スマイルホテル観音寺（旧：ホテルシェトワ観音寺）の客室写真",
+    "\u30b9\u30de\u30a4\u30eb\u30db\u30c6\u30eb\u89b3\u97f3\u5bfa\uff08\u65e7\uff1a\u30db\u30c6\u30eb\u30b7\u30a7\u30c8\u30ef\u89b3\u97f3\u5bfa\uff09 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/181149/181149.html",
+    '楽天トラベル'
+  ),
+  "ハイパーイン観音寺駅前": sourcePhoto(
+    "kanonji-stay-hyper.jpg",
+    "ハイパーイン観音寺駅前の客室写真",
+    "\u30cf\u30a4\u30d1\u30fc\u30a4\u30f3\u89b3\u97f3\u5bfa\u99c5\u524d room photo",
+    "https://travel.rakuten.co.jp/HOTEL/187287/187287.html",
+    '楽天トラベル'
+  ),
+  "ファミリーロッジ旅籠屋・讃岐観音寺店": sourcePhoto(
+    "kanonji-stay-h144479.jpg",
+    "ファミリーロッジ旅籠屋・讃岐観音寺店の客室写真",
+    "\u30d5\u30a1\u30df\u30ea\u30fc\u30ed\u30c3\u30b8\u65c5\u7c60\u5c4b\u30fb\u8b83\u5c90\u89b3\u97f3\u5bfa\u5e97 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/144479/144479.html",
+    '楽天トラベル'
+  ),
+  "ホテル サニーイン": sourcePhoto(
+    "kanonji-stay-h14066.jpg",
+    "ホテル サニーインの客室写真",
+    "\u30db\u30c6\u30eb \u30b5\u30cb\u30fc\u30a4\u30f3 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/14066/14066.html",
+    '楽天トラベル'
+  ),
+  "ホテルルートイン観音寺": sourcePhoto(
+    "kanonji-stay-routeinn.jpg",
+    "ホテルルートイン観音寺の客室写真",
+    "\u30db\u30c6\u30eb\u30eb\u30fc\u30c8\u30a4\u30f3\u89b3\u97f3\u5bfa room photo",
+    "https://travel.rakuten.co.jp/HOTEL/197475/197475.html",
+    '楽天トラベル'
+  ),
+  "リブマックスリゾート観音寺": sourcePhoto(
+    "kanonji-stay-livemax.jpg",
+    "リブマックスリゾート観音寺の客室写真",
+    "\u30ea\u30d6\u30de\u30c3\u30af\u30b9\u30ea\u30be\u30fc\u30c8\u89b3\u97f3\u5bfa room photo",
+    "https://travel.rakuten.co.jp/HOTEL/199292/199292.html",
+    '楽天トラベル'
+  ),
+  "天空ｖｉｌｌａ": sourcePhoto(
+    "kanonji-stay-h197523.jpg",
+    "天空ｖｉｌｌａの客室写真",
+    "\u5929\u7a7a\uff56\uff49\uff4c\uff4c\uff41 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/197523/197523.html",
+    '楽天トラベル'
+  ),
+  "観音寺グランドホテル": sourcePhoto(
+    "kanonji-stay-grand.jpg",
+    "観音寺グランドホテルの客室写真",
+    "\u89b3\u97f3\u5bfa\u30b0\u30e9\u30f3\u30c9\u30db\u30c6\u30eb room photo",
+    "https://travel.rakuten.co.jp/HOTEL/5647/5647.html",
+    '楽天トラベル'
+  ),
+  "ＡＲＩＡＫＥ ｐａｌｍ ｔｒｅｅ ｈｏｕｓｅ （泊Ｒｕｔｔｏ）": sourcePhoto(
+    "kanonji-stay-h188946.jpg",
+    "ＡＲＩＡＫＥ ｐａｌｍ ｔｒｅｅ ｈｏｕｓｅ （泊Ｒｕｔｔｏ）の客室写真",
+    "\uff21\uff32\uff29\uff21\uff2b\uff25 \uff50\uff41\uff4c\uff4d \uff54\uff52\uff45\uff45 \uff48\uff4f\uff55\uff53\uff45 \uff08\u6cca\uff32\uff55\uff54\uff54\uff4f\uff09 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/188946/188946.html",
+    '楽天トラベル'
+  ),
+  "ＨＯＴＥＬ ＡＺ 香川観音寺店": sourcePhoto(
+    "kanonji-stay-h196898.jpg",
+    "ＨＯＴＥＬ ＡＺ 香川観音寺店の客室写真",
+    "\uff28\uff2f\uff34\uff25\uff2c \uff21\uff3a \u9999\u5ddd\u89b3\u97f3\u5bfa\u5e97 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/196898/196898.html",
+    '楽天トラベル'
+  ),
+  "Ｈｏｔｅｌ Ｏ． Ｓｅｔｏｕｃｈｉ 〜ホテルオーセトウチ〜 ｂｙ 琴弾廻廊": sourcePhoto(
+    "kanonji-stay-h193441.jpg",
+    "Ｈｏｔｅｌ Ｏ． Ｓｅｔｏｕｃｈｉ 〜ホテルオーセトウチ〜 ｂｙ 琴弾廻廊の客室写真",
+    "\uff28\uff4f\uff54\uff45\uff4c \uff2f\uff0e \uff33\uff45\uff54\uff4f\uff55\uff43\uff48\uff49 \u301c\u30db\u30c6\u30eb\u30aa\u30fc\u30bb\u30c8\u30a6\u30c1\u301c \uff42\uff59 \u7434\u5f3e\u5efb\u5eca room photo",
+    "https://travel.rakuten.co.jp/HOTEL/193441/193441.html",
+    '楽天トラベル'
+  ),
+  "Ｔａｂｉｓｔ 本大ビジネスホテル 観音寺": sourcePhoto(
+    "kanonji-stay-h57057.jpg",
+    "Ｔａｂｉｓｔ 本大ビジネスホテル 観音寺の客室写真",
+    "\uff34\uff41\uff42\uff49\uff53\uff54 \u672c\u5927\u30d3\u30b8\u30cd\u30b9\u30db\u30c6\u30eb \u89b3\u97f3\u5bfa room photo",
+    "https://travel.rakuten.co.jp/HOTEL/57057/57057.html",
+    '楽天トラベル'
+  ),
+  "Ｔａｂｉｓｔ 琴弾荘": sourcePhoto(
+    "kanonji-stay-h191785.jpg",
+    "Ｔａｂｉｓｔ 琴弾荘の客室写真",
+    "\uff34\uff41\uff42\uff49\uff53\uff54 \u7434\u5f3e\u8358 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/191785/191785.html",
+    '楽天トラベル'
+  ),
+  "グランプレミア瀬戸内 〜四国・香川のリゾートグランピング＆ヴィラ〜 大浴場": sourcePhoto(
+    "kanonji-onsen-h184058.jpg",
+    "グランプレミア瀬戸内 〜四国・香川のリゾートグランピング＆ヴィラ〜 大浴場の写真",
+    "\u30b0\u30e9\u30f3\u30d7\u30ec\u30df\u30a2\u702c\u6238\u5185 \u301c\u56db\u56fd\u30fb\u9999\u5ddd\u306e\u30ea\u30be\u30fc\u30c8\u30b0\u30e9\u30f3\u30d4\u30f3\u30b0\uff06\u30f4\u30a3\u30e9\u301c \u5927\u6d74\u5834 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/184058/gallery.html",
+    '楽天トラベル'
+  ),
+  "ホテルルートイン観音寺 大浴場": sourcePhoto(
+    "kanonji-onsen-routeinn.jpg",
+    "ホテルルートイン観音寺 大浴場の写真",
+    "\u30db\u30c6\u30eb\u30eb\u30fc\u30c8\u30a4\u30f3\u89b3\u97f3\u5bfa \u5927\u6d74\u5834 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/197475/gallery.html",
+    '楽天トラベル'
+  ),
+  "リブマックスリゾート観音寺 大浴場": sourcePhoto(
+    "kanonji-onsen-livemax.jpg",
+    "リブマックスリゾート観音寺 大浴場の写真",
+    "\u30ea\u30d6\u30de\u30c3\u30af\u30b9\u30ea\u30be\u30fc\u30c8\u89b3\u97f3\u5bfa \u5927\u6d74\u5834 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/199292/gallery.html",
+    '楽天トラベル'
+  ),
+  "Ｈｏｔｅｌ Ｏ． Ｓｅｔｏｕｃｈｉ 〜ホテルオーセトウチ〜 ｂｙ 琴弾廻廊 大浴場": sourcePhoto(
+    "kanonji-onsen-h193441.jpg",
+    "Ｈｏｔｅｌ Ｏ． Ｓｅｔｏｕｃｈｉ 〜ホテルオーセトウチ〜 ｂｙ 琴弾廻廊 大浴場の写真",
+    "\uff28\uff4f\uff54\uff45\uff4c \uff2f\uff0e \uff33\uff45\uff54\uff4f\uff55\uff43\uff48\uff49 \u301c\u30db\u30c6\u30eb\u30aa\u30fc\u30bb\u30c8\u30a6\u30c1\u301c \uff42\uff59 \u7434\u5f3e\u5efb\u5eca \u5927\u6d74\u5834 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/193441/gallery.html",
+    '楽天トラベル'
+  ),
   'カマ喜ri': sourcePhoto('kanonji-37006622-dish.jpg', 'カマ喜riの料理写真', 'カマ喜ri food photo', TABELOG_37006622, '食べログ'),
   '西端手打 上戸うどん': sourcePhoto('kanonji-37000152-dish.jpg', '西端手打 上戸うどんの料理写真', '西端手打 上戸うどん food photo', TABELOG_37000152, '食べログ'),
   '手打ちうどん つるや': sourcePhoto('kanonji-37000148-dish.jpg', '手打ちうどん つるやの料理写真', '手打ちうどん つるや food photo', TABELOG_37000148, '食べログ'),
@@ -266,8 +364,8 @@ function sight(
   address: string | null,
   phone: string | null,
   source_url: string,
-  lat: number,
-  lon: number
+  lat: number | null,
+  lon: number | null
 ): FacilityRow {
   return {
     id,
@@ -299,6 +397,8 @@ export const KANONJI_FACILITIES: readonly FacilityRow[] = [
   sight('kanonji-sight-08', '豊稔池堰堤', '香川県観音寺市大野原町田野々', null, 'https://www.city.kanonji.kagawa.jp/', 34.0955, 133.6418),
   sight('kanonji-sight-09', '伊吹島', '香川県観音寺市伊吹町', null, 'https://www.city.kanonji.kagawa.jp/', 34.1300, 133.5300),
   sight('kanonji-exp-01', '道の駅ことひき', '香川県観音寺市有明町', null, 'https://www.city.kanonji.kagawa.jp/', 34.1360, 133.6440),
-  sight('kanonji-onsen-01', 'ホテルルートイン観音寺 大浴場', '香川県観音寺市南町4-3-46', '050-5482-7177', 'https://travel.rakuten.co.jp/HOTEL/197475/gallery.html', 34.1265, 133.6615),
-  sight('kanonji-onsen-02', '亀の井ホテル 観音寺 大浴場', '香川県観音寺市池之尻町1101-4', '0875-27-6161', 'https://travel.rakuten.co.jp/HOTEL/44292/44292.html', 34.1405, 133.6505)
+  sight('kanonji-onsen-01', "グランプレミア瀬戸内 〜四国・香川のリゾートグランピング＆ヴィラ〜 大浴場", "香川県観音寺市有明町6-10", null, "https://travel.rakuten.co.jp/HOTEL/184058/gallery.html", null, null),
+  sight('kanonji-onsen-02', "ホテルルートイン観音寺 大浴場", "香川県観音寺市南町4-3-46", null, "https://travel.rakuten.co.jp/HOTEL/197475/gallery.html", null, null),
+  sight('kanonji-onsen-03', "リブマックスリゾート観音寺 大浴場", "香川県観音寺市池之尻町1101-4", "0875-27-6161", "https://travel.rakuten.co.jp/HOTEL/199292/gallery.html", null, null),
+  sight('kanonji-onsen-04', "Ｈｏｔｅｌ Ｏ． Ｓｅｔｏｕｃｈｉ 〜ホテルオーセトウチ〜 ｂｙ 琴弾廻廊 大浴場", "香川県観音寺市有明町5-49", null, "https://travel.rakuten.co.jp/HOTEL/193441/gallery.html", null, null),
 ];

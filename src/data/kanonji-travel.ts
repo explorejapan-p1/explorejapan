@@ -15,7 +15,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const KANONJI_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const KANONJI_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const KANONJI_TRAVEL_SOURCES = {
   home: 'https://www.city.kanonji.kagawa.jp/',
@@ -28,7 +28,7 @@ export const KANONJI_TRAVEL_SOURCES = {
   kamenoi: 'https://travel.rakuten.co.jp/HOTEL/44292/44292.html'
 } as const;
 
-export const KANONJI_ONSEN_PACK_NAMES = ['ホテルルートイン観音寺 大浴場', '亀の井ホテル 観音寺 大浴場'] as const;
+export const KANONJI_ONSEN_PACK_NAMES = ["グランプレミア瀬戸内 〜四国・香川のリゾートグランピング＆ヴィラ〜 大浴場", "ホテルルートイン観音寺 大浴場", "リブマックスリゾート観音寺 大浴場", "Ｈｏｔｅｌ Ｏ． Ｓｅｔｏｕｃｈｉ 〜ホテルオーセトウチ〜 ｂｙ 琴弾廻廊 大浴場"] as const;
 export const KANONJI_ONSEN_PACK_SET: ReadonlySet<string> = new Set(KANONJI_ONSEN_PACK_NAMES);
 export const KANONJI_EXPERIENCE_PACK_NAMES = ['道の駅ことひき'] as const;
 export const KANONJI_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(KANONJI_EXPERIENCE_PACK_NAMES);
@@ -67,8 +67,20 @@ function stay(
 
 /** Ranked strongest Instagram-style room 出典 first. */
 export const KANONJI_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('kanonji-stay-01', 'ホテルルートイン観音寺', '香川県観音寺市南町4-3-46', '050-5482-7177', 'https://travel.rakuten.co.jp/HOTEL/197475/197475.html'),
-  stay('kanonji-stay-02', '観音寺グランドホテル', '香川県観音寺市坂本町五丁目１８番４０号', '0875-25-5151', 'https://travel.rakuten.co.jp/HOTEL/5647/5647.html')
+  stay('kanonji-stay-001', "グランプレミア瀬戸内 〜四国・香川のリゾートグランピング＆ヴィラ〜", "香川県観音寺市有明町6-10", null, "https://travel.rakuten.co.jp/HOTEL/184058/184058.html"),
+  stay('kanonji-stay-002', "スマイルホテル観音寺（旧：ホテルシェトワ観音寺）", "香川県観音寺市坂本町4-6-8", null, "https://travel.rakuten.co.jp/HOTEL/181149/181149.html"),
+  stay('kanonji-stay-003', "ハイパーイン観音寺駅前", "香川県観音寺市栄町3-5-5", "0875-25-2818", "https://travel.rakuten.co.jp/HOTEL/187287/187287.html"),
+  stay('kanonji-stay-004', "ファミリーロッジ旅籠屋・讃岐観音寺店", "香川県観音寺市坂本町5-1-25", null, "https://travel.rakuten.co.jp/HOTEL/144479/144479.html"),
+  stay('kanonji-stay-005', "ホテル サニーイン", "香川県観音寺市観音寺町甲1235", null, "https://travel.rakuten.co.jp/HOTEL/14066/14066.html"),
+  stay('kanonji-stay-006', "ホテルルートイン観音寺", "香川県観音寺市南町4-3-46", null, "https://travel.rakuten.co.jp/HOTEL/197475/197475.html"),
+  stay('kanonji-stay-007', "リブマックスリゾート観音寺", "香川県観音寺市池之尻町1101-4", "0875-27-6161", "https://travel.rakuten.co.jp/HOTEL/199292/199292.html"),
+  stay('kanonji-stay-008', "天空ｖｉｌｌａ", "香川県観音寺市室本町775", null, "https://travel.rakuten.co.jp/HOTEL/197523/197523.html"),
+  stay('kanonji-stay-009', "観音寺グランドホテル", "香川県観音寺市坂本町五丁目１８番４０号", null, "https://travel.rakuten.co.jp/HOTEL/5647/5647.html"),
+  stay('kanonji-stay-010', "ＡＲＩＡＫＥ ｐａｌｍ ｔｒｅｅ ｈｏｕｓｅ （泊Ｒｕｔｔｏ）", "香川県観音寺市室本町531-1", null, "https://travel.rakuten.co.jp/HOTEL/188946/188946.html"),
+  stay('kanonji-stay-011', "ＨＯＴＥＬ ＡＺ 香川観音寺店", "香川県観音寺市坂本町5丁目16番25号", null, "https://travel.rakuten.co.jp/HOTEL/196898/196898.html"),
+  stay('kanonji-stay-012', "Ｈｏｔｅｌ Ｏ． Ｓｅｔｏｕｃｈｉ 〜ホテルオーセトウチ〜 ｂｙ 琴弾廻廊", "香川県観音寺市有明町5-49", null, "https://travel.rakuten.co.jp/HOTEL/193441/193441.html"),
+  stay('kanonji-stay-013', "Ｔａｂｉｓｔ 本大ビジネスホテル 観音寺", "香川県観音寺市本大町1677-2", "0875-24-1384", "https://travel.rakuten.co.jp/HOTEL/57057/57057.html"),
+  stay('kanonji-stay-014', "Ｔａｂｉｓｔ 琴弾荘", "香川県観音寺市有明町10-22", null, "https://travel.rakuten.co.jp/HOTEL/191785/191785.html"),
 ];
 
 function dining(
