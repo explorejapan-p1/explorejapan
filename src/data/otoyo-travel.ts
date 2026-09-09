@@ -1,31 +1,34 @@
 /**
  * Otoyo Town travel layer. No frozen pack.
- * Dining from 食べログ 大豊町 (C39344) — honest 3 with 640 dish JPGs (skipped コンビニ・旅館民宿・phone不明・dish0). Stay: 大豊の森 Rakuten 和室 LARGE (noplan-001 mediaInfo【和室】). Onsen: 0 (private bath; stay≠onsen). Experience: 0.
+ * Dining: Tabelog C39344 (3 kept + 喜群・大豊ラーメン・立川PA下りスナック・土佐北川駅 駅前食堂). Stay: 大豊の森. Onsen: 0 (private bath; stay≠onsen). Experience: 大豊の森 薪割り体験 (Rakuten gallery). TG610 densify.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {OTOYO, OTOYO_SIGHT_PHOTOS} from './otoyo';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const OTOYO_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const OTOYO_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const OTOYO_TRAVEL_SOURCES = {
   home: 'https://www.town.otoyo.kochi.jp/', hall: 'https://ja.wikipedia.org/wiki/%E5%A4%A7%E8%B1%8A%E7%94%BA',
   kankou: 'https://www.town.otoyo.kochi.jp/kanko/',
   burakuji: 'https://commons.wikimedia.org/wiki/File:Burakuji_01.JPG',
   tabelogCity: 'https://tabelog.com/kochi/C39344/rstLst/',
-  otoyonomori: 'https://travel.rakuten.co.jp/HOTEL/184242/184242.html'
+  otoyonomori: 'https://travel.rakuten.co.jp/HOTEL/184242/184242.html',
+  otoyonomoriGallery: 'https://travel.rakuten.co.jp/HOTEL/184242/gallery.html',
+  oldBridge: 'https://commons.wikimedia.org/wiki/File:Old_Yoshinogawa-bridge,Otoyo-town,Japan.jpg',
+  kajigamine: 'https://commons.wikimedia.org/wiki/File:Mt.Kajigamine_from_Mt.Siraga.jpg'
 } as const;
 
 export const OTOYO_ONSEN_PACK_NAMES = [] as const;
 export const OTOYO_ONSEN_PACK_SET: ReadonlySet<string> = new Set(OTOYO_ONSEN_PACK_NAMES);
-export const OTOYO_EXPERIENCE_PACK_NAMES = [] as const;
+export const OTOYO_EXPERIENCE_PACK_NAMES = ['大豊の森 薪割り体験'] as const;
 export const OTOYO_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(OTOYO_EXPERIENCE_PACK_NAMES);
 export const OTOYO_STAY_PACK_NAMES = [] as const;
 export const OTOYO_STAY_PACK_SET: ReadonlySet<string> = new Set(OTOYO_STAY_PACK_NAMES);
 export const OTOYO_SHOPPING_PACK_NAMES = [] as const;
 export const OTOYO_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(OTOYO_SHOPPING_PACK_NAMES);
 
-export const OTOYO_SIGHT_PINS = ['豊楽寺','龍王の滝','大豊町役場','道の駅大杉','八畝の乳イチョウ'] as const;
+export const OTOYO_SIGHT_PINS = ['豊楽寺','龍王の滝','大豊町役場','道の駅大杉','八畝の乳イチョウ','旧吉野川橋','梶ヶ森'] as const;
 
 function stay(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: OTOYO_TRAVEL_ACCESSED};
@@ -41,6 +44,10 @@ export const OTOYO_TRAVEL_DINING: readonly TravelRow[] = [
   dining('otoyo-dining-01', 'ひばり食堂', '高知県長岡郡大豊町高須226', '0887-72-0972', 'https://tabelog.com/kochi/A3901/A390104/39000436/'),
   dining('otoyo-dining-02', 'きっちん なかとよや', '高知県長岡郡大豊町大久保139-4', '090-9456-2987', 'https://tabelog.com/kochi/A3901/A390104/39006349/'),
   dining('otoyo-dining-03', '永渕食堂 シャンティ', '高知県長岡郡大豊町永渕548', '080-3550-5554', 'https://tabelog.com/kochi/A3901/A390104/39006981/'),
+  dining('otoyo-dining-04', '喜群', '高知県長岡郡大豊町高須238', '0887-72-0183', 'https://tabelog.com/kochi/A3901/A390104/39002103/'),
+  dining('otoyo-dining-05', '大豊ラーメン', '高知県長岡郡大豊町磯谷74-1', '0887-73-0234', 'https://tabelog.com/kochi/A3901/A390104/39002165/'),
+  dining('otoyo-dining-06', '立川パーキングエリア（下り線）スナックコーナー', '高知県長岡郡大豊町立川下名 高知自動車道下り線立川ＰＡ内', '0887-78-0066', 'https://tabelog.com/kochi/A3901/A390104/39003666/'),
+  dining('otoyo-dining-07', '土佐北川駅 駅前食堂', '高知県長岡郡大豊町小川1391', '0887-72-0915', 'https://tabelog.com/kochi/A3901/A390104/39006362/'),
 ];
 
 export const OTOYO_DINING_NAME_SET: ReadonlySet<string> = new Set(OTOYO_TRAVEL_DINING.map((row) => row.name_ja));
