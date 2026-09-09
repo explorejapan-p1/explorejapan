@@ -752,6 +752,7 @@ import {
 import {OTSUKI, OTSUKI_PLACE_PHOTO, OTSUKI_FACILITIES, OTSUKI_EXPECTED_GEO_COUNT, OTSUKI_EXPECTED_ROW_COUNT} from './otsuki';
 import {MIHARA, MIHARA_PLACE_PHOTO, MIHARA_FACILITIES, MIHARA_EXPECTED_GEO_COUNT, MIHARA_EXPECTED_ROW_COUNT} from './mihara';
 import {MATSUYAMA, MATSUYAMA_PLACE_PHOTO, MATSUYAMA_FACILITIES, MATSUYAMA_EXPECTED_GEO_COUNT, MATSUYAMA_EXPECTED_ROW_COUNT} from './matsuyama';
+import {IMABARI, IMABARI_PLACE_PHOTO, IMABARI_FACILITIES, IMABARI_EXPECTED_GEO_COUNT, IMABARI_EXPECTED_ROW_COUNT} from './imabari';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -773,6 +774,13 @@ import {
   MATSUYAMA_TRAVEL_COMMERCE,
   MATSUYAMA_TRAVEL_ALL
 } from './matsuyama-travel';
+import {
+  IMABARI_TRAVEL_DINING,
+  IMABARI_TRAVEL_STAY,
+  IMABARI_TRAVEL_SHOPPING,
+  IMABARI_TRAVEL_COMMERCE,
+  IMABARI_TRAVEL_ALL
+} from './imabari-travel';
 
 
 
@@ -3217,6 +3225,40 @@ export const MATSUYAMA_LOOKUP: LookupTown = {
 
 
 
+
+export const IMABARI_LOOKUP: LookupTown = {
+  slug: 'imabari',
+  prefectureSlug: 'ehime',
+  jis: IMABARI.jis,
+  nameJa: IMABARI.nameJa,
+  nameEn: IMABARI.nameEn,
+  heroPhoto: IMABARI_PLACE_PHOTO,
+  photoCiteJa: '写真は今治城。Fred Cherrygarden、2025-07-11、CC BY-SA 4.0。File:Imabari_Castle.jpg。',
+  photoCiteEn: 'Photo: Imabari Castle. Fred Cherrygarden, 2025-07-11, CC BY-SA 4.0. File:Imabari_Castle.jpg.',
+  rows: IMABARI_FACILITIES,
+  expectedGeo: IMABARI_EXPECTED_GEO_COUNT,
+  expectedRows: IMABARI_EXPECTED_ROW_COUNT,
+  travelDining: IMABARI_TRAVEL_DINING,
+  travelStay: IMABARI_TRAVEL_STAY,
+  travelShopping: IMABARI_TRAVEL_SHOPPING,
+  travelCommerce: IMABARI_TRAVEL_COMMERCE,
+  travelAll: IMABARI_TRAVEL_ALL,
+  coverageJa:
+    '今治市（JIS 38202）観光5・宿泊27・飲食16・温泉22・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。愛媛県2つ目のLIVEハブ。',
+  coverageEn:
+    'Imabari City (JIS 38202), 5 tourism + 27 stay + 16 dining + 22 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Second LIVE Ehime hub.',
+  mapLabelJa: '今治市の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Imabari City',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia等出典座標5件（accessed 2026-09-09）。',
+  mapCitePackEn: 'Points: 5 sourced coordinates for city/official facilities (accessed 2026-09-09).',
+  licenseNoteJa:
+    '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.imabari.ehime.jp, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
 export const OTSUKI_LOOKUP: LookupTown = {
   slug: 'otsuki',
   prefectureSlug: 'kochi',
@@ -3449,7 +3491,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   shimantocho: SHIMANTOCHO_LOOKUP,
   otsuki: OTSUKI_LOOKUP,
   mihara: MIHARA_LOOKUP,
-  matsuyama: MATSUYAMA_LOOKUP
+  matsuyama: MATSUYAMA_LOOKUP,
+  imabari: IMABARI_LOOKUP
 };
 
 

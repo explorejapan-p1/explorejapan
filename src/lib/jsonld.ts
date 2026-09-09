@@ -69,6 +69,7 @@ import {SHIMANTOCHO, SHIMANTOCHO_PLACE_PHOTO} from '@/data/shimantocho';
 import {OTSUKI, OTSUKI_PLACE_PHOTO} from '@/data/otsuki';
 import {MIHARA, MIHARA_PLACE_PHOTO} from '@/data/mihara';
 import {MATSUYAMA, MATSUYAMA_PLACE_PHOTO} from '@/data/matsuyama';
+import {IMABARI, IMABARI_PLACE_PHOTO} from '@/data/imabari';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -192,6 +193,7 @@ function localityJa(slug: string): string {
   if (slug === 'yasuda') return YASUDA.nameJa;
   if (slug === 'geisei') return GEISEI.nameJa;
   if (slug === 'matsuyama') return MATSUYAMA.nameJa;
+  if (slug === 'imabari') return IMABARI.nameJa;
   return MIMA.nameJa;
 }
 
@@ -254,6 +256,7 @@ function localityEn(slug: string): string {
   if (slug === 'yasuda') return YASUDA.nameEn;
   if (slug === 'geisei') return GEISEI.nameEn;
   if (slug === 'matsuyama') return MATSUYAMA.nameEn;
+  if (slug === 'imabari') return IMABARI.nameEn;
   return MIMA.nameEn;
 }
 
@@ -4474,6 +4477,67 @@ export function miharaGraph(locale: AppLocale) {
   };
 }
 
+
+
+export function imabariGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'ehime/imabari');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('imabari');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? IMABARI.nameJa : IMABARI.nameEn,
+        alternateName: isJa ? IMABARI.nameEn : IMABARI.nameJa,
+        identifier: IMABARI.jis,
+        url,
+        image: photoAbs(IMABARI_PLACE_PHOTO),
+        sameAs: [IMABARI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '別宮町1丁目4番地1' : '1-4-1 Bekku-cho',
+          addressLocality: isJa ? IMABARI.nameJa : IMABARI.nameEn,
+          addressRegion: isJa ? IMABARI.prefectureJa : IMABARI.prefectureEn,
+          postalCode: IMABARI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? IMABARI.prefectureJa : IMABARI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? IMABARI.nameJa : IMABARI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? IMABARI.prefectureJa : IMABARI.prefectureEn, item: canonicalUrl(locale, 'ehime')},
+          {'@type': 'ListItem', position: 3, name: isJa ? IMABARI.nameJa : IMABARI.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '今治市の案内' : 'Places in Imabari City',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
 
 export function matsuyamaGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'ehime/matsuyama');

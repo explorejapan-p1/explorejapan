@@ -816,6 +816,19 @@ import {
   resolveMatsuyamaFilter
 } from './matsuyama-travel';
 
+import {
+  isImabariExperiencePackRow,
+  isImabariOnsenPackRow,
+  isImabariStayPackRow,
+  imabariPackRowMatchesFilter,
+  imabariSightPhoto,
+  imabariSourcedHook,
+  imabariTopChipForRow,
+  rankImabariSeeRows,
+  resolveImabariFilter
+} from './imabari-travel';
+
+
 
 
 
@@ -1595,6 +1608,19 @@ const MIHARA_HELPERS: LookupHelpers = {
   resolveFilter: resolveMiharaFilter
 };
 
+
+const IMABARI_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isImabariOnsenPackRow,
+  isExperiencePackRow: isImabariExperiencePackRow,
+  isStayPackRow: isImabariStayPackRow,
+  packRowMatchesFilter: imabariPackRowMatchesFilter,
+  rankSeeRows: rankImabariSeeRows,
+  sightPhoto: imabariSightPhoto,
+  sourcedHook: imabariSourcedHook,
+  topChipForRow: imabariTopChipForRow,
+  resolveFilter: resolveImabariFilter
+};
+
 const MATSUYAMA_HELPERS: LookupHelpers = {
   isOnsenPackRow: isMatsuyamaOnsenPackRow,
   isExperiencePackRow: isMatsuyamaExperiencePackRow,
@@ -1895,5 +1921,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'otsuki') return OTSUKI_HELPERS;
   if (slug === 'mihara') return MIHARA_HELPERS;
   if (slug === 'matsuyama') return MATSUYAMA_HELPERS;
+  if (slug === 'imabari') return IMABARI_HELPERS;
   return MIMA_HELPERS;
 }
