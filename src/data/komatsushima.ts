@@ -35,11 +35,11 @@ export const KOMATSUSHIMA = {
     toyokuni: 'https://www.city.komatsushima.lg.jp/komatsushima-navi/',
     stationPark: 'https://www.city.komatsushima.lg.jp/komatsushima-navi/',
     tabelogCity: 'https://tabelog.com/tokushima/C36203/rstLst/',
-    accessed: '2026-09-07'
+    accessed: '2026-09-09'
   }
 } as const;
 
-export const KOMATSUSHIMA_EXPECTED_ROW_COUNT = 6;
+export const KOMATSUSHIMA_EXPECTED_ROW_COUNT = 7;
 export const KOMATSUSHIMA_EXPECTED_GEO_COUNT = 6;
 
 function wikiPhoto(
@@ -61,7 +61,7 @@ function wikiPhoto(
     author,
     authorUrl,
     taken,
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -82,7 +82,7 @@ function sourcePhoto(
     author,
     authorUrl: page,
     taken: '2026',
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -363,15 +363,15 @@ export const KOMATSUSHIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>>
 
   'スーパーホテル徳島・小松島天然温泉': sourcePhoto(
     'komatsushima-stay-01.jpg',
-    'スーパーホテル徳島・小松島天然温泉の客室・外観写真',
-    'Super Hotel Tokushima Komatsushima room or exterior photo',
+    'スーパーホテル徳島・小松島天然温泉の客室写真',
+    'Super Hotel Tokushima Komatsushima room photo',
     'https://travel.rakuten.co.jp/HOTEL/182768/182768.html',
     '楽天トラベル'
   ),
   'HOTEL AZ 徳島小松島店': sourcePhoto(
     'komatsushima-stay-02.jpg',
-    'HOTEL AZ 徳島小松島店の客室・外観写真',
-    'HOTEL AZ Tokushima Komatsushima room or exterior photo',
+    'HOTEL AZ 徳島小松島店の客室写真',
+    'HOTEL AZ Tokushima Komatsushima room photo',
     'https://travel.rakuten.co.jp/HOTEL/181837/181837.html',
     '楽天トラベル'
   ),
@@ -384,9 +384,16 @@ export const KOMATSUSHIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>>
   ),
   'リゾート旅館ニューみはらし': sourcePhoto(
     'komatsushima-stay-04.jpg',
-    'リゾート旅館ニューみはらしの客室・外観写真',
-    'Resort Ryokan New Miharashi room or exterior photo',
+    'リゾート旅館ニューみはらしの客室写真',
+    'Resort Ryokan New Miharashi room photo',
     'https://travel.rakuten.co.jp/HOTEL/145302/145302.html',
+    '楽天トラベル'
+  ),
+  'スーパーホテル徳島・小松島天然温泉 金長の湯': sourcePhoto(
+    'komatsushima-onsen-kincho.jpg',
+    'スーパーホテル徳島・小松島天然温泉の金長の湯写真',
+    'Super Hotel Tokushima Komatsushima Kincho-no-Yu bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/182768/182768.html',
     '楽天トラベル'
   ),
 
@@ -474,5 +481,21 @@ export const KOMATSUSHIMA_FACILITIES: readonly FacilityRow[] = [
     KOMATSUSHIMA.sources.toyokuni,
     34.00730556,
     134.56538889
-  )
+  ),
+  {
+    id: 'komatsushima-extra-kincho-yu',
+    jis: KOMATSUSHIMA.jis,
+    name_ja: 'スーパーホテル徳島・小松島天然温泉 金長の湯',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県小松島市小松島町字若井崎10-6',
+    phone: '0885-32-9001',
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/182768/182768.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/182768/182768.html',
+    license: '市公式サイト掲載情報',
+    accessed: KOMATSUSHIMA.sources.accessed
+  }
 ];

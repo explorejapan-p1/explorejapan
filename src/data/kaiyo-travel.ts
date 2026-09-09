@@ -1,7 +1,7 @@
 /**
  * Kaiyo travel layer. Pack tourism has inns/onsen/camps without room or bath photos.
- * Stay from NAVITIME 宿泊一覧 + 楽天トラベル share/room images (出典). Rank strongest first.
- * Onsen: omit without bath photo (honest 0).
+ * Stay: Rakuten 部屋 stills densified (TG610) — リビエラ / 遊遊NASA / かいふ / ししくい / はるる亭 / 大砂 / WANASA / SUIYA / HANARE / ふくちゃん.
+ * Onsen: EXTRA リビエラ展望大浴場 / 遊遊NASAなさ地呂温泉 / はるる亭温泉 (HARD BAR stay≠onsen). かいふお風呂 ambiguous shared → honest skip.
  * Dining from 食べログ 海陽町 (C36388) public shop pages with FOOD dish heroes.
  * Shopping: 道の駅 pack name with place-named Commons exterior (not bath photos).
  * Do not copy 牟岐 / 美波 / 那賀 / 佐那河内 / 上勝 / 勝浦 / 神山 / 上板 / 板野 / 石井 / 松茂 / 北島 / 藍住 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
@@ -16,7 +16,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const KAIYO_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const KAIYO_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const KAIYO_TRAVEL_SOURCES = {
   home: 'https://www.town.kaiyo.lg.jp/',
@@ -27,7 +27,11 @@ export const KAIYO_TRAVEL_SOURCES = {
   tabelogCity: 'https://tabelog.com/tokushima/C36388/rstLst/'
 } as const;
 
-export const KAIYO_ONSEN_PACK_NAMES = [] as const;
+export const KAIYO_ONSEN_PACK_NAMES = [
+  '宍喰温泉 ホテルリビエラししくい 展望大浴場',
+  'ふれあいの宿 遊遊NASA なさ地呂温泉',
+  'はるる亭 温泉',
+] as const;
 export const KAIYO_EXPERIENCE_PACK_NAMES = ['海陽町海洋自然博物館マリンジャム'] as const;
 export const KAIYO_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(KAIYO_EXPERIENCE_PACK_NAMES);
 export const KAIYO_ONSEN_PACK_SET: ReadonlySet<string> = new Set(KAIYO_ONSEN_PACK_NAMES);
@@ -54,7 +58,7 @@ function stay(
   };
 }
 
-/** Ranked strongest room/exterior 出典 first. NAVITIME + 楽天シェア画像. */
+/** Ranked strongest room 出典 first. Rakuten 部屋 stills (TG610 densify). */
 export const KAIYO_TRAVEL_STAY: readonly TravelRow[] = [
   stay(
     'kaiyo-stay-01',

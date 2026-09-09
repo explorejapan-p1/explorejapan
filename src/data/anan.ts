@@ -35,11 +35,11 @@ export const ANAN = {
     akome: 'https://www.city.anan.tokushima.jp/',
     okayamaCastle: 'https://www.city.anan.tokushima.jp/',
     tabelogCity: 'https://tabelog.com/tokushima/C36204/rstLst/',
-    accessed: '2026-09-07'
+    accessed: '2026-09-09'
   }
 } as const;
 
-export const ANAN_EXPECTED_ROW_COUNT = 7;
+export const ANAN_EXPECTED_ROW_COUNT = 15;
 export const ANAN_EXPECTED_GEO_COUNT = 7;
 
 function wikiPhoto(
@@ -61,7 +61,7 @@ function wikiPhoto(
     author,
     authorUrl,
     taken,
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -82,7 +82,7 @@ function sourcePhoto(
     author,
     authorUrl: page,
     taken: '2026',
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -303,15 +303,15 @@ export const ANAN_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
 
   'スーパーホテル阿南・富岡': sourcePhoto(
     'anan-stay-01.jpg',
-    'スーパーホテル阿南・富岡の客室・外観写真',
-    'Super Hotel Anan Tomioka room or exterior photo',
+    'スーパーホテル阿南・富岡の客室写真',
+    'Super Hotel Anan Tomioka room photo',
     'https://travel.rakuten.co.jp/HOTEL/172821/172821.html',
     '楽天トラベル'
   ),
   'スーパーホテル阿南・市役所前禁煙館': sourcePhoto(
     'anan-stay-02.jpg',
-    'スーパーホテル阿南・市役所前禁煙館の客室・外観写真',
-    'Super Hotel Anan City Hall room or exterior photo',
+    'スーパーホテル阿南・市役所前禁煙館の客室写真',
+    'Super Hotel Anan City Hall room photo',
     'https://travel.rakuten.co.jp/HOTEL/179159/179159.html',
     '楽天トラベル'
   ),
@@ -324,30 +324,128 @@ export const ANAN_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   ),
   'ホテルルートイン阿南': sourcePhoto(
     'anan-stay-04.jpg',
-    'ホテルルートイン阿南の客室・外観写真',
-    'Hotel Route-Inn Anan room or exterior photo',
+    'ホテルルートイン阿南の客室写真',
+    'Hotel Route-Inn Anan room photo',
     'https://travel.rakuten.co.jp/HOTEL/164934/164934.html',
     '楽天トラベル'
   ),
   'ベイサイドホテル龍宮': sourcePhoto(
     'anan-stay-05.jpg',
-    'ベイサイドホテル龍宮の客室・外観写真',
-    'Bayside Hotel Ryugu room or exterior photo',
+    'ベイサイドホテル龍宮の客室写真',
+    'Bayside Hotel Ryugu room photo',
     'https://travel.rakuten.co.jp/HOTEL/30081/30081.html',
     '楽天トラベル'
   ),
   'あなんステーションホテル': sourcePhoto(
     'anan-stay-06.jpg',
-    'あなんステーションホテルの客室・外観写真',
-    'Anan Station Hotel room or exterior photo',
+    'あなんステーションホテルの客室写真',
+    'Anan Station Hotel room photo',
     'https://travel.rakuten.co.jp/HOTEL/70924/70924.html',
     '楽天トラベル'
   ),
   '阿南第一ホテル': sourcePhoto(
     'anan-stay-07.jpg',
-    '阿南第一ホテルの客室・外観写真',
-    'Anan Daiichi Hotel room or exterior photo',
+    '阿南第一ホテルの客室写真',
+    'Anan Daiichi Hotel room photo',
     'https://travel.rakuten.co.jp/HOTEL/5414/5414.html',
+    '楽天トラベル'
+  ),
+  'ホテル 石松': sourcePhoto(
+    'anan-stay-08.jpg',
+    'ホテル石松の客室写真',
+    'Hotel Ishimatsu room photo',
+    'https://travel.rakuten.co.jp/HOTEL/3055/3055.html',
+    '楽天トラベル'
+  ),
+  'ロイヤルガーデンホテル': sourcePhoto(
+    'anan-stay-09.jpg',
+    'ロイヤルガーデンホテルの客室写真',
+    'Royal Garden Hotel room photo',
+    'https://travel.rakuten.co.jp/HOTEL/13939/13939.html',
+    '楽天トラベル'
+  ),
+  'ビジネス・イン 一楽': sourcePhoto(
+    'anan-stay-10.jpg',
+    'ビジネス・イン一楽の客室写真',
+    'Business Inn Ichiraku room photo',
+    'https://travel.rakuten.co.jp/HOTEL/20672/20672.html',
+    '楽天トラベル'
+  ),
+  '阿南プラザイン': sourcePhoto(
+    'anan-stay-11.jpg',
+    '阿南プラザインの客室写真',
+    'Anan Plaza Inn room photo',
+    'https://travel.rakuten.co.jp/HOTEL/68484/68484.html',
+    '楽天トラベル'
+  ),
+  '椿自然園': sourcePhoto(
+    'anan-stay-12.jpg',
+    '椿自然園の客室写真',
+    'Tsubaki Nature Park lodge room photo',
+    'https://travel.rakuten.co.jp/HOTEL/13795/13795.html',
+    '楽天トラベル'
+  ),
+  'あなんステーションホテルANNEX': sourcePhoto(
+    'anan-stay-13.jpg',
+    'あなんステーションホテルANNEXの客室写真',
+    'Anan Station Hotel Annex room photo',
+    'https://travel.rakuten.co.jp/HOTEL/5427/5427.html',
+    '楽天トラベル'
+  ),
+  'スーパーホテル阿南・富岡 光まちの湯': sourcePhoto(
+    'anan-onsen-hikarimachi.jpg',
+    'スーパーホテル阿南・富岡の光まちの湯写真',
+    'Super Hotel Anan Tomioka Hikarimachi-no-Yu bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/172821/172821.html',
+    '楽天トラベル'
+  ),
+  'スーパーホテル阿南・市役所前禁煙館 太龍の湯': sourcePhoto(
+    'anan-onsen-tairyu.jpg',
+    'スーパーホテル阿南・市役所前禁煙館の太龍の湯写真',
+    'Super Hotel Anan Tairyu-no-Yu bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/179159/179159.html',
+    '楽天トラベル'
+  ),
+  'スマイルホテル阿南 大浴場': sourcePhoto(
+    'anan-onsen-smile.jpg',
+    'スマイルホテル阿南の大浴場写真',
+    'Smile Hotel Anan large bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/25307/25307.html',
+    '楽天トラベル'
+  ),
+  'ホテルルートイン阿南 大浴場': sourcePhoto(
+    'anan-onsen-routeinn.jpg',
+    'ホテルルートイン阿南の大浴場写真',
+    'Hotel Route-Inn Anan large bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/164934/164934.html',
+    '楽天トラベル'
+  ),
+  'スーパー銭湯・大和の郷 露天風呂': sourcePhoto(
+    'anan-onsen-yamato.jpg',
+    'スーパー銭湯・大和の郷の露天風呂写真',
+    'Yamato-no-Sato outdoor bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/13939/13939.html',
+    '楽天トラベル'
+  ),
+  'ビジネス・イン 一楽 展望大浴場': sourcePhoto(
+    'anan-onsen-ichiraku.jpg',
+    'ビジネス・イン一楽の展望大浴場写真',
+    'Business Inn Ichiraku observatory bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/20672/20672.html',
+    '楽天トラベル'
+  ),
+  '阿南プラザイン 大浴場': sourcePhoto(
+    'anan-onsen-plaza.jpg',
+    '阿南プラザインの大浴場写真',
+    'Anan Plaza Inn large bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/68484/68484.html',
+    '楽天トラベル'
+  ),
+  '椿自然園 展望風呂': sourcePhoto(
+    'anan-onsen-tsubaki.jpg',
+    '椿自然園の展望風呂写真',
+    'Tsubaki Nature Park observatory bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/13795/13795.html',
     '楽天トラベル'
   ),
 };
@@ -443,5 +541,133 @@ export const ANAN_FACILITIES: readonly FacilityRow[] = [
     ANAN.sources.okayamaCastle,
     33.85,
     134.56
-  )
+  ),
+  {
+    id: 'anan-extra-hikarimachi',
+    jis: ANAN.jis,
+    name_ja: 'スーパーホテル阿南・富岡 光まちの湯',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県阿南市学原町深田9-1',
+    phone: '0884-22-9000',
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/172821/172821.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/172821/172821.html',
+    license: '市公式サイト掲載情報',
+    accessed: ANAN.sources.accessed
+  },
+  {
+    id: 'anan-extra-tairyu',
+    jis: ANAN.jis,
+    name_ja: 'スーパーホテル阿南・市役所前禁煙館 太龍の湯',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県阿南市富岡町トノ町51-9',
+    phone: '0884-28-9002',
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/179159/179159.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/179159/179159.html',
+    license: '市公式サイト掲載情報',
+    accessed: ANAN.sources.accessed
+  },
+  {
+    id: 'anan-extra-smile-daiyoku',
+    jis: ANAN.jis,
+    name_ja: 'スマイルホテル阿南 大浴場',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県阿南市富岡町滝の下42-4',
+    phone: '0884-23-2222',
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/25307/25307.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/25307/25307.html',
+    license: '市公式サイト掲載情報',
+    accessed: ANAN.sources.accessed
+  },
+  {
+    id: 'anan-extra-routeinn-daiyoku',
+    jis: ANAN.jis,
+    name_ja: 'ホテルルートイン阿南 大浴場',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県阿南市領家町火屋ヶ原142',
+    phone: '050-5847-7340',
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/164934/164934.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/164934/164934.html',
+    license: '市公式サイト掲載情報',
+    accessed: ANAN.sources.accessed
+  },
+  {
+    id: 'anan-extra-yamato-roten',
+    jis: ANAN.jis,
+    name_ja: 'スーパー銭湯・大和の郷 露天風呂',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県阿南市富岡町あ王谷52-2',
+    phone: null,
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/13939/13939.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/13939/13939.html',
+    license: '市公式サイト掲載情報',
+    accessed: ANAN.sources.accessed
+  },
+  {
+    id: 'anan-extra-ichiraku-tenbo',
+    jis: ANAN.jis,
+    name_ja: 'ビジネス・イン 一楽 展望大浴場',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県阿南市津乃峰町東分115-1',
+    phone: null,
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/20672/20672.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/20672/20672.html',
+    license: '市公式サイト掲載情報',
+    accessed: ANAN.sources.accessed
+  },
+  {
+    id: 'anan-extra-plaza-daiyoku',
+    jis: ANAN.jis,
+    name_ja: '阿南プラザイン 大浴場',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県阿南市富岡町滝ノ下17-1',
+    phone: '0884-28-6600',
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/68484/68484.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/68484/68484.html',
+    license: '市公式サイト掲載情報',
+    accessed: ANAN.sources.accessed
+  },
+  {
+    id: 'anan-extra-tsubaki-tenbo',
+    jis: ANAN.jis,
+    name_ja: '椿自然園 展望風呂',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県阿南市椿町瀬井45',
+    phone: '0884-33-1127',
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/13795/13795.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/13795/13795.html',
+    license: '市公式サイト掲載情報',
+    accessed: ANAN.sources.accessed
+  }
 ];

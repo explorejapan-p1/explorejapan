@@ -26,7 +26,7 @@ export const KAIYO = {
     home: 'https://www.town.kaiyo.lg.jp/',
     hall: 'https://www.town.kaiyo.lg.jp/docs/2011041300637/',
     kanko: 'https://www.town.kaiyo.lg.jp/docs/2024082800028/',
-    accessed: '2026-09-07'
+    accessed: '2026-09-09'
   }
 } as const;
 
@@ -49,7 +49,7 @@ function wikiPhoto(
     author,
     authorUrl,
     taken,
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -70,7 +70,7 @@ function sourcePhoto(
     author,
     authorUrl: page,
     taken: '2026',
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -313,72 +313,93 @@ export const KAIYO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   ),
   '宍喰温泉 ホテルリビエラししくい': sourcePhoto(
     'kaiyo-stay-01.jpg',
-    '宍喰温泉 ホテルリビエラししくいの客室・外観写真',
-    '宍喰温泉 ホテルリビエラししくい room or exterior photo',
+    '宍喰温泉 ホテルリビエラししくいの客室写真',
+    'Hotel Riviera Shishikui room photo',
     'https://travel.rakuten.co.jp/HOTEL/8721/8721.html',
     '楽天トラベル'
   ),
   'ふれあいの宿 遊遊NASA': sourcePhoto(
     'kaiyo-stay-02.jpg',
-    'ふれあいの宿 遊遊NASAの客室・外観写真',
-    'ふれあいの宿 遊遊NASA room or exterior photo',
+    'ふれあいの宿 遊遊NASAの客室写真',
+    'Yuyu NASA room photo',
     'https://travel.rakuten.co.jp/HOTEL/128443/128443.html',
     '楽天トラベル'
   ),
   'ホテルかいふ & 4stone': sourcePhoto(
     'kaiyo-stay-03.jpg',
-    'ホテルかいふ & 4stoneの客室・外観写真',
-    'ホテルかいふ & 4stone room or exterior photo',
+    'ホテルかいふ & 4stoneの客室写真',
+    'Hotel Kaifu & 4stone room photo',
     'https://travel.rakuten.co.jp/HOTEL/193362/193362.html',
     '楽天トラベル'
   ),
   'ペンション ししくい': sourcePhoto(
     'kaiyo-stay-04.jpg',
-    'ペンション ししくいの客室・外観写真',
-    'ペンション ししくい room or exterior photo',
+    'ペンション ししくいの客室写真',
+    'Pension Shishikui room photo',
     'https://travel.rakuten.co.jp/HOTEL/20625/20625.html',
     '楽天トラベル'
   ),
   'はるる亭': sourcePhoto(
     'kaiyo-stay-05.jpg',
-    'はるる亭の客室・外観写真',
-    'はるる亭 room or exterior photo',
+    'はるる亭の客室写真',
+    'Haruru-tei room photo',
     'https://travel.rakuten.co.jp/HOTEL/179334/179334.html',
     '楽天トラベル'
   ),
   '民宿大砂': sourcePhoto(
     'kaiyo-stay-06.jpg',
-    '民宿大砂の客室・外観写真',
-    '民宿大砂 room or exterior photo',
+    '民宿大砂の客室写真',
+    'Minshuku Osuna room photo',
     'https://travel.rakuten.co.jp/HOTEL/144988/144988.html',
     '楽天トラベル'
   ),
   '星降る別邸WANASA': sourcePhoto(
     'kaiyo-stay-07.jpg',
-    '星降る別邸WANASAの客室・外観写真',
-    '星降る別邸WANASA room or exterior photo',
+    '星降る別邸WANASAの客室写真',
+    'Hoshifuru Bettei WANASA room photo',
     'https://travel.rakuten.co.jp/HOTEL/191825/191825.html',
     '楽天トラベル'
   ),
   'ドッグランピングSUIYA': sourcePhoto(
     'kaiyo-stay-08.jpg',
-    'ドッグランピングSUIYAの客室・外観写真',
-    'ドッグランピングSUIYA room or exterior photo',
+    'ドッグランピングSUIYAの客室写真',
+    'Dog Glamping SUIYA room photo',
     'https://travel.rakuten.co.jp/HOTEL/199057/199057.html',
     '楽天トラベル'
   ),
   'PRIVATE STAY HANARE': sourcePhoto(
     'kaiyo-stay-09.jpg',
-    'PRIVATE STAY HANAREの客室・外観写真',
-    'PRIVATE STAY HANARE room or exterior photo',
+    'PRIVATE STAY HANAREの客室写真',
+    'PRIVATE STAY HANARE room photo',
     'https://travel.rakuten.co.jp/HOTEL/199806/199806.html',
     '楽天トラベル'
   ),
   'ゲストハウス ふくちゃん': sourcePhoto(
     'kaiyo-stay-10.jpg',
-    'ゲストハウス ふくちゃんの客室・外観写真',
-    'ゲストハウス ふくちゃん room or exterior photo',
+    'ゲストハウス ふくちゃんの客室写真',
+    'Guest House Fukuchan room photo',
     'https://travel.rakuten.co.jp/HOTEL/178487/178487.html',
+    '楽天トラベル'
+  ),
+  '宍喰温泉 ホテルリビエラししくい 展望大浴場': sourcePhoto(
+    'kaiyo-onsen-riviera.jpg',
+    '宍喰温泉 ホテルリビエラししくいの展望大浴場写真',
+    'Hotel Riviera Shishikui observatory bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/8721/8721.html',
+    '楽天トラベル'
+  ),
+  'ふれあいの宿 遊遊NASA なさ地呂温泉': sourcePhoto(
+    'kaiyo-onsen-yuyu.jpg',
+    'ふれあいの宿 遊遊NASAのなさ地呂温泉写真',
+    'Yuyu NASA Nasa-jiro onsen bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/128443/128443.html',
+    '楽天トラベル'
+  ),
+  'はるる亭 温泉': sourcePhoto(
+    'kaiyo-onsen-haruru.jpg',
+    'はるる亭の温泉写真',
+    'Haruru-tei onsen bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/179334/179334.html',
     '楽天トラベル'
   ),
 

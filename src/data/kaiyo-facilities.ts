@@ -170,7 +170,7 @@ function loadNakaFacilities(): readonly FacilityRow[] {
   return rows;
 }
 
-/** Commons-backed extras (not frozen jsonl). Real place-named 出典 only. */
+/** EXTRA tourism rows (not frozen jsonl). Commons sights + bath stills — HARD BAR stay≠onsen. */
 const KAIYO_EXTRA_FACILITIES: readonly FacilityRow[] = [
   {
     id: 'kaiyo-extra-todoroki',
@@ -217,6 +217,54 @@ const KAIYO_EXTRA_FACILITIES: readonly FacilityRow[] = [
     official_url: 'https://www.town.kaiyo.lg.jp/',
     hours: null,
     source_url: 'https://commons.wikimedia.org/wiki/File:Oosuna_beach_-_%E5%A4%A7%E7%A0%82%E6%B5%B7%E5%B2%B8_-_panoramio.jpg',
+    license: 'cc_by_open_data',
+    accessed: KAIYO_PACK_ACCESSED
+  },
+  {
+    id: 'kaiyo-extra-riviera-tenbo',
+    jis: KAIYO_PACK_JIS,
+    name_ja: '宍喰温泉 ホテルリビエラししくい 展望大浴場',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県海部郡海陽町松原226-1',
+    phone: '0884-76-3300',
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/8721/8721.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/8721/8721.html',
+    license: 'cc_by_open_data',
+    accessed: KAIYO_PACK_ACCESSED
+  },
+  {
+    id: 'kaiyo-extra-yuyu-nasajiro',
+    jis: KAIYO_PACK_JIS,
+    name_ja: 'ふれあいの宿 遊遊NASA なさ地呂温泉',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県海部郡海陽町奥浦鹿ヶ谷58-3',
+    phone: '0884-73-0300',
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/128443/128443.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/128443/128443.html',
+    license: 'cc_by_open_data',
+    accessed: KAIYO_PACK_ACCESSED
+  },
+  {
+    id: 'kaiyo-extra-haruru-onsen',
+    jis: KAIYO_PACK_JIS,
+    name_ja: 'はるる亭 温泉',
+    reading: null,
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県海部郡海陽町久保板取230-1',
+    phone: '0884-76-2282',
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/179334/179334.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/179334/179334.html',
     license: 'cc_by_open_data',
     accessed: KAIYO_PACK_ACCESSED
   }

@@ -1,8 +1,9 @@
 /**
  * Komatsushima City travel layer. No frozen pack.
+ * Stay: Rakuten 部屋 stills — Super Hotel / AZ / みどり / みはらし (TG610 densify upgrade).
+ * Onsen: EXTRA スーパーホテル徳島・小松島天然温泉 金長の湯 (HARD BAR stay≠onsen).
  * Dining from 食べログ 小松島市 (C36203) public shop pages. FOOD dish photos required.
- * Stay from NAVITIME 小松島市ホテル一覧 + 楽天トラベル share/room-exterior images (出典). Rank strongest first.
- * Experience: 小松島ステーションパーク remapped (Commons SL park). Onsen/shopping/commerce honest 0.
+ * Experience: 小松島ステーションパーク remapped (Commons SL park). Shopping/commerce honest 0.
  * Do not invent pack dining/stay. Do not copy 鳴門 / 徳島市 / 阿南 / 藍住 TRAVEL_* rows or photos.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
@@ -15,7 +16,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const KOMATSUSHIMA_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const KOMATSUSHIMA_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const KOMATSUSHIMA_TRAVEL_SOURCES = {
   home: 'https://www.city.komatsushima.lg.jp/',
@@ -27,7 +28,7 @@ export const KOMATSUSHIMA_TRAVEL_SOURCES = {
   rakutenTravel: 'https://travel.rakuten.co.jp/'
 } as const;
 
-export const KOMATSUSHIMA_ONSEN_PACK_NAMES = [] as const;
+export const KOMATSUSHIMA_ONSEN_PACK_NAMES = ['スーパーホテル徳島・小松島天然温泉 金長の湯'] as const;
 export const KOMATSUSHIMA_ONSEN_PACK_SET: ReadonlySet<string> = new Set(KOMATSUSHIMA_ONSEN_PACK_NAMES);
 export const KOMATSUSHIMA_EXPERIENCE_PACK_NAMES = ['小松島ステーションパーク'] as const;
 export const KOMATSUSHIMA_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(KOMATSUSHIMA_EXPERIENCE_PACK_NAMES);
@@ -60,7 +61,7 @@ function stay(
   };
 }
 
-/** Ranked strongest Instagram-style room/exterior 出典 first. NAVITIME + 楽天シェア画像. */
+/** Ranked strongest room 出典 first. Rakuten 部屋 stills (TG610). */
 export const KOMATSUSHIMA_TRAVEL_STAY: readonly TravelRow[] = [
   stay(
     'komatsushima-stay-01',
@@ -316,8 +317,9 @@ function isSightsCategory(value: string): boolean {
   return SIGHTS_SET.has(value);
 }
 
-export function isKomatsushimaOnsenPackRow(_row: {category: string; name_ja: string}): boolean {
-  return false;
+export function isKomatsushimaOnsenPackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return KOMATSUSHIMA_ONSEN_PACK_SET.has(row.name_ja);
 }
 
 export function isKomatsushimaExperiencePackRow(row: {category: string; name_ja: string}): boolean {
