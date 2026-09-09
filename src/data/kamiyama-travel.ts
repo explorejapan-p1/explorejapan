@@ -1,8 +1,8 @@
 /**
  * Kamiyama travel layer. Pack tourism includes inns/onsen/restaurants without room/bath photos.
- * Onsen / stay: omit without room or bath photo (honest 0).
+ * Stay: Rakuten 部屋 stills — 四季の里 / コットン・イン (TG610 densify upgrade).
+ * Onsen: pack いやしの湯 + EXTRA 四季の里 大浴場 (HARD BAR stay≠onsen).
  * Dining from 食べログ 神山町 (C36342) public shop pages. Do not invent pack dining.
- * Stay from NAVITIME + 楽天シェア; onsen bath from 神山温泉公式 (出典).
  * Do not copy 上板 / 板野 / 石井 / 松茂 / 北島 / 藍住 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
@@ -15,7 +15,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const KAMIYAMA_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const KAMIYAMA_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const KAMIYAMA_TRAVEL_SOURCES = {
   home: 'https://www.town.kamiyama.lg.jp/',
@@ -28,7 +28,7 @@ export const KAMIYAMA_TRAVEL_SOURCES = {
 } as const;
 
 /** Exact tourism-pack names shown on 温泉, not 観光. Bath photo required. */
-export const KAMIYAMA_ONSEN_PACK_NAMES = ['神山温泉いやしの湯'] as const;
+export const KAMIYAMA_ONSEN_PACK_NAMES = ['神山温泉いやしの湯', '神山温泉ホテル四季の里 大浴場'] as const;
 
 export const KAMIYAMA_ONSEN_PACK_SET: ReadonlySet<string> = new Set(
   KAMIYAMA_ONSEN_PACK_NAMES

@@ -3,16 +3,30 @@ import path from 'node:path';
 import {
   FACILITY_CATEGORIES,
   PACK_ACCESSED,
-  TSURUGI_EXPECTED_CATEGORY_COUNTS,
-  TSURUGI_EXPECTED_GEO_COUNT,
-  TSURUGI_EXPECTED_HOURS_COUNT,
-  TSURUGI_EXPECTED_MISSING_ADDRESS,
-  TSURUGI_EXPECTED_MISSING_PHONE,
-  TSURUGI_EXPECTED_ROW_COUNT,
   TSURUGI_PACK_JIS,
   type FacilityCategory,
   type FacilityRow
 } from './facility-schema';
+
+/** Frozen jsonl baselines (before EXTRA bath rows). */
+const PACK_ROW_COUNT = 334;
+const PACK_GEO_COUNT = 171;
+const PACK_HOURS_COUNT = 60;
+const PACK_MISSING_ADDRESS = 130;
+const PACK_MISSING_PHONE = 249;
+const PACK_CATEGORY_COUNTS: Record<FacilityCategory, number> = {
+  tourism: 27,
+  cultural_property: 97,
+  care: 0,
+  aed: 0,
+  shelter: 19,
+  emergency_evacuation_site: 20,
+  hospital: 0,
+  childcare: 3,
+  wifi: 0,
+  public_facility: 48,
+  gtfs_stop: 120
+};
 
 const PACK_PATH = path.join(process.cwd(), 'data', 'frozen', 'tsurugi-facilities.jsonl');
 
@@ -113,16 +127,16 @@ function loadTsurugiFacilities(): readonly FacilityRow[] {
     const parsed: unknown = JSON.parse(line);
     rows.push(parseFacilityRow(parsed));
   }
-  if (rows.length !== TSURUGI_EXPECTED_ROW_COUNT) {
-    throw new Error(`tsurugi pack row count ${rows.length} != ${TSURUGI_EXPECTED_ROW_COUNT}`);
+  if (rows.length !== PACK_ROW_COUNT) {
+    throw new Error(`tsurugi pack row count ${rows.length} != ${PACK_ROW_COUNT}`);
   }
   const counts = emptyCounts();
   for (const row of rows) {
     counts[row.category] += 1;
   }
   for (const cat of FACILITY_CATEGORIES) {
-    if (counts[cat] !== TSURUGI_EXPECTED_CATEGORY_COUNTS[cat]) {
-      throw new Error(`tsurugi pack ${cat} ${counts[cat]} != ${TSURUGI_EXPECTED_CATEGORY_COUNTS[cat]}`);
+    if (counts[cat] !== PACK_CATEGORY_COUNTS[cat]) {
+      throw new Error(`tsurugi pack ${cat} ${counts[cat]} != ${PACK_CATEGORY_COUNTS[cat]}`);
     }
   }
   let geo = 0;
@@ -135,19 +149,60 @@ function loadTsurugiFacilities(): readonly FacilityRow[] {
     if (isBlank(row.address)) missingAddress += 1;
     if (isBlank(row.phone)) missingPhone += 1;
   }
-  if (geo !== TSURUGI_EXPECTED_GEO_COUNT) {
-    throw new Error(`tsurugi pack geo ${geo} != ${TSURUGI_EXPECTED_GEO_COUNT}`);
+  if (geo !== PACK_GEO_COUNT) {
+    throw new Error(`tsurugi pack geo ${geo} != ${PACK_GEO_COUNT}`);
   }
-  if (hours !== TSURUGI_EXPECTED_HOURS_COUNT) {
-    throw new Error(`tsurugi pack hours ${hours} != ${TSURUGI_EXPECTED_HOURS_COUNT}`);
+  if (hours !== PACK_HOURS_COUNT) {
+    throw new Error(`tsurugi pack hours ${hours} != ${PACK_HOURS_COUNT}`);
   }
-  if (missingAddress !== TSURUGI_EXPECTED_MISSING_ADDRESS) {
-    throw new Error(`tsurugi pack address gaps ${missingAddress} != ${TSURUGI_EXPECTED_MISSING_ADDRESS}`);
+  if (missingAddress !== PACK_MISSING_ADDRESS) {
+    throw new Error(`tsurugi pack address gaps ${missingAddress} != ${PACK_MISSING_ADDRESS}`);
   }
-  if (missingPhone !== TSURUGI_EXPECTED_MISSING_PHONE) {
-    throw new Error(`tsurugi pack phone gaps ${missingPhone} != ${TSURUGI_EXPECTED_MISSING_PHONE}`);
+  if (missingPhone !== PACK_MISSING_PHONE) {
+    throw new Error(`tsurugi pack phone gaps ${missingPhone} != ${PACK_MISSING_PHONE}`);
   }
   return rows;
 }
 
-export const TSURUGI_FACILITIES: readonly FacilityRow[] = loadTsurugiFacilities();
+
+/** EXTRA tourism rows (not frozen jsonl). Bath stills — HARD BAR stay≠onsen. */
+const TSURUGI_EXTRA_FACILITIES: readonly FacilityRow[] = [
+  {
+    id: 'tsurugi-extra-laforet-bath',
+    jis: TSURUGI_PACK_JIS,
+    name_ja: 'ラ・フォーレつるぎ山 大浴場',
+    reading: 'らふぉーれつるぎやまだいよくじょう',
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県美馬郡つるぎ町一宇字葛籠6198-2',
+    phone: '0883-67-5555',
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/177682/177682.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/177682/gallery.html',
+    license: 'cc_by_open_data',
+    accessed: PACK_ACCESSED
+  },
+  {
+    id: 'tsurugi-extra-iwato-bath',
+    jis: TSURUGI_PACK_JIS,
+    name_ja: 'つるぎの宿 岩戸 大浴場',
+    reading: 'つるぎのやどいわとだいよくじょう',
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県美馬郡つるぎ町一宇字赤松6-9',
+    phone: '0883-67-2826',
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/139805/139805.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/139805/gallery.html',
+    license: 'cc_by_open_data',
+    accessed: PACK_ACCESSED
+  }
+];
+
+export const TSURUGI_FACILITIES: readonly FacilityRow[] = [
+  ...loadTsurugiFacilities(),
+  ...TSURUGI_EXTRA_FACILITIES
+];
+

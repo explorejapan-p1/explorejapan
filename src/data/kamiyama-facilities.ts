@@ -2,17 +2,31 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {
   FACILITY_CATEGORIES,
-  KAMIYAMA_EXPECTED_CATEGORY_COUNTS,
-  KAMIYAMA_EXPECTED_GEO_COUNT,
-  KAMIYAMA_EXPECTED_HOURS_COUNT,
-  KAMIYAMA_EXPECTED_MISSING_ADDRESS,
-  KAMIYAMA_EXPECTED_MISSING_PHONE,
-  KAMIYAMA_EXPECTED_ROW_COUNT,
   KAMIYAMA_PACK_ACCESSED,
   KAMIYAMA_PACK_JIS,
   type FacilityCategory,
   type FacilityRow
 } from './facility-schema';
+
+/** Frozen jsonl baselines (before EXTRA bath rows). */
+const PACK_ROW_COUNT = 221;
+const PACK_GEO_COUNT = 0;
+const PACK_HOURS_COUNT = 194;
+const PACK_MISSING_ADDRESS = 60;
+const PACK_MISSING_PHONE = 133;
+const PACK_CATEGORY_COUNTS: Record<FacilityCategory, number> = {
+  tourism: 55,
+  cultural_property: 75,
+  care: 8,
+  aed: 0,
+  shelter: 24,
+  emergency_evacuation_site: 28,
+  hospital: 6,
+  childcare: 7,
+  wifi: 0,
+  public_facility: 18,
+  gtfs_stop: 0
+};
 
 const PACK_PATH = path.join(process.cwd(), 'data', 'frozen', 'kamiyama-facilities.jsonl');
 
@@ -113,17 +127,17 @@ function loadKamiyamaFacilities(): readonly FacilityRow[] {
     const parsed: unknown = JSON.parse(line);
     rows.push(parseFacilityRow(parsed));
   }
-  if (rows.length !== KAMIYAMA_EXPECTED_ROW_COUNT) {
-    throw new Error(`kamiyama pack row count ${rows.length} != ${KAMIYAMA_EXPECTED_ROW_COUNT}`);
+  if (rows.length !== PACK_ROW_COUNT) {
+    throw new Error(`kamiyama pack row count ${rows.length} != ${PACK_ROW_COUNT}`);
   }
   const counts = emptyCounts();
   for (const row of rows) {
     counts[row.category] += 1;
   }
   for (const cat of FACILITY_CATEGORIES) {
-    if (counts[cat] !== KAMIYAMA_EXPECTED_CATEGORY_COUNTS[cat]) {
+    if (counts[cat] !== PACK_CATEGORY_COUNTS[cat]) {
       throw new Error(
-        `kamiyama pack ${cat} ${counts[cat]} != ${KAMIYAMA_EXPECTED_CATEGORY_COUNTS[cat]}`
+        `kamiyama pack ${cat} ${counts[cat]} != ${PACK_CATEGORY_COUNTS[cat]}`
       );
     }
   }
@@ -137,23 +151,48 @@ function loadKamiyamaFacilities(): readonly FacilityRow[] {
     if (isBlank(row.address)) missingAddress += 1;
     if (isBlank(row.phone)) missingPhone += 1;
   }
-  if (geo !== KAMIYAMA_EXPECTED_GEO_COUNT) {
-    throw new Error(`kamiyama pack geo ${geo} != ${KAMIYAMA_EXPECTED_GEO_COUNT}`);
+  if (geo !== PACK_GEO_COUNT) {
+    throw new Error(`kamiyama pack geo ${geo} != ${PACK_GEO_COUNT}`);
   }
-  if (hours !== KAMIYAMA_EXPECTED_HOURS_COUNT) {
-    throw new Error(`kamiyama pack hours ${hours} != ${KAMIYAMA_EXPECTED_HOURS_COUNT}`);
+  if (hours !== PACK_HOURS_COUNT) {
+    throw new Error(`kamiyama pack hours ${hours} != ${PACK_HOURS_COUNT}`);
   }
-  if (missingAddress !== KAMIYAMA_EXPECTED_MISSING_ADDRESS) {
+  if (missingAddress !== PACK_MISSING_ADDRESS) {
     throw new Error(
-      `kamiyama pack address gaps ${missingAddress} != ${KAMIYAMA_EXPECTED_MISSING_ADDRESS}`
+      `kamiyama pack address gaps ${missingAddress} != ${PACK_MISSING_ADDRESS}`
     );
   }
-  if (missingPhone !== KAMIYAMA_EXPECTED_MISSING_PHONE) {
+  if (missingPhone !== PACK_MISSING_PHONE) {
     throw new Error(
-      `kamiyama pack phone gaps ${missingPhone} != ${KAMIYAMA_EXPECTED_MISSING_PHONE}`
+      `kamiyama pack phone gaps ${missingPhone} != ${PACK_MISSING_PHONE}`
     );
   }
   return rows;
 }
 
-export const KAMIYAMA_FACILITIES: readonly FacilityRow[] = loadKamiyamaFacilities();
+
+/** EXTRA tourism rows (not frozen jsonl). Bath stills — HARD BAR stay≠onsen. */
+const KAMIYAMA_EXTRA_FACILITIES: readonly FacilityRow[] = [
+  {
+    id: 'kamiyama-extra-shiki-bath',
+    jis: KAMIYAMA_PACK_JIS,
+    name_ja: '神山温泉ホテル四季の里 大浴場',
+    reading: 'かみやまおんせんほてるしきのさとだいよくじょう',
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県名西郡神山町神領本上角80-2',
+    phone: '088-676-1117',
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/14442/14442.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/14442/gallery.html',
+    license: 'cc_by_open_data',
+    accessed: KAMIYAMA_PACK_ACCESSED
+  }
+];
+
+export const KAMIYAMA_FACILITIES: readonly FacilityRow[] = [
+  ...loadKamiyamaFacilities(),
+  ...KAMIYAMA_EXTRA_FACILITIES
+];
+

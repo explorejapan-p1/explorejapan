@@ -47,13 +47,13 @@ export const MIMA_PACK_JIS = '36207';
 export const PACK_ACCESSED = '2026-08-25';
 
 export const TSURUGI_PACK_JIS = '36468';
-export const TSURUGI_EXPECTED_ROW_COUNT = 334;
+export const TSURUGI_EXPECTED_ROW_COUNT = 336;
 export const TSURUGI_EXPECTED_GEO_COUNT = 171;
 export const TSURUGI_EXPECTED_HOURS_COUNT = 60;
 export const TSURUGI_EXPECTED_MISSING_ADDRESS = 130;
 export const TSURUGI_EXPECTED_MISSING_PHONE = 249;
 export const TSURUGI_EXPECTED_CATEGORY_COUNTS = {
-  tourism: 27,
+  tourism: 29,
   cultural_property: 97,
   care: 0,
   aed: 0,
@@ -132,13 +132,13 @@ export const MIYOSHI_EXPECTED_CATEGORY_COUNTS = {
 
 
 export const HIGASHIMIYOSHI_PACK_JIS = '36489';
-export const HIGASHIMIYOSHI_EXPECTED_ROW_COUNT = 285;
+export const HIGASHIMIYOSHI_EXPECTED_ROW_COUNT = 286;
 export const HIGASHIMIYOSHI_EXPECTED_GEO_COUNT = 72;
 export const HIGASHIMIYOSHI_EXPECTED_HOURS_COUNT = 112;
 export const HIGASHIMIYOSHI_EXPECTED_MISSING_ADDRESS = 178;
 export const HIGASHIMIYOSHI_EXPECTED_MISSING_PHONE = 185;
 export const HIGASHIMIYOSHI_EXPECTED_CATEGORY_COUNTS = {
-  tourism: 10,
+  tourism: 11,
   cultural_property: 109,
   care: 11,
   aed: 0,
@@ -267,13 +267,13 @@ export const KAMIITA_EXPECTED_CATEGORY_COUNTS = {
 
 export const KAMIYAMA_PACK_JIS = '36342';
 export const KAMIYAMA_PACK_ACCESSED = '2026-08-25';
-export const KAMIYAMA_EXPECTED_ROW_COUNT = 221;
+export const KAMIYAMA_EXPECTED_ROW_COUNT = 222;
 export const KAMIYAMA_EXPECTED_GEO_COUNT = 0;
 export const KAMIYAMA_EXPECTED_HOURS_COUNT = 194;
 export const KAMIYAMA_EXPECTED_MISSING_ADDRESS = 60;
 export const KAMIYAMA_EXPECTED_MISSING_PHONE = 133;
 export const KAMIYAMA_EXPECTED_CATEGORY_COUNTS = {
-  tourism: 55,
+  tourism: 56,
   cultural_property: 75,
   care: 8,
   aed: 0,

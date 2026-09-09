@@ -3,16 +3,30 @@ import path from 'node:path';
 import {
   FACILITY_CATEGORIES,
   PACK_ACCESSED,
-  HIGASHIMIYOSHI_EXPECTED_CATEGORY_COUNTS,
-  HIGASHIMIYOSHI_EXPECTED_GEO_COUNT,
-  HIGASHIMIYOSHI_EXPECTED_HOURS_COUNT,
-  HIGASHIMIYOSHI_EXPECTED_MISSING_ADDRESS,
-  HIGASHIMIYOSHI_EXPECTED_MISSING_PHONE,
-  HIGASHIMIYOSHI_EXPECTED_ROW_COUNT,
   HIGASHIMIYOSHI_PACK_JIS,
   type FacilityCategory,
   type FacilityRow
 } from './facility-schema';
+
+/** Frozen jsonl baselines (before EXTRA bath rows). */
+const PACK_ROW_COUNT = 285;
+const PACK_GEO_COUNT = 72;
+const PACK_HOURS_COUNT = 112;
+const PACK_MISSING_ADDRESS = 178;
+const PACK_MISSING_PHONE = 185;
+const PACK_CATEGORY_COUNTS: Record<FacilityCategory, number> = {
+  tourism: 10,
+  cultural_property: 109,
+  care: 11,
+  aed: 0,
+  shelter: 13,
+  emergency_evacuation_site: 16,
+  hospital: 15,
+  childcare: 9,
+  wifi: 3,
+  public_facility: 36,
+  gtfs_stop: 63
+};
 
 const PACK_PATH = path.join(process.cwd(), 'data', 'frozen', 'higashimiyoshi-facilities.jsonl');
 
@@ -113,9 +127,9 @@ function loadHigashimiyoshiFacilities(): readonly FacilityRow[] {
     const parsed: unknown = JSON.parse(line);
     rows.push(parseFacilityRow(parsed));
   }
-  if (rows.length !== HIGASHIMIYOSHI_EXPECTED_ROW_COUNT) {
+  if (rows.length !== PACK_ROW_COUNT) {
     throw new Error(
-      `higashimiyoshi pack row count ${rows.length} != ${HIGASHIMIYOSHI_EXPECTED_ROW_COUNT}`
+      `higashimiyoshi pack row count ${rows.length} != ${PACK_ROW_COUNT}`
     );
   }
   const counts = emptyCounts();
@@ -123,9 +137,9 @@ function loadHigashimiyoshiFacilities(): readonly FacilityRow[] {
     counts[row.category] += 1;
   }
   for (const cat of FACILITY_CATEGORIES) {
-    if (counts[cat] !== HIGASHIMIYOSHI_EXPECTED_CATEGORY_COUNTS[cat]) {
+    if (counts[cat] !== PACK_CATEGORY_COUNTS[cat]) {
       throw new Error(
-        `higashimiyoshi pack ${cat} ${counts[cat]} != ${HIGASHIMIYOSHI_EXPECTED_CATEGORY_COUNTS[cat]}`
+        `higashimiyoshi pack ${cat} ${counts[cat]} != ${PACK_CATEGORY_COUNTS[cat]}`
       );
     }
   }
@@ -139,23 +153,46 @@ function loadHigashimiyoshiFacilities(): readonly FacilityRow[] {
     if (isBlank(row.address)) missingAddress += 1;
     if (isBlank(row.phone)) missingPhone += 1;
   }
-  if (geo !== HIGASHIMIYOSHI_EXPECTED_GEO_COUNT) {
-    throw new Error(`higashimiyoshi pack geo ${geo} != ${HIGASHIMIYOSHI_EXPECTED_GEO_COUNT}`);
+  if (geo !== PACK_GEO_COUNT) {
+    throw new Error(`higashimiyoshi pack geo ${geo} != ${PACK_GEO_COUNT}`);
   }
-  if (hours !== HIGASHIMIYOSHI_EXPECTED_HOURS_COUNT) {
-    throw new Error(`higashimiyoshi pack hours ${hours} != ${HIGASHIMIYOSHI_EXPECTED_HOURS_COUNT}`);
+  if (hours !== PACK_HOURS_COUNT) {
+    throw new Error(`higashimiyoshi pack hours ${hours} != ${PACK_HOURS_COUNT}`);
   }
-  if (missingAddress !== HIGASHIMIYOSHI_EXPECTED_MISSING_ADDRESS) {
+  if (missingAddress !== PACK_MISSING_ADDRESS) {
     throw new Error(
-      `higashimiyoshi pack address gaps ${missingAddress} != ${HIGASHIMIYOSHI_EXPECTED_MISSING_ADDRESS}`
+      `higashimiyoshi pack address gaps ${missingAddress} != ${PACK_MISSING_ADDRESS}`
     );
   }
-  if (missingPhone !== HIGASHIMIYOSHI_EXPECTED_MISSING_PHONE) {
+  if (missingPhone !== PACK_MISSING_PHONE) {
     throw new Error(
-      `higashimiyoshi pack phone gaps ${missingPhone} != ${HIGASHIMIYOSHI_EXPECTED_MISSING_PHONE}`
+      `higashimiyoshi pack phone gaps ${missingPhone} != ${PACK_MISSING_PHONE}`
     );
   }
   return rows;
 }
 
-export const HIGASHIMIYOSHI_FACILITIES: readonly FacilityRow[] = loadHigashimiyoshiFacilities();
+/** EXTRA tourism rows (not frozen jsonl). Bath stills — HARD BAR stay≠onsen. */
+const HIGASHIMIYOSHI_EXTRA_FACILITIES: readonly FacilityRow[] = [
+  {
+    id: 'higashimiyoshi-extra-minoda-yu',
+    jis: HIGASHIMIYOSHI_PACK_JIS,
+    name_ja: '美濃田の湯',
+    reading: 'みのだのゆ',
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県三好郡東みよし町足代1650',
+    phone: '0883-76-5226',
+    official_url: 'https://yoshinogawa-oasis.com/enjoy/',
+    hours: '10:00〜21:00（最終受付20:30）',
+    source_url: 'https://www.awanavi.jp/archives/spot/2098',
+    license: 'cc_by_open_data',
+    accessed: PACK_ACCESSED
+  }
+];
+
+export const HIGASHIMIYOSHI_FACILITIES: readonly FacilityRow[] = [
+  ...loadHigashimiyoshiFacilities(),
+  ...HIGASHIMIYOSHI_EXTRA_FACILITIES
+];

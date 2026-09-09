@@ -26,7 +26,7 @@ export const HIGASHIMIYOSHI = {
     home: 'https://www.town.higashimiyoshi.lg.jp/',
     hall: 'https://www.town.higashimiyoshi.lg.jp/',
     kanko: 'https://www.town.higashimiyoshi.lg.jp/docs/996.html',
-    accessed: '2026-09-05'
+    accessed: '2026-09-09'
   }
 } as const;
 
@@ -49,7 +49,7 @@ function wikiPhoto(
     author,
     authorUrl,
     taken,
-    accessed: '2026-09-05',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -70,7 +70,7 @@ function sourcePhoto(
     author,
     authorUrl: page,
     taken: '2026',
-    accessed: '2026-09-05',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -246,18 +246,23 @@ export const HIGASHIMIYOSHI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto
   ),
   'ビジネスホテル わらぐろ': sourcePhoto(
     'higashimiyoshi-stay-01.jpg',
-    'ビジネスホテル わらぐろの客室・外観写真',
-    'Business Hotel Waraguro room or exterior photo',
+    'ビジネスホテル わらぐろの客室写真',
+    'Business Hotel Waraguro room photo',
     'https://travel.rakuten.co.jp/HOTEL/17898/17898.html',
     '楽天トラベル'
   ),
   'ファミリーロッジ旅籠屋・吉野川SA店': sourcePhoto(
     'higashimiyoshi-stay-02.jpg',
-    'ファミリーロッジ旅籠屋・吉野川SA店の客室・外観写真',
-    'Family Lodge Hatagoya Yoshinogawa SA room or exterior photo',
+    'ファミリーロッジ旅籠屋・吉野川SA店の客室写真',
+    'Family Lodge Hatagoya Yoshinogawa SA room photo',
     'https://travel.rakuten.co.jp/HOTEL/164710/164710.html',
     '楽天トラベル'
   ),
-
-
+  '美濃田の湯': sourcePhoto(
+    'higashimiyoshi-onsen-minoda.jpg',
+    '美濃田の湯の露天風呂・展望サウナ写真',
+    'Minoda-no-Yu outdoor bath photo',
+    'https://www.awanavi.jp/archives/spot/2098',
+    '阿波ナビ'
+  )
 };

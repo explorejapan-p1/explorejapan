@@ -1,6 +1,7 @@
 /**
  * Tsurugi travel layer. Pack has no dining/stay categories.
- * Stay names already in the frozen tourism pack stay on 宿泊 via exact name_ja.
+ * Stay: Rakuten 部屋 stills densify ラ・フォーレ/岩戸 + TravelRow 清笹/古城/ゆう (TG610).
+ * Onsen: pack 剣山木綿麻温泉 + EXTRA ラ・フォーレ/岩戸 大浴場 (HARD BAR stay≠onsen).
  * Extra names are copied from the town 町内宿泊施設 page only.
  * Do not copy 美馬 TRAVEL_* rows. 剣山頂上ヒュッテ is not listed here.
  */
@@ -14,7 +15,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const TSURUGI_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const TSURUGI_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const TSURUGI_TRAVEL_SOURCES = {
   stayList: 'https://www.town.tokushima-tsurugi.lg.jp/docs/3491.html',
@@ -44,7 +45,13 @@ export const TSURUGI_STAY_PACK_NAMES = [
 
 export const TSURUGI_STAY_PACK_SET: ReadonlySet<string> = new Set(TSURUGI_STAY_PACK_NAMES);
 
-export const TSURUGI_ONSEN_PACK_NAME = '剣山木綿麻温泉（つるぎさんゆうまおんせん）' as const;
+export const TSURUGI_ONSEN_PACK_NAMES = [
+  '剣山木綿麻温泉（つるぎさんゆうまおんせん）',
+  'ラ・フォーレつるぎ山 大浴場',
+  'つるぎの宿 岩戸 大浴場'
+] as const;
+export const TSURUGI_ONSEN_PACK_SET: ReadonlySet<string> = new Set(TSURUGI_ONSEN_PACK_NAMES);
+export const TSURUGI_ONSEN_PACK_NAME = TSURUGI_ONSEN_PACK_NAMES[0];
 export const TSURUGI_EXPERIENCE_PACK_NAMES = ['ラ・フォーレつるぎ山'] as const;
 export const TSURUGI_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(TSURUGI_EXPERIENCE_PACK_NAMES);
 
@@ -246,7 +253,7 @@ function isSightsCategory(value: string): boolean {
 
 export function isTsurugiOnsenPackRow(row: {category: string; name_ja: string}): boolean {
   if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
-  return row.name_ja === TSURUGI_ONSEN_PACK_NAME;
+  return TSURUGI_ONSEN_PACK_SET.has(row.name_ja);
 }
 
 export function isTsurugiExperiencePackRow(row: {category: string; name_ja: string}): boolean {

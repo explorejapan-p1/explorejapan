@@ -26,7 +26,7 @@ export const KAMIYAMA = {
     home: 'https://www.town.kamiyama.lg.jp/',
     hall: 'https://www.town.kamiyama.lg.jp/docs/2025061900079/',
     kanko: 'https://www.town.kamiyama.lg.jp/enjoy/map/index_genre@kanko.html',
-    accessed: '2026-09-05'
+    accessed: '2026-09-09'
   }
 } as const;
 
@@ -49,7 +49,7 @@ function wikiPhoto(
     author,
     authorUrl,
     taken,
-    accessed: '2026-09-05',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -70,7 +70,7 @@ function sourcePhoto(
     author,
     authorUrl: page,
     taken: '2026',
-    accessed: '2026-09-05',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -262,15 +262,15 @@ export const KAMIYAMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   ),
   '神山温泉ホテル四季の里': sourcePhoto(
     'kamiyama-stay-01.jpg',
-    '神山温泉ホテル四季の里の客室・外観写真',
-    'Kamiyama Onsen Hotel Shiki-no-Sato room or exterior photo',
+    '神山温泉ホテル四季の里の客室写真',
+    'Kamiyama Onsen Hotel Shiki-no-Sato room photo',
     'https://travel.rakuten.co.jp/HOTEL/14442/14442.html',
     '楽天トラベル'
   ),
   'コットン・イン 神山通り': sourcePhoto(
     'kamiyama-stay-02.jpg',
-    'コットン・イン 神山通りの客室・外観写真',
-    'Cotton Inn Kamiyama-dori room or exterior photo',
+    'コットン・イン 神山通りの客室写真',
+    'Cotton Inn Kamiyama-dori room photo',
     'https://travel.rakuten.co.jp/HOTEL/201832/201832.html',
     '楽天トラベル'
   ),
@@ -280,5 +280,12 @@ export const KAMIYAMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'Kamiyama Onsen Iyashi-no-Yu bath photo',
     'https://www.kamiyama-spa.com/onsen/',
     '神山温泉 ホテル四季の里'
+  ),
+  '神山温泉ホテル四季の里 大浴場': sourcePhoto(
+    'kamiyama-onsen-shiki-daiyoku.jpg',
+    '神山温泉ホテル四季の里の大浴場写真',
+    'Kamiyama Onsen Hotel Shiki-no-Sato bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/14442/gallery.html',
+    '楽天トラベル'
   )
 };

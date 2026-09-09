@@ -30,7 +30,7 @@ export const TSURUGI = {
     nature: 'https://www.town.tokushima-tsurugi.lg.jp/docs/3456.html',
     onsen: 'https://www.town.tokushima-tsurugi.lg.jp/docs/3467.html',
     culture: 'https://www.town.tokushima-tsurugi.lg.jp/docs/3475.html',
-    accessed: '2026-08-28'
+    accessed: '2026-09-09'
   }
 } as const;
 
@@ -53,7 +53,7 @@ function wikiPhoto(
     author,
     authorUrl,
     taken,
-    accessed: '2026-08-28',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -73,7 +73,7 @@ function townPhoto(
     author: 'つるぎ町',
     authorUrl: page,
     taken: '2026',
-    accessed: '2026-08-28',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -94,7 +94,7 @@ function sourcePhoto(
     author,
     authorUrl: page,
     taken: '2026',
-    accessed: '2026-08-28',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -160,19 +160,61 @@ const OMAKASE_PAGE = 'https://r.goope.jp/omakase-kitchen/';
 export const TSURUGI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   '二層うだつの町並み': TSURUGI_PLACE_PHOTO,
   '織本屋': ORIMOTOYA_PHOTO,
-  'ラ・フォーレつるぎ山': LA_FORET_PHOTO,
+  'ラ・フォーレつるぎ山': sourcePhoto(
+    'tsurugi-stay-laforet.jpg',
+    'ラ・フォーレつるぎ山の客室写真',
+    'La Foret Tsurugi-san room photo',
+    'https://travel.rakuten.co.jp/HOTEL/177682/177682.html',
+    '楽天トラベル'
+  ),
   '剣山': TSURUGISAN_PHOTO,
-  'つるぎの宿 岩戸': townPhoto(
-    'tsurugi-no-yado-iwato.jpg',
-    'つるぎの宿 岩戸（つるぎ町一宇）',
-    'Tsurugi-no-yado Iwato, Ichiū, Tsurugi',
-    'https://www.town.tokushima-tsurugi.lg.jp/docs/3491.html'
+  'つるぎの宿 岩戸': sourcePhoto(
+    'tsurugi-stay-iwato.jpg',
+    'つるぎの宿 岩戸の客室写真',
+    'Tsurugi-no-yado Iwato room photo',
+    'https://travel.rakuten.co.jp/HOTEL/139805/139805.html',
+    '楽天トラベル'
   ),
   '剣山木綿麻温泉（つるぎさんゆうまおんせん）': townPhoto(
     'tsurugisan-yuma-roten.jpg',
     '剣山木綿麻温泉の露天風呂（つるぎ町貞光）',
     'Tsurugisan Yuma Onsen outdoor bath, Sadamitsu, Tsurugi',
     'https://www.town.tokushima-tsurugi.lg.jp/docs/3467.html'
+  ),
+  '家賀の郷 清笹（けかのさと きよささ）': sourcePhoto(
+    'tsurugi-stay-kiyosasa.jpg',
+    '家賀の郷 清笹の客室写真',
+    'Kekanosato Kiyosasa room photo',
+    'https://travel.rakuten.co.jp/HOTEL/191173/191173.html',
+    '楽天トラベル'
+  ),
+  '家賀乃里 古城（けかのさと こじょう）': sourcePhoto(
+    'tsurugi-stay-kojo.jpg',
+    '家賀乃里 古城の客室写真',
+    'Kekanosato Kojo room photo',
+    'https://travel.rakuten.co.jp/HOTEL/191281/191281.html',
+    '楽天トラベル'
+  ),
+  '古民家 剣の宿ゆう': sourcePhoto(
+    'tsurugi-stay-yuu.jpg',
+    '古民家 剣の宿ゆうの客室写真',
+    'Kominka Tsurugi-no-yado Yuu room photo',
+    'https://travel.rakuten.co.jp/HOTEL/194106/194106.html',
+    '楽天トラベル'
+  ),
+  'ラ・フォーレつるぎ山 大浴場': sourcePhoto(
+    'tsurugi-onsen-laforet.jpg',
+    'ラ・フォーレつるぎ山の大浴場写真',
+    'La Foret Tsurugi-san bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/177682/gallery.html',
+    '楽天トラベル'
+  ),
+  'つるぎの宿 岩戸 大浴場': sourcePhoto(
+    'tsurugi-onsen-iwato.jpg',
+    'つるぎの宿 岩戸の大浴場写真',
+    'Tsurugi-no-yado Iwato bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/139805/gallery.html',
+    '楽天トラベル'
   ),
   '於安パーク': townPhoto(
     'oan-park.jpg',
