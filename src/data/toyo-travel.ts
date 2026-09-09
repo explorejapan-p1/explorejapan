@@ -1,13 +1,13 @@
 /**
  * Toyo Town travel layer. No frozen pack.
- * Dining from 食べログ 東洋町 (C39301) — thin town honest 7 with 640 dish JPGs (skipped lodging/cafe/sweets/convenience / no-640). Stay: 東洋白浜リゾートホテル Rakuten ツインルーム. Onsen: 0. Experience: 海の駅東洋町.
+ * Dining: Tabelog C39301 kept 7 + 東洋白浜リゾートホテル レストラン Rakuten 食事. Experience: 海の駅東洋町. Sights +役場/野根川橋/甲浦駅. TG610 densify.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {TOYO, TOYO_SIGHT_PHOTOS} from './toyo';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const TOYO_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const TOYO_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const TOYO_TRAVEL_SOURCES = {
   home: 'https://www.town.toyo.kochi.jp/', hall: 'https://ja.wikipedia.org/wiki/%E6%9D%B1%E6%B4%8B%E7%94%BA',
   kankou: 'https://www.town.toyo.kochi.jp/',
@@ -25,7 +25,7 @@ export const TOYO_STAY_PACK_SET: ReadonlySet<string> = new Set(TOYO_STAY_PACK_NA
 export const TOYO_SHOPPING_PACK_NAMES = [] as const;
 export const TOYO_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(TOYO_SHOPPING_PACK_NAMES);
 
-export const TOYO_SIGHT_PINS = ['白浜海水浴場','生見海岸','甲浦','法界上人堂','野根地区'] as const;
+export const TOYO_SIGHT_PINS = ['白浜海水浴場','生見海岸','甲浦','法界上人堂','野根地区','東洋町役場','野根川橋','甲浦駅'] as const;
 
 function stay(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: TOYO_TRAVEL_ACCESSED};
@@ -45,6 +45,7 @@ export const TOYO_TRAVEL_DINING: readonly TravelRow[] = [
   dining('toyo-dining-05', 'いせや食堂', '高知県安芸郡東洋町河内24-52', '0887-29-2245', 'https://tabelog.com/kochi/A3902/A390203/39000908/'),
   dining('toyo-dining-06', 'GRILL JOIN', '高知県安芸郡東洋町河内1102-2', '0887-23-9255', 'https://tabelog.com/kochi/A3902/A390203/39007936/'),
   dining('toyo-dining-07', '野根キッチン', '高知県安芸郡東洋町野根丙1654-3', '090-7542-4435', 'https://tabelog.com/kochi/A3902/A390203/39006982/'),
+  dining('toyo-dining-08', '東洋白浜リゾートホテル レストラン', '高知県安芸郡東洋町大字白浜88-8', '0887-29-3344', 'https://travel.rakuten.co.jp/HOTEL/193185/gallery.html'),
 ];
 
 export const TOYO_DINING_NAME_SET: ReadonlySet<string> = new Set(TOYO_TRAVEL_DINING.map((row) => row.name_ja));
