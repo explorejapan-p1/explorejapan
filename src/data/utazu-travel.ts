@@ -15,7 +15,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const UTAZU_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const UTAZU_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const UTAZU_TRAVEL_SOURCES = {
   home: 'https://www.town.utazu.lg.jp/',
@@ -28,7 +28,7 @@ export const UTAZU_TRAVEL_SOURCES = {
   az: 'https://travel.rakuten.co.jp/HOTEL/181836/181836.html'
 } as const;
 
-export const UTAZU_ONSEN_PACK_NAMES = ['宇多津グランドホテル 大浴場'] as const;
+export const UTAZU_ONSEN_PACK_NAMES = ["宇多津グランドホテル 大浴場"] as const;
 export const UTAZU_ONSEN_PACK_SET: ReadonlySet<string> = new Set(UTAZU_ONSEN_PACK_NAMES);
 export const UTAZU_EXPERIENCE_PACK_NAMES = ['道の駅恋人の聖地うたづ臨海公園'] as const;
 export const UTAZU_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(UTAZU_EXPERIENCE_PACK_NAMES);
@@ -65,8 +65,13 @@ function stay(
 }
 
 export const UTAZU_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('utazu-stay-01', '宇多津グランドホテル', '香川県綾歌郡宇多津町浜三番丁22-1', '0877-41-1000', 'https://travel.rakuten.co.jp/HOTEL/15605/15605.html'),
-  stay('utazu-stay-02', 'ＨＯＴＥＬ　ＡＺ　香川宇多津店', '香川県綾歌郡宇多津町新開2419-5', '0877-49-0501', 'https://travel.rakuten.co.jp/HOTEL/181836/181836.html')
+  stay('utazu-stay-001', "宇多津グランドホテル", "香川県綾歌郡宇多津町浜三番丁22-1", null, "https://travel.rakuten.co.jp/HOTEL/15605/15605.html"),
+  stay('utazu-stay-002', "ホテルアネシス瀬戸大橋", "香川県綾歌郡宇多津町浜六番丁81-1", null, "https://travel.rakuten.co.jp/HOTEL/143328/143328.html"),
+  stay('utazu-stay-003', "古街の家", "香川県綾歌郡宇多津町2126-1", null, "https://travel.rakuten.co.jp/HOTEL/148903/148903.html"),
+  stay('utazu-stay-004', "Ｃｈｉｉｏｒｉ Ｕｔａｚｕ Ｂｒａｎｃｈ", "香川県綾歌郡宇多津町2120-4", null, "https://travel.rakuten.co.jp/HOTEL/178938/178938.html"),
+  stay('utazu-stay-005', "ＨＯＴＥＬ　ＡＺ　香川宇多津店", "香川県綾歌郡宇多津町新開2419-5", null, "https://travel.rakuten.co.jp/HOTEL/181836/181836.html"),
+  stay('utazu-stay-006', "小さなホテル ミセス・マルベリー", "香川県綾歌郡宇多津町2628-637", null, "https://travel.rakuten.co.jp/HOTEL/193041/193041.html"),
+  stay('utazu-stay-007', "さぬきの宿 塩がま", "香川県綾歌郡宇多津町浜六番丁86-11　カドーロ壱-館", null, "https://travel.rakuten.co.jp/HOTEL/194104/194104.html"),
 ];
 
 function dining(

@@ -32,12 +32,12 @@ export const UTAZU = {
     tabelogCity: 'https://tabelog.com/kagawa/C37386/rstLst/',
     grand: 'https://travel.rakuten.co.jp/HOTEL/15605/15605.html',
     az: 'https://travel.rakuten.co.jp/HOTEL/181836/181836.html',
-    accessed: '2026-09-07'
+    accessed: '2026-09-09'
   }
 } as const;
 
 export const UTAZU_EXPECTED_ROW_COUNT = 8;
-export const UTAZU_EXPECTED_GEO_COUNT = 8;
+export const UTAZU_EXPECTED_GEO_COUNT = 7;
 
 function wikiPhoto(
   file: string,
@@ -58,7 +58,7 @@ function wikiPhoto(
     author,
     authorUrl,
     taken,
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -79,7 +79,7 @@ function sourcePhoto(
     author,
     authorUrl: page,
     taken: '2026',
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -117,8 +117,8 @@ const TABELOG_37008588 = 'https://tabelog.com/kagawa/A3702/A370202/37008588/';
 
 /** Exact travel/sight name_ja only. No Tokushima/other-Kagawa Files. */
 export const UTAZU_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
-  'ゴールドタワー': UTAZU_PLACE_PHOTO,
-  '宇多津臨海公園': wikiPhoto(
+'ゴールドタワー': UTAZU_PLACE_PHOTO,
+'宇多津臨海公園': wikiPhoto(
     'utazu-rinkai.jpg',
     'https://commons.wikimedia.org/wiki/File:%E5%AE%87%E5%A4%9A%E6%B4%A5%E8%87%A8%E6%B5%B7%E5%85%AC%E5%9C%92.jpg',
     'CC0',
@@ -129,7 +129,7 @@ export const UTAZU_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '宇多津臨海公園（香川県宇多津町）',
     'Utazu Seaside Park, Utazu'
   ),
-  '四国水族館': wikiPhoto(
+'四国水族館': wikiPhoto(
     'utazu-aquarium.jpg',
     'https://commons.wikimedia.org/wiki/File:Shikoku_Aquarium1.jpg',
     'CC BY-SA 4.0',
@@ -140,7 +140,7 @@ export const UTAZU_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '四国水族館の外観（宇多津町）',
     'Shikoku Aquarium exterior, Utazu'
   ),
-  '復元塩田': wikiPhoto(
+'復元塩田': wikiPhoto(
     'utazu-enden.jpg',
     'https://commons.wikimedia.org/wiki/File:Enden-Utadu1.jpg',
     'CC BY-SA 3.0',
@@ -151,7 +151,7 @@ export const UTAZU_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '宇多津臨海公園の復元塩田（宇多津町）',
     'Restored salt pans at Utazu Seaside Park'
   ),
-  '宇多津駅': wikiPhoto(
+'宇多津駅': wikiPhoto(
     'utazu-station.jpg',
     'https://commons.wikimedia.org/wiki/File:JR_Utazu_Station_2021-08_ac_(1).jpg',
     'CC BY-SA 4.0',
@@ -162,7 +162,7 @@ export const UTAZU_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'JR宇多津駅（宇多津町）',
     'JR Utazu Station, Utazu'
   ),
-  '青ノ山': wikiPhoto(
+'青ノ山': wikiPhoto(
     'utazu-aonoyama.jpg',
     'https://commons.wikimedia.org/wiki/File:Aonoyama20220820_5.jpg',
     'CC BY-SA 4.0',
@@ -173,7 +173,7 @@ export const UTAZU_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '青ノ山からの眺めとゴールドタワー（宇多津町）',
     'View from Mount Aono with Gold Tower, Utazu'
   ),
-  '道の駅恋人の聖地うたづ臨海公園': wikiPhoto(
+'道の駅恋人の聖地うたづ臨海公園': wikiPhoto(
     'utazu-michinoeki.jpg',
     'https://commons.wikimedia.org/wiki/File:Michinoeki_Utadu-Umihotaru.JPG',
     'CC BY-SA 4.0',
@@ -184,43 +184,78 @@ export const UTAZU_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '道の駅恋人の聖地うたづ臨海公園・うたづ海ホタル（宇多津町）',
     'Michinoeki Lover\'s Sanctuary Utazu Seaside Park (Umi Hotaru)'
   ),
-  '宇多津グランドホテル': sourcePhoto(
-    'utazu-stay-grand.jpg',
-    '宇多津グランドホテルのツインルーム写真',
-    'Utazu Grand Hotel twin room photo',
-    'https://travel.rakuten.co.jp/HOTEL/15605/gallery.html',
+'旬処 栄': sourcePhoto('utazu-37014623-dish.jpg', '旬処 栄の料理写真', '旬処 栄 food photo', TABELOG_37014623, '食べログ'),
+'吾割食堂': sourcePhoto('utazu-37004143-dish.jpg', '吾割食堂の料理写真', '吾割食堂 food photo', TABELOG_37004143, '食べログ'),
+'魚民 宇多津店': sourcePhoto('utazu-37007830-dish.jpg', '魚民 宇多津店の料理写真', '魚民 宇多津店 food photo', TABELOG_37007830, '食べログ'),
+'焼肉ひらい 宇多津店': sourcePhoto('utazu-37000853-dish.jpg', '焼肉ひらい 宇多津店の料理写真', '焼肉ひらい 宇多津店 food photo', TABELOG_37000853, '食べログ'),
+'宇多津ホルモン': sourcePhoto('utazu-37006739-dish.jpg', '宇多津ホルモンの料理写真', '宇多津ホルモン food photo', TABELOG_37006739, '食べログ'),
+'青春のおそばやさん': sourcePhoto('utazu-37013119-dish.jpg', '青春のおそばやさんの料理写真', '青春のおそばやさん food photo', TABELOG_37013119, '食べログ'),
+'丸亀骨付鳥一丁 宇多津店': sourcePhoto('utazu-37014450-dish.jpg', '丸亀骨付鳥一丁 宇多津店の料理写真', '丸亀骨付鳥一丁 宇多津店 food photo', TABELOG_37014450, '食べログ'),
+'次男坊 宇多津店': sourcePhoto('utazu-37002291-dish.jpg', '次男坊 宇多津店の料理写真', '次男坊 宇多津店 food photo', TABELOG_37002291, '食べログ'),
+'めりけんや かけはし店': sourcePhoto('utazu-37001422-dish.jpg', 'めりけんや かけはし店の料理写真', 'めりけんや かけはし店 food photo', TABELOG_37001422, '食べログ'),
+'遊食房屋 宇多津店': sourcePhoto('utazu-37002329-dish.jpg', '遊食房屋 宇多津店の料理写真', '遊食房屋 宇多津店 food photo', TABELOG_37002329, '食べログ'),
+'麺処 たでや': sourcePhoto('utazu-37013867-dish.jpg', '麺処 たでやの料理写真', '麺処 たでや food photo', TABELOG_37013867, '食べログ'),
+'ぴこぴこ精肉店 宇多津': sourcePhoto('utazu-37010157-dish.jpg', 'ぴこぴこ精肉店 宇多津の料理写真', 'ぴこぴこ精肉店 宇多津 food photo', TABELOG_37010157, '食べログ'),
+'瀬戸パーク': sourcePhoto('utazu-37014869-dish.jpg', '瀬戸パークの料理写真', '瀬戸パーク food photo', TABELOG_37014869, '食べログ'),
+'エコランド鵜足津': sourcePhoto('utazu-37004793-dish.jpg', 'エコランド鵜足津の料理写真', 'エコランド鵜足津 food photo', TABELOG_37004793, '食べログ'),
+'つるぎ': sourcePhoto('utazu-37002798-dish.jpg', 'つるぎの料理写真', 'つるぎ food photo', TABELOG_37002798, '食べログ'),
+'穂の香': sourcePhoto('utazu-37008588-dish.jpg', '穂の香の料理写真', '穂の香 food photo', TABELOG_37008588, '食べログ'),
+  "宇多津グランドホテル": sourcePhoto(
+    "utazu-stay-grand.jpg",
+    "宇多津グランドホテルの客室写真",
+    "宇多津グランドホテル room photo",
+    "https://travel.rakuten.co.jp/HOTEL/15605/15605.html",
     '楽天トラベル'
   ),
-  'ＨＯＴＥＬ　ＡＺ　香川宇多津店': sourcePhoto(
-    'utazu-stay-az.jpg',
-    'ＨＯＴＥＬ　ＡＺ　香川宇多津店のシングルルーム写真',
-    'HOTEL AZ Kagawa Utazu single room photo',
-    'https://travel.rakuten.co.jp/HOTEL/181836/gallery.html',
+  "ホテルアネシス瀬戸大橋": sourcePhoto(
+    "utazu-stay-h143328.jpg",
+    "ホテルアネシス瀬戸大橋の客室写真",
+    "ホテルアネシス瀬戸大橋 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/143328/143328.html",
     '楽天トラベル'
   ),
-  '宇多津グランドホテル 大浴場': sourcePhoto(
-    'utazu-onsen-grand.jpg',
-    '宇多津グランドホテルの大浴場写真',
-    'Utazu Grand Hotel large bath photo',
-    'https://travel.rakuten.co.jp/HOTEL/15605/gallery.html',
+  "古街の家": sourcePhoto(
+    "utazu-stay-h148903.jpg",
+    "古街の家の客室写真",
+    "古街の家 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/148903/148903.html",
     '楽天トラベル'
   ),
-  '旬処 栄': sourcePhoto('utazu-37014623-dish.jpg', '旬処 栄の料理写真', '旬処 栄 food photo', TABELOG_37014623, '食べログ'),
-  '吾割食堂': sourcePhoto('utazu-37004143-dish.jpg', '吾割食堂の料理写真', '吾割食堂 food photo', TABELOG_37004143, '食べログ'),
-  '魚民 宇多津店': sourcePhoto('utazu-37007830-dish.jpg', '魚民 宇多津店の料理写真', '魚民 宇多津店 food photo', TABELOG_37007830, '食べログ'),
-  '焼肉ひらい 宇多津店': sourcePhoto('utazu-37000853-dish.jpg', '焼肉ひらい 宇多津店の料理写真', '焼肉ひらい 宇多津店 food photo', TABELOG_37000853, '食べログ'),
-  '宇多津ホルモン': sourcePhoto('utazu-37006739-dish.jpg', '宇多津ホルモンの料理写真', '宇多津ホルモン food photo', TABELOG_37006739, '食べログ'),
-  '青春のおそばやさん': sourcePhoto('utazu-37013119-dish.jpg', '青春のおそばやさんの料理写真', '青春のおそばやさん food photo', TABELOG_37013119, '食べログ'),
-  '丸亀骨付鳥一丁 宇多津店': sourcePhoto('utazu-37014450-dish.jpg', '丸亀骨付鳥一丁 宇多津店の料理写真', '丸亀骨付鳥一丁 宇多津店 food photo', TABELOG_37014450, '食べログ'),
-  '次男坊 宇多津店': sourcePhoto('utazu-37002291-dish.jpg', '次男坊 宇多津店の料理写真', '次男坊 宇多津店 food photo', TABELOG_37002291, '食べログ'),
-  'めりけんや かけはし店': sourcePhoto('utazu-37001422-dish.jpg', 'めりけんや かけはし店の料理写真', 'めりけんや かけはし店 food photo', TABELOG_37001422, '食べログ'),
-  '遊食房屋 宇多津店': sourcePhoto('utazu-37002329-dish.jpg', '遊食房屋 宇多津店の料理写真', '遊食房屋 宇多津店 food photo', TABELOG_37002329, '食べログ'),
-  '麺処 たでや': sourcePhoto('utazu-37013867-dish.jpg', '麺処 たでやの料理写真', '麺処 たでや food photo', TABELOG_37013867, '食べログ'),
-  'ぴこぴこ精肉店 宇多津': sourcePhoto('utazu-37010157-dish.jpg', 'ぴこぴこ精肉店 宇多津の料理写真', 'ぴこぴこ精肉店 宇多津 food photo', TABELOG_37010157, '食べログ'),
-  '瀬戸パーク': sourcePhoto('utazu-37014869-dish.jpg', '瀬戸パークの料理写真', '瀬戸パーク food photo', TABELOG_37014869, '食べログ'),
-  'エコランド鵜足津': sourcePhoto('utazu-37004793-dish.jpg', 'エコランド鵜足津の料理写真', 'エコランド鵜足津 food photo', TABELOG_37004793, '食べログ'),
-  'つるぎ': sourcePhoto('utazu-37002798-dish.jpg', 'つるぎの料理写真', 'つるぎ food photo', TABELOG_37002798, '食べログ'),
-  '穂の香': sourcePhoto('utazu-37008588-dish.jpg', '穂の香の料理写真', '穂の香 food photo', TABELOG_37008588, '食べログ'),
+  "Ｃｈｉｉｏｒｉ Ｕｔａｚｕ Ｂｒａｎｃｈ": sourcePhoto(
+    "utazu-stay-h178938.jpg",
+    "Ｃｈｉｉｏｒｉ Ｕｔａｚｕ Ｂｒａｎｃｈの客室写真",
+    "Ｃｈｉｉｏｒｉ Ｕｔａｚｕ Ｂｒａｎｃｈ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/178938/178938.html",
+    '楽天トラベル'
+  ),
+  "ＨＯＴＥＬ　ＡＺ　香川宇多津店": sourcePhoto(
+    "utazu-stay-az.jpg",
+    "ＨＯＴＥＬ　ＡＺ　香川宇多津店の客室写真",
+    "ＨＯＴＥＬ　ＡＺ　香川宇多津店 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/181836/181836.html",
+    '楽天トラベル'
+  ),
+  "小さなホテル ミセス・マルベリー": sourcePhoto(
+    "utazu-stay-h193041.jpg",
+    "小さなホテル ミセス・マルベリーの客室写真",
+    "小さなホテル ミセス・マルベリー room photo",
+    "https://travel.rakuten.co.jp/HOTEL/193041/193041.html",
+    '楽天トラベル'
+  ),
+  "さぬきの宿 塩がま": sourcePhoto(
+    "utazu-stay-h194104.jpg",
+    "さぬきの宿 塩がまの客室写真",
+    "さぬきの宿 塩がま room photo",
+    "https://travel.rakuten.co.jp/HOTEL/194104/194104.html",
+    '楽天トラベル'
+  ),
+  "宇多津グランドホテル 大浴場": sourcePhoto(
+    "utazu-onsen-grand.jpg",
+    "宇多津グランドホテル 大浴場の写真",
+    "宇多津グランドホテル 大浴場 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/15605/gallery.html",
+    '楽天トラベル'
+  ),
 };
 
 function sight(
@@ -229,8 +264,8 @@ function sight(
   address: string | null,
   phone: string | null,
   source_url: string,
-  lat: number,
-  lon: number
+  lat: number | null,
+  lon: number | null
 ): FacilityRow {
   return {
     id,
@@ -259,5 +294,5 @@ export const UTAZU_FACILITIES: readonly FacilityRow[] = [
   sight('utazu-sight-05', '宇多津駅', '香川県綾歌郡宇多津町浜五番丁', null, 'https://www.town.utazu.lg.jp/', 34.3064382, 133.8138829),
   sight('utazu-sight-06', '青ノ山', '香川県綾歌郡宇多津町', null, 'https://www.town.utazu.lg.jp/', 34.3006110, 133.8223900),
   sight('utazu-experience-01', '道の駅恋人の聖地うたづ臨海公園', '香川県綾歌郡宇多津町浜一番丁4番地', '0877-49-0860', 'https://utazu-umihotaru.jp/about/', 34.3134855, 133.8078604),
-  sight('utazu-onsen-01', '宇多津グランドホテル 大浴場', '香川県綾歌郡宇多津町浜三番丁22-1', '0877-41-1000', 'https://travel.rakuten.co.jp/HOTEL/15605/gallery.html', 34.3144580, 133.8156760)
+  sight('utazu-onsen-01', "宇多津グランドホテル 大浴場", "香川県綾歌郡宇多津町浜三番丁22-1", null, "https://travel.rakuten.co.jp/HOTEL/15605/gallery.html", null, null)
 ];

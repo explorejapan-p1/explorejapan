@@ -32,12 +32,12 @@ export const TONOSHO = {
     tabelogCity: 'https://tabelog.com/kagawa/C37322/rstLst/',
     kokusai: 'https://travel.rakuten.co.jp/HOTEL/17990/17990.html',
     greenplaza: 'https://travel.rakuten.co.jp/HOTEL/188032/188032.html',
-    accessed: '2026-09-07'
+    accessed: '2026-09-09'
   }
 } as const;
 
-export const TONOSHO_EXPECTED_ROW_COUNT = 9;
-export const TONOSHO_EXPECTED_GEO_COUNT = 9;
+export const TONOSHO_EXPECTED_ROW_COUNT = 12;
+export const TONOSHO_EXPECTED_GEO_COUNT = 7;
 
 function wikiPhoto(
   file: string,
@@ -58,7 +58,7 @@ function wikiPhoto(
     author,
     authorUrl,
     taken,
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -79,7 +79,7 @@ function sourcePhoto(
     author,
     authorUrl: page,
     taken: '2026',
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -116,8 +116,8 @@ const TABELOG_37000727 = 'https://tabelog.com/kagawa/A3705/A370501/37000727/';
 
 /** Exact travel/sight name_ja only. No Tokushima/other-Kagawa/Shodoshima-Town Files. */
 export const TONOSHO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
-  'エンジェルロード': TONOSHO_PLACE_PHOTO,
-  '銚子渓': wikiPhoto(
+'エンジェルロード': TONOSHO_PLACE_PHOTO,
+'銚子渓': wikiPhoto(
     'tonosho-choshikei.jpg',
     'https://commons.wikimedia.org/wiki/File:Choshikei05bs5.jpg',
     'CC BY 2.5',
@@ -128,7 +128,7 @@ export const TONOSHO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '銚子渓（土庄町）',
     'Choshikei Gorge, Tonosho'
   ),
-  '土庄港': wikiPhoto(
+'土庄港': wikiPhoto(
     'tonosho-port.jpg',
     'https://commons.wikimedia.org/wiki/File:Port_of_Tonosho_ac_(3).jpg',
     'CC BY-SA 4.0',
@@ -139,7 +139,7 @@ export const TONOSHO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '土庄港（土庄町）',
     'Tonosho Port, Tonosho'
   ),
-  '迷路のまち': wikiPhoto(
+'迷路のまち': wikiPhoto(
     'tonosho-meiro.jpg',
     'https://commons.wikimedia.org/wiki/File:Meiro-no-machi_Tonosho_Kagawa_pref_Japan02s3.jpg',
     'CC BY 2.5',
@@ -150,7 +150,7 @@ export const TONOSHO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '迷路のまち（土庄町）',
     'Meiro-no-machi maze district, Tonosho'
   ),
-  '小豆島大観音': wikiPhoto(
+'小豆島大観音': wikiPhoto(
     'tonosho-daikannon.jpg',
     'https://commons.wikimedia.org/wiki/File:Shodoshima_Daikannon_(6453337505).jpg',
     'CC BY 2.0',
@@ -161,7 +161,7 @@ export const TONOSHO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '小豆島大観音（土庄町）',
     'Shodoshima Daikannon, Tonosho'
   ),
-  '大坂城残石記念公園': wikiPhoto(
+'大坂城残石記念公園': wikiPhoto(
     'tonosho-zanseki.jpg',
     'https://commons.wikimedia.org/wiki/File:Stones_of_Osaka_Castle_Commemorative_Park31s3.jpg',
     'CC BY 2.5',
@@ -172,7 +172,7 @@ export const TONOSHO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '大坂城残石記念公園（土庄町）',
     'Osaka Castle Stone Memorial Park, Tonosho'
   ),
-  '銚子渓自然動物園お猿の国': wikiPhoto(
+'銚子渓自然動物園お猿の国': wikiPhoto(
     'tonosho-osaru.jpg',
     'https://commons.wikimedia.org/wiki/File:Choshikei_Monkey_01.jpg',
     'CC BY-SA 4.0',
@@ -183,50 +183,141 @@ export const TONOSHO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '銚子渓自然動物園お猿の国（土庄町）',
     'Choshikei Monkey Park, Tonosho'
   ),
-  '小豆島国際ホテル': sourcePhoto(
-    'tonosho-stay-kokusai.jpg',
-    '小豆島国際ホテルのスタンダード和洋室写真',
-    'Shodoshima International Hotel standard Japanese-Western room photo',
-    'https://travel.rakuten.co.jp/HOTEL/17990/gallery.html',
+'島活': sourcePhoto('tonosho-37004672-dish.jpg', '島活の料理写真', '島活 food photo', TABELOG_37004672, '食べログ'),
+'別邸　銀四郎': sourcePhoto('tonosho-37014217-dish.jpg', '別邸　銀四郎の料理写真', '別邸　銀四郎 food photo', TABELOG_37014217, '食べログ'),
+'ピッツァ カモス': sourcePhoto('tonosho-37010501-dish.jpg', 'ピッツァ カモスの料理写真', 'ピッツァ カモス food photo', TABELOG_37010501, '食べログ'),
+'小豆島ラーメンHISHIO 小豆島エンジェルロード店': sourcePhoto('tonosho-37006291-dish.jpg', '小豆島ラーメンHISHIO 小豆島エンジェルロード店の料理写真', '小豆島ラーメンHISHIO 小豆島エンジェルロード店 food photo', TABELOG_37006291, '食べログ'),
+'手延べ麺お食事処 銀四郎': sourcePhoto('tonosho-37008675-dish.jpg', '手延べ麺お食事処 銀四郎の料理写真', '手延べ麺お食事処 銀四郎 food photo', TABELOG_37008675, '食べログ'),
+'居酒屋 南国': sourcePhoto('tonosho-37005340-dish.jpg', '居酒屋 南国の料理写真', '居酒屋 南国 food photo', TABELOG_37005340, '食べログ'),
+'味彩': sourcePhoto('tonosho-37004779-dish.jpg', '味彩の料理写真', '味彩 food photo', TABELOG_37004779, '食べログ'),
+'オアシス': sourcePhoto('tonosho-37006736-dish.jpg', 'オアシスの料理写真', 'オアシス food photo', TABELOG_37006736, '食べログ'),
+'來家': sourcePhoto('tonosho-37001080-dish.jpg', '來家の料理写真', '來家 food photo', TABELOG_37001080, '食べログ'),
+'おおみねのうどん屋さん': sourcePhoto('tonosho-37005583-dish.jpg', 'おおみねのうどん屋さんの料理写真', 'おおみねのうどん屋さん food photo', TABELOG_37005583, '食べログ'),
+'宝来軒': sourcePhoto('tonosho-37011318-dish.jpg', '宝来軒の料理写真', '宝来軒 food photo', TABELOG_37011318, '食べログ'),
+'海のレストラン': sourcePhoto('tonosho-37007483-dish.jpg', '海のレストランの料理写真', '海のレストラン food photo', TABELOG_37007483, '食べログ'),
+'海蘆': sourcePhoto('tonosho-37007016-dish.jpg', '海蘆の料理写真', '海蘆 food photo', TABELOG_37007016, '食べログ'),
+'本格中国料理　錦華': sourcePhoto('tonosho-37005704-dish.jpg', '本格中国料理　錦華の料理写真', '本格中国料理　錦華 food photo', TABELOG_37005704, '食べログ'),
+'なぎさ': sourcePhoto('tonosho-37005597-dish.jpg', 'なぎさの料理写真', 'なぎさ food photo', TABELOG_37005597, '食べログ'),
+'料理芸術 かりえん': sourcePhoto('tonosho-37000727-dish.jpg', '料理芸術 かりえんの料理写真', '料理芸術 かりえん food photo', TABELOG_37000727, '食べログ'),
+  "小豆島温泉 オリビアン小豆島 夕陽ヶ丘ホテル": sourcePhoto(
+    "tonosho-stay-olivien.jpg",
+    "小豆島温泉 オリビアン小豆島 夕陽ヶ丘ホテルの客室写真",
+    "小豆島温泉 オリビアン小豆島 夕陽ヶ丘ホテル room photo",
+    "https://travel.rakuten.co.jp/HOTEL/7592/7592.html",
     '楽天トラベル'
   ),
-  'ホテルグリーンプラザ小豆島': sourcePhoto(
-    'tonosho-stay-greenplaza.jpg',
-    'ホテルグリーンプラザ小豆島の和風ツインルーム写真',
-    'Hotel Green Plaza Shodoshima Japanese-style twin room photo',
-    'https://travel.rakuten.co.jp/HOTEL/188032/gallery.html',
+  "小豆島温泉 天空のオーシャンビューホテル 海廬": sourcePhoto(
+    "tonosho-stay-kairo.jpg",
+    "小豆島温泉 天空のオーシャンビューホテル 海廬の客室写真",
+    "小豆島温泉 天空のオーシャンビューホテル 海廬 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/7805/7805.html",
     '楽天トラベル'
   ),
-  '小豆島国際ホテル 大浴場': sourcePhoto(
-    'tonosho-onsen-kokusai.jpg',
-    '小豆島国際ホテルの1階大浴場「オリーブの湯」写真',
-    'Shodoshima International Hotel large bath Olive-no-Yu photo',
-    'https://travel.rakuten.co.jp/HOTEL/17990/gallery.html',
+  "小豆島ビジネスホテルニューポート": sourcePhoto(
+    "tonosho-stay-newport.jpg",
+    "小豆島ビジネスホテルニューポートの客室写真",
+    "小豆島ビジネスホテルニューポート room photo",
+    "https://travel.rakuten.co.jp/HOTEL/10889/10889.html",
     '楽天トラベル'
   ),
-  'ホテルグリーンプラザ小豆島 大浴場': sourcePhoto(
-    'tonosho-onsen-greenplaza.jpg',
-    'ホテルグリーンプラザ小豆島の大浴場写真',
-    'Hotel Green Plaza Shodoshima large bath photo',
-    'https://travel.rakuten.co.jp/HOTEL/188032/gallery.html',
+  "小豆島温泉“瀬戸の御湯”ホテルニュー海風": sourcePhoto(
+    "tonosho-stay-umikaze.jpg",
+    "小豆島温泉“瀬戸の御湯”ホテルニュー海風の客室写真",
+    "小豆島温泉“瀬戸の御湯”ホテルニュー海風 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/14108/14108.html",
     '楽天トラベル'
   ),
-  '島活': sourcePhoto('tonosho-37004672-dish.jpg', '島活の料理写真', '島活 food photo', TABELOG_37004672, '食べログ'),
-  '別邸　銀四郎': sourcePhoto('tonosho-37014217-dish.jpg', '別邸　銀四郎の料理写真', '別邸　銀四郎 food photo', TABELOG_37014217, '食べログ'),
-  'ピッツァ カモス': sourcePhoto('tonosho-37010501-dish.jpg', 'ピッツァ カモスの料理写真', 'ピッツァ カモス food photo', TABELOG_37010501, '食べログ'),
-  '小豆島ラーメンHISHIO 小豆島エンジェルロード店': sourcePhoto('tonosho-37006291-dish.jpg', '小豆島ラーメンHISHIO 小豆島エンジェルロード店の料理写真', '小豆島ラーメンHISHIO 小豆島エンジェルロード店 food photo', TABELOG_37006291, '食べログ'),
-  '手延べ麺お食事処 銀四郎': sourcePhoto('tonosho-37008675-dish.jpg', '手延べ麺お食事処 銀四郎の料理写真', '手延べ麺お食事処 銀四郎 food photo', TABELOG_37008675, '食べログ'),
-  '居酒屋 南国': sourcePhoto('tonosho-37005340-dish.jpg', '居酒屋 南国の料理写真', '居酒屋 南国 food photo', TABELOG_37005340, '食べログ'),
-  '味彩': sourcePhoto('tonosho-37004779-dish.jpg', '味彩の料理写真', '味彩 food photo', TABELOG_37004779, '食べログ'),
-  'オアシス': sourcePhoto('tonosho-37006736-dish.jpg', 'オアシスの料理写真', 'オアシス food photo', TABELOG_37006736, '食べログ'),
-  '來家': sourcePhoto('tonosho-37001080-dish.jpg', '來家の料理写真', '來家 food photo', TABELOG_37001080, '食べログ'),
-  'おおみねのうどん屋さん': sourcePhoto('tonosho-37005583-dish.jpg', 'おおみねのうどん屋さんの料理写真', 'おおみねのうどん屋さん food photo', TABELOG_37005583, '食べログ'),
-  '宝来軒': sourcePhoto('tonosho-37011318-dish.jpg', '宝来軒の料理写真', '宝来軒 food photo', TABELOG_37011318, '食べログ'),
-  '海のレストラン': sourcePhoto('tonosho-37007483-dish.jpg', '海のレストランの料理写真', '海のレストラン food photo', TABELOG_37007483, '食べログ'),
-  '海蘆': sourcePhoto('tonosho-37007016-dish.jpg', '海蘆の料理写真', '海蘆 food photo', TABELOG_37007016, '食べログ'),
-  '本格中国料理　錦華': sourcePhoto('tonosho-37005704-dish.jpg', '本格中国料理　錦華の料理写真', '本格中国料理　錦華 food photo', TABELOG_37005704, '食べログ'),
-  'なぎさ': sourcePhoto('tonosho-37005597-dish.jpg', 'なぎさの料理写真', 'なぎさ food photo', TABELOG_37005597, '食べログ'),
-  '料理芸術 かりえん': sourcePhoto('tonosho-37000727-dish.jpg', '料理芸術 かりえんの料理写真', '料理芸術 かりえん food photo', TABELOG_37000727, '食べログ'),
+  "カントリーイン ザ ホワイトマリーン": sourcePhoto(
+    "tonosho-stay-whitemarine.jpg",
+    "カントリーイン ザ ホワイトマリーンの客室写真",
+    "カントリーイン ザ ホワイトマリーン room photo",
+    "https://travel.rakuten.co.jp/HOTEL/14167/14167.html",
+    '楽天トラベル'
+  ),
+  "ペンション・サンセットコースト": sourcePhoto(
+    "tonosho-stay-sunset.jpg",
+    "ペンション・サンセットコーストの客室写真",
+    "ペンション・サンセットコースト room photo",
+    "https://travel.rakuten.co.jp/HOTEL/17731/17731.html",
+    '楽天トラベル'
+  ),
+  "小豆島国際ホテル": sourcePhoto(
+    "tonosho-stay-kokusai.jpg",
+    "小豆島国際ホテルの客室写真",
+    "小豆島国際ホテル room photo",
+    "https://travel.rakuten.co.jp/HOTEL/17990/17990.html",
+    '楽天トラベル'
+  ),
+  "小豆島 オアシス": sourcePhoto(
+    "tonosho-stay-oasis.jpg",
+    "小豆島 オアシスの客室写真",
+    "小豆島 オアシス room photo",
+    "https://travel.rakuten.co.jp/HOTEL/20128/20128.html",
+    '楽天トラベル'
+  ),
+  "海辺の宿 入舟": sourcePhoto(
+    "tonosho-stay-irifune.jpg",
+    "海辺の宿 入舟の客室写真",
+    "海辺の宿 入舟 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/20489/20489.html",
+    '楽天トラベル'
+  ),
+  "喜久家旅館": sourcePhoto(
+    "tonosho-stay-kikuya.jpg",
+    "喜久家旅館の客室写真",
+    "喜久家旅館 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/147001/147001.html",
+    '楽天トラベル'
+  ),
+  "ホテルグリーンプラザ小豆島": sourcePhoto(
+    "tonosho-stay-greenplaza.jpg",
+    "ホテルグリーンプラザ小豆島の客室写真",
+    "ホテルグリーンプラザ小豆島 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/188032/188032.html",
+    '楽天トラベル'
+  ),
+  "ひとり旅宿 サイヌツノ": sourcePhoto(
+    "tonosho-stay-sainutsuno.jpg",
+    "ひとり旅宿 サイヌツノの客室写真",
+    "ひとり旅宿 サイヌツノ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/197435/197435.html",
+    '楽天トラベル'
+  ),
+  "小豆島温泉 オリビアン小豆島 夕陽ヶ丘ホテル 天空の露天風呂": sourcePhoto(
+    "tonosho-onsen-olivien.jpg",
+    "小豆島温泉 オリビアン小豆島 夕陽ヶ丘ホテル 天空の露天風呂の写真",
+    "小豆島温泉 オリビアン小豆島 夕陽ヶ丘ホテル 天空の露天風呂 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/7592/gallery.html",
+    '楽天トラベル'
+  ),
+  "小豆島温泉 天空のオーシャンビューホテル 海廬 露天風呂": sourcePhoto(
+    "tonosho-onsen-kairo.jpg",
+    "小豆島温泉 天空のオーシャンビューホテル 海廬 露天風呂の写真",
+    "小豆島温泉 天空のオーシャンビューホテル 海廬 露天風呂 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/7805/gallery.html",
+    '楽天トラベル'
+  ),
+  "小豆島温泉“瀬戸の御湯”ホテルニュー海風 瀬戸の御湯": sourcePhoto(
+    "tonosho-onsen-umikaze.jpg",
+    "小豆島温泉“瀬戸の御湯”ホテルニュー海風 瀬戸の御湯の写真",
+    "小豆島温泉“瀬戸の御湯”ホテルニュー海風 瀬戸の御湯 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/14108/gallery.html",
+    '楽天トラベル'
+  ),
+  "小豆島国際ホテル オリーブの湯": sourcePhoto(
+    "tonosho-onsen-kokusai.jpg",
+    "小豆島国際ホテル オリーブの湯の写真",
+    "小豆島国際ホテル オリーブの湯 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/17990/gallery.html",
+    '楽天トラベル'
+  ),
+  "ホテルグリーンプラザ小豆島 大浴場": sourcePhoto(
+    "tonosho-onsen-greenplaza.jpg",
+    "ホテルグリーンプラザ小豆島 大浴場の写真",
+    "ホテルグリーンプラザ小豆島 大浴場 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/188032/gallery.html",
+    '楽天トラベル'
+  ),
 };
 
 function sight(
@@ -235,8 +326,8 @@ function sight(
   address: string | null,
   phone: string | null,
   source_url: string,
-  lat: number,
-  lon: number
+  lat: number | null,
+  lon: number | null
 ): FacilityRow {
   return {
     id,
@@ -265,6 +356,9 @@ export const TONOSHO_FACILITIES: readonly FacilityRow[] = [
   sight('tonosho-sight-05', '小豆島大観音', '香川県小豆郡土庄町小海甲1723-8', '0879-62-0787', 'https://www.town.tonosho.kagawa.jp/kanko/', 34.51190278, 134.21314722),
   sight('tonosho-sight-06', '大坂城残石記念公園', '香川県小豆郡土庄町小海甲909-1', '0879-67-2341', 'https://www.town.tonosho.kagawa.jp/kanko/', 34.5338978, 134.2425788),
   sight('tonosho-experience-01', '銚子渓自然動物園お猿の国', '香川県小豆郡土庄町肥土山蛙子3387-10', '0879-62-0768', 'http://www.osaru-no-kuni.sakura.ne.jp/', 34.5153878, 134.2426350),
-  sight('tonosho-onsen-01', '小豆島国際ホテル 大浴場', '香川県小豆郡土庄町甲24-67', '0879-62-2111', 'https://travel.rakuten.co.jp/HOTEL/17990/gallery.html', 34.4791706, 134.1880000),
-  sight('tonosho-onsen-02', 'ホテルグリーンプラザ小豆島 大浴場', '香川県小豆郡土庄町伊喜末2464', '0879-62-8161', 'https://travel.rakuten.co.jp/HOTEL/188032/gallery.html', 34.4996493, 134.1676139)
+  sight('tonosho-onsen-01', "小豆島温泉 オリビアン小豆島 夕陽ヶ丘ホテル 天空の露天風呂", "香川県小豆郡土庄町屋形崎甲63-1", null, "https://travel.rakuten.co.jp/HOTEL/7592/gallery.html", null, null),
+  sight('tonosho-onsen-02', "小豆島温泉 天空のオーシャンビューホテル 海廬 露天風呂", "香川県小豆郡土庄町甲1135", null, "https://travel.rakuten.co.jp/HOTEL/7805/gallery.html", null, null),
+  sight('tonosho-onsen-03', "小豆島温泉“瀬戸の御湯”ホテルニュー海風 瀬戸の御湯", "香川県小豆郡土庄町甲2111-1", null, "https://travel.rakuten.co.jp/HOTEL/14108/gallery.html", null, null),
+  sight('tonosho-onsen-04', "小豆島国際ホテル オリーブの湯", "香川県小豆郡土庄町 甲 24-67", null, "https://travel.rakuten.co.jp/HOTEL/17990/gallery.html", null, null),
+  sight('tonosho-onsen-05', "ホテルグリーンプラザ小豆島 大浴場", "香川県小豆郡土庄町伊喜末2464", null, "https://travel.rakuten.co.jp/HOTEL/188032/gallery.html", null, null)
 ];

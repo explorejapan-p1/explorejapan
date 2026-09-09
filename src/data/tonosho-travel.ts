@@ -15,7 +15,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const TONOSHO_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const TONOSHO_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const TONOSHO_TRAVEL_SOURCES = {
   home: 'https://www.town.tonosho.kagawa.jp/',
@@ -27,7 +27,7 @@ export const TONOSHO_TRAVEL_SOURCES = {
   greenplaza: 'https://travel.rakuten.co.jp/HOTEL/188032/188032.html'
 } as const;
 
-export const TONOSHO_ONSEN_PACK_NAMES = ['小豆島国際ホテル 大浴場', 'ホテルグリーンプラザ小豆島 大浴場'] as const;
+export const TONOSHO_ONSEN_PACK_NAMES = ["小豆島温泉 オリビアン小豆島 夕陽ヶ丘ホテル 天空の露天風呂", "小豆島温泉 天空のオーシャンビューホテル 海廬 露天風呂", "小豆島温泉“瀬戸の御湯”ホテルニュー海風 瀬戸の御湯", "小豆島国際ホテル オリーブの湯", "ホテルグリーンプラザ小豆島 大浴場"] as const;
 export const TONOSHO_ONSEN_PACK_SET: ReadonlySet<string> = new Set(TONOSHO_ONSEN_PACK_NAMES);
 export const TONOSHO_EXPERIENCE_PACK_NAMES = ['銚子渓自然動物園お猿の国'] as const;
 export const TONOSHO_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(TONOSHO_EXPERIENCE_PACK_NAMES);
@@ -64,8 +64,18 @@ function stay(
 }
 
 export const TONOSHO_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('tonosho-stay-01', '小豆島国際ホテル', '香川県小豆郡土庄町甲24-67', '0879-62-2111', 'https://travel.rakuten.co.jp/HOTEL/17990/17990.html'),
-  stay('tonosho-stay-02', 'ホテルグリーンプラザ小豆島', '香川県小豆郡土庄町伊喜末2464', '0879-62-8161', 'https://travel.rakuten.co.jp/HOTEL/188032/188032.html')
+  stay('tonosho-stay-001', "小豆島温泉 オリビアン小豆島 夕陽ヶ丘ホテル", "香川県小豆郡土庄町屋形崎甲63-1", null, "https://travel.rakuten.co.jp/HOTEL/7592/7592.html"),
+  stay('tonosho-stay-002', "小豆島温泉 天空のオーシャンビューホテル 海廬", "香川県小豆郡土庄町甲1135", null, "https://travel.rakuten.co.jp/HOTEL/7805/7805.html"),
+  stay('tonosho-stay-003', "小豆島ビジネスホテルニューポート", "香川県小豆郡土庄町甲5165-237", null, "https://travel.rakuten.co.jp/HOTEL/10889/10889.html"),
+  stay('tonosho-stay-004', "小豆島温泉“瀬戸の御湯”ホテルニュー海風", "香川県小豆郡土庄町甲2111-1", null, "https://travel.rakuten.co.jp/HOTEL/14108/14108.html"),
+  stay('tonosho-stay-005', "カントリーイン ザ ホワイトマリーン", "香川県小豆郡土庄町甲1466-1", null, "https://travel.rakuten.co.jp/HOTEL/14167/14167.html"),
+  stay('tonosho-stay-006', "ペンション・サンセットコースト", "香川県小豆郡土庄町甲3462-1", null, "https://travel.rakuten.co.jp/HOTEL/17731/17731.html"),
+  stay('tonosho-stay-007', "小豆島国際ホテル", "香川県小豆郡土庄町 甲 24-67", null, "https://travel.rakuten.co.jp/HOTEL/17990/17990.html"),
+  stay('tonosho-stay-008', "小豆島 オアシス", "香川県小豆郡土庄町上庄1953-7", null, "https://travel.rakuten.co.jp/HOTEL/20128/20128.html"),
+  stay('tonosho-stay-009', "海辺の宿 入舟", "香川県小豆郡土庄町甲1171-14", null, "https://travel.rakuten.co.jp/HOTEL/20489/20489.html"),
+  stay('tonosho-stay-010', "喜久家旅館", "香川県小豆郡土庄町甲5978-16", null, "https://travel.rakuten.co.jp/HOTEL/147001/147001.html"),
+  stay('tonosho-stay-011', "ホテルグリーンプラザ小豆島", "香川県小豆郡土庄町伊喜末2464", null, "https://travel.rakuten.co.jp/HOTEL/188032/188032.html"),
+  stay('tonosho-stay-012', "ひとり旅宿 サイヌツノ", "香川県小豆郡土庄町大部甲1029-1", null, "https://travel.rakuten.co.jp/HOTEL/197435/197435.html"),
 ];
 
 function dining(

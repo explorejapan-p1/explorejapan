@@ -15,7 +15,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const SANUKI_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const SANUKI_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const SANUKI_TRAVEL_SOURCES = {
   home: 'https://www.city.sanuki.lg.jp/',
@@ -26,7 +26,7 @@ export const SANUKI_TRAVEL_SOURCES = {
   montpellier: 'https://travel.rakuten.co.jp/HOTEL/30931/30931.html'
 } as const;
 
-export const SANUKI_ONSEN_PACK_NAMES = ['じゃこ丸パーク津田 大浴場'] as const;
+export const SANUKI_ONSEN_PACK_NAMES = ["薬師湯温泉 旅館 竹屋敷 大浴場", "じゃこ丸パーク津田 大浴場"] as const;
 export const SANUKI_ONSEN_PACK_SET: ReadonlySet<string> = new Set(SANUKI_ONSEN_PACK_NAMES);
 export const SANUKI_EXPERIENCE_PACK_NAMES = ['道の駅ながお'] as const;
 export const SANUKI_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(SANUKI_EXPERIENCE_PACK_NAMES);
@@ -63,8 +63,28 @@ function stay(
 }
 
 export const SANUKI_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('sanuki-stay-01', 'じゃこ丸パーク津田', '香川県さぬき市津田町松原地内', '0879-42-2521', 'https://travel.rakuten.co.jp/HOTEL/68660/68660.html'),
-  stay('sanuki-stay-02', 'モンペリエ　オーヴェルジュ', '香川県さぬき市津田町津田3311-1', '0879-42-2508', 'https://travel.rakuten.co.jp/HOTEL/30931/30931.html')
+  stay('sanuki-stay-001', "薬師湯温泉 旅館 竹屋敷", "香川県さぬき市多和竹屋敷123-1", null, "https://travel.rakuten.co.jp/HOTEL/19409/19409.html"),
+  stay('sanuki-stay-002', "旅宿 にった", "香川県さぬき市津田町津田2734-24", null, "https://travel.rakuten.co.jp/HOTEL/29992/29992.html"),
+  stay('sanuki-stay-003', "民宿 北山瀬ノ下荘", "香川県さぬき市津田町津田3806-2", null, "https://travel.rakuten.co.jp/HOTEL/30057/30057.html"),
+  stay('sanuki-stay-004', "モンペリエ　オーヴェルジュ", "香川県さぬき市津田町津田3311-1", null, "https://travel.rakuten.co.jp/HOTEL/30931/30931.html"),
+  stay('sanuki-stay-005', "いしや旅館", "香川県さぬき市志度599-1", null, "https://travel.rakuten.co.jp/HOTEL/31191/31191.html"),
+  stay('sanuki-stay-006', "じゃこ丸パーク津田", "香川県さぬき市津田町松原地内", null, "https://travel.rakuten.co.jp/HOTEL/68660/68660.html"),
+  stay('sanuki-stay-007', "ＯｙａｄｏＥｎｄｏ小路の庭", "香川県さぬき市津田町津田946-4　ＯｙａｄｏＥｎｄｏ", null, "https://travel.rakuten.co.jp/HOTEL/169723/169723.html"),
+  stay('sanuki-stay-008', "まち宿ＡＥＴＥ", "香川県さぬき市津田町津田737　まち宿ＡＥＴＥ", null, "https://travel.rakuten.co.jp/HOTEL/169977/169977.html"),
+  stay('sanuki-stay-009', "１棟貸しの宿 遠藤", "香川県さぬき市津田町津田946-5", null, "https://travel.rakuten.co.jp/HOTEL/173442/173442.html"),
+  stay('sanuki-stay-010', "Ｂｅａｃｈ ＳＰＡ ＴＳＵＤＡ ２＆３棟", "香川県さぬき市津田町鶴羽2180-1　Ｂｅａｃｈ　ＳＰＡ　ＴＳＵＤＡ　2＆3棟", null, "https://travel.rakuten.co.jp/HOTEL/185843/185843.html"),
+  stay('sanuki-stay-011', "Ｂｅａｃｈ ＳＰＡ ＴＳＵＤＡ（０ Ｃｅｒｏ棟）", "香川県さぬき市津田町鶴羽2180-6　Ｂｅａｃｈ　ＳＰＡ　ＴＳＵＤＡ【0　Ｃｅｒｏ棟】", null, "https://travel.rakuten.co.jp/HOTEL/186142/186142.html"),
+  stay('sanuki-stay-012', "Ｂｅａｃｈ ＳＰＡ ＴＳＵＤＡ（１ Ｕｎｏ棟）", "香川県さぬき市津田町鶴羽中谷2180-5　Ｂｅａｃｈ　ＳＰＡ　Ｔｓｕｄａ　（1　Ｕｎｏ棟）", null, "https://travel.rakuten.co.jp/HOTEL/186145/186145.html"),
+  stay('sanuki-stay-013', "マリオン屋島東９０６号／民泊", "香川県さぬき市志度1263-4　マリオン屋島東", null, "https://travel.rakuten.co.jp/HOTEL/186154/186154.html"),
+  stay('sanuki-stay-014', "宿 ｉｎｎ ＴＥＫ－ＴＥＫ", "香川県さぬき市長尾西979-4　Ｙａｄｏ　ｉｎｎ　ＴＥＫ-ＴＥＫ", null, "https://travel.rakuten.co.jp/HOTEL/186234/186234.html"),
+  stay('sanuki-stay-015', "ｍｉｍｏｒｏ", "香川県さぬき市津田町津田3323-1", null, "https://travel.rakuten.co.jp/HOTEL/188864/188864.html"),
+  stay('sanuki-stay-016', "みろく自然公園キャンプ場", "香川県さぬき市大川町富田中3286", null, "https://travel.rakuten.co.jp/HOTEL/193990/193990.html"),
+  stay('sanuki-stay-017', "ゲストハウス ３号館", "香川県さぬき市鴨庄4168-5　タウンハウス3号館", null, "https://travel.rakuten.co.jp/HOTEL/195199/195199.html"),
+  stay('sanuki-stay-018', "ゲストハウス ベルエール小方１階／２階", "香川県さぬき市鴨庄4132-5　ベルエール小方", null, "https://travel.rakuten.co.jp/HOTEL/195784/195784.html"),
+  stay('sanuki-stay-019', "さぬき路Ａ棟・さぬき路Ｂ棟", "香川県さぬき市津田町津田1378-1", null, "https://travel.rakuten.co.jp/HOTEL/196315/196315.html"),
+  stay('sanuki-stay-020', "鈴音 ｂｙ ４Ｓ ＳＴＡＹ", "香川県さぬき市前山936-13", null, "https://travel.rakuten.co.jp/HOTEL/198787/198787.html"),
+  stay('sanuki-stay-021', "ゲストハウス ベルエール小方（１０９）", "香川県さぬき市鴨庄.4132-5　ベルエール小方", null, "https://travel.rakuten.co.jp/HOTEL/200462/200462.html"),
+  stay('sanuki-stay-022', "波音 ｂｙ ４Ｓ ＳＴＡＹ", "香川県さぬき市津田町津田1188", null, "https://travel.rakuten.co.jp/HOTEL/201877/201877.html"),
 ];
 
 function dining(
