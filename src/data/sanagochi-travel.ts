@@ -1,6 +1,6 @@
 /**
  * Sanagochi travel layer. Pack tourism has no inns/onsen with room or bath photos.
- * Onsen / stay: omit without room or bath photo (honest 0).
+ * Onsen / stay: omit without room or bath photo (honest 0 — TG610 densify audit 2026-09-09: no in-muni Rakuten/official 部屋 still).
  * Dining from 食べログ 佐那河内村 (C36321) public shop pages with FOOD dish heroes.
  * PHOTO GAPS (honest 0):
  * 宿泊/温泉/買物/商業/体験: no room/bath/shop 出典 — omit.

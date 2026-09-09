@@ -359,13 +359,13 @@ export const SANAGOCHI_EXPECTED_CATEGORY_COUNTS = {
 
 export const NAKA_PACK_JIS = '36368';
 export const NAKA_PACK_ACCESSED = '2026-08-25';
-export const NAKA_EXPECTED_ROW_COUNT = 357;
+export const NAKA_EXPECTED_ROW_COUNT = 359;
 export const NAKA_EXPECTED_GEO_COUNT = 111;
 export const NAKA_EXPECTED_HOURS_COUNT = 338;
 export const NAKA_EXPECTED_MISSING_ADDRESS = 145;
 export const NAKA_EXPECTED_MISSING_PHONE = 287;
 export const NAKA_EXPECTED_CATEGORY_COUNTS = {
-  tourism: 12,
+  tourism: 14,
   cultural_property: 19,
   care: 9,
   aed: 46,

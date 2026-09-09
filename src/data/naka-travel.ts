@@ -1,12 +1,10 @@
 /**
  * Naka travel layer. Pack tourism has inns/onsen/camps without room or bath photos.
- * Onsen / stay: omit without room or bath photo (honest 0).
+ * Stay: Rakuten 部屋 stills — もみじ川温泉 / 杉の子 / 四季の里コテージ / 淡水荘 (TG610 densify).
+ * Onsen: EXTRA bath stills — もみじ川温泉 大浴場 / 淡水荘 ミネラル温泉 (HARD BAR stay≠onsen).
  * Dining from 食べログ 那賀町 (C36368) public shop pages with FOOD dish heroes.
  * Shopping: 道の駅 pack names with place-named Commons exteriors (not bath photos).
- * PHOTO GAPS (honest 0 — no place-named Commons / room-bath / FOOD yet):
- * 観光: わじきラインキャンプ場, 美那川キャンプ村, 森林総合利用施設 （ファガスの森),
- *       コテージみやこわすれ, 農産物直売所あいおい, 森林文化公園あいあいランド
- * 宿泊/温泉/体験/商業: 0 — pack inns/onsen lack room or bath 出典; no commerce 出典.
+ * PHOTO GAPS: some pack camps/cottages still lack room 出典 (みやこわすれ etc).
  * Do not copy 佐那河内 / 上勝 / 勝浦 / 神山 / 上板 / 板野 / 石井 / 松茂 / 北島 / 藍住 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
@@ -19,17 +17,24 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const NAKA_TRAVEL_ACCESSED = '2026-09-05' as const;
+export const NAKA_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const NAKA_TRAVEL_SOURCES = {
   home: 'https://www.town.tokushima-naka.lg.jp/',
   hall: 'https://www.town.tokushima-naka.lg.jp/',
   kanko: 'https://www.town.tokushima-naka.lg.jp/gyosei/kankoguide/',
-  tabelogCity: 'https://tabelog.com/tokushima/C36368/rstLst/'
+  tabelogCity: 'https://tabelog.com/tokushima/C36368/rstLst/',
+  momijigawa: 'https://travel.rakuten.co.jp/HOTEL/149490/149490.html',
+  suginoko: 'https://travel.rakuten.co.jp/HOTEL/177085/177085.html',
+  shikinosato: 'https://travel.rakuten.co.jp/HOTEL/196561/196561.html',
+  tansuisou: 'https://travel.rakuten.co.jp/HOTEL/30054/30054.html'
 } as const;
 
-/** Exact tourism-pack names shown on 温泉, not 観光. Bath photo required — none yet. */
-export const NAKA_ONSEN_PACK_NAMES = [] as const;
+/** Exact tourism-pack names shown on 温泉, not 観光. Bath photo required. */
+export const NAKA_ONSEN_PACK_NAMES = [
+  'もみじ川温泉 大浴場',
+  '淡水荘 ミネラル温泉'
+] as const;
 
 export const NAKA_ONSEN_PACK_SET: ReadonlySet<string> = new Set(
   NAKA_ONSEN_PACK_NAMES
@@ -58,7 +63,54 @@ export const NAKA_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(
 
 export const NAKA_SIGHT_PINS = ['高の瀬峡平の里', '鷲敷ラインおよび氷柱観音', '剣山並びに亜寒帯植物林', '四季美谷温泉｜休業中', '大轟の滝'] as const;
 
-export const NAKA_TRAVEL_STAY: readonly TravelRow[] = [];
+function stay(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'stay',
+    address,
+    phone,
+    source_url,
+    accessed: NAKA_TRAVEL_ACCESSED
+  };
+}
+
+export const NAKA_TRAVEL_STAY: readonly TravelRow[] = [
+  stay(
+    'naka-stay-01',
+    'もみじ川温泉',
+    '徳島県那賀郡那賀町大久保西納野4-7',
+    '0884-62-1171',
+    'https://travel.rakuten.co.jp/HOTEL/149490/149490.html'
+  ),
+  stay(
+    'naka-stay-02',
+    'ゲストハウス杉の子',
+    '徳島県那賀郡那賀町寺内18',
+    '080-6537-9319',
+    'https://travel.rakuten.co.jp/HOTEL/177085/177085.html'
+  ),
+  stay(
+    'naka-stay-03',
+    '鷲敷四季の里コテージ',
+    '徳島県那賀郡那賀町百合松ノ木233',
+    '070-8584-8205',
+    'https://travel.rakuten.co.jp/HOTEL/196561/196561.html'
+  ),
+  stay(
+    'naka-stay-04',
+    '淡水荘',
+    '徳島県那賀郡那賀町竹ヶ谷長門147',
+    '0884-62-1378',
+    'https://travel.rakuten.co.jp/HOTEL/30054/30054.html'
+  )
+];
 
 function dining(
   id: string,

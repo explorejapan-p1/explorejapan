@@ -204,6 +204,13 @@ export const KATSUURA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     TABELOG_36006067,
     '食べログ'
   ),
+  'ふれあいの里さかもと': sourcePhoto(
+    'katsuura-stay-fureai-sakamoto.jpg',
+    'ふれあいの里さかもとの客室写真',
+    'Fureai-no-Sato Sakamoto room photo',
+    'https://www.east-tokushima.jp/hotel/detail.php?id=104',
+    'イーストとくしま観光推進機構'
+  ),
   'このむ': sourcePhoto(
     'katsuura-36003366-dish.jpg',
     'このむの料理写真',

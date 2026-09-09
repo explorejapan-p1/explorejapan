@@ -187,6 +187,38 @@ const NAKA_EXTRA_FACILITIES: readonly FacilityRow[] = [
     source_url: 'https://commons.wikimedia.org/wiki/File:Otodoro_Falls.JPG',
     license: 'cc_by_open_data',
     accessed: NAKA_PACK_ACCESSED
+  },
+  {
+    id: 'naka-extra-momijigawa-bath',
+    jis: NAKA_PACK_JIS,
+    name_ja: 'もみじ川温泉 大浴場',
+    reading: 'もみじがわおんせんだいよくじょう',
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県那賀郡那賀町大久保西納野4-7',
+    phone: '0884-62-1171',
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/149490/149490.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/149490/149490.html',
+    license: 'cc_by_open_data',
+    accessed: NAKA_PACK_ACCESSED
+  },
+  {
+    id: 'naka-extra-tansuisou-bath',
+    jis: NAKA_PACK_JIS,
+    name_ja: '淡水荘 ミネラル温泉',
+    reading: 'たんすいそうみねらるおんせん',
+    category: 'tourism',
+    lat: null,
+    lon: null,
+    address: '徳島県那賀郡那賀町竹ヶ谷長門147',
+    phone: '0884-62-1378',
+    official_url: 'https://travel.rakuten.co.jp/HOTEL/30054/30054.html',
+    hours: null,
+    source_url: 'https://travel.rakuten.co.jp/HOTEL/30054/30054.html',
+    license: 'cc_by_open_data',
+    accessed: NAKA_PACK_ACCESSED
   }
 ];
 

@@ -228,6 +228,48 @@ export const NAKA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     TABELOG_36004894,
     '食べログ'
   ),
+  'もみじ川温泉': sourcePhoto(
+    'naka-stay-momijigawa.jpg',
+    'もみじ川温泉の客室写真',
+    'Momijigawa Onsen room photo',
+    'https://travel.rakuten.co.jp/HOTEL/149490/149490.html',
+    '楽天トラベル'
+  ),
+  'ゲストハウス杉の子': sourcePhoto(
+    'naka-stay-suginoko.jpg',
+    'ゲストハウス杉の子の客室写真',
+    'Guesthouse Suginoko room photo',
+    'https://travel.rakuten.co.jp/HOTEL/177085/177085.html',
+    '楽天トラベル'
+  ),
+  '鷲敷四季の里コテージ': sourcePhoto(
+    'naka-stay-shikinosato.jpg',
+    '鷲敷四季の里コテージの客室写真',
+    'Washiki Shiki-no-sato Cottage room photo',
+    'https://travel.rakuten.co.jp/HOTEL/196561/196561.html',
+    '楽天トラベル'
+  ),
+  '淡水荘': sourcePhoto(
+    'naka-stay-tansuisou.jpg',
+    '淡水荘の客室写真',
+    'Tansuisou room photo',
+    'https://travel.rakuten.co.jp/HOTEL/30054/30054.html',
+    '楽天トラベル'
+  ),
+  'もみじ川温泉 大浴場': sourcePhoto(
+    'naka-onsen-momijigawa.jpg',
+    'もみじ川温泉の大浴場写真',
+    'Momijigawa Onsen bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/149490/149490.html',
+    '楽天トラベル'
+  ),
+  '淡水荘 ミネラル温泉': sourcePhoto(
+    'naka-onsen-tansuisou.jpg',
+    '淡水荘のミネラル温泉写真',
+    'Tansuisou mineral onsen bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/30054/30054.html',
+    '楽天トラベル'
+  ),
   "もみじ川温泉レストラン　湖畔": sourcePhoto(
     'naka-36003100-dish.jpg',
     "もみじ川温泉レストラン　湖畔の料理写真",

@@ -1,6 +1,7 @@
 /**
  * Katsuura travel layer. Pack tourism includes inns without room photos.
- * Onsen / stay: omit without room or bath photo (honest 0).
+ * Stay: ふれあいの里さかもと — east-tokushima 和室 still (TG610 densify).
+ * Onsen: honest 0 — official 大浴場 page exists but no attributable bath still downloaded.
  * Dining from 食べログ 勝浦町 (C36301) public shop pages. Do not invent pack dining.
  * Do not copy 神山 / 上板 / 板野 / 石井 / 松茂 / 北島 / 藍住 / 鳴門 / 徳島市 TRAVEL_* rows or photos.
  */
@@ -14,13 +15,15 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const KATSUURA_TRAVEL_ACCESSED = '2026-09-05' as const;
+export const KATSUURA_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const KATSUURA_TRAVEL_SOURCES = {
   home: 'https://www.town.katsuura.lg.jp/',
   hall: 'https://www.town.katsuura.lg.jp/docs/2010111200280/',
   kanko: 'https://katsuura-tourism.jp/',
-  tabelogCity: 'https://tabelog.com/tokushima/C36301/rstLst/'
+  tabelogCity: 'https://tabelog.com/tokushima/C36301/rstLst/',
+  fureaiSakamoto: 'https://fureainosato.net/',
+  eastFureai: 'https://www.east-tokushima.jp/hotel/detail.php?id=104'
 } as const;
 
 /** Exact tourism-pack names shown on 温泉, not 観光. Bath photo required — none yet. */
@@ -58,7 +61,33 @@ export const KATSUURA_SIGHT_PINS = [
   '坂本八幡神社'
 ] as const;
 
-export const KATSUURA_TRAVEL_STAY: readonly TravelRow[] = [];
+function stay(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'stay',
+    address,
+    phone,
+    source_url,
+    accessed: KATSUURA_TRAVEL_ACCESSED
+  };
+}
+
+export const KATSUURA_TRAVEL_STAY: readonly TravelRow[] = [
+  stay(
+    'katsuura-stay-01',
+    'ふれあいの里さかもと',
+    '徳島県勝浦郡勝浦町大字坂本字宮平1-5',
+    '0885-44-2110',
+    'https://fureainosato.net/'
+  )
+];
 
 function dining(
   id: string,
