@@ -5,7 +5,7 @@ Accessed 2026-09-09 (JST). Branch `feat/unpublished-v0-mima`. Hub `/ja/kochi/toy
 ## Before (cold LIVE)
 - pills: stay **1** / dining **7** / onsen **0** / experience **1** / sights **5** / shop **0** / commerce **0**
 
-## After
+## After (tip `9e0b403ec60`)
 - Expected pills: stay **1** / dining **8** / onsen **0** / experience **1** / sights **8** / shop **0** / commerce **0**
 
 ## Sources audited
@@ -54,3 +54,6 @@ Accessed 2026-09-09 (JST). Branch `feat/unpublished-v0-mima`. Hub `/ja/kochi/toy
 
 ## Notes
 - Domain HOLD. Do not regress shimanto 16/33/9/1/15, umaji 1/3/1/1/7, kitagawa 1/4/1/1/7, nahari 1/10/0/0/7, yasuda 1/6/0/1/7, okawa, geisei.
+
+## CDN
+Cold LIVE PASS tip `9e0b403ec60` pills stay **1** / dining **8** / onsen **0** / experience **1** / sights **8**.

@@ -5,7 +5,7 @@ Accessed 2026-09-09 (JST). Branch `feat/unpublished-v0-mima`. Hub `/ja/kochi/nah
 ## Before (cold LIVE)
 - pills: stay **1** / dining **5** / onsen **0** / experience **0** / sights **5** / shop **0** / commerce **0**
 
-## After (local docs PASS)
+## After (tip `be0f04b0d86`) (local docs PASS)
 - pills: stay **1** / dining **10** / onsen **0** / experience **0** / sights **7** / shop **0** / commerce **0**
 - Stay 1 kept. Onsen stays honest 0 (大浴場/露天 mediaInfo ≠ 温泉 label; stay≠onsen).
 
@@ -81,3 +81,6 @@ Accessed 2026-09-09 (JST). Branch `feat/unpublished-v0-mima`. Hub `/ja/kochi/nah
 - Domain HOLD. OFFER_SEND false. No merge / SNS / spend.
 - Do not regress shimanto 16/33/9/1/15, umaji 1/3/1/1/7, kitagawa 1/4/1/1/7, okawa, geisei.
 - Mirror gaps: `/workspace/explorejapan/src/data/kochi-nahari-gaps.md` + this file.
+
+## CDN
+Cold LIVE PASS tip `be0f04b0d86` pills stay **1** / dining **10** / onsen **0** / experience **0** / sights **7**.
