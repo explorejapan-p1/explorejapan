@@ -753,6 +753,7 @@ import {OTSUKI, OTSUKI_PLACE_PHOTO, OTSUKI_FACILITIES, OTSUKI_EXPECTED_GEO_COUNT
 import {MIHARA, MIHARA_PLACE_PHOTO, MIHARA_FACILITIES, MIHARA_EXPECTED_GEO_COUNT, MIHARA_EXPECTED_ROW_COUNT} from './mihara';
 import {MATSUYAMA, MATSUYAMA_PLACE_PHOTO, MATSUYAMA_FACILITIES, MATSUYAMA_EXPECTED_GEO_COUNT, MATSUYAMA_EXPECTED_ROW_COUNT} from './matsuyama';
 import {IMABARI, IMABARI_PLACE_PHOTO, IMABARI_FACILITIES, IMABARI_EXPECTED_GEO_COUNT, IMABARI_EXPECTED_ROW_COUNT} from './imabari';
+import {UWAJIMA, UWAJIMA_PLACE_PHOTO, UWAJIMA_FACILITIES, UWAJIMA_EXPECTED_GEO_COUNT, UWAJIMA_EXPECTED_ROW_COUNT} from './uwajima';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -781,6 +782,13 @@ import {
   IMABARI_TRAVEL_COMMERCE,
   IMABARI_TRAVEL_ALL
 } from './imabari-travel';
+import {
+  UWAJIMA_TRAVEL_DINING,
+  UWAJIMA_TRAVEL_STAY,
+  UWAJIMA_TRAVEL_SHOPPING,
+  UWAJIMA_TRAVEL_COMMERCE,
+  UWAJIMA_TRAVEL_ALL
+} from './uwajima-travel';
 
 
 
@@ -3259,6 +3267,40 @@ export const IMABARI_LOOKUP: LookupTown = {
   licenseSiteEn: 'City-site listing'
 };
 
+
+export const UWAJIMA_LOOKUP: LookupTown = {
+  slug: 'uwajima',
+  prefectureSlug: 'ehime',
+  jis: UWAJIMA.jis,
+  nameJa: UWAJIMA.nameJa,
+  nameEn: UWAJIMA.nameEn,
+  heroPhoto: UWAJIMA_PLACE_PHOTO,
+  photoCiteJa: '写真は宇和島城。Reggaeman、2009-07-19、CC BY-SA 3.0。File:Uwajima_Castle_01.JPG。',
+  photoCiteEn: 'Photo: Uwajima Castle. Reggaeman, 2009-07-19, CC BY-SA 3.0. File:Uwajima_Castle_01.JPG.',
+  rows: UWAJIMA_FACILITIES,
+  expectedGeo: UWAJIMA_EXPECTED_GEO_COUNT,
+  expectedRows: UWAJIMA_EXPECTED_ROW_COUNT,
+  travelDining: UWAJIMA_TRAVEL_DINING,
+  travelStay: UWAJIMA_TRAVEL_STAY,
+  travelShopping: UWAJIMA_TRAVEL_SHOPPING,
+  travelCommerce: UWAJIMA_TRAVEL_COMMERCE,
+  travelAll: UWAJIMA_TRAVEL_ALL,
+  coverageJa:
+    '宇和島市（JIS 38203）観光5・宿泊9・飲食16・温泉5・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。愛媛県3つ目のLIVEハブ。',
+  coverageEn:
+    'Uwajima City (JIS 38203), 5 tourism + 9 stay + 16 dining + 5 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Third LIVE Ehime hub.',
+  mapLabelJa: '宇和島市の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Uwajima City',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia/Commons等出典座標5件（accessed 2026-09-09）。',
+  mapCitePackEn: 'Points: 5 sourced coordinates for city/official facilities (accessed 2026-09-09).',
+  licenseNoteJa:
+    '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.uwajima.ehime.jp, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
 export const OTSUKI_LOOKUP: LookupTown = {
   slug: 'otsuki',
   prefectureSlug: 'kochi',
@@ -3492,7 +3534,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   otsuki: OTSUKI_LOOKUP,
   mihara: MIHARA_LOOKUP,
   matsuyama: MATSUYAMA_LOOKUP,
-  imabari: IMABARI_LOOKUP
+  imabari: IMABARI_LOOKUP,
+  uwajima: UWAJIMA_LOOKUP
 };
 
 

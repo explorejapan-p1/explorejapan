@@ -827,6 +827,17 @@ import {
   rankImabariSeeRows,
   resolveImabariFilter
 } from './imabari-travel';
+import {
+  isUwajimaExperiencePackRow,
+  isUwajimaOnsenPackRow,
+  isUwajimaStayPackRow,
+  uwajimaPackRowMatchesFilter,
+  rankUwajimaSeeRows,
+  uwajimaSightPhoto,
+  uwajimaSourcedHook,
+  uwajimaTopChipForRow,
+  resolveUwajimaFilter
+} from './uwajima-travel';
 
 
 
@@ -1609,6 +1620,19 @@ const MIHARA_HELPERS: LookupHelpers = {
 };
 
 
+
+const UWAJIMA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isUwajimaOnsenPackRow,
+  isExperiencePackRow: isUwajimaExperiencePackRow,
+  isStayPackRow: isUwajimaStayPackRow,
+  packRowMatchesFilter: uwajimaPackRowMatchesFilter,
+  rankSeeRows: rankUwajimaSeeRows,
+  sightPhoto: uwajimaSightPhoto,
+  sourcedHook: uwajimaSourcedHook,
+  topChipForRow: uwajimaTopChipForRow,
+  resolveFilter: resolveUwajimaFilter
+};
+
 const IMABARI_HELPERS: LookupHelpers = {
   isOnsenPackRow: isImabariOnsenPackRow,
   isExperiencePackRow: isImabariExperiencePackRow,
@@ -1922,5 +1946,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'mihara') return MIHARA_HELPERS;
   if (slug === 'matsuyama') return MATSUYAMA_HELPERS;
   if (slug === 'imabari') return IMABARI_HELPERS;
+  if (slug === 'uwajima') return UWAJIMA_HELPERS;
   return MIMA_HELPERS;
 }

@@ -70,6 +70,7 @@ import {OTSUKI, OTSUKI_PLACE_PHOTO} from '@/data/otsuki';
 import {MIHARA, MIHARA_PLACE_PHOTO} from '@/data/mihara';
 import {MATSUYAMA, MATSUYAMA_PLACE_PHOTO} from '@/data/matsuyama';
 import {IMABARI, IMABARI_PLACE_PHOTO} from '@/data/imabari';
+import {UWAJIMA, UWAJIMA_PLACE_PHOTO} from '@/data/uwajima';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -194,6 +195,7 @@ function localityJa(slug: string): string {
   if (slug === 'geisei') return GEISEI.nameJa;
   if (slug === 'matsuyama') return MATSUYAMA.nameJa;
   if (slug === 'imabari') return IMABARI.nameJa;
+  if (slug === 'uwajima') return UWAJIMA.nameJa;
   return MIMA.nameJa;
 }
 
@@ -257,6 +259,7 @@ function localityEn(slug: string): string {
   if (slug === 'geisei') return GEISEI.nameEn;
   if (slug === 'matsuyama') return MATSUYAMA.nameEn;
   if (slug === 'imabari') return IMABARI.nameEn;
+  if (slug === 'uwajima') return UWAJIMA.nameEn;
   return MIMA.nameEn;
 }
 
@@ -4478,6 +4481,67 @@ export function miharaGraph(locale: AppLocale) {
 }
 
 
+
+
+export function uwajimaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'ehime/uwajima');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('uwajima');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? UWAJIMA.nameJa : UWAJIMA.nameEn,
+        alternateName: isJa ? UWAJIMA.nameEn : UWAJIMA.nameJa,
+        identifier: UWAJIMA.jis,
+        url,
+        image: photoAbs(UWAJIMA_PLACE_PHOTO),
+        sameAs: [UWAJIMA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '曙町1番地' : '1 Akebono-cho',
+          addressLocality: isJa ? UWAJIMA.nameJa : UWAJIMA.nameEn,
+          addressRegion: isJa ? UWAJIMA.prefectureJa : UWAJIMA.prefectureEn,
+          postalCode: UWAJIMA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? UWAJIMA.prefectureJa : UWAJIMA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? UWAJIMA.nameJa : UWAJIMA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? UWAJIMA.prefectureJa : UWAJIMA.prefectureEn, item: canonicalUrl(locale, 'ehime')},
+          {'@type': 'ListItem', position: 3, name: isJa ? UWAJIMA.nameJa : UWAJIMA.nameEn, item: url}
+        ]
+      },
+      {
+        '@type': 'ItemList',
+        name: isJa ? '宇和島市の案内' : 'Places in Uwajima City',
+        numberOfItems: featured.length,
+        itemListElement: featured.map((row, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: listingNode(row, locale)
+        }))
+      }
+    ]
+  };
+}
 
 export function imabariGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'ehime/imabari');
