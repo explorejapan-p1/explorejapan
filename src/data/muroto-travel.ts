@@ -1,13 +1,13 @@
 /**
  * Muroto City travel layer. No frozen pack.
- * Dining from 食べログ 室戸市 (C39202). Stay: Sky and Sea Muroto Rakuten room. Onsen: honest 0 (no attributable 大浴場 keys; stay room ≠ onsen). Experience: 室戸世界ジオパークセンター.
+ * Dining from 食べログ 室戸市 (C39202). Stay: TG610 densify Rakuten 部屋 stills. Onsen: honest 0 (no attributable 大浴場 keys; stay room ≠ onsen). Experience: 室戸世界ジオパークセンター.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {MUROTO, MUROTO_SIGHT_PHOTOS} from './muroto';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const MUROTO_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const MUROTO_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const MUROTO_TRAVEL_SOURCES = {
   home: 'https://www.city.muroto.kochi.jp/', hall: 'https://www.city.muroto.kochi.jp/pages/gaiyo.php',
   kankou: 'https://www.city.muroto.kochi.jp/',
@@ -31,7 +31,13 @@ function stay(id: string, name_ja: string, address: string | null, phone: string
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: MUROTO_TRAVEL_ACCESSED};
 }
 export const MUROTO_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('muroto-stay-01', 'スカイ アンド シー・ムロト', '高知県室戸市室戸岬町2752-1', '0887-98-7017', 'https://travel.rakuten.co.jp/HOTEL/195948/195948.html')
+  stay('muroto-stay-01', 'スカイ アンド シー・ムロト', '高知県室戸市室戸岬町2752-1', '0887-98-7017', 'https://travel.rakuten.co.jp/HOTEL/195948/195948.html'),
+  stay('muroto-stay-02', '民宿　室戸荘', '高知県室戸市室戸岬町6939-1', '0887-22-0409', 'https://travel.rakuten.co.jp/HOTEL/29983/29983.html'),
+  stay('muroto-stay-03', 'ホテル冨士', '高知県室戸市室津2577', '0887-22-0205', 'https://travel.rakuten.co.jp/HOTEL/108612/108612.html'),
+  stay('muroto-stay-04', '岬観光ホテル', '高知県室戸市室戸岬町4037', '0887-22-0541', 'https://travel.rakuten.co.jp/HOTEL/139956/139956.html'),
+  stay('muroto-stay-05', 'ファミリーロッジ旅籠屋・室戸店', '高知県室戸市浮津三番町136-2', '0887-23-0858', 'https://travel.rakuten.co.jp/HOTEL/153158/153158.html'),
+  stay('muroto-stay-06', '古民家の宿　蔵空間蔵宿', '高知県室戸市吉良川町甲2234', '0887-25-3700', 'https://travel.rakuten.co.jp/HOTEL/177084/177084.html'),
+  stay('muroto-stay-07', '土佐備長炭の宿『宿玄』', '高知県室戸市吉良川町甲504-4', '080-8535-7038', 'https://travel.rakuten.co.jp/HOTEL/199901/199901.html'),
 ];
 
 function dining(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {

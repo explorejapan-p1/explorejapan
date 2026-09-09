@@ -1,7 +1,7 @@
 /**
  * Muroto City sourced facts. Do not invent population.
  * Hall / JIS from city HP (accessed 2026-09-08). JIS 39202. Seventh Kochi hub after 高知市・南国市・香南市・香美市・いの町・安芸市.
- * No frozen pack — photo-only tourism + Tabelog dining + Rakuten stay. Honest 0 onsen (no attributable 大浴場 photo keys; stay uses room still ≠ onsen) / shop / commerce.
+ * No frozen pack — photo-only tourism + Tabelog dining + TG610 Rakuten stay densify. Honest 0 onsen (no attributable 大浴場 photo keys; stay uses room still ≠ onsen) / shop / commerce.
  */
 import type {FacilityRow} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
@@ -123,6 +123,48 @@ export const MUROTO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'スカイ アンド シー・ムロトの客室写真',
     'Sky and Sea Muroto room photo',
     'https://travel.rakuten.co.jp/HOTEL/195948/195948.html',
+    '楽天トラベル'
+  ),
+  '民宿　室戸荘': sourcePhoto(
+    'muroto-stay-murotoso.jpg',
+    '民宿　室戸荘の客室写真',
+    '民宿　室戸荘 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/29983/29983.html',
+    '楽天トラベル'
+  ),
+  'ホテル冨士': sourcePhoto(
+    'muroto-stay-fuji.jpg',
+    'ホテル冨士の客室写真',
+    'ホテル冨士 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/108612/108612.html',
+    '楽天トラベル'
+  ),
+  '岬観光ホテル': sourcePhoto(
+    'muroto-stay-misaki.jpg',
+    '岬観光ホテルの客室写真',
+    '岬観光ホテル room photo',
+    'https://travel.rakuten.co.jp/HOTEL/139956/139956.html',
+    '楽天トラベル'
+  ),
+  'ファミリーロッジ旅籠屋・室戸店': sourcePhoto(
+    'muroto-stay-hatagoya.jpg',
+    'ファミリーロッジ旅籠屋・室戸店の客室写真',
+    'ファミリーロッジ旅籠屋・室戸店 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/153158/153158.html',
+    '楽天トラベル'
+  ),
+  '古民家の宿　蔵空間蔵宿': sourcePhoto(
+    'muroto-stay-kurayado.jpg',
+    '古民家の宿　蔵空間蔵宿の客室写真',
+    '古民家の宿　蔵空間蔵宿 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/177084/177084.html',
+    '楽天トラベル'
+  ),
+  '土佐備長炭の宿『宿玄』': sourcePhoto(
+    'muroto-stay-yadogen.jpg',
+    '土佐備長炭の宿『宿玄』の客室写真',
+    '土佐備長炭の宿『宿玄』 room photo',
+    'https://travel.rakuten.co.jp/HOTEL/199901/199901.html',
     '楽天トラベル'
   ),
   'SADAMARU BURGER': sourcePhoto('muroto-39007539-dish.jpg', 'SADAMARU BURGERの料理写真', 'SADAMARU BURGER food photo', TABELOG_39007539, '食べログ'),

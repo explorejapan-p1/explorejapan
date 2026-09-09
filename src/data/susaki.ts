@@ -1,7 +1,7 @@
 /**
  * Susaki City sourced facts. Do not invent population.
  * Hall / JIS from city Wikipedia / city HP facts (accessed 2026-09-08). JIS 39206. Ninth Kochi hub after 高知市・南国市・香南市・香美市・いの町・安芸市・室戸市・土佐市.
- * No frozen pack — photo-only tourism + Tabelog dining + Rakuten stay. Honest 0 onsen (no attributable 大浴場 photo keys; stay uses AZ room still ≠ onsen) / shop / commerce.
+ * No frozen pack — photo-only tourism + Tabelog dining + TG610 Rakuten stay densify. Honest 0 onsen (stay uses room still ≠ onsen) / shop / commerce.
  */
 import type {FacilityRow} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
@@ -124,6 +124,34 @@ export const SUSAKI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'ＨＯＴＥＬ　ＡＺ　高知須崎店の客室写真',
     'HOTEL AZ Kochi Susaki room photo',
     'https://travel.rakuten.co.jp/HOTEL/196115/196115.html',
+    '楽天トラベル'
+  ),
+  'Ｈｏｔｅｌ　バンダガ': sourcePhoto(
+    'susaki-stay-bandaga.jpg',
+    'Ｈｏｔｅｌ　バンダガの客室写真',
+    'Ｈｏｔｅｌ　バンダガ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/40828/40828.html',
+    '楽天トラベル'
+  ),
+  '千年の美湯　そうだ山温泉　和　ＹＡＷＡＲＡＧＩ': sourcePhoto(
+    'susaki-stay-yawaragi.jpg',
+    '千年の美湯　そうだ山温泉　和　ＹＡＷＡＲＡＧＩの客室写真',
+    'そうだ山温泉 和 YAWARAGI room photo',
+    'https://travel.rakuten.co.jp/HOTEL/145003/145003.html',
+    '楽天トラベル'
+  ),
+  '民宿なずな': sourcePhoto(
+    'susaki-stay-nazuna.jpg',
+    '民宿なずなの客室写真',
+    '民宿なずな room photo',
+    'https://travel.rakuten.co.jp/HOTEL/193579/193579.html',
+    '楽天トラベル'
+  ),
+  'ゲストハウスサンテ': sourcePhoto(
+    'susaki-stay-sante.jpg',
+    'ゲストハウスサンテの客室写真',
+    'ゲストハウスサンテ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/197376/197376.html',
     '楽天トラベル'
   ),
   'だるま': sourcePhoto('susaki-39000124-dish.jpg', 'だるまの料理写真', 'だるま food photo', TABELOG_39000124, '食べログ'),

@@ -1,7 +1,7 @@
 /**
  * Tosa City sourced facts. Do not invent population.
  * Hall / JIS from city Wikipedia / city HP facts (accessed 2026-09-08). JIS 39205. Eighth Kochi hub after 高知市・南国市・香南市・香美市・いの町・安芸市・室戸市.
- * No frozen pack — photo-only tourism + Tabelog dining + Commons stay/onsen. Stay uses Commons 離れ interior (Rakuten HOTEL/84592 mediaInfo absent); onsen uses attributable 大浴場露天風呂 Commons (stay≠onsen). Shop/commerce honest 0.
+ * No frozen pack — photo-only tourism + Tabelog dining + TG610 Rakuten stay densify (keep Commons 三陽荘). Onsen: attributable 大浴場露天風呂 Commons (stay≠onsen). Shop/commerce honest 0.
  */
 import type {FacilityRow} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
@@ -125,6 +125,48 @@ export const TOSA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     'CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0',
     'Tosajin', 'https://commons.wikimedia.org/wiki/User:Tosajin', '2022-02-20',
     '土佐龍温泉 三陽荘の離れ', 'Tosaryu Onsen Sanyo-so annex lodging, Tosa'
+  ),
+  'ヴィラ　サントリーニ': sourcePhoto(
+    'tosa-stay-santorini.jpg',
+    'ヴィラ　サントリーニの客室写真',
+    'ヴィラ　サントリーニ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/40161/40161.html',
+    '楽天トラベル'
+  ),
+  'コテージＢ＆Ｍ': sourcePhoto(
+    'tosa-stay-cottage-bm.jpg',
+    'コテージＢ＆Ｍの客室写真',
+    'コテージＢ＆Ｍ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/195589/195589.html',
+    '楽天トラベル'
+  ),
+  'シンデレラ城をモデルにした河村邸離れ': sourcePhoto(
+    'tosa-stay-kawamura.jpg',
+    'シンデレラ城をモデルにした河村邸離れの客室写真',
+    'シンデレラ城をモデルにした河村邸離れ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/200065/200065.html',
+    '楽天トラベル'
+  ),
+  'ＴＨＥ　ＲＯＡＭ': sourcePhoto(
+    'tosa-stay-theroam.jpg',
+    'ＴＨＥ　ＲＯＡＭの客室写真',
+    'ＴＨＥ　ＲＯＡＭ room photo',
+    'https://travel.rakuten.co.jp/HOTEL/200616/200616.html',
+    '楽天トラベル'
+  ),
+  'たかおかゲストハウス': sourcePhoto(
+    'tosa-stay-takaoka-gh.jpg',
+    'たかおかゲストハウスの客室写真',
+    'たかおかゲストハウス room photo',
+    'https://travel.rakuten.co.jp/HOTEL/202389/202389.html',
+    '楽天トラベル'
+  ),
+  'うさゲストハウス': sourcePhoto(
+    'tosa-stay-usa-gh.jpg',
+    'うさゲストハウスの客室写真',
+    'うさゲストハウス room photo',
+    'https://travel.rakuten.co.jp/HOTEL/202390/202390.html',
+    '楽天トラベル'
   ),
   '土佐龍温泉 三陽荘 大浴場': wikiPhoto(
     'tosa-onsen-sanyoso.jpg',

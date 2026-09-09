@@ -1,13 +1,13 @@
 /**
  * Susaki City travel layer. No frozen pack.
- * Dining from 食べログ 須崎市 (C39206). Stay: ＨＯＴＥＬ　ＡＺ　高知須崎店 Rakuten room still (シングルルーム). Onsen honest 0. Experience: 道の駅かわうその里すさき.
+ * Dining from 食べログ 須崎市 (C39206). Stay: TG610 densify Rakuten 部屋 stills. Onsen: honest 0 (no attributable 大浴場 keys; stay room ≠ onsen). Experience: 道の駅かわうその里すさき.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {SUSAKI, SUSAKI_SIGHT_PHOTOS} from './susaki';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const SUSAKI_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const SUSAKI_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const SUSAKI_TRAVEL_SOURCES = {
   home: 'https://www.city.susaki.lg.jp/', hall: 'https://ja.wikipedia.org/wiki/%E9%A0%88%E5%B4%8E%E5%B8%82',
   kankou: 'https://www.city.susaki.lg.jp/',
@@ -31,7 +31,11 @@ function stay(id: string, name_ja: string, address: string | null, phone: string
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: SUSAKI_TRAVEL_ACCESSED};
 }
 export const SUSAKI_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('susaki-stay-01', 'ＨＯＴＥＬ　ＡＺ　高知須崎店', '高知県須崎市神田2489-28', '0889-42-3301', 'https://travel.rakuten.co.jp/HOTEL/196115/196115.html')
+  stay('susaki-stay-01', 'ＨＯＴＥＬ　ＡＺ　高知須崎店', '高知県須崎市神田2489-28', '0889-42-3301', 'https://travel.rakuten.co.jp/HOTEL/196115/196115.html'),
+  stay('susaki-stay-02', 'Ｈｏｔｅｌ　バンダガ', '高知県須崎市西崎町6-6', '0889-42-3330', 'https://travel.rakuten.co.jp/HOTEL/40828/40828.html'),
+  stay('susaki-stay-03', '千年の美湯　そうだ山温泉　和　ＹＡＷＡＲＡＧＩ', '高知県須崎市桑田山乙1122', '0889-45-0055', 'https://travel.rakuten.co.jp/HOTEL/145003/145003.html'),
+  stay('susaki-stay-04', '民宿なずな', '高知県須崎市浦ノ内灰方1116', '0888-79-2047', 'https://travel.rakuten.co.jp/HOTEL/193579/193579.html'),
+  stay('susaki-stay-05', 'ゲストハウスサンテ', '高知県須崎市吾井郷乙442', '080-7827-7540', 'https://travel.rakuten.co.jp/HOTEL/197376/197376.html'),
 ];
 
 function dining(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {

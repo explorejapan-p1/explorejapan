@@ -1,13 +1,13 @@
 /**
  * Tosa City travel layer. No frozen pack.
- * Dining from 食べログ 土佐市 (C39205). Stay: 土佐龍温泉 三陽荘 Commons 離れ (Rakuten mediaInfo absent). Onsen: 大浴場露天風呂 Commons (stay≠onsen). Experience: 新居地区観光交流施設南風.
+ * Dining from 食べログ 土佐市 (C39205). Stay: TG610 densify Rakuten 部屋 stills (+ keep Commons 三陽荘). Onsen: 大浴場露天風呂 Commons (stay≠onsen). Experience: 新居地区観光交流施設南風.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {TOSA, TOSA_SIGHT_PHOTOS} from './tosa';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const TOSA_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const TOSA_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const TOSA_TRAVEL_SOURCES = {
   home: 'https://www.city.tosa.lg.jp/', hall: 'https://ja.wikipedia.org/wiki/%E5%9C%9F%E4%BD%90%E5%B8%82',
   kankou: 'https://tosacity-kankou.com/',
@@ -31,7 +31,13 @@ function stay(id: string, name_ja: string, address: string | null, phone: string
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: TOSA_TRAVEL_ACCESSED};
 }
 export const TOSA_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('tosa-stay-01', '土佐龍温泉 三陽荘', '高知県土佐市宇佐町竜504-1', '088-856-0001', 'https://travel.rakuten.co.jp/HOTEL/84592/84592.html')
+  stay('tosa-stay-01', '土佐龍温泉 三陽荘', '高知県土佐市宇佐町竜504-1', '088-856-0001', 'https://travel.rakuten.co.jp/HOTEL/84592/84592.html'),
+  stay('tosa-stay-02', 'ヴィラ　サントリーニ', '高知県土佐市宇佐町竜599-6', '088-856-0007', 'https://travel.rakuten.co.jp/HOTEL/40161/40161.html'),
+  stay('tosa-stay-03', 'コテージＢ＆Ｍ', '高知県土佐市新居66-40', '088-856-2267', 'https://travel.rakuten.co.jp/HOTEL/195589/195589.html'),
+  stay('tosa-stay-04', 'シンデレラ城をモデルにした河村邸離れ', '高知県土佐市高岡町甲748', '080-6809-4481', 'https://travel.rakuten.co.jp/HOTEL/200065/200065.html'),
+  stay('tosa-stay-05', 'ＴＨＥ　ＲＯＡＭ', '高知県土佐市宇佐町竜字滝ノ下614-17', '090-8265-4597', 'https://travel.rakuten.co.jp/HOTEL/200616/200616.html'),
+  stay('tosa-stay-06', 'たかおかゲストハウス', '高知県土佐市高岡町甲2120‐8', '080-7858-2865', 'https://travel.rakuten.co.jp/HOTEL/202389/202389.html'),
+  stay('tosa-stay-07', 'うさゲストハウス', '高知県土佐市宇佐町宇佐2839-14', '080-7858-2865', 'https://travel.rakuten.co.jp/HOTEL/202390/202390.html'),
 ];
 
 function dining(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {
