@@ -873,6 +873,17 @@ import {
   saijoSourcedHook,
   saijoTopChipForRow,
 } from './saijo-travel';
+import {
+  isOzuOnsenPackRow,
+  isOzuExperiencePackRow,
+  isOzuStayPackRow,
+  ozuPackRowMatchesFilter,
+  rankOzuSeeRows,
+  ozuSightPhoto,
+  ozuSourcedHook,
+  ozuTopChipForRow,
+  resolveOzuFilter,
+} from './ozu-travel';
 
 
 
@@ -1660,6 +1671,18 @@ const MIHARA_HELPERS: LookupHelpers = {
 
 
 
+const OZU_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isOzuOnsenPackRow,
+  isExperiencePackRow: isOzuExperiencePackRow,
+  isStayPackRow: isOzuStayPackRow,
+  packRowMatchesFilter: ozuPackRowMatchesFilter,
+  rankSeeRows: rankOzuSeeRows,
+  sightPhoto: ozuSightPhoto,
+  sourcedHook: ozuSourcedHook,
+  topChipForRow: ozuTopChipForRow,
+  resolveFilter: resolveOzuFilter
+};
+
 const SAIJO_HELPERS: LookupHelpers = {
   isOnsenPackRow: isSaijoOnsenPackRow,
   isExperiencePackRow: isSaijoExperiencePackRow,
@@ -2025,5 +2048,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'yawatahama') return YAWATAHAMA_HELPERS;
   if (slug === 'niihama') return NIIHAMA_HELPERS;
   if (slug === 'saijo') return SAIJO_HELPERS;
+  if (slug === 'ozu') return OZU_HELPERS;
   return MIMA_HELPERS;
 }

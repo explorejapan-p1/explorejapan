@@ -757,6 +757,7 @@ import {UWAJIMA, UWAJIMA_PLACE_PHOTO, UWAJIMA_FACILITIES, UWAJIMA_EXPECTED_GEO_C
 import {YAWATAHAMA, YAWATAHAMA_PLACE_PHOTO, YAWATAHAMA_FACILITIES, YAWATAHAMA_EXPECTED_GEO_COUNT, YAWATAHAMA_EXPECTED_ROW_COUNT} from './yawatahama';
 import {NIIHAMA, NIIHAMA_PLACE_PHOTO, NIIHAMA_FACILITIES, NIIHAMA_EXPECTED_GEO_COUNT, NIIHAMA_EXPECTED_ROW_COUNT} from './niihama';
 import {SAIJO, SAIJO_PLACE_PHOTO, SAIJO_FACILITIES, SAIJO_EXPECTED_GEO_COUNT, SAIJO_EXPECTED_ROW_COUNT} from './saijo';
+import {OZU, OZU_PLACE_PHOTO, OZU_FACILITIES, OZU_EXPECTED_GEO_COUNT, OZU_EXPECTED_ROW_COUNT} from './ozu';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -813,6 +814,13 @@ import {
   SAIJO_TRAVEL_COMMERCE,
   SAIJO_TRAVEL_ALL,
 } from './saijo-travel';
+import {
+  OZU_TRAVEL_DINING,
+  OZU_TRAVEL_STAY,
+  OZU_TRAVEL_SHOPPING,
+  OZU_TRAVEL_COMMERCE,
+  OZU_TRAVEL_ALL,
+} from './ozu-travel';
 
 
 
@@ -3363,6 +3371,40 @@ export const NIIHAMA_LOOKUP: LookupTown = {
 
 
 
+
+export const OZU_LOOKUP: LookupTown = {
+  slug: 'ozu',
+  prefectureSlug: 'ehime',
+  jis: OZU.jis,
+  nameJa: OZU.nameJa,
+  nameEn: OZU.nameEn,
+  heroPhoto: OZU_PLACE_PHOTO,
+  photoCiteJa: '写真は大洲城。Saigen Jiro、2020-12-27、CC0。File:Ozu_Castle,_enkei.jpg。',
+  photoCiteEn: 'Photo: Ozu Castle. Saigen Jiro, 2020-12-27, CC0. File:Ozu_Castle,_enkei.jpg.',
+  rows: OZU_FACILITIES,
+  expectedGeo: OZU_EXPECTED_GEO_COUNT,
+  expectedRows: OZU_EXPECTED_ROW_COUNT,
+  travelDining: OZU_TRAVEL_DINING,
+  travelStay: OZU_TRAVEL_STAY,
+  travelShopping: OZU_TRAVEL_SHOPPING,
+  travelCommerce: OZU_TRAVEL_COMMERCE,
+  travelAll: OZU_TRAVEL_ALL,
+  coverageJa:
+    '大洲市（JIS 38207）観光4・宿泊8・飲食16・温泉3・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。愛媛県7つ目のLIVEハブ。',
+  coverageEn:
+    'Ozu City (JIS 38207), 4 tourism + 8 stay + 16 dining + 3 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Seventh LIVE Ehime hub.',
+  mapLabelJa: '大洲市の出典座標4件',
+  mapLabelEn: '4 sourced coordinates in Ozu City',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia/Commons等出典座標4件（accessed 2026-09-09）。',
+  mapCitePackEn: 'Points: 4 sourced coordinates for city/official facilities (accessed 2026-09-09).',
+  licenseNoteJa:
+    '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.ozu.ehime.jp, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
 export const SAIJO_LOOKUP: LookupTown = {
   slug: 'saijo',
   prefectureSlug: 'ehime',
@@ -3666,7 +3708,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   uwajima: UWAJIMA_LOOKUP,
   yawatahama: YAWATAHAMA_LOOKUP,
   niihama: NIIHAMA_LOOKUP,
-  saijo: SAIJO_LOOKUP
+  saijo: SAIJO_LOOKUP,
+  ozu: OZU_LOOKUP
 };
 
 

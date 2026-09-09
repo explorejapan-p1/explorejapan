@@ -8,4 +8,5 @@
 :HL["/explorejapan/media/yawatahama-minatto.jpg","image"]
 :HL["/explorejapan/media/niihama-minetopia.jpg","image"]
 :HL["/explorejapan/media/saijo-komatsu-oasis.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"ja","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"ehime","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"Baox0jdbXjGAw16gDnFXk"}
+:HL["/explorejapan/media/ozu-castle.jpg","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"ja","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"ehime","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"Pnr0RxGhXulNSsYCZVV2A"}
