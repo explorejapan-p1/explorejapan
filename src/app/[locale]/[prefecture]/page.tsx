@@ -1,7 +1,7 @@
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {TokushimaMap} from '@/components/TokushimaMap';
-import {MIMA, MIMA_PLACE_PHOTO, BASE_PATH} from '@/data/mima';
+import {MIMA, MIMA_PLACE_PHOTO, BASE_PATH, type MimaPlacePhoto} from '@/data/mima';
 import {TSURUGI_PLACE_PHOTO} from '@/data/tsurugi';
 import {YOSHINOGAWA_PLACE_PHOTO} from '@/data/yoshinogawa';
 import {MIYOSHI_PLACE_PHOTO} from '@/data/miyoshi';
@@ -65,6 +65,15 @@ import {SHIMANTOCHO_PLACE_PHOTO} from '@/data/shimantocho';
 import {OTSUKI_PLACE_PHOTO} from '@/data/otsuki';
 import {MIHARA_PLACE_PHOTO} from '@/data/mihara';
 import {MATSUYAMA_PLACE_PHOTO} from '@/data/matsuyama';
+import {NAKA_PLACE_PHOTO} from '@/data/naka';
+import {MUGI_PLACE_PHOTO} from '@/data/mugi';
+import {MINAMI_PLACE_PHOTO} from '@/data/minami';
+import {KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
+import {AIZUMI_PLACE_PHOTO} from '@/data/aizumi';
+import {KATSUURA_PLACE_PHOTO} from '@/data/katsuura';
+import {KAMIKATSU_PLACE_PHOTO} from '@/data/kamikatsu';
+import {SANAGOCHI_PLACE_PHOTO} from '@/data/sanagochi';
+import {KAMIYAMA_PLACE_PHOTO} from '@/data/kamiyama';
 import {KAGAWA_MUNICIPALITIES} from '@/data/kagawa-municipalities';
 import {KOCHI_MUNICIPALITIES} from '@/data/kochi-municipalities';
 import {EHIME_MUNICIPALITIES} from '@/data/ehime-municipalities';
@@ -76,6 +85,85 @@ import {type AppLocale} from '@/i18n/routing';
 import {JsonLd} from '@/components/JsonLd';
 import {prefectureGraph} from '@/lib/jsonld';
 import {shareMetadata} from '@/lib/seo';
+
+
+/** Pref-card covers: every ready slug must map here (else falls to Mima wakimachi). TG614-615. */
+const MUNI_CARD_PHOTO: Record<string, MimaPlacePhoto> = {
+  mima: MIMA_PLACE_PHOTO,
+  tokushima: TOKUSHIMA_CITY_PLACE_PHOTO,
+  tsurugi: TSURUGI_PLACE_PHOTO,
+  yoshinogawa: YOSHINOGAWA_PLACE_PHOTO,
+  miyoshi: MIYOSHI_PLACE_PHOTO,
+  awa: AWA_PLACE_PHOTO,
+  higashimiyoshi: HIGASHIMIYOSHI_PLACE_PHOTO,
+  kitajima: KITAJIMA_PLACE_PHOTO,
+  naruto: NARUTO_PLACE_PHOTO,
+  matsushige: MATSUSHIGE_PLACE_PHOTO,
+  ishii: ISHII_PLACE_PHOTO,
+  itano: ITANO_PLACE_PHOTO,
+  kamiita: KAMIITA_PLACE_PHOTO,
+  komatsushima: KOMATSUSHIMA_PLACE_PHOTO,
+  anan: ANAN_PLACE_PHOTO,
+  katsuura: KATSUURA_PLACE_PHOTO,
+  kamikatsu: KAMIKATSU_PLACE_PHOTO,
+  sanagochi: SANAGOCHI_PLACE_PHOTO,
+  kamiyama: KAMIYAMA_PLACE_PHOTO,
+  naka: NAKA_PLACE_PHOTO,
+  mugi: MUGI_PLACE_PHOTO,
+  minami: MINAMI_PLACE_PHOTO,
+  kaiyo: KAIYO_PLACE_PHOTO,
+  aizumi: AIZUMI_PLACE_PHOTO,
+  takamatsu: TAKAMATSU_PLACE_PHOTO,
+  kotohira: KOTOHIRA_PLACE_PHOTO,
+  marugame: MARUGAME_PLACE_PHOTO,
+  kanonji: KANONJI_PLACE_PHOTO,
+  sakaide: SAKAIDE_PLACE_PHOTO,
+  naoshima: NAOSHIMA_PLACE_PHOTO,
+  shodoshima: SHODOSHIMA_PLACE_PHOTO,
+  zentsuji: ZENTSUJI_PLACE_PHOTO,
+  mitoyo: MITOYO_PLACE_PHOTO,
+  utazu: UTAZU_PLACE_PHOTO,
+  tonosho: TONOSHO_PLACE_PHOTO,
+  sanuki: SANUKI_PLACE_PHOTO,
+  higashikagawa: HIGASHIKAGAWA_PLACE_PHOTO,
+  miki: MIKI_PLACE_PHOTO,
+  ayagawa: AYAGAWA_PLACE_PHOTO,
+  tadotsu: TADOTSU_PLACE_PHOTO,
+  manno: MANNO_PLACE_PHOTO,
+  kochi: KOCHI_PLACE_PHOTO,
+  nankoku: NANKOKU_PLACE_PHOTO,
+  konan: KONAN_PLACE_PHOTO,
+  kami: KAMI_PLACE_PHOTO,
+  ino: INO_PLACE_PHOTO,
+  aki: AKI_PLACE_PHOTO,
+  muroto: MUROTO_PLACE_PHOTO,
+  tosa: TOSA_PLACE_PHOTO,
+  susaki: SUSAKI_PLACE_PHOTO,
+  shimanto: SHIMANTO_PLACE_PHOTO,
+  tosashimizu: TOSASHIMIZU_PLACE_PHOTO,
+  sukumo: SUKUMO_PLACE_PHOTO,
+  kuroshio: KUROSHIO_PLACE_PHOTO,
+  toyo: TOYO_PLACE_PHOTO,
+  nahari: NAHARI_PLACE_PHOTO,
+  yasuda: YASUDA_PLACE_PHOTO,
+  geisei: GEISEI_PLACE_PHOTO,
+  kitagawa: KITAGAWA_PLACE_PHOTO,
+  umaji: UMAJI_PLACE_PHOTO,
+  motoyama: MOTOYAMA_PLACE_PHOTO,
+  otoyo: OTOYO_PLACE_PHOTO,
+  tosacho: TOSACHO_PLACE_PHOTO,
+  okawa: OKAWA_PLACE_PHOTO,
+  niyodogawa: NIYODOGAWA_PLACE_PHOTO,
+  nakatosa: NAKATOSA_PLACE_PHOTO,
+  ochi: OCHI_PLACE_PHOTO,
+  yusuhara: YUSUHARA_PLACE_PHOTO,
+  hidaka: HIDAKA_PLACE_PHOTO,
+  tsuno: TSUNO_PLACE_PHOTO,
+  shimantocho: SHIMANTOCHO_PLACE_PHOTO,
+  otsuki: OTSUKI_PLACE_PHOTO,
+  mihara: MIHARA_PLACE_PHOTO,
+  matsuyama: MATSUYAMA_PLACE_PHOTO,
+};
 
 type Props = {params: Promise<{locale: string; prefecture: string}>};
 
@@ -143,78 +231,8 @@ export default async function PrefecturePage({params}: Props) {
           <ul className="muni-cards">
             {(pref.slug === 'tokushima' ? TOKUSHIMA_MUNICIPALITIES : pref.slug === 'kagawa' ? KAGAWA_MUNICIPALITIES : pref.slug === 'ehime' ? EHIME_MUNICIPALITIES : KOCHI_MUNICIPALITIES).map((m) => {
               const live = m.status === 'ready';
-              const photo =
-                m.slug === 'tokushima'
-                  ? TOKUSHIMA_CITY_PLACE_PHOTO
-                  : m.slug === 'tsurugi'
-                    ? TSURUGI_PLACE_PHOTO
-                    : m.slug === 'yoshinogawa'
-                      ? YOSHINOGAWA_PLACE_PHOTO
-                      : m.slug === 'miyoshi'
-                        ? MIYOSHI_PLACE_PHOTO
-                        : m.slug === 'awa'
-                          ? AWA_PLACE_PHOTO
-                          : m.slug === 'higashimiyoshi'
-                            ? HIGASHIMIYOSHI_PLACE_PHOTO
-                            : m.slug === 'kitajima'
-                              ? KITAJIMA_PLACE_PHOTO
-                              : m.slug === 'naruto'
-                                ? NARUTO_PLACE_PHOTO
-                                : m.slug === 'matsushige'
-                                  ? MATSUSHIGE_PLACE_PHOTO
-                                  : m.slug === 'ishii'
-                                    ? ISHII_PLACE_PHOTO
-                                    : m.slug === 'itano'
-                                      ? ITANO_PLACE_PHOTO
-                                      : m.slug === 'kamiita'
-                                        ? KAMIITA_PLACE_PHOTO
-                                        : m.slug === 'komatsushima'
-                                          ? KOMATSUSHIMA_PLACE_PHOTO
-                                          : m.slug === 'anan'
-                                            ? ANAN_PLACE_PHOTO
-                                            : m.slug === 'kotohira'
-                                              ? KOTOHIRA_PLACE_PHOTO
-                                            : m.slug === 'marugame'
-                                              ? MARUGAME_PLACE_PHOTO
-                                            : m.slug === 'kanonji'
-                                              ? KANONJI_PLACE_PHOTO
-                                            : m.slug === 'sakaide'
-                                              ? SAKAIDE_PLACE_PHOTO
-                                            : m.slug === 'naoshima'
-                                              ? NAOSHIMA_PLACE_PHOTO
-                                            : m.slug === 'shodoshima'
-                                              ? SHODOSHIMA_PLACE_PHOTO
-                                            : m.slug === 'zentsuji'
-                                              ? ZENTSUJI_PLACE_PHOTO
-                                            : m.slug === 'mitoyo'
-                                              ? MITOYO_PLACE_PHOTO
-                                            : m.slug === 'utazu'
-                                              ? UTAZU_PLACE_PHOTO
-                                            : m.slug === 'tonosho'
-                                              ? TONOSHO_PLACE_PHOTO
-                                            : m.slug === 'sanuki'
-                                              ? SANUKI_PLACE_PHOTO
-                                              : m.slug === 'higashikagawa'
-                                                ? HIGASHIKAGAWA_PLACE_PHOTO
-                                              : m.slug === 'miki'
-                                                ? MIKI_PLACE_PHOTO
-                                              : m.slug === 'ayagawa'
-                                                ? AYAGAWA_PLACE_PHOTO
-                                              : m.slug === 'tadotsu'
-                                                ? TADOTSU_PLACE_PHOTO
-                                              : m.slug === 'manno'
-                                                ? MANNO_PLACE_PHOTO
-                                              : m.slug === 'kochi'
-                                                ? KOCHI_PLACE_PHOTO
-                                              : m.slug === 'nankoku'
-                                                ? NANKOKU_PLACE_PHOTO
-                                              : m.slug === 'konan'
-                                                ? KONAN_PLACE_PHOTO
-                                              : m.slug === 'kami'
-                                                ? KAMI_PLACE_PHOTO
-                                              : m.slug === 'ino' ? INO_PLACE_PHOTO : m.slug === 'aki' ? AKI_PLACE_PHOTO : m.slug === 'muroto' ? MUROTO_PLACE_PHOTO : m.slug === 'tosa' ? TOSA_PLACE_PHOTO : m.slug === 'susaki' ? SUSAKI_PLACE_PHOTO : m.slug === 'shimanto' ? SHIMANTO_PLACE_PHOTO : m.slug === 'tosashimizu' ? TOSASHIMIZU_PLACE_PHOTO : m.slug === 'sukumo' ? SUKUMO_PLACE_PHOTO : m.slug === 'kuroshio' ? KUROSHIO_PLACE_PHOTO : m.slug === 'toyo' ? TOYO_PLACE_PHOTO : m.slug === 'nahari' ? NAHARI_PLACE_PHOTO : m.slug === 'yasuda' ? YASUDA_PLACE_PHOTO : m.slug === 'geisei' ? GEISEI_PLACE_PHOTO : m.slug === 'kitagawa' ? KITAGAWA_PLACE_PHOTO : m.slug === 'umaji' ? UMAJI_PLACE_PHOTO : m.slug === 'motoyama' ? MOTOYAMA_PLACE_PHOTO : m.slug === 'otoyo' ? OTOYO_PLACE_PHOTO : m.slug === 'tosacho' ? TOSACHO_PLACE_PHOTO : m.slug === 'okawa' ? OKAWA_PLACE_PHOTO : m.slug === 'niyodogawa' ? NIYODOGAWA_PLACE_PHOTO : m.slug === 'nakatosa' ? NAKATOSA_PLACE_PHOTO : m.slug === 'ochi' ? OCHI_PLACE_PHOTO : m.slug === 'yusuhara' ? YUSUHARA_PLACE_PHOTO : m.slug === 'hidaka' ? HIDAKA_PLACE_PHOTO : m.slug === 'tsuno' ? TSUNO_PLACE_PHOTO : m.slug === 'shimantocho' ? SHIMANTOCHO_PLACE_PHOTO : m.slug === 'otsuki' ? OTSUKI_PLACE_PHOTO : m.slug === 'mihara' ? MIHARA_PLACE_PHOTO : m.slug === 'matsuyama' ? MATSUYAMA_PLACE_PHOTO : m.slug === 'takamatsu'
-                                              ? TAKAMATSU_PLACE_PHOTO
-                                              : MIMA_PLACE_PHOTO;
+              const photo: MimaPlacePhoto =
+                MUNI_CARD_PHOTO[m.slug] ?? MIMA_PLACE_PHOTO;
               const href = `${BASE_PATH}/${locale}/${pref.slug}/${m.slug}/`;
               return (
                 <li key={m.slug} className={live ? 'muni-card is-live' : 'muni-card is-hold'}>
