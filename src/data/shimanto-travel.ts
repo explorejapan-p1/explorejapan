@@ -1,6 +1,7 @@
 /**
  * Shimanto City travel layer. No frozen pack.
- * Dining from 食べログ 四万十市 (C39210). Stay densify TG604: Rakuten room stills for attributable 四万十市 lodging (stay≠onsen). Onsen: Royal 4F bath still. Experience: 道の駅よって西土佐.
+ * TG607: Tabelog C39210 dining realigned + densified (dish stills); Rakuten bath stills for onsen (stay≠onsen);
+ * Commons sights densify. Stay densify TG604 kept (16 room stills). Experience: 道の駅よって西土佐.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
@@ -10,7 +11,7 @@ import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from
 export const SHIMANTO_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const SHIMANTO_TRAVEL_SOURCES = {
   home: 'https://www.city.shimanto.lg.jp/', hall: 'https://ja.wikipedia.org/wiki/%E5%9B%9B%E4%B8%87%E5%8D%81%E5%B8%82',
-  kankou: 'https://www.city.shimanto.lg.jp/',
+  kankou: 'https://www.shimanto-kankou.com/',
   stayOfficial: 'https://www.city.shimanto.lg.jp/site/scp/1501.html',
   stayAssoc: 'https://www.shimanto-kankou.com/stay',
   bridge: 'https://commons.wikimedia.org/wiki/File:Shimanto_River_Bridge(26676794871).jpg',
@@ -19,7 +20,7 @@ export const SHIMANTO_TRAVEL_SOURCES = {
   rakutenShimanto: 'https://search.travel.rakuten.co.jp/ds/hotellist/Japan-Kochi-Shimanto'
 } as const;
 
-export const SHIMANTO_ONSEN_PACK_NAMES = ['新ロイヤルホテル四万十 大浴場'] as const;
+export const SHIMANTO_ONSEN_PACK_NAMES = ['新ロイヤルホテル四万十 大浴場', 'ホテルココモ 大浴場', 'なごみ宿 安住庵 露天風呂', '山みず木 露天風呂', '四万十の宿 大浴場', 'ホテルクラウンヒルズ中村 大浴場', '四万十りばーさいど 外風呂', 'さんいんどう 五右衛門風呂', 'ホテル星羅四万十 大浴場'] as const;
 export const SHIMANTO_ONSEN_PACK_SET: ReadonlySet<string> = new Set(SHIMANTO_ONSEN_PACK_NAMES);
 export const SHIMANTO_EXPERIENCE_PACK_NAMES = ['道の駅よって西土佐'] as const;
 export const SHIMANTO_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(SHIMANTO_EXPERIENCE_PACK_NAMES);
@@ -28,7 +29,7 @@ export const SHIMANTO_STAY_PACK_SET: ReadonlySet<string> = new Set(SHIMANTO_STAY
 export const SHIMANTO_SHOPPING_PACK_NAMES = [] as const;
 export const SHIMANTO_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(SHIMANTO_SHOPPING_PACK_NAMES);
 
-export const SHIMANTO_SIGHT_PINS = ['四万十川橋','岩間沈下橋','佐田沈下橋','一條神社','不破八幡宮','トンボ自然公園'] as const;
+export const SHIMANTO_SIGHT_PINS = ['四万十川橋','岩間沈下橋','佐田沈下橋','一條神社','不破八幡宮','トンボ自然公園','長生沈下橋','古津賀神社','中村城跡','四万十市立郷土資料館','真静寺','太平寺','四万十川桜づつみ公園','土佐西南大規模公園','石見寺'] as const;
 
 function stay(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: SHIMANTO_TRAVEL_ACCESSED};
@@ -57,21 +58,38 @@ function dining(id: string, name_ja: string, address: string | null, phone: stri
 }
 export const SHIMANTO_TRAVEL_DINING: readonly TravelRow[] = [
   dining('shimanto-dining-01', '居酒屋 かねき', '高知県四万十市中村天神橋39-8', '0880-34-6009', 'https://tabelog.com/kochi/A3904/A390401/39008593/'),
-  dining('shimanto-dining-02', 'ほうばい', '高知県四万十市中村栄町22 ジュゲムビル 1F', '0880-34-8228', 'https://tabelog.com/kochi/A3904/A390401/39008370/'),
-  dining('shimanto-dining-03', '居酒屋誠道', '高知県四万十市中村東下町3-1', '0880-34-7717', 'https://tabelog.com/kochi/A3904/A390401/39008777/'),
-  dining('shimanto-dining-04', '四万十屋', '高知県四万十市山路2494-1', '0880-36-2828', 'https://tabelog.com/kochi/A3904/A390401/39003313/'),
-  dining('shimanto-dining-05', 'カテコテ', '高知県四万十市中村天神橋39', '0880-34-0902', 'https://tabelog.com/kochi/A3904/A390401/39004964/'),
-  dining('shimanto-dining-06', '季節料理 たにぐち', '高知県四万十市中村大橋通4-50', '0880-34-3388', 'https://tabelog.com/kochi/A3904/A390401/39007106/'),
-  dining('shimanto-dining-07', 'お食事処 さたけ', '高知県四万十市中村天神橋45', null, 'https://tabelog.com/kochi/A3904/A390401/39008604/'),
-  dining('shimanto-dining-08', 'ラーメンハウス', '高知県四万十市古津賀2575', '0880-35-2330', 'https://tabelog.com/kochi/A3904/A390401/39001533/'),
-  dining('shimanto-dining-09', '居酒屋 なかひら', '高知県四万十市中村天神橋34', '0880-34-4077', 'https://tabelog.com/kochi/A3904/A390401/39003615/'),
-  dining('shimanto-dining-10', '人情酒場いわちゃん', '高知県四万十市中村天神橋18', '0880-34-4640', 'https://tabelog.com/kochi/A3904/A390401/39007289/'),
-  dining('shimanto-dining-11', '居酒屋 ちきちん', '高知県四万十市中村東下町26', '0880-34-0565', 'https://tabelog.com/kochi/A3904/A390401/39004991/'),
-  dining('shimanto-dining-12', '昭和ブギウギ食堂 のらくろ', '高知県四万十市中村大橋通4-16', null, 'https://tabelog.com/kochi/A3904/A390401/39006812/'),
-  dining('shimanto-dining-13', 'いちもん家', '高知県四万十市右山383-7 サンリバー四万十敷地内', '0880-34-5552', 'https://tabelog.com/kochi/A3904/A390401/39004965/'),
-  dining('shimanto-dining-14', '小鉄', '高知県四万十市古津賀2-12', '0880-34-0319', 'https://tabelog.com/kochi/A3904/A390401/39004171/'),
-  dining('shimanto-dining-15', '西土佐食堂', '高知県四万十市西土佐江川崎2410-3 道の駅 よって西土佐', '0880-52-1398', 'https://tabelog.com/kochi/A3904/A390401/39002145/'),
-  dining('shimanto-dining-16', 'ちきん館 本店', '高知県四万十市有岡31-1', '0880-37-0326', 'https://tabelog.com/kochi/A3904/A390401/39003528/'),
+  dining('shimanto-dining-02', '65 ナムリマ', '高知県四万十市下田4189-14', '080-3042-5672', 'https://tabelog.com/kochi/A3904/A390401/39008370/'),
+  dining('shimanto-dining-03', 'ほうばい', '高知県四万十市中村栄町22 ジュゲムビル 1F', '0880-34-8228', 'https://tabelog.com/kochi/A3904/A390401/39008777/'),
+  dining('shimanto-dining-04', '居酒屋誠道', '高知県四万十市中村東下町3-1', '050-5592-8959', 'https://tabelog.com/kochi/A3904/A390401/39003313/'),
+  dining('shimanto-dining-05', 'カテコテ', '高知県四万十市中村天神橋39', '0880-34-0902', 'https://tabelog.com/kochi/A3904/A390401/39007106/'),
+  dining('shimanto-dining-06', 'よろこび', '高知県四万十市安並872-3', '0880-34-3078', 'https://tabelog.com/kochi/A3904/A390401/39001533/'),
+  dining('shimanto-dining-07', 'パティスリー fuu', '高知県四万十市井沢23-72', '0880-35-3472', 'https://tabelog.com/kochi/A3904/A390401/39003615/'),
+  dining('shimanto-dining-08', 'cafe n2', '高知県四万十市中村天神橋39 Shimanto+Terrace はれのば', '0880-34-9200', 'https://tabelog.com/kochi/A3904/A390401/39007289/'),
+  dining('shimanto-dining-09', '山貴', '高知県四万十市右山383-7 サンリバー四万十', '090-5917-9889', 'https://tabelog.com/kochi/A3904/A390401/39004991/'),
+  dining('shimanto-dining-10', '居酒屋 ちきちん', '高知県四万十市中村東下町26', '0880-34-0565', 'https://tabelog.com/kochi/A3904/A390401/39006812/'),
+  dining('shimanto-dining-11', 'いちもん家', '高知県四万十市右山383-7 サンリバー四万十敷地内', '0880-34-5552', 'https://tabelog.com/kochi/A3904/A390401/39004171/'),
+  dining('shimanto-dining-12', '小鉄', '高知県四万十市古津賀2-12', '0880-34-0319', 'https://tabelog.com/kochi/A3904/A390401/39002145/'),
+  dining('shimanto-dining-13', '山川海', '高知県四万十市下田3363', '0880-31-5811', 'https://tabelog.com/kochi/A3904/A390401/39003528/'),
+  dining('shimanto-dining-14', '宵の灯', '高知県四万十市具同田黒3-2-3', '090-7143-0104', 'https://tabelog.com/kochi/A3904/A390401/39008953/'),
+  dining('shimanto-dining-15', '四万十屋', '高知県四万十市山路2494-1', '0880-36-2828', 'https://tabelog.com/kochi/A3904/A390401/39000359/'),
+  dining('shimanto-dining-16', 'しなとら 中村店', '高知県四万十市右山天神町3-14-1', '0880-34-2558', 'https://tabelog.com/kochi/A3904/A390401/39000593/'),
+  dining('shimanto-dining-17', 'SHADE TREE COFFEE', '高知県四万十市右山五月町7-7', '090-2248-5002', 'https://tabelog.com/kochi/A3904/A390401/39008722/'),
+  dining('shimanto-dining-18', '居酒屋 森もと屋', '高知県四万十市天神橋1-59', '0880-34-8608', 'https://tabelog.com/kochi/A3904/A390401/39008211/'),
+  dining('shimanto-dining-19', '和菓子処おおいし', '高知県四万十市中村一条通2-26', '0880-35-2560', 'https://tabelog.com/kochi/A3904/A390401/39004033/'),
+  dining('shimanto-dining-20', 'まんま・みや', '高知県四万十市西土佐半家1249', '0880-52-2147', 'https://tabelog.com/kochi/A3904/A390401/39006090/'),
+  dining('shimanto-dining-21', '居酒屋 喜八', '高知県四万十市中村天神橋10', '0880-34-0633', 'https://tabelog.com/kochi/A3904/A390401/39001203/'),
+  dining('shimanto-dining-22', '大虎', '高知県四万十市中村大橋通4-32', null, 'https://tabelog.com/kochi/A3904/A390401/39001229/'),
+  dining('shimanto-dining-23', '葵', '高知県四万十市中村大橋通2-30', null, 'https://tabelog.com/kochi/A3904/A390401/39002702/'),
+  dining('shimanto-dining-24', 'ラーメンハウス', '高知県四万十市古津賀2575', '0880-35-2330', 'https://tabelog.com/kochi/A3904/A390401/39005549/'),
+  dining('shimanto-dining-25', 'さぬきやうどん', '高知県四万十市中村駅前町3-6', '0880-34-6814', 'https://tabelog.com/kochi/A3904/A390401/39000934/'),
+  dining('shimanto-dining-26', '常連', '高知県四万十市中村小姓町33', '0880-35-2360', 'https://tabelog.com/kochi/A3904/A390401/39001005/'),
+  dining('shimanto-dining-27', 'まる牛', '高知県四万十市具同2222 フジグラン四万十', '0880-37-2251', 'https://tabelog.com/kochi/A3904/A390401/39002877/'),
+  dining('shimanto-dining-28', '屋形舟四万十料理　なっとく', '高知県四万十市田出ノ川67-1', '0880-38-2918', 'https://tabelog.com/kochi/A3904/A390401/39003871/'),
+  dining('shimanto-dining-29', '旬味居酒屋ますだや', '高知県四万十市中村大橋通4-59', '0880-35-0270', 'https://tabelog.com/kochi/A3904/A390401/39003314/'),
+  dining('shimanto-dining-30', '昭和ブギウギ食堂 のらくろ', '高知県四万十市中村大橋通4-16', null, 'https://tabelog.com/kochi/A3904/A390401/39006109/'),
+  dining('shimanto-dining-31', '焼肉たかみ', '高知県四万十市中村一条通4-15', '0880-34-9929', 'https://tabelog.com/kochi/A3904/A390401/39007367/'),
+  dining('shimanto-dining-32', '居酒屋カフェ びそあ', '高知県四万十市中村大橋通3-6', '0880-34-6099', 'https://tabelog.com/kochi/A3904/A390401/39008591/'),
+  dining('shimanto-dining-33', 'ちきん館 本店', '高知県四万十市有岡31-1', '0880-37-0326', 'https://tabelog.com/kochi/A3904/A390401/39004918/'),
 ];
 
 export const SHIMANTO_DINING_NAME_SET: ReadonlySet<string> = new Set(SHIMANTO_TRAVEL_DINING.map((row) => row.name_ja));
