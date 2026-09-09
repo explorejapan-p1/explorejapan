@@ -1,6 +1,6 @@
 # Umaji Village (馬路村) gaps (TG610 densify)
 
-Accessed 2026-09-09 (JST). LIVE tip `6831bde6a9`.
+Accessed 2026-09-09 (JST). LIVE tip `cdd73d2b16`.
 
 ## LIVE pills (photo-first) — after TG610 densify
 - stay: 1 (馬路温泉 / Rakuten HOTEL/149487 本館和室12畳 LARGE wa12 — stay≠onsen)
