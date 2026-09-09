@@ -1,7 +1,7 @@
 /**
  * Nahari Town sourced facts. Do not invent population.
  * Hall / JIS from town Wikipedia / town HP facts (accessed 2026-09-08). JIS 39302. Fifteenth Kochi hub after 高知市・南国市・香南市・香美市・いの町・安芸市・室戸市・土佐市・須崎市・四万十市・土佐清水市・宿毛市・黒潮町・東洋町.
- * No frozen pack — photo-only tourism + Tabelog dining + Rakuten stay. Stay: ホテルなはり 本館シングル. Onsen: 0 (大浴場 key present but not 温泉; stay≠onsen). Shop/commerce honest 0.
+ * No frozen pack — photo-only tourism + Tabelog/Rakuten dining + Rakuten stay + Commons sights. Stay: ホテルなはり 本館シングル. Dining densify TG610. Onsen: 0 (大浴場≠温泉; stay≠onsen). Experience honest 0. Shop/commerce honest 0.
  */
 import type {FacilityRow} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
@@ -30,21 +30,21 @@ export const NAHARI = {
     chuoPark: 'https://commons.wikimedia.org/wiki/File:Nahari_central_park_202308.jpg',
     tabelogCity: 'https://tabelog.com/kochi/C39302/rstLst/',
     hotelNahari: 'https://travel.rakuten.co.jp/HOTEL/20702/20702.html',
-    accessed: '2026-09-08'
+    accessed: '2026-09-09'
   }
 } as const;
 
-export const NAHARI_EXPECTED_ROW_COUNT = 5;
-export const NAHARI_EXPECTED_GEO_COUNT = 5;
+export const NAHARI_EXPECTED_ROW_COUNT = 7;
+export const NAHARI_EXPECTED_GEO_COUNT = 7;
 
 function wikiPhoto(
   file: string, commons: string, license: string, licenseUrl: string,
   author: string, authorUrl: string, taken: string, altJa: string, altEn: string
 ): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-08', altJa, altEn};
+  return {src:`/explorejapan/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-09', altJa, altEn};
 }
 function sourcePhoto(file: string, altJa: string, altEn: string, page: string, author: string): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-08', altJa, altEn};
+  return {src:`/explorejapan/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-09', altJa, altEn};
 }
 
 /** Cover: Nahari Central Park. Hero title remains municipality name only. */
@@ -61,6 +61,13 @@ const TABELOG_39000567 = 'https://tabelog.com/kochi/A3902/A390202/39000567/';
 const TABELOG_39009187 = 'https://tabelog.com/kochi/A3902/A390202/39009187/';
 const TABELOG_39000994 = 'https://tabelog.com/kochi/A3902/A390202/39000994/';
 const TABELOG_39002185 = 'https://tabelog.com/kochi/A3902/A390202/39002185/';
+const TABELOG_39002438 = 'https://tabelog.com/kochi/A3902/A390202/39002438/';
+const TABELOG_39000909 = 'https://tabelog.com/kochi/A3902/A390202/39000909/';
+const TABELOG_39003358 = 'https://tabelog.com/kochi/A3902/A390202/39003358/';
+const TABELOG_39007454 = 'https://tabelog.com/kochi/A3902/A390202/39007454/';
+const RAKUTEN_20702_GALLERY = 'https://travel.rakuten.co.jp/HOTEL/20702/gallery.html';
+const COMMONS_TOWN_HALL = 'https://commons.wikimedia.org/wiki/File:Nahari_town_hall.jpg';
+const COMMONS_RAIL_BRIDGE = 'https://commons.wikimedia.org/wiki/File:Nahari_bridge_over_railway.JPG';
 
 export const NAHARI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   '奈半利中央公園': NAHARI_PLACE_PHOTO,
@@ -104,6 +111,31 @@ export const NAHARI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   '笑福': sourcePhoto('nahari-39009187-dish.jpg', '笑福の料理写真', '笑福 food photo', TABELOG_39009187, '食べログ'),
   '楽園': sourcePhoto('nahari-39000994-dish.jpg', '楽園の料理写真', '楽園 food photo', TABELOG_39000994, '食べログ'),
   '豚福亭': sourcePhoto('nahari-39002185-dish.jpg', '豚福亭の料理写真', '豚福亭 food photo', TABELOG_39002185, '食べログ'),
+  'イタリア食堂トンノ': sourcePhoto('nahari-39002438-dish.jpg', 'イタリア食堂トンノの料理写真', 'Italia Shokudo Tonno food photo', TABELOG_39002438, '食べログ'),
+  '葉牡丹': sourcePhoto('nahari-39000909-dish.jpg', '葉牡丹の料理写真', 'Habotan food photo', TABELOG_39000909, '食べログ'),
+  '長門寿司割烹': sourcePhoto('nahari-39003358-dish.jpg', '長門寿司割烹の料理写真', 'Nagato Sushi Kappo food photo', TABELOG_39003358, '食べログ'),
+  '喰いものや 合': sourcePhoto('nahari-39007454-dish.jpg', '喰いものや 合の料理写真', 'Kuimonoya Ai food photo', TABELOG_39007454, '食べログ'),
+  'ホテルなはり レストラン': sourcePhoto(
+    'nahari-restaurant-dish.jpg',
+    'ホテルなはりレストランのなはり御膳写真',
+    'Hotel Nahari restaurant Nahari gozen photo',
+    RAKUTEN_20702_GALLERY,
+    '楽天トラベル'
+  ),
+  '奈半利町役場': wikiPhoto(
+    'nahari-town-hall.jpg',
+    COMMONS_TOWN_HALL,
+    'CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0',
+    'Vanquish0', COMMONS_TOWN_HALL, '2016-05-04',
+    '奈半利町役場', 'Nahari Town Hall'
+  ),
+  '奈半利鉄道橋': wikiPhoto(
+    'nahari-railway-bridge.jpg',
+    COMMONS_RAIL_BRIDGE,
+    'Public domain', 'https://creativecommons.org/publicdomain/mark/1.0/',
+    'Navian', 'https://commons.wikimedia.org/wiki/User:Navian', '2009-08-15',
+    '奈半利の鉄道橋', 'Nahari railway bridge'
+  ),
 };
 
 function sight(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string, lat: number, lon: number): FacilityRow {
@@ -115,5 +147,7 @@ export const NAHARI_FACILITIES: readonly FacilityRow[] = [
   sight('nahari-sight-02', '加領郷灯台', '高知県安芸郡奈半利町加領郷', null, 'https://commons.wikimedia.org/wiki/File:Karyougou_toudai_20240319_1.jpg', 33.3855401, 134.0365610),
   sight('nahari-sight-03', '奈半利町甲', '高知県安芸郡奈半利町甲', null, 'https://commons.wikimedia.org/wiki/File:%E5%A5%88%E5%8D%8A%E5%88%A9%E7%94%BA%E7%94%B2_-_panoramio.jpg', 33.4140770, 134.0600880),
   sight('nahari-sight-04', '奈半利港眺望', '高知県安芸郡奈半利町', null, 'https://commons.wikimedia.org/wiki/File:%E3%81%8F%E3%82%8D%E9%89%84%E5%A5%88%E5%8D%8A%E5%88%A9%E9%A7%85%E3%81%8B%E3%82%89%E3%81%AE%E7%9C%BA%E3%82%81%E3%83%BB%E5%8D%97%E5%90%91%E3%81%8D_-_panoramio.jpg', 33.4250589, 134.0181116),
-  sight('nahari-sight-05', '奈半利駅', '高知県安芸郡奈半利町', null, 'https://commons.wikimedia.org/wiki/File:Tosa_Kuroshio_Railway_Nahari_Station.jpg', 33.4248664, 134.0180436)
+  sight('nahari-sight-05', '奈半利駅', '高知県安芸郡奈半利町', null, 'https://commons.wikimedia.org/wiki/File:Tosa_Kuroshio_Railway_Nahari_Station.jpg', 33.4248664, 134.0180436),
+  sight('nahari-sight-06', '奈半利町役場', '高知県安芸郡奈半利町乙1659番地1', '0887-38-4011', COMMONS_TOWN_HALL, 33.4241767, 134.0209483),
+  sight('nahari-sight-07', '奈半利鉄道橋', '高知県安芸郡奈半利町', null, COMMONS_RAIL_BRIDGE, 33.417967, 134.025733)
 ];

@@ -1,19 +1,22 @@
 /**
  * Nahari Town travel layer. No frozen pack.
- * Dining from 食べログ 奈半利町 (C39302) — thin town honest 5 with 640 dish JPGs (skipped lodging/cafe/sweets/convenience/bento / no-640 / product-not-dish). Stay: ホテルなはり Rakuten 本館シングル. Onsen: 0. Experience: 0 (no distinct experience pack with sourced photo beyond station sight).
+ * Dining: Tabelog C39302 (5 kept + イタリア食堂トンノ・葉牡丹・長門寿司割烹・喰いものや 合) + ホテルなはり レストラン Rakuten 食事 still. Stay: ホテルなはり. Onsen: 0 (大浴場≠温泉). Experience: 0 honest (海浜センター site dead; no HARD BAR activity still). TG610 densify.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {NAHARI, NAHARI_SIGHT_PHOTOS} from './nahari';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const NAHARI_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const NAHARI_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const NAHARI_TRAVEL_SOURCES = {
   home: 'https://www.town.nahari.kochi.jp/', hall: 'https://ja.wikipedia.org/wiki/%E5%A5%88%E5%8D%8A%E5%88%A9%E7%94%BA',
   kankou: 'https://www.town.nahari.kochi.jp/',
   chuoPark: 'https://commons.wikimedia.org/wiki/File:Nahari_central_park_202308.jpg',
   tabelogCity: 'https://tabelog.com/kochi/C39302/rstLst/',
-  hotelNahari: 'https://travel.rakuten.co.jp/HOTEL/20702/20702.html'
+  hotelNahari: 'https://travel.rakuten.co.jp/HOTEL/20702/20702.html',
+  hotelGallery: 'https://travel.rakuten.co.jp/HOTEL/20702/gallery.html',
+  townHall: 'https://commons.wikimedia.org/wiki/File:Nahari_town_hall.jpg',
+  railBridge: 'https://commons.wikimedia.org/wiki/File:Nahari_bridge_over_railway.JPG'
 } as const;
 
 export const NAHARI_ONSEN_PACK_NAMES = [] as const;
@@ -25,7 +28,7 @@ export const NAHARI_STAY_PACK_SET: ReadonlySet<string> = new Set(NAHARI_STAY_PAC
 export const NAHARI_SHOPPING_PACK_NAMES = [] as const;
 export const NAHARI_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(NAHARI_SHOPPING_PACK_NAMES);
 
-export const NAHARI_SIGHT_PINS = ['奈半利中央公園','加領郷灯台','奈半利町甲','奈半利港眺望','奈半利駅'] as const;
+export const NAHARI_SIGHT_PINS = ['奈半利中央公園','加領郷灯台','奈半利町甲','奈半利港眺望','奈半利駅','奈半利町役場','奈半利鉄道橋'] as const;
 
 function stay(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: NAHARI_TRAVEL_ACCESSED};
@@ -43,6 +46,11 @@ export const NAHARI_TRAVEL_DINING: readonly TravelRow[] = [
   dining('nahari-dining-03', '笑福', '高知県安芸郡奈半利町乙1700-2', '0887-30-1922', 'https://tabelog.com/kochi/A3902/A390202/39009187/'),
   dining('nahari-dining-04', '楽園', '高知県安芸郡奈半利町乙1745', '0887-38-4203', 'https://tabelog.com/kochi/A3902/A390202/39000994/'),
   dining('nahari-dining-05', '豚福亭', '高知県安芸郡奈半利町乙4861-1 なはり駅前', '0887-38-3001', 'https://tabelog.com/kochi/A3902/A390202/39002185/'),
+  dining('nahari-dining-06', 'イタリア食堂トンノ', '高知県安芸郡奈半利町乙1305-6 奈半利駅3F', '0887-38-5569', 'https://tabelog.com/kochi/A3902/A390202/39002438/'),
+  dining('nahari-dining-07', '葉牡丹', '高知県安芸郡奈半利町乙1327-5', '0887-38-4110', 'https://tabelog.com/kochi/A3902/A390202/39000909/'),
+  dining('nahari-dining-08', '長門寿司割烹', '高知県安芸郡奈半利町乙4847', '0887-38-5084', 'https://tabelog.com/kochi/A3902/A390202/39003358/'),
+  dining('nahari-dining-09', '喰いものや 合', '高知県安芸郡奈半利町乙1728-1', '0887-38-6262', 'https://tabelog.com/kochi/A3902/A390202/39007454/'),
+  dining('nahari-dining-10', 'ホテルなはり レストラン', '高知県安芸郡奈半利町乙593-1', '0887-38-5111', 'https://travel.rakuten.co.jp/HOTEL/20702/gallery.html'),
 ];
 
 export const NAHARI_DINING_NAME_SET: ReadonlySet<string> = new Set(NAHARI_TRAVEL_DINING.map((row) => row.name_ja));
