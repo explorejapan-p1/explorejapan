@@ -2470,12 +2470,12 @@ export const GEISEI_LOOKUP: LookupTown = {
   travelCommerce: GEISEI_TRAVEL_COMMERCE,
   travelAll: GEISEI_TRAVEL_ALL,
   coverageJa:
-    '芸西村（JIS 39307）観光5・宿泊1・飲食3・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県17つ目のLIVEハブ。',
+    '芸西村（JIS 39307）観光4・宿泊1・飲食4・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県17つ目のLIVEハブ。TG610 densify。',
   coverageEn:
-    'Geisei Village (JIS 39307), 5 tourism + 1 stay + 3 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Seventeenth LIVE Kochi hub.',
-  mapLabelJa: '芸西村の出典座標5件',
-  mapLabelEn: '5 sourced coordinates in Geisei Village',
-  mapCitePackJa: '点は村・公式ページ掲載施設のWikipedia/Commons等出典座標5件（accessed 2026-09-08）。',
+    'Geisei Village (JIS 39307), 4 tourism + 1 stay + 4 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Seventeenth LIVE Kochi hub. TG610 densify.',
+  mapLabelJa: '芸西村の出典座標4件',
+  mapLabelEn: '4 sourced coordinates in Geisei Village',
+  mapCitePackJa: '点は村・公式ページ掲載施設のWikipedia/Commons等出典座標4件（accessed 2026-09-09）。',
   mapCitePackEn: 'Points: 7 sourced coordinates for village/official facilities (accessed 2026-09-09).',
   licenseNoteJa: '行のライセンスは村公式・公式観光サイト掲載情報。村ページの事実の転記で、オープンデータ許諾ではありません。',
   licenseNoteEn: 'Rows are village-site listings, facts from vill.geisei.kochi.jp / sourced pages, not under Our Open Data.',

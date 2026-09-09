@@ -1,7 +1,7 @@
 /**
  * Geisei Village sourced facts. Do not invent population.
  * Hall / JIS from village HP / JIS X 0402 (accessed 2026-09-08). JIS 39307. Seventeenth Kochi hub after 高知市・南国市・香南市・香美市・いの町・安芸市・室戸市・土佐市・須崎市・四万十市・土佐清水市・宿毛市・黒潮町・東洋町・奈半利町・安田町 (田野町 deferred: no attributable stay room still).
- * No frozen pack — photo-only tourism + Tabelog dining + Rakuten stay. Stay: 芸西村の家 和室8畳. Onsen: 0 (大浴場≠温泉; stay≠onsen). Shop/commerce honest 0.
+ * No frozen pack — photo-only tourism + Tabelog dining + Rakuten stay. Stay: 芸西村の家 和室8畳. Dining includes SEA HOUSE pasta dish (TG610 reclass from sight-only). Onsen: 0 (大浴場≠温泉). Experience: 0. Shop/commerce honest 0.
  */
 import type {FacilityRow} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
@@ -30,21 +30,21 @@ export const GEISEI = {
     kotogahama: 'https://commons.wikimedia.org/wiki/File:Kotogahama.jpg',
     tabelogCity: 'https://tabelog.com/kochi/C39307/rstLst/',
     muraNoIe: 'https://travel.rakuten.co.jp/HOTEL/197184/197184.html',
-    accessed: '2026-09-08'
+    accessed: '2026-09-09'
   }
 } as const;
 
-export const GEISEI_EXPECTED_ROW_COUNT = 5;
-export const GEISEI_EXPECTED_GEO_COUNT = 5;
+export const GEISEI_EXPECTED_ROW_COUNT = 4;
+export const GEISEI_EXPECTED_GEO_COUNT = 4;
 
 function wikiPhoto(
   file: string, commons: string, license: string, licenseUrl: string,
   author: string, authorUrl: string, taken: string, altJa: string, altEn: string
 ): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-08', altJa, altEn};
+  return {src:`/explorejapan/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-09', altJa, altEn};
 }
 function sourcePhoto(file: string, altJa: string, altEn: string, page: string, author: string): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-08', altJa, altEn};
+  return {src:`/explorejapan/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-09', altJa, altEn};
 }
 
 /** Cover: Kotogahama Beach. Hero title remains municipality name only. */
@@ -59,15 +59,16 @@ export const GEISEI_PLACE_PHOTO = wikiPhoto(
 const TABELOG_39002820 = 'https://tabelog.com/kochi/A3901/A390106/39002820/';
 const TABELOG_39005910 = 'https://tabelog.com/kochi/A3901/A390106/39005910/';
 const TABELOG_39002685 = 'https://tabelog.com/kochi/A3901/A390106/39002685/';
+const TABELOG_39004235 = 'https://tabelog.com/kochi/A3901/A390106/39004235/';
 
 export const GEISEI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   '琴ヶ浜': GEISEI_PLACE_PHOTO,
-  'SEA HOUSE': wikiPhoto(
-    'geisei-seahouse.jpg',
-    'https://commons.wikimedia.org/wiki/File:Seahouse20220913_1.jpg',
-    'CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0',
-    'Dokudami', 'https://commons.wikimedia.org/wiki/User:Dokudami', '2022-09-13',
-    'SEA HOUSE', 'SEA HOUSE, Geisei'
+  'SEA HOUSE': sourcePhoto(
+    'geisei-39004235-dish.jpg',
+    'SEA HOUSEのシーフードパスタ料理写真',
+    'SEA HOUSE seafood pasta dish photo',
+    TABELOG_39004235,
+    '食べログ'
   ),
   '和食駅': wikiPhoto(
     'geisei-wajiki-station.jpg',
@@ -108,7 +109,6 @@ function sight(id: string, name_ja: string, address: string | null, phone: strin
 
 export const GEISEI_FACILITIES: readonly FacilityRow[] = [
   sight('geisei-sight-01', '琴ヶ浜', '高知県安芸郡芸西村', null, 'https://commons.wikimedia.org/wiki/File:Kotogahama.jpg', 33.5172372, 133.8039501),
-  sight('geisei-sight-02', 'SEA HOUSE', '高知県安芸郡芸西村西分乙54-1', '0887-32-2880', 'https://commons.wikimedia.org/wiki/File:Seahouse20220913_1.jpg', 33.5172372, 133.8039501),
   sight('geisei-sight-03', '和食駅', '高知県安芸郡芸西村和食', null, 'https://commons.wikimedia.org/wiki/File:Wajiki_station_02.jpg', 33.5178986, 133.8092126),
   sight('geisei-sight-04', '西分駅', '高知県安芸郡芸西村西分', null, 'https://commons.wikimedia.org/wiki/File:Nishibun_station_02.jpg', 33.5177184, 133.7903020),
   sight('geisei-sight-05', '芸西村役場', '高知県安芸郡芸西村和食甲1262番地', '0887-33-2111', 'https://commons.wikimedia.org/wiki/File:Geisei_village_hall.JPG', 33.5269437, 133.8088572)

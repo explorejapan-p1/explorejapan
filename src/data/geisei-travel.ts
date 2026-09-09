@@ -1,13 +1,13 @@
 /**
  * Geisei Village travel layer. No frozen pack.
- * Dining from 食べログ 芸西村 (C39307) — thin village honest 3 with 640 dish JPGs (skipped lodging hotel restaurants / cafe・sweets SEA HOUSE & トレビス / bento 喜ら功 / convenience / no-640). Stay: 芸西村の家 Rakuten 和室8畳. Onsen: 0 (大浴場≠温泉; stay≠onsen). Experience: 0.
+ * Dining from 食べログ C39307 — 4 with 640 dish JPGs (incl. SEA HOUSE pasta; skipped lodging hotel restaurants LOCAVORE/四季 / cafe トレビス / bento 喜ら功 / convenience / no-640). Stay: 芸西村の家. Onsen: 0 (大浴場≠温泉). Experience: 0. TG610.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {GEISEI, GEISEI_SIGHT_PHOTOS} from './geisei';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const GEISEI_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const GEISEI_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const GEISEI_TRAVEL_SOURCES = {
   home: 'https://www.vill.geisei.kochi.jp/', hall: 'https://ja.wikipedia.org/wiki/%E8%8A%B8%E8%A5%BF%E6%9D%91',
   kankou: 'https://www.vill.geisei.kochi.jp/',
@@ -25,7 +25,7 @@ export const GEISEI_STAY_PACK_SET: ReadonlySet<string> = new Set(GEISEI_STAY_PAC
 export const GEISEI_SHOPPING_PACK_NAMES = [] as const;
 export const GEISEI_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(GEISEI_SHOPPING_PACK_NAMES);
 
-export const GEISEI_SIGHT_PINS = ['琴ヶ浜','SEA HOUSE','和食駅','西分駅','芸西村役場'] as const;
+export const GEISEI_SIGHT_PINS = ['琴ヶ浜','和食駅','西分駅','芸西村役場'] as const;
 
 function stay(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: GEISEI_TRAVEL_ACCESSED};
@@ -41,6 +41,7 @@ export const GEISEI_TRAVEL_DINING: readonly TravelRow[] = [
   dining('geisei-dining-01', '活魚レストラン 藤 芸西店', '高知県安芸郡芸西村西分甲2840-4', '0887-33-3772', 'https://tabelog.com/kochi/A3901/A390106/39002820/'),
   dining('geisei-dining-02', 'Kochi黒潮カントリークラブ', '高知県安芸郡芸西村西分甲5207', '0887-33-4455', 'https://tabelog.com/kochi/A3901/A390106/39005910/'),
   dining('geisei-dining-03', 'レストランサザンクロス', '高知県安芸郡芸西村和食甲4525', '0887-33-4410', 'https://tabelog.com/kochi/A3901/A390106/39002685/'),
+  dining('geisei-dining-04', 'SEA HOUSE', '高知県安芸郡芸西村西分乙54-1', '0887-32-2880', 'https://tabelog.com/kochi/A3901/A390106/39004235/'),
 ];
 
 export const GEISEI_DINING_NAME_SET: ReadonlySet<string> = new Set(GEISEI_TRAVEL_DINING.map((row) => row.name_ja));
