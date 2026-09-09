@@ -30,12 +30,12 @@ export const MARUGAME = {
     tabelogCity: 'https://tabelog.com/kagawa/C37202/rstLst/',
     apa: 'https://travel.rakuten.co.jp/HOTEL/80598/80598.html',
     superHotel: 'https://travel.rakuten.co.jp/HOTEL/178679/178679.html',
-    accessed: '2026-09-07'
+    accessed: '2026-09-09'
   }
 } as const;
 
-export const MARUGAME_EXPECTED_ROW_COUNT = 9;
-export const MARUGAME_EXPECTED_GEO_COUNT = 9;
+export const MARUGAME_EXPECTED_ROW_COUNT = 12;
+export const MARUGAME_EXPECTED_GEO_COUNT = 7;
 
 function wikiPhoto(
   file: string,
@@ -56,7 +56,7 @@ function wikiPhoto(
     author,
     authorUrl,
     taken,
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -77,7 +77,7 @@ function sourcePhoto(
     author,
     authorUrl: page,
     taken: '2026',
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -113,6 +113,7 @@ const TABELOG_37013411 = "https://tabelog.com/kagawa/A3702/A370202/37013411/";
 
 /** Exact travel/sight name_ja only. No Tokushima/Takamatsu/Kotohira Files. */
 export const MARUGAME_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
+
   '丸亀城': MARUGAME_PLACE_PHOTO,
   '丸亀城天守': wikiPhoto(
     'marugame-castle-tenshu.jpg',
@@ -180,35 +181,6 @@ export const MARUGAME_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '飯野山・讃岐富士（丸亀市）',
     'Mount Iino (Sanuki Fuji), Marugame'
   ),
-  'アパホテル〈丸亀駅前大通〉': sourcePhoto(
-    'marugame-stay-apa.jpg',
-    'アパホテル〈丸亀駅前大通〉の客室写真',
-    'APA Hotel Marugame Ekimae-odori room photo',
-    'https://travel.rakuten.co.jp/HOTEL/80598/80598.html',
-    '楽天トラベル'
-  ),
-  'スーパーホテル丸亀駅前　天然温泉「京極の湯」': sourcePhoto(
-    'marugame-stay-super.jpg',
-    'スーパーホテル丸亀駅前の客室写真',
-    'Super Hotel Marugame Ekimae room photo',
-    'https://travel.rakuten.co.jp/HOTEL/178679/178679.html',
-    '楽天トラベル'
-  ),
-  'アパホテル〈丸亀駅前大通〉 大浴場': sourcePhoto(
-    'marugame-onsen-apa.jpg',
-    'アパホテル〈丸亀駅前大通〉の大浴場写真',
-    'APA Hotel Marugame bath photo',
-    'https://travel.rakuten.co.jp/HOTEL/80598/80598.html',
-    '楽天トラベル'
-  ),
-  'スーパーホテル丸亀駅前 天然温泉「京極の湯」 大浴場': sourcePhoto(
-    'marugame-onsen-super.jpg',
-    'スーパーホテル丸亀駅前 天然温泉「京極の湯」の浴場写真',
-    'Super Hotel Marugame Kyogoku-no-Yu bath photo',
-    'https://travel.rakuten.co.jp/HOTEL/178679/gallery.html',
-    '楽天トラベル'
-  ),
-
   "中村うどん": sourcePhoto(
     "marugame-37000135-dish.jpg",
     "中村うどんの料理写真",
@@ -307,6 +279,176 @@ export const MARUGAME_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     TABELOG_37013411,
     '食べログ'
   ),
+
+  "アパホテル〈丸亀駅前大通〉": sourcePhoto(
+    "marugame-stay-apa.jpg",
+    "アパホテル〈丸亀駅前大通〉の客室写真",
+    "アパホテル〈丸亀駅前大通〉 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/80598/80598.html",
+    '楽天トラベル'
+  ),
+  "エムズルーモス": sourcePhoto(
+    "marugame-stay-h199264.jpg",
+    "エムズルーモスの客室写真",
+    "エムズルーモス room photo",
+    "https://travel.rakuten.co.jp/HOTEL/199264/199264.html",
+    '楽天トラベル'
+  ),
+  "オークラホテル丸亀": sourcePhoto(
+    "marugame-stay-okura.jpg",
+    "オークラホテル丸亀の客室写真",
+    "オークラホテル丸亀 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/675/675.html",
+    '楽天トラベル'
+  ),
+  "ゲストハウスＡＫＡＨＩＧＥ丸亀 （泊Ｒｕｔｔｏ）": sourcePhoto(
+    "marugame-stay-h191550.jpg",
+    "ゲストハウスＡＫＡＨＩＧＥ丸亀 （泊Ｒｕｔｔｏ）の客室写真",
+    "ゲストハウスＡＫＡＨＩＧＥ丸亀 （泊Ｒｕｔｔｏ） room photo",
+    "https://travel.rakuten.co.jp/HOTEL/191550/191550.html",
+    '楽天トラベル'
+  ),
+  "コンフォートイン善通寺インター": sourcePhoto(
+    "marugame-stay-comfort.jpg",
+    "コンフォートイン善通寺インターの客室写真",
+    "コンフォートイン善通寺インター room photo",
+    "https://travel.rakuten.co.jp/HOTEL/191700/191700.html",
+    '楽天トラベル'
+  ),
+  "スーパーホテル丸亀駅前　天然温泉「京極の湯」": sourcePhoto(
+    "marugame-stay-superhotel.jpg",
+    "スーパーホテル丸亀駅前　天然温泉「京極の湯」の客室写真",
+    "スーパーホテル丸亀駅前　天然温泉「京極の湯」 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/178679/178679.html",
+    '楽天トラベル'
+  ),
+  "ビジネスホテル 青山": sourcePhoto(
+    "marugame-stay-h104775.jpg",
+    "ビジネスホテル 青山の客室写真",
+    "ビジネスホテル 青山 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/104775/104775.html",
+    '楽天トラベル'
+  ),
+  "ホテルアルファーワン丸亀": sourcePhoto(
+    "marugame-stay-alpha.jpg",
+    "ホテルアルファーワン丸亀の客室写真",
+    "ホテルアルファーワン丸亀 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/15882/15882.html",
+    '楽天トラベル'
+  ),
+  "ホテルルートイン丸亀": sourcePhoto(
+    "marugame-stay-routeinn.jpg",
+    "ホテルルートイン丸亀の客室写真",
+    "ホテルルートイン丸亀 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/109518/109518.html",
+    '楽天トラベル'
+  ),
+  "ヴィラかめちぃ｜瀬戸内観光の拠点に ＾": sourcePhoto(
+    "marugame-stay-h200920.jpg",
+    "ヴィラかめちぃ｜瀬戸内観光の拠点に ＾の客室写真",
+    "ヴィラかめちぃ｜瀬戸内観光の拠点に ＾ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/200920/200920.html",
+    '楽天トラベル'
+  ),
+  "丸亀ゲストハウス ウェルかめ": sourcePhoto(
+    "marugame-stay-h151452.jpg",
+    "丸亀ゲストハウス ウェルかめの客室写真",
+    "丸亀ゲストハウス ウェルかめ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/151452/151452.html",
+    '楽天トラベル'
+  ),
+  "丸亀ゲストハウス ババノバ": sourcePhoto(
+    "marugame-stay-h192643.jpg",
+    "丸亀ゲストハウス ババノバの客室写真",
+    "丸亀ゲストハウス ババノバ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/192643/192643.html",
+    '楽天トラベル'
+  ),
+  "丸亀プラザホテル": sourcePhoto(
+    "marugame-stay-plaza.jpg",
+    "丸亀プラザホテルの客室写真",
+    "丸亀プラザホテル room photo",
+    "https://travel.rakuten.co.jp/HOTEL/12630/12630.html",
+    '楽天トラベル'
+  ),
+  "東横ＩＮＮ丸亀駅前": sourcePhoto(
+    "marugame-stay-toyoko.jpg",
+    "東横ＩＮＮ丸亀駅前の客室写真",
+    "東横ＩＮＮ丸亀駅前 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/183080/183080.html",
+    '楽天トラベル'
+  ),
+  "金倉苑／民泊": sourcePhoto(
+    "marugame-stay-h173438.jpg",
+    "金倉苑／民泊の客室写真",
+    "金倉苑／民泊 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/173438/173438.html",
+    '楽天トラベル'
+  ),
+  "ＡＫＩＹＡｔｏ Ｍａｒｕｇａｍｅ Ｍｏｎｔｍａｒｔｒｅ": sourcePhoto(
+    "marugame-stay-h199283.jpg",
+    "ＡＫＩＹＡｔｏ Ｍａｒｕｇａｍｅ Ｍｏｎｔｍａｒｔｒｅの客室写真",
+    "ＡＫＩＹＡｔｏ Ｍａｒｕｇａｍｅ Ｍｏｎｔｍａｒｔｒｅ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/199283/199283.html",
+    '楽天トラベル'
+  ),
+  "Ｃｏｓｍｏ Ｓｔａｙ 丸亀駅前": sourcePhoto(
+    "marugame-stay-h197217.jpg",
+    "Ｃｏｓｍｏ Ｓｔａｙ 丸亀駅前の客室写真",
+    "Ｃｏｓｍｏ Ｓｔａｙ 丸亀駅前 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/197217/197217.html",
+    '楽天トラベル'
+  ),
+  "Ｒｅｎｔａｌ Ｒｏｏｍ９": sourcePhoto(
+    "marugame-stay-h173174.jpg",
+    "Ｒｅｎｔａｌ Ｒｏｏｍ９の客室写真",
+    "Ｒｅｎｔａｌ Ｒｏｏｍ９ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/173174/173174.html",
+    '楽天トラベル'
+  ),
+  "ｍａｒｕｇａｍｅ ｓｔｏｐ ＾": sourcePhoto(
+    "marugame-stay-h185747.jpg",
+    "ｍａｒｕｇａｍｅ ｓｔｏｐ ＾の客室写真",
+    "ｍａｒｕｇａｍｅ ｓｔｏｐ ＾ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/185747/185747.html",
+    '楽天トラベル'
+  ),
+  "アパホテル〈丸亀駅前大通〉 大浴場": sourcePhoto(
+    "marugame-onsen-apa.jpg",
+    "アパホテル〈丸亀駅前大通〉 大浴場の写真",
+    "アパホテル〈丸亀駅前大通〉 大浴場 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/80598/gallery.html",
+    '楽天トラベル'
+  ),
+  "スーパーホテル丸亀駅前 天然温泉「京極の湯」 大浴場": sourcePhoto(
+    "marugame-onsen-superhotel.jpg",
+    "スーパーホテル丸亀駅前 天然温泉「京極の湯」 大浴場の写真",
+    "スーパーホテル丸亀駅前 天然温泉「京極の湯」 大浴場 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/178679/gallery.html",
+    '楽天トラベル'
+  ),
+  "ホテルルートイン丸亀 大浴場": sourcePhoto(
+    "marugame-onsen-routeinn.jpg",
+    "ホテルルートイン丸亀 大浴場の写真",
+    "ホテルルートイン丸亀 大浴場 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/109518/gallery.html",
+    '楽天トラベル'
+  ),
+  "ＡＫＩＹＡｔｏ Ｍａｒｕｇａｍｅ Ｍｏｎｔｍａｒｔｒｅ 大浴場": sourcePhoto(
+    "marugame-onsen-h199283.jpg",
+    "ＡＫＩＹＡｔｏ Ｍａｒｕｇａｍｅ Ｍｏｎｔｍａｒｔｒｅ 大浴場の写真",
+    "ＡＫＩＹＡｔｏ Ｍａｒｕｇａｍｅ Ｍｏｎｔｍａｒｔｒｅ 大浴場 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/199283/gallery.html",
+    '楽天トラベル'
+  ),
+
+  'オークラホテル丸亀 大浴場': sourcePhoto(
+    'marugame-onsen-okura.jpg',
+    'オークラホテル丸亀 大浴場の写真',
+    'オークラホテル丸亀 大浴場 bath photo',
+    'https://travel.rakuten.co.jp/HOTEL/675/gallery.html',
+    '楽天トラベル'
+  ),
 };
 
 function sight(
@@ -315,8 +457,8 @@ function sight(
   address: string | null,
   phone: string | null,
   source_url: string,
-  lat: number,
-  lon: number
+  lat: number | null,
+  lon: number | null
 ): FacilityRow {
   return {
     id,
@@ -345,6 +487,9 @@ export const MARUGAME_FACILITIES: readonly FacilityRow[] = [
   sight('marugame-sight-05', '丸亀港', '香川県丸亀市港町', null, 'https://www.city.marugame.lg.jp/', 34.2985, 133.7930),
   sight('marugame-sight-06', 'うちわの港ミュージアム', '香川県丸亀市港町307-15', '0877-24-7055', 'https://www.city.marugame.lg.jp/', 34.2980, 133.7925),
   sight('marugame-sight-07', '飯野山', '香川県丸亀市飯野町', null, 'https://www.city.marugame.lg.jp/', 34.2690, 133.8330),
-  sight('marugame-onsen-01', 'アパホテル〈丸亀駅前大通〉 大浴場', '香川県丸亀市大手町3-6-1', '0570-096-411', 'https://travel.rakuten.co.jp/HOTEL/80598/80598.html', 34.2875, 133.7985),
-  sight('marugame-onsen-02', 'スーパーホテル丸亀駅前 天然温泉「京極の湯」 大浴場', '香川県丸亀市通町142-1', null, 'https://travel.rakuten.co.jp/HOTEL/178679/gallery.html', 34.2885, 133.7995)
+  sight('marugame-onsen-01', "アパホテル〈丸亀駅前大通〉 大浴場", "香川県丸亀市大手町3-6-1", "0570-096-411", "https://travel.rakuten.co.jp/HOTEL/80598/gallery.html", null, null),
+  sight('marugame-onsen-02', "オークラホテル丸亀 大浴場", "香川県丸亀市富士見町3-3-50", "0877-23-2222", "https://travel.rakuten.co.jp/HOTEL/675/gallery.html", null, null),
+  sight('marugame-onsen-03', "スーパーホテル丸亀駅前 天然温泉「京極の湯」 大浴場", "香川県丸亀市通町142-1", null, "https://travel.rakuten.co.jp/HOTEL/178679/gallery.html", null, null),
+  sight('marugame-onsen-04', "ホテルルートイン丸亀 大浴場", "香川県丸亀市田村町二丁田512-1", "050-5576-7995", "https://travel.rakuten.co.jp/HOTEL/109518/gallery.html", null, null),
+  sight('marugame-onsen-05', "ＡＫＩＹＡｔｏ Ｍａｒｕｇａｍｅ Ｍｏｎｔｍａｒｔｒｅ 大浴場", "香川県丸亀市土居町1-10-2", "050-8892-0040", "https://travel.rakuten.co.jp/HOTEL/199283/gallery.html", null, null),
 ];

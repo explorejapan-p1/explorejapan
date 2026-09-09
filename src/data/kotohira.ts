@@ -32,12 +32,12 @@ export const KOTOHIRA = {
     kotosankaku: 'https://www.kotosankaku.jp/',
     shikishima: 'https://dormy-hotels.com/resort/hotels/shikishimakan/',
     tabelogCity: 'https://tabelog.com/kagawa/C37403/rstLst/',
-    accessed: '2026-09-07'
+    accessed: '2026-09-09'
   }
 } as const;
 
-export const KOTOHIRA_EXPECTED_ROW_COUNT = 8;
-export const KOTOHIRA_EXPECTED_GEO_COUNT = 8;
+export const KOTOHIRA_EXPECTED_ROW_COUNT = 18;
+export const KOTOHIRA_EXPECTED_GEO_COUNT = 6;
 
 function wikiPhoto(
   file: string,
@@ -58,7 +58,7 @@ function wikiPhoto(
     author,
     authorUrl,
     taken,
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -79,7 +79,7 @@ function sourcePhoto(
     author,
     authorUrl: page,
     taken: '2026',
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -113,6 +113,7 @@ const TABELOG_37007797 = "https://tabelog.com/kagawa/A3703/A370302/37007797/";
 
 /** Exact travel/sight name_ja only. No Tokushima Files. */
 export const KOTOHIRA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
+
   '金刀比羅宮': KOTOHIRA_PLACE_PHOTO,
   '旭社': wikiPhoto(
     'kotohira-asahi-sha.jpg',
@@ -169,35 +170,6 @@ export const KOTOHIRA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '旧金毘羅大芝居・金丸座（琴平町）',
     'Former Konpira Grand Theatre (Kanamaruza), Kotohira'
   ),
-  'ことひら温泉 琴参閣': sourcePhoto(
-    'kotohira-stay-kotosankaku.jpg',
-    'ことひら温泉 琴参閣の客室写真',
-    'Kotosankaku room photo',
-    'https://www.kotosankaku.jp/rooms/',
-    '公式サイト'
-  ),
-  'ことひら温泉 御宿 敷島館': sourcePhoto(
-    'kotohira-stay-shikishima.jpg',
-    'ことひら温泉 御宿 敷島館の客室写真',
-    'Shikishimakan room photo',
-    'https://dormy-hotels.com/resort/hotels/shikishimakan/rooms/',
-    '公式サイト'
-  ),
-  'ことひら温泉 琴参閣 大浴場': sourcePhoto(
-    'kotohira-onsen-kotosankaku.jpg',
-    'ことひら温泉 琴参閣の大浴場写真',
-    'Kotosankaku bath photo',
-    'https://www.kotosankaku.jp/hotspa/',
-    '公式サイト'
-  ),
-  'ことひら温泉 御宿 敷島館 大浴場': sourcePhoto(
-    'kotohira-onsen-shikishima.jpg',
-    'ことひら温泉 御宿 敷島館の大浴場写真',
-    'Shikishimakan bath photo',
-    'https://dormy-hotels.com/resort/hotels/shikishimakan/hotspring/',
-    '公式サイト'
-  ),
-
   "大衆焼肉骨付鳥 金牛 琴平店": sourcePhoto(
     "kotohira-37013981-dish.jpg",
     "大衆焼肉骨付鳥 金牛 琴平店の料理写真",
@@ -282,6 +254,295 @@ export const KOTOHIRA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     TABELOG_37007797,
     '食べログ'
   ),
+
+  "ことひら温泉 御宿 敷島館": sourcePhoto(
+    "kotohira-stay-shikishima.jpg",
+    "ことひら温泉 御宿 敷島館の客室写真",
+    "ことひら温泉 御宿 敷島館 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/176626/176626.html",
+    '楽天トラベル'
+  ),
+  "ことひら温泉 琴参閣": sourcePhoto(
+    "kotohira-stay-kotosankaku.jpg",
+    "ことひら温泉 琴参閣の客室写真",
+    "ことひら温泉 琴参閣 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/14833/14833.html",
+    '楽天トラベル'
+  ),
+  "ことぶき旅館": sourcePhoto(
+    "kotohira-stay-h129438.jpg",
+    "ことぶき旅館の客室写真",
+    "ことぶき旅館 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/129438/129438.html",
+    '楽天トラベル'
+  ),
+  "こんぴら温泉 つるや旅館 女将と若女将のおもてなしの宿＜香川県＞": sourcePhoto(
+    "kotohira-stay-h15481.jpg",
+    "こんぴら温泉 つるや旅館 女将と若女将のおもてなしの宿＜香川県＞の客室写真",
+    "こんぴら温泉 つるや旅館 女将と若女将のおもてなしの宿＜香川県＞ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/15481/15481.html",
+    '楽天トラベル'
+  ),
+  "こんぴら温泉 琴平グランドホテル 桜の抄": sourcePhoto(
+    "kotohira-stay-kotohira-grand.jpg",
+    "こんぴら温泉 琴平グランドホテル 桜の抄の客室写真",
+    "こんぴら温泉 琴平グランドホテル 桜の抄 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/5900/5900.html",
+    '楽天トラベル'
+  ),
+  "こんぴら温泉 琴平リバーサイドホテル": sourcePhoto(
+    "kotohira-stay-h752.jpg",
+    "こんぴら温泉 琴平リバーサイドホテルの客室写真",
+    "こんぴら温泉 琴平リバーサイドホテル room photo",
+    "https://travel.rakuten.co.jp/HOTEL/752/752.html",
+    '楽天トラベル'
+  ),
+  "こんぴら温泉 琴平花壇": sourcePhoto(
+    "kotohira-stay-kotohira-kadan.jpg",
+    "こんぴら温泉 琴平花壇の客室写真",
+    "こんぴら温泉 琴平花壇 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/7247/7247.html",
+    '楽天トラベル'
+  ),
+  "こんぴら温泉 貸切湯の宿 ことね": sourcePhoto(
+    "kotohira-stay-h141259.jpg",
+    "こんぴら温泉 貸切湯の宿 ことねの客室写真",
+    "こんぴら温泉 貸切湯の宿 ことね room photo",
+    "https://travel.rakuten.co.jp/HOTEL/141259/141259.html",
+    '楽天トラベル'
+  ),
+  "こんぴら温泉湯元八千代": sourcePhoto(
+    "kotohira-stay-h8572.jpg",
+    "こんぴら温泉湯元八千代の客室写真",
+    "こんぴら温泉湯元八千代 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/8572/8572.html",
+    '楽天トラベル'
+  ),
+  "こんぴら町家": sourcePhoto(
+    "kotohira-stay-h168682.jpg",
+    "こんぴら町家の客室写真",
+    "こんぴら町家 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/168682/168682.html",
+    '楽天トラベル'
+  ),
+  "こんぴら路地裏宿 みちくさ": sourcePhoto(
+    "kotohira-stay-h179061.jpg",
+    "こんぴら路地裏宿 みちくさの客室写真",
+    "こんぴら路地裏宿 みちくさ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/179061/179061.html",
+    '楽天トラベル'
+  ),
+  "つながるカフェ＆ゲストハウス ＺｏｕＺｕ": sourcePhoto(
+    "kotohira-stay-h167580.jpg",
+    "つながるカフェ＆ゲストハウス ＺｏｕＺｕの客室写真",
+    "つながるカフェ＆ゲストハウス ＺｏｕＺｕ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/167580/167580.html",
+    '楽天トラベル'
+  ),
+  "ゲストハウス ノスタルジー": sourcePhoto(
+    "kotohira-stay-h179229.jpg",
+    "ゲストハウス ノスタルジーの客室写真",
+    "ゲストハウス ノスタルジー room photo",
+    "https://travel.rakuten.co.jp/HOTEL/179229/179229.html",
+    '楽天トラベル'
+  ),
+  "ゲストハウス琴平 ＾": sourcePhoto(
+    "kotohira-stay-h168986.jpg",
+    "ゲストハウス琴平 ＾の客室写真",
+    "ゲストハウス琴平 ＾ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/168986/168986.html",
+    '楽天トラベル'
+  ),
+  "コトリ コワーキング＆ホステル琴平": sourcePhoto(
+    "kotohira-stay-h191925.jpg",
+    "コトリ コワーキング＆ホステル琴平の客室写真",
+    "コトリ コワーキング＆ホステル琴平 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/191925/191925.html",
+    '楽天トラベル'
+  ),
+  "サンウェルコトヒラ": sourcePhoto(
+    "kotohira-stay-h147508.jpg",
+    "サンウェルコトヒラの客室写真",
+    "サンウェルコトヒラ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/147508/147508.html",
+    '楽天トラベル'
+  ),
+  "ヴィラこんぴら ＾": sourcePhoto(
+    "kotohira-stay-h199482.jpg",
+    "ヴィラこんぴら ＾の客室写真",
+    "ヴィラこんぴら ＾ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/199482/199482.html",
+    '楽天トラベル'
+  ),
+  "寝て朝食の宿 時しらず": sourcePhoto(
+    "kotohira-stay-h147109.jpg",
+    "寝て朝食の宿 時しらずの客室写真",
+    "寝て朝食の宿 時しらず room photo",
+    "https://travel.rakuten.co.jp/HOTEL/147109/147109.html",
+    '楽天トラベル'
+  ),
+  "湯元こんぴら温泉華の湯 紅梅亭": sourcePhoto(
+    "kotohira-stay-h5901.jpg",
+    "湯元こんぴら温泉華の湯 紅梅亭の客室写真",
+    "湯元こんぴら温泉華の湯 紅梅亭 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/5901/5901.html",
+    '楽天トラベル'
+  ),
+  "琴ノ宿Ｃｈｉｚｕ １棟貸しのスイート 準天然温泉とサウナで贅沢なひとときを。 ＾": sourcePhoto(
+    "kotohira-stay-h193894.jpg",
+    "琴ノ宿Ｃｈｉｚｕ １棟貸しのスイート 準天然温泉とサウナで贅沢なひとときを。 ＾の客室写真",
+    "琴ノ宿Ｃｈｉｚｕ １棟貸しのスイート 準天然温泉とサウナで贅沢なひとときを。 ＾ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/193894/193894.html",
+    '楽天トラベル'
+  ),
+  "琴平パークホテル": sourcePhoto(
+    "kotohira-stay-h39930.jpg",
+    "琴平パークホテルの客室写真",
+    "琴平パークホテル room photo",
+    "https://travel.rakuten.co.jp/HOTEL/39930/39930.html",
+    '楽天トラベル'
+  ),
+  "虎屋別館": sourcePhoto(
+    "kotohira-stay-h192329.jpg",
+    "虎屋別館の客室写真",
+    "虎屋別館 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/192329/192329.html",
+    '楽天トラベル'
+  ),
+  "虎屋旅館": sourcePhoto(
+    "kotohira-stay-h188191.jpg",
+    "虎屋旅館の客室写真",
+    "虎屋旅館 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/188191/188191.html",
+    '楽天トラベル'
+  ),
+  "ＧＯＫＡＮ ＫＯＴＯＨＩＲＡ": sourcePhoto(
+    "kotohira-stay-h196367.jpg",
+    "ＧＯＫＡＮ ＫＯＴＯＨＩＲＡの客室写真",
+    "ＧＯＫＡＮ ＫＯＴＯＨＩＲＡ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/196367/196367.html",
+    '楽天トラベル'
+  ),
+  "Ｈｏｓｔｅｌ コトヒラクラスカ": sourcePhoto(
+    "kotohira-stay-h192293.jpg",
+    "Ｈｏｓｔｅｌ コトヒラクラスカの客室写真",
+    "Ｈｏｓｔｅｌ コトヒラクラスカ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/192293/192293.html",
+    '楽天トラベル'
+  ),
+  "ＫＯＴＯＶｉｌｌａ": sourcePhoto(
+    "kotohira-stay-h198320.jpg",
+    "ＫＯＴＯＶｉｌｌａの客室写真",
+    "ＫＯＴＯＶｉｌｌａ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/198320/198320.html",
+    '楽天トラベル'
+  ),
+  "Ｌｉｅｎ ｄｅ ｐｒｅｍｉｅｒ 讃": sourcePhoto(
+    "kotohira-stay-h197455.jpg",
+    "Ｌｉｅｎ ｄｅ ｐｒｅｍｉｅｒ 讃の客室写真",
+    "Ｌｉｅｎ ｄｅ ｐｒｅｍｉｅｒ 讃 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/197455/197455.html",
+    '楽天トラベル'
+  ),
+  "ＮＩＮＥ ＳＴＯＲＩＥＳ ＨＯＴＥＬ": sourcePhoto(
+    "kotohira-stay-h196103.jpg",
+    "ＮＩＮＥ ＳＴＯＲＩＥＳ ＨＯＴＥＬの客室写真",
+    "ＮＩＮＥ ＳＴＯＲＩＥＳ ＨＯＴＥＬ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/196103/196103.html",
+    '楽天トラベル'
+  ),
+  "ＵＤＯＮ ｎａ ＨＯＴＥＬ 琴平": sourcePhoto(
+    "kotohira-stay-h197370.jpg",
+    "ＵＤＯＮ ｎａ ＨＯＴＥＬ 琴平の客室写真",
+    "ＵＤＯＮ ｎａ ＨＯＴＥＬ 琴平 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/197370/197370.html",
+    '楽天トラベル'
+  ),
+  "ことひら温泉 御宿 敷島館 大浴場": sourcePhoto(
+    "kotohira-onsen-shikishima.jpg",
+    "ことひら温泉 御宿 敷島館 大浴場の写真",
+    "ことひら温泉 御宿 敷島館 大浴場 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/176626/gallery.html",
+    '楽天トラベル'
+  ),
+  "ことひら温泉 琴参閣 大浴場": sourcePhoto(
+    "kotohira-onsen-kotosankaku.jpg",
+    "ことひら温泉 琴参閣 大浴場の写真",
+    "ことひら温泉 琴参閣 大浴場 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/14833/gallery.html",
+    '楽天トラベル'
+  ),
+  "こんぴら温泉 つるや旅館 女将と若女将のおもてなしの宿＜香川県＞ 大浴場": sourcePhoto(
+    "kotohira-onsen-h15481.jpg",
+    "こんぴら温泉 つるや旅館 女将と若女将のおもてなしの宿＜香川県＞ 大浴場の写真",
+    "こんぴら温泉 つるや旅館 女将と若女将のおもてなしの宿＜香川県＞ 大浴場 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/15481/gallery.html",
+    '楽天トラベル'
+  ),
+  "こんぴら温泉 琴平グランドホテル 桜の抄 大浴場": sourcePhoto(
+    "kotohira-onsen-kotohira-grand.jpg",
+    "こんぴら温泉 琴平グランドホテル 桜の抄 大浴場の写真",
+    "こんぴら温泉 琴平グランドホテル 桜の抄 大浴場 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/5900/gallery.html",
+    '楽天トラベル'
+  ),
+  "こんぴら温泉 琴平リバーサイドホテル 大浴場": sourcePhoto(
+    "kotohira-onsen-h752.jpg",
+    "こんぴら温泉 琴平リバーサイドホテル 大浴場の写真",
+    "こんぴら温泉 琴平リバーサイドホテル 大浴場 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/752/gallery.html",
+    '楽天トラベル'
+  ),
+  "こんぴら温泉 琴平花壇 大浴場": sourcePhoto(
+    "kotohira-onsen-kotohira-kadan.jpg",
+    "こんぴら温泉 琴平花壇 大浴場の写真",
+    "こんぴら温泉 琴平花壇 大浴場 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/7247/gallery.html",
+    '楽天トラベル'
+  ),
+  "こんぴら温泉 貸切湯の宿 ことね 大浴場": sourcePhoto(
+    "kotohira-onsen-h141259.jpg",
+    "こんぴら温泉 貸切湯の宿 ことね 大浴場の写真",
+    "こんぴら温泉 貸切湯の宿 ことね 大浴場 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/141259/gallery.html",
+    '楽天トラベル'
+  ),
+  "こんぴら温泉湯元八千代 大浴場": sourcePhoto(
+    "kotohira-onsen-h8572.jpg",
+    "こんぴら温泉湯元八千代 大浴場の写真",
+    "こんぴら温泉湯元八千代 大浴場 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/8572/gallery.html",
+    '楽天トラベル'
+  ),
+  "サンウェルコトヒラ 大浴場": sourcePhoto(
+    "kotohira-onsen-h147508.jpg",
+    "サンウェルコトヒラ 大浴場の写真",
+    "サンウェルコトヒラ 大浴場 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/147508/gallery.html",
+    '楽天トラベル'
+  ),
+  "湯元こんぴら温泉華の湯 紅梅亭 大浴場": sourcePhoto(
+    "kotohira-onsen-h5901.jpg",
+    "湯元こんぴら温泉華の湯 紅梅亭 大浴場の写真",
+    "湯元こんぴら温泉華の湯 紅梅亭 大浴場 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/5901/gallery.html",
+    '楽天トラベル'
+  ),
+  "琴平パークホテル 大浴場": sourcePhoto(
+    "kotohira-onsen-h39930.jpg",
+    "琴平パークホテル 大浴場の写真",
+    "琴平パークホテル 大浴場 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/39930/gallery.html",
+    '楽天トラベル'
+  ),
+  "ＵＤＯＮ ｎａ ＨＯＴＥＬ 琴平 大浴場": sourcePhoto(
+    "kotohira-onsen-h197370.jpg",
+    "ＵＤＯＮ ｎａ ＨＯＴＥＬ 琴平 大浴場の写真",
+    "ＵＤＯＮ ｎａ ＨＯＴＥＬ 琴平 大浴場 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/197370/gallery.html",
+    '楽天トラベル'
+  ),
+
 };
 
 function sight(
@@ -290,8 +551,8 @@ function sight(
   address: string | null,
   phone: string | null,
   source_url: string,
-  lat: number,
-  lon: number
+  lat: number | null,
+  lon: number | null
 ): FacilityRow {
   return {
     id,
@@ -319,6 +580,16 @@ export const KOTOHIRA_FACILITIES: readonly FacilityRow[] = [
   sight('kotohira-sight-04', '鞘橋', '香川県仲多度郡琴平町', null, KOTOHIRA.sources.kanko, 34.1908, 133.8105),
   sight('kotohira-sight-05', '高灯篭', '香川県仲多度郡琴平町', null, KOTOHIRA.sources.kanko, 34.1925, 133.8130),
   sight('kotohira-sight-06', '旧金毘羅大芝居', '香川県仲多度郡琴平町1241', '0877-75-6716', KOTOHIRA.sources.kanamaruza, 34.1917, 133.8128),
-  sight('kotohira-onsen-01', 'ことひら温泉 琴参閣 大浴場', '香川県仲多度郡琴平町685-11', '0877-75-1000', 'https://www.kotosankaku.jp/hotspa/', 34.1900, 133.8110),
-  sight('kotohira-onsen-02', 'ことひら温泉 御宿 敷島館 大浴場', '香川県仲多度郡琴平町川西713-1', '0877-58-8001', 'https://dormy-hotels.com/resort/hotels/shikishimakan/hotspring/', 34.1892, 133.8118)
+  sight('kotohira-onsen-01', "ことひら温泉 御宿 敷島館 大浴場", "香川県仲多度郡琴平町川西713-1", null, "https://travel.rakuten.co.jp/HOTEL/176626/gallery.html", null, null),
+  sight('kotohira-onsen-02', "ことひら温泉 琴参閣 大浴場", "香川県仲多度郡琴平町685-11", null, "https://travel.rakuten.co.jp/HOTEL/14833/gallery.html", null, null),
+  sight('kotohira-onsen-03', "こんぴら温泉 つるや旅館 女将と若女将のおもてなしの宿＜香川県＞ 大浴場", "香川県仲多度郡琴平町620", null, "https://travel.rakuten.co.jp/HOTEL/15481/gallery.html", null, null),
+  sight('kotohira-onsen-04', "こんぴら温泉 琴平グランドホテル 桜の抄 大浴場", "香川県仲多度郡琴平町977-1", null, "https://travel.rakuten.co.jp/HOTEL/5900/gallery.html", null, null),
+  sight('kotohira-onsen-05', "こんぴら温泉 琴平リバーサイドホテル 大浴場", "香川県仲多度郡琴平町246-1", null, "https://travel.rakuten.co.jp/HOTEL/752/gallery.html", null, null),
+  sight('kotohira-onsen-06', "こんぴら温泉 琴平花壇 大浴場", "香川県仲多度郡琴平町１２４１番地５", null, "https://travel.rakuten.co.jp/HOTEL/7247/gallery.html", null, null),
+  sight('kotohira-onsen-07', "こんぴら温泉 貸切湯の宿 ことね 大浴場", "香川県仲多度郡琴平町685-21", null, "https://travel.rakuten.co.jp/HOTEL/141259/gallery.html", null, null),
+  sight('kotohira-onsen-08', "こんぴら温泉湯元八千代 大浴場", "香川県仲多度郡琴平町611", null, "https://travel.rakuten.co.jp/HOTEL/8572/gallery.html", null, null),
+  sight('kotohira-onsen-09', "サンウェルコトヒラ 大浴場", "香川県仲多度郡琴平町162-1", null, "https://travel.rakuten.co.jp/HOTEL/147508/gallery.html", null, null),
+  sight('kotohira-onsen-10', "湯元こんぴら温泉華の湯 紅梅亭 大浴場", "香川県仲多度郡琴平町556-1", null, "https://travel.rakuten.co.jp/HOTEL/5901/gallery.html", null, null),
+  sight('kotohira-onsen-11', "琴平パークホテル 大浴場", "香川県仲多度郡琴平町榎井706-7", null, "https://travel.rakuten.co.jp/HOTEL/39930/gallery.html", null, null),
+  sight('kotohira-onsen-12', "ＵＤＯＮ ｎａ ＨＯＴＥＬ 琴平 大浴場", "香川県仲多度郡琴平町字川西796番1", "0877-89-8333", "https://travel.rakuten.co.jp/HOTEL/197370/gallery.html", null, null),
 ];

@@ -15,7 +15,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const MARUGAME_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const MARUGAME_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const MARUGAME_TRAVEL_SOURCES = {
   home: 'https://www.city.marugame.lg.jp/',
@@ -26,7 +26,7 @@ export const MARUGAME_TRAVEL_SOURCES = {
   superHotel: 'https://travel.rakuten.co.jp/HOTEL/178679/178679.html'
 } as const;
 
-export const MARUGAME_ONSEN_PACK_NAMES = ['アパホテル〈丸亀駅前大通〉 大浴場', 'スーパーホテル丸亀駅前 天然温泉「京極の湯」 大浴場'] as const;
+export const MARUGAME_ONSEN_PACK_NAMES = ["アパホテル〈丸亀駅前大通〉 大浴場", "オークラホテル丸亀 大浴場", "スーパーホテル丸亀駅前 天然温泉「京極の湯」 大浴場", "ホテルルートイン丸亀 大浴場", "ＡＫＩＹＡｔｏ Ｍａｒｕｇａｍｅ Ｍｏｎｔｍａｒｔｒｅ 大浴場"] as const;
 export const MARUGAME_ONSEN_PACK_SET: ReadonlySet<string> = new Set(MARUGAME_ONSEN_PACK_NAMES);
 export const MARUGAME_EXPERIENCE_PACK_NAMES = ['うちわの港ミュージアム'] as const;
 export const MARUGAME_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(MARUGAME_EXPERIENCE_PACK_NAMES);
@@ -63,8 +63,25 @@ function stay(
 
 /** Ranked strongest Instagram-style room 出典 first. */
 export const MARUGAME_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('marugame-stay-01', 'アパホテル〈丸亀駅前大通〉', '香川県丸亀市大手町3-6-1', '0570-096-411', 'https://travel.rakuten.co.jp/HOTEL/80598/80598.html'),
-  stay('marugame-stay-02', 'スーパーホテル丸亀駅前　天然温泉「京極の湯」', '香川県丸亀市通町142-1', null, 'https://travel.rakuten.co.jp/HOTEL/178679/178679.html')
+  stay('marugame-stay-01', "アパホテル〈丸亀駅前大通〉", "香川県丸亀市大手町3-6-1", "0570-096-411", "https://travel.rakuten.co.jp/HOTEL/80598/80598.html"),
+  stay('marugame-stay-02', "エムズルーモス", "香川県丸亀市土居町1-15-8", "090-4334-5171", "https://travel.rakuten.co.jp/HOTEL/199264/199264.html"),
+  stay('marugame-stay-03', "オークラホテル丸亀", "香川県丸亀市富士見町3-3-50", "0877-23-2222", "https://travel.rakuten.co.jp/HOTEL/675/675.html"),
+  stay('marugame-stay-04', "ゲストハウスＡＫＡＨＩＧＥ丸亀 （泊Ｒｕｔｔｏ）", "香川県丸亀市通町27-1", "087-789-6800", "https://travel.rakuten.co.jp/HOTEL/191550/191550.html"),
+  stay('marugame-stay-05', "コンフォートイン善通寺インター", "香川県丸亀市原田町西三分一1587-1", "0877-58-2911", "https://travel.rakuten.co.jp/HOTEL/191700/191700.html"),
+  stay('marugame-stay-06', "スーパーホテル丸亀駅前　天然温泉「京極の湯」", "香川県丸亀市通町142-1", null, "https://travel.rakuten.co.jp/HOTEL/178679/178679.html"),
+  stay('marugame-stay-07', "ビジネスホテル 青山", "香川県丸亀市土器町東3-639", "0877-24-4800", "https://travel.rakuten.co.jp/HOTEL/104775/104775.html"),
+  stay('marugame-stay-08', "ホテルアルファーワン丸亀", "香川県丸亀市浜町10-1", null, "https://travel.rakuten.co.jp/HOTEL/15882/15882.html"),
+  stay('marugame-stay-09', "ホテルルートイン丸亀", "香川県丸亀市田村町二丁田512-1", "050-5576-7995", "https://travel.rakuten.co.jp/HOTEL/109518/109518.html"),
+  stay('marugame-stay-10', "ヴィラかめちぃ｜瀬戸内観光の拠点に ＾", "香川県丸亀市福島町11", "00-0000-0000", "https://travel.rakuten.co.jp/HOTEL/200920/200920.html"),
+  stay('marugame-stay-11', "丸亀ゲストハウス ウェルかめ", "香川県丸亀市浜町115-13", "080-1997-3983", "https://travel.rakuten.co.jp/HOTEL/151452/151452.html"),
+  stay('marugame-stay-12', "丸亀ゲストハウス ババノバ", "香川県丸亀市本町27-1", "080-6956-6056", "https://travel.rakuten.co.jp/HOTEL/192643/192643.html"),
+  stay('marugame-stay-13', "丸亀プラザホテル", "香川県丸亀市塩飽町50-3", null, "https://travel.rakuten.co.jp/HOTEL/12630/12630.html"),
+  stay('marugame-stay-14', "東横ＩＮＮ丸亀駅前", "香川県丸亀市浜町26-1", "0877-58-1045", "https://travel.rakuten.co.jp/HOTEL/183080/183080.html"),
+  stay('marugame-stay-15', "金倉苑／民泊", "香川県丸亀市金倉町443-2", "0877-32-6600", "https://travel.rakuten.co.jp/HOTEL/173438/173438.html"),
+  stay('marugame-stay-16', "ＡＫＩＹＡｔｏ Ｍａｒｕｇａｍｅ Ｍｏｎｔｍａｒｔｒｅ", "香川県丸亀市土居町1-10-2", "050-8892-0040", "https://travel.rakuten.co.jp/HOTEL/199283/199283.html"),
+  stay('marugame-stay-17', "Ｃｏｓｍｏ Ｓｔａｙ 丸亀駅前", "香川県丸亀市福島町30-1", "087-810-1155", "https://travel.rakuten.co.jp/HOTEL/197217/197217.html"),
+  stay('marugame-stay-18', "Ｒｅｎｔａｌ Ｒｏｏｍ９", "香川県丸亀市富屋町3-13Ｆ", "080-4031-8899", "https://travel.rakuten.co.jp/HOTEL/173174/173174.html"),
+  stay('marugame-stay-19', "ｍａｒｕｇａｍｅ ｓｔｏｐ ＾", "香川県丸亀市塩屋町4-4-12ｍａｒｕｇａｍｅｓｔｏｐ", null, "https://travel.rakuten.co.jp/HOTEL/185747/185747.html"),
 ];
 
 function dining(

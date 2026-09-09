@@ -968,18 +968,20 @@ export function MimaFacilityLookup({
             locale === 'ja' ? (
               <>
                 観光は出典写真がある施設のみ（栗林公園・玉藻公園／高松城・屋島・屋島寺・女木島）。
-                宿泊は楽天トラベル／ホテル公式の客室写真（{TAKAMATSU_TRAVEL_ACCESSED}）。
+                宿泊は楽天トラベルの客室写真（{TAKAMATSU_TRAVEL_ACCESSED}）。
                 飲食は食べログ高松市の公開店ページ（{TAKAMATSU_TRAVEL_ACCESSED}）。
+                温泉は楽天ギャラリー大浴場写真（客室キーと分離・stay≠onsen）。
                 体験は屋島ケーブルカー・四国村・イサム・ノグチ庭園美術館。
-                温泉・買物・商業は出典写真が無いため0件。香川県最初のLIVEハブ。
+                買物・商業は出典写真が無いため0件。香川県最初のLIVEハブ。
               </>
             ) : (
               <>
                 Tourism shows only facilities with a sourced photo (Ritsurin, Tamamo/Takamatsu Castle, Yashima, Yashima-ji, Megijima).
-                Lodging from Rakuten Travel / hotel-official room photos ({TAKAMATSU_TRAVEL_ACCESSED}).
+                Lodging from Rakuten Travel room photos ({TAKAMATSU_TRAVEL_ACCESSED}).
                 Dining from Tabelog Takamatsu City shop pages ({TAKAMATSU_TRAVEL_ACCESSED}).
+                Onsen from Rakuten gallery bath stills (distinct keys; stay≠onsen).
                 Experience: Yashima cable car, Shikoku Mura, Isamu Noguchi Garden Museum.
-                Onsen, shopping, and commerce stay at 0 without sourced photos. First LIVE Kagawa hub.
+                Shopping and commerce stay at 0 without sourced photos. First LIVE Kagawa hub.
               </>
             )
 
@@ -987,17 +989,17 @@ export function MimaFacilityLookup({
             locale === 'ja' ? (
               <>
                 観光は出典写真がある施設のみ（金刀比羅宮・旭社・表参道・鞘橋・高灯篭）。
-                宿泊は温泉旅館公式の客室写真（{KOTOHIRA_TRAVEL_ACCESSED}）。
+                宿泊は楽天トラベルの客室写真（{KOTOHIRA_TRAVEL_ACCESSED}）。
                 飲食は食べログ琴平町の公開店ページ（{KOTOHIRA_TRAVEL_ACCESSED}）。
-                温泉は琴参閣・敷島館の大浴場（公式風呂写真・客室キーと分離）。体験は旧金毘羅大芝居。
+                温泉は楽天ギャラリー大浴場写真（客室キーと分離・stay≠onsen）。体験は旧金毘羅大芝居。
                 買物・商業は出典写真が無いため0件。香川県2つ目のLIVEハブ。
               </>
             ) : (
               <>
                 Tourism shows only facilities with a sourced photo (Kotohira-gū, Asahi-sha, Omotesandō, Saya Bridge, Takatōrō).
-                Lodging from onsen-ryokan official room photos ({KOTOHIRA_TRAVEL_ACCESSED}).
+                Lodging from Rakuten Travel room photos ({KOTOHIRA_TRAVEL_ACCESSED}).
                 Dining from Tabelog Kotohira Town shop pages ({KOTOHIRA_TRAVEL_ACCESSED}).
-                Onsen: Kotosankaku and Shikishimakan bath stills (distinct from stay room keys). Experience: Kanamaruza.
+                Onsen from Rakuten gallery bath stills (distinct keys; stay≠onsen). Experience: Kanamaruza.
                 Shopping and commerce stay at 0 without sourced photos. Second LIVE Kagawa hub.
               </>
             )
@@ -1008,7 +1010,7 @@ export function MimaFacilityLookup({
                 観光は出典写真がある施設のみ（丸亀城・天守・石垣・中津万象園・飯野山・丸亀港）。
                 宿泊は楽天トラベルの客室写真（{MARUGAME_TRAVEL_ACCESSED}）。
                 飲食は食べログ丸亀市の公開店ページ（{MARUGAME_TRAVEL_ACCESSED}）。
-                温泉はアパホテル・スーパーホテルの大浴場（公式風呂写真・客室キーと分離）。体験はうちわの港ミュージアム。
+                温泉は楽天ギャラリー大浴場写真（客室キーと分離・stay≠onsen）。体験はうちわの港ミュージアム。
                 買物・商業は出典写真が無いため0件。香川県3つ目のLIVEハブ。
               </>
             ) : (
@@ -1016,7 +1018,7 @@ export function MimaFacilityLookup({
                 Tourism shows only facilities with a sourced photo (Marugame Castle keep/walls, Banshō-en, Mount Iino, Marugame Port).
                 Lodging from Rakuten Travel room photos ({MARUGAME_TRAVEL_ACCESSED}).
                 Dining from Tabelog Marugame City shop pages ({MARUGAME_TRAVEL_ACCESSED}).
-                Onsen: APA and Super Hotel bath stills (distinct from stay room keys). Experience: Uchiwa Museum.
+                Onsen from Rakuten gallery bath stills (distinct keys; stay≠onsen). Experience: Uchiwa no Minato Museum. Experience: Uchiwa Museum.
                 Shopping and commerce stay at 0 without sourced photos. Third LIVE Kagawa hub.
               </>
             )
