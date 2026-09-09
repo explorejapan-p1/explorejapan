@@ -35,12 +35,12 @@ export const SHODOSHIMA = {
     tabelogCity: 'https://tabelog.com/kagawa/C37324/rstLst/',
     kokumin: 'https://travel.rakuten.co.jp/HOTEL/28288/28288.html',
     bay: 'https://travel.rakuten.co.jp/HOTEL/44874/44874.html',
-    accessed: '2026-09-07'
+    accessed: '2026-09-09'
   }
 } as const;
 
-export const SHODOSHIMA_EXPECTED_ROW_COUNT = 9;
-export const SHODOSHIMA_EXPECTED_GEO_COUNT = 9;
+export const SHODOSHIMA_EXPECTED_ROW_COUNT = 15;
+export const SHODOSHIMA_EXPECTED_GEO_COUNT = 7;
 
 function wikiPhoto(
   file: string,
@@ -61,7 +61,7 @@ function wikiPhoto(
     author,
     authorUrl,
     taken,
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -82,7 +82,7 @@ function sourcePhoto(
     author,
     authorUrl: page,
     taken: '2026',
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -187,32 +187,172 @@ export const SHODOSHIMA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> =
     '寒霞渓ロープウェイ（小豆島町）',
     'Kankakei Ropeway, Shodoshima Town'
   ),
-  '国民宿舎 小豆島': sourcePhoto(
-    'shodoshima-stay-kokumin.jpg',
-    '国民宿舎 小豆島の客室写真（本館デラックスルーム）',
-    'Kokuminshukusha Shodoshima deluxe room photo',
-    'https://travel.rakuten.co.jp/HOTEL/28288/gallery.html',
+  "田舎の迎賓館 みさき": sourcePhoto(
+    "shodoshima-stay-h16761.jpg",
+    "田舎の迎賓館 みさきの客室写真",
+    "田舎の迎賓館 みさき room photo",
+    "https://travel.rakuten.co.jp/HOTEL/16761/16761.html",
     '楽天トラベル'
   ),
-  'ベイリゾートホテル小豆島': sourcePhoto(
-    'shodoshima-stay-bay.jpg',
-    'ベイリゾートホテル小豆島の客室写真（モダンツイン）',
-    'Bay Resort Hotel Shodoshima Modern Twin room photo',
-    'https://travel.rakuten.co.jp/HOTEL/44874/gallery.html',
+  "国民宿舎 小豆島": sourcePhoto(
+    "shodoshima-stay-kokumin.jpg",
+    "国民宿舎 小豆島の客室写真",
+    "国民宿舎 小豆島 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/28288/28288.html",
     '楽天トラベル'
   ),
-  '国民宿舎 小豆島 大浴場': sourcePhoto(
-    'shodoshima-onsen-kokumin.jpg',
-    '国民宿舎 小豆島の大浴場写真',
-    'Kokuminshukusha Shodoshima large bath photo',
-    'https://travel.rakuten.co.jp/HOTEL/28288/gallery.html',
+  "ベイリゾートホテル小豆島": sourcePhoto(
+    "shodoshima-stay-bay.jpg",
+    "ベイリゾートホテル小豆島の客室写真",
+    "ベイリゾートホテル小豆島 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/44874/44874.html",
     '楽天トラベル'
   ),
-  'ベイリゾートホテル小豆島 しょうどしま温泉': sourcePhoto(
-    'shodoshima-onsen-bay.jpg',
-    'ベイリゾートホテル小豆島のしょうどしま温泉・展望大浴場写真',
-    'Bay Resort Hotel Shodoshima Shodoshima Onsen panoramic bath photo',
-    'https://travel.rakuten.co.jp/HOTEL/44874/gallery.html',
+  "オリベックスうちのみ": sourcePhoto(
+    "shodoshima-stay-h55942.jpg",
+    "オリベックスうちのみの客室写真",
+    "オリベックスうちのみ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/55942/55942.html",
+    '楽天トラベル'
+  ),
+  "ぽんたの宿": sourcePhoto(
+    "shodoshima-stay-h134817.jpg",
+    "ぽんたの宿の客室写真",
+    "ぽんたの宿 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/134817/134817.html",
+    '楽天トラベル'
+  ),
+  "星ノソラ": sourcePhoto(
+    "shodoshima-stay-h168214.jpg",
+    "星ノソラの客室写真",
+    "星ノソラ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/168214/168214.html",
+    '楽天トラベル'
+  ),
+  "シータイガーアイランドイン小豆島": sourcePhoto(
+    "shodoshima-stay-h173181.jpg",
+    "シータイガーアイランドイン小豆島の客室写真",
+    "シータイガーアイランドイン小豆島 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/173181/173181.html",
+    '楽天トラベル'
+  ),
+  "小豆島 三都の郷": sourcePhoto(
+    "shodoshima-stay-h181487.jpg",
+    "小豆島 三都の郷の客室写真",
+    "小豆島 三都の郷 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/181487/181487.html",
+    '楽天トラベル'
+  ),
+  "おとまり忠左衛門 吉野": sourcePhoto(
+    "shodoshima-stay-h184876.jpg",
+    "おとまり忠左衛門 吉野の客室写真",
+    "おとまり忠左衛門 吉野 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/184876/184876.html",
+    '楽天トラベル'
+  ),
+  "島宿真里": sourcePhoto(
+    "shodoshima-stay-h188332.jpg",
+    "島宿真里の客室写真",
+    "島宿真里 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/188332/188332.html",
+    '楽天トラベル'
+  ),
+  "海音真里": sourcePhoto(
+    "shodoshima-stay-h188333.jpg",
+    "海音真里の客室写真",
+    "海音真里 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/188333/188333.html",
+    '楽天トラベル'
+  ),
+  "アクアホテル小豆島リゾート": sourcePhoto(
+    "shodoshima-stay-h192875.jpg",
+    "アクアホテル小豆島リゾートの客室写真",
+    "アクアホテル小豆島リゾート room photo",
+    "https://travel.rakuten.co.jp/HOTEL/192875/192875.html",
+    '楽天トラベル'
+  ),
+  "森口屋アートスクエア": sourcePhoto(
+    "shodoshima-stay-h196519.jpg",
+    "森口屋アートスクエアの客室写真",
+    "森口屋アートスクエア room photo",
+    "https://travel.rakuten.co.jp/HOTEL/196519/196519.html",
+    '楽天トラベル'
+  ),
+  "瀬戸の浜ｂｅａｃｈ＆ｒｅｓｏｒｔ": sourcePhoto(
+    "shodoshima-stay-h197141.jpg",
+    "瀬戸の浜ｂｅａｃｈ＆ｒｅｓｏｒｔの客室写真",
+    "瀬戸の浜ｂｅａｃｈ＆ｒｅｓｏｒｔ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/197141/197141.html",
+    '楽天トラベル'
+  ),
+  "お屋敷ステイ 幸": sourcePhoto(
+    "shodoshima-stay-h197986.jpg",
+    "お屋敷ステイ 幸の客室写真",
+    "お屋敷ステイ 幸 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/197986/197986.html",
+    '楽天トラベル'
+  ),
+  "ｅｄｉｔ ｘ ｓｅｖｅｎ 瀬戸内小豆島": sourcePhoto(
+    "shodoshima-stay-h198428.jpg",
+    "ｅｄｉｔ ｘ ｓｅｖｅｎ 瀬戸内小豆島の客室写真",
+    "ｅｄｉｔ ｘ ｓｅｖｅｎ 瀬戸内小豆島 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/198428/198428.html",
+    '楽天トラベル'
+  ),
+  "国民宿舎 小豆島 大浴場": sourcePhoto(
+    "shodoshima-onsen-kokumin.jpg",
+    "国民宿舎 小豆島 大浴場の写真",
+    "国民宿舎 小豆島 大浴場 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/28288/gallery.html",
+    '楽天トラベル'
+  ),
+  "ベイリゾートホテル小豆島 しょうどしま温泉": sourcePhoto(
+    "shodoshima-onsen-bay.jpg",
+    "ベイリゾートホテル小豆島 しょうどしま温泉の写真",
+    "ベイリゾートホテル小豆島 しょうどしま温泉 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/44874/gallery.html",
+    '楽天トラベル'
+  ),
+  "シータイガーアイランドイン小豆島 貸切風呂": sourcePhoto(
+    "shodoshima-onsen-h173181.jpg",
+    "シータイガーアイランドイン小豆島 貸切風呂の写真",
+    "シータイガーアイランドイン小豆島 貸切風呂 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/173181/gallery.html",
+    '楽天トラベル'
+  ),
+  "小豆島 三都の郷 貸切風呂": sourcePhoto(
+    "shodoshima-onsen-h181487.jpg",
+    "小豆島 三都の郷 貸切風呂の写真",
+    "小豆島 三都の郷 貸切風呂 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/181487/gallery.html",
+    '楽天トラベル'
+  ),
+  "島宿真里 里枝温泉": sourcePhoto(
+    "shodoshima-onsen-h188332.jpg",
+    "島宿真里 里枝温泉の写真",
+    "島宿真里 里枝温泉 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/188332/gallery.html",
+    '楽天トラベル'
+  ),
+  "海音真里 真里樂湯": sourcePhoto(
+    "shodoshima-onsen-h188333.jpg",
+    "海音真里 真里樂湯の写真",
+    "海音真里 真里樂湯 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/188333/gallery.html",
+    '楽天トラベル'
+  ),
+  "お屋敷ステイ 幸 半露天風呂": sourcePhoto(
+    "shodoshima-onsen-h197986.jpg",
+    "お屋敷ステイ 幸 半露天風呂の写真",
+    "お屋敷ステイ 幸 半露天風呂 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/197986/gallery.html",
+    '楽天トラベル'
+  ),
+  "ｅｄｉｔ ｘ ｓｅｖｅｎ 瀬戸内小豆島 サーマルスパ": sourcePhoto(
+    "shodoshima-onsen-h198428.jpg",
+    "ｅｄｉｔ ｘ ｓｅｖｅｎ 瀬戸内小豆島 サーマルスパの写真",
+    "ｅｄｉｔ ｘ ｓｅｖｅｎ 瀬戸内小豆島 サーマルスパ bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/198428/gallery.html",
     '楽天トラベル'
   ),
   '井上誠耕園 ファームズテーブル 忠左衛門': sourcePhoto('shodoshima-37009234-dish.jpg', '井上誠耕園 ファームズテーブル 忠左衛門の料理写真', '井上誠耕園 ファームズテーブル 忠左衛門 food photo', TABELOG_37009234, '食べログ'),
@@ -239,8 +379,8 @@ function sight(
   address: string | null,
   phone: string | null,
   source_url: string,
-  lat: number,
-  lon: number
+  lat: number | null,
+  lon: number | null
 ): FacilityRow {
   return {
     id,
@@ -269,6 +409,13 @@ export const SHODOSHIMA_FACILITIES: readonly FacilityRow[] = [
   sight('shodoshima-sight-05', '草壁港', '香川県小豆郡小豆島町草壁本町', null, 'https://www.town.shodoshima.lg.jp/kanko/index.html', 34.47920, 134.29941),
   sight('shodoshima-sight-06', '福田港', '香川県小豆郡小豆島町福田', null, 'https://www.town.shodoshima.lg.jp/kanko/index.html', 34.54346, 134.34463),
   sight('shodoshima-exp-01', '寒霞渓ロープウェイ', '香川県小豆郡小豆島町神懸通乙168', '0879-82-2171', 'https://www.kankakei.co.jp/', 34.51210, 134.29850),
-  sight('shodoshima-onsen-01', '国民宿舎 小豆島 大浴場', '香川県小豆郡小豆島町池田1500-4', '0879-75-1115', 'https://travel.rakuten.co.jp/HOTEL/28288/gallery.html', 34.47203, 134.23122),
-  sight('shodoshima-onsen-02', 'ベイリゾートホテル小豆島 しょうどしま温泉', '香川県小豆郡小豆島町古江乙16-3', '0879-82-5000', 'https://travel.rakuten.co.jp/HOTEL/44874/gallery.html', 34.46168, 134.31657)
+  sight('shodoshima-onsen-01', "国民宿舎 小豆島 大浴場", "香川県小豆郡小豆島町池田1500-4", null, "https://travel.rakuten.co.jp/HOTEL/28288/gallery.html", null, null),
+  sight('shodoshima-onsen-02', "ベイリゾートホテル小豆島 しょうどしま温泉", "香川県小豆郡小豆島町古江乙16-3", null, "https://travel.rakuten.co.jp/HOTEL/44874/gallery.html", null, null),
+  sight('shodoshima-onsen-03', "シータイガーアイランドイン小豆島 貸切風呂", "香川県小豆郡小豆島町吉田37-1", null, "https://travel.rakuten.co.jp/HOTEL/173181/gallery.html", null, null),
+  sight('shodoshima-onsen-04', "小豆島 三都の郷 貸切風呂", "香川県小豆郡小豆島町神浦甲671", null, "https://travel.rakuten.co.jp/HOTEL/181487/gallery.html", null, null),
+  sight('shodoshima-onsen-05', "島宿真里 里枝温泉", "香川県小豆郡小豆島町苗羽甲2011", null, "https://travel.rakuten.co.jp/HOTEL/188332/gallery.html", null, null),
+  sight('shodoshima-onsen-06', "海音真里 真里樂湯", "香川県小豆郡小豆島町堀越字東脇478", null, "https://travel.rakuten.co.jp/HOTEL/188333/gallery.html", null, null),
+  sight('shodoshima-onsen-07', "お屋敷ステイ 幸 半露天風呂", "香川県小豆郡小豆島町苗羽甲1476", null, "https://travel.rakuten.co.jp/HOTEL/197986/gallery.html", null, null),
+  sight('shodoshima-onsen-08', "ｅｄｉｔ ｘ ｓｅｖｅｎ 瀬戸内小豆島 サーマルスパ", "香川県小豆郡小豆島町安田字植松甲144-235", null, "https://travel.rakuten.co.jp/HOTEL/198428/gallery.html", null, null),
+
 ];

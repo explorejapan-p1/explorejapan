@@ -31,12 +31,12 @@ export const ZENTSUJI = {
     tabelogCity: 'https://tabelog.com/kagawa/C37204/rstLst/',
     grand: 'https://travel.rakuten.co.jp/HOTEL/15603/15603.html',
     tsurukichi: 'https://travel.rakuten.co.jp/HOTEL/180078/180078.html',
-    accessed: '2026-09-07'
+    accessed: '2026-09-09'
   }
 } as const;
 
-export const ZENTSUJI_EXPECTED_ROW_COUNT = 7;
-export const ZENTSUJI_EXPECTED_GEO_COUNT = 7;
+export const ZENTSUJI_EXPECTED_ROW_COUNT = 8;
+export const ZENTSUJI_EXPECTED_GEO_COUNT = 6;
 
 function wikiPhoto(
   file: string,
@@ -57,7 +57,7 @@ function wikiPhoto(
     author,
     authorUrl,
     taken,
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -78,7 +78,7 @@ function sourcePhoto(
     author,
     authorUrl: page,
     taken: '2026',
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -182,25 +182,46 @@ export const ZENTSUJI_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '善通寺市大通り商店街のアーケード（善通寺市）',
     'Zentsuji Odori Shopping Street arcade'
   ),
-  '善通寺グランドホテル': sourcePhoto(
-    'zentsuji-stay-grand.jpg',
-    '善通寺グランドホテルの客室写真（スーペリアツイン）',
-    'Zentsuji Grand Hotel Superior Twin room photo',
-    'https://travel.rakuten.co.jp/HOTEL/15603/15603.html',
+  "善通寺グランドホテル": sourcePhoto(
+    "zentsuji-stay-grand.jpg",
+    "善通寺グランドホテルの客室写真",
+    "善通寺グランドホテル room photo",
+    "https://travel.rakuten.co.jp/HOTEL/15603/15603.html",
     '楽天トラベル'
   ),
-  '遍路民宿 鶴吉': sourcePhoto(
-    'zentsuji-stay-tsurukichi.jpg',
-    '遍路民宿 鶴吉の客室写真（洋間）',
-    'Henro minshuku Tsurukichi Western-style room photo',
-    'https://travel.rakuten.co.jp/HOTEL/180078/gallery.html',
+  "ゲストハウス ミカサスカサ": sourcePhoto(
+    "zentsuji-stay-h135969.jpg",
+    "ゲストハウス ミカサスカサの客室写真",
+    "ゲストハウス ミカサスカサ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/135969/135969.html",
     '楽天トラベル'
   ),
-  '遍路民宿 鶴吉 露天風呂': sourcePhoto(
-    'zentsuji-onsen-tsurukichi.jpg',
-    '遍路民宿 鶴吉の露天風呂写真',
-    'Henro minshuku Tsurukichi open-air bath photo',
-    'https://travel.rakuten.co.jp/HOTEL/180078/gallery.html',
+  "お遍路宿 旅人の宿 風のくぐる": sourcePhoto(
+    "zentsuji-stay-h144468.jpg",
+    "お遍路宿 旅人の宿 風のくぐるの客室写真",
+    "お遍路宿 旅人の宿 風のくぐる room photo",
+    "https://travel.rakuten.co.jp/HOTEL/144468/144468.html",
+    '楽天トラベル'
+  ),
+  "遍路民宿 鶴吉": sourcePhoto(
+    "zentsuji-stay-tsurukichi.jpg",
+    "遍路民宿 鶴吉の客室写真",
+    "遍路民宿 鶴吉 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/180078/180078.html",
+    '楽天トラベル'
+  ),
+  "善通寺グランドホテル 大浴場": sourcePhoto(
+    "zentsuji-onsen-grand.jpg",
+    "善通寺グランドホテル 大浴場の写真",
+    "善通寺グランドホテル 大浴場 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/15603/gallery.html",
+    '楽天トラベル'
+  ),
+  "遍路民宿 鶴吉 露天風呂": sourcePhoto(
+    "zentsuji-onsen-tsurukichi.jpg",
+    "遍路民宿 鶴吉 露天風呂の写真",
+    "遍路民宿 鶴吉 露天風呂 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/180078/gallery.html",
     '楽天トラベル'
   ),
   '備長扇屋 善通寺店': sourcePhoto('zentsuji-37000990-dish.jpg', '備長扇屋 善通寺店の料理写真', '備長扇屋 善通寺店 food photo', TABELOG_37000990, '食べログ'),
@@ -227,8 +248,8 @@ function sight(
   address: string | null,
   phone: string | null,
   source_url: string,
-  lat: number,
-  lon: number
+  lat: number | null,
+  lon: number | null
 ): FacilityRow {
   return {
     id,
@@ -256,5 +277,7 @@ export const ZENTSUJI_FACILITIES: readonly FacilityRow[] = [
   sight('zentsuji-sight-04', '甲山寺', '香川県善通寺市稲木町甲1408', '0877-62-0567', 'https://www.kukainavi.com/', 34.23307, 133.76572),
   sight('zentsuji-sight-05', '善通寺駅', '香川県善通寺市上吉田町1-1-1', null, 'https://www.city.zentsuji.kagawa.jp/', 34.22999, 133.78922),
   sight('zentsuji-sight-06', '善通寺市美術館', '香川県善通寺市文京町2-1-3', '0877-63-6331', 'https://www.city.zentsuji.kagawa.jp/', 34.22730, 133.78705),
-  sight('zentsuji-onsen-01', '遍路民宿 鶴吉 露天風呂', '香川県善通寺市弘田町999-1', null, 'https://travel.rakuten.co.jp/HOTEL/180078/gallery.html', 34.23921, 133.75447)
+  sight('zentsuji-onsen-01', "善通寺グランドホテル 大浴場", "香川県善通寺市上吉田町8-8-5", null, "https://travel.rakuten.co.jp/HOTEL/15603/gallery.html", null, null),
+  sight('zentsuji-onsen-02', "遍路民宿 鶴吉 露天風呂", "香川県善通寺市弘田町999-1", null, "https://travel.rakuten.co.jp/HOTEL/180078/gallery.html", null, null),
+
 ];

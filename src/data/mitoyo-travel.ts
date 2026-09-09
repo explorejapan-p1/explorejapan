@@ -16,7 +16,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const MITOYO_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const MITOYO_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const MITOYO_TRAVEL_SOURCES = {
   home: 'https://www.city.mitoyo.lg.jp/',
@@ -28,7 +28,7 @@ export const MITOYO_TRAVEL_SOURCES = {
   mino: 'https://travel.rakuten.co.jp/HOTEL/136191/136191.html'
 } as const;
 
-export const MITOYO_ONSEN_PACK_NAMES = ['ル・ポール粟島 大浴場', 'ふれあいパークみの 露天風呂'] as const;
+export const MITOYO_ONSEN_PACK_NAMES = ["ふれあいパークみの 露天風呂", "ル・ポール粟島 大浴場"] as const;
 export const MITOYO_ONSEN_PACK_SET: ReadonlySet<string> = new Set(MITOYO_ONSEN_PACK_NAMES);
 export const MITOYO_EXPERIENCE_PACK_NAMES = ['道の駅たからだのさと'] as const;
 export const MITOYO_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(MITOYO_EXPERIENCE_PACK_NAMES);
@@ -67,8 +67,22 @@ function stay(
 }
 
 export const MITOYO_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('mitoyo-stay-01', 'ル・ポール粟島', '香川県三豊市詫間町粟島1418-2', '0875-84-7878', 'https://travel.rakuten.co.jp/HOTEL/140762/140762.html'),
-  stay('mitoyo-stay-02', '天然いやだに温泉大師の湯ふれあいパークみの', '香川県三豊市三野町大見乙74', '0875-72-2601', 'https://travel.rakuten.co.jp/HOTEL/136191/136191.html')
+  stay('mitoyo-stay-001', "天然いやだに温泉大師の湯ふれあいパークみの", "香川県三豊市三野町大見乙74", null, "https://travel.rakuten.co.jp/HOTEL/136191/136191.html"),
+  stay('mitoyo-stay-002', "ル・ポール粟島", "香川県三豊市詫間町粟島1418－2", null, "https://travel.rakuten.co.jp/HOTEL/140762/140762.html"),
+  stay('mitoyo-stay-003', "郷の宿陶山", "香川県三豊市詫間町詫間1355-1", null, "https://travel.rakuten.co.jp/HOTEL/144975/144975.html"),
+  stay('mitoyo-stay-004', "アミーコ", "香川県三豊市山本町神田3836-1", null, "https://travel.rakuten.co.jp/HOTEL/153505/153505.html"),
+  stay('mitoyo-stay-005', "燧‐Ｈｉｕｃｈｉ‐", "香川県三豊市詫間町大浜甲2144-4", null, "https://travel.rakuten.co.jp/HOTEL/153514/153514.html"),
+  stay('mitoyo-stay-006', "Ｂａｙ Ｗｉｎｄ", "香川県三豊市仁尾町家の浦630-2", null, "https://travel.rakuten.co.jp/HOTEL/168689/168689.html"),
+  stay('mitoyo-stay-007', "Ｌａ ｔｏｉｌｅ", "香川県三豊市高瀬町下麻272", null, "https://travel.rakuten.co.jp/HOTEL/171913/171913.html"),
+  stay('mitoyo-stay-008', "大森商店", "香川県三豊市詫間町大浜甲130-1", null, "https://travel.rakuten.co.jp/HOTEL/177857/177857.html"),
+  stay('mitoyo-stay-009', "瀬戸内うらしま邸／民泊", "香川県三豊市詫間町積1158-1", null, "https://travel.rakuten.co.jp/HOTEL/186506/186506.html"),
+  stay('mitoyo-stay-010', "縹茫（ひょうぼう）", "香川県三豊市詫間町積992", null, "https://travel.rakuten.co.jp/HOTEL/188435/188435.html"),
+  stay('mitoyo-stay-011', "積凪ＭＯＫＵＲＡＳＵ棟 （泊Ｒｕｔｔｏ）", "香川県三豊市詫間町積585-1", null, "https://travel.rakuten.co.jp/HOTEL/189086/189086.html"),
+  stay('mitoyo-stay-012', "オーシャンドッグリゾート父母ヶ浜", "香川県三豊市仁尾町仁尾曽保甲1208-1 ※みかんの里の北隣", null, "https://travel.rakuten.co.jp/HOTEL/191858/191858.html"),
+  stay('mitoyo-stay-013', "父母ヶ浜リゾートヴィラ ＳＥＮＪＡ", "香川県三豊市仁尾町乙4-5", null, "https://travel.rakuten.co.jp/HOTEL/192917/192917.html"),
+  stay('mitoyo-stay-014', "ＮＩＰＰＯＮＩＡ仁尾 水鏡の町", "香川県三豊市仁尾町仁尾丁312番地", null, "https://travel.rakuten.co.jp/HOTEL/197303/197303.html"),
+  stay('mitoyo-stay-015', "ＳＥＮＪＡ Ｄｅｗａｔａ", "香川県三豊市仁尾町仁尾乙213", null, "https://travel.rakuten.co.jp/HOTEL/198308/198308.html"),
+
 ];
 
 function dining(

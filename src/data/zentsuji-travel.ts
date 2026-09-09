@@ -15,7 +15,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const ZENTSUJI_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const ZENTSUJI_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const ZENTSUJI_TRAVEL_SOURCES = {
   home: 'https://www.city.zentsuji.kagawa.jp/',
@@ -27,7 +27,7 @@ export const ZENTSUJI_TRAVEL_SOURCES = {
   tsurukichi: 'https://travel.rakuten.co.jp/HOTEL/180078/180078.html'
 } as const;
 
-export const ZENTSUJI_ONSEN_PACK_NAMES = ['遍路民宿 鶴吉 露天風呂'] as const;
+export const ZENTSUJI_ONSEN_PACK_NAMES = ["善通寺グランドホテル 大浴場", "遍路民宿 鶴吉 露天風呂"] as const;
 export const ZENTSUJI_ONSEN_PACK_SET: ReadonlySet<string> = new Set(ZENTSUJI_ONSEN_PACK_NAMES);
 export const ZENTSUJI_EXPERIENCE_PACK_NAMES = [] as const;
 export const ZENTSUJI_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(ZENTSUJI_EXPERIENCE_PACK_NAMES);
@@ -65,8 +65,11 @@ function stay(
 
 /** Ranked strongest Instagram-style room 出典 first. */
 export const ZENTSUJI_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('zentsuji-stay-01', '善通寺グランドホテル', '香川県善通寺市上吉田町8-8-5', '0877-63-2111', 'https://travel.rakuten.co.jp/HOTEL/15603/15603.html'),
-  stay('zentsuji-stay-02', '遍路民宿 鶴吉', '香川県善通寺市弘田町999-1', null, 'https://travel.rakuten.co.jp/HOTEL/180078/180078.html')
+  stay('zentsuji-stay-001', "善通寺グランドホテル", "香川県善通寺市上吉田町8-8-5", null, "https://travel.rakuten.co.jp/HOTEL/15603/15603.html"),
+  stay('zentsuji-stay-002', "ゲストハウス ミカサスカサ", "香川県善通寺市金蔵寺町1230-1", null, "https://travel.rakuten.co.jp/HOTEL/135969/135969.html"),
+  stay('zentsuji-stay-003', "お遍路宿 旅人の宿 風のくぐる", "香川県善通寺市上吉田町306-1", null, "https://travel.rakuten.co.jp/HOTEL/144468/144468.html"),
+  stay('zentsuji-stay-004', "遍路民宿 鶴吉", "香川県善通寺市弘田町999-1", null, "https://travel.rakuten.co.jp/HOTEL/180078/180078.html"),
+
 ];
 
 function dining(

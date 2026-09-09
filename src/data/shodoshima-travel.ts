@@ -15,7 +15,7 @@ import {
   type TravelRow
 } from './mima-travel';
 
-export const SHODOSHIMA_TRAVEL_ACCESSED = '2026-09-07' as const;
+export const SHODOSHIMA_TRAVEL_ACCESSED = '2026-09-09' as const;
 
 export const SHODOSHIMA_TRAVEL_SOURCES = {
   home: 'https://www.town.shodoshima.lg.jp/',
@@ -30,7 +30,7 @@ export const SHODOSHIMA_TRAVEL_SOURCES = {
   bay: 'https://travel.rakuten.co.jp/HOTEL/44874/44874.html'
 } as const;
 
-export const SHODOSHIMA_ONSEN_PACK_NAMES = ['国民宿舎 小豆島 大浴場', 'ベイリゾートホテル小豆島 しょうどしま温泉'] as const;
+export const SHODOSHIMA_ONSEN_PACK_NAMES = ["国民宿舎 小豆島 大浴場", "ベイリゾートホテル小豆島 しょうどしま温泉", "シータイガーアイランドイン小豆島 貸切風呂", "小豆島 三都の郷 貸切風呂", "島宿真里 里枝温泉", "海音真里 真里樂湯", "お屋敷ステイ 幸 半露天風呂", "ｅｄｉｔ ｘ ｓｅｖｅｎ 瀬戸内小豆島 サーマルスパ"] as const;
 export const SHODOSHIMA_ONSEN_PACK_SET: ReadonlySet<string> = new Set(SHODOSHIMA_ONSEN_PACK_NAMES);
 export const SHODOSHIMA_EXPERIENCE_PACK_NAMES = ['寒霞渓ロープウェイ'] as const;
 export const SHODOSHIMA_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(SHODOSHIMA_EXPERIENCE_PACK_NAMES);
@@ -68,8 +68,23 @@ function stay(
 
 /** Ranked strongest Instagram-style room 出典 first. */
 export const SHODOSHIMA_TRAVEL_STAY: readonly TravelRow[] = [
-  stay('shodoshima-stay-01', '国民宿舎 小豆島', '香川県小豆郡小豆島町池田1500-4', '0879-75-1115', 'https://travel.rakuten.co.jp/HOTEL/28288/28288.html'),
-  stay('shodoshima-stay-02', 'ベイリゾートホテル小豆島', '香川県小豆郡小豆島町古江乙16-3', '0879-82-5000', 'https://travel.rakuten.co.jp/HOTEL/44874/44874.html')
+  stay('shodoshima-stay-001', "田舎の迎賓館 みさき", "香川県小豆郡小豆島町古江甲156-13", null, "https://travel.rakuten.co.jp/HOTEL/16761/16761.html"),
+  stay('shodoshima-stay-002', "国民宿舎 小豆島", "香川県小豆郡小豆島町池田1500-4", null, "https://travel.rakuten.co.jp/HOTEL/28288/28288.html"),
+  stay('shodoshima-stay-003', "ベイリゾートホテル小豆島", "香川県小豆郡小豆島町古江乙16-3", null, "https://travel.rakuten.co.jp/HOTEL/44874/44874.html"),
+  stay('shodoshima-stay-004', "オリベックスうちのみ", "香川県小豆郡小豆島町西村甲1941-1", null, "https://travel.rakuten.co.jp/HOTEL/55942/55942.html"),
+  stay('shodoshima-stay-005', "ぽんたの宿", "香川県小豆郡小豆島町池田880-2", null, "https://travel.rakuten.co.jp/HOTEL/134817/134817.html"),
+  stay('shodoshima-stay-006', "星ノソラ", "香川県小豆郡小豆島町坂手甲646", null, "https://travel.rakuten.co.jp/HOTEL/168214/168214.html"),
+  stay('shodoshima-stay-007', "シータイガーアイランドイン小豆島", "香川県小豆郡小豆島町吉田37-1", null, "https://travel.rakuten.co.jp/HOTEL/173181/173181.html"),
+  stay('shodoshima-stay-008', "小豆島 三都の郷", "香川県小豆郡小豆島町神浦甲671", null, "https://travel.rakuten.co.jp/HOTEL/181487/181487.html"),
+  stay('shodoshima-stay-009', "おとまり忠左衛門 吉野", "香川県小豆郡小豆島町吉野379-2", null, "https://travel.rakuten.co.jp/HOTEL/184876/184876.html"),
+  stay('shodoshima-stay-010', "島宿真里", "香川県小豆郡小豆島町苗羽甲2011", null, "https://travel.rakuten.co.jp/HOTEL/188332/188332.html"),
+  stay('shodoshima-stay-011', "海音真里", "香川県小豆郡小豆島町堀越字東脇478", null, "https://travel.rakuten.co.jp/HOTEL/188333/188333.html"),
+  stay('shodoshima-stay-012', "アクアホテル小豆島リゾート", "香川県小豆郡小豆島町吉田乙276-2", null, "https://travel.rakuten.co.jp/HOTEL/192875/192875.html"),
+  stay('shodoshima-stay-013', "森口屋アートスクエア", "香川県小豆郡小豆島町西村甲1741", null, "https://travel.rakuten.co.jp/HOTEL/196519/196519.html"),
+  stay('shodoshima-stay-014', "瀬戸の浜ｂｅａｃｈ＆ｒｅｓｏｒｔ", "香川県小豆郡小豆島町坂手甲1677", null, "https://travel.rakuten.co.jp/HOTEL/197141/197141.html"),
+  stay('shodoshima-stay-015', "お屋敷ステイ 幸", "香川県小豆郡小豆島町苗羽甲1476", null, "https://travel.rakuten.co.jp/HOTEL/197986/197986.html"),
+  stay('shodoshima-stay-016', "ｅｄｉｔ ｘ ｓｅｖｅｎ 瀬戸内小豆島", "香川県小豆郡小豆島町安田字植松甲144-235", null, "https://travel.rakuten.co.jp/HOTEL/198428/198428.html"),
+
 ];
 
 function dining(

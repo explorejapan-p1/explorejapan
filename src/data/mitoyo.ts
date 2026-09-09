@@ -32,12 +32,12 @@ export const MITOYO = {
     tabelogCity: 'https://tabelog.com/kagawa/C37208/rstLst/',
     lepaule: 'https://travel.rakuten.co.jp/HOTEL/140762/140762.html',
     mino: 'https://travel.rakuten.co.jp/HOTEL/136191/136191.html',
-    accessed: '2026-09-07'
+    accessed: '2026-09-09'
   }
 } as const;
 
 export const MITOYO_EXPECTED_ROW_COUNT = 11;
-export const MITOYO_EXPECTED_GEO_COUNT = 11;
+export const MITOYO_EXPECTED_GEO_COUNT = 9;
 
 function wikiPhoto(
   file: string,
@@ -58,7 +58,7 @@ function wikiPhoto(
     author,
     authorUrl,
     taken,
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -79,7 +79,7 @@ function sourcePhoto(
     author,
     authorUrl: page,
     taken: '2026',
-    accessed: '2026-09-07',
+    accessed: '2026-09-09',
     altJa,
     altEn
   };
@@ -206,32 +206,123 @@ export const MITOYO_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
     '道の駅たからだのさと（三豊市財田町）',
     'Michinoeki Takara-da-no-sato, Mitoyo'
   ),
-  'ル・ポール粟島': sourcePhoto(
-    'mitoyo-stay-lepaule.jpg',
-    'ル・ポール粟島のキャビン室内写真',
-    'Le Port Awashima cabin interior photo',
-    'https://travel.rakuten.co.jp/HOTEL/140762/gallery.html',
+  "天然いやだに温泉大師の湯ふれあいパークみの": sourcePhoto(
+    "mitoyo-stay-mino.jpg",
+    "天然いやだに温泉大師の湯ふれあいパークみのの客室写真",
+    "天然いやだに温泉大師の湯ふれあいパークみの room photo",
+    "https://travel.rakuten.co.jp/HOTEL/136191/136191.html",
     '楽天トラベル'
   ),
-  '天然いやだに温泉大師の湯ふれあいパークみの': sourcePhoto(
-    'mitoyo-stay-mino.jpg',
-    'ふれあいパークみのの宿泊室写真',
-    'Fureai Park Mino guest room photo',
-    'https://travel.rakuten.co.jp/HOTEL/136191/gallery.html',
+  "ル・ポール粟島": sourcePhoto(
+    "mitoyo-stay-lepaule.jpg",
+    "ル・ポール粟島の客室写真",
+    "ル・ポール粟島 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/140762/140762.html",
     '楽天トラベル'
   ),
-  'ル・ポール粟島 大浴場': sourcePhoto(
-    'mitoyo-onsen-lepaule.jpg',
-    'ル・ポール粟島の大浴場写真',
-    'Le Port Awashima large bath photo',
-    'https://travel.rakuten.co.jp/HOTEL/140762/gallery.html',
+  "郷の宿陶山": sourcePhoto(
+    "mitoyo-stay-h144975.jpg",
+    "郷の宿陶山の客室写真",
+    "郷の宿陶山 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/144975/144975.html",
     '楽天トラベル'
   ),
-  'ふれあいパークみの 露天風呂': sourcePhoto(
-    'mitoyo-onsen-mino.jpg',
-    'ふれあいパークみの男性露天風呂写真',
-    'Fureai Park Mino open-air bath photo',
-    'https://travel.rakuten.co.jp/HOTEL/136191/gallery.html',
+  "アミーコ": sourcePhoto(
+    "mitoyo-stay-h153505.jpg",
+    "アミーコの客室写真",
+    "アミーコ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/153505/153505.html",
+    '楽天トラベル'
+  ),
+  "燧‐Ｈｉｕｃｈｉ‐": sourcePhoto(
+    "mitoyo-stay-h153514.jpg",
+    "燧‐Ｈｉｕｃｈｉ‐の客室写真",
+    "燧‐Ｈｉｕｃｈｉ‐ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/153514/153514.html",
+    '楽天トラベル'
+  ),
+  "Ｂａｙ Ｗｉｎｄ": sourcePhoto(
+    "mitoyo-stay-h168689.jpg",
+    "Ｂａｙ Ｗｉｎｄの客室写真",
+    "Ｂａｙ Ｗｉｎｄ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/168689/168689.html",
+    '楽天トラベル'
+  ),
+  "Ｌａ ｔｏｉｌｅ": sourcePhoto(
+    "mitoyo-stay-h171913.jpg",
+    "Ｌａ ｔｏｉｌｅの客室写真",
+    "Ｌａ ｔｏｉｌｅ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/171913/171913.html",
+    '楽天トラベル'
+  ),
+  "大森商店": sourcePhoto(
+    "mitoyo-stay-h177857.jpg",
+    "大森商店の客室写真",
+    "大森商店 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/177857/177857.html",
+    '楽天トラベル'
+  ),
+  "瀬戸内うらしま邸／民泊": sourcePhoto(
+    "mitoyo-stay-h186506.jpg",
+    "瀬戸内うらしま邸／民泊の客室写真",
+    "瀬戸内うらしま邸／民泊 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/186506/186506.html",
+    '楽天トラベル'
+  ),
+  "縹茫（ひょうぼう）": sourcePhoto(
+    "mitoyo-stay-h188435.jpg",
+    "縹茫（ひょうぼう）の客室写真",
+    "縹茫（ひょうぼう） room photo",
+    "https://travel.rakuten.co.jp/HOTEL/188435/188435.html",
+    '楽天トラベル'
+  ),
+  "積凪ＭＯＫＵＲＡＳＵ棟 （泊Ｒｕｔｔｏ）": sourcePhoto(
+    "mitoyo-stay-h189086.jpg",
+    "積凪ＭＯＫＵＲＡＳＵ棟 （泊Ｒｕｔｔｏ）の客室写真",
+    "積凪ＭＯＫＵＲＡＳＵ棟 （泊Ｒｕｔｔｏ） room photo",
+    "https://travel.rakuten.co.jp/HOTEL/189086/189086.html",
+    '楽天トラベル'
+  ),
+  "オーシャンドッグリゾート父母ヶ浜": sourcePhoto(
+    "mitoyo-stay-h191858.jpg",
+    "オーシャンドッグリゾート父母ヶ浜の客室写真",
+    "オーシャンドッグリゾート父母ヶ浜 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/191858/191858.html",
+    '楽天トラベル'
+  ),
+  "父母ヶ浜リゾートヴィラ ＳＥＮＪＡ": sourcePhoto(
+    "mitoyo-stay-senja.jpg",
+    "父母ヶ浜リゾートヴィラ ＳＥＮＪＡの客室写真",
+    "父母ヶ浜リゾートヴィラ ＳＥＮＪＡ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/192917/192917.html",
+    '楽天トラベル'
+  ),
+  "ＮＩＰＰＯＮＩＡ仁尾 水鏡の町": sourcePhoto(
+    "mitoyo-stay-nipponia.jpg",
+    "ＮＩＰＰＯＮＩＡ仁尾 水鏡の町の客室写真",
+    "ＮＩＰＰＯＮＩＡ仁尾 水鏡の町 room photo",
+    "https://travel.rakuten.co.jp/HOTEL/197303/197303.html",
+    '楽天トラベル'
+  ),
+  "ＳＥＮＪＡ Ｄｅｗａｔａ": sourcePhoto(
+    "mitoyo-stay-senja-dewata.jpg",
+    "ＳＥＮＪＡ Ｄｅｗａｔａの客室写真",
+    "ＳＥＮＪＡ Ｄｅｗａｔａ room photo",
+    "https://travel.rakuten.co.jp/HOTEL/198308/198308.html",
+    '楽天トラベル'
+  ),
+  "ふれあいパークみの 露天風呂": sourcePhoto(
+    "mitoyo-onsen-mino.jpg",
+    "ふれあいパークみの 露天風呂の写真",
+    "ふれあいパークみの 露天風呂 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/136191/gallery.html",
+    '楽天トラベル'
+  ),
+  "ル・ポール粟島 大浴場": sourcePhoto(
+    "mitoyo-onsen-lepaule.jpg",
+    "ル・ポール粟島 大浴場の写真",
+    "ル・ポール粟島 大浴場 bath photo",
+    "https://travel.rakuten.co.jp/HOTEL/140762/gallery.html",
     '楽天トラベル'
   ),
   '瀬戸内料理 かど家': sourcePhoto('mitoyo-37013446-dish.jpg', '瀬戸内料理 かど家の料理写真', '瀬戸内料理 かど家 food photo', TABELOG_37013446, '食べログ'),
@@ -258,8 +349,8 @@ function sight(
   address: string | null,
   phone: string | null,
   source_url: string,
-  lat: number,
-  lon: number
+  lat: number | null,
+  lon: number | null
 ): FacilityRow {
   return {
     id,
@@ -290,6 +381,7 @@ export const MITOYO_FACILITIES: readonly FacilityRow[] = [
   sight('mitoyo-sight-07', '詫間駅', '香川県三豊市詫間町松崎', null, 'https://www.city.mitoyo.lg.jp/', 34.220825, 133.692736),
   sight('mitoyo-sight-08', '不動の滝', '香川県三豊市', null, 'https://www.mitoyo-kanko.com/', 34.150860, 133.672165),
   sight('mitoyo-experience-01', '道の駅たからだのさと', '香川県三豊市財田町財田中2586-2', '0875-67-2611', 'https://www.mitoyo-kanko.com/', 34.11017, 133.79794),
-  sight('mitoyo-onsen-01', 'ル・ポール粟島 大浴場', '香川県三豊市詫間町粟島1418-2', '0875-84-7878', 'https://travel.rakuten.co.jp/HOTEL/140762/gallery.html', 34.268953, 133.631634),
-  sight('mitoyo-onsen-02', 'ふれあいパークみの 露天風呂', '香川県三豊市三野町大見乙74', '0875-72-2601', 'https://travel.rakuten.co.jp/HOTEL/136191/gallery.html', 34.226482, 133.722538)
+  sight('mitoyo-onsen-01', "ふれあいパークみの 露天風呂", "香川県三豊市三野町大見乙74", null, "https://travel.rakuten.co.jp/HOTEL/136191/gallery.html", null, null),
+  sight('mitoyo-onsen-02', "ル・ポール粟島 大浴場", "香川県三豊市詫間町粟島1418－2", null, "https://travel.rakuten.co.jp/HOTEL/140762/gallery.html", null, null),
+
 ];
