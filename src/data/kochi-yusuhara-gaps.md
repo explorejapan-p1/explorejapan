@@ -30,3 +30,6 @@ Accessed 2026-09-08 (JST). LIVE tip `f7bb5ef42c`.
 
 ## CDN
 Cold CDN PASS after Pages lag (~70s post-push). Live `ja/kochi/yusuhara/` PASS: hero 梼原町, desc 梼原町。天狗高原、雲の上、マルシェ、食。, pills stay/dining/onsen/experience/sights = 1/3/0/0/5. Pref cover yusuhara-cover-tengu present. Ochi regression PASS.
+
+## TG610 densify (2026-09-09)
+- After: stay 1 / dining 7 / onsen 0 / experience 0 / sights 7. Exhaustion dossier `/workspace/p1/data/kochi-yusuhara-tg607.md`.

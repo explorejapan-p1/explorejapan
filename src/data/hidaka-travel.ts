@@ -1,13 +1,13 @@
 /**
  * Hidaka Village travel layer. No frozen pack.
- * Dining from 食べログ 日高村 (C39410) — honest 3 with 640 dish JPG (村の小さな台所 おきな・マンマ亭・龍鳳; skipped 村の駅・ゴルフ・パン屋・民宿・スーパー). Stay: 貸切宿 芽 Rakuten 洋室ベッド LARGE (gallery mediaInfo「洋室にはセミダブルのベッド2つ合わせ…」cat 00000001). Onsen: 0 (stay≠onsen — private hinoki bath in rental). Experience: 0.
+ * Dining: Tabelog C39410 (3 kept + えみ・とく乃屋・キッチンリトルシェフ・ミライエキッチン・大阪なにわ 道頓堀たこやき). Stay: 貸切宿 芽. Onsen: 0 (stay≠onsen). Experience: 0. Sights honest 5. TG610 densify.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {HIDAKA, HIDAKA_SIGHT_PHOTOS} from './hidaka';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const HIDAKA_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const HIDAKA_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const HIDAKA_TRAVEL_SOURCES = {
   home: 'https://www.vill.hidaka.kochi.jp/', hall: 'https://ja.wikipedia.org/wiki/%E6%97%A5%E9%AB%98%E6%9D%91',
   nagoshi: 'https://commons.wikimedia.org/wiki/File:%E5%90%8D%E8%B6%8A%E5%B1%8B%E6%B2%88%E4%B8%8B%E6%A9%8B_-_panoramio.jpg',
@@ -40,6 +40,11 @@ export const HIDAKA_TRAVEL_DINING: readonly TravelRow[] = [
   dining('hidaka-dining-01', '村の小さな台所 おきな', '高知県高岡郡日高村沖名5466', '090-2821-5290', 'https://tabelog.com/kochi/A3903/A390301/39008674/'),
   dining('hidaka-dining-02', 'マンマ亭', '高知県高岡郡日高村下分1706-1', '0889-24-7916', 'https://tabelog.com/kochi/A3903/A390302/39005243/'),
   dining('hidaka-dining-03', '龍鳳', '高知県高岡郡日高村本郷251-3', '0889-24-4112', 'https://tabelog.com/kochi/A3903/A390302/39002217/'),
+  dining('hidaka-dining-04', 'えみ', '高知県高岡郡日高村本郷159-5', '0889-24-4622', 'https://tabelog.com/kochi/A3903/A390302/39001948/'),
+  dining('hidaka-dining-05', 'とく乃屋', '高知県高岡郡日高村岩目地727-2', '0889-39-1936', 'https://tabelog.com/kochi/A3903/A390302/39008113/'),
+  dining('hidaka-dining-06', 'キッチンリトルシェフ', '高知県高岡郡日高村下分1886-3', null, 'https://tabelog.com/kochi/A3903/A390302/39008541/'),
+  dining('hidaka-dining-07', 'ミライエキッチン', '高知県高岡郡日高村本村226-1', '0889-39-1857', 'https://tabelog.com/kochi/A3901/A390103/39007978/'),
+  dining('hidaka-dining-08', '大阪なにわ 道頓堀たこやき', '高知県高岡郡日高村下分1886-3', '0889-24-4482', 'https://tabelog.com/kochi/A3903/A390302/39006317/'),
 ];
 
 export const HIDAKA_DINING_NAME_SET: ReadonlySet<string> = new Set(HIDAKA_TRAVEL_DINING.map((row) => row.name_ja));

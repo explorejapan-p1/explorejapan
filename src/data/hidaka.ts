@@ -1,7 +1,7 @@
 /**
  * Hidaka Village sourced facts. Do not invent population.
  * Hall / JIS from village HP / JIS X 0402 / Wikipedia 日高村 (accessed 2026-09-08). JIS 39410. Twenty-eighth Kochi hub after 高知市・南国市・香南市・香美市・いの町・安芸市・室戸市・土佐市・須崎市・四万十市・土佐清水市・宿毛市・黒潮町・東洋町・奈半利町・安田町・芸西村・北川村・馬路村・本山町・大豊町・土佐町・大川村・仁淀川町・中土佐町・越知町・梼原町 (佐川町・田野町 deferred: no attributable stay room still).
- * No frozen pack — photo-only tourism + Tabelog dining + Rakuten stay. Stay: 貸切宿 芽 洋室ベッド LARGE (gallery mediaInfo「洋室にはセミダブルのベッド2つ合わせ…」cat 00000001). Onsen: 0 (stay≠onsen — private hinoki bath in rental, not public onsen). Shop/commerce honest 0. Dining honest 3.
+ * No frozen pack — photo-only tourism + Tabelog dining + Rakuten stay. Stay: 貸切宿 芽. Dining densify TG610. Onsen: 0 (stay≠onsen). Shop/commerce honest 0. Sights honest 5 (Commons exhausted this pass).
  */
 import type {FacilityRow} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
@@ -29,7 +29,7 @@ export const HIDAKA = {
     nagoshi: 'https://commons.wikimedia.org/wiki/File:%E5%90%8D%E8%B6%8A%E5%B1%8B%E6%B2%88%E4%B8%8B%E6%A9%8B_-_panoramio.jpg',
     tabelogCity: 'https://tabelog.com/kochi/C39410/rstLst/',
     mei: 'https://travel.rakuten.co.jp/HOTEL/185303/185303.html',
-    accessed: '2026-09-08'
+    accessed: '2026-09-09'
   }
 } as const;
 
@@ -40,10 +40,10 @@ function wikiPhoto(
   file: string, commons: string, license: string, licenseUrl: string,
   author: string, authorUrl: string, taken: string, altJa: string, altEn: string
 ): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-08', altJa, altEn};
+  return {src:`/explorejapan/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-09', altJa, altEn};
 }
 function sourcePhoto(file: string, altJa: string, altEn: string, page: string, author: string): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-08', altJa, altEn};
+  return {src:`/explorejapan/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-09', altJa, altEn};
 }
 
 /** Cover: Nagoshi Chinka Bridge on Niyodo River. Hero title remains municipality name only. */
@@ -59,6 +59,12 @@ const TABELOG_39008674 = 'https://tabelog.com/kochi/A3903/A390301/39008674/';
 const TABELOG_39005243 = 'https://tabelog.com/kochi/A3903/A390302/39005243/';
 const TABELOG_39002217 = 'https://tabelog.com/kochi/A3903/A390302/39002217/';
 const RAKUTEN_185303 = 'https://travel.rakuten.co.jp/HOTEL/185303/185303.html';
+const TABELOG_39001948 = 'https://tabelog.com/kochi/A3903/A390302/39001948/';
+const TABELOG_39008113 = 'https://tabelog.com/kochi/A3903/A390302/39008113/';
+const TABELOG_39008541 = 'https://tabelog.com/kochi/A3903/A390302/39008541/';
+const TABELOG_39007978 = 'https://tabelog.com/kochi/A3901/A390103/39007978/';
+const TABELOG_39006317 = 'https://tabelog.com/kochi/A3903/A390302/39006317/';
+
 
 export const HIDAKA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   '名越屋沈下橋': HIDAKA_PLACE_PHOTO,
@@ -100,6 +106,11 @@ export const HIDAKA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   '村の小さな台所 おきな': sourcePhoto('hidaka-39008674-dish.jpg', '村の小さな台所 おきなの料理写真', 'Mura no Chiisana Daidokoro Okina food photo', TABELOG_39008674, '食べログ'),
   'マンマ亭': sourcePhoto('hidaka-39005243-dish.jpg', 'マンマ亭の料理写真', 'Mamma-tei food photo', TABELOG_39005243, '食べログ'),
   '龍鳳': sourcePhoto('hidaka-39002217-dish.jpg', '龍鳳の料理写真', 'Ryuho food photo', TABELOG_39002217, '食べログ'),
+  'えみ': sourcePhoto('hidaka-39001948-dish.jpg', 'えみの料理写真', 'Emi food photo', TABELOG_39001948, '食べログ'),
+  'とく乃屋': sourcePhoto('hidaka-39008113-dish.jpg', 'とく乃屋の料理写真', 'Tokunoya food photo', TABELOG_39008113, '食べログ'),
+  'キッチンリトルシェフ': sourcePhoto('hidaka-39008541-dish.jpg', 'キッチンリトルシェフの料理写真', 'Kitchen Little Chef food photo', TABELOG_39008541, '食べログ'),
+  'ミライエキッチン': sourcePhoto('hidaka-39007978-dish.jpg', 'ミライエキッチンの料理写真', 'Miraie Kitchen food photo', TABELOG_39007978, '食べログ'),
+  '大阪なにわ 道頓堀たこやき': sourcePhoto('hidaka-39006317-dish.jpg', '大阪なにわ 道頓堀たこやきの料理写真', 'Osaka Naniwa Dotombori Takoyaki food photo', TABELOG_39006317, '食べログ'),
 };
 
 function sight(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string, lat: number, lon: number): FacilityRow {

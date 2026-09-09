@@ -1,7 +1,7 @@
 /**
  * Yusuhara Town sourced facts. Do not invent population.
  * Hall / JIS from town HP / JIS X 0402 / Wikipedia 檮原町 (accessed 2026-09-08). JIS 39405. Twenty-seventh Kochi hub after 高知市・南国市・香南市・香美市・いの町・安芸市・室戸市・土佐市・須崎市・四万十市・土佐清水市・宿毛市・黒潮町・東洋町・奈半利町・安田町・芸西村・北川村・馬路村・本山町・大豊町・土佐町・大川村・仁淀川町・中土佐町・越知町 (佐川町・田野町 deferred: no attributable stay room still).
- * No frozen pack — photo-only tourism + Tabelog dining + Rakuten stay. Stay: 雲の上のホテル別館・マルシェユスハラ ツインルーム LARGE (gallery mediaInfo「ツインルーム」cat 00000001). Onsen: 0 (stay≠onsen — baths at 雲の上の温泉 separate). Shop/commerce honest 0. Dining honest 3.
+ * No frozen pack — photo-only tourism + Tabelog dining + Rakuten stay + Commons sights. Stay: 雲の上のホテル別館・マルシェユスハラ. Dining densify TG610. Onsen: 0 (stay≠onsen). Shop/commerce honest 0.
  */
 import type {FacilityRow} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
@@ -29,21 +29,21 @@ export const YUSUHARA = {
     tengu: 'https://commons.wikimedia.org/wiki/File:%E5%A4%A9%E7%8B%97%E9%AB%98%E5%8E%9F_-_panoramio.jpg',
     tabelogCity: 'https://tabelog.com/kochi/C39405/rstLst/',
     marche: 'https://travel.rakuten.co.jp/HOTEL/109505/109505.html',
-    accessed: '2026-09-08'
+    accessed: '2026-09-09'
   }
 } as const;
 
-export const YUSUHARA_EXPECTED_ROW_COUNT = 5;
-export const YUSUHARA_EXPECTED_GEO_COUNT = 5;
+export const YUSUHARA_EXPECTED_ROW_COUNT = 7;
+export const YUSUHARA_EXPECTED_GEO_COUNT = 7;
 
 function wikiPhoto(
   file: string, commons: string, license: string, licenseUrl: string,
   author: string, authorUrl: string, taken: string, altJa: string, altEn: string
 ): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-08', altJa, altEn};
+  return {src:`/explorejapan/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-09', altJa, altEn};
 }
 function sourcePhoto(file: string, altJa: string, altEn: string, page: string, author: string): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-08', altJa, altEn};
+  return {src:`/explorejapan/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-09', altJa, altEn};
 }
 
 /** Cover: Tengu Highland (Shikoku Karst). Hero title remains municipality name only. */
@@ -59,6 +59,13 @@ const TABELOG_39000002 = 'https://tabelog.com/kochi/A3903/A390303/39000002/';
 const TABELOG_39003589 = 'https://tabelog.com/kochi/A3903/A390303/39003589/';
 const TABELOG_39003612 = 'https://tabelog.com/kochi/A3903/A390303/39003612/';
 const RAKUTEN_109505 = 'https://travel.rakuten.co.jp/HOTEL/109505/109505.html';
+const TABELOG_39003533 = 'https://tabelog.com/kochi/A3903/A390303/39003533/';
+const TABELOG_39005883 = 'https://tabelog.com/kochi/A3903/A390303/39005883/';
+const TABELOG_39007517 = 'https://tabelog.com/kochi/A3903/A390303/39007517/';
+const TABELOG_39008199 = 'https://tabelog.com/kochi/A3903/A390303/39008199/';
+const COMMONS_SENMAIDA = 'https://commons.wikimedia.org/wiki/File:%E7%A5%9E%E5%9C%A8%E5%B1%85%E3%81%AE%E5%8D%83%E6%9E%9A%E7%94%B0.jpg';
+const COMMONS_OHNOHARA = 'https://commons.wikimedia.org/wiki/File:%E5%A4%A7%E9%87%8E%E3%83%B6%E5%8E%9F_2009-10-11_-_panoramio.jpg';
+
 
 export const YUSUHARA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   '天狗高原': YUSUHARA_PLACE_PHOTO,
@@ -100,6 +107,24 @@ export const YUSUHARA_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
   '雲の上のレストラン': sourcePhoto('yusuhara-39000002-dish.jpg', '雲の上のレストランの料理写真', 'Kumo-no-Ue Restaurant food photo', TABELOG_39000002, '食べログ'),
   'くさぶき': sourcePhoto('yusuhara-39003589-dish.jpg', 'くさぶきの料理写真', 'Kusabuki food photo', TABELOG_39003589, '食べログ'),
   'シェムワ': sourcePhoto('yusuhara-39003612-dish.jpg', 'シェムワの料理写真', 'Chez Moi food photo', TABELOG_39003612, '食べログ'),
+  'インディーズ': sourcePhoto('yusuhara-39003533-dish.jpg', 'インディーズの料理写真', 'Indies food photo', TABELOG_39003533, '食べログ'),
+  'チムジルバンレストラン鷹取': sourcePhoto('yusuhara-39005883-dish.jpg', 'チムジルバンレストラン鷹取の料理写真', 'Chimjilbang Restaurant Takatori food photo', TABELOG_39005883, '食べログ'),
+  'スパイス&カレー BONGA': sourcePhoto('yusuhara-39007517-dish.jpg', 'スパイス&カレー BONGAの料理写真', 'Spice & Curry BONGA food photo', TABELOG_39007517, '食べログ'),
+  'かざぐるま': sourcePhoto('yusuhara-39008199-dish.jpg', 'かざぐるまの料理写真', 'Kazaguruma food photo', TABELOG_39008199, '食べログ'),
+  '神在居の千枚田': wikiPhoto(
+    'yusuhara-senmaida.jpg',
+    COMMONS_SENMAIDA,
+    'CC0', 'https://creativecommons.org/publicdomain/zero/1.0/',
+    'Asset utilitist', 'https://commons.wikimedia.org/wiki/User:Asset_utilitist', '2026-05-23',
+    '神在居の千枚田', 'Kanzaiko Senmaida rice terraces'
+  ),
+  '大野ヶ原': wikiPhoto(
+    'yusuhara-ohnohara.jpg',
+    COMMONS_OHNOHARA,
+    'CC BY-SA 3.0', 'https://creativecommons.org/licenses/by-sa/3.0',
+    'kkyen', COMMONS_OHNOHARA, '2009-10-11',
+    '大野ヶ原', 'Ohnohara highland'
+  ),
 };
 
 function sight(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string, lat: number, lon: number): FacilityRow {
@@ -111,5 +136,7 @@ export const YUSUHARA_FACILITIES: readonly FacilityRow[] = [
   sight('yusuhara-sight-02', '梼原町役場', '高知県高岡郡梼原町梼原1444番地1', '0889-65-1111', 'https://commons.wikimedia.org/wiki/File:Yusuhara_town_office.jpg', 33.39219, 132.92703),
   sight('yusuhara-sight-03', 'まちの駅「ゆすはら」', '高知県高岡郡梼原町梼原1196-1', '0889-65-1288', 'https://commons.wikimedia.org/wiki/File:%E3%81%BE%E3%81%A1%E3%81%AE%E9%A7%85%E3%80%8C%E3%82%86%E3%81%99%E3%81%AF%E3%82%89%E3%80%8D.jpg', 33.3937323, 132.9267913),
   sight('yusuhara-sight-04', '韮ヶ峠', '高知県高岡郡梼原町', null, 'https://commons.wikimedia.org/wiki/File:%E9%9F%AE%E3%83%B6%E5%B3%A0%E3%81%A8%E9%BE%8D%E9%A6%AC%E5%83%8F.jpg', 33.47425, 132.83825),
-  sight('yusuhara-sight-05', 'いちやがもり', '高知県高岡郡梼原町', null, 'https://commons.wikimedia.org/wiki/File:%E3%81%84%E3%81%A1%E3%82%84%E3%81%8C%E3%82%82%E3%82%8A.jpg', 33.47222222222222, 132.86583333333334)
+  sight('yusuhara-sight-05', 'いちやがもり', '高知県高岡郡梼原町', null, 'https://commons.wikimedia.org/wiki/File:%E3%81%84%E3%81%A1%E3%82%84%E3%81%8C%E3%82%82%E3%82%8A.jpg', 33.47222222222222, 132.86583333333334),
+  sight('yusuhara-sight-06', '神在居の千枚田', '高知県高岡郡梼原町神在居', null, COMMONS_SENMAIDA, 33.3916271, 132.9531196),
+  sight('yusuhara-sight-07', '大野ヶ原', '高知県高岡郡梼原町', null, COMMONS_OHNOHARA, 33.472061, 132.866959)
 ];

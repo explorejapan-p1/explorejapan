@@ -1,13 +1,13 @@
 /**
  * Tsuno Town travel layer. No frozen pack.
- * Dining from 食べログ 津野町 (C39411) — honest 3 with 640 dish JPG (自由軒 葉山店・山賊茶屋・いまはし; skipped 民宿・温泉宿・道の駅食堂・コンビニ). Stay: 星ふるヴィレッジTENGU Rakuten ツインルーム LARGE (gallery mediaInfo「スタールーム。メゾネットの1階はツインルーム」cat 00000001). Onsen: 0 (stay≠onsen). Experience: 0.
+ * Dining: Tabelog C39411 (3 kept + 夕晩屋・吉村虎太郎邸・風車の駅・豚太郎 東津野店・いろは食堂). Stay: 星ふるヴィレッジTENGU. Onsen: 0 (stay≠onsen). Experience: 0. TG610 densify.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {TSUNO, TSUNO_SIGHT_PHOTOS} from './tsuno';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const TSUNO_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const TSUNO_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const TSUNO_TRAVEL_SOURCES = {
   home: 'https://town.kochi-tsuno.lg.jp/', hall: 'https://ja.wikipedia.org/wiki/%E6%B4%A5%E9%87%8E%E7%94%BA',
   karst: 'https://commons.wikimedia.org/wiki/File:Sikokukarusuto_20250724_2.jpg',
@@ -24,7 +24,7 @@ export const TSUNO_STAY_PACK_SET: ReadonlySet<string> = new Set(TSUNO_STAY_PACK_
 export const TSUNO_SHOPPING_PACK_NAMES = [] as const;
 export const TSUNO_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(TSUNO_SHOPPING_PACK_NAMES);
 
-export const TSUNO_SIGHT_PINS = ['四国カルスト','風の里公園','四万十川源流之碑','有宮神社','道の駅布施ヶ坂'] as const;
+export const TSUNO_SIGHT_PINS = ['四国カルスト','風の里公園','四万十川源流之碑','有宮神社','道の駅布施ヶ坂','不入山','森の巣箱'] as const;
 
 function stay(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: TSUNO_TRAVEL_ACCESSED};
@@ -40,6 +40,11 @@ export const TSUNO_TRAVEL_DINING: readonly TravelRow[] = [
   dining('tsuno-dining-01', '自由軒 葉山店', '高知県高岡郡津野町杉ノ川甲308-1', '0889-56-3744', 'https://tabelog.com/kochi/A3903/A390303/39004821/'),
   dining('tsuno-dining-02', '山賊茶屋', '高知県高岡郡津野町船戸新改1816-1', '0889-62-3319', 'https://tabelog.com/kochi/A3903/A390303/39005006/'),
   dining('tsuno-dining-03', 'いまはし', '高知県高岡郡津野町永野486-1', '0889-55-2288', 'https://tabelog.com/kochi/A3903/A390303/39004508/'),
+  dining('tsuno-dining-04', '夕晩屋', '高知県高岡郡津野町北川5172', '0889-62-2906', 'https://tabelog.com/kochi/A3903/A390303/39005801/'),
+  dining('tsuno-dining-05', '吉村虎太郎邸', '高知県高岡郡津野町芳生野甲1456-1', '0889-62-2601', 'https://tabelog.com/kochi/A3903/A390303/39009141/'),
+  dining('tsuno-dining-06', '風車の駅', '高知県高岡郡津野町永野553', '0889-55-2570', 'https://tabelog.com/kochi/A3903/A390303/39002986/'),
+  dining('tsuno-dining-07', '豚太郎 東津野店', '高知県高岡郡津野町力石', '0889-62-3360', 'https://tabelog.com/kochi/A3903/A390303/39006722/'),
+  dining('tsuno-dining-08', 'いろは食堂', '高知県高岡郡津野町赤木1151', '0889-56-3322', 'https://tabelog.com/kochi/A3903/A390303/39006947/'),
 ];
 
 export const TSUNO_DINING_NAME_SET: ReadonlySet<string> = new Set(TSUNO_TRAVEL_DINING.map((row) => row.name_ja));

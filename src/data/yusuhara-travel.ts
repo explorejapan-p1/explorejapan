@@ -1,13 +1,13 @@
 /**
  * Yusuhara Town travel layer. No frozen pack.
- * Dining from 食べログ 梼原町 (C39405) — honest 3 with 640 dish JPG (雲の上のレストラン・くさぶき・シェムワ; skipped 民宿・農家民宿・道の駅・スーパー). Stay: 雲の上のホテル別館・マルシェユスハラ Rakuten ツインルーム LARGE (gallery mediaInfo「ツインルーム」). Onsen: 0 (stay≠onsen — baths at 雲の上の温泉 separate). Experience: 0.
+ * Dining: Tabelog C39405 (3 kept + インディーズ・チムジルバンレストラン鷹取・スパイス&カレー BONGA・かざぐるま). Stay: 雲の上のホテル別館・マルシェユスハラ. Onsen: 0 (stay≠onsen). Experience: 0. TG610 densify.
  */
 import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 import {YUSUHARA, YUSUHARA_SIGHT_PHOTOS} from './yusuhara';
 import {INFRA_CATEGORIES, SIGHTS_CATEGORIES, type FilterId, type TravelRow} from './mima-travel';
 
-export const YUSUHARA_TRAVEL_ACCESSED = '2026-09-08' as const;
+export const YUSUHARA_TRAVEL_ACCESSED = '2026-09-09' as const;
 export const YUSUHARA_TRAVEL_SOURCES = {
   home: 'https://www.town.yusuhara.lg.jp/', hall: 'https://ja.wikipedia.org/wiki/%E6%AA%8B%E5%8E%9F%E7%94%BA',
   tengu: 'https://commons.wikimedia.org/wiki/File:%E5%A4%A9%E7%8B%97%E9%AB%98%E5%8E%9F_-_panoramio.jpg',
@@ -24,7 +24,7 @@ export const YUSUHARA_STAY_PACK_SET: ReadonlySet<string> = new Set(YUSUHARA_STAY
 export const YUSUHARA_SHOPPING_PACK_NAMES = [] as const;
 export const YUSUHARA_SHOPPING_PACK_SET: ReadonlySet<string> = new Set(YUSUHARA_SHOPPING_PACK_NAMES);
 
-export const YUSUHARA_SIGHT_PINS = ['天狗高原','梼原町役場','まちの駅「ゆすはら」','韮ヶ峠','いちやがもり'] as const;
+export const YUSUHARA_SIGHT_PINS = ['天狗高原','梼原町役場','まちの駅「ゆすはら」','韮ヶ峠','いちやがもり','神在居の千枚田','大野ヶ原'] as const;
 
 function stay(id: string, name_ja: string, address: string | null, phone: string | null, source_url: string): TravelRow {
   return {id, name_ja, category: 'stay', address, phone, source_url, accessed: YUSUHARA_TRAVEL_ACCESSED};
@@ -40,6 +40,10 @@ export const YUSUHARA_TRAVEL_DINING: readonly TravelRow[] = [
   dining('yusuhara-dining-01', '雲の上のレストラン', '高知県高岡郡梼原町太郎川3799-3 雲の上のホテル内', '0889-65-1100', 'https://tabelog.com/kochi/A3903/A390303/39000002/'),
   dining('yusuhara-dining-02', 'くさぶき', '高知県高岡郡梼原町太郎川799 太郎川公園内', '0889-65-0500', 'https://tabelog.com/kochi/A3903/A390303/39003589/'),
   dining('yusuhara-dining-03', 'シェムワ', '高知県高岡郡梼原町松原401', '0889-40-2727', 'https://tabelog.com/kochi/A3903/A390303/39003612/'),
+  dining('yusuhara-dining-04', 'インディーズ', '高知県高岡郡梼原町梼原1419', null, 'https://tabelog.com/kochi/A3903/A390303/39003533/'),
+  dining('yusuhara-dining-05', 'チムジルバンレストラン鷹取', '高知県高岡郡梼原町下折渡210', '0889-62-3308', 'https://tabelog.com/kochi/A3903/A390303/39005883/'),
+  dining('yusuhara-dining-06', 'スパイス&カレー BONGA', '高知県高岡郡梼原町梼原1345', '080-3952-1583', 'https://tabelog.com/kochi/A3903/A390303/39007517/'),
+  dining('yusuhara-dining-07', 'かざぐるま', '高知県高岡郡梼原町梼原1648', null, 'https://tabelog.com/kochi/A3903/A390303/39008199/'),
 ];
 
 export const YUSUHARA_DINING_NAME_SET: ReadonlySet<string> = new Set(YUSUHARA_TRAVEL_DINING.map((row) => row.name_ja));

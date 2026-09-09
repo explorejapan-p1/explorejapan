@@ -3105,11 +3105,11 @@ export const YUSUHARA_LOOKUP: LookupTown = {
   travelCommerce: YUSUHARA_TRAVEL_COMMERCE,
   travelAll: YUSUHARA_TRAVEL_ALL,
   coverageJa:
-    '梼原町（JIS 39405）観光5・宿泊1・飲食3・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県27つ目のLIVEハブ。',
+    '梼原町（JIS 39405）観光7・宿泊1・飲食7・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県27つ目のLIVEハブ。',
   coverageEn:
-    'Yusuhara Town (JIS 39405), 5 tourism + 1 stay + 3 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Twenty-seventh LIVE Kochi hub.',
-  mapLabelJa: '梼原町の出典座標5件',
-  mapLabelEn: '5 sourced coordinates in Yusuhara Town',
+    'Yusuhara Town (JIS 39405), 7 tourism + 1 stay + 7 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Twenty-seventh LIVE Kochi hub.',
+  mapLabelJa: '梼原町の出典座標7件',
+  mapLabelEn: '7 sourced coordinates in Yusuhara Town',
   mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons/OSM等出典座標5件（accessed 2026-09-09）。',
   mapCitePackEn: 'Points: 7 sourced coordinates for town/official facilities (accessed 2026-09-09).',
   licenseNoteJa: '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
@@ -3136,12 +3136,12 @@ export const HIDAKA_LOOKUP: LookupTown = {
   travelCommerce: HIDAKA_TRAVEL_COMMERCE,
   travelAll: HIDAKA_TRAVEL_ALL,
   coverageJa:
-    '日高村（JIS 39410）観光5・宿泊1・飲食3・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県28つ目のLIVEハブ。',
+    '日高村（JIS 39410）観光5・宿泊1・飲食8・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県28つ目のLIVEハブ。',
   coverageEn:
-    'Hidaka Village (JIS 39410), 5 tourism + 1 stay + 3 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Twenty-eighth LIVE Kochi hub.',
+    'Hidaka Village (JIS 39410), 5 tourism + 1 stay + 8 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Twenty-eighth LIVE Kochi hub.',
   mapLabelJa: '日高村の出典座標5件',
   mapLabelEn: '5 sourced coordinates in Hidaka Village',
-  mapCitePackJa: '点は村・公式ページ掲載施設のWikipedia/Commons/OSM等出典座標5件（accessed 2026-09-08）。',
+  mapCitePackJa: '点は村・公式ページ掲載施設のWikipedia/Commons/OSM等出典座標5件（accessed 2026-09-09）。',
   mapCitePackEn: 'Points: 7 sourced coordinates for village/official facilities (accessed 2026-09-09).',
   licenseNoteJa: '行のライセンスは村公式・公式観光サイト掲載情報。村ページの事実の転記で、オープンデータ許諾ではありません。',
   licenseNoteEn: 'Rows are village-site listings, facts from vill.hidaka.kochi.jp / sourced pages, not under Our Open Data.',
@@ -3297,11 +3297,11 @@ export const TSUNO_LOOKUP: LookupTown = {
   travelCommerce: TSUNO_TRAVEL_COMMERCE,
   travelAll: TSUNO_TRAVEL_ALL,
   coverageJa:
-    '津野町（JIS 39411）観光5・宿泊1・飲食3・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県29つ目のLIVEハブ。',
+    '津野町（JIS 39411）観光7・宿泊1・飲食8・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。高知県29つ目のLIVEハブ。',
   coverageEn:
-    'Tsuno Town (JIS 39411), 5 tourism + 1 stay + 3 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Twenty-ninth LIVE Kochi hub.',
-  mapLabelJa: '津野町の出典座標5件',
-  mapLabelEn: '5 sourced coordinates in Tsuno Town',
+    'Tsuno Town (JIS 39411), 7 tourism + 1 stay + 8 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Twenty-ninth LIVE Kochi hub.',
+  mapLabelJa: '津野町の出典座標7件',
+  mapLabelEn: '7 sourced coordinates in Tsuno Town',
   mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons/OSM等出典座標5件（accessed 2026-09-09）。',
   mapCitePackEn: 'Points: 7 sourced coordinates for town/official facilities (accessed 2026-09-09).',
   licenseNoteJa: '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
