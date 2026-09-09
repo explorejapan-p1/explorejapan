@@ -33,3 +33,4 @@ Cold CDN PASS after Pages lag (~70s post-push). Live `ja/kochi/yusuhara/` PASS: 
 
 ## TG610 densify (2026-09-09)
 - After: stay 1 / dining 7 / onsen 0 / experience 0 / sights 7. Exhaustion dossier `/workspace/p1/data/kochi-yusuhara-tg607.md`.
+- LIVE tip `743d00e0d41`.
