@@ -97,6 +97,7 @@ import {FUKUYAMA, FUKUYAMA_PLACE_PHOTO} from '@/data/fukuyama';
 import {FUCHU, FUCHU_PLACE_PHOTO} from '@/data/fuchu';
 import {MIYOSHISHI, MIYOSHISHI_PLACE_PHOTO} from '@/data/miyoshishi';
 import {SHOBARA, SHOBARA_PLACE_PHOTO} from '@/data/shobara';
+import {OTAKE, OTAKE_PLACE_PHOTO} from '@/data/otake';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -5136,6 +5137,57 @@ export function shobaraGraph(locale: AppLocale) {
           {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
           {'@type': 'ListItem', position: 2, name: isJa ? SHOBARA.prefectureJa : SHOBARA.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
           {'@type': 'ListItem', position: 3, name: isJa ? SHOBARA.nameJa : SHOBARA.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
+
+export function otakeGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'hiroshima/otake');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('otake');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? OTAKE.nameJa : OTAKE.nameEn,
+        alternateName: isJa ? OTAKE.nameEn : OTAKE.nameJa,
+        identifier: OTAKE.jis,
+        url,
+        image: photoAbs(OTAKE_PLACE_PHOTO),
+        sameAs: [OTAKE.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '小方1丁目11番1号' : '11-1 Ogata 1-chome',
+          addressLocality: isJa ? OTAKE.nameJa : OTAKE.nameEn,
+          addressRegion: isJa ? OTAKE.prefectureJa : OTAKE.prefectureEn,
+          postalCode: OTAKE.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? OTAKE.prefectureJa : OTAKE.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? OTAKE.nameJa : OTAKE.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? OTAKE.prefectureJa : OTAKE.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
+          {'@type': 'ListItem', position: 3, name: isJa ? OTAKE.nameJa : OTAKE.nameEn, item: url}
         ]
       },
       ...featured

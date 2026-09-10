@@ -780,6 +780,7 @@ import {FUKUYAMA, FUKUYAMA_PLACE_PHOTO, FUKUYAMA_FACILITIES, FUKUYAMA_EXPECTED_G
 import {FUCHU, FUCHU_PLACE_PHOTO, FUCHU_FACILITIES, FUCHU_EXPECTED_GEO_COUNT, FUCHU_EXPECTED_ROW_COUNT} from './fuchu';
 import {MIYOSHISHI, MIYOSHISHI_PLACE_PHOTO, MIYOSHISHI_FACILITIES, MIYOSHISHI_EXPECTED_GEO_COUNT, MIYOSHISHI_EXPECTED_ROW_COUNT} from './miyoshishi';
 import {SHOBARA, SHOBARA_PLACE_PHOTO, SHOBARA_FACILITIES, SHOBARA_EXPECTED_GEO_COUNT, SHOBARA_EXPECTED_ROW_COUNT} from './shobara';
+import {OTAKE, OTAKE_PLACE_PHOTO, OTAKE_FACILITIES, OTAKE_EXPECTED_GEO_COUNT, OTAKE_EXPECTED_ROW_COUNT} from './otake';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -997,6 +998,13 @@ import {
   SHOBARA_TRAVEL_COMMERCE,
   SHOBARA_TRAVEL_ALL
 } from './shobara-travel';
+import {
+  OTAKE_TRAVEL_DINING,
+  OTAKE_TRAVEL_STAY,
+  OTAKE_TRAVEL_SHOPPING,
+  OTAKE_TRAVEL_COMMERCE,
+  OTAKE_TRAVEL_ALL
+} from './otake-travel';
 
 
 
@@ -3923,6 +3931,39 @@ export const MIYOSHISHI_LOOKUP: LookupTown = {
 };
 
 
+
+export const OTAKE_LOOKUP: LookupTown = {
+  slug: 'otake',
+  prefectureSlug: 'hiroshima',
+  jis: OTAKE.jis,
+  nameJa: OTAKE.nameJa,
+  nameEn: OTAKE.nameEn,
+  heroPhoto: OTAKE_PLACE_PHOTO,
+  photoCiteJa: '写真は下瀬美術館。Totti、CC BY-SA 4.0。File:Shimose art museum 1.jpg。',
+  photoCiteEn: 'Photo: Simose Art Museum. Totti, CC BY-SA 4.0. File:Shimose art museum 1.jpg.',
+  rows: OTAKE_FACILITIES,
+  expectedGeo: OTAKE_EXPECTED_GEO_COUNT,
+  expectedRows: OTAKE_EXPECTED_ROW_COUNT,
+  travelDining: OTAKE_TRAVEL_DINING,
+  travelStay: OTAKE_TRAVEL_STAY,
+  travelShopping: OTAKE_TRAVEL_SHOPPING,
+  travelCommerce: OTAKE_TRAVEL_COMMERCE,
+  travelAll: OTAKE_TRAVEL_ALL,
+  coverageJa:
+    '大竹市（JIS 34211・広島県）。観光5・宿泊4・飲食16・温泉3（体験0）。買物・商業は未掲載。',
+  coverageEn:
+    'Otake City Hiroshima (JIS 34211), 5 tourism + 4 stay + 16 dining + 3 onsen + 0 experience with sourced photos. Shopping/commerce: 0.',
+  mapLabelJa: '大竹市の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Otake City (Hiroshima)',
+  mapCitePackJa: '点はOSM Nominatim出典座標5件（accessed 2026-09-10）。施設行は市公式・楽天・食べログ・Commons。',
+  mapCitePackEn: 'Points: 5 OSM Nominatim coordinates (accessed 2026-09-10). Facility rows from city site, Rakuten, Tabelog, Commons.',
+  licenseNoteJa: '行は市サイト掲載・city.otake.hiroshima.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are city-site listings, facts from city.otake.hiroshima.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
+
 export const SHOBARA_LOOKUP: LookupTown = {
   slug: 'shobara',
   prefectureSlug: 'hiroshima',
@@ -4645,7 +4686,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   fukuyama: FUKUYAMA_LOOKUP,
   fuchu: FUCHU_LOOKUP,
   miyoshishi: MIYOSHISHI_LOOKUP,
-  shobara: SHOBARA_LOOKUP
+  shobara: SHOBARA_LOOKUP,
+  otake: OTAKE_LOOKUP
 };
 
 
