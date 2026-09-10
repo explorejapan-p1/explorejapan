@@ -94,6 +94,7 @@ import {TAKEHARA, TAKEHARA_PLACE_PHOTO} from '@/data/takehara';
 import {MIHARASHI, MIHARASHI_PLACE_PHOTO} from '@/data/miharashi';
 import {ONOMICHI, ONOMICHI_PLACE_PHOTO} from '@/data/onomichi';
 import {FUKUYAMA, FUKUYAMA_PLACE_PHOTO} from '@/data/fukuyama';
+import {FUCHU, FUCHU_PLACE_PHOTO} from '@/data/fuchu';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -5034,6 +5035,58 @@ export function kureGraph(locale: AppLocale) {
 
 
 
+
+
+export function fuchuGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'hiroshima/fuchu');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('fuchu');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? FUCHU.nameJa : FUCHU.nameEn,
+        alternateName: isJa ? FUCHU.nameEn : FUCHU.nameJa,
+        identifier: FUCHU.jis,
+        url,
+        image: photoAbs(FUCHU_PLACE_PHOTO),
+        sameAs: [FUCHU.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '府川町315番地' : '315 Fukawa-cho',
+          addressLocality: isJa ? FUCHU.nameJa : FUCHU.nameEn,
+          addressRegion: isJa ? FUCHU.prefectureJa : FUCHU.prefectureEn,
+          postalCode: FUCHU.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? FUCHU.prefectureJa : FUCHU.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? FUCHU.nameJa : FUCHU.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? FUCHU.prefectureJa : FUCHU.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
+          {'@type': 'ListItem', position: 3, name: isJa ? FUCHU.nameJa : FUCHU.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
 
 export function fukuyamaGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'hiroshima/fukuyama');

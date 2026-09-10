@@ -777,6 +777,7 @@ import {TAKEHARA, TAKEHARA_PLACE_PHOTO, TAKEHARA_FACILITIES, TAKEHARA_EXPECTED_G
 import {MIHARASHI, MIHARASHI_PLACE_PHOTO, MIHARASHI_FACILITIES, MIHARASHI_EXPECTED_GEO_COUNT, MIHARASHI_EXPECTED_ROW_COUNT} from './miharashi';
 import {ONOMICHI, ONOMICHI_PLACE_PHOTO, ONOMICHI_FACILITIES, ONOMICHI_EXPECTED_GEO_COUNT, ONOMICHI_EXPECTED_ROW_COUNT} from './onomichi';
 import {FUKUYAMA, FUKUYAMA_PLACE_PHOTO, FUKUYAMA_FACILITIES, FUKUYAMA_EXPECTED_GEO_COUNT, FUKUYAMA_EXPECTED_ROW_COUNT} from './fukuyama';
+import {FUCHU, FUCHU_PLACE_PHOTO, FUCHU_FACILITIES, FUCHU_EXPECTED_GEO_COUNT, FUCHU_EXPECTED_ROW_COUNT} from './fuchu';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -973,6 +974,13 @@ import {
   FUKUYAMA_TRAVEL_COMMERCE,
   FUKUYAMA_TRAVEL_ALL
 } from './fukuyama-travel';
+import {
+  FUCHU_TRAVEL_DINING,
+  FUCHU_TRAVEL_STAY,
+  FUCHU_TRAVEL_SHOPPING,
+  FUCHU_TRAVEL_COMMERCE,
+  FUCHU_TRAVEL_ALL
+} from './fuchu-travel';
 
 
 
@@ -3835,6 +3843,39 @@ export const MIHARASHI_LOOKUP: LookupTown = {
 
 
 
+
+export const FUCHU_LOOKUP: LookupTown = {
+  slug: 'fuchu',
+  prefectureSlug: 'hiroshima',
+  jis: FUCHU.jis,
+  nameJa: FUCHU.nameJa,
+  nameEn: FUCHU.nameEn,
+  heroPhoto: FUCHU_PLACE_PHOTO,
+  photoCiteJa: '写真は府中公園。OS6、CC BY-SA 3.0。File:府中公園 Fuchu park - panoramio.jpg。',
+  photoCiteEn: 'Photo: Fuchu Park. OS6, CC BY-SA 3.0. File:府中公園 Fuchu park - panoramio.jpg.',
+  rows: FUCHU_FACILITIES,
+  expectedGeo: FUCHU_EXPECTED_GEO_COUNT,
+  expectedRows: FUCHU_EXPECTED_ROW_COUNT,
+  travelDining: FUCHU_TRAVEL_DINING,
+  travelStay: FUCHU_TRAVEL_STAY,
+  travelShopping: FUCHU_TRAVEL_SHOPPING,
+  travelCommerce: FUCHU_TRAVEL_COMMERCE,
+  travelAll: FUCHU_TRAVEL_ALL,
+  coverageJa:
+    '府中市（JIS 34208・広島県）。観光5・宿泊3・飲食16・温泉1（体験0）。買物・商業は未掲載。',
+  coverageEn:
+    'Fuchu City Hiroshima (JIS 34208), 5 tourism + 3 stay + 16 dining + 1 onsen + 0 experience with sourced photos. Shopping/commerce: 0 unpublished.',
+  mapLabelJa: '府中市の出典座標4件',
+  mapLabelEn: '4 sourced coordinates in Fuchu City (Hiroshima)',
+  mapCitePackJa: '点はOSM Nominatim出典座標4件（accessed 2026-09-10；矢野岩海は座標未確定でnull）。施設行は市公式・楽天・食べログ・Commons。',
+  mapCitePackEn: 'Points: 4 OSM Nominatim coordinates (accessed 2026-09-10; Yano Gankai lat/lon null). Facility rows from city site, Rakuten, Tabelog, Commons.',
+  licenseNoteJa: '行は市サイト掲載・city.fuchu.hiroshima.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are city-site listings, facts from city.fuchu.hiroshima.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
+
 export const FUKUYAMA_LOOKUP: LookupTown = {
   slug: 'fukuyama',
   prefectureSlug: 'hiroshima',
@@ -4519,7 +4560,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   takehara: TAKEHARA_LOOKUP,
   miharashi: MIHARASHI_LOOKUP,
   onomichi: ONOMICHI_LOOKUP,
-  fukuyama: FUKUYAMA_LOOKUP
+  fukuyama: FUKUYAMA_LOOKUP,
+  fuchu: FUCHU_LOOKUP
 };
 
 

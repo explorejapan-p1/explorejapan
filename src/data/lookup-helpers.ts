@@ -1095,6 +1095,17 @@ import {
   fukuyamaTopChipForRow,
   resolveFukuyamaFilter
 } from './fukuyama-travel';
+import {
+  isFuchuOnsenPackRow,
+  isFuchuExperiencePackRow,
+  isFuchuStayPackRow,
+  fuchuPackRowMatchesFilter,
+  rankFuchuSeeRows,
+  fuchuSightPhoto,
+  fuchuSourcedHook,
+  fuchuTopChipForRow,
+  resolveFuchuFilter
+} from './fuchu-travel';
 
 
 
@@ -2025,6 +2036,19 @@ const ONOMICHI_HELPERS: LookupHelpers = {
   resolveFilter: resolveOnomichiFilter
 };
 
+
+const FUCHU_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isFuchuOnsenPackRow,
+  isExperiencePackRow: isFuchuExperiencePackRow,
+  isStayPackRow: isFuchuStayPackRow,
+  packRowMatchesFilter: fuchuPackRowMatchesFilter,
+  rankSeeRows: rankFuchuSeeRows,
+  sightPhoto: fuchuSightPhoto,
+  sourcedHook: fuchuSourcedHook,
+  topChipForRow: fuchuTopChipForRow,
+  resolveFilter: resolveFuchuFilter
+};
+
 const FUKUYAMA_HELPERS: LookupHelpers = {
   isOnsenPackRow: isFukuyamaOnsenPackRow,
   isExperiencePackRow: isFukuyamaExperiencePackRow,
@@ -2518,5 +2542,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'miharashi') return MIHARASHI_HELPERS;
   if (slug === 'onomichi') return ONOMICHI_HELPERS;
   if (slug === 'fukuyama') return FUKUYAMA_HELPERS;
+  if (slug === 'fuchu') return FUCHU_HELPERS;
   return MIMA_HELPERS;
 }
