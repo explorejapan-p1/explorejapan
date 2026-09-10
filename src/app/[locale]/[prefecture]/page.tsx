@@ -85,6 +85,7 @@ import {MATSUNO_PLACE_PHOTO} from '@/data/matsuno';
 import {KIHOKU_PLACE_PHOTO} from '@/data/kihoku';
 import {AINAN_PLACE_PHOTO} from '@/data/ainan';
 import {HIROSHIMA_PLACE_PHOTO} from '@/data/hiroshima';
+import {OKAYAMA_PLACE_PHOTO} from '@/data/okayama';
 import {KURE_PLACE_PHOTO} from '@/data/kure';
 import {TAKEHARA_PLACE_PHOTO} from '@/data/takehara';
 import {MIHARASHI_PLACE_PHOTO} from '@/data/miharashi';
@@ -120,6 +121,7 @@ import {KAGAWA_MUNICIPALITIES} from '@/data/kagawa-municipalities';
 import {KOCHI_MUNICIPALITIES} from '@/data/kochi-municipalities';
 import {EHIME_MUNICIPALITIES} from '@/data/ehime-municipalities';
 import {HIROSHIMA_MUNICIPALITIES} from '@/data/hiroshima-municipalities';
+import {OKAYAMA_MUNICIPALITIES} from '@/data/okayama-municipalities';
 import {TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {PREFECTURES, PREFECTURE_BY_SLUG} from '@/data/prefectures';
 import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
@@ -248,6 +250,7 @@ const MUNI_CARD_PHOTO: Record<string, MimaPlacePhoto> = {
   osakikamijima: OSAKIKAMIJIMA_PLACE_PHOTO,
   sera: SERA_PLACE_PHOTO,
   jinseikogen: JINSEIKOGEN_PLACE_PHOTO,
+  okayama: OKAYAMA_PLACE_PHOTO,
 };
 
 type Props = {params: Promise<{locale: string; prefecture: string}>};
@@ -262,7 +265,7 @@ export async function generateMetadata({params}: Props) {
   if (!pref) return {};
   const loc = (locale === 'en' ? 'en' : 'ja') as AppLocale;
   const name = loc === 'ja' ? pref.nameJa : pref.nameEn;
-  const live = pref.slug === 'tokushima' || pref.slug === 'kagawa' || pref.slug === 'kochi' || pref.slug === 'ehime' || pref.slug === 'hiroshima';
+  const live = pref.slug === 'tokushima' || pref.slug === 'kagawa' || pref.slug === 'kochi' || pref.slug === 'ehime' || pref.slug === 'hiroshima' || pref.slug === 'okayama';
   return shareMetadata({
     locale: loc,
     rest: pref.slug,
@@ -287,10 +290,14 @@ export async function generateMetadata({params}: Props) {
           ? loc === 'ja'
             ? '広島県の市町村案内。'
             : 'Municipalities in Hiroshima.'
+        : pref.slug === 'okayama'
+          ? loc === 'ja'
+            ? '岡山県の市町村案内。'
+            : 'Municipalities in Okayama.'
         : loc === 'ja'
           ? 'この県の市町村ページは準備中です。'
           : 'This prefecture layer is not wired yet.',
-    image: pref.slug === 'hiroshima' ? HIROSHIMA_PLACE_PHOTO : pref.slug === 'ehime' ? MATSUYAMA_PLACE_PHOTO : pref.slug === 'kochi' ? KOCHI_PLACE_PHOTO : pref.slug === 'kagawa' ? TAKAMATSU_PLACE_PHOTO : MIMA_PLACE_PHOTO,
+    image: pref.slug === 'okayama' ? OKAYAMA_PLACE_PHOTO : pref.slug === 'hiroshima' ? HIROSHIMA_PLACE_PHOTO : pref.slug === 'ehime' ? MATSUYAMA_PLACE_PHOTO : pref.slug === 'kochi' ? KOCHI_PLACE_PHOTO : pref.slug === 'kagawa' ? TAKAMATSU_PLACE_PHOTO : MIMA_PLACE_PHOTO,
     index: live
   });
 }
@@ -314,10 +321,10 @@ export default async function PrefecturePage({params}: Props) {
         <span>{name}</span>
       </nav>
       <h1>{name}</h1>
-      {pref.slug === 'tokushima' || pref.slug === 'kagawa' || pref.slug === 'kochi' || pref.slug === 'ehime' || pref.slug === 'hiroshima' ? (
+      {pref.slug === 'tokushima' || pref.slug === 'kagawa' || pref.slug === 'kochi' || pref.slug === 'ehime' || pref.slug === 'hiroshima' || pref.slug === 'okayama' ? (
         <>
           <ul className="muni-cards">
-            {(pref.slug === 'tokushima' ? TOKUSHIMA_MUNICIPALITIES : pref.slug === 'kagawa' ? KAGAWA_MUNICIPALITIES : pref.slug === 'ehime' ? EHIME_MUNICIPALITIES : pref.slug === 'hiroshima' ? HIROSHIMA_MUNICIPALITIES : KOCHI_MUNICIPALITIES).map((m) => {
+            {(pref.slug === 'tokushima' ? TOKUSHIMA_MUNICIPALITIES : pref.slug === 'kagawa' ? KAGAWA_MUNICIPALITIES : pref.slug === 'ehime' ? EHIME_MUNICIPALITIES : pref.slug === 'hiroshima' ? HIROSHIMA_MUNICIPALITIES : pref.slug === 'okayama' ? OKAYAMA_MUNICIPALITIES : KOCHI_MUNICIPALITIES).map((m) => {
               const live = m.status === 'ready';
               const photo: MimaPlacePhoto =
                 MUNI_CARD_PHOTO[m.slug] ?? MIMA_PLACE_PHOTO;
@@ -359,6 +366,8 @@ export default async function PrefecturePage({params}: Props) {
             <Link href="/kochi">{isJa ? '高知' : 'Kochi'}</Link>
             {' · '}
             <Link href="/hiroshima">{isJa ? '広島' : 'Hiroshima'}</Link>
+            {' · '}
+            <Link href="/okayama">{isJa ? '岡山' : 'Okayama'}</Link>
             {' · '}
             <Link href="/">{t('back')}</Link>
           </p>

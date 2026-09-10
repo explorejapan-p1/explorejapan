@@ -794,6 +794,7 @@ import {KITAHIROSHIMA, KITAHIROSHIMA_PLACE_PHOTO, KITAHIROSHIMA_FACILITIES, KITA
 import {OSAKIKAMIJIMA, OSAKIKAMIJIMA_PLACE_PHOTO, OSAKIKAMIJIMA_FACILITIES, OSAKIKAMIJIMA_EXPECTED_GEO_COUNT, OSAKIKAMIJIMA_EXPECTED_ROW_COUNT} from './osakikamijima';
 import {SERA, SERA_PLACE_PHOTO, SERA_FACILITIES, SERA_EXPECTED_GEO_COUNT, SERA_EXPECTED_ROW_COUNT} from './sera';
 import {JINSEIKOGEN, JINSEIKOGEN_PLACE_PHOTO, JINSEIKOGEN_FACILITIES, JINSEIKOGEN_EXPECTED_GEO_COUNT, JINSEIKOGEN_EXPECTED_ROW_COUNT} from './jinseikogen';
+import {OKAYAMA, OKAYAMA_PLACE_PHOTO, OKAYAMA_FACILITIES, OKAYAMA_EXPECTED_GEO_COUNT, OKAYAMA_EXPECTED_ROW_COUNT} from './okayama';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -1109,6 +1110,13 @@ import {
   JINSEIKOGEN_TRAVEL_COMMERCE,
   JINSEIKOGEN_TRAVEL_ALL
 } from './jinseikogen-travel';
+import {
+  OKAYAMA_TRAVEL_DINING,
+  OKAYAMA_TRAVEL_STAY,
+  OKAYAMA_TRAVEL_SHOPPING,
+  OKAYAMA_TRAVEL_COMMERCE,
+  OKAYAMA_TRAVEL_ALL
+} from './okayama-travel';
 
 
 
@@ -4112,6 +4120,38 @@ export const SAKA_LOOKUP: LookupTown = {
 
 
 
+
+export const OKAYAMA_LOOKUP: LookupTown = {
+  slug: 'okayama',
+  prefectureSlug: 'okayama',
+  jis: OKAYAMA.jis,
+  nameJa: OKAYAMA.nameJa,
+  nameEn: OKAYAMA.nameEn,
+  heroPhoto: OKAYAMA_PLACE_PHOTO,
+  photoCiteJa: '写真は岡山城。Reggaeman、CC BY-SA 3.0。File:Okayama Castle 01.jpg。',
+  photoCiteEn: 'Photo: Okayama Castle. Reggaeman, CC BY-SA 3.0. File:Okayama Castle 01.jpg.',
+  rows: OKAYAMA_FACILITIES,
+  expectedGeo: OKAYAMA_EXPECTED_GEO_COUNT,
+  expectedRows: OKAYAMA_EXPECTED_ROW_COUNT,
+  travelDining: OKAYAMA_TRAVEL_DINING,
+  travelStay: OKAYAMA_TRAVEL_STAY,
+  travelShopping: OKAYAMA_TRAVEL_SHOPPING,
+  travelCommerce: OKAYAMA_TRAVEL_COMMERCE,
+  travelAll: OKAYAMA_TRAVEL_ALL,
+  coverageJa:
+    '岡山市（JIS 33100・岡山県）。観光5・宿泊9・飲食16・温泉2（体験0）。買物・商業は未掲載。',
+  coverageEn:
+    'Okayama City (JIS 33100), 5 tourism + 9 stay + 16 dining + 2 onsen + 0 experience with sourced photos. Shopping/commerce: 0.',
+  mapLabelJa: '岡山市の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Okayama City',
+  mapCitePackJa: '点はCommons出典座標（accessed 2026-09-11）。施設行は市公式・食べログ・Commons・楽天。',
+  mapCitePackEn: 'Points: Commons coordinates (accessed 2026-09-11). Facility rows from city site, Tabelog, Commons, Rakuten.',
+  licenseNoteJa: '行は市サイト掲載・city.okayama.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are city-site listings, facts from city.okayama.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
 export const JINSEIKOGEN_LOOKUP: LookupTown = {
   slug: 'jinseikogen',
   prefectureSlug: 'hiroshima',
@@ -5224,6 +5264,7 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   kitahiroshima: KITAHIROSHIMA_LOOKUP,
   osakikamijima: OSAKIKAMIJIMA_LOOKUP,
   jinseikogen: JINSEIKOGEN_LOOKUP,
+  okayama: OKAYAMA_LOOKUP,
   sera: SERA_LOOKUP
 };
 

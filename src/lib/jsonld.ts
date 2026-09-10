@@ -111,7 +111,8 @@ import {KITAHIROSHIMA, KITAHIROSHIMA_PLACE_PHOTO} from '@/data/kitahiroshima';
 import {OSAKIKAMIJIMA, OSAKIKAMIJIMA_PLACE_PHOTO} from '@/data/osakikamijima';
 import {SERA, SERA_PLACE_PHOTO} from '@/data/sera';
 import {JINSEIKOGEN, JINSEIKOGEN_PLACE_PHOTO} from '@/data/jinseikogen';
-import {prefSlugForReady} from '@/data/lookup-town';
+import {OKAYAMA, OKAYAMA_PLACE_PHOTO} from '@/data/okayama';
+import {prefSlugForReady, type ReadySlug} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {TOKUSHIMA_CITY, TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
@@ -149,18 +150,40 @@ function org() {
   };
 }
 
+function regionJaForSlug(slug: string): string {
+  const pref = prefSlugForReady(slug as ReadySlug);
+  if (pref === 'okayama') return OKAYAMA.prefectureJa;
+  if (pref === 'hiroshima') return HIROSHIMA.prefectureJa;
+  if (pref === 'ehime') return MATSUYAMA.prefectureJa;
+  if (pref === 'kochi') return KOCHI.prefectureJa;
+  if (pref === 'kagawa') return TAKAMATSU.prefectureJa;
+  return MIMA.prefectureJa;
+}
+
+function regionEnForSlug(slug: string): string {
+  const pref = prefSlugForReady(slug as ReadySlug);
+  if (pref === 'okayama') return OKAYAMA.prefectureEn;
+  if (pref === 'hiroshima') return HIROSHIMA.prefectureEn;
+  if (pref === 'ehime') return MATSUYAMA.prefectureEn;
+  if (pref === 'kochi') return KOCHI.prefectureEn;
+  if (pref === 'kagawa') return TAKAMATSU.prefectureEn;
+  return MIMA.prefectureEn;
+}
+
 function postal(
   address: string | null,
   locale: AppLocale,
   localityJa: string = MIMA.nameJa,
-  localityEn: string = MIMA.nameEn
+  localityEn: string = MIMA.nameEn,
+  regionJa: string = MIMA.prefectureJa,
+  regionEn: string = MIMA.prefectureEn
 ) {
   if (!address) return undefined;
   return {
     '@type': 'PostalAddress',
     streetAddress: address,
     addressLocality: locale === 'ja' ? localityJa : localityEn,
-    addressRegion: locale === 'ja' ? MIMA.prefectureJa : MIMA.prefectureEn,
+    addressRegion: locale === 'ja' ? regionJa : regionEn,
     addressCountry: 'JP'
   };
 }
@@ -258,6 +281,25 @@ function localityJa(slug: string): string {
   if (slug === 'takehara') return TAKEHARA.nameJa;
   if (slug === 'miharashi') return MIHARASHI.nameJa;
   if (slug === 'onomichi') return ONOMICHI.nameJa;
+  if (slug === 'fukuyama') return FUKUYAMA.nameJa;
+  if (slug === 'fuchu') return FUCHU.nameJa;
+  if (slug === 'miyoshishi') return MIYOSHISHI.nameJa;
+  if (slug === 'shobara') return SHOBARA.nameJa;
+  if (slug === 'otake') return OTAKE.nameJa;
+  if (slug === 'higashihiroshima') return HIGASHIHIROSHIMA.nameJa;
+  if (slug === 'hatsukaichi') return HATSUKAICHI.nameJa;
+  if (slug === 'akitakata') return AKITAKATA.nameJa;
+  if (slug === 'etajima') return ETAJIMA.nameJa;
+  if (slug === 'fuchucho') return FUCHUCHO.nameJa;
+  if (slug === 'kaita') return KAITA.nameJa;
+  if (slug === 'kumano') return KUMANO.nameJa;
+  if (slug === 'saka') return SAKA.nameJa;
+  if (slug === 'akiota') return AKIOTA.nameJa;
+  if (slug === 'kitahiroshima') return KITAHIROSHIMA.nameJa;
+  if (slug === 'osakikamijima') return OSAKIKAMIJIMA.nameJa;
+  if (slug === 'sera') return SERA.nameJa;
+  if (slug === 'jinseikogen') return JINSEIKOGEN.nameJa;
+  if (slug === 'okayama') return OKAYAMA.nameJa;
   return MIMA.nameJa;
 }
 
@@ -344,6 +386,25 @@ function localityEn(slug: string): string {
   if (slug === 'takehara') return TAKEHARA.nameEn;
   if (slug === 'miharashi') return MIHARASHI.nameEn;
   if (slug === 'onomichi') return ONOMICHI.nameEn;
+  if (slug === 'fukuyama') return FUKUYAMA.nameEn;
+  if (slug === 'fuchu') return FUCHU.nameEn;
+  if (slug === 'miyoshishi') return MIYOSHISHI.nameEn;
+  if (slug === 'shobara') return SHOBARA.nameEn;
+  if (slug === 'otake') return OTAKE.nameEn;
+  if (slug === 'higashihiroshima') return HIGASHIHIROSHIMA.nameEn;
+  if (slug === 'hatsukaichi') return HATSUKAICHI.nameEn;
+  if (slug === 'akitakata') return AKITAKATA.nameEn;
+  if (slug === 'etajima') return ETAJIMA.nameEn;
+  if (slug === 'fuchucho') return FUCHUCHO.nameEn;
+  if (slug === 'kaita') return KAITA.nameEn;
+  if (slug === 'kumano') return KUMANO.nameEn;
+  if (slug === 'saka') return SAKA.nameEn;
+  if (slug === 'akiota') return AKIOTA.nameEn;
+  if (slug === 'kitahiroshima') return KITAHIROSHIMA.nameEn;
+  if (slug === 'osakikamijima') return OSAKIKAMIJIMA.nameEn;
+  if (slug === 'sera') return SERA.nameEn;
+  if (slug === 'jinseikogen') return JINSEIKOGEN.nameEn;
+  if (slug === 'okayama') return OKAYAMA.nameEn;
   return MIMA.nameEn;
 }
 
@@ -368,7 +429,7 @@ export function listingNode(listing: PublicListing, locale: AppLocale) {
     name: listing.nameJa,
     url,
     image: listing.photo ? photoAbs(listing.photo) : undefined,
-    address: postal(listing.address, locale, localityJa(listing.slug), localityEn(listing.slug)),
+    address: postal(listing.address, locale, localityJa(listing.slug), localityEn(listing.slug), regionJaForSlug(listing.slug), regionEnForSlug(listing.slug)),
     telephone: listing.phone ?? undefined,
     openingHours: listing.hours ?? undefined,
     geo: geo(listing.lat, listing.lon),
@@ -2058,8 +2119,8 @@ export function placeGraph(listing: PublicListing, locale: AppLocale) {
             '@type': 'ListItem',
             position: 2,
             name: isJa
-              ? (prefSlugForReady(listing.slug) === 'kagawa' ? TAKAMATSU.prefectureJa : MIMA.prefectureJa)
-              : (prefSlugForReady(listing.slug) === 'kagawa' ? TAKAMATSU.prefectureEn : MIMA.prefectureEn),
+              ? regionJaForSlug(listing.slug)
+              : regionEnForSlug(listing.slug),
             item: canonicalUrl(locale, prefSlugForReady(listing.slug))
           },
           {
@@ -5468,6 +5529,58 @@ export function sakaGraph(locale: AppLocale) {
 
 
 
+
+
+export function okayamaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'okayama/okayama');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('okayama');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'TouristDestination',
+        '@id': `${url}#place`,
+        name: isJa ? OKAYAMA.nameJa : OKAYAMA.nameEn,
+        alternateName: isJa ? OKAYAMA.nameEn : OKAYAMA.nameJa,
+        identifier: OKAYAMA.jis,
+        url,
+        image: photoAbs(OKAYAMA_PLACE_PHOTO),
+        sameAs: [OKAYAMA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '大供一丁目1番1号' : '1-1-1 Daiku, Kita-ku',
+          addressLocality: isJa ? OKAYAMA.nameJa : OKAYAMA.nameEn,
+          addressRegion: isJa ? OKAYAMA.prefectureJa : OKAYAMA.prefectureEn,
+          postalCode: OKAYAMA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? OKAYAMA.prefectureJa : OKAYAMA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url,
+        name: isJa ? OKAYAMA.nameJa : OKAYAMA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`},
+        about: {'@id': `${url}#place`},
+        breadcrumb: {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+            {'@type': 'ListItem', position: 2, name: isJa ? OKAYAMA.prefectureJa : OKAYAMA.prefectureEn, item: canonicalUrl(locale, 'okayama')},
+            {'@type': 'ListItem', position: 3, name: isJa ? OKAYAMA.nameJa : OKAYAMA.nameEn, item: url}
+          ]
+        }
+      }
+    ]
+  };
+}
 
 export function jinseikogenGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'hiroshima/jinseikogen');

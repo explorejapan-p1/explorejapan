@@ -122,11 +122,12 @@ const READY_HUBS = [
   'hiroshima/kitahiroshima',
   'hiroshima/osakikamijima',
   'hiroshima/sera',
-  'hiroshima/jinseikogen'
+  'hiroshima/jinseikogen',
+  'okayama/okayama'
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = ['', 'tokushima', 'kagawa', 'kochi', 'ehime', 'hiroshima', ...READY_HUBS, ...liveListings().map((row) => listingRest(row.id, row.slug))];
+  const paths = ['', 'tokushima', 'kagawa', 'kochi', 'ehime', 'hiroshima', 'okayama', ...READY_HUBS, ...liveListings().map((row) => listingRest(row.id, row.slug))];
   const hubSet = new Set<string>(READY_HUBS);
   const entries: MetadataRoute.Sitemap = [];
   for (const locale of routing.locales) {
@@ -134,7 +135,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       entries.push({
         url: canonicalUrl(locale, rest),
         changeFrequency: rest === '' ? 'weekly' : 'monthly',
-        priority: rest === '' ? 1 : hubSet.has(rest) ? 0.9 : rest === 'tokushima' || rest === 'kagawa' || rest === 'kochi' || rest === 'ehime' || rest === 'hiroshima' ? 0.85 : 0.7
+        priority: rest === '' ? 1 : hubSet.has(rest) ? 0.9 : rest === 'tokushima' || rest === 'kagawa' || rest === 'kochi' || rest === 'ehime' || rest === 'hiroshima' || rest === 'okayama' ? 0.85 : 0.7
       });
     }
   }
