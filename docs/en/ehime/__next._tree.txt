@@ -16,4 +16,5 @@
 :HL["/explorejapan/media/kamijima-sekizen-observatory.jpg","image"]
 :HL["/explorejapan/media/kumakogen-furuiwaya.jpg","image"]
 :HL["/explorejapan/media/masaki-emifull.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"en","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"ehime","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"daxsP0WjqRfm2_XIdGLwd"}
+:HL["/explorejapan/media/tobe-traditional-hall.jpg","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"en","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"ehime","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"Ecqq45ZJBi6LvBhfwiNZD"}

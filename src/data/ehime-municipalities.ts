@@ -27,7 +27,7 @@ export const EHIME_MUNICIPALITIES: Municipality[] = [
   {jis: '38356', slug: 'kamijima', nameJa: '上島町', nameEn: 'Kamijima', status: 'ready'},
   {jis: '38386', slug: 'kumakogen', nameJa: '久万高原町', nameEn: 'Kumakogen', status: 'ready'},
   {jis: '38401', slug: 'masaki', nameJa: '松前町', nameEn: 'Masaki', status: 'ready'},
-  {jis: '38402', slug: 'tobe', nameJa: '砥部町', nameEn: 'Tobe', status: 'coming-soon'},
+  {jis: '38402', slug: 'tobe', nameJa: '砥部町', nameEn: 'Tobe', status: 'ready'},
   {jis: '38422', slug: 'uchiko', nameJa: '内子町', nameEn: 'Uchiko', status: 'coming-soon'},
   {jis: '38442', slug: 'ikata', nameJa: '伊方町', nameEn: 'Ikata', status: 'coming-soon'},
   {jis: '38484', slug: 'matsuno', nameJa: '松野町', nameEn: 'Matsuno', status: 'coming-soon'},

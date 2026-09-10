@@ -82,6 +82,7 @@ import {TOON, TOON_PLACE_PHOTO} from '@/data/toon';
 import {KAMIJIMA, KAMIJIMA_PLACE_PHOTO} from '@/data/kamijima';
 import {KUMAKOGEN, KUMAKOGEN_PLACE_PHOTO} from '@/data/kumakogen';
 import {MASAKI, MASAKI_PLACE_PHOTO} from '@/data/masaki';
+import {TOBE, TOBE_PLACE_PHOTO} from '@/data/tobe';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -218,6 +219,7 @@ function localityJa(slug: string): string {
   if (slug === 'kamijima') return KAMIJIMA.nameJa;
   if (slug === 'kumakogen') return KUMAKOGEN.nameJa;
   if (slug === 'masaki') return MASAKI.nameJa;
+  if (slug === 'tobe') return TOBE.nameJa;
   return MIMA.nameJa;
 }
 
@@ -293,6 +295,7 @@ function localityEn(slug: string): string {
   if (slug === 'kamijima') return KAMIJIMA.nameEn;
   if (slug === 'kumakogen') return KUMAKOGEN.nameEn;
   if (slug === 'masaki') return MASAKI.nameEn;
+  if (slug === 'tobe') return TOBE.nameEn;
   return MIMA.nameEn;
 }
 
@@ -4737,6 +4740,59 @@ export function masakiGraph(locale: AppLocale) {
     ]
   };
 }
+
+
+export function tobeGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'ehime/tobe');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('tobe');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? TOBE.nameJa : TOBE.nameEn,
+        alternateName: isJa ? TOBE.nameEn : TOBE.nameJa,
+        identifier: TOBE.jis,
+        url,
+        image: photoAbs(TOBE_PLACE_PHOTO),
+        sameAs: [TOBE.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '宮内1392番地' : '1392 Miyauchi',
+          addressLocality: isJa ? TOBE.nameJa : TOBE.nameEn,
+          addressRegion: isJa ? TOBE.prefectureJa : TOBE.prefectureEn,
+          postalCode: TOBE.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? TOBE.prefectureJa : TOBE.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? TOBE.nameJa : TOBE.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? TOBE.prefectureJa : TOBE.prefectureEn, item: canonicalUrl(locale, 'ehime')},
+          {'@type': 'ListItem', position: 3, name: isJa ? TOBE.nameJa : TOBE.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
+
 
 export function kamijimaGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'ehime/kamijima');
