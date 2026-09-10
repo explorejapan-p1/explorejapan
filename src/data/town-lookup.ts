@@ -786,6 +786,7 @@ import {HATSUKAICHI, HATSUKAICHI_PLACE_PHOTO, HATSUKAICHI_FACILITIES, HATSUKAICH
 import {AKITAKATA, AKITAKATA_PLACE_PHOTO, AKITAKATA_FACILITIES, AKITAKATA_EXPECTED_GEO_COUNT, AKITAKATA_EXPECTED_ROW_COUNT} from './akitakata';
 import {ETAJIMA, ETAJIMA_PLACE_PHOTO, ETAJIMA_FACILITIES, ETAJIMA_EXPECTED_GEO_COUNT, ETAJIMA_EXPECTED_ROW_COUNT} from './etajima';
 import {FUCHUCHO, FUCHUCHO_PLACE_PHOTO, FUCHUCHO_FACILITIES, FUCHUCHO_EXPECTED_GEO_COUNT, FUCHUCHO_EXPECTED_ROW_COUNT} from './fuchucho';
+import {KAITA, KAITA_PLACE_PHOTO, KAITA_FACILITIES, KAITA_EXPECTED_GEO_COUNT, KAITA_EXPECTED_ROW_COUNT} from './kaita';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -1045,6 +1046,13 @@ import {
   FUCHUCHO_TRAVEL_COMMERCE,
   FUCHUCHO_TRAVEL_ALL
 } from './fuchucho-travel';
+import {
+  KAITA_TRAVEL_DINING,
+  KAITA_TRAVEL_STAY,
+  KAITA_TRAVEL_SHOPPING,
+  KAITA_TRAVEL_COMMERCE,
+  KAITA_TRAVEL_ALL
+} from './kaita-travel';
 
 
 
@@ -3977,6 +3985,38 @@ export const MIYOSHISHI_LOOKUP: LookupTown = {
 
 
 
+
+export const KAITA_LOOKUP: LookupTown = {
+  slug: 'kaita',
+  prefectureSlug: 'hiroshima',
+  jis: KAITA.jis,
+  nameJa: KAITA.nameJa,
+  nameEn: KAITA.nameEn,
+  heroPhoto: KAITA_PLACE_PHOTO,
+  photoCiteJa: '写真は海田町役場。Taisyo、CC BY 3.0。File:Kaita Town Office.jpg。',
+  photoCiteEn: 'Photo: Kaita Town Office. Taisyo, CC BY 3.0. File:Kaita Town Office.jpg.',
+  rows: KAITA_FACILITIES,
+  expectedGeo: KAITA_EXPECTED_GEO_COUNT,
+  expectedRows: KAITA_EXPECTED_ROW_COUNT,
+  travelDining: KAITA_TRAVEL_DINING,
+  travelStay: KAITA_TRAVEL_STAY,
+  travelShopping: KAITA_TRAVEL_SHOPPING,
+  travelCommerce: KAITA_TRAVEL_COMMERCE,
+  travelAll: KAITA_TRAVEL_ALL,
+  coverageJa:
+    '海田町（JIS 34304・広島県安芸郡）。観光5・宿泊2・飲食16・温泉1（体験0）。買物・商業は未掲載。',
+  coverageEn:
+    'Kaita Town Hiroshima Aki District (JIS 34304), 5 tourism + 2 stay + 16 dining + 1 onsen + 0 experience with sourced photos. Shopping/commerce: 0.',
+  mapLabelJa: '海田町の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Kaita Town (Hiroshima)',
+  mapCitePackJa: '点はOSM Overpass・Dive! Hiroshima出典座標5件（accessed 2026-09-10）。施設行は町公式・楽天・食べログ・Commons・Dive! Hiroshima。',
+  mapCitePackEn: 'Points: 5 OSM Overpass/Dive! Hiroshima coordinates (accessed 2026-09-10). Facility rows from town site, Rakuten, Tabelog, Commons, Dive! Hiroshima.',
+  licenseNoteJa: '行は町サイト掲載・town.kaita.lg.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from town.kaita.lg.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
 export const FUCHUCHO_LOOKUP: LookupTown = {
   slug: 'fuchucho',
   prefectureSlug: 'hiroshima',
@@ -4894,7 +4934,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   hatsukaichi: HATSUKAICHI_LOOKUP,
   akitakata: AKITAKATA_LOOKUP,
   etajima: ETAJIMA_LOOKUP,
-  fuchucho: FUCHUCHO_LOOKUP
+  fuchucho: FUCHUCHO_LOOKUP,
+  kaita: KAITA_LOOKUP
 };
 
 

@@ -103,6 +103,7 @@ import {HATSUKAICHI, HATSUKAICHI_PLACE_PHOTO} from '@/data/hatsukaichi';
 import {AKITAKATA, AKITAKATA_PLACE_PHOTO} from '@/data/akitakata';
 import {ETAJIMA, ETAJIMA_PLACE_PHOTO} from '@/data/etajima';
 import {FUCHUCHO, FUCHUCHO_PLACE_PHOTO} from '@/data/fuchucho';
+import {KAITA, KAITA_PLACE_PHOTO} from '@/data/kaita';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -5348,6 +5349,57 @@ export function fuchuchoGraph(locale: AppLocale) {
             {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
             {'@type': 'ListItem', position: 2, name: isJa ? FUCHUCHO.prefectureJa : FUCHUCHO.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
             {'@type': 'ListItem', position: 3, name: isJa ? FUCHUCHO.nameJa : FUCHUCHO.nameEn, item: url}
+          ]
+        }
+      }
+    ]
+  };
+}
+
+export function kaitaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'hiroshima/kaita');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('kaita');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'TouristDestination',
+        '@id': `${url}#place`,
+        name: isJa ? KAITA.nameJa : KAITA.nameEn,
+        alternateName: isJa ? KAITA.nameEn : KAITA.nameJa,
+        identifier: KAITA.jis,
+        url,
+        image: photoAbs(KAITA_PLACE_PHOTO),
+        sameAs: [KAITA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '南昭和町14番17号' : '14-17 Minami-Showacho',
+          addressLocality: isJa ? KAITA.nameJa : KAITA.nameEn,
+          addressRegion: isJa ? KAITA.prefectureJa : KAITA.prefectureEn,
+          postalCode: KAITA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? KAITA.prefectureJa : KAITA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url,
+        name: isJa ? KAITA.nameJa : KAITA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`},
+        about: {'@id': `${url}#place`},
+        breadcrumb: {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+            {'@type': 'ListItem', position: 2, name: isJa ? KAITA.prefectureJa : KAITA.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
+            {'@type': 'ListItem', position: 3, name: isJa ? KAITA.nameJa : KAITA.nameEn, item: url}
           ]
         }
       }
