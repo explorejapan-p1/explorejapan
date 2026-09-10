@@ -88,6 +88,7 @@ import {IKATA, IKATA_PLACE_PHOTO} from '@/data/ikata';
 import {MATSUNO, MATSUNO_PLACE_PHOTO} from '@/data/matsuno';
 import {KIHOKU, KIHOKU_PLACE_PHOTO} from '@/data/kihoku';
 import {AINAN, AINAN_PLACE_PHOTO} from '@/data/ainan';
+import {HIROSHIMA, HIROSHIMA_PLACE_PHOTO} from '@/data/hiroshima';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -230,6 +231,7 @@ function localityJa(slug: string): string {
   if (slug === 'matsuno') return MATSUNO.nameJa;
   if (slug === 'kihoku') return KIHOKU.nameJa;
   if (slug === 'ainan') return AINAN.nameJa;
+  if (slug === 'hiroshima') return HIROSHIMA.nameJa;
   return MIMA.nameJa;
 }
 
@@ -311,6 +313,7 @@ function localityEn(slug: string): string {
   if (slug === 'matsuno') return MATSUNO.nameEn;
   if (slug === 'kihoku') return KIHOKU.nameEn;
   if (slug === 'ainan') return AINAN.nameEn;
+  if (slug === 'hiroshima') return HIROSHIMA.nameEn;
   return MIMA.nameEn;
 }
 
@@ -4957,6 +4960,57 @@ export function ainanGraph(locale: AppLocale) {
           {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
           {'@type': 'ListItem', position: 2, name: isJa ? AINAN.prefectureJa : AINAN.prefectureEn, item: canonicalUrl(locale, 'ehime')},
           {'@type': 'ListItem', position: 3, name: isJa ? AINAN.nameJa : AINAN.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
+
+export function hiroshimaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'hiroshima/hiroshima');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('hiroshima');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? HIROSHIMA.nameJa : HIROSHIMA.nameEn,
+        alternateName: isJa ? HIROSHIMA.nameEn : HIROSHIMA.nameJa,
+        identifier: HIROSHIMA.jis,
+        url,
+        image: photoAbs(HIROSHIMA_PLACE_PHOTO),
+        sameAs: [HIROSHIMA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '国泰寺町一丁目6番34号' : '1-6-34 Kokutaiji-machi',
+          addressLocality: isJa ? HIROSHIMA.nameJa : HIROSHIMA.nameEn,
+          addressRegion: isJa ? HIROSHIMA.prefectureJa : HIROSHIMA.prefectureEn,
+          postalCode: HIROSHIMA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? HIROSHIMA.prefectureJa : HIROSHIMA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? HIROSHIMA.nameJa : HIROSHIMA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? HIROSHIMA.prefectureJa : HIROSHIMA.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
+          {'@type': 'ListItem', position: 3, name: isJa ? HIROSHIMA.nameJa : HIROSHIMA.nameEn, item: url}
         ]
       },
       ...featured

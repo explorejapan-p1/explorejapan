@@ -12,6 +12,10 @@ import {
   EHIME_MUNICIPALITY_BY_SLUG
 } from './ehime-municipalities';
 import {
+  HIROSHIMA_MUNICIPALITIES,
+  HIROSHIMA_MUNICIPALITY_BY_SLUG
+} from './hiroshima-municipalities';
+import {
   TOKUSHIMA_MUNICIPALITIES,
   MUNICIPALITY_BY_SLUG as TOKUSHIMA_BY_SLUG
 } from './tokushima-municipalities';
@@ -24,6 +28,7 @@ export function municipalitiesForPref(pref: string): Municipality[] {
   if (pref === 'kagawa') return KAGAWA_MUNICIPALITIES;
   if (pref === 'kochi') return KOCHI_MUNICIPALITIES;
   if (pref === 'ehime') return EHIME_MUNICIPALITIES;
+  if (pref === 'hiroshima') return HIROSHIMA_MUNICIPALITIES;
   return [];
 }
 
@@ -35,11 +40,12 @@ export function municipalityBySlug(
   if (pref === 'kagawa') return KAGAWA_MUNICIPALITY_BY_SLUG.get(slug);
   if (pref === 'kochi') return KOCHI_MUNICIPALITY_BY_SLUG.get(slug);
   if (pref === 'ehime') return EHIME_MUNICIPALITY_BY_SLUG.get(slug);
+  if (pref === 'hiroshima') return HIROSHIMA_MUNICIPALITY_BY_SLUG.get(slug);
   return undefined;
 }
 
 export function prefHasMunicipalityLayer(pref: string): pref is PrefSlug {
-  return pref === 'tokushima' || pref === 'kagawa' || pref === 'kochi' || pref === 'ehime';
+  return pref === 'tokushima' || pref === 'kagawa' || pref === 'kochi' || pref === 'ehime' || pref === 'hiroshima';
 }
 
 export function allMunicipalityStaticParams(): {prefecture: string; municipality: string}[] {
@@ -47,6 +53,7 @@ export function allMunicipalityStaticParams(): {prefecture: string; municipality
     ...TOKUSHIMA_MUNICIPALITIES.map((m) => ({prefecture: 'tokushima', municipality: m.slug})),
     ...KAGAWA_MUNICIPALITIES.map((m) => ({prefecture: 'kagawa', municipality: m.slug})),
     ...KOCHI_MUNICIPALITIES.map((m) => ({prefecture: 'kochi', municipality: m.slug})),
-    ...EHIME_MUNICIPALITIES.map((m) => ({prefecture: 'ehime', municipality: m.slug}))
+    ...EHIME_MUNICIPALITIES.map((m) => ({prefecture: 'ehime', municipality: m.slug})),
+    ...HIROSHIMA_MUNICIPALITIES.map((m) => ({prefecture: 'hiroshima', municipality: m.slug}))
   ];
 }

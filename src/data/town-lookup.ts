@@ -771,6 +771,7 @@ import {IKATA, IKATA_PLACE_PHOTO, IKATA_FACILITIES, IKATA_EXPECTED_GEO_COUNT, IK
 import {MATSUNO, MATSUNO_PLACE_PHOTO, MATSUNO_FACILITIES, MATSUNO_EXPECTED_GEO_COUNT, MATSUNO_EXPECTED_ROW_COUNT} from './matsuno';
 import {KIHOKU, KIHOKU_PLACE_PHOTO, KIHOKU_FACILITIES, KIHOKU_EXPECTED_GEO_COUNT, KIHOKU_EXPECTED_ROW_COUNT} from './kihoku';
 import {AINAN, AINAN_PLACE_PHOTO, AINAN_FACILITIES, AINAN_EXPECTED_GEO_COUNT, AINAN_EXPECTED_ROW_COUNT} from './ainan';
+import {HIROSHIMA, HIROSHIMA_PLACE_PHOTO, HIROSHIMA_FACILITIES, HIROSHIMA_EXPECTED_GEO_COUNT, HIROSHIMA_EXPECTED_ROW_COUNT} from './hiroshima';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -925,6 +926,13 @@ import {
   AINAN_TRAVEL_COMMERCE,
   AINAN_TRAVEL_ALL
 } from './ainan-travel';
+import {
+  HIROSHIMA_TRAVEL_DINING,
+  HIROSHIMA_TRAVEL_STAY,
+  HIROSHIMA_TRAVEL_SHOPPING,
+  HIROSHIMA_TRAVEL_COMMERCE,
+  HIROSHIMA_TRAVEL_ALL
+} from './hiroshima-travel';
 
 
 
@@ -3686,6 +3694,39 @@ export const AINAN_LOOKUP: LookupTown = {
   licenseSiteEn: 'Town-site listing'
 };
 
+export const HIROSHIMA_LOOKUP: LookupTown = {
+  slug: 'hiroshima',
+  prefectureSlug: 'hiroshima',
+  jis: HIROSHIMA.jis,
+  nameJa: HIROSHIMA.nameJa,
+  nameEn: HIROSHIMA.nameEn,
+  heroPhoto: HIROSHIMA_PLACE_PHOTO,
+  photoCiteJa: '写真は広島城。DonaldoKun、Public domain。File:Hiroshima Castle.jpg。',
+  photoCiteEn: 'Photo: Hiroshima Castle. DonaldoKun, Public domain. File:Hiroshima Castle.jpg.',
+  rows: HIROSHIMA_FACILITIES,
+  expectedGeo: HIROSHIMA_EXPECTED_GEO_COUNT,
+  expectedRows: HIROSHIMA_EXPECTED_ROW_COUNT,
+  travelDining: HIROSHIMA_TRAVEL_DINING,
+  travelStay: HIROSHIMA_TRAVEL_STAY,
+  travelShopping: HIROSHIMA_TRAVEL_SHOPPING,
+  travelCommerce: HIROSHIMA_TRAVEL_COMMERCE,
+  travelAll: HIROSHIMA_TRAVEL_ALL,
+  coverageJa:
+    '広島市（JIS 34100）観光6・宿泊9・飲食16・温泉2・体験1（出典写真がある施設のみ）。買物・商業は0件（未掲載）。オープンデータ凍結パックは未掲載。広島県1つ目のLIVEハブ。',
+  coverageEn:
+    'Hiroshima City (JIS 34100), 6 tourism + 9 stay + 16 dining + 2 onsen + 1 experience with sourced photos. Shopping/commerce: 0 unpublished. No frozen open-data pack. First LIVE Hiroshima hub.',
+  mapLabelJa: '広島市の出典座標（未掲載）',
+  mapLabelEn: 'Sourced coordinates in Hiroshima City (unpublished)',
+  mapCitePackJa: '点は市・公式ページ掲載施設のWikipedia/Commons等出典（accessed 2026-09-10）。',
+  mapCitePackEn: 'Points: sourced coordinates for city/official facilities (accessed 2026-09-10).',
+  licenseNoteJa:
+    '行のライセンスは市公式・公式観光サイト掲載情報。市ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are city-site listings, facts from city.hiroshima.lg.jp, not under Our Open Data.',
+  licenseSiteJa: '市公式サイト掲載情報',
+  licenseSiteEn: 'City-site listing'
+};
+
 export const KIHOKU_LOOKUP: LookupTown = {
   slug: 'kihoku',
   prefectureSlug: 'ehime',
@@ -4269,7 +4310,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   ikata: IKATA_LOOKUP,
   matsuno: MATSUNO_LOOKUP,
   kihoku: KIHOKU_LOOKUP,
-  ainan: AINAN_LOOKUP
+  ainan: AINAN_LOOKUP,
+  hiroshima: HIROSHIMA_LOOKUP
 };
 
 

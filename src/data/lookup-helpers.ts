@@ -1029,6 +1029,17 @@ import {
   ainanTopChipForRow,
   resolveAinanFilter
 } from './ainan-travel';
+import {
+  isHiroshimaOnsenPackRow,
+  isHiroshimaExperiencePackRow,
+  isHiroshimaStayPackRow,
+  hiroshimaPackRowMatchesFilter,
+  rankHiroshimaSeeRows,
+  hiroshimaSightPhoto,
+  hiroshimaSourcedHook,
+  hiroshimaTopChipForRow,
+  resolveHiroshimaFilter
+} from './hiroshima-travel';
 
 
 
@@ -1910,6 +1921,18 @@ const AINAN_HELPERS: LookupHelpers = {
   resolveFilter: resolveAinanFilter
 };
 
+const HIROSHIMA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isHiroshimaOnsenPackRow,
+  isExperiencePackRow: isHiroshimaExperiencePackRow,
+  isStayPackRow: isHiroshimaStayPackRow,
+  packRowMatchesFilter: hiroshimaPackRowMatchesFilter,
+  rankSeeRows: rankHiroshimaSeeRows,
+  sightPhoto: hiroshimaSightPhoto,
+  sourcedHook: hiroshimaSourcedHook,
+  topChipForRow: hiroshimaTopChipForRow,
+  resolveFilter: resolveHiroshimaFilter
+};
+
 const KIHOKU_HELPERS: LookupHelpers = {
   isOnsenPackRow: isKihokuOnsenPackRow,
   isExperiencePackRow: isKihokuExperiencePackRow,
@@ -2373,5 +2396,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'matsuno') return MATSUNO_HELPERS;
   if (slug === 'kihoku') return KIHOKU_HELPERS;
   if (slug === 'ainan') return AINAN_HELPERS;
+  if (slug === 'hiroshima') return HIROSHIMA_HELPERS;
   return MIMA_HELPERS;
 }
