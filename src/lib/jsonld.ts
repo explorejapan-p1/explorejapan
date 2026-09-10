@@ -85,6 +85,7 @@ import {MASAKI, MASAKI_PLACE_PHOTO} from '@/data/masaki';
 import {TOBE, TOBE_PLACE_PHOTO} from '@/data/tobe';
 import {UCHIKO, UCHIKO_PLACE_PHOTO} from '@/data/uchiko';
 import {IKATA, IKATA_PLACE_PHOTO} from '@/data/ikata';
+import {MATSUNO, MATSUNO_PLACE_PHOTO} from '@/data/matsuno';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -224,6 +225,7 @@ function localityJa(slug: string): string {
   if (slug === 'tobe') return TOBE.nameJa;
   if (slug === 'uchiko') return UCHIKO.nameJa;
   if (slug === 'ikata') return IKATA.nameJa;
+  if (slug === 'matsuno') return MATSUNO.nameJa;
   return MIMA.nameJa;
 }
 
@@ -302,6 +304,7 @@ function localityEn(slug: string): string {
   if (slug === 'tobe') return TOBE.nameEn;
   if (slug === 'uchiko') return UCHIKO.nameEn;
   if (slug === 'ikata') return IKATA.nameEn;
+  if (slug === 'matsuno') return MATSUNO.nameEn;
   return MIMA.nameEn;
 }
 
@@ -4844,6 +4847,58 @@ export function uchikoGraph(locale: AppLocale) {
           {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
           {'@type': 'ListItem', position: 2, name: isJa ? UCHIKO.prefectureJa : UCHIKO.prefectureEn, item: canonicalUrl(locale, 'ehime')},
           {'@type': 'ListItem', position: 3, name: isJa ? UCHIKO.nameJa : UCHIKO.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
+
+
+export function matsunoGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'ehime/matsuno');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('matsuno');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? MATSUNO.nameJa : MATSUNO.nameEn,
+        alternateName: isJa ? MATSUNO.nameEn : MATSUNO.nameJa,
+        identifier: MATSUNO.jis,
+        url,
+        image: photoAbs(MATSUNO_PLACE_PHOTO),
+        sameAs: [MATSUNO.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '大字松丸343番地' : '343 Oaza Matsumaru',
+          addressLocality: isJa ? MATSUNO.nameJa : MATSUNO.nameEn,
+          addressRegion: isJa ? MATSUNO.prefectureJa : MATSUNO.prefectureEn,
+          postalCode: MATSUNO.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? MATSUNO.prefectureJa : MATSUNO.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? MATSUNO.nameJa : MATSUNO.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? MATSUNO.prefectureJa : MATSUNO.prefectureEn, item: canonicalUrl(locale, 'ehime')},
+          {'@type': 'ListItem', position: 3, name: isJa ? MATSUNO.nameJa : MATSUNO.nameEn, item: url}
         ]
       },
       ...featured

@@ -96,7 +96,8 @@ const READY_HUBS = [
   'ehime/masaki',
   'ehime/tobe',
   'ehime/uchiko',
-  'ehime/ikata'
+  'ehime/ikata',
+  'ehime/matsuno'
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
