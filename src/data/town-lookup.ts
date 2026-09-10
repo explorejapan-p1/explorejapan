@@ -774,6 +774,7 @@ import {AINAN, AINAN_PLACE_PHOTO, AINAN_FACILITIES, AINAN_EXPECTED_GEO_COUNT, AI
 import {HIROSHIMA, HIROSHIMA_PLACE_PHOTO, HIROSHIMA_FACILITIES, HIROSHIMA_EXPECTED_GEO_COUNT, HIROSHIMA_EXPECTED_ROW_COUNT} from './hiroshima';
 import {KURE, KURE_PLACE_PHOTO, KURE_FACILITIES, KURE_EXPECTED_GEO_COUNT, KURE_EXPECTED_ROW_COUNT} from './kure';
 import {TAKEHARA, TAKEHARA_PLACE_PHOTO, TAKEHARA_FACILITIES, TAKEHARA_EXPECTED_GEO_COUNT, TAKEHARA_EXPECTED_ROW_COUNT} from './takehara';
+import {MIHARASHI, MIHARASHI_PLACE_PHOTO, MIHARASHI_FACILITIES, MIHARASHI_EXPECTED_GEO_COUNT, MIHARASHI_EXPECTED_ROW_COUNT} from './miharashi';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -949,6 +950,13 @@ import {
   TAKEHARA_TRAVEL_COMMERCE,
   TAKEHARA_TRAVEL_ALL
 } from './takehara-travel';
+import {
+  MIHARASHI_TRAVEL_DINING,
+  MIHARASHI_TRAVEL_STAY,
+  MIHARASHI_TRAVEL_SHOPPING,
+  MIHARASHI_TRAVEL_COMMERCE,
+  MIHARASHI_TRAVEL_ALL
+} from './miharashi-travel';
 
 
 
@@ -3767,14 +3775,46 @@ export const KURE_LOOKUP: LookupTown = {
     'Kure City (JIS 34202), 6 tourism + 9 stay + 16 dining + 2 onsen + 0 experience with sourced photos. Shopping/commerce: 0 unpublished.',
   mapLabelJa: '呉市内の出典付き座標（未掲載）',
   mapLabelEn: 'Sourced coordinates in Kure City (unpublished)',
-  mapCitePackJa: '施設行は市公式・楽天・食べログ・Commons。',
-  mapCitePackEn: 'Facility rows from city site, Rakuten, Tabelog, Commons.',
+  mapCitePackJa: '点はOSM Nominatim出典座標5件（accessed 2026-09-10）。施設行は市公式・楽天・食べログ・Commons。',
+  mapCitePackEn: 'Points: 5 OSM Nominatim coordinates (accessed 2026-09-10). Facility rows from city site, Rakuten, Tabelog, Commons.',
   licenseNoteJa: '行は市サイト掲載・city.kure.lg.jp由来。オープンデータ包とは混ぜません。',
   licenseNoteEn: 'Rows are city-site listings, facts from city.kure.lg.jp, not under Our Open Data.',
   licenseSiteJa: 'サイト表示は出典表記。',
   licenseSiteEn: 'Site display follows source attribution.'
 };
 
+
+
+export const MIHARASHI_LOOKUP: LookupTown = {
+  slug: 'miharashi',
+  prefectureSlug: 'hiroshima',
+  jis: MIHARASHI.jis,
+  nameJa: MIHARASHI.nameJa,
+  nameEn: MIHARASHI.nameEn,
+  heroPhoto: MIHARASHI_PLACE_PHOTO,
+  photoCiteJa: '写真は三原城跡。Carpkazu、CC BY-SA 3.0。File:三原城.jpg。',
+  photoCiteEn: 'Photo: Mihara Castle ruins. Carpkazu, CC BY-SA 3.0. File:三原城.jpg.',
+  rows: MIHARASHI_FACILITIES,
+  expectedGeo: MIHARASHI_EXPECTED_GEO_COUNT,
+  expectedRows: MIHARASHI_EXPECTED_ROW_COUNT,
+  travelDining: MIHARASHI_TRAVEL_DINING,
+  travelStay: MIHARASHI_TRAVEL_STAY,
+  travelShopping: MIHARASHI_TRAVEL_SHOPPING,
+  travelCommerce: MIHARASHI_TRAVEL_COMMERCE,
+  travelAll: MIHARASHI_TRAVEL_ALL,
+  coverageJa:
+    '三原市（JIS 34204）。観光5・宿泊9・飲食16・温泉4（体験0）。買物・商業は未掲載。',
+  coverageEn:
+    'Mihara City (JIS 34204), 5 tourism + 9 stay + 16 dining + 4 onsen + 0 experience with sourced photos. Shopping/commerce: 0 unpublished.',
+  mapLabelJa: '三原市の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Mihara City',
+  mapCitePackJa: '点はOSM Nominatim出典座標5件（accessed 2026-09-10）。施設行は市公式・楽天・食べログ・Commons。',
+  mapCitePackEn: 'Points: 5 OSM Nominatim coordinates (accessed 2026-09-10). Facility rows from city site, Rakuten, Tabelog, Commons.',
+  licenseNoteJa: '行は市サイト掲載・city.mihara.hiroshima.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are city-site listings, facts from city.mihara.hiroshima.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
 
 export const TAKEHARA_LOOKUP: LookupTown = {
   slug: 'takehara',
@@ -3799,8 +3839,8 @@ export const TAKEHARA_LOOKUP: LookupTown = {
     'Takehara City (JIS 34203), 5 tourism + 7 stay + 16 dining + 3 onsen + 0 experience with sourced photos. Shopping/commerce: 0 unpublished.',
   mapLabelJa: '竹原市内の出典付き座標（未掲載）',
   mapLabelEn: 'Sourced coordinates in Takehara City (unpublished)',
-  mapCitePackJa: '施設行は市公式・楽天・食べログ・Commons。',
-  mapCitePackEn: 'Facility rows from city site, Rakuten, Tabelog, Commons.',
+  mapCitePackJa: '点はOSM Nominatim出典座標5件（accessed 2026-09-10）。施設行は市公式・楽天・食べログ・Commons。',
+  mapCitePackEn: 'Points: 5 OSM Nominatim coordinates (accessed 2026-09-10). Facility rows from city site, Rakuten, Tabelog, Commons.',
   licenseNoteJa: '行は市サイト掲載・city.takehara.lg.jp由来。オープンデータ包とは混ぜません。',
   licenseNoteEn: 'Rows are city-site listings, facts from city.takehara.lg.jp, not under Our Open Data.',
   licenseSiteJa: 'サイト表示は出典表記。',
@@ -4394,7 +4434,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   ainan: AINAN_LOOKUP,
   hiroshima: HIROSHIMA_LOOKUP,
   kure: KURE_LOOKUP,
-  takehara: TAKEHARA_LOOKUP
+  takehara: TAKEHARA_LOOKUP,
+  miharashi: MIHARASHI_LOOKUP
 };
 
 

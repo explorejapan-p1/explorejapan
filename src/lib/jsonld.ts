@@ -91,6 +91,7 @@ import {AINAN, AINAN_PLACE_PHOTO} from '@/data/ainan';
 import {HIROSHIMA, HIROSHIMA_PLACE_PHOTO} from '@/data/hiroshima';
 import {KURE, KURE_PLACE_PHOTO} from '@/data/kure';
 import {TAKEHARA, TAKEHARA_PLACE_PHOTO} from '@/data/takehara';
+import {MIHARASHI, MIHARASHI_PLACE_PHOTO} from '@/data/miharashi';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -236,6 +237,7 @@ function localityJa(slug: string): string {
   if (slug === 'hiroshima') return HIROSHIMA.nameJa;
   if (slug === 'kure') return KURE.nameJa;
   if (slug === 'takehara') return TAKEHARA.nameJa;
+  if (slug === 'miharashi') return MIHARASHI.nameJa;
   return MIMA.nameJa;
 }
 
@@ -320,6 +322,7 @@ function localityEn(slug: string): string {
   if (slug === 'hiroshima') return HIROSHIMA.nameEn;
   if (slug === 'kure') return KURE.nameEn;
   if (slug === 'takehara') return TAKEHARA.nameEn;
+  if (slug === 'miharashi') return MIHARASHI.nameEn;
   return MIMA.nameEn;
 }
 
@@ -5018,6 +5021,58 @@ export function kureGraph(locale: AppLocale) {
           {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
           {'@type': 'ListItem', position: 2, name: isJa ? KURE.prefectureJa : KURE.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
           {'@type': 'ListItem', position: 3, name: isJa ? KURE.nameJa : KURE.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
+
+
+export function miharashiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'hiroshima/miharashi');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('miharashi');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? MIHARASHI.nameJa : MIHARASHI.nameEn,
+        alternateName: isJa ? MIHARASHI.nameEn : MIHARASHI.nameJa,
+        identifier: MIHARASHI.jis,
+        url,
+        image: photoAbs(MIHARASHI_PLACE_PHOTO),
+        sameAs: [MIHARASHI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '港町三丁目5番1号' : '3-5-1 Minato-machi',
+          addressLocality: isJa ? MIHARASHI.nameJa : MIHARASHI.nameEn,
+          addressRegion: isJa ? MIHARASHI.prefectureJa : MIHARASHI.prefectureEn,
+          postalCode: MIHARASHI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? MIHARASHI.prefectureJa : MIHARASHI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? MIHARASHI.nameJa : MIHARASHI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? MIHARASHI.prefectureJa : MIHARASHI.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
+          {'@type': 'ListItem', position: 3, name: isJa ? MIHARASHI.nameJa : MIHARASHI.nameEn, item: url}
         ]
       },
       ...featured

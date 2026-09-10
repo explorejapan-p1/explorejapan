@@ -5,4 +5,5 @@
 :HL["/explorejapan/media/hiroshima-castle.jpg","image"]
 :HL["/explorejapan/media/kure-city-hall.jpg","image"]
 :HL["/explorejapan/media/takehara-city-hall.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"en","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"hiroshima","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"C4BByJuZQyxIVs5-ZDrA-"}
+:HL["/explorejapan/media/miharashi-cover-castle.jpg","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"en","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"hiroshima","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"RQCQw9kMb85vbxuFy0A3r"}

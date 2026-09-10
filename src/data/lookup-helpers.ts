@@ -1062,6 +1062,17 @@ import {
   takeharaTopChipForRow,
   resolveTakeharaFilter
 } from './takehara-travel';
+import {
+  isMiharashiOnsenPackRow,
+  isMiharashiExperiencePackRow,
+  isMiharashiStayPackRow,
+  miharashiPackRowMatchesFilter,
+  rankMiharashiSeeRows,
+  miharashiSightPhoto,
+  miharashiSourcedHook,
+  miharashiTopChipForRow,
+  resolveMiharashiFilter
+} from './miharashi-travel';
 
 
 
@@ -1979,6 +1990,18 @@ const TAKEHARA_HELPERS: LookupHelpers = {
   resolveFilter: resolveTakeharaFilter
 };
 
+const MIHARASHI_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isMiharashiOnsenPackRow,
+  isExperiencePackRow: isMiharashiExperiencePackRow,
+  isStayPackRow: isMiharashiStayPackRow,
+  packRowMatchesFilter: miharashiPackRowMatchesFilter,
+  rankSeeRows: rankMiharashiSeeRows,
+  sightPhoto: miharashiSightPhoto,
+  sourcedHook: miharashiSourcedHook,
+  topChipForRow: miharashiTopChipForRow,
+  resolveFilter: resolveMiharashiFilter
+};
+
 const KIHOKU_HELPERS: LookupHelpers = {
   isOnsenPackRow: isKihokuOnsenPackRow,
   isExperiencePackRow: isKihokuExperiencePackRow,
@@ -2445,5 +2468,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'hiroshima') return HIROSHIMA_HELPERS;
   if (slug === 'kure') return KURE_HELPERS;
   if (slug === 'takehara') return TAKEHARA_HELPERS;
+  if (slug === 'miharashi') return MIHARASHI_HELPERS;
   return MIMA_HELPERS;
 }
