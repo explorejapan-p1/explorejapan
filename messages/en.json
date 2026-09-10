@@ -8,11 +8,11 @@
     "line": "Click a prefecture"
   },
   "pref": {
-    "rolling": "The municipality layer for this prefecture is not wired yet. Start from Tokushima.",
+    "rolling": "The municipality layer for this prefecture is not wired yet. Start from the open Shikoku prefectures.",
     "back": "Back to the national map"
   },
   "muni": {
-    "coming": "This municipality page is coming soon. Mima City, Tsurugi Town, and Yoshinogawa City have full listings in v0.",
+    "coming": "This municipality page is coming soon.",
     "factsFold": "City facts"
   },
   "lookup": {

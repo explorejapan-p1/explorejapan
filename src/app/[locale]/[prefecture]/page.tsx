@@ -1,7 +1,7 @@
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {TokushimaMap} from '@/components/TokushimaMap';
-import {MIMA, MIMA_PLACE_PHOTO, BASE_PATH, type MimaPlacePhoto} from '@/data/mima';
+import {MIMA_PLACE_PHOTO, BASE_PATH, type MimaPlacePhoto} from '@/data/mima';
 import {TSURUGI_PLACE_PHOTO} from '@/data/tsurugi';
 import {YOSHINOGAWA_PLACE_PHOTO} from '@/data/yoshinogawa';
 import {MIYOSHI_PLACE_PHOTO} from '@/data/miyoshi';
@@ -222,20 +222,20 @@ export async function generateMetadata({params}: Props) {
     title: name,
     description: pref.slug === 'tokushima'
       ? loc === 'ja'
-        ? '徳島県の市町村。徳島市・鳴門市・美馬市・つるぎ町・吉野川市・三好市・阿波市・東みよし町・北島町・松茂町・石井町・板野町・上板町。'
-        : 'Municipalities in Tokushima. Listings: Tokushima City, Naruto City, Mima City, Tsurugi Town, Yoshinogawa City, Miyoshi City, Awa City, Higashimiyoshi Town, Kitajima Town, Matsushige Town, Ishii Town, Itano Town, and Kamiita Town.'
+        ? '徳島県の市町村案内。'
+        : 'Municipalities in Tokushima.'
       : pref.slug === 'kagawa'
         ? loc === 'ja'
-          ? '香川県の市町村。高松市・琴平町。'
-          : 'Municipalities in Kagawa. Listings: Takamatsu City, Kotohira Town.'
+          ? '香川県の市町村案内。'
+          : 'Municipalities in Kagawa.'
         : pref.slug === 'kochi'
           ? loc === 'ja'
-            ? '高知県の市町村。高知市。'
-            : 'Municipalities in Kochi. Listings: Kochi City.'
+            ? '高知県の市町村案内。'
+            : 'Municipalities in Kochi.'
         : pref.slug === 'ehime'
           ? loc === 'ja'
-            ? '愛媛県の市町村。松山市。'
-            : 'Municipalities in Ehime. Listings: Matsuyama City.'
+            ? '愛媛県の市町村案内。'
+            : 'Municipalities in Ehime.'
         : loc === 'ja'
           ? 'この県の市町村ページは準備中です。'
           : 'This prefecture layer is not wired yet.',
@@ -252,7 +252,6 @@ export default async function PrefecturePage({params}: Props) {
   const t = await getTranslations('pref');
   const isJa = locale === 'ja';
   const name = isJa ? pref.nameJa : pref.nameEn;
-  const mimaHref = `${BASE_PATH}/${locale}/${MIMA.prefectureSlug}/${MIMA.slug}/`;
 
   const loc = (locale === 'en' ? 'en' : 'ja') as AppLocale;
   return (
@@ -300,18 +299,13 @@ export default async function PrefecturePage({params}: Props) {
         <div className="coming coming-photo">
           <p>{t('rolling')}</p>
           <p>
-            <a className="home-featured-mini" href={mimaHref}>
-              <img
-                src={MIMA_PLACE_PHOTO.src}
-                alt={isJa ? MIMA_PLACE_PHOTO.altJa : MIMA_PLACE_PHOTO.altEn}
-                width={640}
-                height={426}
-              />
-              <span>{isJa ? '美馬市を見る' : 'See Mima'}</span>
-            </a>
-          </p>
-          <p>
-            <Link href="/tokushima">{isJa ? '徳島県へ' : 'Go to Tokushima'}</Link>
+            <Link href="/tokushima">{isJa ? '公開中の県（徳島）へ' : 'Open prefecture: Tokushima'}</Link>
+            {' · '}
+            <Link href="/kagawa">{isJa ? '香川' : 'Kagawa'}</Link>
+            {' · '}
+            <Link href="/ehime">{isJa ? '愛媛' : 'Ehime'}</Link>
+            {' · '}
+            <Link href="/kochi">{isJa ? '高知' : 'Kochi'}</Link>
             {' · '}
             <Link href="/">{t('back')}</Link>
           </p>

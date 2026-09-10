@@ -29,8 +29,8 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
       template: isJa ? '%s · 冒険日本' : '%s · BokenJapan'
     },
     description: isJa
-      ? '徳島県美馬市から始める、日本の市町村案内。冒険日本 / BokenJapan。'
-      : 'A Japan municipalities guide, starting with Mima City, Tokushima. BokenJapan / 冒険日本.',
+      ? '日本の市町村案内。冒険日本 / BokenJapan。'
+      : 'A Japan municipalities guide. BokenJapan / 冒険日本.',
     icons: {
       icon: [{url: '/favicon.ico'}, {url: '/favicon-32.png', sizes: '32x32', type: 'image/png'}],
       apple: [{url: '/apple-touch-icon.png', sizes: '180x180'}]

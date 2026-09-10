@@ -735,8 +735,8 @@ export default async function MunicipalityPage({params}: Props) {
         <div className="coming">
           <p>
             {isJa
-              ? 'この市町村のページは準備中です。現在本文があるのは徳島市・鳴門市・小松島市・阿南市・美馬市・つるぎ町・吉野川市・三好市・阿波市・東みよし町・北島町・松茂町・石井町・板野町・上板町・神山町・勝浦町・上勝町・佐那河内村・那賀町・牟岐町・美波町・海陽町・藍住町です。'
-              : 'This municipality page is coming soon. Tokushima City, Naruto City, Komatsushima City, Anan City, Mima City, Tsurugi Town, Yoshinogawa City, Miyoshi City, Awa City, Higashimiyoshi Town, Kitajima Town, Matsushige Town, Ishii Town, Itano Town, Kamiita Town, Kamiyama Town, Katsuura Town, Kamikatsu Town, Sanagochi Village, Naka Town, Mugi Town, Minami Town, Kaiyo Town, and Aizumi Town have full listings in v0.'}
+              ? 'この市町村のページは準備中です。公開中の市町村は各県のページからご覧ください。'
+              : 'This municipality page is coming soon. Open municipalities are listed on each prefecture page.'}
           </p>
           <p>
             <Link href="/tokushima/tokushima">{isJa ? '徳島市へ' : 'Go to Tokushima City'}</Link>

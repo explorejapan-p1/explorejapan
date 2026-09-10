@@ -21,8 +21,8 @@ export async function generateMetadata({params}: Props) {
     title: t('h1'),
     description:
       loc === 'ja'
-        ? '徳島県美馬市から始める、日本の市町村案内。'
-        : 'A Japan municipalities guide, starting with Mima City, Tokushima.',
+        ? '日本の市町村案内。'
+        : 'A Japan municipalities guide.',
     image: BRAND_OG_PHOTO,
     index: true
   });

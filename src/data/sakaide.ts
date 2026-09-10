@@ -85,8 +85,21 @@ function sourcePhoto(
   };
 }
 
-/** Cover: 瀬戸大橋 twilight — strongest Sakaide landmark. */
+/** Cover: 瀬戸大橋記念公園 landscape (unique Sakaide; not wakimachi). Soft hero restyle. */
 export const SAKAIDE_PLACE_PHOTO = wikiPhoto(
+  'sakaide-kinen-park.jpg',
+  'https://commons.wikimedia.org/wiki/File:Great_Seto_Bridge_Memorial_Park01s3872.jpg',
+  'CC BY 2.5',
+  'https://creativecommons.org/licenses/by/2.5',
+  '663highland',
+  'https://ja.wikipedia.org/wiki/user:663highland',
+  '2007-05-04',
+  '瀬戸大橋記念公園と瀬戸大橋（坂出市）',
+  'Seto Ohashi Memorial Park and Great Seto Bridge, Sakaide'
+);
+
+/** Twilight bridge still — sight card for 瀬戸大橋 (not hub cover). */
+const SAKAIDE_SETO_BRIDGE_PHOTO = wikiPhoto(
   'sakaide-seto-bridge.jpg',
   'https://commons.wikimedia.org/wiki/File:瀬戸大橋（Seto_Ohashi）.jpg',
   'CC BY-SA 4.0',
@@ -115,7 +128,7 @@ const TABELOG_37002605 = 'https://tabelog.com/kagawa/A3702/A370201/37002605/';
 
 /** Exact travel/sight name_ja only. No Tokushima/other-Kagawa Files. */
 export const SAKAIDE_SIGHT_PHOTOS: Readonly<Record<string, MimaPlacePhoto>> = {
-  '瀬戸大橋': SAKAIDE_PLACE_PHOTO,
+  '瀬戸大橋': SAKAIDE_SETO_BRIDGE_PHOTO,
   '瀬戸大橋記念公園': wikiPhoto(
     'sakaide-kinen-park.jpg',
     'https://commons.wikimedia.org/wiki/File:Great_Seto_Bridge_Memorial_Park01s3872.jpg',

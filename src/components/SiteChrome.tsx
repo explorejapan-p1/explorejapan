@@ -45,8 +45,8 @@ export function SiteChrome({locale, children, variant}: Props) {
           </p>
           <p>
             {isJa
-              ? '美馬市から始める、日本の市町村案内。'
-              : 'A Japan municipalities guide, starting with Mima City.'}
+              ? '日本の市町村案内。'
+              : 'A Japan municipalities guide.'}
           </p>
         </footer>
       )}
