@@ -110,6 +110,7 @@ import {AKIOTA, AKIOTA_PLACE_PHOTO} from '@/data/akiota';
 import {KITAHIROSHIMA, KITAHIROSHIMA_PLACE_PHOTO} from '@/data/kitahiroshima';
 import {OSAKIKAMIJIMA, OSAKIKAMIJIMA_PLACE_PHOTO} from '@/data/osakikamijima';
 import {SERA, SERA_PLACE_PHOTO} from '@/data/sera';
+import {JINSEIKOGEN, JINSEIKOGEN_PLACE_PHOTO} from '@/data/jinseikogen';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -5466,6 +5467,58 @@ export function sakaGraph(locale: AppLocale) {
 }
 
 
+
+
+export function jinseikogenGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'hiroshima/jinseikogen');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('jinseikogen');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'TouristDestination',
+        '@id': `${url}#place`,
+        name: isJa ? JINSEIKOGEN.nameJa : JINSEIKOGEN.nameEn,
+        alternateName: isJa ? JINSEIKOGEN.nameEn : JINSEIKOGEN.nameJa,
+        identifier: JINSEIKOGEN.jis,
+        url,
+        image: photoAbs(JINSEIKOGEN_PLACE_PHOTO),
+        sameAs: [JINSEIKOGEN.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '小畠1701番地' : '1701 Kobatake',
+          addressLocality: isJa ? JINSEIKOGEN.nameJa : JINSEIKOGEN.nameEn,
+          addressRegion: isJa ? JINSEIKOGEN.prefectureJa : JINSEIKOGEN.prefectureEn,
+          postalCode: JINSEIKOGEN.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? JINSEIKOGEN.prefectureJa : JINSEIKOGEN.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url,
+        name: isJa ? JINSEIKOGEN.nameJa : JINSEIKOGEN.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`},
+        about: {'@id': `${url}#place`},
+        breadcrumb: {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+            {'@type': 'ListItem', position: 2, name: isJa ? JINSEIKOGEN.prefectureJa : JINSEIKOGEN.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
+            {'@type': 'ListItem', position: 3, name: isJa ? JINSEIKOGEN.nameJa : JINSEIKOGEN.nameEn, item: url}
+          ]
+        }
+      }
+    ]
+  };
+}
 
 export function seraGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'hiroshima/sera');

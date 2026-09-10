@@ -793,6 +793,7 @@ import {AKIOTA, AKIOTA_PLACE_PHOTO, AKIOTA_FACILITIES, AKIOTA_EXPECTED_GEO_COUNT
 import {KITAHIROSHIMA, KITAHIROSHIMA_PLACE_PHOTO, KITAHIROSHIMA_FACILITIES, KITAHIROSHIMA_EXPECTED_GEO_COUNT, KITAHIROSHIMA_EXPECTED_ROW_COUNT} from './kitahiroshima';
 import {OSAKIKAMIJIMA, OSAKIKAMIJIMA_PLACE_PHOTO, OSAKIKAMIJIMA_FACILITIES, OSAKIKAMIJIMA_EXPECTED_GEO_COUNT, OSAKIKAMIJIMA_EXPECTED_ROW_COUNT} from './osakikamijima';
 import {SERA, SERA_PLACE_PHOTO, SERA_FACILITIES, SERA_EXPECTED_GEO_COUNT, SERA_EXPECTED_ROW_COUNT} from './sera';
+import {JINSEIKOGEN, JINSEIKOGEN_PLACE_PHOTO, JINSEIKOGEN_FACILITIES, JINSEIKOGEN_EXPECTED_GEO_COUNT, JINSEIKOGEN_EXPECTED_ROW_COUNT} from './jinseikogen';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -1101,6 +1102,13 @@ import {
   SERA_TRAVEL_COMMERCE,
   SERA_TRAVEL_ALL
 } from './sera-travel';
+import {
+  JINSEIKOGEN_TRAVEL_DINING,
+  JINSEIKOGEN_TRAVEL_STAY,
+  JINSEIKOGEN_TRAVEL_SHOPPING,
+  JINSEIKOGEN_TRAVEL_COMMERCE,
+  JINSEIKOGEN_TRAVEL_ALL
+} from './jinseikogen-travel';
 
 
 
@@ -4103,6 +4111,38 @@ export const SAKA_LOOKUP: LookupTown = {
 
 
 
+
+export const JINSEIKOGEN_LOOKUP: LookupTown = {
+  slug: 'jinseikogen',
+  prefectureSlug: 'hiroshima',
+  jis: JINSEIKOGEN.jis,
+  nameJa: JINSEIKOGEN.nameJa,
+  nameEn: JINSEIKOGEN.nameEn,
+  heroPhoto: JINSEIKOGEN_PLACE_PHOTO,
+  photoCiteJa: '写真は神石高原町役場。OS6、CC BY-SA 3.0。File:神石高原町役場 Jinsekikogen town hall - panoramio.jpg。',
+  photoCiteEn: 'Photo: Jinseikogen Town Office. OS6, CC BY-SA 3.0. File:神石高原町役場 Jinsekikogen town hall - panoramio.jpg.',
+  rows: JINSEIKOGEN_FACILITIES,
+  expectedGeo: JINSEIKOGEN_EXPECTED_GEO_COUNT,
+  expectedRows: JINSEIKOGEN_EXPECTED_ROW_COUNT,
+  travelDining: JINSEIKOGEN_TRAVEL_DINING,
+  travelStay: JINSEIKOGEN_TRAVEL_STAY,
+  travelShopping: JINSEIKOGEN_TRAVEL_SHOPPING,
+  travelCommerce: JINSEIKOGEN_TRAVEL_COMMERCE,
+  travelAll: JINSEIKOGEN_TRAVEL_ALL,
+  coverageJa:
+    '神石高原町（JIS 34545・広島県神石郡）。観光5・宿泊1・飲食16・温泉2（体験0）。買物・商業は未掲載。',
+  coverageEn:
+    'Jinseikogen Town Hiroshima Jinseki District (JIS 34545), 5 tourism + 1 stay + 16 dining + 2 onsen + 0 experience with sourced photos. Shopping/commerce: 0.',
+  mapLabelJa: '神石高原町の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Jinseikogen Town (Hiroshima)',
+  mapCitePackJa: '点はDive! Hiroshima・地図出典座標5件（accessed 2026-09-11）。施設行は町公式・観光ナビ・食べログ・Commons・Dive! Hiroshima・公式。',
+  mapCitePackEn: 'Points: 5 Dive! Hiroshima / map coordinates (accessed 2026-09-11). Facility rows from town site, tourism nav, Tabelog, Commons, Dive! Hiroshima, official.',
+  licenseNoteJa: '行は町サイト掲載・jinsekigun.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from jinsekigun.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
 export const SERA_LOOKUP: LookupTown = {
   slug: 'sera',
   prefectureSlug: 'hiroshima',
@@ -5183,6 +5223,7 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   akiota: AKIOTA_LOOKUP,
   kitahiroshima: KITAHIROSHIMA_LOOKUP,
   osakikamijima: OSAKIKAMIJIMA_LOOKUP,
+  jinseikogen: JINSEIKOGEN_LOOKUP,
   sera: SERA_LOOKUP
 };
 
