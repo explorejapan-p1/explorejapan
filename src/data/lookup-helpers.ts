@@ -1268,6 +1268,17 @@ import {
   isOsakikamijimaExperiencePackRow,
   isOsakikamijimaStayPackRow
 } from './osakikamijima-travel';
+import {
+  seraPackRowMatchesFilter,
+  rankSeraSeeRows,
+  seraSightPhoto,
+  seraSourcedHook,
+  seraTopChipForRow,
+  resolveSeraFilter,
+  isSeraOnsenPackRow,
+  isSeraExperiencePackRow,
+  isSeraStayPackRow
+} from './sera-travel';
 
 
 
@@ -2276,6 +2287,19 @@ const SAKA_HELPERS: LookupHelpers = {
 
 
 
+
+const SERA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isSeraOnsenPackRow,
+  isExperiencePackRow: isSeraExperiencePackRow,
+  isStayPackRow: isSeraStayPackRow,
+  packRowMatchesFilter: seraPackRowMatchesFilter,
+  rankSeeRows: rankSeraSeeRows,
+  sightPhoto: seraSightPhoto,
+  sourcedHook: seraSourcedHook,
+  topChipForRow: seraTopChipForRow,
+  resolveFilter: resolveSeraFilter
+};
+
 const OSAKIKAMIJIMA_HELPERS: LookupHelpers = {
   isOnsenPackRow: isOsakikamijimaOnsenPackRow,
   isExperiencePackRow: isOsakikamijimaExperiencePackRow,
@@ -2908,5 +2932,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'akiota') return AKIOTA_HELPERS;
   if (slug === 'kitahiroshima') return KITAHIROSHIMA_HELPERS;
   if (slug === 'osakikamijima') return OSAKIKAMIJIMA_HELPERS;
+  if (slug === 'sera') return SERA_HELPERS;
   return MIMA_HELPERS;
 }

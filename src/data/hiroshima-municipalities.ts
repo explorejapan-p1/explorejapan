@@ -35,7 +35,7 @@ export const HIROSHIMA_MUNICIPALITIES: Municipality[] = [
   {jis: '34368', slug: 'akiota', nameJa: '安芸太田町', nameEn: 'Akiota', status: 'ready'},
   {jis: '34369', slug: 'kitahiroshima', nameJa: '北広島町', nameEn: 'Kitahiroshima', status: 'ready'},
   {jis: '34431', slug: 'osakikamijima', nameJa: '大崎上島町', nameEn: 'Osakikamijima', status: 'ready'},
-  {jis: '34462', slug: 'sera', nameJa: '世羅町', nameEn: 'Sera', status: 'coming-soon'},
+  {jis: '34462', slug: 'sera', nameJa: '世羅町', nameEn: 'Sera', status: 'ready'},
   {jis: '34545', slug: 'jinseikogen', nameJa: '神石高原町', nameEn: 'Jinseikogen', status: 'coming-soon'}
 ];
 

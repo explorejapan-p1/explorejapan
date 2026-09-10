@@ -792,6 +792,7 @@ import {SAKA, SAKA_PLACE_PHOTO, SAKA_FACILITIES, SAKA_EXPECTED_GEO_COUNT, SAKA_E
 import {AKIOTA, AKIOTA_PLACE_PHOTO, AKIOTA_FACILITIES, AKIOTA_EXPECTED_GEO_COUNT, AKIOTA_EXPECTED_ROW_COUNT} from './akiota';
 import {KITAHIROSHIMA, KITAHIROSHIMA_PLACE_PHOTO, KITAHIROSHIMA_FACILITIES, KITAHIROSHIMA_EXPECTED_GEO_COUNT, KITAHIROSHIMA_EXPECTED_ROW_COUNT} from './kitahiroshima';
 import {OSAKIKAMIJIMA, OSAKIKAMIJIMA_PLACE_PHOTO, OSAKIKAMIJIMA_FACILITIES, OSAKIKAMIJIMA_EXPECTED_GEO_COUNT, OSAKIKAMIJIMA_EXPECTED_ROW_COUNT} from './osakikamijima';
+import {SERA, SERA_PLACE_PHOTO, SERA_FACILITIES, SERA_EXPECTED_GEO_COUNT, SERA_EXPECTED_ROW_COUNT} from './sera';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -1093,6 +1094,13 @@ import {
   OSAKIKAMIJIMA_TRAVEL_COMMERCE,
   OSAKIKAMIJIMA_TRAVEL_ALL
 } from './osakikamijima-travel';
+import {
+  SERA_TRAVEL_DINING,
+  SERA_TRAVEL_STAY,
+  SERA_TRAVEL_SHOPPING,
+  SERA_TRAVEL_COMMERCE,
+  SERA_TRAVEL_ALL
+} from './sera-travel';
 
 
 
@@ -4094,6 +4102,38 @@ export const SAKA_LOOKUP: LookupTown = {
 
 
 
+
+export const SERA_LOOKUP: LookupTown = {
+  slug: 'sera',
+  prefectureSlug: 'hiroshima',
+  jis: SERA.jis,
+  nameJa: SERA.nameJa,
+  nameEn: SERA.nameEn,
+  heroPhoto: SERA_PLACE_PHOTO,
+  photoCiteJa: '写真は世羅町役場。Iikunitukutta、Copyrighted free use。File:Sera Town Office.JPG。',
+  photoCiteEn: 'Photo: Sera Town Office. Iikunitukutta, Copyrighted free use. File:Sera Town Office.JPG.',
+  rows: SERA_FACILITIES,
+  expectedGeo: SERA_EXPECTED_GEO_COUNT,
+  expectedRows: SERA_EXPECTED_ROW_COUNT,
+  travelDining: SERA_TRAVEL_DINING,
+  travelStay: SERA_TRAVEL_STAY,
+  travelShopping: SERA_TRAVEL_SHOPPING,
+  travelCommerce: SERA_TRAVEL_COMMERCE,
+  travelAll: SERA_TRAVEL_ALL,
+  coverageJa:
+    '世羅町（JIS 34462・広島県世羅郡）。観光5・宿泊1・飲食16・温泉2（体験0）。買物・商業は未掲載。',
+  coverageEn:
+    'Sera Town Hiroshima Sera District (JIS 34462), 5 tourism + 1 stay + 16 dining + 2 onsen + 0 experience with sourced photos. Shopping/commerce: 0.',
+  mapLabelJa: '世羅町の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Sera Town (Hiroshima)',
+  mapCitePackJa: '点はCommons・地図出典座標5件（accessed 2026-09-11）。施設行は町公式・観光協会・食べログ・Commons・楽天・ニフティ温泉。',
+  mapCitePackEn: 'Points: 5 Commons / map coordinates (accessed 2026-09-11). Facility rows from town site, tourism association, Tabelog, Commons, Rakuten, Nifty Onsen.',
+  licenseNoteJa: '行は町サイト掲載・town.sera.hiroshima.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from town.sera.hiroshima.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
 export const OSAKIKAMIJIMA_LOOKUP: LookupTown = {
   slug: 'osakikamijima',
   prefectureSlug: 'hiroshima',
@@ -5142,7 +5182,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   saka: SAKA_LOOKUP,
   akiota: AKIOTA_LOOKUP,
   kitahiroshima: KITAHIROSHIMA_LOOKUP,
-  osakikamijima: OSAKIKAMIJIMA_LOOKUP
+  osakikamijima: OSAKIKAMIJIMA_LOOKUP,
+  sera: SERA_LOOKUP
 };
 
 

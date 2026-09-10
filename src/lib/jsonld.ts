@@ -109,6 +109,7 @@ import {SAKA, SAKA_PLACE_PHOTO} from '@/data/saka';
 import {AKIOTA, AKIOTA_PLACE_PHOTO} from '@/data/akiota';
 import {KITAHIROSHIMA, KITAHIROSHIMA_PLACE_PHOTO} from '@/data/kitahiroshima';
 import {OSAKIKAMIJIMA, OSAKIKAMIJIMA_PLACE_PHOTO} from '@/data/osakikamijima';
+import {SERA, SERA_PLACE_PHOTO} from '@/data/sera';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -5465,6 +5466,57 @@ export function sakaGraph(locale: AppLocale) {
 }
 
 
+
+export function seraGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'hiroshima/sera');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('sera');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'TouristDestination',
+        '@id': `${url}#place`,
+        name: isJa ? SERA.nameJa : SERA.nameEn,
+        alternateName: isJa ? SERA.nameEn : SERA.nameJa,
+        identifier: SERA.jis,
+        url,
+        image: photoAbs(SERA_PLACE_PHOTO),
+        sameAs: [SERA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '西上原123-1' : '123-1 Nishiuehara',
+          addressLocality: isJa ? SERA.nameJa : SERA.nameEn,
+          addressRegion: isJa ? SERA.prefectureJa : SERA.prefectureEn,
+          postalCode: SERA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? SERA.prefectureJa : SERA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url,
+        name: isJa ? SERA.nameJa : SERA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`},
+        about: {'@id': `${url}#place`},
+        breadcrumb: {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+            {'@type': 'ListItem', position: 2, name: isJa ? SERA.prefectureJa : SERA.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
+            {'@type': 'ListItem', position: 3, name: isJa ? SERA.nameJa : SERA.nameEn, item: url}
+          ]
+        }
+      }
+    ]
+  };
+}
 
 export function osakikamijimaGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'hiroshima/osakikamijima');
