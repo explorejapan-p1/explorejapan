@@ -1246,6 +1246,17 @@ import {
   akiotaTopChipForRow,
   resolveAkiotaFilter
 } from './akiota-travel';
+import {
+  kitahiroshimaPackRowMatchesFilter,
+  rankKitahiroshimaSeeRows,
+  kitahiroshimaSightPhoto,
+  kitahiroshimaSourcedHook,
+  kitahiroshimaTopChipForRow,
+  resolveKitahiroshimaFilter,
+  isKitahiroshimaOnsenPackRow,
+  isKitahiroshimaExperiencePackRow,
+  isKitahiroshimaStayPackRow
+} from './kitahiroshima-travel';
 
 
 
@@ -2251,6 +2262,19 @@ const SAKA_HELPERS: LookupHelpers = {
   resolveFilter: resolveSakaFilter
 };
 
+
+const KITAHIROSHIMA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isKitahiroshimaOnsenPackRow,
+  isExperiencePackRow: isKitahiroshimaExperiencePackRow,
+  isStayPackRow: isKitahiroshimaStayPackRow,
+  packRowMatchesFilter: kitahiroshimaPackRowMatchesFilter,
+  rankSeeRows: rankKitahiroshimaSeeRows,
+  sightPhoto: kitahiroshimaSightPhoto,
+  sourcedHook: kitahiroshimaSourcedHook,
+  topChipForRow: kitahiroshimaTopChipForRow,
+  resolveFilter: resolveKitahiroshimaFilter
+};
+
 const AKIOTA_HELPERS: LookupHelpers = {
   isOnsenPackRow: isAkiotaOnsenPackRow,
   isExperiencePackRow: isAkiotaExperiencePackRow,
@@ -2857,5 +2881,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'kumano') return KUMANO_HELPERS;
   if (slug === 'saka') return SAKA_HELPERS;
   if (slug === 'akiota') return AKIOTA_HELPERS;
+  if (slug === 'kitahiroshima') return KITAHIROSHIMA_HELPERS;
   return MIMA_HELPERS;
 }

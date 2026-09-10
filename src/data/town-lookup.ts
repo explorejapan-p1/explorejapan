@@ -790,6 +790,7 @@ import {KAITA, KAITA_PLACE_PHOTO, KAITA_FACILITIES, KAITA_EXPECTED_GEO_COUNT, KA
 import {KUMANO, KUMANO_PLACE_PHOTO, KUMANO_FACILITIES, KUMANO_EXPECTED_GEO_COUNT, KUMANO_EXPECTED_ROW_COUNT} from './kumano';
 import {SAKA, SAKA_PLACE_PHOTO, SAKA_FACILITIES, SAKA_EXPECTED_GEO_COUNT, SAKA_EXPECTED_ROW_COUNT} from './saka';
 import {AKIOTA, AKIOTA_PLACE_PHOTO, AKIOTA_FACILITIES, AKIOTA_EXPECTED_GEO_COUNT, AKIOTA_EXPECTED_ROW_COUNT} from './akiota';
+import {KITAHIROSHIMA, KITAHIROSHIMA_PLACE_PHOTO, KITAHIROSHIMA_FACILITIES, KITAHIROSHIMA_EXPECTED_GEO_COUNT, KITAHIROSHIMA_EXPECTED_ROW_COUNT} from './kitahiroshima';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -1077,6 +1078,13 @@ import {
   AKIOTA_TRAVEL_COMMERCE,
   AKIOTA_TRAVEL_ALL
 } from './akiota-travel';
+import {
+  KITAHIROSHIMA_TRAVEL_DINING,
+  KITAHIROSHIMA_TRAVEL_STAY,
+  KITAHIROSHIMA_TRAVEL_SHOPPING,
+  KITAHIROSHIMA_TRAVEL_COMMERCE,
+  KITAHIROSHIMA_TRAVEL_ALL
+} from './kitahiroshima-travel';
 
 
 
@@ -4076,6 +4084,38 @@ export const SAKA_LOOKUP: LookupTown = {
 
 
 
+
+export const KITAHIROSHIMA_LOOKUP: LookupTown = {
+  slug: 'kitahiroshima',
+  prefectureSlug: 'hiroshima',
+  jis: KITAHIROSHIMA.jis,
+  nameJa: KITAHIROSHIMA.nameJa,
+  nameEn: KITAHIROSHIMA.nameEn,
+  heroPhoto: KITAHIROSHIMA_PLACE_PHOTO,
+  photoCiteJa: '写真は北広島町役場（広島県）。アラツク、CC BY-SA 4.0。File:Kitahiroshima town hall.JPG。北海道北広島市ではない。',
+  photoCiteEn: 'Photo: Kitahiroshima Town Office (Hiroshima). アラツク, CC BY-SA 4.0. File:Kitahiroshima town hall.JPG. Not Kitahiroshima City, Hokkaido.',
+  rows: KITAHIROSHIMA_FACILITIES,
+  expectedGeo: KITAHIROSHIMA_EXPECTED_GEO_COUNT,
+  expectedRows: KITAHIROSHIMA_EXPECTED_ROW_COUNT,
+  travelDining: KITAHIROSHIMA_TRAVEL_DINING,
+  travelStay: KITAHIROSHIMA_TRAVEL_STAY,
+  travelShopping: KITAHIROSHIMA_TRAVEL_SHOPPING,
+  travelCommerce: KITAHIROSHIMA_TRAVEL_COMMERCE,
+  travelAll: KITAHIROSHIMA_TRAVEL_ALL,
+  coverageJa:
+    '北広島町（JIS 34369・広島県山県郡）。観光5・宿泊1・飲食16・温泉3（体験0）。買物・商業は未掲載。北海道北広島市とは別。',
+  coverageEn:
+    'Kitahiroshima Town Hiroshima Yamagata District (JIS 34369), 5 tourism + 1 stay + 16 dining + 3 onsen + 0 experience with sourced photos. Shopping/commerce: 0. Distinct from Kitahiroshima City, Hokkaido.',
+  mapLabelJa: '北広島町の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Kitahiroshima Town (Hiroshima)',
+  mapCitePackJa: '点はDive! Hiroshima出典座標5件（accessed 2026-09-10）。施設行は町公式・公式・食べログ・Commons・Dive! Hiroshima・ニフティ温泉。',
+  mapCitePackEn: 'Points: 5 Dive! Hiroshima coordinates (accessed 2026-09-10). Facility rows from town site, official, Tabelog, Commons, Dive! Hiroshima, Nifty Onsen.',
+  licenseNoteJa: '行は町サイト掲載・town.kitahiroshima.lg.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from town.kitahiroshima.lg.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
 export const AKIOTA_LOOKUP: LookupTown = {
   slug: 'akiota',
   prefectureSlug: 'hiroshima',
@@ -5060,7 +5100,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   kaita: KAITA_LOOKUP,
   kumano: KUMANO_LOOKUP,
   saka: SAKA_LOOKUP,
-  akiota: AKIOTA_LOOKUP
+  akiota: AKIOTA_LOOKUP,
+  kitahiroshima: KITAHIROSHIMA_LOOKUP
 };
 
 

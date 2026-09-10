@@ -107,6 +107,7 @@ import {KAITA, KAITA_PLACE_PHOTO} from '@/data/kaita';
 import {KUMANO, KUMANO_PLACE_PHOTO} from '@/data/kumano';
 import {SAKA, SAKA_PLACE_PHOTO} from '@/data/saka';
 import {AKIOTA, AKIOTA_PLACE_PHOTO} from '@/data/akiota';
+import {KITAHIROSHIMA, KITAHIROSHIMA_PLACE_PHOTO} from '@/data/kitahiroshima';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -5455,6 +5456,58 @@ export function sakaGraph(locale: AppLocale) {
             {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
             {'@type': 'ListItem', position: 2, name: isJa ? SAKA.prefectureJa : SAKA.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
             {'@type': 'ListItem', position: 3, name: isJa ? SAKA.nameJa : SAKA.nameEn, item: url}
+          ]
+        }
+      }
+    ]
+  };
+}
+
+
+export function kitahiroshimaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'hiroshima/kitahiroshima');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('kitahiroshima');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'TouristDestination',
+        '@id': `${url}#place`,
+        name: isJa ? KITAHIROSHIMA.nameJa : KITAHIROSHIMA.nameEn,
+        alternateName: isJa ? KITAHIROSHIMA.nameEn : KITAHIROSHIMA.nameJa,
+        identifier: KITAHIROSHIMA.jis,
+        url,
+        image: photoAbs(KITAHIROSHIMA_PLACE_PHOTO),
+        sameAs: [KITAHIROSHIMA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '有田1234番地' : '1234 Arita',
+          addressLocality: isJa ? KITAHIROSHIMA.nameJa : KITAHIROSHIMA.nameEn,
+          addressRegion: isJa ? KITAHIROSHIMA.prefectureJa : KITAHIROSHIMA.prefectureEn,
+          postalCode: KITAHIROSHIMA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? KITAHIROSHIMA.prefectureJa : KITAHIROSHIMA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url,
+        name: isJa ? KITAHIROSHIMA.nameJa : KITAHIROSHIMA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`},
+        about: {'@id': `${url}#place`},
+        breadcrumb: {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+            {'@type': 'ListItem', position: 2, name: isJa ? KITAHIROSHIMA.prefectureJa : KITAHIROSHIMA.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
+            {'@type': 'ListItem', position: 3, name: isJa ? KITAHIROSHIMA.nameJa : KITAHIROSHIMA.nameEn, item: url}
           ]
         }
       }

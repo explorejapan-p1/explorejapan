@@ -34,4 +34,4 @@
 :HL["/explorejapan/media/otsuki-cover-kashiwajima.jpg","image"]
 :HL["/explorejapan/media/mihara-cover-hoshigaoka.jpg","image"]
 :HL["/explorejapan/media/kuroshio-cover-matsubara.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"ja","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"kochi","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"6LMTdCKSfyVlHDQl4Ia65"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"ja","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"kochi","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"fDYDccIExojtZPUeymKcM"}
