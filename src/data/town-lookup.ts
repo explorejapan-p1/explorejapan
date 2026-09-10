@@ -781,6 +781,7 @@ import {FUCHU, FUCHU_PLACE_PHOTO, FUCHU_FACILITIES, FUCHU_EXPECTED_GEO_COUNT, FU
 import {MIYOSHISHI, MIYOSHISHI_PLACE_PHOTO, MIYOSHISHI_FACILITIES, MIYOSHISHI_EXPECTED_GEO_COUNT, MIYOSHISHI_EXPECTED_ROW_COUNT} from './miyoshishi';
 import {SHOBARA, SHOBARA_PLACE_PHOTO, SHOBARA_FACILITIES, SHOBARA_EXPECTED_GEO_COUNT, SHOBARA_EXPECTED_ROW_COUNT} from './shobara';
 import {OTAKE, OTAKE_PLACE_PHOTO, OTAKE_FACILITIES, OTAKE_EXPECTED_GEO_COUNT, OTAKE_EXPECTED_ROW_COUNT} from './otake';
+import {HIGASHIHIROSHIMA, HIGASHIHIROSHIMA_PLACE_PHOTO, HIGASHIHIROSHIMA_FACILITIES, HIGASHIHIROSHIMA_EXPECTED_GEO_COUNT, HIGASHIHIROSHIMA_EXPECTED_ROW_COUNT} from './higashihiroshima';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -1005,6 +1006,13 @@ import {
   OTAKE_TRAVEL_COMMERCE,
   OTAKE_TRAVEL_ALL
 } from './otake-travel';
+import {
+  HIGASHIHIROSHIMA_TRAVEL_DINING,
+  HIGASHIHIROSHIMA_TRAVEL_STAY,
+  HIGASHIHIROSHIMA_TRAVEL_SHOPPING,
+  HIGASHIHIROSHIMA_TRAVEL_COMMERCE,
+  HIGASHIHIROSHIMA_TRAVEL_ALL
+} from './higashihiroshima-travel';
 
 
 
@@ -3932,6 +3940,39 @@ export const MIYOSHISHI_LOOKUP: LookupTown = {
 
 
 
+
+export const HIGASHIHIROSHIMA_LOOKUP: LookupTown = {
+  slug: 'higashihiroshima',
+  prefectureSlug: 'hiroshima',
+  jis: HIGASHIHIROSHIMA.jis,
+  nameJa: HIGASHIHIROSHIMA.nameJa,
+  nameEn: HIGASHIHIROSHIMA.nameEn,
+  heroPhoto: HIGASHIHIROSHIMA_PLACE_PHOTO,
+  photoCiteJa: '写真は西条酒蔵通り（賀茂鶴）。OS6、CC BY-SA 3.0。File:酒蔵通り 賀茂鶴 Sake brewery "Kamotsuru" - panoramio.jpg。',
+  photoCiteEn: 'Photo: Saijo Sake Brewery Street (Kamotsuru). OS6, CC BY-SA 3.0. File:酒蔵通り 賀茂鶴 Sake brewery "Kamotsuru" - panoramio.jpg.',
+  rows: HIGASHIHIROSHIMA_FACILITIES,
+  expectedGeo: HIGASHIHIROSHIMA_EXPECTED_GEO_COUNT,
+  expectedRows: HIGASHIHIROSHIMA_EXPECTED_ROW_COUNT,
+  travelDining: HIGASHIHIROSHIMA_TRAVEL_DINING,
+  travelStay: HIGASHIHIROSHIMA_TRAVEL_STAY,
+  travelShopping: HIGASHIHIROSHIMA_TRAVEL_SHOPPING,
+  travelCommerce: HIGASHIHIROSHIMA_TRAVEL_COMMERCE,
+  travelAll: HIGASHIHIROSHIMA_TRAVEL_ALL,
+  coverageJa:
+    '東広島市（JIS 34212・広島県）。観光5・宿泊9・飲食16・温泉5（体験0）。買物・商業は未掲載。',
+  coverageEn:
+    'Higashihiroshima City Hiroshima (JIS 34212), 5 tourism + 9 stay + 16 dining + 5 onsen + 0 experience with sourced photos. Shopping/commerce: 0.',
+  mapLabelJa: '東広島市の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Higashihiroshima City (Hiroshima)',
+  mapCitePackJa: '点はOSM Nominatim出典座標5件（accessed 2026-09-10）。施設行は市公式・楽天・食べログ・Commons。',
+  mapCitePackEn: 'Points: 5 OSM Nominatim coordinates (accessed 2026-09-10). Facility rows from city site, Rakuten, Tabelog, Commons.',
+  licenseNoteJa: '行は市サイト掲載・city.higashihiroshima.lg.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are city-site listings, facts from city.higashihiroshima.lg.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
+
 export const OTAKE_LOOKUP: LookupTown = {
   slug: 'otake',
   prefectureSlug: 'hiroshima',
@@ -4687,7 +4728,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   fuchu: FUCHU_LOOKUP,
   miyoshishi: MIYOSHISHI_LOOKUP,
   shobara: SHOBARA_LOOKUP,
-  otake: OTAKE_LOOKUP
+  otake: OTAKE_LOOKUP,
+  higashihiroshima: HIGASHIHIROSHIMA_LOOKUP
 };
 
 

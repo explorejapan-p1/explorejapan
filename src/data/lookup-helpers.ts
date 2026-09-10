@@ -1142,6 +1142,18 @@ import {
   resolveOtakeFilter
 } from './otake-travel';
 
+import {
+  higashihiroshimaPackRowMatchesFilter,
+  isHigashihiroshimaOnsenPackRow,
+  isHigashihiroshimaExperiencePackRow,
+  isHigashihiroshimaStayPackRow,
+  higashihiroshimaSightPhoto,
+  higashihiroshimaSourcedHook,
+  higashihiroshimaTopChipForRow,
+  rankHigashihiroshimaSeeRows,
+  resolveHigashihiroshimaFilter
+} from './higashihiroshima-travel';
+
 
 
 
@@ -2112,6 +2124,20 @@ const OTAKE_HELPERS: LookupHelpers = {
 };
 
 
+const HIGASHIHIROSHIMA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isHigashihiroshimaOnsenPackRow,
+  isExperiencePackRow: isHigashihiroshimaExperiencePackRow,
+  isStayPackRow: isHigashihiroshimaStayPackRow,
+  packRowMatchesFilter: higashihiroshimaPackRowMatchesFilter,
+  rankSeeRows: rankHigashihiroshimaSeeRows,
+  sightPhoto: higashihiroshimaSightPhoto,
+  sourcedHook: higashihiroshimaSourcedHook,
+  topChipForRow: higashihiroshimaTopChipForRow,
+  resolveFilter: resolveHigashihiroshimaFilter
+};
+
+
+
 const FUCHU_HELPERS: LookupHelpers = {
   isOnsenPackRow: isFuchuOnsenPackRow,
   isExperiencePackRow: isFuchuExperiencePackRow,
@@ -2621,5 +2647,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'miyoshishi') return MIYOSHISHI_HELPERS;
   if (slug === 'shobara') return SHOBARA_HELPERS;
   if (slug === 'otake') return OTAKE_HELPERS;
+  if (slug === 'higashihiroshima') return HIGASHIHIROSHIMA_HELPERS;
   return MIMA_HELPERS;
 }

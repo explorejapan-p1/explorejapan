@@ -98,6 +98,7 @@ import {FUCHU, FUCHU_PLACE_PHOTO} from '@/data/fuchu';
 import {MIYOSHISHI, MIYOSHISHI_PLACE_PHOTO} from '@/data/miyoshishi';
 import {SHOBARA, SHOBARA_PLACE_PHOTO} from '@/data/shobara';
 import {OTAKE, OTAKE_PLACE_PHOTO} from '@/data/otake';
+import {HIGASHIHIROSHIMA, HIGASHIHIROSHIMA_PLACE_PHOTO} from '@/data/higashihiroshima';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -5188,6 +5189,57 @@ export function otakeGraph(locale: AppLocale) {
           {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
           {'@type': 'ListItem', position: 2, name: isJa ? OTAKE.prefectureJa : OTAKE.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
           {'@type': 'ListItem', position: 3, name: isJa ? OTAKE.nameJa : OTAKE.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
+
+export function higashihiroshimaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'hiroshima/higashihiroshima');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('higashihiroshima');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? HIGASHIHIROSHIMA.nameJa : HIGASHIHIROSHIMA.nameEn,
+        alternateName: isJa ? HIGASHIHIROSHIMA.nameEn : HIGASHIHIROSHIMA.nameJa,
+        identifier: HIGASHIHIROSHIMA.jis,
+        url,
+        image: photoAbs(HIGASHIHIROSHIMA_PLACE_PHOTO),
+        sameAs: [HIGASHIHIROSHIMA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '西条栄町8番29号' : '8-29 Saijo Sakae-machi',
+          addressLocality: isJa ? HIGASHIHIROSHIMA.nameJa : HIGASHIHIROSHIMA.nameEn,
+          addressRegion: isJa ? HIGASHIHIROSHIMA.prefectureJa : HIGASHIHIROSHIMA.prefectureEn,
+          postalCode: HIGASHIHIROSHIMA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? HIGASHIHIROSHIMA.prefectureJa : HIGASHIHIROSHIMA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? HIGASHIHIROSHIMA.nameJa : HIGASHIHIROSHIMA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? HIGASHIHIROSHIMA.prefectureJa : HIGASHIHIROSHIMA.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
+          {'@type': 'ListItem', position: 3, name: isJa ? HIGASHIHIROSHIMA.nameJa : HIGASHIHIROSHIMA.nameEn, item: url}
         ]
       },
       ...featured
