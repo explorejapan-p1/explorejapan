@@ -7,7 +7,7 @@ import type {FacilityRow} from './facility-schema';
 import type {MimaPlacePhoto} from './mima';
 
 export const HATSUKAICHI = {
-  nameJa: '廿日市市',
+  nameJa: '廿日市',
   nameEn: 'Hatsukaichi',
   reading: 'はつかいちし',
   prefectureJa: '広島県',

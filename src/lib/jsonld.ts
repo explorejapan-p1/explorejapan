@@ -100,6 +100,7 @@ import {SHOBARA, SHOBARA_PLACE_PHOTO} from '@/data/shobara';
 import {OTAKE, OTAKE_PLACE_PHOTO} from '@/data/otake';
 import {HIGASHIHIROSHIMA, HIGASHIHIROSHIMA_PLACE_PHOTO} from '@/data/higashihiroshima';
 import {HATSUKAICHI, HATSUKAICHI_PLACE_PHOTO} from '@/data/hatsukaichi';
+import {AKITAKATA, AKITAKATA_PLACE_PHOTO} from '@/data/akitakata';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -5241,6 +5242,58 @@ export function higashihiroshimaGraph(locale: AppLocale) {
           {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
           {'@type': 'ListItem', position: 2, name: isJa ? HIGASHIHIROSHIMA.prefectureJa : HIGASHIHIROSHIMA.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
           {'@type': 'ListItem', position: 3, name: isJa ? HIGASHIHIROSHIMA.nameJa : HIGASHIHIROSHIMA.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
+
+
+export function akitakataGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'hiroshima/akitakata');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('akitakata');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? AKITAKATA.nameJa : AKITAKATA.nameEn,
+        alternateName: isJa ? AKITAKATA.nameEn : AKITAKATA.nameJa,
+        identifier: AKITAKATA.jis,
+        url,
+        image: photoAbs(AKITAKATA_PLACE_PHOTO),
+        sameAs: [AKITAKATA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '吉田町吉田791番地' : '791 Yoshida, Yoshida-cho',
+          addressLocality: isJa ? AKITAKATA.nameJa : AKITAKATA.nameEn,
+          addressRegion: isJa ? AKITAKATA.prefectureJa : AKITAKATA.prefectureEn,
+          postalCode: AKITAKATA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? AKITAKATA.prefectureJa : AKITAKATA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? AKITAKATA.nameJa : AKITAKATA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? AKITAKATA.prefectureJa : AKITAKATA.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
+          {'@type': 'ListItem', position: 3, name: isJa ? AKITAKATA.nameJa : AKITAKATA.nameEn, item: url}
         ]
       },
       ...featured

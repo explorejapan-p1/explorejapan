@@ -108,9 +108,9 @@ export function rankHatsukaichiSeeRows<T extends Rankable>(rows: readonly T[]): 
 export function hatsukaichiSourcedHook(row: {name_ja: string; address: string | null; category: string; phone?: string | null}, locale: string): string {
   const addr = row.address && row.address.trim() !== '' ? row.address : '';
   if (addr) return addr;
-  if (row.category === 'dining') return locale === 'ja' ? '廿日市市 飲食案内' : 'Hatsukaichi City dining list';
-  if (row.category === 'stay') return locale === 'ja' ? '廿日市市 宿泊案内' : 'Hatsukaichi City lodging list';
-  if (row.category === 'shopping') return locale === 'ja' ? '廿日市市 買物案内' : 'Hatsukaichi City shopping list';
+  if (row.category === 'dining') return locale === 'ja' ? '廿日市 飲食案内' : 'Hatsukaichi City dining list';
+  if (row.category === 'stay') return locale === 'ja' ? '廿日市 宿泊案内' : 'Hatsukaichi City lodging list';
+  if (row.category === 'shopping') return locale === 'ja' ? '廿日市 買物案内' : 'Hatsukaichi City shopping list';
   if (row.category === 'tourism') return locale === 'ja' ? '市の観光案内' : 'City tourism pages';
   if (row.category === 'cultural_property') return locale === 'ja' ? '文化財（オープンデータ）' : 'Cultural property (open data)';
   return '';

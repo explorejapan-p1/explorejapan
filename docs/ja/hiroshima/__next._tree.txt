@@ -14,4 +14,5 @@
 :HL["/explorejapan/media/otake-cover-simose.jpg","image"]
 :HL["/explorejapan/media/higashihiroshima-cover-kamotsuru.jpg","image"]
 :HL["/explorejapan/media/hatsukaichi-cover-torii.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"ja","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"hiroshima","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"Z0SotjxCRlMRW0IlfaIVd"}
+:HL["/explorejapan/media/akitakata-cover-landscape.jpg","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"ja","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"hiroshima","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"GemsxZmyrz9MUIoatSsnC"}

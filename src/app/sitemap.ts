@@ -111,7 +111,8 @@ const READY_HUBS = [
   'hiroshima/shobara',
   'hiroshima/otake',
   'hiroshima/higashihiroshima',
-  'hiroshima/hatsukaichi'
+  'hiroshima/hatsukaichi',
+  'hiroshima/akitakata'
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

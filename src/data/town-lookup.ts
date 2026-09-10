@@ -783,6 +783,7 @@ import {SHOBARA, SHOBARA_PLACE_PHOTO, SHOBARA_FACILITIES, SHOBARA_EXPECTED_GEO_C
 import {OTAKE, OTAKE_PLACE_PHOTO, OTAKE_FACILITIES, OTAKE_EXPECTED_GEO_COUNT, OTAKE_EXPECTED_ROW_COUNT} from './otake';
 import {HIGASHIHIROSHIMA, HIGASHIHIROSHIMA_PLACE_PHOTO, HIGASHIHIROSHIMA_FACILITIES, HIGASHIHIROSHIMA_EXPECTED_GEO_COUNT, HIGASHIHIROSHIMA_EXPECTED_ROW_COUNT} from './higashihiroshima';
 import {HATSUKAICHI, HATSUKAICHI_PLACE_PHOTO, HATSUKAICHI_FACILITIES, HATSUKAICHI_EXPECTED_GEO_COUNT, HATSUKAICHI_EXPECTED_ROW_COUNT} from './hatsukaichi';
+import {AKITAKATA, AKITAKATA_PLACE_PHOTO, AKITAKATA_FACILITIES, AKITAKATA_EXPECTED_GEO_COUNT, AKITAKATA_EXPECTED_ROW_COUNT} from './akitakata';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -1021,6 +1022,13 @@ import {
   HATSUKAICHI_TRAVEL_COMMERCE,
   HATSUKAICHI_TRAVEL_ALL
 } from './hatsukaichi-travel';
+import {
+  AKITAKATA_TRAVEL_DINING,
+  AKITAKATA_TRAVEL_STAY,
+  AKITAKATA_TRAVEL_SHOPPING,
+  AKITAKATA_TRAVEL_COMMERCE,
+  AKITAKATA_TRAVEL_ALL
+} from './akitakata-travel';
 
 
 
@@ -3950,6 +3958,38 @@ export const MIYOSHISHI_LOOKUP: LookupTown = {
 
 
 
+
+export const AKITAKATA_LOOKUP: LookupTown = {
+  slug: 'akitakata',
+  prefectureSlug: 'hiroshima',
+  jis: AKITAKATA.jis,
+  nameJa: AKITAKATA.nameJa,
+  nameEn: AKITAKATA.nameEn,
+  heroPhoto: AKITAKATA_PLACE_PHOTO,
+  photoCiteJa: '写真は安芸高田の丘陵景観。Nesnad、CC BY 4.0。File:Akitakata Hiroshima 2023 Aug 20 10-09AM.jpeg。',
+  photoCiteEn: 'Photo: Akitakata hillside landscape. Nesnad, CC BY 4.0. File:Akitakata Hiroshima 2023 Aug 20 10-09AM.jpeg.',
+  rows: AKITAKATA_FACILITIES,
+  expectedGeo: AKITAKATA_EXPECTED_GEO_COUNT,
+  expectedRows: AKITAKATA_EXPECTED_ROW_COUNT,
+  travelDining: AKITAKATA_TRAVEL_DINING,
+  travelStay: AKITAKATA_TRAVEL_STAY,
+  travelShopping: AKITAKATA_TRAVEL_SHOPPING,
+  travelCommerce: AKITAKATA_TRAVEL_COMMERCE,
+  travelAll: AKITAKATA_TRAVEL_ALL,
+  coverageJa:
+    '安芸高田市（JIS 34214・広島県）。観光5・宿泊4・飲食16・温泉4（体験0）。買物・商業は未掲載。',
+  coverageEn:
+    'Akitakata City Hiroshima (JIS 34214), 5 tourism + 4 stay + 16 dining + 4 onsen + 0 experience with sourced photos. Shopping/commerce: 0.',
+  mapLabelJa: '安芸高田市の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Akitakata City (Hiroshima)',
+  mapCitePackJa: '点はOSM Nominatim出典座標5件（accessed 2026-09-10）。施設行は市公式・楽天・食べログ・Commons。',
+  mapCitePackEn: 'Points: 5 OSM Nominatim coordinates (accessed 2026-09-10). Facility rows from city site, Rakuten, Tabelog, Commons.',
+  licenseNoteJa: '行は市サイト掲載・akitakata.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are city-site listings, facts from akitakata.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
 export const HATSUKAICHI_LOOKUP: LookupTown = {
   slug: 'hatsukaichi',
   prefectureSlug: 'hiroshima',
@@ -3968,10 +4008,10 @@ export const HATSUKAICHI_LOOKUP: LookupTown = {
   travelCommerce: HATSUKAICHI_TRAVEL_COMMERCE,
   travelAll: HATSUKAICHI_TRAVEL_ALL,
   coverageJa:
-    '廿日市市（JIS 34213・広島県）。観光5・宿泊9・飲食16・温泉5（体験0）。買物・商業は未掲載。',
+    '廿日市（JIS 34213・広島県）。観光5・宿泊9・飲食16・温泉5（体験0）。買物・商業は未掲載。',
   coverageEn:
     'Hatsukaichi City Hiroshima (JIS 34213), 5 tourism + 9 stay + 16 dining + 5 onsen + 0 experience with sourced photos. Shopping/commerce: 0.',
-  mapLabelJa: '廿日市市の出典座標5件',
+  mapLabelJa: '廿日市の出典座標5件',
   mapLabelEn: '5 sourced coordinates in Hatsukaichi City (Hiroshima)',
   mapCitePackJa: '点はOSM Nominatim出典座標5件（accessed 2026-09-10）。施設行は市公式・楽天・食べログ・Commons。',
   mapCitePackEn: 'Points: 5 OSM Nominatim coordinates (accessed 2026-09-10). Facility rows from city site, Rakuten, Tabelog, Commons.',
@@ -4771,7 +4811,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   shobara: SHOBARA_LOOKUP,
   otake: OTAKE_LOOKUP,
   higashihiroshima: HIGASHIHIROSHIMA_LOOKUP,
-  hatsukaichi: HATSUKAICHI_LOOKUP
+  hatsukaichi: HATSUKAICHI_LOOKUP,
+  akitakata: AKITAKATA_LOOKUP
 };
 
 
