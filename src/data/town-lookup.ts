@@ -764,6 +764,7 @@ import {SEIYO, SEIYO_PLACE_PHOTO, SEIYO_FACILITIES, SEIYO_EXPECTED_GEO_COUNT, SE
 import {TOON, TOON_PLACE_PHOTO, TOON_FACILITIES, TOON_EXPECTED_GEO_COUNT, TOON_EXPECTED_ROW_COUNT} from './toon';
 import {KAMIJIMA, KAMIJIMA_PLACE_PHOTO, KAMIJIMA_FACILITIES, KAMIJIMA_EXPECTED_GEO_COUNT, KAMIJIMA_EXPECTED_ROW_COUNT} from './kamijima';
 import {KUMAKOGEN, KUMAKOGEN_PLACE_PHOTO, KUMAKOGEN_FACILITIES, KUMAKOGEN_EXPECTED_GEO_COUNT, KUMAKOGEN_EXPECTED_ROW_COUNT} from './kumakogen';
+import {MASAKI, MASAKI_PLACE_PHOTO, MASAKI_FACILITIES, MASAKI_EXPECTED_GEO_COUNT, MASAKI_EXPECTED_ROW_COUNT} from './masaki';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -869,6 +870,14 @@ import {
   KUMAKOGEN_TRAVEL_COMMERCE,
   KUMAKOGEN_TRAVEL_ALL
 } from './kumakogen-travel';
+import {
+  MASAKI_TRAVEL_DINING,
+  MASAKI_TRAVEL_STAY,
+  MASAKI_TRAVEL_SHOPPING,
+  MASAKI_TRAVEL_COMMERCE,
+  MASAKI_TRAVEL_ALL
+} from './masaki-travel';
+
 
 
 
@@ -3523,6 +3532,40 @@ export const KUMAKOGEN_LOOKUP: LookupTown = {
   licenseSiteEn: 'Town-site listing'
 };
 
+
+export const MASAKI_LOOKUP: LookupTown = {
+  slug: 'masaki',
+  prefectureSlug: 'ehime',
+  jis: MASAKI.jis,
+  nameJa: MASAKI.nameJa,
+  nameEn: MASAKI.nameEn,
+  heroPhoto: MASAKI_PLACE_PHOTO,
+  photoCiteJa: '写真はエミフルMASAKI。CT-May、2025-12-07、CC0。File:Emifull MASAKI 20251207 (1).jpg。',
+  photoCiteEn: 'Photo: Emifull MASAKI. CT-May, 2025-12-07, CC0. File:Emifull MASAKI 20251207 (1).jpg.',
+  rows: MASAKI_FACILITIES,
+  expectedGeo: MASAKI_EXPECTED_GEO_COUNT,
+  expectedRows: MASAKI_EXPECTED_ROW_COUNT,
+  travelDining: MASAKI_TRAVEL_DINING,
+  travelStay: MASAKI_TRAVEL_STAY,
+  travelShopping: MASAKI_TRAVEL_SHOPPING,
+  travelCommerce: MASAKI_TRAVEL_COMMERCE,
+  travelAll: MASAKI_TRAVEL_ALL,
+  coverageJa:
+    '松前町（JIS 38401）観光4・宿泊0・飲食16・温泉0・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。愛媛県14つ目のLIVEハブ。',
+  coverageEn:
+    'Masaki Town (JIS 38401), 4 tourism + 0 stay + 16 dining + 0 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Fourteenth LIVE Ehime hub.',
+  mapLabelJa: '松前町の出典座標4件',
+  mapLabelEn: '4 sourced coordinates in Masaki Town',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons等出典座標4件（accessed 2026-09-10）。',
+  mapCitePackEn: 'Points: 4 sourced coordinates for town/official facilities (accessed 2026-09-10).',
+  licenseNoteJa:
+    '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are town-site listings, facts from town.masaki.ehime.jp, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
 export const KAMIJIMA_LOOKUP: LookupTown = {
   slug: 'kamijima',
   prefectureSlug: 'ehime',
@@ -3966,7 +4009,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   seiyo: SEIYO_LOOKUP,
   toon: TOON_LOOKUP,
   kamijima: KAMIJIMA_LOOKUP,
-  kumakogen: KUMAKOGEN_LOOKUP
+  kumakogen: KUMAKOGEN_LOOKUP,
+  masaki: MASAKI_LOOKUP
 };
 
 

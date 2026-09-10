@@ -81,6 +81,7 @@ import {SEIYO, SEIYO_PLACE_PHOTO} from '@/data/seiyo';
 import {TOON, TOON_PLACE_PHOTO} from '@/data/toon';
 import {KAMIJIMA, KAMIJIMA_PLACE_PHOTO} from '@/data/kamijima';
 import {KUMAKOGEN, KUMAKOGEN_PLACE_PHOTO} from '@/data/kumakogen';
+import {MASAKI, MASAKI_PLACE_PHOTO} from '@/data/masaki';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -216,6 +217,7 @@ function localityJa(slug: string): string {
   if (slug === 'toon') return TOON.nameJa;
   if (slug === 'kamijima') return KAMIJIMA.nameJa;
   if (slug === 'kumakogen') return KUMAKOGEN.nameJa;
+  if (slug === 'masaki') return MASAKI.nameJa;
   return MIMA.nameJa;
 }
 
@@ -290,6 +292,7 @@ function localityEn(slug: string): string {
   if (slug === 'toon') return TOON.nameEn;
   if (slug === 'kamijima') return KAMIJIMA.nameEn;
   if (slug === 'kumakogen') return KUMAKOGEN.nameEn;
+  if (slug === 'masaki') return MASAKI.nameEn;
   return MIMA.nameEn;
 }
 
@@ -4676,6 +4679,58 @@ export function kumakogenGraph(locale: AppLocale) {
           {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
           {'@type': 'ListItem', position: 2, name: isJa ? KUMAKOGEN.prefectureJa : KUMAKOGEN.prefectureEn, item: canonicalUrl(locale, 'ehime')},
           {'@type': 'ListItem', position: 3, name: isJa ? KUMAKOGEN.nameJa : KUMAKOGEN.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
+
+
+export function masakiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'ehime/masaki');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('masaki');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? MASAKI.nameJa : MASAKI.nameEn,
+        alternateName: isJa ? MASAKI.nameEn : MASAKI.nameJa,
+        identifier: MASAKI.jis,
+        url,
+        image: photoAbs(MASAKI_PLACE_PHOTO),
+        sameAs: [MASAKI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '大字筒井631番地' : '631 Tsutsui',
+          addressLocality: isJa ? MASAKI.nameJa : MASAKI.nameEn,
+          addressRegion: isJa ? MASAKI.prefectureJa : MASAKI.prefectureEn,
+          postalCode: MASAKI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? MASAKI.prefectureJa : MASAKI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? MASAKI.nameJa : MASAKI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? MASAKI.prefectureJa : MASAKI.prefectureEn, item: canonicalUrl(locale, 'ehime')},
+          {'@type': 'ListItem', position: 3, name: isJa ? MASAKI.nameJa : MASAKI.nameEn, item: url}
         ]
       },
       ...featured

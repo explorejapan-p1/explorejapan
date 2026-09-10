@@ -950,6 +950,17 @@ import {
   kumakogenTopChipForRow,
   resolveKumakogenFilter,
 } from './kumakogen-travel';
+import {
+  isMasakiOnsenPackRow,
+  isMasakiExperiencePackRow,
+  isMasakiStayPackRow,
+  masakiPackRowMatchesFilter,
+  rankMasakiSeeRows,
+  masakiSightPhoto,
+  masakiSourcedHook,
+  masakiTopChipForRow,
+  resolveMasakiFilter
+} from './masaki-travel';
 
 
 
@@ -1778,6 +1789,18 @@ const KUMAKOGEN_HELPERS: LookupHelpers = {
   resolveFilter: resolveKumakogenFilter
 };
 
+const MASAKI_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isMasakiOnsenPackRow,
+  isExperiencePackRow: isMasakiExperiencePackRow,
+  isStayPackRow: isMasakiStayPackRow,
+  packRowMatchesFilter: masakiPackRowMatchesFilter,
+  rankSeeRows: rankMasakiSeeRows,
+  sightPhoto: masakiSightPhoto,
+  sourcedHook: masakiSourcedHook,
+  topChipForRow: masakiTopChipForRow,
+  resolveFilter: resolveMasakiFilter
+};
+
 const TOON_HELPERS: LookupHelpers = {
   isOnsenPackRow: isToonOnsenPackRow,
   isExperiencePackRow: isToonExperiencePackRow,
@@ -2198,5 +2221,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'toon') return TOON_HELPERS;
   if (slug === 'kamijima') return KAMIJIMA_HELPERS;
   if (slug === 'kumakogen') return KUMAKOGEN_HELPERS;
+  if (slug === 'masaki') return MASAKI_HELPERS;
   return MIMA_HELPERS;
 }

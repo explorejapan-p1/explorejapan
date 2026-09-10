@@ -77,6 +77,7 @@ import {SEIYO_PLACE_PHOTO} from '@/data/seiyo';
 import {TOON_PLACE_PHOTO} from '@/data/toon';
 import {KAMIJIMA_PLACE_PHOTO} from '@/data/kamijima';
 import {KUMAKOGEN_PLACE_PHOTO} from '@/data/kumakogen';
+import {MASAKI_PLACE_PHOTO} from '@/data/masaki';
 import {NAKA_PLACE_PHOTO} from '@/data/naka';
 import {MUGI_PLACE_PHOTO} from '@/data/mugi';
 import {MINAMI_PLACE_PHOTO} from '@/data/minami';
@@ -187,6 +188,7 @@ const MUNI_CARD_PHOTO: Record<string, MimaPlacePhoto> = {
   toon: TOON_PLACE_PHOTO,
   kamijima: KAMIJIMA_PLACE_PHOTO,
   kumakogen: KUMAKOGEN_PLACE_PHOTO,
+  masaki: MASAKI_PLACE_PHOTO,
 };
 
 type Props = {params: Promise<{locale: string; prefecture: string}>};

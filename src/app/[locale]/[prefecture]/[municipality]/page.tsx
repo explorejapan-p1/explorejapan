@@ -101,11 +101,12 @@ import {SEIYO, SEIYO_PLACE_PHOTO} from '@/data/seiyo';
 import {TOON, TOON_PLACE_PHOTO} from '@/data/toon';
 import {KAMIJIMA, KAMIJIMA_PLACE_PHOTO} from '@/data/kamijima';
 import {KUMAKOGEN, KUMAKOGEN_PLACE_PHOTO} from '@/data/kumakogen';
+import {MASAKI, MASAKI_PLACE_PHOTO} from '@/data/masaki';
 import {Link} from '@/i18n/navigation';
 import type {AppLocale} from '@/i18n/routing';
 import {projectMimaOfficialMap} from '@/lib/geo';
 import {JsonLd} from '@/components/JsonLd';
-import {mimaGraph, tsurugiGraph, yoshinogawaGraph, miyoshiGraph, tokushimaCityGraph, awaGraph, higashimiyoshiGraph, kitajimaGraph, narutoGraph, matsushigeGraph, ishiiGraph, itanoGraph, kamiitaGraph, kamiyamaGraph, katsuuraGraph, kamikatsuGraph, sanagochiGraph, nakaGraph, minamiGraph, kaiyoGraph, aizumiGraph, mugiGraph, komatsushimaGraph, ananGraph, takamatsuGraph, kotohiraGraph, marugameGraph, kanonjiGraph, sakaideGraph, naoshimaGraph, shodoshimaGraph, zentsujiGraph, mitoyoGraph, utazuGraph, tonoshoGraph, sanukiGraph, higashikagawaGraph, mikiGraph, ayagawaGraph, tadotsuGraph, mannoGraph, kochiGraph, nankokuGraph, konanGraph, kamiGraph, inoGraph, akiGraph, murotoGraph, tosaGraph, susakiGraph, shimantoGraph, tosashimizuGraph, sukumoGraph, kuroshioGraph, toyoGraph, nahariGraph, yasudaGraph, geiseiGraph, kitagawaGraph, umajiGraph, motoyamaGraph, otoyoGraph, tosachoGraph, okawaGraph, niyodogawaGraph, nakatosaGraph, ochiGraph, yusuharaGraph, hidakaGraph, tsunoGraph, shimantochoGraph, otsukiGraph, miharaGraph, matsuyamaGraph, imabariGraph, uwajimaGraph, yawatahamaGraph, niihamaGraph, saijoGraph, ozuGraph, iyoGraph, shikokuchuoGraph, seiyoGraph, toonGraph, kamijimaGraph, kumakogenGraph} from '@/lib/jsonld';
+import {mimaGraph, tsurugiGraph, yoshinogawaGraph, miyoshiGraph, tokushimaCityGraph, awaGraph, higashimiyoshiGraph, kitajimaGraph, narutoGraph, matsushigeGraph, ishiiGraph, itanoGraph, kamiitaGraph, kamiyamaGraph, katsuuraGraph, kamikatsuGraph, sanagochiGraph, nakaGraph, minamiGraph, kaiyoGraph, aizumiGraph, mugiGraph, komatsushimaGraph, ananGraph, takamatsuGraph, kotohiraGraph, marugameGraph, kanonjiGraph, sakaideGraph, naoshimaGraph, shodoshimaGraph, zentsujiGraph, mitoyoGraph, utazuGraph, tonoshoGraph, sanukiGraph, higashikagawaGraph, mikiGraph, ayagawaGraph, tadotsuGraph, mannoGraph, kochiGraph, nankokuGraph, konanGraph, kamiGraph, inoGraph, akiGraph, murotoGraph, tosaGraph, susakiGraph, shimantoGraph, tosashimizuGraph, sukumoGraph, kuroshioGraph, toyoGraph, nahariGraph, yasudaGraph, geiseiGraph, kitagawaGraph, umajiGraph, motoyamaGraph, otoyoGraph, tosachoGraph, okawaGraph, niyodogawaGraph, nakatosaGraph, ochiGraph, yusuharaGraph, hidakaGraph, tsunoGraph, shimantochoGraph, otsukiGraph, miharaGraph, matsuyamaGraph, imabariGraph, uwajimaGraph, yawatahamaGraph, niihamaGraph, saijoGraph, ozuGraph, iyoGraph, shikokuchuoGraph, seiyoGraph, toonGraph, kamijimaGraph, kumakogenGraph, masakiGraph} from '@/lib/jsonld';
 import {shareMetadata} from '@/lib/seo';
 
 type Props = {
@@ -305,6 +306,8 @@ export async function generateMetadata({params}: Props) {
                                                             ? KAMIJIMA_PLACE_PHOTO
                                                           : muni.slug === 'kumakogen'
                                                             ? KUMAKOGEN_PLACE_PHOTO
+                                                          : muni.slug === 'masaki'
+                                                            ? MASAKI_PLACE_PHOTO
                                                           : MIMA_PLACE_PHOTO;
   const description = live
     ? muni.slug === 'tsurugi'
@@ -647,6 +650,10 @@ export async function generateMetadata({params}: Props) {
                                         ? loc === 'ja'
                                           ? '久万高原町。古岩屋、面河渓、岩屋寺、食。'
                                           : 'Kumakogen Town — Furuiwaya, Omogo Gorge, Iwaya-ji, food.'
+                                        : muni.slug === 'masaki'
+                                        ? loc === 'ja'
+                                          ? '松前町。エミフルMASAKI、松前公園、塩屋海岸、食。'
+                                          : 'Masaki Town — Emifull MASAKI, Masaki Park, Shioya Beach, food.'
           : loc === 'ja'
             ? '四国のまほろば 美馬市。うだつの町並み、食、宿。'
             : 'Mima City, Tokushima — Udatsu townscape, food, and stays.'
@@ -766,7 +773,7 @@ export default async function MunicipalityPage({params}: Props) {
 
   return (
     <>
-      <JsonLd data={town.slug === 'tokushima' ? tokushimaCityGraph(graphLocale) : town.slug === 'tsurugi' ? tsurugiGraph(graphLocale) : town.slug === 'yoshinogawa' ? yoshinogawaGraph(graphLocale) : town.slug === 'miyoshi' ? miyoshiGraph(graphLocale) : town.slug === 'awa' ? awaGraph(graphLocale) : town.slug === 'higashimiyoshi' ? higashimiyoshiGraph(graphLocale) : town.slug === 'kitajima' ? kitajimaGraph(graphLocale) : town.slug === 'naruto' ? narutoGraph(graphLocale) : town.slug === 'matsushige' ? matsushigeGraph(graphLocale) : town.slug === 'ishii' ? ishiiGraph(graphLocale) : town.slug === 'itano' ? itanoGraph(graphLocale) : town.slug === 'kamiita' ? kamiitaGraph(graphLocale) : town.slug === 'kamiyama' ? kamiyamaGraph(graphLocale) : town.slug === 'katsuura' ? katsuuraGraph(graphLocale) : town.slug === 'kamikatsu' ? kamikatsuGraph(graphLocale) : town.slug === 'sanagochi' ? sanagochiGraph(graphLocale) : town.slug === 'naka' ? nakaGraph(graphLocale) : town.slug === 'minami' ? minamiGraph(graphLocale) : town.slug === 'kaiyo' ? kaiyoGraph(graphLocale) : town.slug === 'mugi' ? mugiGraph(graphLocale) : town.slug === 'aizumi' ? aizumiGraph(graphLocale) : town.slug === 'komatsushima' ? komatsushimaGraph(graphLocale) : town.slug === 'anan' ? ananGraph(graphLocale) : town.slug === 'takamatsu' ? takamatsuGraph(graphLocale) : town.slug === 'kotohira' ? kotohiraGraph(graphLocale) : town.slug === 'marugame' ? marugameGraph(graphLocale) : town.slug === 'kanonji' ? kanonjiGraph(graphLocale) : town.slug === 'sakaide' ? sakaideGraph(graphLocale) : town.slug === 'naoshima' ? naoshimaGraph(graphLocale) : town.slug === 'shodoshima' ? shodoshimaGraph(graphLocale) : town.slug === 'zentsuji' ? zentsujiGraph(graphLocale) : town.slug === 'mitoyo' ? mitoyoGraph(graphLocale) : town.slug === 'utazu' ? utazuGraph(graphLocale) : town.slug === 'tonosho' ? tonoshoGraph(graphLocale) : town.slug === 'sanuki' ? sanukiGraph(graphLocale) : town.slug === 'higashikagawa' ? higashikagawaGraph(graphLocale) : town.slug === 'miki' ? mikiGraph(graphLocale) : town.slug === 'ayagawa' ? ayagawaGraph(graphLocale) : town.slug === 'tadotsu' ? tadotsuGraph(graphLocale) : town.slug === 'manno' ? mannoGraph(graphLocale) : town.slug === 'kochi' ? kochiGraph(graphLocale) : town.slug === 'nankoku' ? nankokuGraph(graphLocale) : town.slug === 'konan' ? konanGraph(graphLocale) : town.slug === 'kami' ? kamiGraph(graphLocale) : town.slug === 'ino' ? inoGraph(graphLocale) : town.slug === 'aki' ? akiGraph(graphLocale) : town.slug === 'muroto' ? murotoGraph(graphLocale) : town.slug === 'tosa' ? tosaGraph(graphLocale) : town.slug === 'susaki' ? susakiGraph(graphLocale) : town.slug === 'shimanto' ? shimantoGraph(graphLocale) : town.slug === 'tosashimizu' ? tosashimizuGraph(graphLocale) : town.slug === 'sukumo' ? sukumoGraph(graphLocale) : town.slug === 'kuroshio' ? kuroshioGraph(graphLocale) : town.slug === 'toyo' ? toyoGraph(graphLocale) : town.slug === 'nahari' ? nahariGraph(graphLocale) : town.slug === 'yasuda' ? yasudaGraph(graphLocale) : town.slug === 'geisei' ? geiseiGraph(graphLocale) : town.slug === 'kitagawa' ? kitagawaGraph(graphLocale) : town.slug === 'umaji' ? umajiGraph(graphLocale) : town.slug === 'motoyama' ? motoyamaGraph(graphLocale) : town.slug === 'otoyo' ? otoyoGraph(graphLocale) : town.slug === 'tosacho' ? tosachoGraph(graphLocale) : town.slug === 'okawa' ? okawaGraph(graphLocale) : town.slug === 'niyodogawa' ? niyodogawaGraph(graphLocale) : town.slug === 'nakatosa' ? nakatosaGraph(graphLocale) : town.slug === 'ochi' ? ochiGraph(graphLocale) : town.slug === 'yusuhara' ? yusuharaGraph(graphLocale) : town.slug === 'hidaka' ? hidakaGraph(graphLocale) : town.slug === 'tsuno' ? tsunoGraph(graphLocale) : town.slug === 'shimantocho' ? shimantochoGraph(graphLocale) : town.slug === 'otsuki' ? otsukiGraph(graphLocale) : town.slug === 'mihara' ? miharaGraph(graphLocale) : town.slug === 'matsuyama' ? matsuyamaGraph(graphLocale) : town.slug === 'imabari' ? imabariGraph(graphLocale) : town.slug === 'uwajima' ? uwajimaGraph(graphLocale) : town.slug === 'yawatahama' ? yawatahamaGraph(graphLocale) : town.slug === 'niihama' ? niihamaGraph(graphLocale) : town.slug === 'saijo' ? saijoGraph(graphLocale) : town.slug === 'ozu' ? ozuGraph(graphLocale) : town.slug === 'iyo' ? iyoGraph(graphLocale) : town.slug === 'shikokuchuo' ? shikokuchuoGraph(graphLocale) : town.slug === 'seiyo' ? seiyoGraph(graphLocale) : town.slug === 'toon' ? toonGraph(graphLocale) : town.slug === 'kamijima' ? kamijimaGraph(graphLocale) : town.slug === 'kumakogen' ? kumakogenGraph(graphLocale) : mimaGraph(graphLocale)} />
+      <JsonLd data={town.slug === 'tokushima' ? tokushimaCityGraph(graphLocale) : town.slug === 'tsurugi' ? tsurugiGraph(graphLocale) : town.slug === 'yoshinogawa' ? yoshinogawaGraph(graphLocale) : town.slug === 'miyoshi' ? miyoshiGraph(graphLocale) : town.slug === 'awa' ? awaGraph(graphLocale) : town.slug === 'higashimiyoshi' ? higashimiyoshiGraph(graphLocale) : town.slug === 'kitajima' ? kitajimaGraph(graphLocale) : town.slug === 'naruto' ? narutoGraph(graphLocale) : town.slug === 'matsushige' ? matsushigeGraph(graphLocale) : town.slug === 'ishii' ? ishiiGraph(graphLocale) : town.slug === 'itano' ? itanoGraph(graphLocale) : town.slug === 'kamiita' ? kamiitaGraph(graphLocale) : town.slug === 'kamiyama' ? kamiyamaGraph(graphLocale) : town.slug === 'katsuura' ? katsuuraGraph(graphLocale) : town.slug === 'kamikatsu' ? kamikatsuGraph(graphLocale) : town.slug === 'sanagochi' ? sanagochiGraph(graphLocale) : town.slug === 'naka' ? nakaGraph(graphLocale) : town.slug === 'minami' ? minamiGraph(graphLocale) : town.slug === 'kaiyo' ? kaiyoGraph(graphLocale) : town.slug === 'mugi' ? mugiGraph(graphLocale) : town.slug === 'aizumi' ? aizumiGraph(graphLocale) : town.slug === 'komatsushima' ? komatsushimaGraph(graphLocale) : town.slug === 'anan' ? ananGraph(graphLocale) : town.slug === 'takamatsu' ? takamatsuGraph(graphLocale) : town.slug === 'kotohira' ? kotohiraGraph(graphLocale) : town.slug === 'marugame' ? marugameGraph(graphLocale) : town.slug === 'kanonji' ? kanonjiGraph(graphLocale) : town.slug === 'sakaide' ? sakaideGraph(graphLocale) : town.slug === 'naoshima' ? naoshimaGraph(graphLocale) : town.slug === 'shodoshima' ? shodoshimaGraph(graphLocale) : town.slug === 'zentsuji' ? zentsujiGraph(graphLocale) : town.slug === 'mitoyo' ? mitoyoGraph(graphLocale) : town.slug === 'utazu' ? utazuGraph(graphLocale) : town.slug === 'tonosho' ? tonoshoGraph(graphLocale) : town.slug === 'sanuki' ? sanukiGraph(graphLocale) : town.slug === 'higashikagawa' ? higashikagawaGraph(graphLocale) : town.slug === 'miki' ? mikiGraph(graphLocale) : town.slug === 'ayagawa' ? ayagawaGraph(graphLocale) : town.slug === 'tadotsu' ? tadotsuGraph(graphLocale) : town.slug === 'manno' ? mannoGraph(graphLocale) : town.slug === 'kochi' ? kochiGraph(graphLocale) : town.slug === 'nankoku' ? nankokuGraph(graphLocale) : town.slug === 'konan' ? konanGraph(graphLocale) : town.slug === 'kami' ? kamiGraph(graphLocale) : town.slug === 'ino' ? inoGraph(graphLocale) : town.slug === 'aki' ? akiGraph(graphLocale) : town.slug === 'muroto' ? murotoGraph(graphLocale) : town.slug === 'tosa' ? tosaGraph(graphLocale) : town.slug === 'susaki' ? susakiGraph(graphLocale) : town.slug === 'shimanto' ? shimantoGraph(graphLocale) : town.slug === 'tosashimizu' ? tosashimizuGraph(graphLocale) : town.slug === 'sukumo' ? sukumoGraph(graphLocale) : town.slug === 'kuroshio' ? kuroshioGraph(graphLocale) : town.slug === 'toyo' ? toyoGraph(graphLocale) : town.slug === 'nahari' ? nahariGraph(graphLocale) : town.slug === 'yasuda' ? yasudaGraph(graphLocale) : town.slug === 'geisei' ? geiseiGraph(graphLocale) : town.slug === 'kitagawa' ? kitagawaGraph(graphLocale) : town.slug === 'umaji' ? umajiGraph(graphLocale) : town.slug === 'motoyama' ? motoyamaGraph(graphLocale) : town.slug === 'otoyo' ? otoyoGraph(graphLocale) : town.slug === 'tosacho' ? tosachoGraph(graphLocale) : town.slug === 'okawa' ? okawaGraph(graphLocale) : town.slug === 'niyodogawa' ? niyodogawaGraph(graphLocale) : town.slug === 'nakatosa' ? nakatosaGraph(graphLocale) : town.slug === 'ochi' ? ochiGraph(graphLocale) : town.slug === 'yusuhara' ? yusuharaGraph(graphLocale) : town.slug === 'hidaka' ? hidakaGraph(graphLocale) : town.slug === 'tsuno' ? tsunoGraph(graphLocale) : town.slug === 'shimantocho' ? shimantochoGraph(graphLocale) : town.slug === 'otsuki' ? otsukiGraph(graphLocale) : town.slug === 'mihara' ? miharaGraph(graphLocale) : town.slug === 'matsuyama' ? matsuyamaGraph(graphLocale) : town.slug === 'imabari' ? imabariGraph(graphLocale) : town.slug === 'uwajima' ? uwajimaGraph(graphLocale) : town.slug === 'yawatahama' ? yawatahamaGraph(graphLocale) : town.slug === 'niihama' ? niihamaGraph(graphLocale) : town.slug === 'saijo' ? saijoGraph(graphLocale) : town.slug === 'ozu' ? ozuGraph(graphLocale) : town.slug === 'iyo' ? iyoGraph(graphLocale) : town.slug === 'shikokuchuo' ? shikokuchuoGraph(graphLocale) : town.slug === 'seiyo' ? seiyoGraph(graphLocale) : town.slug === 'toon' ? toonGraph(graphLocale) : town.slug === 'kamijima' ? kamijimaGraph(graphLocale) : town.slug === 'kumakogen' ? kumakogenGraph(graphLocale) : town.slug === 'masaki' ? masakiGraph(graphLocale) : mimaGraph(graphLocale)} />
       <MimaFacilityLookup
         locale={locale}
         town={town}
@@ -3501,6 +3508,63 @@ export default async function MunicipalityPage({params}: Props) {
           : `Figures accessed ${KUMAKOGEN.sources.accessed}. Population is unpublished (universes are not mixed). Thirteenth LIVE Ehime hub.`}
           </p>
         </details>
+
+
+) : town.slug === 'masaki' ? (
+        <details className="facts-fold">
+          <summary>{isJa ? '松前町の基礎情報' : 'Masaki Town facts'}</summary>
+          <table className="facts">
+            <tbody>
+              <tr>
+                <th scope="row">{isJa ? '名称' : 'Name'}</th>
+                <td>
+              {MASAKI.nameJa} / {MASAKI.nameEn}（{MASAKI.reading}）
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">{isJa ? '都道府県' : 'Prefecture'}</th>
+                <td>
+              <Link href="/ehime">{isJa ? MASAKI.prefectureJa : MASAKI.prefectureEn}</Link>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">JIS</th>
+                <td>
+              <strong>{MASAKI.jis}</strong>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">JLIS</th>
+                <td>{MASAKI.jlis}</td>
+              </tr>
+              <tr>
+                <th scope="row">{isJa ? '役場' : 'Hall'}</th>
+                <td>
+              〒{MASAKI.hall.postalCode} {isJa ? MASAKI.hall.addressJa : MASAKI.hall.addressEn}
+              {' · '}
+              {MASAKI.hall.phone} · <a href={MASAKI.sameAs}>sameAs {MASAKI.sameAs}</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p className="facts-sources">
+        <a href={MASAKI.sources.hall}>{isJa ? '町役場案内' : 'Hall guide'}</a>
+        {' · '}
+        <a href={MASAKI.sources.home}>{isJa ? '町ホームページ' : 'Town homepage'}</a>
+        {' · '}
+        <a href={MASAKI.sources.kanko}>{isJa ? '公式観光' : 'Official sightseeing'}</a>
+        {' · '}
+        <a href={MASAKI.sources.emifull}>{isJa ? 'エミフルMASAKI' : 'Emifull MASAKI'}</a>
+        {' · '}
+        <a href={MASAKI.sources.castle}>{isJa ? '松前城跡' : 'Masaki Castle Ruins'}</a>
+          </p>
+          <p className="facts-note">
+          {isJa
+          ? `数字のアクセス日は ${MASAKI.sources.accessed}。人口は未掲載（出典ページを混ぜません）。愛媛県14つ目のLIVEハブ。`
+          : `Figures accessed ${MASAKI.sources.accessed}. Population is unpublished (universes are not mixed). Fourteenth LIVE Ehime hub.`}
+          </p>
+        </details>
+
 ) : town.slug === 'kamijima' ? (
         <details className="facts-fold">
           <summary>{isJa ? '上島町の基礎情報' : 'Kamijima Town facts'}</summary>

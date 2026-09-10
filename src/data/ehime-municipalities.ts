@@ -10,7 +10,7 @@ export type Municipality = {
 
 /**
  * Ehime 市区町村. Codes are N03_007 / JIS X 0402 (5-digit).
- * Matsuyama/Imabari/Uwajima/Yawatahama/Niihama/Saijo/Ozu/Iyo/Shikokuchuo/Seiyo/Toon/Kamijima/Kumakogen LIVE hubs (+ remaining municipalities coming-soon).
+ * Matsuyama/Imabari/Uwajima/Yawatahama/Niihama/Saijo/Ozu/Iyo/Shikokuchuo/Seiyo/Toon/Kamijima/Kumakogen/Masaki LIVE hubs (+ remaining municipalities coming-soon).
  */
 export const EHIME_MUNICIPALITIES: Municipality[] = [
   {jis: '38201', slug: 'matsuyama', nameJa: '松山市', nameEn: 'Matsuyama', status: 'ready'},
@@ -26,7 +26,7 @@ export const EHIME_MUNICIPALITIES: Municipality[] = [
   {jis: '38215', slug: 'toon', nameJa: '東温市', nameEn: 'Toon', status: 'ready'},
   {jis: '38356', slug: 'kamijima', nameJa: '上島町', nameEn: 'Kamijima', status: 'ready'},
   {jis: '38386', slug: 'kumakogen', nameJa: '久万高原町', nameEn: 'Kumakogen', status: 'ready'},
-  {jis: '38401', slug: 'masaki', nameJa: '松前町', nameEn: 'Masaki', status: 'coming-soon'},
+  {jis: '38401', slug: 'masaki', nameJa: '松前町', nameEn: 'Masaki', status: 'ready'},
   {jis: '38402', slug: 'tobe', nameJa: '砥部町', nameEn: 'Tobe', status: 'coming-soon'},
   {jis: '38422', slug: 'uchiko', nameJa: '内子町', nameEn: 'Uchiko', status: 'coming-soon'},
   {jis: '38442', slug: 'ikata', nameJa: '伊方町', nameEn: 'Ikata', status: 'coming-soon'},
