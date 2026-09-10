@@ -778,6 +778,7 @@ import {MIHARASHI, MIHARASHI_PLACE_PHOTO, MIHARASHI_FACILITIES, MIHARASHI_EXPECT
 import {ONOMICHI, ONOMICHI_PLACE_PHOTO, ONOMICHI_FACILITIES, ONOMICHI_EXPECTED_GEO_COUNT, ONOMICHI_EXPECTED_ROW_COUNT} from './onomichi';
 import {FUKUYAMA, FUKUYAMA_PLACE_PHOTO, FUKUYAMA_FACILITIES, FUKUYAMA_EXPECTED_GEO_COUNT, FUKUYAMA_EXPECTED_ROW_COUNT} from './fukuyama';
 import {FUCHU, FUCHU_PLACE_PHOTO, FUCHU_FACILITIES, FUCHU_EXPECTED_GEO_COUNT, FUCHU_EXPECTED_ROW_COUNT} from './fuchu';
+import {MIYOSHISHI, MIYOSHISHI_PLACE_PHOTO, MIYOSHISHI_FACILITIES, MIYOSHISHI_EXPECTED_GEO_COUNT, MIYOSHISHI_EXPECTED_ROW_COUNT} from './miyoshishi';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -981,6 +982,13 @@ import {
   FUCHU_TRAVEL_COMMERCE,
   FUCHU_TRAVEL_ALL
 } from './fuchu-travel';
+import {
+  MIYOSHISHI_TRAVEL_DINING,
+  MIYOSHISHI_TRAVEL_STAY,
+  MIYOSHISHI_TRAVEL_SHOPPING,
+  MIYOSHISHI_TRAVEL_COMMERCE,
+  MIYOSHISHI_TRAVEL_ALL
+} from './miyoshishi-travel';
 
 
 
@@ -3875,6 +3883,39 @@ export const FUCHU_LOOKUP: LookupTown = {
   licenseSiteEn: 'Site display follows source attribution.'
 };
 
+export const MIYOSHISHI_LOOKUP: LookupTown = {
+  slug: 'miyoshishi',
+  prefectureSlug: 'hiroshima',
+  jis: MIYOSHISHI.jis,
+  nameJa: MIYOSHISHI.nameJa,
+  nameEn: MIYOSHISHI.nameEn,
+  heroPhoto: MIYOSHISHI_PLACE_PHOTO,
+  photoCiteJa: '写真は高谷山の霧の海。Ozizo、Public domain。File:Morning Mist Miyoshi.jpg。',
+  photoCiteEn: 'Photo: sea of clouds from Mt. Takaya. Ozizo, Public domain. File:Morning Mist Miyoshi.jpg.',
+  rows: MIYOSHISHI_FACILITIES,
+  expectedGeo: MIYOSHISHI_EXPECTED_GEO_COUNT,
+  expectedRows: MIYOSHISHI_EXPECTED_ROW_COUNT,
+  travelDining: MIYOSHISHI_TRAVEL_DINING,
+  travelStay: MIYOSHISHI_TRAVEL_STAY,
+  travelShopping: MIYOSHISHI_TRAVEL_SHOPPING,
+  travelCommerce: MIYOSHISHI_TRAVEL_COMMERCE,
+  travelAll: MIYOSHISHI_TRAVEL_ALL,
+  coverageJa:
+    '三次市（JIS 34209・広島県）。観光5・宿泊7・飲食16・温泉2（体験0）。買物・商業は未掲載。slug miyoshishi＝三次市（徳島三好市と別）。',
+  coverageEn:
+    'Miyoshi City Hiroshima (JIS 34209), 5 tourism + 7 stay + 16 dining + 2 onsen + 0 experience with sourced photos. Shopping/commerce: 0. Slug miyoshishi ≠ Tokushima Miyoshi.',
+  mapLabelJa: '三次市の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Miyoshi City (Hiroshima)',
+  mapCitePackJa: '点はOSM Nominatim出典座標5件（accessed 2026-09-10）。施設行は市公式・楽天・食べログ・Commons。',
+  mapCitePackEn: 'Points: 5 OSM Nominatim coordinates (accessed 2026-09-10). Facility rows from city site, Rakuten, Tabelog, Commons.',
+  licenseNoteJa: '行は市サイト掲載・city.miyoshi.hiroshima.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are city-site listings, facts from city.miyoshi.hiroshima.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
+
+
 
 export const FUKUYAMA_LOOKUP: LookupTown = {
   slug: 'fukuyama',
@@ -4561,7 +4602,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   miharashi: MIHARASHI_LOOKUP,
   onomichi: ONOMICHI_LOOKUP,
   fukuyama: FUKUYAMA_LOOKUP,
-  fuchu: FUCHU_LOOKUP
+  fuchu: FUCHU_LOOKUP,
+  miyoshishi: MIYOSHISHI_LOOKUP
 };
 
 

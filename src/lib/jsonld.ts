@@ -95,6 +95,7 @@ import {MIHARASHI, MIHARASHI_PLACE_PHOTO} from '@/data/miharashi';
 import {ONOMICHI, ONOMICHI_PLACE_PHOTO} from '@/data/onomichi';
 import {FUKUYAMA, FUKUYAMA_PLACE_PHOTO} from '@/data/fukuyama';
 import {FUCHU, FUCHU_PLACE_PHOTO} from '@/data/fuchu';
+import {MIYOSHISHI, MIYOSHISHI_PLACE_PHOTO} from '@/data/miyoshishi';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -5036,6 +5037,58 @@ export function kureGraph(locale: AppLocale) {
 
 
 
+
+
+export function miyoshishiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'hiroshima/miyoshishi');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('miyoshishi');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? MIYOSHISHI.nameJa : MIYOSHISHI.nameEn,
+        alternateName: isJa ? MIYOSHISHI.nameEn : MIYOSHISHI.nameJa,
+        identifier: MIYOSHISHI.jis,
+        url,
+        image: photoAbs(MIYOSHISHI_PLACE_PHOTO),
+        sameAs: [MIYOSHISHI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '十日市中二丁目8番1号' : '8-1 Tokaichi-naka 2-chome',
+          addressLocality: isJa ? MIYOSHISHI.nameJa : MIYOSHISHI.nameEn,
+          addressRegion: isJa ? MIYOSHISHI.prefectureJa : MIYOSHISHI.prefectureEn,
+          postalCode: MIYOSHISHI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? MIYOSHISHI.prefectureJa : MIYOSHISHI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? MIYOSHISHI.nameJa : MIYOSHISHI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? MIYOSHISHI.prefectureJa : MIYOSHISHI.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
+          {'@type': 'ListItem', position: 3, name: isJa ? MIYOSHISHI.nameJa : MIYOSHISHI.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
 
 export function fuchuGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'hiroshima/fuchu');
