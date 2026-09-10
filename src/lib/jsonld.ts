@@ -83,6 +83,7 @@ import {KAMIJIMA, KAMIJIMA_PLACE_PHOTO} from '@/data/kamijima';
 import {KUMAKOGEN, KUMAKOGEN_PLACE_PHOTO} from '@/data/kumakogen';
 import {MASAKI, MASAKI_PLACE_PHOTO} from '@/data/masaki';
 import {TOBE, TOBE_PLACE_PHOTO} from '@/data/tobe';
+import {UCHIKO, UCHIKO_PLACE_PHOTO} from '@/data/uchiko';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -220,6 +221,7 @@ function localityJa(slug: string): string {
   if (slug === 'kumakogen') return KUMAKOGEN.nameJa;
   if (slug === 'masaki') return MASAKI.nameJa;
   if (slug === 'tobe') return TOBE.nameJa;
+  if (slug === 'uchiko') return UCHIKO.nameJa;
   return MIMA.nameJa;
 }
 
@@ -296,6 +298,7 @@ function localityEn(slug: string): string {
   if (slug === 'kumakogen') return KUMAKOGEN.nameEn;
   if (slug === 'masaki') return MASAKI.nameEn;
   if (slug === 'tobe') return TOBE.nameEn;
+  if (slug === 'uchiko') return UCHIKO.nameEn;
   return MIMA.nameEn;
 }
 
@@ -4786,6 +4789,58 @@ export function tobeGraph(locale: AppLocale) {
           {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
           {'@type': 'ListItem', position: 2, name: isJa ? TOBE.prefectureJa : TOBE.prefectureEn, item: canonicalUrl(locale, 'ehime')},
           {'@type': 'ListItem', position: 3, name: isJa ? TOBE.nameJa : TOBE.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
+
+
+export function uchikoGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'ehime/uchiko');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('uchiko');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? UCHIKO.nameJa : UCHIKO.nameEn,
+        alternateName: isJa ? UCHIKO.nameEn : UCHIKO.nameJa,
+        identifier: UCHIKO.jis,
+        url,
+        image: photoAbs(UCHIKO_PLACE_PHOTO),
+        sameAs: [UCHIKO.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '平岡甲168番地' : '168 Hiraoka-ko',
+          addressLocality: isJa ? UCHIKO.nameJa : UCHIKO.nameEn,
+          addressRegion: isJa ? UCHIKO.prefectureJa : UCHIKO.prefectureEn,
+          postalCode: UCHIKO.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? UCHIKO.prefectureJa : UCHIKO.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? UCHIKO.nameJa : UCHIKO.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? UCHIKO.prefectureJa : UCHIKO.prefectureEn, item: canonicalUrl(locale, 'ehime')},
+          {'@type': 'ListItem', position: 3, name: isJa ? UCHIKO.nameJa : UCHIKO.nameEn, item: url}
         ]
       },
       ...featured

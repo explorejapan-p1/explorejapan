@@ -766,6 +766,7 @@ import {KAMIJIMA, KAMIJIMA_PLACE_PHOTO, KAMIJIMA_FACILITIES, KAMIJIMA_EXPECTED_G
 import {KUMAKOGEN, KUMAKOGEN_PLACE_PHOTO, KUMAKOGEN_FACILITIES, KUMAKOGEN_EXPECTED_GEO_COUNT, KUMAKOGEN_EXPECTED_ROW_COUNT} from './kumakogen';
 import {MASAKI, MASAKI_PLACE_PHOTO, MASAKI_FACILITIES, MASAKI_EXPECTED_GEO_COUNT, MASAKI_EXPECTED_ROW_COUNT} from './masaki';
 import {TOBE, TOBE_PLACE_PHOTO, TOBE_FACILITIES, TOBE_EXPECTED_GEO_COUNT, TOBE_EXPECTED_ROW_COUNT} from './tobe';
+import {UCHIKO, UCHIKO_PLACE_PHOTO, UCHIKO_FACILITIES, UCHIKO_EXPECTED_GEO_COUNT, UCHIKO_EXPECTED_ROW_COUNT} from './uchiko';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -885,6 +886,14 @@ import {
   TOBE_TRAVEL_COMMERCE,
   TOBE_TRAVEL_ALL
 } from './tobe-travel';
+import {
+  UCHIKO_TRAVEL_DINING,
+  UCHIKO_TRAVEL_STAY,
+  UCHIKO_TRAVEL_SHOPPING,
+  UCHIKO_TRAVEL_COMMERCE,
+  UCHIKO_TRAVEL_ALL
+} from './uchiko-travel';
+
 
 
 
@@ -3608,6 +3617,41 @@ export const TOBE_LOOKUP: LookupTown = {
   licenseSiteEn: 'Town-site listing'
 };
 
+
+export const UCHIKO_LOOKUP: LookupTown = {
+  slug: 'uchiko',
+  prefectureSlug: 'ehime',
+  jis: UCHIKO.jis,
+  nameJa: UCHIKO.nameJa,
+  nameEn: UCHIKO.nameEn,
+  heroPhoto: UCHIKO_PLACE_PHOTO,
+  photoCiteJa: '写真は八日市護国伝統的建造物群保存地区。Asturio Cantabrio、CC BY-SA 4.0。File:Yokaichi Gokoku ac (3).jpg。',
+  photoCiteEn: 'Photo: Yokaichi-Gokoku historic district. Asturio Cantabrio, CC BY-SA 4.0. File:Yokaichi Gokoku ac (3).jpg.',
+  rows: UCHIKO_FACILITIES,
+  expectedGeo: UCHIKO_EXPECTED_GEO_COUNT,
+  expectedRows: UCHIKO_EXPECTED_ROW_COUNT,
+  travelDining: UCHIKO_TRAVEL_DINING,
+  travelStay: UCHIKO_TRAVEL_STAY,
+  travelShopping: UCHIKO_TRAVEL_SHOPPING,
+  travelCommerce: UCHIKO_TRAVEL_COMMERCE,
+  travelAll: UCHIKO_TRAVEL_ALL,
+  coverageJa:
+    '内子町（JIS 38422）観光6・宿泊15・飲食16・温泉2・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。愛媛県16つ目のLIVEハブ。',
+  coverageEn:
+    'Uchiko Town (JIS 38422), 6 tourism + 15 stay + 16 dining + 2 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Sixteenth LIVE Ehime hub.',
+  mapLabelJa: '内子町の出典座標4件',
+  mapLabelEn: '4 sourced coordinates in Uchiko Town',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons等出典座標4件（accessed 2026-09-10）。',
+  mapCitePackEn: 'Points: 4 sourced coordinates for town/official facilities (accessed 2026-09-10).',
+  licenseNoteJa:
+    '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are town-site listings, facts from town.uchiko.ehime.jp, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
+
 export const KAMIJIMA_LOOKUP: LookupTown = {
   slug: 'kamijima',
   prefectureSlug: 'ehime',
@@ -4053,7 +4097,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   kamijima: KAMIJIMA_LOOKUP,
   kumakogen: KUMAKOGEN_LOOKUP,
   masaki: MASAKI_LOOKUP,
-  tobe: TOBE_LOOKUP
+  tobe: TOBE_LOOKUP,
+  uchiko: UCHIKO_LOOKUP
 };
 
 

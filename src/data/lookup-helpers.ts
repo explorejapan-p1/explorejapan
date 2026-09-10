@@ -972,6 +972,17 @@ import {
   tobeTopChipForRow,
   resolveTobeFilter
 } from './tobe-travel';
+import {
+  isUchikoOnsenPackRow,
+  isUchikoExperiencePackRow,
+  isUchikoStayPackRow,
+  uchikoPackRowMatchesFilter,
+  rankUchikoSeeRows,
+  uchikoSightPhoto,
+  uchikoSourcedHook,
+  uchikoTopChipForRow,
+  resolveUchikoFilter
+} from './uchiko-travel';
 
 
 
@@ -1812,6 +1823,19 @@ const MASAKI_HELPERS: LookupHelpers = {
   resolveFilter: resolveMasakiFilter
 };
 
+
+const UCHIKO_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isUchikoOnsenPackRow,
+  isExperiencePackRow: isUchikoExperiencePackRow,
+  isStayPackRow: isUchikoStayPackRow,
+  packRowMatchesFilter: uchikoPackRowMatchesFilter,
+  rankSeeRows: rankUchikoSeeRows,
+  sightPhoto: uchikoSightPhoto,
+  sourcedHook: uchikoSourcedHook,
+  topChipForRow: uchikoTopChipForRow,
+  resolveFilter: resolveUchikoFilter
+};
+
 const TOBE_HELPERS: LookupHelpers = {
   isOnsenPackRow: isTobeOnsenPackRow,
   isExperiencePackRow: isTobeExperiencePackRow,
@@ -2246,5 +2270,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'kumakogen') return KUMAKOGEN_HELPERS;
   if (slug === 'masaki') return MASAKI_HELPERS;
   if (slug === 'tobe') return TOBE_HELPERS;
+  if (slug === 'uchiko') return UCHIKO_HELPERS;
   return MIMA_HELPERS;
 }
