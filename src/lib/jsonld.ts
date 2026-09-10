@@ -84,6 +84,7 @@ import {KUMAKOGEN, KUMAKOGEN_PLACE_PHOTO} from '@/data/kumakogen';
 import {MASAKI, MASAKI_PLACE_PHOTO} from '@/data/masaki';
 import {TOBE, TOBE_PLACE_PHOTO} from '@/data/tobe';
 import {UCHIKO, UCHIKO_PLACE_PHOTO} from '@/data/uchiko';
+import {IKATA, IKATA_PLACE_PHOTO} from '@/data/ikata';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -222,6 +223,7 @@ function localityJa(slug: string): string {
   if (slug === 'masaki') return MASAKI.nameJa;
   if (slug === 'tobe') return TOBE.nameJa;
   if (slug === 'uchiko') return UCHIKO.nameJa;
+  if (slug === 'ikata') return IKATA.nameJa;
   return MIMA.nameJa;
 }
 
@@ -299,6 +301,7 @@ function localityEn(slug: string): string {
   if (slug === 'masaki') return MASAKI.nameEn;
   if (slug === 'tobe') return TOBE.nameEn;
   if (slug === 'uchiko') return UCHIKO.nameEn;
+  if (slug === 'ikata') return IKATA.nameEn;
   return MIMA.nameEn;
 }
 
@@ -4841,6 +4844,57 @@ export function uchikoGraph(locale: AppLocale) {
           {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
           {'@type': 'ListItem', position: 2, name: isJa ? UCHIKO.prefectureJa : UCHIKO.prefectureEn, item: canonicalUrl(locale, 'ehime')},
           {'@type': 'ListItem', position: 3, name: isJa ? UCHIKO.nameJa : UCHIKO.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
+
+export function ikataGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'ehime/ikata');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('ikata');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? IKATA.nameJa : IKATA.nameEn,
+        alternateName: isJa ? IKATA.nameEn : IKATA.nameJa,
+        identifier: IKATA.jis,
+        url,
+        image: photoAbs(IKATA_PLACE_PHOTO),
+        sameAs: [IKATA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '湊浦1993番地1' : '1993-1 Minatoura',
+          addressLocality: isJa ? IKATA.nameJa : IKATA.nameEn,
+          addressRegion: isJa ? IKATA.prefectureJa : IKATA.prefectureEn,
+          postalCode: IKATA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? IKATA.prefectureJa : IKATA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? IKATA.nameJa : IKATA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? IKATA.prefectureJa : IKATA.prefectureEn, item: canonicalUrl(locale, 'ehime')},
+          {'@type': 'ListItem', position: 3, name: isJa ? IKATA.nameJa : IKATA.nameEn, item: url}
         ]
       },
       ...featured

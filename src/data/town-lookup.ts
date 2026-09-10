@@ -767,6 +767,7 @@ import {KUMAKOGEN, KUMAKOGEN_PLACE_PHOTO, KUMAKOGEN_FACILITIES, KUMAKOGEN_EXPECT
 import {MASAKI, MASAKI_PLACE_PHOTO, MASAKI_FACILITIES, MASAKI_EXPECTED_GEO_COUNT, MASAKI_EXPECTED_ROW_COUNT} from './masaki';
 import {TOBE, TOBE_PLACE_PHOTO, TOBE_FACILITIES, TOBE_EXPECTED_GEO_COUNT, TOBE_EXPECTED_ROW_COUNT} from './tobe';
 import {UCHIKO, UCHIKO_PLACE_PHOTO, UCHIKO_FACILITIES, UCHIKO_EXPECTED_GEO_COUNT, UCHIKO_EXPECTED_ROW_COUNT} from './uchiko';
+import {IKATA, IKATA_PLACE_PHOTO, IKATA_FACILITIES, IKATA_EXPECTED_GEO_COUNT, IKATA_EXPECTED_ROW_COUNT} from './ikata';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -893,6 +894,13 @@ import {
   UCHIKO_TRAVEL_COMMERCE,
   UCHIKO_TRAVEL_ALL
 } from './uchiko-travel';
+import {
+  IKATA_TRAVEL_DINING,
+  IKATA_TRAVEL_STAY,
+  IKATA_TRAVEL_SHOPPING,
+  IKATA_TRAVEL_COMMERCE,
+  IKATA_TRAVEL_ALL
+} from './ikata-travel';
 
 
 
@@ -3618,6 +3626,40 @@ export const TOBE_LOOKUP: LookupTown = {
 };
 
 
+
+export const IKATA_LOOKUP: LookupTown = {
+  slug: 'ikata',
+  prefectureSlug: 'ehime',
+  jis: IKATA.jis,
+  nameJa: IKATA.nameJa,
+  nameEn: IKATA.nameEn,
+  heroPhoto: IKATA_PLACE_PHOTO,
+  photoCiteJa: '写真は佐田岬灯台。melvil、CC BY-SA 4.0。File:Sadamisaki Lighthouse-light on.jpg。',
+  photoCiteEn: 'Photo: Sadamisaki Lighthouse. melvil, CC BY-SA 4.0. File:Sadamisaki Lighthouse-light on.jpg.',
+  rows: IKATA_FACILITIES,
+  expectedGeo: IKATA_EXPECTED_GEO_COUNT,
+  expectedRows: IKATA_EXPECTED_ROW_COUNT,
+  travelDining: IKATA_TRAVEL_DINING,
+  travelStay: IKATA_TRAVEL_STAY,
+  travelShopping: IKATA_TRAVEL_SHOPPING,
+  travelCommerce: IKATA_TRAVEL_COMMERCE,
+  travelAll: IKATA_TRAVEL_ALL,
+  coverageJa:
+    '伊方町（JIS 38442）観光6・宿泊5・飲食16・温泉3・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。愛媛県17つ目のLIVEハブ。',
+  coverageEn:
+    'Ikata Town (JIS 38442), 6 tourism + 5 stay + 16 dining + 3 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Seventeenth LIVE Ehime hub.',
+  mapLabelJa: '伊方町の出典座標4件',
+  mapLabelEn: '4 sourced coordinates in Ikata Town',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons等出典座標4件（accessed 2026-09-10）。',
+  mapCitePackEn: 'Points: 4 sourced coordinates for town/official facilities (accessed 2026-09-10).',
+  licenseNoteJa:
+    '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are town-site listings, facts from town.ikata.ehime.jp, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
 export const UCHIKO_LOOKUP: LookupTown = {
   slug: 'uchiko',
   prefectureSlug: 'ehime',
@@ -4098,7 +4140,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   kumakogen: KUMAKOGEN_LOOKUP,
   masaki: MASAKI_LOOKUP,
   tobe: TOBE_LOOKUP,
-  uchiko: UCHIKO_LOOKUP
+  uchiko: UCHIKO_LOOKUP,
+  ikata: IKATA_LOOKUP
 };
 
 

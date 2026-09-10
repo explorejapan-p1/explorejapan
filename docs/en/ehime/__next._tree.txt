@@ -18,4 +18,5 @@
 :HL["/explorejapan/media/masaki-emifull.jpg","image"]
 :HL["/explorejapan/media/tobe-traditional-hall.jpg","image"]
 :HL["/explorejapan/media/uchiko-yokaichi-gokoku.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"en","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"ehime","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"t9kUEiZRq6MU_nPhexDGb"}
+:HL["/explorejapan/media/ikata-sadamisaki-lighthouse.jpg","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"en","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"ehime","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"g8ai2cv1Q4u_UV_h9WJvk"}
