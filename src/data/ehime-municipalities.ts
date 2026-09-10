@@ -10,7 +10,7 @@ export type Municipality = {
 
 /**
  * Ehime 市区町村. Codes are N03_007 / JIS X 0402 (5-digit).
- * Matsuyama/Imabari/Uwajima/Yawatahama/Niihama/Saijo/Ozu/Iyo/Shikokuchuo/Seiyo/Toon/Kamijima/Kumakogen/Masaki/Tobe/Uchiko/Ikata/Matsuno LIVE hubs (+ remaining municipalities coming-soon).
+ * Matsuyama/Imabari/Uwajima/Yawatahama/Niihama/Saijo/Ozu/Iyo/Shikokuchuo/Seiyo/Toon/Kamijima/Kumakogen/Masaki/Tobe/Uchiko/Ikata/Matsuno/Kihoku LIVE hubs (+ remaining municipalities coming-soon).
  */
 export const EHIME_MUNICIPALITIES: Municipality[] = [
   {jis: '38201', slug: 'matsuyama', nameJa: '松山市', nameEn: 'Matsuyama', status: 'ready'},
@@ -31,7 +31,7 @@ export const EHIME_MUNICIPALITIES: Municipality[] = [
   {jis: '38422', slug: 'uchiko', nameJa: '内子町', nameEn: 'Uchiko', status: 'ready'},
   {jis: '38442', slug: 'ikata', nameJa: '伊方町', nameEn: 'Ikata', status: 'ready'},
   {jis: '38484', slug: 'matsuno', nameJa: '松野町', nameEn: 'Matsuno', status: 'ready'},
-  {jis: '38488', slug: 'kihoku', nameJa: '鬼北町', nameEn: 'Kihoku', status: 'coming-soon'},
+  {jis: '38488', slug: 'kihoku', nameJa: '鬼北町', nameEn: 'Kihoku', status: 'ready'},
   {jis: '38506', slug: 'ainan', nameJa: '愛南町', nameEn: 'Ainan', status: 'coming-soon'}
 ];
 

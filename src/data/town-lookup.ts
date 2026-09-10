@@ -769,6 +769,7 @@ import {TOBE, TOBE_PLACE_PHOTO, TOBE_FACILITIES, TOBE_EXPECTED_GEO_COUNT, TOBE_E
 import {UCHIKO, UCHIKO_PLACE_PHOTO, UCHIKO_FACILITIES, UCHIKO_EXPECTED_GEO_COUNT, UCHIKO_EXPECTED_ROW_COUNT} from './uchiko';
 import {IKATA, IKATA_PLACE_PHOTO, IKATA_FACILITIES, IKATA_EXPECTED_GEO_COUNT, IKATA_EXPECTED_ROW_COUNT} from './ikata';
 import {MATSUNO, MATSUNO_PLACE_PHOTO, MATSUNO_FACILITIES, MATSUNO_EXPECTED_GEO_COUNT, MATSUNO_EXPECTED_ROW_COUNT} from './matsuno';
+import {KIHOKU, KIHOKU_PLACE_PHOTO, KIHOKU_FACILITIES, KIHOKU_EXPECTED_GEO_COUNT, KIHOKU_EXPECTED_ROW_COUNT} from './kihoku';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -909,6 +910,13 @@ import {
   MATSUNO_TRAVEL_COMMERCE,
   MATSUNO_TRAVEL_ALL
 } from './matsuno-travel';
+import {
+  KIHOKU_TRAVEL_DINING,
+  KIHOKU_TRAVEL_STAY,
+  KIHOKU_TRAVEL_SHOPPING,
+  KIHOKU_TRAVEL_COMMERCE,
+  KIHOKU_TRAVEL_ALL
+} from './kihoku-travel';
 
 
 
@@ -3636,6 +3644,39 @@ export const TOBE_LOOKUP: LookupTown = {
 
 
 
+export const KIHOKU_LOOKUP: LookupTown = {
+  slug: 'kihoku',
+  prefectureSlug: 'ehime',
+  jis: KIHOKU.jis,
+  nameJa: KIHOKU.nameJa,
+  nameEn: KIHOKU.nameEn,
+  heroPhoto: KIHOKU_PLACE_PHOTO,
+  photoCiteJa: '写真は近永駅。Navian、Public domain。File:Chikanaga station 03.jpg。',
+  photoCiteEn: 'Photo: Chikanaga Station. Navian, Public domain. File:Chikanaga station 03.jpg.',
+  rows: KIHOKU_FACILITIES,
+  expectedGeo: KIHOKU_EXPECTED_GEO_COUNT,
+  expectedRows: KIHOKU_EXPECTED_ROW_COUNT,
+  travelDining: KIHOKU_TRAVEL_DINING,
+  travelStay: KIHOKU_TRAVEL_STAY,
+  travelShopping: KIHOKU_TRAVEL_SHOPPING,
+  travelCommerce: KIHOKU_TRAVEL_COMMERCE,
+  travelAll: KIHOKU_TRAVEL_ALL,
+  coverageJa:
+    '鬼北町（JIS 38488）観光6・宿泊1・飲食16・温泉1・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。愛媛県19つ目のLIVEハブ。',
+  coverageEn:
+    'Kihoku Town (JIS 38488), 6 tourism + 1 stay + 16 dining + 1 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Nineteenth LIVE Ehime hub.',
+  mapLabelJa: '鬼北町の出典座標2件',
+  mapLabelEn: '2 sourced coordinates in Kihoku Town',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons等出典座標2件（accessed 2026-09-10）。',
+  mapCitePackEn: 'Points: 2 sourced coordinates for town/official facilities (accessed 2026-09-10).',
+  licenseNoteJa:
+    '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are town-site listings, facts from town.kihoku.ehime.jp, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
 export const MATSUNO_LOOKUP: LookupTown = {
   slug: 'matsuno',
   prefectureSlug: 'ehime',
@@ -4184,7 +4225,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   tobe: TOBE_LOOKUP,
   uchiko: UCHIKO_LOOKUP,
   ikata: IKATA_LOOKUP,
-  matsuno: MATSUNO_LOOKUP
+  matsuno: MATSUNO_LOOKUP,
+  kihoku: KIHOKU_LOOKUP
 };
 
 

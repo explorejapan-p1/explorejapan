@@ -86,6 +86,7 @@ import {TOBE, TOBE_PLACE_PHOTO} from '@/data/tobe';
 import {UCHIKO, UCHIKO_PLACE_PHOTO} from '@/data/uchiko';
 import {IKATA, IKATA_PLACE_PHOTO} from '@/data/ikata';
 import {MATSUNO, MATSUNO_PLACE_PHOTO} from '@/data/matsuno';
+import {KIHOKU, KIHOKU_PLACE_PHOTO} from '@/data/kihoku';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -226,6 +227,7 @@ function localityJa(slug: string): string {
   if (slug === 'uchiko') return UCHIKO.nameJa;
   if (slug === 'ikata') return IKATA.nameJa;
   if (slug === 'matsuno') return MATSUNO.nameJa;
+  if (slug === 'kihoku') return KIHOKU.nameJa;
   return MIMA.nameJa;
 }
 
@@ -305,6 +307,7 @@ function localityEn(slug: string): string {
   if (slug === 'uchiko') return UCHIKO.nameEn;
   if (slug === 'ikata') return IKATA.nameEn;
   if (slug === 'matsuno') return MATSUNO.nameEn;
+  if (slug === 'kihoku') return KIHOKU.nameEn;
   return MIMA.nameEn;
 }
 
@@ -4854,6 +4857,58 @@ export function uchikoGraph(locale: AppLocale) {
   };
 }
 
+
+
+export function kihokuGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'ehime/kihoku');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('kihoku');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? KIHOKU.nameJa : KIHOKU.nameEn,
+        alternateName: isJa ? KIHOKU.nameEn : KIHOKU.nameJa,
+        identifier: KIHOKU.jis,
+        url,
+        image: photoAbs(KIHOKU_PLACE_PHOTO),
+        sameAs: [KIHOKU.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '大字近永800番地1' : '800-1 Oaza Chikanaga',
+          addressLocality: isJa ? KIHOKU.nameJa : KIHOKU.nameEn,
+          addressRegion: isJa ? KIHOKU.prefectureJa : KIHOKU.prefectureEn,
+          postalCode: KIHOKU.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? KIHOKU.prefectureJa : KIHOKU.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? KIHOKU.nameJa : KIHOKU.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? KIHOKU.prefectureJa : KIHOKU.prefectureEn, item: canonicalUrl(locale, 'ehime')},
+          {'@type': 'ListItem', position: 3, name: isJa ? KIHOKU.nameJa : KIHOKU.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
 
 export function matsunoGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'ehime/matsuno');

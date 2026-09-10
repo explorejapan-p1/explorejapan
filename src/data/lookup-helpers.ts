@@ -1007,6 +1007,17 @@ import {
   rankMatsunoSeeRows,
   resolveMatsunoFilter
 } from './matsuno-travel';
+import {
+  isKihokuExperiencePackRow,
+  isKihokuOnsenPackRow,
+  isKihokuStayPackRow,
+  kihokuPackRowMatchesFilter,
+  kihokuSightPhoto,
+  kihokuSourcedHook,
+  kihokuTopChipForRow,
+  rankKihokuSeeRows,
+  resolveKihokuFilter
+} from './kihoku-travel';
 
 
 
@@ -1874,6 +1885,18 @@ const MATSUNO_HELPERS: LookupHelpers = {
   resolveFilter: resolveMatsunoFilter
 };
 
+const KIHOKU_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isKihokuOnsenPackRow,
+  isExperiencePackRow: isKihokuExperiencePackRow,
+  isStayPackRow: isKihokuStayPackRow,
+  packRowMatchesFilter: kihokuPackRowMatchesFilter,
+  rankSeeRows: rankKihokuSeeRows,
+  sightPhoto: kihokuSightPhoto,
+  sourcedHook: kihokuSourcedHook,
+  topChipForRow: kihokuTopChipForRow,
+  resolveFilter: resolveKihokuFilter
+};
+
 const IKATA_HELPERS: LookupHelpers = {
   isOnsenPackRow: isIkataOnsenPackRow,
   isExperiencePackRow: isIkataExperiencePackRow,
@@ -2323,5 +2346,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'uchiko') return UCHIKO_HELPERS;
   if (slug === 'ikata') return IKATA_HELPERS;
   if (slug === 'matsuno') return MATSUNO_HELPERS;
+  if (slug === 'kihoku') return KIHOKU_HELPERS;
   return MIMA_HELPERS;
 }
