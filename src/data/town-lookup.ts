@@ -782,6 +782,7 @@ import {MIYOSHISHI, MIYOSHISHI_PLACE_PHOTO, MIYOSHISHI_FACILITIES, MIYOSHISHI_EX
 import {SHOBARA, SHOBARA_PLACE_PHOTO, SHOBARA_FACILITIES, SHOBARA_EXPECTED_GEO_COUNT, SHOBARA_EXPECTED_ROW_COUNT} from './shobara';
 import {OTAKE, OTAKE_PLACE_PHOTO, OTAKE_FACILITIES, OTAKE_EXPECTED_GEO_COUNT, OTAKE_EXPECTED_ROW_COUNT} from './otake';
 import {HIGASHIHIROSHIMA, HIGASHIHIROSHIMA_PLACE_PHOTO, HIGASHIHIROSHIMA_FACILITIES, HIGASHIHIROSHIMA_EXPECTED_GEO_COUNT, HIGASHIHIROSHIMA_EXPECTED_ROW_COUNT} from './higashihiroshima';
+import {HATSUKAICHI, HATSUKAICHI_PLACE_PHOTO, HATSUKAICHI_FACILITIES, HATSUKAICHI_EXPECTED_GEO_COUNT, HATSUKAICHI_EXPECTED_ROW_COUNT} from './hatsukaichi';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -1013,6 +1014,13 @@ import {
   HIGASHIHIROSHIMA_TRAVEL_COMMERCE,
   HIGASHIHIROSHIMA_TRAVEL_ALL
 } from './higashihiroshima-travel';
+import {
+  HATSUKAICHI_TRAVEL_DINING,
+  HATSUKAICHI_TRAVEL_STAY,
+  HATSUKAICHI_TRAVEL_SHOPPING,
+  HATSUKAICHI_TRAVEL_COMMERCE,
+  HATSUKAICHI_TRAVEL_ALL
+} from './hatsukaichi-travel';
 
 
 
@@ -3941,6 +3949,39 @@ export const MIYOSHISHI_LOOKUP: LookupTown = {
 
 
 
+
+export const HATSUKAICHI_LOOKUP: LookupTown = {
+  slug: 'hatsukaichi',
+  prefectureSlug: 'hiroshima',
+  jis: HATSUKAICHI.jis,
+  nameJa: HATSUKAICHI.nameJa,
+  nameEn: HATSUKAICHI.nameEn,
+  heroPhoto: HATSUKAICHI_PLACE_PHOTO,
+  photoCiteJa: '写真は厳島神社大鳥居（夕景）。Bernard Gagnon、CC BY-SA 3.0。File:Itsukushima-jinja torii at sunset.jpg。',
+  photoCiteEn: 'Photo: Itsukushima Shrine torii at sunset. Bernard Gagnon, CC BY-SA 3.0. File:Itsukushima-jinja torii at sunset.jpg.',
+  rows: HATSUKAICHI_FACILITIES,
+  expectedGeo: HATSUKAICHI_EXPECTED_GEO_COUNT,
+  expectedRows: HATSUKAICHI_EXPECTED_ROW_COUNT,
+  travelDining: HATSUKAICHI_TRAVEL_DINING,
+  travelStay: HATSUKAICHI_TRAVEL_STAY,
+  travelShopping: HATSUKAICHI_TRAVEL_SHOPPING,
+  travelCommerce: HATSUKAICHI_TRAVEL_COMMERCE,
+  travelAll: HATSUKAICHI_TRAVEL_ALL,
+  coverageJa:
+    '廿日市市（JIS 34213・広島県）。観光5・宿泊9・飲食16・温泉5（体験0）。買物・商業は未掲載。',
+  coverageEn:
+    'Hatsukaichi City Hiroshima (JIS 34213), 5 tourism + 9 stay + 16 dining + 5 onsen + 0 experience with sourced photos. Shopping/commerce: 0.',
+  mapLabelJa: '廿日市市の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Hatsukaichi City (Hiroshima)',
+  mapCitePackJa: '点はOSM Nominatim出典座標5件（accessed 2026-09-10）。施設行は市公式・楽天・食べログ・Commons。',
+  mapCitePackEn: 'Points: 5 OSM Nominatim coordinates (accessed 2026-09-10). Facility rows from city site, Rakuten, Tabelog, Commons.',
+  licenseNoteJa: '行は市サイト掲載・city.hatsukaichi.hiroshima.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are city-site listings, facts from city.hatsukaichi.hiroshima.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
+
 export const HIGASHIHIROSHIMA_LOOKUP: LookupTown = {
   slug: 'higashihiroshima',
   prefectureSlug: 'hiroshima',
@@ -4729,7 +4770,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   miyoshishi: MIYOSHISHI_LOOKUP,
   shobara: SHOBARA_LOOKUP,
   otake: OTAKE_LOOKUP,
-  higashihiroshima: HIGASHIHIROSHIMA_LOOKUP
+  higashihiroshima: HIGASHIHIROSHIMA_LOOKUP,
+  hatsukaichi: HATSUKAICHI_LOOKUP
 };
 
 

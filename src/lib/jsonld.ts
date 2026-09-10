@@ -99,6 +99,7 @@ import {MIYOSHISHI, MIYOSHISHI_PLACE_PHOTO} from '@/data/miyoshishi';
 import {SHOBARA, SHOBARA_PLACE_PHOTO} from '@/data/shobara';
 import {OTAKE, OTAKE_PLACE_PHOTO} from '@/data/otake';
 import {HIGASHIHIROSHIMA, HIGASHIHIROSHIMA_PLACE_PHOTO} from '@/data/higashihiroshima';
+import {HATSUKAICHI, HATSUKAICHI_PLACE_PHOTO} from '@/data/hatsukaichi';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -5240,6 +5241,57 @@ export function higashihiroshimaGraph(locale: AppLocale) {
           {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
           {'@type': 'ListItem', position: 2, name: isJa ? HIGASHIHIROSHIMA.prefectureJa : HIGASHIHIROSHIMA.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
           {'@type': 'ListItem', position: 3, name: isJa ? HIGASHIHIROSHIMA.nameJa : HIGASHIHIROSHIMA.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
+
+export function hatsukaichiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'hiroshima/hatsukaichi');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('hatsukaichi');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? HATSUKAICHI.nameJa : HATSUKAICHI.nameEn,
+        alternateName: isJa ? HATSUKAICHI.nameEn : HATSUKAICHI.nameJa,
+        identifier: HATSUKAICHI.jis,
+        url,
+        image: photoAbs(HATSUKAICHI_PLACE_PHOTO),
+        sameAs: [HATSUKAICHI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '西条栄町8番29号' : '8-29 Saijo Sakae-machi',
+          addressLocality: isJa ? HATSUKAICHI.nameJa : HATSUKAICHI.nameEn,
+          addressRegion: isJa ? HATSUKAICHI.prefectureJa : HATSUKAICHI.prefectureEn,
+          postalCode: HATSUKAICHI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? HATSUKAICHI.prefectureJa : HATSUKAICHI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? HATSUKAICHI.nameJa : HATSUKAICHI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? HATSUKAICHI.prefectureJa : HATSUKAICHI.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
+          {'@type': 'ListItem', position: 3, name: isJa ? HATSUKAICHI.nameJa : HATSUKAICHI.nameEn, item: url}
         ]
       },
       ...featured

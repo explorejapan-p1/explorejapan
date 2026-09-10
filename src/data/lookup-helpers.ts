@@ -1154,6 +1154,18 @@ import {
   resolveHigashihiroshimaFilter
 } from './higashihiroshima-travel';
 
+import {
+  hatsukaichiPackRowMatchesFilter,
+  isHatsukaichiOnsenPackRow,
+  isHatsukaichiExperiencePackRow,
+  isHatsukaichiStayPackRow,
+  hatsukaichiSightPhoto,
+  hatsukaichiSourcedHook,
+  hatsukaichiTopChipForRow,
+  rankHatsukaichiSeeRows,
+  resolveHatsukaichiFilter
+} from './hatsukaichi-travel';
+
 
 
 
@@ -2137,6 +2149,21 @@ const HIGASHIHIROSHIMA_HELPERS: LookupHelpers = {
 };
 
 
+const HATSUKAICHI_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isHatsukaichiOnsenPackRow,
+  isExperiencePackRow: isHatsukaichiExperiencePackRow,
+  isStayPackRow: isHatsukaichiStayPackRow,
+  packRowMatchesFilter: hatsukaichiPackRowMatchesFilter,
+  rankSeeRows: rankHatsukaichiSeeRows,
+  sightPhoto: hatsukaichiSightPhoto,
+  sourcedHook: hatsukaichiSourcedHook,
+  topChipForRow: hatsukaichiTopChipForRow,
+  resolveFilter: resolveHatsukaichiFilter
+};
+
+
+
+
 
 const FUCHU_HELPERS: LookupHelpers = {
   isOnsenPackRow: isFuchuOnsenPackRow,
@@ -2648,5 +2675,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'shobara') return SHOBARA_HELPERS;
   if (slug === 'otake') return OTAKE_HELPERS;
   if (slug === 'higashihiroshima') return HIGASHIHIROSHIMA_HELPERS;
+  if (slug === 'hatsukaichi') return HATSUKAICHI_HELPERS;
   return MIMA_HELPERS;
 }
