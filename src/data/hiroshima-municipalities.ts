@@ -10,7 +10,7 @@ export type Municipality = {
 
 /**
  * Hiroshima 市区町村. Codes are N03_007 / JIS X 0402 (5-digit).
- * Hiroshima City + Kure + Takehara + Mihara + Onomichi LIVE hubs.
+ * Hiroshima City + Kure + Takehara + Mihara + Onomichi + Fukuyama LIVE hubs.
  * Coming-soon slugs avoid ReadySlug collisions (miharashi / miyoshishi).
  */
 export const HIROSHIMA_MUNICIPALITIES: Municipality[] = [
@@ -19,7 +19,7 @@ export const HIROSHIMA_MUNICIPALITIES: Municipality[] = [
   {jis: '34203', slug: 'takehara', nameJa: '竹原市', nameEn: 'Takehara', status: 'ready'},
   {jis: '34204', slug: 'miharashi', nameJa: '三原市', nameEn: 'Mihara', status: 'ready'},
   {jis: '34205', slug: 'onomichi', nameJa: '尾道市', nameEn: 'Onomichi', status: 'ready'},
-  {jis: '34207', slug: 'fukuyama', nameJa: '福山市', nameEn: 'Fukuyama', status: 'coming-soon'},
+  {jis: '34207', slug: 'fukuyama', nameJa: '福山市', nameEn: 'Fukuyama', status: 'ready'},
   {jis: '34208', slug: 'fuchu', nameJa: '府中市', nameEn: 'Fuchu', status: 'coming-soon'},
   {jis: '34209', slug: 'miyoshishi', nameJa: '三次市', nameEn: 'Miyoshi', status: 'coming-soon'},
   {jis: '34210', slug: 'shobara', nameJa: '庄原市', nameEn: 'Shobara', status: 'coming-soon'},

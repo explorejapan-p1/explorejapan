@@ -93,6 +93,7 @@ import {KURE, KURE_PLACE_PHOTO} from '@/data/kure';
 import {TAKEHARA, TAKEHARA_PLACE_PHOTO} from '@/data/takehara';
 import {MIHARASHI, MIHARASHI_PLACE_PHOTO} from '@/data/miharashi';
 import {ONOMICHI, ONOMICHI_PLACE_PHOTO} from '@/data/onomichi';
+import {FUKUYAMA, FUKUYAMA_PLACE_PHOTO} from '@/data/fukuyama';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -5032,6 +5033,58 @@ export function kureGraph(locale: AppLocale) {
 }
 
 
+
+
+export function fukuyamaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'hiroshima/fukuyama');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('fukuyama');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? FUKUYAMA.nameJa : FUKUYAMA.nameEn,
+        alternateName: isJa ? FUKUYAMA.nameEn : FUKUYAMA.nameJa,
+        identifier: FUKUYAMA.jis,
+        url,
+        image: photoAbs(FUKUYAMA_PLACE_PHOTO),
+        sameAs: [FUKUYAMA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '東桜町3番5号' : '3-5 Higashi-Sakura-cho',
+          addressLocality: isJa ? FUKUYAMA.nameJa : FUKUYAMA.nameEn,
+          addressRegion: isJa ? FUKUYAMA.prefectureJa : FUKUYAMA.prefectureEn,
+          postalCode: FUKUYAMA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? FUKUYAMA.prefectureJa : FUKUYAMA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? FUKUYAMA.nameJa : FUKUYAMA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? FUKUYAMA.prefectureJa : FUKUYAMA.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
+          {'@type': 'ListItem', position: 3, name: isJa ? FUKUYAMA.nameJa : FUKUYAMA.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
 
 export function onomichiGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'hiroshima/onomichi');

@@ -1084,6 +1084,17 @@ import {
   onomichiTopChipForRow,
   resolveOnomichiFilter
 } from './onomichi-travel';
+import {
+  isFukuyamaOnsenPackRow,
+  isFukuyamaExperiencePackRow,
+  isFukuyamaStayPackRow,
+  fukuyamaPackRowMatchesFilter,
+  rankFukuyamaSeeRows,
+  fukuyamaSightPhoto,
+  fukuyamaSourcedHook,
+  fukuyamaTopChipForRow,
+  resolveFukuyamaFilter
+} from './fukuyama-travel';
 
 
 
@@ -2014,6 +2025,18 @@ const ONOMICHI_HELPERS: LookupHelpers = {
   resolveFilter: resolveOnomichiFilter
 };
 
+const FUKUYAMA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isFukuyamaOnsenPackRow,
+  isExperiencePackRow: isFukuyamaExperiencePackRow,
+  isStayPackRow: isFukuyamaStayPackRow,
+  packRowMatchesFilter: fukuyamaPackRowMatchesFilter,
+  rankSeeRows: rankFukuyamaSeeRows,
+  sightPhoto: fukuyamaSightPhoto,
+  sourcedHook: fukuyamaSourcedHook,
+  topChipForRow: fukuyamaTopChipForRow,
+  resolveFilter: resolveFukuyamaFilter
+};
+
 const MIHARASHI_HELPERS: LookupHelpers = {
   isOnsenPackRow: isMiharashiOnsenPackRow,
   isExperiencePackRow: isMiharashiExperiencePackRow,
@@ -2494,5 +2517,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'takehara') return TAKEHARA_HELPERS;
   if (slug === 'miharashi') return MIHARASHI_HELPERS;
   if (slug === 'onomichi') return ONOMICHI_HELPERS;
+  if (slug === 'fukuyama') return FUKUYAMA_HELPERS;
   return MIMA_HELPERS;
 }

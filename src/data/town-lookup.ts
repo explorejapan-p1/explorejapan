@@ -776,6 +776,7 @@ import {KURE, KURE_PLACE_PHOTO, KURE_FACILITIES, KURE_EXPECTED_GEO_COUNT, KURE_E
 import {TAKEHARA, TAKEHARA_PLACE_PHOTO, TAKEHARA_FACILITIES, TAKEHARA_EXPECTED_GEO_COUNT, TAKEHARA_EXPECTED_ROW_COUNT} from './takehara';
 import {MIHARASHI, MIHARASHI_PLACE_PHOTO, MIHARASHI_FACILITIES, MIHARASHI_EXPECTED_GEO_COUNT, MIHARASHI_EXPECTED_ROW_COUNT} from './miharashi';
 import {ONOMICHI, ONOMICHI_PLACE_PHOTO, ONOMICHI_FACILITIES, ONOMICHI_EXPECTED_GEO_COUNT, ONOMICHI_EXPECTED_ROW_COUNT} from './onomichi';
+import {FUKUYAMA, FUKUYAMA_PLACE_PHOTO, FUKUYAMA_FACILITIES, FUKUYAMA_EXPECTED_GEO_COUNT, FUKUYAMA_EXPECTED_ROW_COUNT} from './fukuyama';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -965,6 +966,13 @@ import {
   ONOMICHI_TRAVEL_COMMERCE,
   ONOMICHI_TRAVEL_ALL
 } from './onomichi-travel';
+import {
+  FUKUYAMA_TRAVEL_DINING,
+  FUKUYAMA_TRAVEL_STAY,
+  FUKUYAMA_TRAVEL_SHOPPING,
+  FUKUYAMA_TRAVEL_COMMERCE,
+  FUKUYAMA_TRAVEL_ALL
+} from './fukuyama-travel';
 
 
 
@@ -3826,6 +3834,39 @@ export const MIHARASHI_LOOKUP: LookupTown = {
 
 
 
+
+export const FUKUYAMA_LOOKUP: LookupTown = {
+  slug: 'fukuyama',
+  prefectureSlug: 'hiroshima',
+  jis: FUKUYAMA.jis,
+  nameJa: FUKUYAMA.nameJa,
+  nameEn: FUKUYAMA.nameEn,
+  heroPhoto: FUKUYAMA_PLACE_PHOTO,
+  photoCiteJa: '写真は福山城天守。663highland、CC BY 2.5。File:Fukuyama castle02s1980.jpg。',
+  photoCiteEn: 'Photo: Fukuyama Castle keep. 663highland, CC BY 2.5. File:Fukuyama castle02s1980.jpg.',
+  rows: FUKUYAMA_FACILITIES,
+  expectedGeo: FUKUYAMA_EXPECTED_GEO_COUNT,
+  expectedRows: FUKUYAMA_EXPECTED_ROW_COUNT,
+  travelDining: FUKUYAMA_TRAVEL_DINING,
+  travelStay: FUKUYAMA_TRAVEL_STAY,
+  travelShopping: FUKUYAMA_TRAVEL_SHOPPING,
+  travelCommerce: FUKUYAMA_TRAVEL_COMMERCE,
+  travelAll: FUKUYAMA_TRAVEL_ALL,
+  coverageJa:
+    '福山市（JIS 34207）。観光5・宿泊16・飲食16・温泉6（体験0）。買物・商業は未掲載。',
+  coverageEn:
+    'Fukuyama City (JIS 34207), 5 tourism + 16 stay + 16 dining + 6 onsen + 0 experience with sourced photos. Shopping/commerce: 0 unpublished.',
+  mapLabelJa: '福山市の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Fukuyama City',
+  mapCitePackJa: '点はOSM Nominatim出典座標5件（accessed 2026-09-10）。施設行は市公式・楽天・食べログ・Commons。',
+  mapCitePackEn: 'Points: 5 OSM Nominatim coordinates (accessed 2026-09-10). Facility rows from city site, Rakuten, Tabelog, Commons.',
+  licenseNoteJa: '行は市サイト掲載・city.fukuyama.hiroshima.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are city-site listings, facts from city.fukuyama.hiroshima.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
+
 export const ONOMICHI_LOOKUP: LookupTown = {
   slug: 'onomichi',
   prefectureSlug: 'hiroshima',
@@ -4477,7 +4518,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   kure: KURE_LOOKUP,
   takehara: TAKEHARA_LOOKUP,
   miharashi: MIHARASHI_LOOKUP,
-  onomichi: ONOMICHI_LOOKUP
+  onomichi: ONOMICHI_LOOKUP,
+  fukuyama: FUKUYAMA_LOOKUP
 };
 
 
