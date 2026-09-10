@@ -785,6 +785,7 @@ import {HIGASHIHIROSHIMA, HIGASHIHIROSHIMA_PLACE_PHOTO, HIGASHIHIROSHIMA_FACILIT
 import {HATSUKAICHI, HATSUKAICHI_PLACE_PHOTO, HATSUKAICHI_FACILITIES, HATSUKAICHI_EXPECTED_GEO_COUNT, HATSUKAICHI_EXPECTED_ROW_COUNT} from './hatsukaichi';
 import {AKITAKATA, AKITAKATA_PLACE_PHOTO, AKITAKATA_FACILITIES, AKITAKATA_EXPECTED_GEO_COUNT, AKITAKATA_EXPECTED_ROW_COUNT} from './akitakata';
 import {ETAJIMA, ETAJIMA_PLACE_PHOTO, ETAJIMA_FACILITIES, ETAJIMA_EXPECTED_GEO_COUNT, ETAJIMA_EXPECTED_ROW_COUNT} from './etajima';
+import {FUCHUCHO, FUCHUCHO_PLACE_PHOTO, FUCHUCHO_FACILITIES, FUCHUCHO_EXPECTED_GEO_COUNT, FUCHUCHO_EXPECTED_ROW_COUNT} from './fuchucho';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -1037,6 +1038,13 @@ import {
   ETAJIMA_TRAVEL_COMMERCE,
   ETAJIMA_TRAVEL_ALL
 } from './etajima-travel';
+import {
+  FUCHUCHO_TRAVEL_DINING,
+  FUCHUCHO_TRAVEL_STAY,
+  FUCHUCHO_TRAVEL_SHOPPING,
+  FUCHUCHO_TRAVEL_COMMERCE,
+  FUCHUCHO_TRAVEL_ALL
+} from './fuchucho-travel';
 
 
 
@@ -3968,6 +3976,38 @@ export const MIYOSHISHI_LOOKUP: LookupTown = {
 
 
 
+
+export const FUCHUCHO_LOOKUP: LookupTown = {
+  slug: 'fuchucho',
+  prefectureSlug: 'hiroshima',
+  jis: FUCHUCHO.jis,
+  nameJa: FUCHUCHO.nameJa,
+  nameEn: FUCHUCHO.nameEn,
+  heroPhoto: FUCHUCHO_PLACE_PHOTO,
+  photoCiteJa: '写真は府中町から望む広島市街の夜景。そらみみ、CC BY-SA 4.0。File:View of Hiroshima City from Fuchu Town at night 1.jpg。',
+  photoCiteEn: 'Photo: Night view of Hiroshima City from Fuchu Town. そらみみ, CC BY-SA 4.0. File:View of Hiroshima City from Fuchu Town at night 1.jpg.',
+  rows: FUCHUCHO_FACILITIES,
+  expectedGeo: FUCHUCHO_EXPECTED_GEO_COUNT,
+  expectedRows: FUCHUCHO_EXPECTED_ROW_COUNT,
+  travelDining: FUCHUCHO_TRAVEL_DINING,
+  travelStay: FUCHUCHO_TRAVEL_STAY,
+  travelShopping: FUCHUCHO_TRAVEL_SHOPPING,
+  travelCommerce: FUCHUCHO_TRAVEL_COMMERCE,
+  travelAll: FUCHUCHO_TRAVEL_ALL,
+  coverageJa:
+    '府中町（JIS 34302・広島県安芸郡）。観光5・宿泊1・飲食16・温泉0（体験0）。買物・商業は未掲載。府中市（fuchu）とは別。',
+  coverageEn:
+    'Fuchu Town Hiroshima Aki District (JIS 34302), 5 tourism + 1 stay + 16 dining + 0 onsen + 0 experience with sourced photos. Shopping/commerce: 0. Distinct from Fuchu City (fuchu).',
+  mapLabelJa: '府中町の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Fuchu Town (Hiroshima)',
+  mapCitePackJa: '点はOSM Overpass/Nominatim出典座標5件（accessed 2026-09-10）。施設行は町公式・楽天・食べログ・Commons。',
+  mapCitePackEn: 'Points: 5 OSM Overpass/Nominatim coordinates (accessed 2026-09-10). Facility rows from town site, Rakuten, Tabelog, Commons.',
+  licenseNoteJa: '行は町サイト掲載・town.fuchu.hiroshima.jp由来。オープンデータ包とは混ぜません。府中市ハブとは別ファイル。',
+  licenseNoteEn: 'Rows are town-site listings, facts from town.fuchu.hiroshima.jp, not under Our Open Data. Separate from Fuchu City hub.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
 export const ETAJIMA_LOOKUP: LookupTown = {
   slug: 'etajima',
   prefectureSlug: 'hiroshima',
@@ -4853,7 +4893,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   higashihiroshima: HIGASHIHIROSHIMA_LOOKUP,
   hatsukaichi: HATSUKAICHI_LOOKUP,
   akitakata: AKITAKATA_LOOKUP,
-  etajima: ETAJIMA_LOOKUP
+  etajima: ETAJIMA_LOOKUP,
+  fuchucho: FUCHUCHO_LOOKUP
 };
 
 

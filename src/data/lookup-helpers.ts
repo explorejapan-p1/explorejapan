@@ -1189,6 +1189,18 @@ import {
   rankEtajimaSeeRows,
   resolveEtajimaFilter
 } from './etajima-travel';
+import {
+  isFuchuchoExperiencePackRow,
+  isFuchuchoOnsenPackRow,
+  isFuchuchoStayPackRow,
+  fuchuchoPackRowMatchesFilter,
+  fuchuchoSightPhoto,
+  fuchuchoSourcedHook,
+  fuchuchoTopChipForRow,
+  rankFuchuchoSeeRows,
+  resolveFuchuchoFilter
+} from './fuchucho-travel';
+
 
 
 
@@ -2176,6 +2188,19 @@ const HIGASHIHIROSHIMA_HELPERS: LookupHelpers = {
 
 
 
+
+const FUCHUCHO_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isFuchuchoOnsenPackRow,
+  isExperiencePackRow: isFuchuchoExperiencePackRow,
+  isStayPackRow: isFuchuchoStayPackRow,
+  packRowMatchesFilter: fuchuchoPackRowMatchesFilter,
+  rankSeeRows: rankFuchuchoSeeRows,
+  sightPhoto: fuchuchoSightPhoto,
+  sourcedHook: fuchuchoSourcedHook,
+  topChipForRow: fuchuchoTopChipForRow,
+  resolveFilter: resolveFuchuchoFilter
+};
+
 const ETAJIMA_HELPERS: LookupHelpers = {
   isOnsenPackRow: isEtajimaOnsenPackRow,
   isExperiencePackRow: isEtajimaExperiencePackRow,
@@ -2729,5 +2754,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'akitakata') return AKITAKATA_HELPERS;
   if (slug === 'hatsukaichi') return HATSUKAICHI_HELPERS;
   if (slug === 'etajima') return ETAJIMA_HELPERS;
+  if (slug === 'fuchucho') return FUCHUCHO_HELPERS;
   return MIMA_HELPERS;
 }
