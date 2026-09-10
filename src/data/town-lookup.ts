@@ -772,6 +772,7 @@ import {MATSUNO, MATSUNO_PLACE_PHOTO, MATSUNO_FACILITIES, MATSUNO_EXPECTED_GEO_C
 import {KIHOKU, KIHOKU_PLACE_PHOTO, KIHOKU_FACILITIES, KIHOKU_EXPECTED_GEO_COUNT, KIHOKU_EXPECTED_ROW_COUNT} from './kihoku';
 import {AINAN, AINAN_PLACE_PHOTO, AINAN_FACILITIES, AINAN_EXPECTED_GEO_COUNT, AINAN_EXPECTED_ROW_COUNT} from './ainan';
 import {HIROSHIMA, HIROSHIMA_PLACE_PHOTO, HIROSHIMA_FACILITIES, HIROSHIMA_EXPECTED_GEO_COUNT, HIROSHIMA_EXPECTED_ROW_COUNT} from './hiroshima';
+import {KURE, KURE_PLACE_PHOTO, KURE_FACILITIES, KURE_EXPECTED_GEO_COUNT, KURE_EXPECTED_ROW_COUNT} from './kure';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -933,6 +934,13 @@ import {
   HIROSHIMA_TRAVEL_COMMERCE,
   HIROSHIMA_TRAVEL_ALL
 } from './hiroshima-travel';
+import {
+  KURE_TRAVEL_DINING,
+  KURE_TRAVEL_STAY,
+  KURE_TRAVEL_SHOPPING,
+  KURE_TRAVEL_COMMERCE,
+  KURE_TRAVEL_ALL
+} from './kure-travel';
 
 
 
@@ -3727,6 +3735,38 @@ export const HIROSHIMA_LOOKUP: LookupTown = {
   licenseSiteEn: 'City-site listing'
 };
 
+export const KURE_LOOKUP: LookupTown = {
+  slug: 'kure',
+  prefectureSlug: 'hiroshima',
+  jis: KURE.jis,
+  nameJa: KURE.nameJa,
+  nameEn: KURE.nameEn,
+  heroPhoto: KURE_PLACE_PHOTO,
+  photoCiteJa: '写真は呉市役所。Evelyn-rose、CC0。File:Kure-City-Hall-1.jpg。',
+  photoCiteEn: 'Photo: Kure City Hall. Evelyn-rose, CC0. File:Kure-City-Hall-1.jpg.',
+  rows: KURE_FACILITIES,
+  expectedGeo: KURE_EXPECTED_GEO_COUNT,
+  expectedRows: KURE_EXPECTED_ROW_COUNT,
+  travelDining: KURE_TRAVEL_DINING,
+  travelStay: KURE_TRAVEL_STAY,
+  travelShopping: KURE_TRAVEL_SHOPPING,
+  travelCommerce: KURE_TRAVEL_COMMERCE,
+  travelAll: KURE_TRAVEL_ALL,
+  coverageJa:
+    '呉市（JIS 34202）。観光6・宿泊9・飲食16・温泉2（体験0）。買物・商業は未掲載。',
+  coverageEn:
+    'Kure City (JIS 34202), 6 tourism + 9 stay + 16 dining + 2 onsen + 0 experience with sourced photos. Shopping/commerce: 0 unpublished.',
+  mapLabelJa: '呉市内の出典付き座標（未掲載）',
+  mapLabelEn: 'Sourced coordinates in Kure City (unpublished)',
+  mapCitePackJa: '施設行は市公式・楽天・食べログ・Commons。',
+  mapCitePackEn: 'Facility rows from city site, Rakuten, Tabelog, Commons.',
+  licenseNoteJa: '行は市サイト掲載・city.kure.lg.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are city-site listings, facts from city.kure.lg.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
+
 export const KIHOKU_LOOKUP: LookupTown = {
   slug: 'kihoku',
   prefectureSlug: 'ehime',
@@ -4311,7 +4351,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   matsuno: MATSUNO_LOOKUP,
   kihoku: KIHOKU_LOOKUP,
   ainan: AINAN_LOOKUP,
-  hiroshima: HIROSHIMA_LOOKUP
+  hiroshima: HIROSHIMA_LOOKUP,
+  kure: KURE_LOOKUP
 };
 
 

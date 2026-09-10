@@ -1040,6 +1040,17 @@ import {
   hiroshimaTopChipForRow,
   resolveHiroshimaFilter
 } from './hiroshima-travel';
+import {
+  isKureOnsenPackRow,
+  isKureExperiencePackRow,
+  isKureStayPackRow,
+  kurePackRowMatchesFilter,
+  rankKureSeeRows,
+  kureSightPhoto,
+  kureSourcedHook,
+  kureTopChipForRow,
+  resolveKureFilter
+} from './kure-travel';
 
 
 
@@ -1933,6 +1944,18 @@ const HIROSHIMA_HELPERS: LookupHelpers = {
   resolveFilter: resolveHiroshimaFilter
 };
 
+const KURE_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isKureOnsenPackRow,
+  isExperiencePackRow: isKureExperiencePackRow,
+  isStayPackRow: isKureStayPackRow,
+  packRowMatchesFilter: kurePackRowMatchesFilter,
+  rankSeeRows: rankKureSeeRows,
+  sightPhoto: kureSightPhoto,
+  sourcedHook: kureSourcedHook,
+  topChipForRow: kureTopChipForRow,
+  resolveFilter: resolveKureFilter
+};
+
 const KIHOKU_HELPERS: LookupHelpers = {
   isOnsenPackRow: isKihokuOnsenPackRow,
   isExperiencePackRow: isKihokuExperiencePackRow,
@@ -2397,5 +2420,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'kihoku') return KIHOKU_HELPERS;
   if (slug === 'ainan') return AINAN_HELPERS;
   if (slug === 'hiroshima') return HIROSHIMA_HELPERS;
+  if (slug === 'kure') return KURE_HELPERS;
   return MIMA_HELPERS;
 }

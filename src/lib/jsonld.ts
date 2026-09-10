@@ -89,6 +89,7 @@ import {MATSUNO, MATSUNO_PLACE_PHOTO} from '@/data/matsuno';
 import {KIHOKU, KIHOKU_PLACE_PHOTO} from '@/data/kihoku';
 import {AINAN, AINAN_PLACE_PHOTO} from '@/data/ainan';
 import {HIROSHIMA, HIROSHIMA_PLACE_PHOTO} from '@/data/hiroshima';
+import {KURE, KURE_PLACE_PHOTO} from '@/data/kure';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -232,6 +233,7 @@ function localityJa(slug: string): string {
   if (slug === 'kihoku') return KIHOKU.nameJa;
   if (slug === 'ainan') return AINAN.nameJa;
   if (slug === 'hiroshima') return HIROSHIMA.nameJa;
+  if (slug === 'kure') return KURE.nameJa;
   return MIMA.nameJa;
 }
 
@@ -314,6 +316,7 @@ function localityEn(slug: string): string {
   if (slug === 'kihoku') return KIHOKU.nameEn;
   if (slug === 'ainan') return AINAN.nameEn;
   if (slug === 'hiroshima') return HIROSHIMA.nameEn;
+  if (slug === 'kure') return KURE.nameEn;
   return MIMA.nameEn;
 }
 
@@ -4960,6 +4963,58 @@ export function ainanGraph(locale: AppLocale) {
           {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
           {'@type': 'ListItem', position: 2, name: isJa ? AINAN.prefectureJa : AINAN.prefectureEn, item: canonicalUrl(locale, 'ehime')},
           {'@type': 'ListItem', position: 3, name: isJa ? AINAN.nameJa : AINAN.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
+
+
+export function kureGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'hiroshima/kure');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('kure');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? KURE.nameJa : KURE.nameEn,
+        alternateName: isJa ? KURE.nameEn : KURE.nameJa,
+        identifier: KURE.jis,
+        url,
+        image: photoAbs(KURE_PLACE_PHOTO),
+        sameAs: [KURE.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '中央4丁目1番6号' : '4-1-6 Chuo',
+          addressLocality: isJa ? KURE.nameJa : KURE.nameEn,
+          addressRegion: isJa ? KURE.prefectureJa : KURE.prefectureEn,
+          postalCode: KURE.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? KURE.prefectureJa : KURE.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? KURE.nameJa : KURE.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? KURE.prefectureJa : KURE.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
+          {'@type': 'ListItem', position: 3, name: isJa ? KURE.nameJa : KURE.nameEn, item: url}
         ]
       },
       ...featured
