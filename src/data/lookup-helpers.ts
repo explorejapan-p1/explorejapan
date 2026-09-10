@@ -1118,6 +1118,18 @@ import {
   resolveMiyoshishiFilter
 } from './miyoshishi-travel';
 
+import {
+  shobaraPackRowMatchesFilter,
+  isShobaraOnsenPackRow,
+  isShobaraExperiencePackRow,
+  isShobaraStayPackRow,
+  shobaraSightPhoto,
+  shobaraSourcedHook,
+  shobaraTopChipForRow,
+  rankShobaraSeeRows,
+  resolveShobaraFilter
+} from './shobara-travel';
+
 
 
 
@@ -2061,6 +2073,19 @@ const MIYOSHISHI_HELPERS: LookupHelpers = {
   resolveFilter: resolveMiyoshishiFilter
 };
 
+
+const SHOBARA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isShobaraOnsenPackRow,
+  isExperiencePackRow: isShobaraExperiencePackRow,
+  isStayPackRow: isShobaraStayPackRow,
+  packRowMatchesFilter: shobaraPackRowMatchesFilter,
+  rankSeeRows: rankShobaraSeeRows,
+  sightPhoto: shobaraSightPhoto,
+  sourcedHook: shobaraSourcedHook,
+  topChipForRow: shobaraTopChipForRow,
+  resolveFilter: resolveShobaraFilter
+};
+
 const FUCHU_HELPERS: LookupHelpers = {
   isOnsenPackRow: isFuchuOnsenPackRow,
   isExperiencePackRow: isFuchuExperiencePackRow,
@@ -2568,5 +2593,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'fukuyama') return FUKUYAMA_HELPERS;
   if (slug === 'fuchu') return FUCHU_HELPERS;
   if (slug === 'miyoshishi') return MIYOSHISHI_HELPERS;
+  if (slug === 'shobara') return SHOBARA_HELPERS;
   return MIMA_HELPERS;
 }

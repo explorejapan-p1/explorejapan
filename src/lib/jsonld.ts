@@ -96,6 +96,7 @@ import {ONOMICHI, ONOMICHI_PLACE_PHOTO} from '@/data/onomichi';
 import {FUKUYAMA, FUKUYAMA_PLACE_PHOTO} from '@/data/fukuyama';
 import {FUCHU, FUCHU_PLACE_PHOTO} from '@/data/fuchu';
 import {MIYOSHISHI, MIYOSHISHI_PLACE_PHOTO} from '@/data/miyoshishi';
+import {SHOBARA, SHOBARA_PLACE_PHOTO} from '@/data/shobara';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -5083,6 +5084,58 @@ export function miyoshishiGraph(locale: AppLocale) {
           {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
           {'@type': 'ListItem', position: 2, name: isJa ? MIYOSHISHI.prefectureJa : MIYOSHISHI.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
           {'@type': 'ListItem', position: 3, name: isJa ? MIYOSHISHI.nameJa : MIYOSHISHI.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
+
+
+export function shobaraGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'hiroshima/shobara');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('shobara');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? SHOBARA.nameJa : SHOBARA.nameEn,
+        alternateName: isJa ? SHOBARA.nameEn : SHOBARA.nameJa,
+        identifier: SHOBARA.jis,
+        url,
+        image: photoAbs(SHOBARA_PLACE_PHOTO),
+        sameAs: [SHOBARA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '中本町一丁目10番1号' : '10-1 Nakahonmachi 1-chome',
+          addressLocality: isJa ? SHOBARA.nameJa : SHOBARA.nameEn,
+          addressRegion: isJa ? SHOBARA.prefectureJa : SHOBARA.prefectureEn,
+          postalCode: SHOBARA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? SHOBARA.prefectureJa : SHOBARA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? SHOBARA.nameJa : SHOBARA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? SHOBARA.prefectureJa : SHOBARA.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
+          {'@type': 'ListItem', position: 3, name: isJa ? SHOBARA.nameJa : SHOBARA.nameEn, item: url}
         ]
       },
       ...featured

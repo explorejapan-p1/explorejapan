@@ -779,6 +779,7 @@ import {ONOMICHI, ONOMICHI_PLACE_PHOTO, ONOMICHI_FACILITIES, ONOMICHI_EXPECTED_G
 import {FUKUYAMA, FUKUYAMA_PLACE_PHOTO, FUKUYAMA_FACILITIES, FUKUYAMA_EXPECTED_GEO_COUNT, FUKUYAMA_EXPECTED_ROW_COUNT} from './fukuyama';
 import {FUCHU, FUCHU_PLACE_PHOTO, FUCHU_FACILITIES, FUCHU_EXPECTED_GEO_COUNT, FUCHU_EXPECTED_ROW_COUNT} from './fuchu';
 import {MIYOSHISHI, MIYOSHISHI_PLACE_PHOTO, MIYOSHISHI_FACILITIES, MIYOSHISHI_EXPECTED_GEO_COUNT, MIYOSHISHI_EXPECTED_ROW_COUNT} from './miyoshishi';
+import {SHOBARA, SHOBARA_PLACE_PHOTO, SHOBARA_FACILITIES, SHOBARA_EXPECTED_GEO_COUNT, SHOBARA_EXPECTED_ROW_COUNT} from './shobara';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -989,6 +990,13 @@ import {
   MIYOSHISHI_TRAVEL_COMMERCE,
   MIYOSHISHI_TRAVEL_ALL
 } from './miyoshishi-travel';
+import {
+  SHOBARA_TRAVEL_DINING,
+  SHOBARA_TRAVEL_STAY,
+  SHOBARA_TRAVEL_SHOPPING,
+  SHOBARA_TRAVEL_COMMERCE,
+  SHOBARA_TRAVEL_ALL
+} from './shobara-travel';
 
 
 
@@ -3915,6 +3923,39 @@ export const MIYOSHISHI_LOOKUP: LookupTown = {
 };
 
 
+export const SHOBARA_LOOKUP: LookupTown = {
+  slug: 'shobara',
+  prefectureSlug: 'hiroshima',
+  jis: SHOBARA.jis,
+  nameJa: SHOBARA.nameJa,
+  nameEn: SHOBARA.nameEn,
+  heroPhoto: SHOBARA_PLACE_PHOTO,
+  photoCiteJa: '写真は国営備北丘陵公園。Osamiw、CC BY-SA 4.0。File:Bihoku Hillside nationalpark 2015.jpg。',
+  photoCiteEn: 'Photo: Bihoku Hillside National Park. Osamiw, CC BY-SA 4.0. File:Bihoku Hillside nationalpark 2015.jpg.',
+  rows: SHOBARA_FACILITIES,
+  expectedGeo: SHOBARA_EXPECTED_GEO_COUNT,
+  expectedRows: SHOBARA_EXPECTED_ROW_COUNT,
+  travelDining: SHOBARA_TRAVEL_DINING,
+  travelStay: SHOBARA_TRAVEL_STAY,
+  travelShopping: SHOBARA_TRAVEL_SHOPPING,
+  travelCommerce: SHOBARA_TRAVEL_COMMERCE,
+  travelAll: SHOBARA_TRAVEL_ALL,
+  coverageJa:
+    '庄原市（JIS 34210・広島県）。観光5・宿泊7・飲食16・温泉4（体験0）。買物・商業は未掲載。',
+  coverageEn:
+    'Shobara City Hiroshima (JIS 34210), 5 tourism + 7 stay + 16 dining + 4 onsen + 0 experience with sourced photos. Shopping/commerce: 0.',
+  mapLabelJa: '庄原市の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Shobara City (Hiroshima)',
+  mapCitePackJa: '点はOSM Nominatim出典座標5件（accessed 2026-09-10）。施設行は市公式・楽天・食べログ・Commons。',
+  mapCitePackEn: 'Points: 5 OSM Nominatim coordinates (accessed 2026-09-10). Facility rows from city site, Rakuten, Tabelog, Commons.',
+  licenseNoteJa: '行は市サイト掲載・city.shobara.hiroshima.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are city-site listings, facts from city.shobara.hiroshima.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
+
+
 
 
 export const FUKUYAMA_LOOKUP: LookupTown = {
@@ -4603,7 +4644,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   onomichi: ONOMICHI_LOOKUP,
   fukuyama: FUKUYAMA_LOOKUP,
   fuchu: FUCHU_LOOKUP,
-  miyoshishi: MIYOSHISHI_LOOKUP
+  miyoshishi: MIYOSHISHI_LOOKUP,
+  shobara: SHOBARA_LOOKUP
 };
 
 
