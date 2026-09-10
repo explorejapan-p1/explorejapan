@@ -106,6 +106,7 @@ import {FUCHUCHO, FUCHUCHO_PLACE_PHOTO} from '@/data/fuchucho';
 import {KAITA, KAITA_PLACE_PHOTO} from '@/data/kaita';
 import {KUMANO, KUMANO_PLACE_PHOTO} from '@/data/kumano';
 import {SAKA, SAKA_PLACE_PHOTO} from '@/data/saka';
+import {AKIOTA, AKIOTA_PLACE_PHOTO} from '@/data/akiota';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -5460,6 +5461,58 @@ export function sakaGraph(locale: AppLocale) {
     ]
   };
 }
+
+export function akiotaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'hiroshima/akiota');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('akiota');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'TouristDestination',
+        '@id': `${url}#place`,
+        name: isJa ? AKIOTA.nameJa : AKIOTA.nameEn,
+        alternateName: isJa ? AKIOTA.nameEn : AKIOTA.nameJa,
+        identifier: AKIOTA.jis,
+        url,
+        image: photoAbs(AKIOTA_PLACE_PHOTO),
+        sameAs: [AKIOTA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '大字戸河内784番地1' : '784-1 Togouchi',
+          addressLocality: isJa ? AKIOTA.nameJa : AKIOTA.nameEn,
+          addressRegion: isJa ? AKIOTA.prefectureJa : AKIOTA.prefectureEn,
+          postalCode: AKIOTA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? AKIOTA.prefectureJa : AKIOTA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url,
+        name: isJa ? AKIOTA.nameJa : AKIOTA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`},
+        about: {'@id': `${url}#place`},
+        breadcrumb: {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+            {'@type': 'ListItem', position: 2, name: isJa ? AKIOTA.prefectureJa : AKIOTA.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
+            {'@type': 'ListItem', position: 3, name: isJa ? AKIOTA.nameJa : AKIOTA.nameEn, item: url}
+          ]
+        }
+      }
+    ]
+  };
+}
+
 
 export function kumanoGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'hiroshima/kumano');

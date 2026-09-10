@@ -883,6 +883,14 @@ import {
   SAKA_DINING_NAME_SET,
   sakaSightPhoto,
 } from '@/data/saka-travel';
+import {
+  isAkiotaOnsenPackRow,
+  isAkiotaExperiencePackRow,
+  isAkiotaStayPackRow,
+  AKIOTA_DINING_NAME_SET,
+  akiotaSightPhoto,
+  rankAkiotaSeeRows,
+} from '@/data/akiota-travel';
 
 
 
@@ -4320,6 +4328,45 @@ function sakaListings(): PublicListing[] {
   return out;
 }
 
+function akiotaListings(): PublicListing[] {
+  const town = lookupTown('akiota')!;
+  const out: PublicListing[] = town.travelAll.map((row) =>
+    fromTravel(row, 'akiota', akiotaSightPhoto(row.name_ja))
+  );
+  const seen = new Set<string>();
+  const pack: FacilityRow[] = [];
+  for (const row of town.rows) {
+    if (AKIOTA_DINING_NAME_SET.has(row.name_ja)) continue;
+    if (
+      !isAkiotaOnsenPackRow(row) &&
+      !isAkiotaExperiencePackRow(row) &&
+      !isAkiotaStayPackRow(row) &&
+      !isSightsCategory(row.category)
+    ) {
+      continue;
+    }
+    const key = packDedupeKey(row);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    pack.push(row);
+  }
+  const ranked = rankAkiotaSeeRows(pack);
+  const onsen = pack.filter(isAkiotaOnsenPackRow);
+  const experience = pack.filter(isAkiotaExperiencePackRow);
+  const stay = pack.filter(isAkiotaStayPackRow);
+  for (const row of [...stay, ...onsen, ...experience, ...ranked]) {
+    const kind: ListingKind = isAkiotaOnsenPackRow(row)
+      ? 'onsen'
+      : isAkiotaExperiencePackRow(row)
+        ? 'experience'
+        : isAkiotaStayPackRow(row)
+          ? 'stay'
+          : 'sights';
+    out.push(fromPack(row, 'akiota', kind, akiotaSightPhoto(row.name_ja)));
+  }
+  return out;
+}
+
 function kumanoListings(): PublicListing[] {
   const town = lookupTown('kumano')!;
   const out: PublicListing[] = town.travelAll.map((row) =>
@@ -5447,7 +5494,8 @@ const CACHE: Record<ReadySlug, PublicListing[]> = {
   fuchucho: fuchuchoListings(),
   kaita: kaitaListings(),
   kumano: kumanoListings(),
-  saka: sakaListings()
+  saka: sakaListings(),
+  akiota: akiotaListings()
 };
 
 export function publicListings(slug: ReadySlug = 'mima'): PublicListing[] {

@@ -789,6 +789,7 @@ import {FUCHUCHO, FUCHUCHO_PLACE_PHOTO, FUCHUCHO_FACILITIES, FUCHUCHO_EXPECTED_G
 import {KAITA, KAITA_PLACE_PHOTO, KAITA_FACILITIES, KAITA_EXPECTED_GEO_COUNT, KAITA_EXPECTED_ROW_COUNT} from './kaita';
 import {KUMANO, KUMANO_PLACE_PHOTO, KUMANO_FACILITIES, KUMANO_EXPECTED_GEO_COUNT, KUMANO_EXPECTED_ROW_COUNT} from './kumano';
 import {SAKA, SAKA_PLACE_PHOTO, SAKA_FACILITIES, SAKA_EXPECTED_GEO_COUNT, SAKA_EXPECTED_ROW_COUNT} from './saka';
+import {AKIOTA, AKIOTA_PLACE_PHOTO, AKIOTA_FACILITIES, AKIOTA_EXPECTED_GEO_COUNT, AKIOTA_EXPECTED_ROW_COUNT} from './akiota';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -1069,6 +1070,13 @@ import {
   SAKA_TRAVEL_COMMERCE,
   SAKA_TRAVEL_ALL
 } from './saka-travel';
+import {
+  AKIOTA_TRAVEL_DINING,
+  AKIOTA_TRAVEL_STAY,
+  AKIOTA_TRAVEL_SHOPPING,
+  AKIOTA_TRAVEL_COMMERCE,
+  AKIOTA_TRAVEL_ALL
+} from './akiota-travel';
 
 
 
@@ -4067,6 +4075,39 @@ export const SAKA_LOOKUP: LookupTown = {
 };
 
 
+
+export const AKIOTA_LOOKUP: LookupTown = {
+  slug: 'akiota',
+  prefectureSlug: 'hiroshima',
+  jis: AKIOTA.jis,
+  nameJa: AKIOTA.nameJa,
+  nameEn: AKIOTA.nameEn,
+  heroPhoto: AKIOTA_PLACE_PHOTO,
+  photoCiteJa: '写真は安芸太田町役場。アラツク、CC BY-SA 4.0。File:Akiota town hall.JPG。',
+  photoCiteEn: 'Photo: Akiota Town Office. アラツク, CC BY-SA 4.0. File:Akiota town hall.JPG.',
+  rows: AKIOTA_FACILITIES,
+  expectedGeo: AKIOTA_EXPECTED_GEO_COUNT,
+  expectedRows: AKIOTA_EXPECTED_ROW_COUNT,
+  travelDining: AKIOTA_TRAVEL_DINING,
+  travelStay: AKIOTA_TRAVEL_STAY,
+  travelShopping: AKIOTA_TRAVEL_SHOPPING,
+  travelCommerce: AKIOTA_TRAVEL_COMMERCE,
+  travelAll: AKIOTA_TRAVEL_ALL,
+  coverageJa:
+    '安芸太田町（JIS 34368・広島県山県郡）。観光5・宿泊1・飲食16・温泉2（体験0）。買物・商業は未掲載。安芸高田市とは別。',
+  coverageEn:
+    'Akiota Town Hiroshima Yamagata District (JIS 34368), 5 tourism + 1 stay + 16 dining + 2 onsen + 0 experience with sourced photos. Shopping/commerce: 0. Distinct from Akitakata City.',
+  mapLabelJa: '安芸太田町の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Akiota Town (Hiroshima)',
+  mapCitePackJa: '点はDive! Hiroshima出典座標5件（accessed 2026-09-10）。施設行は町公式・楽天・食べログ・Commons・Dive! Hiroshima・ニフティ温泉。',
+  mapCitePackEn: 'Points: 5 Dive! Hiroshima coordinates (accessed 2026-09-10). Facility rows from town site, Rakuten, Tabelog, Commons, Dive! Hiroshima, Nifty Onsen.',
+  licenseNoteJa: '行は町サイト掲載・akiota.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from akiota.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
+
 export const KAITA_LOOKUP: LookupTown = {
   slug: 'kaita',
   prefectureSlug: 'hiroshima',
@@ -5018,7 +5059,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   fuchucho: FUCHUCHO_LOOKUP,
   kaita: KAITA_LOOKUP,
   kumano: KUMANO_LOOKUP,
-  saka: SAKA_LOOKUP
+  saka: SAKA_LOOKUP,
+  akiota: AKIOTA_LOOKUP
 };
 
 
