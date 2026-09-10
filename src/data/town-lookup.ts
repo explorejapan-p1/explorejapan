@@ -770,6 +770,7 @@ import {UCHIKO, UCHIKO_PLACE_PHOTO, UCHIKO_FACILITIES, UCHIKO_EXPECTED_GEO_COUNT
 import {IKATA, IKATA_PLACE_PHOTO, IKATA_FACILITIES, IKATA_EXPECTED_GEO_COUNT, IKATA_EXPECTED_ROW_COUNT} from './ikata';
 import {MATSUNO, MATSUNO_PLACE_PHOTO, MATSUNO_FACILITIES, MATSUNO_EXPECTED_GEO_COUNT, MATSUNO_EXPECTED_ROW_COUNT} from './matsuno';
 import {KIHOKU, KIHOKU_PLACE_PHOTO, KIHOKU_FACILITIES, KIHOKU_EXPECTED_GEO_COUNT, KIHOKU_EXPECTED_ROW_COUNT} from './kihoku';
+import {AINAN, AINAN_PLACE_PHOTO, AINAN_FACILITIES, AINAN_EXPECTED_GEO_COUNT, AINAN_EXPECTED_ROW_COUNT} from './ainan';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -917,6 +918,13 @@ import {
   KIHOKU_TRAVEL_COMMERCE,
   KIHOKU_TRAVEL_ALL
 } from './kihoku-travel';
+import {
+  AINAN_TRAVEL_DINING,
+  AINAN_TRAVEL_STAY,
+  AINAN_TRAVEL_SHOPPING,
+  AINAN_TRAVEL_COMMERCE,
+  AINAN_TRAVEL_ALL
+} from './ainan-travel';
 
 
 
@@ -3644,6 +3652,40 @@ export const TOBE_LOOKUP: LookupTown = {
 
 
 
+
+export const AINAN_LOOKUP: LookupTown = {
+  slug: 'ainan',
+  prefectureSlug: 'ehime',
+  jis: AINAN.jis,
+  nameJa: AINAN.nameJa,
+  nameEn: AINAN.nameEn,
+  heroPhoto: AINAN_PLACE_PHOTO,
+  photoCiteJa: '写真は愛南町役場。アラツク、CC BY-SA 4.0。File:Ainan town hall.JPG。',
+  photoCiteEn: 'Photo: Ainan Town Hall. アラツク, CC BY-SA 4.0. File:Ainan town hall.JPG.',
+  rows: AINAN_FACILITIES,
+  expectedGeo: AINAN_EXPECTED_GEO_COUNT,
+  expectedRows: AINAN_EXPECTED_ROW_COUNT,
+  travelDining: AINAN_TRAVEL_DINING,
+  travelStay: AINAN_TRAVEL_STAY,
+  travelShopping: AINAN_TRAVEL_SHOPPING,
+  travelCommerce: AINAN_TRAVEL_COMMERCE,
+  travelAll: AINAN_TRAVEL_ALL,
+  coverageJa:
+    '愛南町（JIS 38506）観光6・宿泊4・飲食16・温泉2・体験0（出典写真がある施設のみ）。買物・商業・AED・医療機関・介護・避難所・文化財・GTFSは0件（未掲載）。オープンデータ凍結パックは未掲載。愛媛県20つ目のLIVEハブ（Ehime COMPLETE）。',
+  coverageEn:
+    'Ainan Town (JIS 38506), 6 tourism + 4 stay + 16 dining + 2 onsen + 0 experience with sourced photos. Shopping, commerce, AED, hospitals, care, shelters, cultural property, GTFS: 0, unpublished. No frozen open-data pack. Twentieth LIVE Ehime hub (Ehime COMPLETE).',
+  mapLabelJa: '愛南町の出典座標1件',
+  mapLabelEn: '1 sourced coordinate in Ainan Town',
+  mapCitePackJa: '点は町・公式ページ掲載施設のWikipedia/Commons等出典座標1件（accessed 2026-09-10）。',
+  mapCitePackEn: 'Points: 1 sourced coordinate for town/official facilities (accessed 2026-09-10).',
+  licenseNoteJa:
+    '行のライセンスは町公式・公式観光サイト掲載情報。町ページの事実の転記で、オープンデータ許諾ではありません。',
+  licenseNoteEn:
+    'Rows are town-site listings, facts from town.ainan.ehime.jp, not under Our Open Data.',
+  licenseSiteJa: '町公式サイト掲載情報',
+  licenseSiteEn: 'Town-site listing'
+};
+
 export const KIHOKU_LOOKUP: LookupTown = {
   slug: 'kihoku',
   prefectureSlug: 'ehime',
@@ -4226,7 +4268,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   uchiko: UCHIKO_LOOKUP,
   ikata: IKATA_LOOKUP,
   matsuno: MATSUNO_LOOKUP,
-  kihoku: KIHOKU_LOOKUP
+  kihoku: KIHOKU_LOOKUP,
+  ainan: AINAN_LOOKUP
 };
 
 

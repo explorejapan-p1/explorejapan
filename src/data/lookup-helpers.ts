@@ -1018,6 +1018,18 @@ import {
   rankKihokuSeeRows,
   resolveKihokuFilter
 } from './kihoku-travel';
+import {
+  isAinanOnsenPackRow,
+  isAinanExperiencePackRow,
+  isAinanStayPackRow,
+  ainanPackRowMatchesFilter,
+  rankAinanSeeRows,
+  ainanSightPhoto,
+  ainanSourcedHook,
+  ainanTopChipForRow,
+  resolveAinanFilter
+} from './ainan-travel';
+
 
 
 
@@ -1885,6 +1897,19 @@ const MATSUNO_HELPERS: LookupHelpers = {
   resolveFilter: resolveMatsunoFilter
 };
 
+
+const AINAN_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isAinanOnsenPackRow,
+  isExperiencePackRow: isAinanExperiencePackRow,
+  isStayPackRow: isAinanStayPackRow,
+  packRowMatchesFilter: ainanPackRowMatchesFilter,
+  rankSeeRows: rankAinanSeeRows,
+  sightPhoto: ainanSightPhoto,
+  sourcedHook: ainanSourcedHook,
+  topChipForRow: ainanTopChipForRow,
+  resolveFilter: resolveAinanFilter
+};
+
 const KIHOKU_HELPERS: LookupHelpers = {
   isOnsenPackRow: isKihokuOnsenPackRow,
   isExperiencePackRow: isKihokuExperiencePackRow,
@@ -2347,5 +2372,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'ikata') return IKATA_HELPERS;
   if (slug === 'matsuno') return MATSUNO_HELPERS;
   if (slug === 'kihoku') return KIHOKU_HELPERS;
+  if (slug === 'ainan') return AINAN_HELPERS;
   return MIMA_HELPERS;
 }

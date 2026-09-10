@@ -87,6 +87,7 @@ import {UCHIKO, UCHIKO_PLACE_PHOTO} from '@/data/uchiko';
 import {IKATA, IKATA_PLACE_PHOTO} from '@/data/ikata';
 import {MATSUNO, MATSUNO_PLACE_PHOTO} from '@/data/matsuno';
 import {KIHOKU, KIHOKU_PLACE_PHOTO} from '@/data/kihoku';
+import {AINAN, AINAN_PLACE_PHOTO} from '@/data/ainan';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -228,6 +229,7 @@ function localityJa(slug: string): string {
   if (slug === 'ikata') return IKATA.nameJa;
   if (slug === 'matsuno') return MATSUNO.nameJa;
   if (slug === 'kihoku') return KIHOKU.nameJa;
+  if (slug === 'ainan') return AINAN.nameJa;
   return MIMA.nameJa;
 }
 
@@ -308,6 +310,7 @@ function localityEn(slug: string): string {
   if (slug === 'ikata') return IKATA.nameEn;
   if (slug === 'matsuno') return MATSUNO.nameEn;
   if (slug === 'kihoku') return KIHOKU.nameEn;
+  if (slug === 'ainan') return AINAN.nameEn;
   return MIMA.nameEn;
 }
 
@@ -4903,6 +4906,57 @@ export function kihokuGraph(locale: AppLocale) {
           {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
           {'@type': 'ListItem', position: 2, name: isJa ? KIHOKU.prefectureJa : KIHOKU.prefectureEn, item: canonicalUrl(locale, 'ehime')},
           {'@type': 'ListItem', position: 3, name: isJa ? KIHOKU.nameJa : KIHOKU.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
+
+export function ainanGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'ehime/ainan');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('ainan');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? AINAN.nameJa : AINAN.nameEn,
+        alternateName: isJa ? AINAN.nameEn : AINAN.nameJa,
+        identifier: AINAN.jis,
+        url,
+        image: photoAbs(AINAN_PLACE_PHOTO),
+        sameAs: [AINAN.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '城辺甲2420番地' : '2420 Johen Ko',
+          addressLocality: isJa ? AINAN.nameJa : AINAN.nameEn,
+          addressRegion: isJa ? AINAN.prefectureJa : AINAN.prefectureEn,
+          postalCode: AINAN.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? AINAN.prefectureJa : AINAN.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? AINAN.nameJa : AINAN.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? AINAN.prefectureJa : AINAN.prefectureEn, item: canonicalUrl(locale, 'ehime')},
+          {'@type': 'ListItem', position: 3, name: isJa ? AINAN.nameJa : AINAN.nameEn, item: url}
         ]
       },
       ...featured
