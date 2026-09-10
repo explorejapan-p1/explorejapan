@@ -1178,6 +1178,19 @@ import {
   resolveAkitakataFilter
 } from './akitakata-travel';
 
+import {
+  isEtajimaExperiencePackRow,
+  isEtajimaOnsenPackRow,
+  isEtajimaStayPackRow,
+  etajimaPackRowMatchesFilter,
+  etajimaSightPhoto,
+  etajimaSourcedHook,
+  etajimaTopChipForRow,
+  rankEtajimaSeeRows,
+  resolveEtajimaFilter
+} from './etajima-travel';
+
+
 
 
 
@@ -2162,6 +2175,19 @@ const HIGASHIHIROSHIMA_HELPERS: LookupHelpers = {
 
 
 
+
+const ETAJIMA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isEtajimaOnsenPackRow,
+  isExperiencePackRow: isEtajimaExperiencePackRow,
+  isStayPackRow: isEtajimaStayPackRow,
+  packRowMatchesFilter: etajimaPackRowMatchesFilter,
+  rankSeeRows: rankEtajimaSeeRows,
+  sightPhoto: etajimaSightPhoto,
+  sourcedHook: etajimaSourcedHook,
+  topChipForRow: etajimaTopChipForRow,
+  resolveFilter: resolveEtajimaFilter
+};
+
 const AKITAKATA_HELPERS: LookupHelpers = {
   isOnsenPackRow: isAkitakataOnsenPackRow,
   isExperiencePackRow: isAkitakataExperiencePackRow,
@@ -2702,5 +2728,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'higashihiroshima') return HIGASHIHIROSHIMA_HELPERS;
   if (slug === 'akitakata') return AKITAKATA_HELPERS;
   if (slug === 'hatsukaichi') return HATSUKAICHI_HELPERS;
+  if (slug === 'etajima') return ETAJIMA_HELPERS;
   return MIMA_HELPERS;
 }

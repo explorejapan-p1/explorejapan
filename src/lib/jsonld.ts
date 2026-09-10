@@ -101,6 +101,7 @@ import {OTAKE, OTAKE_PLACE_PHOTO} from '@/data/otake';
 import {HIGASHIHIROSHIMA, HIGASHIHIROSHIMA_PLACE_PHOTO} from '@/data/higashihiroshima';
 import {HATSUKAICHI, HATSUKAICHI_PLACE_PHOTO} from '@/data/hatsukaichi';
 import {AKITAKATA, AKITAKATA_PLACE_PHOTO} from '@/data/akitakata';
+import {ETAJIMA, ETAJIMA_PLACE_PHOTO} from '@/data/etajima';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -5294,6 +5295,57 @@ export function akitakataGraph(locale: AppLocale) {
           {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
           {'@type': 'ListItem', position: 2, name: isJa ? AKITAKATA.prefectureJa : AKITAKATA.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
           {'@type': 'ListItem', position: 3, name: isJa ? AKITAKATA.nameJa : AKITAKATA.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
+
+export function etajimaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'hiroshima/etajima');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('etajima');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? ETAJIMA.nameJa : ETAJIMA.nameEn,
+        alternateName: isJa ? ETAJIMA.nameEn : ETAJIMA.nameJa,
+        identifier: ETAJIMA.jis,
+        url,
+        image: photoAbs(ETAJIMA_PLACE_PHOTO),
+        sameAs: [ETAJIMA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '大柿町大原505番地' : '505 Ohara, Ogaki-cho',
+          addressLocality: isJa ? ETAJIMA.nameJa : ETAJIMA.nameEn,
+          addressRegion: isJa ? ETAJIMA.prefectureJa : ETAJIMA.prefectureEn,
+          postalCode: ETAJIMA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? ETAJIMA.prefectureJa : ETAJIMA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? ETAJIMA.nameJa : ETAJIMA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? ETAJIMA.prefectureJa : ETAJIMA.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
+          {'@type': 'ListItem', position: 3, name: isJa ? ETAJIMA.nameJa : ETAJIMA.nameEn, item: url}
         ]
       },
       ...featured

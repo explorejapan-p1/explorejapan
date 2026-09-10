@@ -784,6 +784,7 @@ import {OTAKE, OTAKE_PLACE_PHOTO, OTAKE_FACILITIES, OTAKE_EXPECTED_GEO_COUNT, OT
 import {HIGASHIHIROSHIMA, HIGASHIHIROSHIMA_PLACE_PHOTO, HIGASHIHIROSHIMA_FACILITIES, HIGASHIHIROSHIMA_EXPECTED_GEO_COUNT, HIGASHIHIROSHIMA_EXPECTED_ROW_COUNT} from './higashihiroshima';
 import {HATSUKAICHI, HATSUKAICHI_PLACE_PHOTO, HATSUKAICHI_FACILITIES, HATSUKAICHI_EXPECTED_GEO_COUNT, HATSUKAICHI_EXPECTED_ROW_COUNT} from './hatsukaichi';
 import {AKITAKATA, AKITAKATA_PLACE_PHOTO, AKITAKATA_FACILITIES, AKITAKATA_EXPECTED_GEO_COUNT, AKITAKATA_EXPECTED_ROW_COUNT} from './akitakata';
+import {ETAJIMA, ETAJIMA_PLACE_PHOTO, ETAJIMA_FACILITIES, ETAJIMA_EXPECTED_GEO_COUNT, ETAJIMA_EXPECTED_ROW_COUNT} from './etajima';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -1029,6 +1030,13 @@ import {
   AKITAKATA_TRAVEL_COMMERCE,
   AKITAKATA_TRAVEL_ALL
 } from './akitakata-travel';
+import {
+  ETAJIMA_TRAVEL_DINING,
+  ETAJIMA_TRAVEL_STAY,
+  ETAJIMA_TRAVEL_SHOPPING,
+  ETAJIMA_TRAVEL_COMMERCE,
+  ETAJIMA_TRAVEL_ALL
+} from './etajima-travel';
 
 
 
@@ -3959,6 +3967,38 @@ export const MIYOSHISHI_LOOKUP: LookupTown = {
 
 
 
+
+export const ETAJIMA_LOOKUP: LookupTown = {
+  slug: 'etajima',
+  prefectureSlug: 'hiroshima',
+  jis: ETAJIMA.jis,
+  nameJa: ETAJIMA.nameJa,
+  nameEn: ETAJIMA.nameEn,
+  heroPhoto: ETAJIMA_PLACE_PHOTO,
+  photoCiteJa: '写真は江田島の島景観。柳田亮、CC BY-SA 3.0。File:Etajima Island. - panoramio.jpg。',
+  photoCiteEn: 'Photo: Etajima island landscape. 柳田亮, CC BY-SA 3.0. File:Etajima Island. - panoramio.jpg.',
+  rows: ETAJIMA_FACILITIES,
+  expectedGeo: ETAJIMA_EXPECTED_GEO_COUNT,
+  expectedRows: ETAJIMA_EXPECTED_ROW_COUNT,
+  travelDining: ETAJIMA_TRAVEL_DINING,
+  travelStay: ETAJIMA_TRAVEL_STAY,
+  travelShopping: ETAJIMA_TRAVEL_SHOPPING,
+  travelCommerce: ETAJIMA_TRAVEL_COMMERCE,
+  travelAll: ETAJIMA_TRAVEL_ALL,
+  coverageJa:
+    '江田島市（JIS 34215・広島県）。観光5・宿泊6・飲食16・温泉5（体験0）。買物・商業は未掲載。',
+  coverageEn:
+    'Etajima City Hiroshima (JIS 34215), 5 tourism + 6 stay + 16 dining + 5 onsen + 0 experience with sourced photos. Shopping/commerce: 0.',
+  mapLabelJa: '江田島市の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Etajima City (Hiroshima)',
+  mapCitePackJa: '点はOSM Nominatim・Wikipedia出典座標5件（accessed 2026-09-10）。施設行は市公式・楽天・食べログ・Commons。',
+  mapCitePackEn: 'Points: 5 OSM Nominatim/Wikipedia coordinates (accessed 2026-09-10). Facility rows from city site, Rakuten, Tabelog, Commons.',
+  licenseNoteJa: '行は市サイト掲載・city.etajima.hiroshima.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are city-site listings, facts from city.etajima.hiroshima.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
 export const AKITAKATA_LOOKUP: LookupTown = {
   slug: 'akitakata',
   prefectureSlug: 'hiroshima',
@@ -4812,7 +4852,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   otake: OTAKE_LOOKUP,
   higashihiroshima: HIGASHIHIROSHIMA_LOOKUP,
   hatsukaichi: HATSUKAICHI_LOOKUP,
-  akitakata: AKITAKATA_LOOKUP
+  akitakata: AKITAKATA_LOOKUP,
+  etajima: ETAJIMA_LOOKUP
 };
 
 

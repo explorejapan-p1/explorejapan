@@ -97,6 +97,7 @@ import {OTAKE_PLACE_PHOTO} from '@/data/otake';
 import {HIGASHIHIROSHIMA_PLACE_PHOTO} from '@/data/higashihiroshima';
 import {HATSUKAICHI_PLACE_PHOTO} from '@/data/hatsukaichi';
 import {AKITAKATA_PLACE_PHOTO} from '@/data/akitakata';
+import {ETAJIMA_PLACE_PHOTO} from '@/data/etajima';
 import {NAKA_PLACE_PHOTO} from '@/data/naka';
 import {MUGI_PLACE_PHOTO} from '@/data/mugi';
 import {MINAMI_PLACE_PHOTO} from '@/data/minami';
@@ -228,6 +229,7 @@ const MUNI_CARD_PHOTO: Record<string, MimaPlacePhoto> = {
   higashihiroshima: HIGASHIHIROSHIMA_PLACE_PHOTO,
   hatsukaichi: HATSUKAICHI_PLACE_PHOTO,
   akitakata: AKITAKATA_PLACE_PHOTO,
+  etajima: ETAJIMA_PLACE_PHOTO,
 };
 
 type Props = {params: Promise<{locale: string; prefecture: string}>};
