@@ -92,6 +92,7 @@ import {HIROSHIMA, HIROSHIMA_PLACE_PHOTO} from '@/data/hiroshima';
 import {KURE, KURE_PLACE_PHOTO} from '@/data/kure';
 import {TAKEHARA, TAKEHARA_PLACE_PHOTO} from '@/data/takehara';
 import {MIHARASHI, MIHARASHI_PLACE_PHOTO} from '@/data/miharashi';
+import {ONOMICHI, ONOMICHI_PLACE_PHOTO} from '@/data/onomichi';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -238,6 +239,7 @@ function localityJa(slug: string): string {
   if (slug === 'kure') return KURE.nameJa;
   if (slug === 'takehara') return TAKEHARA.nameJa;
   if (slug === 'miharashi') return MIHARASHI.nameJa;
+  if (slug === 'onomichi') return ONOMICHI.nameJa;
   return MIMA.nameJa;
 }
 
@@ -323,6 +325,7 @@ function localityEn(slug: string): string {
   if (slug === 'kure') return KURE.nameEn;
   if (slug === 'takehara') return TAKEHARA.nameEn;
   if (slug === 'miharashi') return MIHARASHI.nameEn;
+  if (slug === 'onomichi') return ONOMICHI.nameEn;
   return MIMA.nameEn;
 }
 
@@ -5028,6 +5031,58 @@ export function kureGraph(locale: AppLocale) {
   };
 }
 
+
+
+export function onomichiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'hiroshima/onomichi');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('onomichi');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? ONOMICHI.nameJa : ONOMICHI.nameEn,
+        alternateName: isJa ? ONOMICHI.nameEn : ONOMICHI.nameJa,
+        identifier: ONOMICHI.jis,
+        url,
+        image: photoAbs(ONOMICHI_PLACE_PHOTO),
+        sameAs: [ONOMICHI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '久保一丁目15番1号' : '1-15-1 Kubo',
+          addressLocality: isJa ? ONOMICHI.nameJa : ONOMICHI.nameEn,
+          addressRegion: isJa ? ONOMICHI.prefectureJa : ONOMICHI.prefectureEn,
+          postalCode: ONOMICHI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? ONOMICHI.prefectureJa : ONOMICHI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? ONOMICHI.nameJa : ONOMICHI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? ONOMICHI.prefectureJa : ONOMICHI.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
+          {'@type': 'ListItem', position: 3, name: isJa ? ONOMICHI.nameJa : ONOMICHI.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
 
 export function miharashiGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'hiroshima/miharashi');

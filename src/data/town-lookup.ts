@@ -775,6 +775,7 @@ import {HIROSHIMA, HIROSHIMA_PLACE_PHOTO, HIROSHIMA_FACILITIES, HIROSHIMA_EXPECT
 import {KURE, KURE_PLACE_PHOTO, KURE_FACILITIES, KURE_EXPECTED_GEO_COUNT, KURE_EXPECTED_ROW_COUNT} from './kure';
 import {TAKEHARA, TAKEHARA_PLACE_PHOTO, TAKEHARA_FACILITIES, TAKEHARA_EXPECTED_GEO_COUNT, TAKEHARA_EXPECTED_ROW_COUNT} from './takehara';
 import {MIHARASHI, MIHARASHI_PLACE_PHOTO, MIHARASHI_FACILITIES, MIHARASHI_EXPECTED_GEO_COUNT, MIHARASHI_EXPECTED_ROW_COUNT} from './miharashi';
+import {ONOMICHI, ONOMICHI_PLACE_PHOTO, ONOMICHI_FACILITIES, ONOMICHI_EXPECTED_GEO_COUNT, ONOMICHI_EXPECTED_ROW_COUNT} from './onomichi';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -957,6 +958,13 @@ import {
   MIHARASHI_TRAVEL_COMMERCE,
   MIHARASHI_TRAVEL_ALL
 } from './miharashi-travel';
+import {
+  ONOMICHI_TRAVEL_DINING,
+  ONOMICHI_TRAVEL_STAY,
+  ONOMICHI_TRAVEL_SHOPPING,
+  ONOMICHI_TRAVEL_COMMERCE,
+  ONOMICHI_TRAVEL_ALL
+} from './onomichi-travel';
 
 
 
@@ -3816,6 +3824,39 @@ export const MIHARASHI_LOOKUP: LookupTown = {
   licenseSiteEn: 'Site display follows source attribution.'
 };
 
+
+
+export const ONOMICHI_LOOKUP: LookupTown = {
+  slug: 'onomichi',
+  prefectureSlug: 'hiroshima',
+  jis: ONOMICHI.jis,
+  nameJa: ONOMICHI.nameJa,
+  nameEn: ONOMICHI.nameEn,
+  heroPhoto: ONOMICHI_PLACE_PHOTO,
+  photoCiteJa: '写真は千光寺からの尾道市街。Shinkansen、CC BY-SA 3.0。File:Onomichi from Senko-ji.jpg。',
+  photoCiteEn: 'Photo: Onomichi city from Senko-ji. Shinkansen, CC BY-SA 3.0. File:Onomichi from Senko-ji.jpg.',
+  rows: ONOMICHI_FACILITIES,
+  expectedGeo: ONOMICHI_EXPECTED_GEO_COUNT,
+  expectedRows: ONOMICHI_EXPECTED_ROW_COUNT,
+  travelDining: ONOMICHI_TRAVEL_DINING,
+  travelStay: ONOMICHI_TRAVEL_STAY,
+  travelShopping: ONOMICHI_TRAVEL_SHOPPING,
+  travelCommerce: ONOMICHI_TRAVEL_COMMERCE,
+  travelAll: ONOMICHI_TRAVEL_ALL,
+  coverageJa:
+    '尾道市（JIS 34205）。観光5・宿泊16・飲食16・温泉6（体験0）。買物・商業は未掲載。',
+  coverageEn:
+    'Onomichi City (JIS 34205), 5 tourism + 16 stay + 16 dining + 6 onsen + 0 experience with sourced photos. Shopping/commerce: 0 unpublished.',
+  mapLabelJa: '尾道市の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Onomichi City',
+  mapCitePackJa: '点はWikipedia/Wikidata/OSM Nominatim出典座標5件（accessed 2026-09-10）。施設行は市公式・楽天・食べログ・Commons。',
+  mapCitePackEn: 'Points: 5 Wikipedia/Wikidata/OSM Nominatim coordinates (accessed 2026-09-10). Facility rows from city site, Rakuten, Tabelog, Commons.',
+  licenseNoteJa: '行は市サイト掲載・city.onomichi.hiroshima.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are city-site listings, facts from city.onomichi.hiroshima.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
 export const TAKEHARA_LOOKUP: LookupTown = {
   slug: 'takehara',
   prefectureSlug: 'hiroshima',
@@ -4435,7 +4476,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   hiroshima: HIROSHIMA_LOOKUP,
   kure: KURE_LOOKUP,
   takehara: TAKEHARA_LOOKUP,
-  miharashi: MIHARASHI_LOOKUP
+  miharashi: MIHARASHI_LOOKUP,
+  onomichi: ONOMICHI_LOOKUP
 };
 
 

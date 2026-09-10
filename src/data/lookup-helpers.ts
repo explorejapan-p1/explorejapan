@@ -1073,6 +1073,17 @@ import {
   miharashiTopChipForRow,
   resolveMiharashiFilter
 } from './miharashi-travel';
+import {
+  isOnomichiOnsenPackRow,
+  isOnomichiExperiencePackRow,
+  isOnomichiStayPackRow,
+  onomichiPackRowMatchesFilter,
+  rankOnomichiSeeRows,
+  onomichiSightPhoto,
+  onomichiSourcedHook,
+  onomichiTopChipForRow,
+  resolveOnomichiFilter
+} from './onomichi-travel';
 
 
 
@@ -1990,6 +2001,19 @@ const TAKEHARA_HELPERS: LookupHelpers = {
   resolveFilter: resolveTakeharaFilter
 };
 
+
+const ONOMICHI_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isOnomichiOnsenPackRow,
+  isExperiencePackRow: isOnomichiExperiencePackRow,
+  isStayPackRow: isOnomichiStayPackRow,
+  packRowMatchesFilter: onomichiPackRowMatchesFilter,
+  rankSeeRows: rankOnomichiSeeRows,
+  sightPhoto: onomichiSightPhoto,
+  sourcedHook: onomichiSourcedHook,
+  topChipForRow: onomichiTopChipForRow,
+  resolveFilter: resolveOnomichiFilter
+};
+
 const MIHARASHI_HELPERS: LookupHelpers = {
   isOnsenPackRow: isMiharashiOnsenPackRow,
   isExperiencePackRow: isMiharashiExperiencePackRow,
@@ -2469,5 +2493,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'kure') return KURE_HELPERS;
   if (slug === 'takehara') return TAKEHARA_HELPERS;
   if (slug === 'miharashi') return MIHARASHI_HELPERS;
+  if (slug === 'onomichi') return ONOMICHI_HELPERS;
   return MIMA_HELPERS;
 }
