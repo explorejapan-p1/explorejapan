@@ -795,6 +795,7 @@ import {OSAKIKAMIJIMA, OSAKIKAMIJIMA_PLACE_PHOTO, OSAKIKAMIJIMA_FACILITIES, OSAK
 import {SERA, SERA_PLACE_PHOTO, SERA_FACILITIES, SERA_EXPECTED_GEO_COUNT, SERA_EXPECTED_ROW_COUNT} from './sera';
 import {JINSEIKOGEN, JINSEIKOGEN_PLACE_PHOTO, JINSEIKOGEN_FACILITIES, JINSEIKOGEN_EXPECTED_GEO_COUNT, JINSEIKOGEN_EXPECTED_ROW_COUNT} from './jinseikogen';
 import {OKAYAMA, OKAYAMA_PLACE_PHOTO, OKAYAMA_FACILITIES, OKAYAMA_EXPECTED_GEO_COUNT, OKAYAMA_EXPECTED_ROW_COUNT} from './okayama';
+import {KURASHIKI, KURASHIKI_PLACE_PHOTO, KURASHIKI_FACILITIES, KURASHIKI_EXPECTED_GEO_COUNT, KURASHIKI_EXPECTED_ROW_COUNT} from './kurashiki';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -1117,6 +1118,13 @@ import {
   OKAYAMA_TRAVEL_COMMERCE,
   OKAYAMA_TRAVEL_ALL
 } from './okayama-travel';
+import {
+  KURASHIKI_TRAVEL_DINING,
+  KURASHIKI_TRAVEL_STAY,
+  KURASHIKI_TRAVEL_SHOPPING,
+  KURASHIKI_TRAVEL_COMMERCE,
+  KURASHIKI_TRAVEL_ALL
+} from './kurashiki-travel';
 
 
 
@@ -4152,6 +4160,37 @@ export const OKAYAMA_LOOKUP: LookupTown = {
   licenseSiteEn: 'Site display follows source attribution.'
 };
 
+export const KURASHIKI_LOOKUP: LookupTown = {
+  slug: 'kurashiki',
+  prefectureSlug: 'okayama',
+  jis: KURASHIKI.jis,
+  nameJa: KURASHIKI.nameJa,
+  nameEn: KURASHIKI.nameEn,
+  heroPhoto: KURASHIKI_PLACE_PHOTO,
+  photoCiteJa: '写真は倉敷美観地区。Suicasmo、CC BY-SA 4.0。File:Kurashiki Bikan historical quarter 20190324-3.jpg。',
+  photoCiteEn: 'Photo: Kurashiki Bikan historical quarter. Suicasmo, CC BY-SA 4.0. File:Kurashiki Bikan historical quarter 20190324-3.jpg.',
+  rows: KURASHIKI_FACILITIES,
+  expectedGeo: KURASHIKI_EXPECTED_GEO_COUNT,
+  expectedRows: KURASHIKI_EXPECTED_ROW_COUNT,
+  travelDining: KURASHIKI_TRAVEL_DINING,
+  travelStay: KURASHIKI_TRAVEL_STAY,
+  travelShopping: KURASHIKI_TRAVEL_SHOPPING,
+  travelCommerce: KURASHIKI_TRAVEL_COMMERCE,
+  travelAll: KURASHIKI_TRAVEL_ALL,
+  coverageJa:
+    '倉敷市（JIS 33202・岡山県）。観光5・宿泊9・飲食16・温泉2（体験0）。買物・商業は未掲載。',
+  coverageEn:
+    'Kurashiki City (JIS 33202), 5 tourism + 9 stay + 16 dining + 2 onsen + 0 experience with sourced photos. Shopping/commerce: 0.',
+  mapLabelJa: '倉敷市の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Kurashiki City',
+  mapCitePackJa: '点はCommons出典座標（accessed 2026-09-11）。施設行は市公式・食べログ・Commons・楽天。',
+  mapCitePackEn: 'Points: Commons coordinates (accessed 2026-09-11). Facility rows from city site, Tabelog, Commons, Rakuten.',
+  licenseNoteJa: '行は市サイト掲載・city.kurashiki.okayama.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are city-site listings, facts from city.kurashiki.okayama.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
 export const JINSEIKOGEN_LOOKUP: LookupTown = {
   slug: 'jinseikogen',
   prefectureSlug: 'hiroshima',
@@ -5265,6 +5304,7 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   osakikamijima: OSAKIKAMIJIMA_LOOKUP,
   jinseikogen: JINSEIKOGEN_LOOKUP,
   okayama: OKAYAMA_LOOKUP,
+  kurashiki: KURASHIKI_LOOKUP,
   sera: SERA_LOOKUP
 };
 

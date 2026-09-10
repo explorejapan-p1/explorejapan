@@ -15,7 +15,7 @@ export type Municipality = {
  */
 export const OKAYAMA_MUNICIPALITIES: Municipality[] = [
   {jis: '33100', slug: 'okayama', nameJa: '岡山市', nameEn: 'Okayama', status: 'ready'},
-  {jis: '33202', slug: 'kurashiki', nameJa: '倉敷市', nameEn: 'Kurashiki', status: 'coming-soon'},
+  {jis: '33202', slug: 'kurashiki', nameJa: '倉敷市', nameEn: 'Kurashiki', status: 'ready'},
   {jis: '33203', slug: 'tsuyama', nameJa: '津山市', nameEn: 'Tsuyama', status: 'coming-soon'},
   {jis: '33204', slug: 'tamano', nameJa: '玉野市', nameEn: 'Tamano', status: 'coming-soon'},
   {jis: '33205', slug: 'kasaoka', nameJa: '笠岡市', nameEn: 'Kasaoka', status: 'coming-soon'},

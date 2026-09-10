@@ -112,6 +112,7 @@ import {OSAKIKAMIJIMA, OSAKIKAMIJIMA_PLACE_PHOTO} from '@/data/osakikamijima';
 import {SERA, SERA_PLACE_PHOTO} from '@/data/sera';
 import {JINSEIKOGEN, JINSEIKOGEN_PLACE_PHOTO} from '@/data/jinseikogen';
 import {OKAYAMA, OKAYAMA_PLACE_PHOTO} from '@/data/okayama';
+import {KURASHIKI, KURASHIKI_PLACE_PHOTO} from '@/data/kurashiki';
 import {prefSlugForReady, type ReadySlug} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -300,6 +301,7 @@ function localityJa(slug: string): string {
   if (slug === 'sera') return SERA.nameJa;
   if (slug === 'jinseikogen') return JINSEIKOGEN.nameJa;
   if (slug === 'okayama') return OKAYAMA.nameJa;
+  if (slug === 'kurashiki') return KURASHIKI.nameJa;
   return MIMA.nameJa;
 }
 
@@ -405,6 +407,7 @@ function localityEn(slug: string): string {
   if (slug === 'sera') return SERA.nameEn;
   if (slug === 'jinseikogen') return JINSEIKOGEN.nameEn;
   if (slug === 'okayama') return OKAYAMA.nameEn;
+  if (slug === 'kurashiki') return KURASHIKI.nameEn;
   return MIMA.nameEn;
 }
 
@@ -5581,6 +5584,58 @@ export function okayamaGraph(locale: AppLocale) {
     ]
   };
 }
+
+export function kurashikiGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'okayama/kurashiki');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('kurashiki');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'TouristDestination',
+        '@id': `${url}#place`,
+        name: isJa ? KURASHIKI.nameJa : KURASHIKI.nameEn,
+        alternateName: isJa ? KURASHIKI.nameEn : KURASHIKI.nameJa,
+        identifier: KURASHIKI.jis,
+        url,
+        image: photoAbs(KURASHIKI_PLACE_PHOTO),
+        sameAs: [KURASHIKI.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '大供一丁目1番1号' : '1-1-1 Daiku, Kita-ku',
+          addressLocality: isJa ? KURASHIKI.nameJa : KURASHIKI.nameEn,
+          addressRegion: isJa ? KURASHIKI.prefectureJa : KURASHIKI.prefectureEn,
+          postalCode: KURASHIKI.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? KURASHIKI.prefectureJa : KURASHIKI.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url,
+        name: isJa ? KURASHIKI.nameJa : KURASHIKI.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`},
+        about: {'@id': `${url}#place`},
+        breadcrumb: {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+            {'@type': 'ListItem', position: 2, name: isJa ? KURASHIKI.prefectureJa : KURASHIKI.prefectureEn, item: canonicalUrl(locale, 'okayama')},
+            {'@type': 'ListItem', position: 3, name: isJa ? KURASHIKI.nameJa : KURASHIKI.nameEn, item: url}
+          ]
+        }
+      }
+    ]
+  };
+}
+
 
 export function jinseikogenGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'hiroshima/jinseikogen');

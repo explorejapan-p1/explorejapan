@@ -123,7 +123,8 @@ const READY_HUBS = [
   'hiroshima/osakikamijima',
   'hiroshima/sera',
   'hiroshima/jinseikogen',
-  'okayama/okayama'
+  'okayama/okayama',
+  'okayama/kurashiki'
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
