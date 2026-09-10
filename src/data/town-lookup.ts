@@ -791,6 +791,7 @@ import {KUMANO, KUMANO_PLACE_PHOTO, KUMANO_FACILITIES, KUMANO_EXPECTED_GEO_COUNT
 import {SAKA, SAKA_PLACE_PHOTO, SAKA_FACILITIES, SAKA_EXPECTED_GEO_COUNT, SAKA_EXPECTED_ROW_COUNT} from './saka';
 import {AKIOTA, AKIOTA_PLACE_PHOTO, AKIOTA_FACILITIES, AKIOTA_EXPECTED_GEO_COUNT, AKIOTA_EXPECTED_ROW_COUNT} from './akiota';
 import {KITAHIROSHIMA, KITAHIROSHIMA_PLACE_PHOTO, KITAHIROSHIMA_FACILITIES, KITAHIROSHIMA_EXPECTED_GEO_COUNT, KITAHIROSHIMA_EXPECTED_ROW_COUNT} from './kitahiroshima';
+import {OSAKIKAMIJIMA, OSAKIKAMIJIMA_PLACE_PHOTO, OSAKIKAMIJIMA_FACILITIES, OSAKIKAMIJIMA_EXPECTED_GEO_COUNT, OSAKIKAMIJIMA_EXPECTED_ROW_COUNT} from './osakikamijima';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -1085,6 +1086,13 @@ import {
   KITAHIROSHIMA_TRAVEL_COMMERCE,
   KITAHIROSHIMA_TRAVEL_ALL
 } from './kitahiroshima-travel';
+import {
+  OSAKIKAMIJIMA_TRAVEL_DINING,
+  OSAKIKAMIJIMA_TRAVEL_STAY,
+  OSAKIKAMIJIMA_TRAVEL_SHOPPING,
+  OSAKIKAMIJIMA_TRAVEL_COMMERCE,
+  OSAKIKAMIJIMA_TRAVEL_ALL
+} from './osakikamijima-travel';
 
 
 
@@ -4085,6 +4093,38 @@ export const SAKA_LOOKUP: LookupTown = {
 
 
 
+
+export const OSAKIKAMIJIMA_LOOKUP: LookupTown = {
+  slug: 'osakikamijima',
+  prefectureSlug: 'hiroshima',
+  jis: OSAKIKAMIJIMA.jis,
+  nameJa: OSAKIKAMIJIMA.nameJa,
+  nameEn: OSAKIKAMIJIMA.nameEn,
+  heroPhoto: OSAKIKAMIJIMA_PLACE_PHOTO,
+  photoCiteJa: '写真は大崎上島町役場。Samasama14、CC BY-SA 3.0。File:Osakikamijima Town Hall.jpg。',
+  photoCiteEn: 'Photo: Osakikamijima Town Office. Samasama14, CC BY-SA 3.0. File:Osakikamijima Town Hall.jpg.',
+  rows: OSAKIKAMIJIMA_FACILITIES,
+  expectedGeo: OSAKIKAMIJIMA_EXPECTED_GEO_COUNT,
+  expectedRows: OSAKIKAMIJIMA_EXPECTED_ROW_COUNT,
+  travelDining: OSAKIKAMIJIMA_TRAVEL_DINING,
+  travelStay: OSAKIKAMIJIMA_TRAVEL_STAY,
+  travelShopping: OSAKIKAMIJIMA_TRAVEL_SHOPPING,
+  travelCommerce: OSAKIKAMIJIMA_TRAVEL_COMMERCE,
+  travelAll: OSAKIKAMIJIMA_TRAVEL_ALL,
+  coverageJa:
+    '大崎上島町（JIS 34431・広島県豊田郡）。観光5・宿泊1・飲食16・温泉1（体験0）。買物・商業は未掲載。',
+  coverageEn:
+    'Osakikamijima Town Hiroshima Toyota District (JIS 34431), 5 tourism + 1 stay + 16 dining + 1 onsen + 0 experience with sourced photos. Shopping/commerce: 0.',
+  mapLabelJa: '大崎上島町の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Osakikamijima Town (Hiroshima)',
+  mapCitePackJa: '点はDive! Hiroshima・地図出典座標5件（accessed 2026-09-11）。施設行は町公式・公式・食べログ・Commons・Dive! Hiroshima。',
+  mapCitePackEn: 'Points: 5 Dive! Hiroshima / map coordinates (accessed 2026-09-11). Facility rows from town site, official, Tabelog, Commons, Dive! Hiroshima.',
+  licenseNoteJa: '行は町サイト掲載・town.osakikamijima.hiroshima.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from town.osakikamijima.hiroshima.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
 export const KITAHIROSHIMA_LOOKUP: LookupTown = {
   slug: 'kitahiroshima',
   prefectureSlug: 'hiroshima',
@@ -5101,7 +5141,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   kumano: KUMANO_LOOKUP,
   saka: SAKA_LOOKUP,
   akiota: AKIOTA_LOOKUP,
-  kitahiroshima: KITAHIROSHIMA_LOOKUP
+  kitahiroshima: KITAHIROSHIMA_LOOKUP,
+  osakikamijima: OSAKIKAMIJIMA_LOOKUP
 };
 
 
