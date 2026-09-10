@@ -773,6 +773,7 @@ import {KIHOKU, KIHOKU_PLACE_PHOTO, KIHOKU_FACILITIES, KIHOKU_EXPECTED_GEO_COUNT
 import {AINAN, AINAN_PLACE_PHOTO, AINAN_FACILITIES, AINAN_EXPECTED_GEO_COUNT, AINAN_EXPECTED_ROW_COUNT} from './ainan';
 import {HIROSHIMA, HIROSHIMA_PLACE_PHOTO, HIROSHIMA_FACILITIES, HIROSHIMA_EXPECTED_GEO_COUNT, HIROSHIMA_EXPECTED_ROW_COUNT} from './hiroshima';
 import {KURE, KURE_PLACE_PHOTO, KURE_FACILITIES, KURE_EXPECTED_GEO_COUNT, KURE_EXPECTED_ROW_COUNT} from './kure';
+import {TAKEHARA, TAKEHARA_PLACE_PHOTO, TAKEHARA_FACILITIES, TAKEHARA_EXPECTED_GEO_COUNT, TAKEHARA_EXPECTED_ROW_COUNT} from './takehara';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -941,6 +942,14 @@ import {
   KURE_TRAVEL_COMMERCE,
   KURE_TRAVEL_ALL
 } from './kure-travel';
+import {
+  TAKEHARA_TRAVEL_DINING,
+  TAKEHARA_TRAVEL_STAY,
+  TAKEHARA_TRAVEL_SHOPPING,
+  TAKEHARA_TRAVEL_COMMERCE,
+  TAKEHARA_TRAVEL_ALL
+} from './takehara-travel';
+
 
 
 
@@ -3767,6 +3776,38 @@ export const KURE_LOOKUP: LookupTown = {
 };
 
 
+export const TAKEHARA_LOOKUP: LookupTown = {
+  slug: 'takehara',
+  prefectureSlug: 'hiroshima',
+  jis: TAKEHARA.jis,
+  nameJa: TAKEHARA.nameJa,
+  nameEn: TAKEHARA.nameEn,
+  heroPhoto: TAKEHARA_PLACE_PHOTO,
+  photoCiteJa: '写真は竹原市役所。Asturio Cantabrio、CC BY-SA 4.0。File:Takehara City Hall 2021-03 ac.jpg。',
+  photoCiteEn: 'Photo: Takehara City Hall. Asturio Cantabrio, CC BY-SA 4.0. File:Takehara City Hall 2021-03 ac.jpg.',
+  rows: TAKEHARA_FACILITIES,
+  expectedGeo: TAKEHARA_EXPECTED_GEO_COUNT,
+  expectedRows: TAKEHARA_EXPECTED_ROW_COUNT,
+  travelDining: TAKEHARA_TRAVEL_DINING,
+  travelStay: TAKEHARA_TRAVEL_STAY,
+  travelShopping: TAKEHARA_TRAVEL_SHOPPING,
+  travelCommerce: TAKEHARA_TRAVEL_COMMERCE,
+  travelAll: TAKEHARA_TRAVEL_ALL,
+  coverageJa:
+    '竹原市（JIS 34203）。観光5・宿泊7・飲食16・温泉3（体験0）。買物・商業は未掲載。',
+  coverageEn:
+    'Takehara City (JIS 34203), 5 tourism + 7 stay + 16 dining + 3 onsen + 0 experience with sourced photos. Shopping/commerce: 0 unpublished.',
+  mapLabelJa: '竹原市内の出典付き座標（未掲載）',
+  mapLabelEn: 'Sourced coordinates in Takehara City (unpublished)',
+  mapCitePackJa: '施設行は市公式・楽天・食べログ・Commons。',
+  mapCitePackEn: 'Facility rows from city site, Rakuten, Tabelog, Commons.',
+  licenseNoteJa: '行は市サイト掲載・city.takehara.lg.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are city-site listings, facts from city.takehara.lg.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
+
 export const KIHOKU_LOOKUP: LookupTown = {
   slug: 'kihoku',
   prefectureSlug: 'ehime',
@@ -4352,7 +4393,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   kihoku: KIHOKU_LOOKUP,
   ainan: AINAN_LOOKUP,
   hiroshima: HIROSHIMA_LOOKUP,
-  kure: KURE_LOOKUP
+  kure: KURE_LOOKUP,
+  takehara: TAKEHARA_LOOKUP
 };
 
 

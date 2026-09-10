@@ -90,6 +90,7 @@ import {KIHOKU, KIHOKU_PLACE_PHOTO} from '@/data/kihoku';
 import {AINAN, AINAN_PLACE_PHOTO} from '@/data/ainan';
 import {HIROSHIMA, HIROSHIMA_PLACE_PHOTO} from '@/data/hiroshima';
 import {KURE, KURE_PLACE_PHOTO} from '@/data/kure';
+import {TAKEHARA, TAKEHARA_PLACE_PHOTO} from '@/data/takehara';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -234,6 +235,7 @@ function localityJa(slug: string): string {
   if (slug === 'ainan') return AINAN.nameJa;
   if (slug === 'hiroshima') return HIROSHIMA.nameJa;
   if (slug === 'kure') return KURE.nameJa;
+  if (slug === 'takehara') return TAKEHARA.nameJa;
   return MIMA.nameJa;
 }
 
@@ -317,6 +319,7 @@ function localityEn(slug: string): string {
   if (slug === 'ainan') return AINAN.nameEn;
   if (slug === 'hiroshima') return HIROSHIMA.nameEn;
   if (slug === 'kure') return KURE.nameEn;
+  if (slug === 'takehara') return TAKEHARA.nameEn;
   return MIMA.nameEn;
 }
 
@@ -5015,6 +5018,57 @@ export function kureGraph(locale: AppLocale) {
           {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
           {'@type': 'ListItem', position: 2, name: isJa ? KURE.prefectureJa : KURE.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
           {'@type': 'ListItem', position: 3, name: isJa ? KURE.nameJa : KURE.nameEn, item: url}
+        ]
+      },
+      ...featured
+    ]
+  };
+}
+
+export function takeharaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'hiroshima/takehara');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('takehara');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['AdministrativeArea', 'TouristDestination'],
+        '@id': `${url}#place`,
+        name: isJa ? TAKEHARA.nameJa : TAKEHARA.nameEn,
+        alternateName: isJa ? TAKEHARA.nameEn : TAKEHARA.nameJa,
+        identifier: TAKEHARA.jis,
+        url,
+        image: photoAbs(TAKEHARA_PLACE_PHOTO),
+        sameAs: [TAKEHARA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '中央五丁目6番28号' : '5-6-28 Chuo',
+          addressLocality: isJa ? TAKEHARA.nameJa : TAKEHARA.nameEn,
+          addressRegion: isJa ? TAKEHARA.prefectureJa : TAKEHARA.prefectureEn,
+          postalCode: TAKEHARA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? TAKEHARA.prefectureJa : TAKEHARA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: isJa ? TAKEHARA.nameJa : TAKEHARA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`}
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+          {'@type': 'ListItem', position: 2, name: isJa ? TAKEHARA.prefectureJa : TAKEHARA.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
+          {'@type': 'ListItem', position: 3, name: isJa ? TAKEHARA.nameJa : TAKEHARA.nameEn, item: url}
         ]
       },
       ...featured

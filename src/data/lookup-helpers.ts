@@ -1051,6 +1051,17 @@ import {
   kureTopChipForRow,
   resolveKureFilter
 } from './kure-travel';
+import {
+  isTakeharaOnsenPackRow,
+  isTakeharaExperiencePackRow,
+  isTakeharaStayPackRow,
+  takeharaPackRowMatchesFilter,
+  rankTakeharaSeeRows,
+  takeharaSightPhoto,
+  takeharaSourcedHook,
+  takeharaTopChipForRow,
+  resolveTakeharaFilter
+} from './takehara-travel';
 
 
 
@@ -1956,6 +1967,18 @@ const KURE_HELPERS: LookupHelpers = {
   resolveFilter: resolveKureFilter
 };
 
+const TAKEHARA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isTakeharaOnsenPackRow,
+  isExperiencePackRow: isTakeharaExperiencePackRow,
+  isStayPackRow: isTakeharaStayPackRow,
+  packRowMatchesFilter: takeharaPackRowMatchesFilter,
+  rankSeeRows: rankTakeharaSeeRows,
+  sightPhoto: takeharaSightPhoto,
+  sourcedHook: takeharaSourcedHook,
+  topChipForRow: takeharaTopChipForRow,
+  resolveFilter: resolveTakeharaFilter
+};
+
 const KIHOKU_HELPERS: LookupHelpers = {
   isOnsenPackRow: isKihokuOnsenPackRow,
   isExperiencePackRow: isKihokuExperiencePackRow,
@@ -2421,5 +2444,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'ainan') return AINAN_HELPERS;
   if (slug === 'hiroshima') return HIROSHIMA_HELPERS;
   if (slug === 'kure') return KURE_HELPERS;
+  if (slug === 'takehara') return TAKEHARA_HELPERS;
   return MIMA_HELPERS;
 }
