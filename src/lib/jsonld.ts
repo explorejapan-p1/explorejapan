@@ -104,6 +104,7 @@ import {AKITAKATA, AKITAKATA_PLACE_PHOTO} from '@/data/akitakata';
 import {ETAJIMA, ETAJIMA_PLACE_PHOTO} from '@/data/etajima';
 import {FUCHUCHO, FUCHUCHO_PLACE_PHOTO} from '@/data/fuchucho';
 import {KAITA, KAITA_PLACE_PHOTO} from '@/data/kaita';
+import {KUMANO, KUMANO_PLACE_PHOTO} from '@/data/kumano';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -5400,6 +5401,57 @@ export function kaitaGraph(locale: AppLocale) {
             {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
             {'@type': 'ListItem', position: 2, name: isJa ? KAITA.prefectureJa : KAITA.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
             {'@type': 'ListItem', position: 3, name: isJa ? KAITA.nameJa : KAITA.nameEn, item: url}
+          ]
+        }
+      }
+    ]
+  };
+}
+
+export function kumanoGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'hiroshima/kumano');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('kumano');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'TouristDestination',
+        '@id': `${url}#place`,
+        name: isJa ? KUMANO.nameJa : KUMANO.nameEn,
+        alternateName: isJa ? KUMANO.nameEn : KUMANO.nameJa,
+        identifier: KUMANO.jis,
+        url,
+        image: photoAbs(KUMANO_PLACE_PHOTO),
+        sameAs: [KUMANO.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '中溝一丁目1番1号' : '1-1-1 Nakamizo',
+          addressLocality: isJa ? KUMANO.nameJa : KUMANO.nameEn,
+          addressRegion: isJa ? KUMANO.prefectureJa : KUMANO.prefectureEn,
+          postalCode: KUMANO.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? KUMANO.prefectureJa : KUMANO.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url,
+        name: isJa ? KUMANO.nameJa : KUMANO.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`},
+        about: {'@id': `${url}#place`},
+        breadcrumb: {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+            {'@type': 'ListItem', position: 2, name: isJa ? KUMANO.prefectureJa : KUMANO.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
+            {'@type': 'ListItem', position: 3, name: isJa ? KUMANO.nameJa : KUMANO.nameEn, item: url}
           ]
         }
       }

@@ -30,7 +30,7 @@ export const HIROSHIMA_MUNICIPALITIES: Municipality[] = [
   {jis: '34215', slug: 'etajima', nameJa: '江田島市', nameEn: 'Etajima', status: 'ready'},
   {jis: '34302', slug: 'fuchucho', nameJa: '府中町', nameEn: 'Fuchu Town', status: 'ready'},
   {jis: '34304', slug: 'kaita', nameJa: '海田町', nameEn: 'Kaita', status: 'ready'},
-  {jis: '34307', slug: 'kumano', nameJa: '熊野町', nameEn: 'Kumano', status: 'coming-soon'},
+  {jis: '34307', slug: 'kumano', nameJa: '熊野町', nameEn: 'Kumano', status: 'ready'},
   {jis: '34309', slug: 'saka', nameJa: '坂町', nameEn: 'Saka', status: 'coming-soon'},
   {jis: '34368', slug: 'akiota', nameJa: '安芸太田町', nameEn: 'Akiota', status: 'coming-soon'},
   {jis: '34369', slug: 'kitahiroshima', nameJa: '北広島町', nameEn: 'Kitahiroshima', status: 'coming-soon'},

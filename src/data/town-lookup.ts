@@ -787,6 +787,7 @@ import {AKITAKATA, AKITAKATA_PLACE_PHOTO, AKITAKATA_FACILITIES, AKITAKATA_EXPECT
 import {ETAJIMA, ETAJIMA_PLACE_PHOTO, ETAJIMA_FACILITIES, ETAJIMA_EXPECTED_GEO_COUNT, ETAJIMA_EXPECTED_ROW_COUNT} from './etajima';
 import {FUCHUCHO, FUCHUCHO_PLACE_PHOTO, FUCHUCHO_FACILITIES, FUCHUCHO_EXPECTED_GEO_COUNT, FUCHUCHO_EXPECTED_ROW_COUNT} from './fuchucho';
 import {KAITA, KAITA_PLACE_PHOTO, KAITA_FACILITIES, KAITA_EXPECTED_GEO_COUNT, KAITA_EXPECTED_ROW_COUNT} from './kaita';
+import {KUMANO, KUMANO_PLACE_PHOTO, KUMANO_FACILITIES, KUMANO_EXPECTED_GEO_COUNT, KUMANO_EXPECTED_ROW_COUNT} from './kumano';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -1053,6 +1054,13 @@ import {
   KAITA_TRAVEL_COMMERCE,
   KAITA_TRAVEL_ALL
 } from './kaita-travel';
+import {
+  KUMANO_TRAVEL_DINING,
+  KUMANO_TRAVEL_STAY,
+  KUMANO_TRAVEL_SHOPPING,
+  KUMANO_TRAVEL_COMMERCE,
+  KUMANO_TRAVEL_ALL
+} from './kumano-travel';
 
 
 
@@ -3986,6 +3994,38 @@ export const MIYOSHISHI_LOOKUP: LookupTown = {
 
 
 
+
+export const KUMANO_LOOKUP: LookupTown = {
+  slug: 'kumano',
+  prefectureSlug: 'hiroshima',
+  jis: KUMANO.jis,
+  nameJa: KUMANO.nameJa,
+  nameEn: KUMANO.nameEn,
+  heroPhoto: KUMANO_PLACE_PHOTO,
+  photoCiteJa: '写真は熊野町役場。Taisyo、CC BY 3.0。File:Kumano Town Office.jpg。',
+  photoCiteEn: 'Photo: Kumano Town Office. Taisyo, CC BY 3.0. File:Kumano Town Office.jpg.',
+  rows: KUMANO_FACILITIES,
+  expectedGeo: KUMANO_EXPECTED_GEO_COUNT,
+  expectedRows: KUMANO_EXPECTED_ROW_COUNT,
+  travelDining: KUMANO_TRAVEL_DINING,
+  travelStay: KUMANO_TRAVEL_STAY,
+  travelShopping: KUMANO_TRAVEL_SHOPPING,
+  travelCommerce: KUMANO_TRAVEL_COMMERCE,
+  travelAll: KUMANO_TRAVEL_ALL,
+  coverageJa:
+    '熊野町（JIS 34307・広島県安芸郡）。観光5・宿泊0・飲食16・温泉0（体験0）。買物・商業は未掲載。和歌山・三重の熊野とは別。',
+  coverageEn:
+    'Kumano Town Hiroshima Aki District (JIS 34307), 5 tourism + 0 stay + 16 dining + 0 onsen + 0 experience with sourced photos. Shopping/commerce: 0. Distinct from Wakayama/Mie Kumano.',
+  mapLabelJa: '熊野町の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Kumano Town (Hiroshima)',
+  mapCitePackJa: '点はOSM Overpass・Dive! Hiroshima出典座標5件（accessed 2026-09-10）。施設行は町公式・食べログ・Commons・Dive! Hiroshima。',
+  mapCitePackEn: 'Points: 5 OSM Overpass/Dive! Hiroshima coordinates (accessed 2026-09-10). Facility rows from town site, Tabelog, Commons, Dive! Hiroshima.',
+  licenseNoteJa: '行は町サイト掲載・town.kumano.lg.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from town.kumano.lg.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
 export const KAITA_LOOKUP: LookupTown = {
   slug: 'kaita',
   prefectureSlug: 'hiroshima',
@@ -4935,7 +4975,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   akitakata: AKITAKATA_LOOKUP,
   etajima: ETAJIMA_LOOKUP,
   fuchucho: FUCHUCHO_LOOKUP,
-  kaita: KAITA_LOOKUP
+  kaita: KAITA_LOOKUP,
+  kumano: KUMANO_LOOKUP
 };
 
 

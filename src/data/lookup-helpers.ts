@@ -1213,6 +1213,19 @@ import {
   resolveKaitaFilter
 } from './kaita-travel';
 
+import {
+  isKumanoExperiencePackRow,
+  isKumanoOnsenPackRow,
+  isKumanoStayPackRow,
+  kumanoPackRowMatchesFilter,
+  kumanoSightPhoto,
+  kumanoSourcedHook,
+  kumanoTopChipForRow,
+  rankKumanoSeeRows,
+  resolveKumanoFilter
+} from './kumano-travel';
+
+
 
 
 
@@ -2202,6 +2215,19 @@ const HIGASHIHIROSHIMA_HELPERS: LookupHelpers = {
 
 
 
+
+const KUMANO_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isKumanoOnsenPackRow,
+  isExperiencePackRow: isKumanoExperiencePackRow,
+  isStayPackRow: isKumanoStayPackRow,
+  packRowMatchesFilter: kumanoPackRowMatchesFilter,
+  rankSeeRows: rankKumanoSeeRows,
+  sightPhoto: kumanoSightPhoto,
+  sourcedHook: kumanoSourcedHook,
+  topChipForRow: kumanoTopChipForRow,
+  resolveFilter: resolveKumanoFilter
+};
+
 const KAITA_HELPERS: LookupHelpers = {
   isOnsenPackRow: isKaitaOnsenPackRow,
   isExperiencePackRow: isKaitaExperiencePackRow,
@@ -2781,5 +2807,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'etajima') return ETAJIMA_HELPERS;
   if (slug === 'fuchucho') return FUCHUCHO_HELPERS;
   if (slug === 'kaita') return KAITA_HELPERS;
+  if (slug === 'kumano') return KUMANO_HELPERS;
   return MIMA_HELPERS;
 }

@@ -18,4 +18,5 @@
 :HL["/explorejapan/media/etajima-cover-island.jpg","image"]
 :HL["/explorejapan/media/fuchucho-cover-night.jpg","image"]
 :HL["/explorejapan/media/kaita-cover-townhall.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"ja","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"hiroshima","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"JD8F5YqlImQzwtCUqZebg"}
+:HL["/explorejapan/media/kumano-cover-townhall.jpg","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"ja","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"hiroshima","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"UP7tNN_xwqtgpDaECDS9k"}
