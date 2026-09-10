@@ -1224,6 +1224,17 @@ import {
   rankKumanoSeeRows,
   resolveKumanoFilter
 } from './kumano-travel';
+import {
+  isSakaExperiencePackRow,
+  isSakaOnsenPackRow,
+  isSakaStayPackRow,
+  sakaPackRowMatchesFilter,
+  rankSakaSeeRows,
+  sakaSightPhoto,
+  sakaSourcedHook,
+  sakaTopChipForRow,
+  resolveSakaFilter
+} from './saka-travel';
 
 
 
@@ -2216,6 +2227,19 @@ const HIGASHIHIROSHIMA_HELPERS: LookupHelpers = {
 
 
 
+
+const SAKA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isSakaOnsenPackRow,
+  isExperiencePackRow: isSakaExperiencePackRow,
+  isStayPackRow: isSakaStayPackRow,
+  packRowMatchesFilter: sakaPackRowMatchesFilter,
+  rankSeeRows: rankSakaSeeRows,
+  sightPhoto: sakaSightPhoto,
+  sourcedHook: sakaSourcedHook,
+  topChipForRow: sakaTopChipForRow,
+  resolveFilter: resolveSakaFilter
+};
+
 const KUMANO_HELPERS: LookupHelpers = {
   isOnsenPackRow: isKumanoOnsenPackRow,
   isExperiencePackRow: isKumanoExperiencePackRow,
@@ -2808,5 +2832,6 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'fuchucho') return FUCHUCHO_HELPERS;
   if (slug === 'kaita') return KAITA_HELPERS;
   if (slug === 'kumano') return KUMANO_HELPERS;
+  if (slug === 'saka') return SAKA_HELPERS;
   return MIMA_HELPERS;
 }

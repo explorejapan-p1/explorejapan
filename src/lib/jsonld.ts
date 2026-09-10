@@ -105,6 +105,7 @@ import {ETAJIMA, ETAJIMA_PLACE_PHOTO} from '@/data/etajima';
 import {FUCHUCHO, FUCHUCHO_PLACE_PHOTO} from '@/data/fuchucho';
 import {KAITA, KAITA_PLACE_PHOTO} from '@/data/kaita';
 import {KUMANO, KUMANO_PLACE_PHOTO} from '@/data/kumano';
+import {SAKA, SAKA_PLACE_PHOTO} from '@/data/saka';
 import {prefSlugForReady} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -5401,6 +5402,58 @@ export function kaitaGraph(locale: AppLocale) {
             {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
             {'@type': 'ListItem', position: 2, name: isJa ? KAITA.prefectureJa : KAITA.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
             {'@type': 'ListItem', position: 3, name: isJa ? KAITA.nameJa : KAITA.nameEn, item: url}
+          ]
+        }
+      }
+    ]
+  };
+}
+
+
+export function sakaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'hiroshima/saka');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('saka');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'TouristDestination',
+        '@id': `${url}#place`,
+        name: isJa ? SAKA.nameJa : SAKA.nameEn,
+        alternateName: isJa ? SAKA.nameEn : SAKA.nameJa,
+        identifier: SAKA.jis,
+        url,
+        image: photoAbs(SAKA_PLACE_PHOTO),
+        sameAs: [SAKA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '平成ヶ浜一丁目1番1号' : '1-1-1 Heiseigahama',
+          addressLocality: isJa ? SAKA.nameJa : SAKA.nameEn,
+          addressRegion: isJa ? SAKA.prefectureJa : SAKA.prefectureEn,
+          postalCode: SAKA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? SAKA.prefectureJa : SAKA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url,
+        name: isJa ? SAKA.nameJa : SAKA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`},
+        about: {'@id': `${url}#place`},
+        breadcrumb: {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+            {'@type': 'ListItem', position: 2, name: isJa ? SAKA.prefectureJa : SAKA.prefectureEn, item: canonicalUrl(locale, 'hiroshima')},
+            {'@type': 'ListItem', position: 3, name: isJa ? SAKA.nameJa : SAKA.nameEn, item: url}
           ]
         }
       }

@@ -788,6 +788,7 @@ import {ETAJIMA, ETAJIMA_PLACE_PHOTO, ETAJIMA_FACILITIES, ETAJIMA_EXPECTED_GEO_C
 import {FUCHUCHO, FUCHUCHO_PLACE_PHOTO, FUCHUCHO_FACILITIES, FUCHUCHO_EXPECTED_GEO_COUNT, FUCHUCHO_EXPECTED_ROW_COUNT} from './fuchucho';
 import {KAITA, KAITA_PLACE_PHOTO, KAITA_FACILITIES, KAITA_EXPECTED_GEO_COUNT, KAITA_EXPECTED_ROW_COUNT} from './kaita';
 import {KUMANO, KUMANO_PLACE_PHOTO, KUMANO_FACILITIES, KUMANO_EXPECTED_GEO_COUNT, KUMANO_EXPECTED_ROW_COUNT} from './kumano';
+import {SAKA, SAKA_PLACE_PHOTO, SAKA_FACILITIES, SAKA_EXPECTED_GEO_COUNT, SAKA_EXPECTED_ROW_COUNT} from './saka';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -1061,6 +1062,13 @@ import {
   KUMANO_TRAVEL_COMMERCE,
   KUMANO_TRAVEL_ALL
 } from './kumano-travel';
+import {
+  SAKA_TRAVEL_DINING,
+  SAKA_TRAVEL_STAY,
+  SAKA_TRAVEL_SHOPPING,
+  SAKA_TRAVEL_COMMERCE,
+  SAKA_TRAVEL_ALL
+} from './saka-travel';
 
 
 
@@ -4026,6 +4034,39 @@ export const KUMANO_LOOKUP: LookupTown = {
   licenseSiteEn: 'Site display follows source attribution.'
 };
 
+
+export const SAKA_LOOKUP: LookupTown = {
+  slug: 'saka',
+  prefectureSlug: 'hiroshima',
+  jis: SAKA.jis,
+  nameJa: SAKA.nameJa,
+  nameEn: SAKA.nameEn,
+  heroPhoto: SAKA_PLACE_PHOTO,
+  photoCiteJa: '写真は坂町役場。Taisyo、CC BY 3.0。File:Saka Town Office.jpg。',
+  photoCiteEn: 'Photo: Saka Town Office. Taisyo, CC BY 3.0. File:Saka Town Office.jpg.',
+  rows: SAKA_FACILITIES,
+  expectedGeo: SAKA_EXPECTED_GEO_COUNT,
+  expectedRows: SAKA_EXPECTED_ROW_COUNT,
+  travelDining: SAKA_TRAVEL_DINING,
+  travelStay: SAKA_TRAVEL_STAY,
+  travelShopping: SAKA_TRAVEL_SHOPPING,
+  travelCommerce: SAKA_TRAVEL_COMMERCE,
+  travelAll: SAKA_TRAVEL_ALL,
+  coverageJa:
+    '坂町（JIS 34309・広島県安芸郡）。観光5・宿泊0・飲食16・温泉1（体験0）。買物・商業は未掲載。坂出市など他の「坂」とは別。',
+  coverageEn:
+    'Saka Town Hiroshima Aki District (JIS 34309), 5 tourism + 0 stay + 16 dining + 1 onsen + 0 experience with sourced photos. Shopping/commerce: 0. Distinct from Sakaide and other Saka names.',
+  mapLabelJa: '坂町の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Saka Town (Hiroshima)',
+  mapCitePackJa: '点はDive! Hiroshima・Nominatim・ニフティ温泉出典座標（accessed 2026-09-10）。施設行は町公式・食べログ・Commons・Dive! Hiroshima・ニフティ温泉。',
+  mapCitePackEn: 'Points: Dive! Hiroshima/Nominatim/Nifty Onsen coordinates (accessed 2026-09-10). Facility rows from town site, Tabelog, Commons, Dive! Hiroshima, Nifty Onsen.',
+  licenseNoteJa: '行は町サイト掲載・town.saka.lg.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are town-site listings, facts from town.saka.lg.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
+
 export const KAITA_LOOKUP: LookupTown = {
   slug: 'kaita',
   prefectureSlug: 'hiroshima',
@@ -4976,7 +5017,8 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   etajima: ETAJIMA_LOOKUP,
   fuchucho: FUCHUCHO_LOOKUP,
   kaita: KAITA_LOOKUP,
-  kumano: KUMANO_LOOKUP
+  kumano: KUMANO_LOOKUP,
+  saka: SAKA_LOOKUP
 };
 
 
