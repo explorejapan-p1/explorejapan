@@ -1,0 +1,437 @@
+/**
+ * Miyoshi City travel layer.
+ * Stay: Rakuten 部屋 stills densified (TG610 wave7) + pack STAY ISHIWAKI + もみじ NO_ROOM keep.
+ * Onsen: EXTRA facility bath stills (HARD BAR stay≠onsen) — distinct keys from stay hotel names.
+ * Pack lodging names formerly used as onsen chips moved to stay with room stills.
+ */
+import {LOOKUP_CATEGORIES, type FacilityCategory} from './facility-schema';
+import type {MimaPlacePhoto} from './mima';
+import {MIYOSHI, MIYOSHI_SIGHT_PHOTOS} from './miyoshi';
+import {
+  INFRA_CATEGORIES,
+  SIGHTS_CATEGORIES,
+  type FilterId,
+  type TravelRow
+} from './mima-travel';
+
+export const MIYOSHI_TRAVEL_ACCESSED = '2026-09-07' as const;
+
+export const MIYOSHI_TRAVEL_SOURCES = {
+  kanko: 'https://miyoshi-tourism.jp/',
+  gourmet: 'https://miyoshi-tourism.jp/spot/?spot_classification=gourmet',
+  stayList: 'https://miyoshi-tourism.jp/spot/?spot_classification=lodging',
+  onsen: 'https://miyoshi-tourism.jp/spot/?spot_classification=hot-spring',
+  iyaOnsenRoten: 'https://www.iyaonsen.co.jp/onsen/roten/',
+  mannakaHotel: 'https://mannaka.co.jp/hotel',
+  tougenkyo: 'https://www.tougenkyo-iya.jp/',
+  shiniyaCommons: 'https://commons.wikimedia.org/wiki/File:Shiniya_hot_spring.jpg',
+  tabelogCity: 'https://tabelog.com/tokushima/C36208/rstLst/',
+  stayNavi: 'https://www.navitime.co.jp/category/0608002/36208/',
+  rakutenTravel: 'https://travel.rakuten.co.jp/'
+} as const;
+
+/** Exact tourism-pack names shown on 温泉, not 観光. Bath/roten photo required. */
+export const MIYOSHI_ONSEN_PACK_NAMES = [
+  '和の宿 ホテル祖谷温泉 絹泡夢想の湯',
+  '白地温泉 小西旅館 展望風呂',
+  '民宿 白地荘 大浴場',
+  '湯元新祖谷温泉 ホテルかずら橋 露天風呂',
+  '祖谷渓温泉 ホテル秘境の湯 大浴場',
+  '峡谷の湯宿 大歩危峡まんなか 露天風呂',
+  '大歩危温泉 サンリバー大歩危 大浴場',
+  '渓谷の隠れ宿 祖谷美人 露天風呂',
+  '祖谷の宿 かずらや 露天風呂',
+  '寿し六旅館 貸切風呂',
+  '祖谷観光旅館 大浴場',
+  '祖谷の里 民宿お山荘 大浴場',
+  '本町旅宿 4S STAY 阿波池田 本町通り 大浴場',
+  'Ｇｕｅｓｔｈｏｕｓｅ ＫＡＺＵＲＡＢＡＳＨＩ 大浴場'
+] as const;
+
+export const MIYOSHI_ONSEN_PACK_SET: ReadonlySet<string> = new Set(MIYOSHI_ONSEN_PACK_NAMES);
+export const MIYOSHI_EXPERIENCE_PACK_NAMES = ['大歩危峡まんなか/大歩危峡観光遊覧船', '箸蔵山ロープウェイ株式会社'] as const;
+export const MIYOSHI_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(MIYOSHI_EXPERIENCE_PACK_NAMES);
+
+/** Exact tourism-pack names shown on 宿泊, not 観光. Room/bath/view photo required. */
+export const MIYOSHI_STAY_PACK_NAMES = [
+  '峡谷の湯宿 大歩危峡まんなか',
+  '桃源郷祖谷の山里 茅葺き民家ステイ',
+  'hostel 大黒屋',
+  '和の宿 ホテル祖谷温泉',
+  '白地温泉小西旅館',
+  '民宿 白地荘',
+  '湯元新祖谷温泉 ホテルかずら橋',
+  'ふくや旅館',
+  '祖谷渓温泉 ホテル秘境の湯',
+  '大歩危温泉 サンリバー大歩危',
+  '渓谷の隠れ宿 祖谷美人',
+  '祖谷の宿 かずらや',
+  '祖谷観光旅館',
+  '農家民宿 歩危農園',
+  '勇楼旅館',
+  '楽校の宿あるせ',
+  '古民家宿 4S STAY 阿波池田駅前',
+  '本町旅宿 4S STAY 阿波池田 本町通り',
+  'ビジネスホテル阿波池田 いれぶん2',
+  '彩り旅宿 4S STAY 池田温泉横',
+  'STAY ISHIWAKI'
+] as const;
+
+export const MIYOSHI_STAY_PACK_SET: ReadonlySet<string> = new Set(MIYOSHI_STAY_PACK_NAMES);
+
+export const MIYOSHI_SIGHT_PINS = [
+  '祖谷のかずら橋',
+  '大歩危小歩危',
+  '落合集落・落合集落展望所',
+  'うだつの町並み・阿波池田うだつの家たばこ資料館'
+] as const;
+
+function stay(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'stay',
+    address,
+    phone,
+    source_url,
+    accessed: MIYOSHI_TRAVEL_ACCESSED
+  };
+}
+
+/** Ranked room/exterior 出典. NAVITIME + 楽天シェア. Pack stays remain via MIYOSHI_STAY_PACK_NAMES. */
+export const MIYOSHI_TRAVEL_STAY: readonly TravelRow[] = [
+  stay(
+    'miyoshi-stay-01',
+    'ホテル サボテンアパートメント',
+    '徳島県三好市池田町サラダ1649-3',
+    null,
+    'https://travel.rakuten.co.jp/HOTEL/165553/165553.html'
+  ),
+  stay(
+    'miyoshi-stay-02',
+    '阿波池田駅前ホテルイレブン',
+    '徳島県三好市池田町サラダ1835-1',
+    null,
+    'https://travel.rakuten.co.jp/HOTEL/158338/158338.html'
+  ),
+  stay(
+    'miyoshi-stay-03',
+    '寿し六旅館',
+    '徳島県三好市池田町2178-5',
+    null,
+    'https://travel.rakuten.co.jp/HOTEL/129667/129667.html'
+  ),
+  stay(
+    'miyoshi-stay-04',
+    '祖谷の里 民宿お山荘',
+    '徳島県三好市西祖谷山村閑定91-2',
+    null,
+    'https://travel.rakuten.co.jp/HOTEL/142530/142530.html'
+  ),
+  stay(
+    'miyoshi-stay-05',
+    'Ｇｕｅｓｔｈｏｕｓｅ ＫＡＺＵＲＡＢＡＳＨＩ',
+    '徳島県三好市西祖谷山村善徳161-13',
+    null,
+    'https://travel.rakuten.co.jp/HOTEL/192586/192586.html'
+  ),
+  stay(
+    'miyoshi-stay-06',
+    'もみじ',
+    '徳島県三好市西祖谷山村西岡向110-1',
+    '0883-76-8033',
+    'https://travel.rakuten.co.jp/HOTEL/199175/199175.html'
+  )
+];
+
+
+function dining(
+  id: string,
+  name_ja: string,
+  address: string | null,
+  phone: string | null,
+  source_url: string
+): TravelRow {
+  return {
+    id,
+    name_ja,
+    category: 'dining',
+    address,
+    phone,
+    source_url,
+    accessed: MIYOSHI_TRAVEL_ACCESSED
+  };
+}
+
+export const MIYOSHI_TRAVEL_DINING: readonly TravelRow[] = [
+  dining(
+    'miyoshi-dining-01',
+    'お好み焼きつくし',
+    '徳島県三好市池田町マチ2185-3',
+    '0883-72-6389',
+    'https://miyoshi-tourism.jp/spot/25215/'
+  ),
+  dining(
+    'miyoshi-dining-02',
+    '味の老舗八千代',
+    '徳島県三好市池田町サラダ１７９８',
+    '0883-72-0512',
+    'https://miyoshi-tourism.jp/spot/839/'
+  ),
+  dining(
+    'miyoshi-dining-03',
+    'そば処祖谷橋',
+    '徳島県三好市山城町下川169-1',
+    '0883-86-1178',
+    'https://miyoshi-tourism.jp/spot/820/'
+  ),
+  dining(
+    'miyoshi-dining-04',
+    'いこい食堂',
+    '徳島県三好市西祖谷山村善徳166',
+    '0883-87-2840',
+    'https://miyoshi-tourism.jp/spot/808/'
+  ),
+  dining(
+    'miyoshi-dining-05',
+    '御食事処やなもと',
+    '徳島県三好市東祖谷京上３４５−４',
+    '0883‐88-2354',
+    'https://miyoshi-tourism.jp/spot/788/'
+  ),
+  dining(
+    'miyoshi-dining-06',
+    'にちにち珈琲店',
+    '徳島県三好市三野町芝生４５７',
+    '0883-77-2528',
+    'https://miyoshi-tourism.jp/spot/6046/'
+  ),
+  dining(
+    'miyoshi-dining-07',
+    '味一阿讃',
+    '徳島県三好市池田町州津滝端1314-3',
+    '0883-72-2163',
+    'https://miyoshi-tourism.jp/spot/862/'
+  ),
+  dining(
+    'miyoshi-dining-08',
+    'めん処阿波',
+    '徳島県三好市池田町ウヱノ３０８６',
+    '090-1009-0304',
+    'https://miyoshi-tourism.jp/spot/3861/'
+  ),
+  dining(
+    'miyoshi-dining-09',
+    '池田屋',
+    '徳島県三好市池田町マチ2229-22',
+    '0883-72-3466',
+    'https://tabelog.com/tokushima/A3604/A360401/36002427/'
+  ),
+  dining(
+    'miyoshi-dining-10',
+    'Cafe&Bar YAMAYA',
+    '徳島県三好市山城町大川持573-1',
+    '0883-86-1898',
+    'https://tabelog.com/tokushima/A3604/A360401/36007856/'
+  ),
+  dining(
+    'miyoshi-dining-11',
+    'Ｂａｒ ｇ',
+    '徳島県三好市池田町サラダ1759-2オーエヌビル１Ｆ',
+    '0883-72-3457',
+    'https://tabelog.com/tokushima/A3604/A360401/36003562/'
+  ),
+  dining(
+    'miyoshi-dining-12',
+    '珈琲館おおぼけ',
+    '徳島県三好市山城町下名369-3',
+    '0883-84-1433',
+    'https://tabelog.com/tokushima/A3604/A360401/36002868/'
+  ),
+  dining(
+    'miyoshi-dining-13',
+    '安宅屋本店 総本店',
+    '徳島県三好市池田町マチ2477',
+    '0883-72-0073',
+    'https://tabelog.com/tokushima/A3604/A360401/36003875/'
+  )
+];
+
+export const MIYOSHI_DINING_NAME_SET: ReadonlySet<string> = new Set(
+  MIYOSHI_TRAVEL_DINING.map((row) => row.name_ja)
+);
+
+export const MIYOSHI_TRAVEL_SHOPPING: readonly TravelRow[] = [];
+export const MIYOSHI_TRAVEL_COMMERCE: readonly TravelRow[] = [];
+
+export const MIYOSHI_TRAVEL_ALL: readonly TravelRow[] = [
+  ...MIYOSHI_TRAVEL_DINING,
+  ...MIYOSHI_TRAVEL_STAY,
+  ...MIYOSHI_TRAVEL_SHOPPING,
+  ...MIYOSHI_TRAVEL_COMMERCE
+];
+
+const INFRA_SET: ReadonlySet<string> = new Set(INFRA_CATEGORIES);
+const SIGHTS_SET: ReadonlySet<string> = new Set(SIGHTS_CATEGORIES);
+
+function isPackCategory(value: string | undefined): value is FacilityCategory {
+  return LOOKUP_CATEGORIES.some((cat) => cat === value);
+}
+
+function isInfraCategory(value: string): boolean {
+  return INFRA_SET.has(value);
+}
+
+function isSightsCategory(value: string): boolean {
+  return SIGHTS_SET.has(value);
+}
+
+export function isMiyoshiOnsenPackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return MIYOSHI_ONSEN_PACK_SET.has(row.name_ja);
+}
+
+export function isMiyoshiExperiencePackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return MIYOSHI_EXPERIENCE_PACK_SET.has(row.name_ja);
+}
+
+export function isMiyoshiStayPackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return MIYOSHI_STAY_PACK_SET.has(row.name_ja);
+}
+
+export function isMiyoshiDiningPackRow(row: {category: string; name_ja: string}): boolean {
+  if (row.category !== 'tourism' && row.category !== 'cultural_property') return false;
+  return MIYOSHI_DINING_NAME_SET.has(row.name_ja);
+}
+
+export function miyoshiSightPhoto(nameJa: string): MimaPlacePhoto | null {
+  return MIYOSHI_SIGHT_PHOTOS[nameJa] ?? null;
+}
+
+type Rankable = {
+  id: string;
+  name_ja: string;
+  category: string;
+  lat: number | null;
+  lon: number | null;
+};
+
+export function rankMiyoshiSeeRows<T extends Rankable>(rows: readonly T[]): T[] {
+  const sights = rows.filter(
+    (row) =>
+      isSightsCategory(row.category) &&
+      !isMiyoshiOnsenPackRow(row) &&
+      !isMiyoshiExperiencePackRow(row) &&
+      !isMiyoshiStayPackRow(row) &&
+      !isMiyoshiDiningPackRow(row)
+  );
+  const used = new Set<string>();
+  const usedNames = new Set<string>();
+  const pinned: T[] = [];
+  for (const pin of MIYOSHI_SIGHT_PINS) {
+    const hit = sights.find((row) => row.name_ja === pin);
+    if (!hit) continue;
+    pinned.push(hit);
+    used.add(hit.id);
+    usedNames.add(hit.name_ja);
+  }
+  const restTourism: T[] = [];
+  const restCultural: T[] = [];
+  for (const row of sights) {
+    if (used.has(row.id)) continue;
+    if (usedNames.has(row.name_ja)) continue;
+    used.add(row.id);
+    usedNames.add(row.name_ja);
+    if (row.category === 'tourism') restTourism.push(row);
+    else restCultural.push(row);
+  }
+  return [...pinned, ...restTourism, ...restCultural];
+}
+
+export function miyoshiSourcedHook(
+  row: {name_ja: string; address: string | null; category: string; phone?: string | null},
+  locale: string
+): string {
+  const addr = row.address && row.address.trim() !== '' ? row.address : '';
+  if (addr) return addr;
+  if (row.category === 'dining') {
+    return locale === 'ja' ? '三好市 飲食案内' : 'Miyoshi dining list';
+  }
+  if (row.category === 'stay') {
+    return locale === 'ja' ? '三好市 宿泊案内' : 'Miyoshi lodging list';
+  }
+  if (row.category === 'tourism') {
+    return locale === 'ja' ? '市の観光案内' : 'City tourism pages';
+  }
+  if (row.category === 'cultural_property') {
+    return locale === 'ja' ? '文化財（オープンデータ）' : 'Cultural property (open data)';
+  }
+  return '';
+}
+
+export function miyoshiTopChipForRow(row: {category: string; name_ja: string}): FilterId {
+  if (isMiyoshiOnsenPackRow(row)) return 'onsen';
+  if (isMiyoshiExperiencePackRow(row)) return 'experience';
+  if (isMiyoshiStayPackRow(row)) return 'stay';
+  if (row.category === 'stay') return 'stay';
+  if (row.category === 'dining') return 'dining';
+  if (isMiyoshiDiningPackRow(row)) return 'dining';
+  if (isSightsCategory(row.category)) return 'sights';
+  if (isInfraCategory(row.category)) return 'sights';
+  return row.category as FilterId;
+}
+
+export function miyoshiPackRowMatchesFilter(
+  category: FacilityCategory,
+  filter: FilterId,
+  nameJa = ''
+): boolean {
+  const row = {category, name_ja: nameJa};
+  if (filter === 'all') return true;
+  if (filter === 'sights') {
+    return (
+      isSightsCategory(category) &&
+      !isMiyoshiOnsenPackRow(row) &&
+      !isMiyoshiExperiencePackRow(row) &&
+      !isMiyoshiStayPackRow(row) &&
+      !isMiyoshiDiningPackRow(row)
+    );
+  }
+  if (filter === 'infra') return isInfraCategory(category);
+  if (filter === 'onsen') return isMiyoshiOnsenPackRow(row);
+  if (filter === 'experience') return isMiyoshiExperiencePackRow(row);
+  if (filter === 'stay') return isMiyoshiStayPackRow(row);
+  if (filter === 'dining' || filter === 'shopping' || filter === 'commerce') return false;
+  return category === filter;
+}
+
+export function resolveMiyoshiFilter(c: string | undefined, q: string): FilterId {
+  if (
+    c === 'sights' ||
+    c === 'stay' ||
+    c === 'dining' ||
+    c === 'onsen' ||
+    c === 'experience' ||
+    c === 'shopping' ||
+    c === 'commerce'
+  ) {
+    return c;
+  }
+  if (c === 'all') return 'all';
+  if (c === 'tourism' || c === 'cultural_property') return 'sights';
+  if (c === 'infra') return 'sights';
+  if (c !== undefined && isInfraCategory(c)) return 'sights';
+  if (isPackCategory(c)) return c;
+  if (q.trim() !== '') return 'all';
+  return 'stay';
+}
+
+export const MIYOSHI_HALL = MIYOSHI.hall;

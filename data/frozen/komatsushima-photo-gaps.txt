@@ -1,0 +1,4 @@
+komatsushima 宿泊 densify TG581 2026-09-07
+BEFORE stay3 — AFTER stay4
+Added: リゾート旅館ニューみはらし (RK145302 楽天シェア exterior).
+Skipped: シルフィード (fashion/love hotel); 立江寺宿坊 (share=temple exterior, not room — room bar).

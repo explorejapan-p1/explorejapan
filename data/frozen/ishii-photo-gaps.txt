@@ -1,0 +1,4 @@
+ishii 体験 densify 2026-09-07 (pass7)
+BEFORE: 宿泊0 / 飲食14 / 温泉0 / 体験0 / 観光6 / 買物0 / 商業0
+AFTER:  宿泊0 / 飲食14 / 温泉0 / 体験1 / 観光5 / 買物0 / 商業0
+体験: remap 野鳥の森 (Commons File:Yacho-no-mori.jpeg). 観光6→5. stay: NAVITIME shows fashion hotel only — honest 0. Not perfect.

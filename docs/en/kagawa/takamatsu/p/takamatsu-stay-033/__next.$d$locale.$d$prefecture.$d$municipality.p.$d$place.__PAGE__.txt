@@ -1,0 +1,49 @@
+1:"$Sreact.fragment"
+3:I[77105,["/explorejapan/_next/static/chunks/1v638_fwrvgo4.js","/explorejapan/_next/static/chunks/3yr1wzf1p44wg.js"],"default"]
+4:I[97367,["/explorejapan/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
+5:"$Sreact.suspense"
+9:I[97367,["/explorejapan/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
+a:I[97367,["/explorejapan/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
+:HL["/explorejapan/media/takamatsu-stay-h197287.jpg","image"]
+2:T640,{"@context":"https://schema.org","@graph":[{"@type":"Hotel","@id":"https://explorejapan-p1.github.io/explorejapan/en/kagawa/takamatsu/p/takamatsu-stay-033/#place","name":"ホテルたいよう農園 屋島","url":"https://explorejapan-p1.github.io/explorejapan/en/kagawa/takamatsu/p/takamatsu-stay-033/","image":"https://explorejapan-p1.github.io/explorejapan/media/takamatsu-stay-h197287.jpg","address":{"@type":"PostalAddress","streetAddress":"香川県高松市屋島西町1909-3","addressLocality":"Takamatsu City","addressRegion":"Kagawa","addressCountry":"JP"},"telephone":"088-655-5151","sameAs":["https://travel.rakuten.co.jp/HOTEL/197287/197287.html"]},{"@type":"WebPage","@id":"https://explorejapan-p1.github.io/explorejapan/en/kagawa/takamatsu/p/takamatsu-stay-033/","url":"https://explorejapan-p1.github.io/explorejapan/en/kagawa/takamatsu/p/takamatsu-stay-033/","name":"ホテルたいよう農園 屋島","inLanguage":"en","isPartOf":{"@id":"https://explorejapan-p1.github.io/explorejapan/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Japan","item":"https://explorejapan-p1.github.io/explorejapan/en/"},{"@type":"ListItem","position":2,"name":"Kagawa","item":"https://explorejapan-p1.github.io/explorejapan/en/kagawa/"},{"@type":"ListItem","position":3,"name":"Takamatsu City","item":"https://explorejapan-p1.github.io/explorejapan/en/kagawa/takamatsu/"},{"@type":"ListItem","position":4,"name":"ホテルたいよう農園 屋島","item":"https://explorejapan-p1.github.io/explorejapan/en/kagawa/takamatsu/p/takamatsu-stay-033/"}]}]}8:X
+22:X
+22:C
+0:{"buildId":"BFkQ8zDvgaQC2fayJkYmN","data":[{"rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","nav",null,{"className":"crumbs","children":[["$","$L3",null,{"href":"/en","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Japan"}],["$","span",null,{"children":" / "}],["$","$L3",null,{"href":"/en/kagawa","localeCookie":"$0:data:0:rsc:props:children:0:1:props:children:0:props:localeCookie","children":"Kagawa"}],["$","span",null,{"children":" / "}],["$","$L3",null,{"href":"/en/kagawa/takamatsu","localeCookie":"$0:data:0:rsc:props:children:0:1:props:children:0:props:localeCookie","children":"Takamatsu City"}],["$","span",null,{"children":" / "}],["$","span",null,{"children":"ホテルたいよう農園 屋島"}]]}],["$","article",null,{"className":"place-page","children":[["$","a",null,{"href":"https://travel.rakuten.co.jp/HOTEL/197287/197287.html","className":"facility-card-link place-photo-link","target":"_blank","rel":"noopener noreferrer","children":[["$","div",null,{"className":"card-photo","children":["$","img",null,{"src":"/explorejapan/media/takamatsu-stay-h197287.jpg","alt":"ホテルたいよう農園 屋島 room photo","width":1200,"height":800}]}],["$","h1",null,{"children":"ホテルたいよう農園 屋島"}]]}],["$","p",null,{"className":"card-score","children":"Unrated"}],["$","p",null,{"className":"attr-row","children":[["$","span",null,{"className":"attr-label","children":"Address"}],["$","span",null,{"children":"香川県高松市屋島西町1909-3"}]]}],["$","p",null,{"className":"attr-row","children":[["$","span",null,{"className":"attr-label","children":"Phone"}],["$","span",null,{"children":"088-655-5151"}]]}],null,["$","p",null,{"className":"place-card-meta","children":"2026-09-09"}]]}]],null,["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"isPartial":"$@7","staleTime":"$8","varyParams":null},{"rsc":["$","$1","h",{"children":[null,["$","$L9",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$La",null,{"children":["$","$5",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"ホテルたいよう農園 屋島 · BokenJapan"}],["$","meta","1",{"name":"description","content":"ホテルたいよう農園 屋島 in Takamatsu City. Sourced listing only."}],["$","meta","2",{"name":"robots","content":"index, follow"}],["$","link","3",{"rel":"canonical","href":"https://explorejapan-p1.github.io/explorejapan/en/kagawa/takamatsu/p/takamatsu-stay-033/"}],["$","link","4",{"rel":"alternate","hrefLang":"ja","href":"https://explorejapan-p1.github.io/explorejapan/ja/kagawa/takamatsu/p/takamatsu-stay-033/"}],"$Lb","$Lc","$Ld","$Le","$Lf","$L10","$L11","$L12","$L13","$L14","$L15","$L16","$L17","$L18","$L19","$L1a","$L1b","$L1c","$L1d"]}]}]}],"$L1e"]}],"isPartial":"$@1f","staleTime":"$8","varyParams":null},{"rsc":"$L20","isPartial":"$@21","staleTime":"$8","varyParams":"$22"},{"rsc":"$L23","isPartial":"$@24","staleTime":"$8","varyParams":"$22"},{"rsc":"$L25","isPartial":"$@26","staleTime":"$8","varyParams":"$22"},{"rsc":"$L27","isPartial":"$@28","staleTime":"$8","varyParams":"$22"}],"isUpgradeableISRFallback":false,"a":"$@29","rootVaryParams":null,"needsRuntimeRequest":"$@2a"}
+2b:I[27201,["/explorejapan/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
+2c:I[39756,["/explorejapan/_next/static/chunks/3fntmmi971322.js"],"default"]
+2d:I[37457,["/explorejapan/_next/static/chunks/3fntmmi971322.js"],"default"]
+6:null
+b:["$","link","5",{"rel":"alternate","hrefLang":"en","href":"https://explorejapan-p1.github.io/explorejapan/en/kagawa/takamatsu/p/takamatsu-stay-033/"}]
+c:["$","link","6",{"rel":"alternate","hrefLang":"x-default","href":"https://explorejapan-p1.github.io/explorejapan/ja/kagawa/takamatsu/p/takamatsu-stay-033/"}]
+d:["$","meta","7",{"property":"og:title","content":"ホテルたいよう農園 屋島"}]
+e:["$","meta","8",{"property":"og:description","content":"ホテルたいよう農園 屋島 in Takamatsu City. Sourced listing only."}]
+f:["$","meta","9",{"property":"og:url","content":"https://explorejapan-p1.github.io/explorejapan/en/kagawa/takamatsu/p/takamatsu-stay-033/"}]
+10:["$","meta","10",{"property":"og:site_name","content":"BokenJapan"}]
+11:["$","meta","11",{"property":"og:locale","content":"en_US"}]
+12:["$","meta","12",{"property":"og:image","content":"https://explorejapan-p1.github.io/explorejapan/media/takamatsu-stay-h197287.jpg"}]
+13:["$","meta","13",{"property":"og:image:alt","content":"ホテルたいよう農園 屋島 room photo"}]
+14:["$","meta","14",{"property":"og:locale:alternate","content":"ja_JP"}]
+15:["$","meta","15",{"property":"og:type","content":"article"}]
+16:["$","meta","16",{"name":"twitter:card","content":"summary_large_image"}]
+17:["$","meta","17",{"name":"twitter:title","content":"ホテルたいよう農園 屋島"}]
+18:["$","meta","18",{"name":"twitter:description","content":"ホテルたいよう農園 屋島 in Takamatsu City. Sourced listing only."}]
+19:["$","meta","19",{"name":"twitter:image","content":"https://explorejapan-p1.github.io/explorejapan/media/takamatsu-stay-h197287.jpg"}]
+1a:["$","link","20",{"rel":"icon","href":"/favicon.ico"}]
+1b:["$","link","21",{"rel":"icon","href":"/favicon-32.png","sizes":"32x32","type":"image/png"}]
+1c:["$","link","22",{"rel":"apple-touch-icon","href":"/apple-touch-icon.png","sizes":"180x180"}]
+1d:["$","$L2b","23",{}]
+1e:["$","meta",null,{"name":"next-size-adjust","content":""}]
+20:["$","$1","c",{"children":[null,["$","$L2c",null,{"parallelRouterKey":"children","template":["$","$L2d",null,{}]}]]}]
+23:["$","$1","c",{"children":[null,["$","$L2c",null,{"parallelRouterKey":"children","template":["$","$L2d",null,{}]}]]}]
+25:["$","$1","c",{"children":[null,["$","$L2c",null,{"parallelRouterKey":"children","template":["$","$L2d",null,{}]}]]}]
+27:["$","$1","c",{"children":[null,["$","$L2c",null,{"parallelRouterKey":"children","template":["$","$L2d",null,{}]}]]}]
+2a:true
+8:300
+8:C
+29:0
+1f:"$undefined"
+21:"$undefined"
+24:"$undefined"
+26:"$undefined"
+28:"$undefined"
+7:"$undefined"
