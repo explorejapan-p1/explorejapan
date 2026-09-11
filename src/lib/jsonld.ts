@@ -113,6 +113,7 @@ import {SERA, SERA_PLACE_PHOTO} from '@/data/sera';
 import {JINSEIKOGEN, JINSEIKOGEN_PLACE_PHOTO} from '@/data/jinseikogen';
 import {OKAYAMA, OKAYAMA_PLACE_PHOTO} from '@/data/okayama';
 import {KURASHIKI, KURASHIKI_PLACE_PHOTO} from '@/data/kurashiki';
+import {TSUYAMA, TSUYAMA_PLACE_PHOTO} from '@/data/tsuyama';
 import {prefSlugForReady, type ReadySlug} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -302,6 +303,7 @@ function localityJa(slug: string): string {
   if (slug === 'jinseikogen') return JINSEIKOGEN.nameJa;
   if (slug === 'okayama') return OKAYAMA.nameJa;
   if (slug === 'kurashiki') return KURASHIKI.nameJa;
+  if (slug === 'tsuyama') return TSUYAMA.nameJa;
   return MIMA.nameJa;
 }
 
@@ -408,6 +410,7 @@ function localityEn(slug: string): string {
   if (slug === 'jinseikogen') return JINSEIKOGEN.nameEn;
   if (slug === 'okayama') return OKAYAMA.nameEn;
   if (slug === 'kurashiki') return KURASHIKI.nameEn;
+  if (slug === 'tsuyama') return TSUYAMA.nameEn;
   return MIMA.nameEn;
 }
 
@@ -5636,6 +5639,58 @@ export function kurashikiGraph(locale: AppLocale) {
   };
 }
 
+
+
+export function tsuyamaGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'okayama/tsuyama');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('tsuyama');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'TouristDestination',
+        '@id': `${url}#place`,
+        name: isJa ? TSUYAMA.nameJa : TSUYAMA.nameEn,
+        alternateName: isJa ? TSUYAMA.nameEn : TSUYAMA.nameJa,
+        identifier: TSUYAMA.jis,
+        url,
+        image: photoAbs(TSUYAMA_PLACE_PHOTO),
+        sameAs: [TSUYAMA.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '山北520' : '520 Yamakita',
+          addressLocality: isJa ? TSUYAMA.nameJa : TSUYAMA.nameEn,
+          addressRegion: isJa ? TSUYAMA.prefectureJa : TSUYAMA.prefectureEn,
+          postalCode: TSUYAMA.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? TSUYAMA.prefectureJa : TSUYAMA.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url,
+        name: isJa ? TSUYAMA.nameJa : TSUYAMA.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`},
+        about: {'@id': `${url}#place`},
+        breadcrumb: {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+            {'@type': 'ListItem', position: 2, name: isJa ? TSUYAMA.prefectureJa : TSUYAMA.prefectureEn, item: canonicalUrl(locale, 'okayama')},
+            {'@type': 'ListItem', position: 3, name: isJa ? TSUYAMA.nameJa : TSUYAMA.nameEn, item: url}
+          ]
+        }
+      }
+    ]
+  };
+}
 
 export function jinseikogenGraph(locale: AppLocale) {
   const url = canonicalUrl(locale, 'hiroshima/jinseikogen');

@@ -796,6 +796,7 @@ import {SERA, SERA_PLACE_PHOTO, SERA_FACILITIES, SERA_EXPECTED_GEO_COUNT, SERA_E
 import {JINSEIKOGEN, JINSEIKOGEN_PLACE_PHOTO, JINSEIKOGEN_FACILITIES, JINSEIKOGEN_EXPECTED_GEO_COUNT, JINSEIKOGEN_EXPECTED_ROW_COUNT} from './jinseikogen';
 import {OKAYAMA, OKAYAMA_PLACE_PHOTO, OKAYAMA_FACILITIES, OKAYAMA_EXPECTED_GEO_COUNT, OKAYAMA_EXPECTED_ROW_COUNT} from './okayama';
 import {KURASHIKI, KURASHIKI_PLACE_PHOTO, KURASHIKI_FACILITIES, KURASHIKI_EXPECTED_GEO_COUNT, KURASHIKI_EXPECTED_ROW_COUNT} from './kurashiki';
+import {TSUYAMA, TSUYAMA_PLACE_PHOTO, TSUYAMA_FACILITIES, TSUYAMA_EXPECTED_GEO_COUNT, TSUYAMA_EXPECTED_ROW_COUNT} from './tsuyama';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -1125,6 +1126,13 @@ import {
   KURASHIKI_TRAVEL_COMMERCE,
   KURASHIKI_TRAVEL_ALL
 } from './kurashiki-travel';
+import {
+  TSUYAMA_TRAVEL_DINING,
+  TSUYAMA_TRAVEL_STAY,
+  TSUYAMA_TRAVEL_SHOPPING,
+  TSUYAMA_TRAVEL_COMMERCE,
+  TSUYAMA_TRAVEL_ALL
+} from './tsuyama-travel';
 
 
 
@@ -4191,6 +4199,38 @@ export const KURASHIKI_LOOKUP: LookupTown = {
   licenseSiteEn: 'Site display follows source attribution.'
 };
 
+
+export const TSUYAMA_LOOKUP: LookupTown = {
+  slug: 'tsuyama',
+  prefectureSlug: 'okayama',
+  jis: TSUYAMA.jis,
+  nameJa: TSUYAMA.nameJa,
+  nameEn: TSUYAMA.nameEn,
+  heroPhoto: TSUYAMA_PLACE_PHOTO,
+  photoCiteJa: '写真は津山城（鶴山公園）。denteru、CC BY 3.0。File:津山城 備中櫓と桜.jpg。',
+  photoCiteEn: 'Photo: Tsuyama Castle (Kakuzan Park). denteru, CC BY 3.0. File:津山城 備中櫓と桜.jpg.',
+  rows: TSUYAMA_FACILITIES,
+  expectedGeo: TSUYAMA_EXPECTED_GEO_COUNT,
+  expectedRows: TSUYAMA_EXPECTED_ROW_COUNT,
+  travelDining: TSUYAMA_TRAVEL_DINING,
+  travelStay: TSUYAMA_TRAVEL_STAY,
+  travelShopping: TSUYAMA_TRAVEL_SHOPPING,
+  travelCommerce: TSUYAMA_TRAVEL_COMMERCE,
+  travelAll: TSUYAMA_TRAVEL_ALL,
+  coverageJa:
+    '津山市（JIS 33203・岡山県）。観光5・宿泊9・飲食16・温泉2（体験0）。買物・商業は未掲載。',
+  coverageEn:
+    'Tsuyama City (JIS 33203), 5 tourism + 9 stay + 16 dining + 2 onsen + 0 experience with sourced photos. Shopping/commerce: 0.',
+  mapLabelJa: '津山市の出典座標5件',
+  mapLabelEn: '5 sourced coordinates in Tsuyama City',
+  mapCitePackJa: '点はCommons出典座標（accessed 2026-09-11）。施設行は市公式・食べログ・Commons・楽天。',
+  mapCitePackEn: 'Points: Commons coordinates (accessed 2026-09-11). Facility rows from city site, Tabelog, Commons, Rakuten.',
+  licenseNoteJa: '行は市サイト掲載・city.tsuyama.lg.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are city-site listings, facts from city.tsuyama.lg.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
 export const JINSEIKOGEN_LOOKUP: LookupTown = {
   slug: 'jinseikogen',
   prefectureSlug: 'hiroshima',
@@ -5305,6 +5345,7 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   jinseikogen: JINSEIKOGEN_LOOKUP,
   okayama: OKAYAMA_LOOKUP,
   kurashiki: KURASHIKI_LOOKUP,
+  tsuyama: TSUYAMA_LOOKUP,
   sera: SERA_LOOKUP
 };
 

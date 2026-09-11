@@ -1312,6 +1312,17 @@ import {
   kurashikiTopChipForRow,
   resolveKurashikiFilter
 } from './kurashiki-travel';
+import {
+  isTsuyamaOnsenPackRow,
+  isTsuyamaExperiencePackRow,
+  isTsuyamaStayPackRow,
+  tsuyamaPackRowMatchesFilter,
+  rankTsuyamaSeeRows,
+  tsuyamaSightPhoto,
+  tsuyamaSourcedHook,
+  tsuyamaTopChipForRow,
+  resolveTsuyamaFilter
+} from './tsuyama-travel';
 
 
 
@@ -2347,6 +2358,18 @@ const KURASHIKI_HELPERS: LookupHelpers = {
   resolveFilter: resolveKurashikiFilter
 };
 
+const TSUYAMA_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isTsuyamaOnsenPackRow,
+  isExperiencePackRow: isTsuyamaExperiencePackRow,
+  isStayPackRow: isTsuyamaStayPackRow,
+  packRowMatchesFilter: tsuyamaPackRowMatchesFilter,
+  rankSeeRows: rankTsuyamaSeeRows,
+  sightPhoto: tsuyamaSightPhoto,
+  sourcedHook: tsuyamaSourcedHook,
+  topChipForRow: tsuyamaTopChipForRow,
+  resolveFilter: resolveTsuyamaFilter
+};
+
 const JINSEIKOGEN_HELPERS: LookupHelpers = {
   isOnsenPackRow: isJinseikogenOnsenPackRow,
   isExperiencePackRow: isJinseikogenExperiencePackRow,
@@ -3006,6 +3029,7 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'jinseikogen') return JINSEIKOGEN_HELPERS;
   if (slug === 'okayama') return OKAYAMA_HELPERS;
   if (slug === 'kurashiki') return KURASHIKI_HELPERS;
+  if (slug === 'tsuyama') return TSUYAMA_HELPERS;
   if (slug === 'sera') return SERA_HELPERS;
   return MIMA_HELPERS;
 }
