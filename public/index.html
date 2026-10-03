@@ -9,20 +9,8 @@
   var loc = 'en';
   try {
     var stored = localStorage.getItem('explorejapan-locale');
-    if (stored === 'ja' || stored === 'en') {
-      loc = stored;
-      location.replace('./' + loc + '/');
-      return;
-    }
+    if (stored === 'ja' || stored === 'en') loc = stored;
   } catch (e) {}
-  var langs = (navigator.languages && navigator.languages.length)
-    ? navigator.languages
-    : [navigator.language || 'en'];
-  for (var i = 0; i < langs.length; i++) {
-    var tag = String(langs[i] || '').toLowerCase();
-    if (tag.indexOf('en') === 0) { loc = 'en'; break; }
-    if (tag.indexOf('ja') === 0) { loc = 'ja'; break; }
-  }
   location.replace('./' + loc + '/');
 })();
 </script>
