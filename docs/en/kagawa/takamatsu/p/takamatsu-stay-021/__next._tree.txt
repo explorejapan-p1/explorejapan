@@ -1,6 +1,6 @@
-:HL["/explorejapan/_next/static/chunks/28sjs4ib-xx7u.css","style"]
-:HL["/explorejapan/_next/static/chunks/2sss-qmym8vuc.css","style"]
-:HL["/explorejapan/_next/static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/explorejapan/_next/static/media/ad9c66e761fed85a-s.p.0fhiaplbf_4wa.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/chunks/28sjs4ib-xx7u.css","style"]
+:HL["/_next/static/chunks/2sss-qmym8vuc.css","style"]
+:HL["/_next/static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/ad9c66e761fed85a-s.p.0fhiaplbf_4wa.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/explorejapan/media/takamatsu-stay-h167674.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"en","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"kagawa","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"municipality","param":{"type":"d","key":"takamatsu","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"p","param":null,"prefetchHints":4192,"slots":{"children":{"name":"place","param":{"type":"d","key":"takamatsu-stay-021","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}}}}}}}},"staleTime":300,"buildId":"h016LWiiQP5U6SzePLRyr"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"locale","param":{"type":"d","key":"en","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"prefecture","param":{"type":"d","key":"kagawa","siblings":[]},"prefetchHints":4160,"slots":{"children":{"name":"municipality","param":{"type":"d","key":"takamatsu","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"p","param":null,"prefetchHints":4192,"slots":{"children":{"name":"place","param":{"type":"d","key":"takamatsu-stay-021","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}}}}}}}},"staleTime":300,"buildId":"8AxOJXdKL3zzTasoXB7Mz"}

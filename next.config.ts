@@ -5,8 +5,8 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 const nextConfig: NextConfig = {
   output: 'export',
-  basePath: '/explorejapan',
-  assetPrefix: '/explorejapan',
+  basePath: '',
+  assetPrefix: '',
   trailingSlash: true,
   images: { unoptimized: true },
   reactStrictMode: true,
