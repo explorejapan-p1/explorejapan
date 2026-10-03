@@ -1,4 +1,5 @@
 import {withBase} from '@/data/mima';
+import {municipalitiesForPref} from '@/data/municipalities';
 import {PREFECTURES} from '@/data/prefectures';
 import {Link} from '@/i18n/navigation';
 import {loadJapanMap} from '@/lib/geo';
@@ -51,14 +52,18 @@ export function JapanMap({locale, overlay}: Props) {
         <summary>{isJa ? '都道府県' : 'Prefectures'}</summary>
         <nav className="name-list" aria-label={isJa ? '都道府県一覧' : 'Prefecture list'}>
           <ol>
-            {PREFECTURES.map((p) => (
-              <li key={p.slug}>
-                <Link href={`/${p.slug}`}>{isJa ? p.nameJa : p.nameEn}</Link>
-                {p.slug !== 'tokushima' ? (
-                  <span className="muted">{isJa ? '（準備中）' : ' (rolling out)'}</span>
-                ) : null}
-              </li>
-            ))}
+            {PREFECTURES.map((p) => {
+              const list = municipalitiesForPref(p.slug);
+              const ready = list.some((m) => m.status === 'ready');
+              return (
+                <li key={p.slug}>
+                  <Link href={`/${p.slug}`}>{isJa ? p.nameJa : p.nameEn}</Link>
+                  {!ready ? (
+                    <span className="muted">{isJa ? '（準備中）' : ' (coming soon)'}</span>
+                  ) : null}
+                </li>
+              );
+            })}
           </ol>
         </nav>
       </details>

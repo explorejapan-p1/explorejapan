@@ -82,7 +82,7 @@ export function shareMetadata(opts: ShareOpts): Metadata {
       languages: {
         ja,
         en,
-        'x-default': ja
+        'x-default': en
       }
     },
     openGraph: {
@@ -126,7 +126,7 @@ export function hreflangMetadata(
       languages: {
         ja,
         en,
-        'x-default': ja
+        'x-default': en
       }
     }
   };

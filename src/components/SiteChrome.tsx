@@ -5,6 +5,19 @@ import {Link, usePathname} from '@/i18n/navigation';
 import {LocaleSwitcher} from './LocaleSwitcher';
 import {BRAND_LOCKUP_SRC, BRAND_NAME_EN, BRAND_NAME_JA} from '@/lib/brand';
 
+
+function SocialRow({className}: {className: string}) {
+  return (
+    <nav className={className} aria-label="Social">
+      <a href="https://x.com/bokenjapan">X</a>
+      <a href="https://www.instagram.com/boken_japan/">Instagram</a>
+      <span>YouTube</span>
+      <span>Facebook</span>
+      <span>TikTok</span>
+    </nav>
+  );
+}
+
 type Props = {
   locale: string;
   children: React.ReactNode;
@@ -63,6 +76,7 @@ export function SiteChrome({locale, children, variant}: Props) {
               </a>
             ))}
           </nav>
+          <SocialRow className="door-social" />
           <p>
             {isJa
               ? '公開中の市町村ページへの案内。'
@@ -93,6 +107,7 @@ export function SiteChrome({locale, children, variant}: Props) {
         <p className="footer-brand">
           <img src={BRAND_LOCKUP_SRC} alt={brand} width={1024} height={1024} />
         </p>
+        <SocialRow className="site-social" />
         <p>
           {isJa
             ? '日本の市町村案内。'

@@ -5,12 +5,8 @@ import {KURASHIKI_PLACE_PHOTO} from '@/data/kurashiki';
 import {MATSUYAMA_PLACE_PHOTO} from '@/data/matsuyama';
 import {NARUTO_PLACE_PHOTO} from '@/data/naruto';
 import {TAKAMATSU_PLACE_PHOTO} from '@/data/takamatsu';
-import {EHIME_MUNICIPALITIES} from '@/data/ehime-municipalities';
-import {HIROSHIMA_MUNICIPALITIES} from '@/data/hiroshima-municipalities';
-import {KAGAWA_MUNICIPALITIES} from '@/data/kagawa-municipalities';
-import {KOCHI_MUNICIPALITIES} from '@/data/kochi-municipalities';
-import {OKAYAMA_MUNICIPALITIES} from '@/data/okayama-municipalities';
-import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
+import {municipalitiesForPref} from '@/data/municipalities';
+import {PREFECTURES} from '@/data/prefectures';
 import {routing, type AppLocale} from '@/i18n/routing';
 import {homeGraph} from '@/lib/jsonld';
 import {BRAND_OG_PHOTO, shareMetadata} from '@/lib/seo';
@@ -27,17 +23,16 @@ type Photo = {
 
 type Muni = {slug: string; nameJa: string; nameEn: string; status: string};
 
-const OKAYAMA_READY = new Set(['okayama', 'kurashiki', 'tsuyama']);
+const OKAYAMA_READY = new Set(['okayama', 'kurashiki', 'tsuyama', 'tamano']);
 const KOCHI_HOLD = new Set(['sakawa', 'tano']);
 
-const PREF_GROUPS: {id: string; nameJa: string; nameEn: string; list: readonly Muni[]}[] = [
-  {id: 'tokushima', nameJa: '徳島県', nameEn: 'Tokushima', list: TOKUSHIMA_MUNICIPALITIES},
-  {id: 'kagawa', nameJa: '香川県', nameEn: 'Kagawa', list: KAGAWA_MUNICIPALITIES},
-  {id: 'kochi', nameJa: '高知県', nameEn: 'Kochi', list: KOCHI_MUNICIPALITIES},
-  {id: 'ehime', nameJa: '愛媛県', nameEn: 'Ehime', list: EHIME_MUNICIPALITIES},
-  {id: 'hiroshima', nameJa: '広島県', nameEn: 'Hiroshima', list: HIROSHIMA_MUNICIPALITIES},
-  {id: 'okayama', nameJa: '岡山県', nameEn: 'Okayama', list: OKAYAMA_MUNICIPALITIES}
-];
+const PREF_GROUPS: {id: string; nameJa: string; nameEn: string; list: readonly Muni[]}[] =
+  PREFECTURES.filter((p) => municipalitiesForPref(p.slug).length > 0).map((p) => ({
+    id: p.slug,
+    nameJa: p.nameJa,
+    nameEn: p.nameEn,
+    list: municipalitiesForPref(p.slug)
+  }));
 
 function readyMunicipalities(pref: string, list: readonly Muni[]): Muni[] {
   return list.filter((m) => {
@@ -217,14 +212,24 @@ export default async function HomePage({params}: Props) {
           const towns = readyMunicipalities(group.id, group.list);
           return (
             <div className="door-pref" id={group.id} key={group.id}>
-              <h3>{isJa ? group.nameJa : group.nameEn}</h3>
-              <ul className="door-links">
-                {towns.map((m) => (
-                  <li key={m.slug}>
-                    <a href={muniHref(locale, group.id, m.slug)}>{isJa ? m.nameJa : m.nameEn}</a>
-                  </li>
-                ))}
-              </ul>
+              <h3>
+                <a href={withBase(`/${locale}/${group.id}/`)}>{isJa ? group.nameJa : group.nameEn}</a>
+              </h3>
+              {towns.length ? (
+                <ul className="door-links">
+                  {towns.map((m) => (
+                    <li key={m.slug}>
+                      <a href={muniHref(locale, group.id, m.slug)}>{isJa ? m.nameJa : m.nameEn}</a>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="door-pref-hold">
+                  <a href={withBase(`/${locale}/${group.id}/`)}>
+                    {isJa ? '市町村一覧（準備中）' : 'Municipality list (coming soon)'}
+                  </a>
+                </p>
+              )}
             </div>
           );
         })}

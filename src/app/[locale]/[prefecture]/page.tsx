@@ -120,19 +120,14 @@ import {KATSUURA_PLACE_PHOTO} from '@/data/katsuura';
 import {KAMIKATSU_PLACE_PHOTO} from '@/data/kamikatsu';
 import {SANAGOCHI_PLACE_PHOTO} from '@/data/sanagochi';
 import {KAMIYAMA_PLACE_PHOTO} from '@/data/kamiyama';
-import {KAGAWA_MUNICIPALITIES} from '@/data/kagawa-municipalities';
-import {KOCHI_MUNICIPALITIES} from '@/data/kochi-municipalities';
-import {EHIME_MUNICIPALITIES} from '@/data/ehime-municipalities';
-import {HIROSHIMA_MUNICIPALITIES} from '@/data/hiroshima-municipalities';
-import {OKAYAMA_MUNICIPALITIES} from '@/data/okayama-municipalities';
 import {TOKUSHIMA_CITY_PLACE_PHOTO} from '@/data/tokushima-city';
 import {PREFECTURES, PREFECTURE_BY_SLUG} from '@/data/prefectures';
-import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
+import {municipalitiesForPref} from '@/data/municipalities';
 import {Link} from '@/i18n/navigation';
 import {type AppLocale} from '@/i18n/routing';
 import {JsonLd} from '@/components/JsonLd';
 import {prefectureGraph} from '@/lib/jsonld';
-import {shareMetadata} from '@/lib/seo';
+import {BRAND_OG_PHOTO, shareMetadata} from '@/lib/seo';
 
 
 /** Pref-card covers: every ready slug must map here (else falls to Mima wakimachi). TG614-615. */
@@ -271,7 +266,7 @@ export async function generateMetadata({params}: Props) {
   if (!pref) return {};
   const loc = (locale === 'en' ? 'en' : 'ja') as AppLocale;
   const name = loc === 'ja' ? pref.nameJa : pref.nameEn;
-  const live = pref.slug === 'tokushima' || pref.slug === 'kagawa' || pref.slug === 'kochi' || pref.slug === 'ehime' || pref.slug === 'hiroshima' || pref.slug === 'okayama';
+  const live = municipalitiesForPref(pref.slug).length > 0;
   return shareMetadata({
     locale: loc,
     rest: pref.slug,
@@ -300,10 +295,14 @@ export async function generateMetadata({params}: Props) {
           ? loc === 'ja'
             ? '岡山県の市町村案内。'
             : 'Municipalities in Okayama.'
-        : loc === 'ja'
-          ? 'この県の市町村ページは準備中です。'
-          : 'This prefecture layer is not wired yet.',
-    image: pref.slug === 'okayama' ? OKAYAMA_PLACE_PHOTO : pref.slug === 'hiroshima' ? HIROSHIMA_PLACE_PHOTO : pref.slug === 'ehime' ? MATSUYAMA_PLACE_PHOTO : pref.slug === 'kochi' ? KOCHI_PLACE_PHOTO : pref.slug === 'kagawa' ? TAKAMATSU_PLACE_PHOTO : MIMA_PLACE_PHOTO,
+        : live
+          ? loc === 'ja'
+            ? `${pref.nameJa}の市町村案内。`
+            : `Municipalities in ${pref.nameEn}.`
+          : loc === 'ja'
+            ? 'この県の市町村ページは準備中です。'
+            : 'This prefecture layer is not wired yet.',
+    image: pref.slug === 'okayama' ? OKAYAMA_PLACE_PHOTO : pref.slug === 'hiroshima' ? HIROSHIMA_PLACE_PHOTO : pref.slug === 'ehime' ? MATSUYAMA_PLACE_PHOTO : pref.slug === 'kochi' ? KOCHI_PLACE_PHOTO : pref.slug === 'kagawa' ? TAKAMATSU_PLACE_PHOTO : pref.slug === 'tokushima' ? MIMA_PLACE_PHOTO : BRAND_OG_PHOTO,
     index: live
   });
 }
@@ -327,10 +326,10 @@ export default async function PrefecturePage({params}: Props) {
         <span>{name}</span>
       </nav>
       <h1>{name}</h1>
-      {pref.slug === 'tokushima' || pref.slug === 'kagawa' || pref.slug === 'kochi' || pref.slug === 'ehime' || pref.slug === 'hiroshima' || pref.slug === 'okayama' ? (
+      {municipalitiesForPref(pref.slug).length > 0 ? (
         <>
           <ul className="muni-cards">
-            {(pref.slug === 'tokushima' ? TOKUSHIMA_MUNICIPALITIES : pref.slug === 'kagawa' ? KAGAWA_MUNICIPALITIES : pref.slug === 'ehime' ? EHIME_MUNICIPALITIES : pref.slug === 'hiroshima' ? HIROSHIMA_MUNICIPALITIES : pref.slug === 'okayama' ? OKAYAMA_MUNICIPALITIES : KOCHI_MUNICIPALITIES).map((m) => {
+            {municipalitiesForPref(pref.slug).map((m) => {
               const live = m.status === 'ready';
               const photo: MimaPlacePhoto =
                 MUNI_CARD_PHOTO[m.slug] ?? MIMA_PLACE_PHOTO;

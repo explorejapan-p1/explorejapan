@@ -6,13 +6,13 @@
   "home": {
     "h1": "Open a municipality.",
     "line": "Click a prefecture",
-    "lede": "Tokushima, Kagawa, Kochi, Ehime, Hiroshima. In Okayama: Okayama, Kurashiki, and Tsuyama.",
+    "lede": "Open any prefecture for its municipality list. Ready hubs today: Tokushima, Kagawa, Kochi, Ehime, Hiroshima, and Okayama (Okayama, Kurashiki, Tsuyama, Tamano).",
     "explain": "Each name opens that municipality page. The photographs are already on those pages.",
     "directory": "Directory",
     "open": "Open"
   },
   "pref": {
-    "rolling": "The municipality layer for this prefecture is not wired yet. Start from the open Shikoku prefectures.",
+    "rolling": "The municipality layer for this prefecture is not wired yet. Start from the prefectures that are already open.",
     "back": "Back to the national map"
   },
   "muni": {

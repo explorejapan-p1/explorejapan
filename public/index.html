@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="robots" content="index, follow" />
-<title>市町村を開く。</title>
+<title>Open a municipality.</title>
 <script>
 (function () {
-  var loc = 'ja';
+  var loc = 'en';
   try {
     var stored = localStorage.getItem('explorejapan-locale');
     if (stored === 'ja' || stored === 'en') {
@@ -17,17 +17,17 @@
   } catch (e) {}
   var langs = (navigator.languages && navigator.languages.length)
     ? navigator.languages
-    : [navigator.language || 'ja'];
+    : [navigator.language || 'en'];
   for (var i = 0; i < langs.length; i++) {
     var tag = String(langs[i] || '').toLowerCase();
-    if (tag.indexOf('ja') === 0) { loc = 'ja'; break; }
     if (tag.indexOf('en') === 0) { loc = 'en'; break; }
+    if (tag.indexOf('ja') === 0) { loc = 'ja'; break; }
   }
   location.replace('./' + loc + '/');
 })();
 </script>
 </head>
 <body>
-<p><a href="./ja/">日本語</a> · <a href="./en/">English</a></p>
+<p><a href="./en/">English</a> · <a href="./ja/">日本語</a></p>
 </body>
 </html>
