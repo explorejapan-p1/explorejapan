@@ -1,12 +1,119 @@
 import {getTranslations, setRequestLocale} from 'next-intl/server';
-import {JapanMap} from '@/components/JapanMap';
 import {JsonLd} from '@/components/JsonLd';
-import {BASE_PATH, MIMA, MIMA_PLACE_PHOTO} from '@/data/mima';
+import {BASE_PATH, MIMA_PLACE_PHOTO} from '@/data/mima';
+import {KURASHIKI_PLACE_PHOTO} from '@/data/kurashiki';
+import {MATSUYAMA_PLACE_PHOTO} from '@/data/matsuyama';
+import {NARUTO_PLACE_PHOTO} from '@/data/naruto';
+import {TAKAMATSU_PLACE_PHOTO} from '@/data/takamatsu';
+import {EHIME_MUNICIPALITIES} from '@/data/ehime-municipalities';
+import {HIROSHIMA_MUNICIPALITIES} from '@/data/hiroshima-municipalities';
+import {KAGAWA_MUNICIPALITIES} from '@/data/kagawa-municipalities';
+import {KOCHI_MUNICIPALITIES} from '@/data/kochi-municipalities';
+import {OKAYAMA_MUNICIPALITIES} from '@/data/okayama-municipalities';
+import {TOKUSHIMA_MUNICIPALITIES} from '@/data/tokushima-municipalities';
 import {routing, type AppLocale} from '@/i18n/routing';
 import {homeGraph} from '@/lib/jsonld';
 import {BRAND_OG_PHOTO, shareMetadata} from '@/lib/seo';
 
 type Props = {params: Promise<{locale: string}>};
+
+type Photo = {
+  src: string;
+  altJa: string;
+  altEn: string;
+  license: string;
+  commons: string;
+};
+
+type Muni = {slug: string; nameJa: string; nameEn: string; status: string};
+
+const OKAYAMA_READY = new Set(['okayama', 'kurashiki', 'tsuyama']);
+const KOCHI_HOLD = new Set(['sakawa', 'tano']);
+
+const PREF_GROUPS: {id: string; nameJa: string; nameEn: string; list: readonly Muni[]}[] = [
+  {id: 'tokushima', nameJa: '徳島県', nameEn: 'Tokushima', list: TOKUSHIMA_MUNICIPALITIES},
+  {id: 'kagawa', nameJa: '香川県', nameEn: 'Kagawa', list: KAGAWA_MUNICIPALITIES},
+  {id: 'kochi', nameJa: '高知県', nameEn: 'Kochi', list: KOCHI_MUNICIPALITIES},
+  {id: 'ehime', nameJa: '愛媛県', nameEn: 'Ehime', list: EHIME_MUNICIPALITIES},
+  {id: 'hiroshima', nameJa: '広島県', nameEn: 'Hiroshima', list: HIROSHIMA_MUNICIPALITIES},
+  {id: 'okayama', nameJa: '岡山県', nameEn: 'Okayama', list: OKAYAMA_MUNICIPALITIES}
+];
+
+function readyMunicipalities(pref: string, list: readonly Muni[]): Muni[] {
+  return list.filter((m) => {
+    if (m.status !== 'ready') return false;
+    if (pref === 'kochi' && KOCHI_HOLD.has(m.slug)) return false;
+    if (pref === 'okayama' && !OKAYAMA_READY.has(m.slug)) return false;
+    return true;
+  });
+}
+
+const FEATURE = {
+  photo: KURASHIKI_PLACE_PHOTO as Photo,
+  pref: 'okayama',
+  slug: 'kurashiki',
+  nameJa: '倉敷市',
+  nameEn: 'Kurashiki',
+  placeJa: '倉敷美観地区',
+  placeEn: 'Kurashiki Bikan historical quarter'
+};
+
+const ROWS: {
+  photo: Photo;
+  pref: string;
+  slug: string;
+  titleJa: string;
+  titleEn: string;
+  bodyJa: string;
+  bodyEn: string;
+  linkJa: string;
+  linkEn: string;
+}[] = [
+  {
+    photo: MIMA_PLACE_PHOTO,
+    pref: 'tokushima',
+    slug: 'mima',
+    titleJa: '脇町南町',
+    titleEn: 'Wakimachi Minami-machi',
+    bodyJa: 'うだつの町並み。美馬市のページにある写真です。',
+    bodyEn: 'The udatsu townscape. This photograph is the one on the Mima page.',
+    linkJa: '美馬市',
+    linkEn: 'Mima'
+  },
+  {
+    photo: TAKAMATSU_PLACE_PHOTO,
+    pref: 'kagawa',
+    slug: 'takamatsu',
+    titleJa: '栗林公園',
+    titleEn: 'Ritsurin Garden',
+    bodyJa: '観月橋。高松市のページにある写真です。',
+    bodyEn: 'Kangetsu Bridge. This photograph is the one on the Takamatsu page.',
+    linkJa: '高松市',
+    linkEn: 'Takamatsu'
+  },
+  {
+    photo: MATSUYAMA_PLACE_PHOTO,
+    pref: 'ehime',
+    slug: 'matsuyama',
+    titleJa: '松山城',
+    titleEn: 'Matsuyama Castle',
+    bodyJa: '本丸の桜。松山市のページにある写真です。',
+    bodyEn: 'The main bailey in cherry blossom. This photograph is the one on the Matsuyama page.',
+    linkJa: '松山市',
+    linkEn: 'Matsuyama'
+  },
+  {
+    photo: NARUTO_PLACE_PHOTO,
+    pref: 'tokushima',
+    slug: 'naruto',
+    titleJa: '鳴門の渦潮',
+    titleEn: 'Naruto whirlpools',
+    bodyJa: '渦の道からの写真。鳴門市のページにあるものです。',
+    bodyEn: 'From Uzunomichi. This photograph is the one on the Naruto page.',
+    linkJa: '鳴門市',
+    linkEn: 'Naruto'
+  }
+];
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
@@ -19,13 +126,14 @@ export async function generateMetadata({params}: Props) {
   return shareMetadata({
     locale: loc,
     title: t('h1'),
-    description:
-      loc === 'ja'
-        ? '日本の市町村案内。'
-        : 'A Japan municipalities guide.',
+    description: t('explain'),
     image: BRAND_OG_PHOTO,
     index: true
   });
+}
+
+function muniHref(locale: string, pref: string, slug: string) {
+  return `${BASE_PATH}/${locale}/${pref}/${slug}/`;
 }
 
 export default async function HomePage({params}: Props) {
@@ -34,34 +142,93 @@ export default async function HomePage({params}: Props) {
   const t = await getTranslations('home');
   const isJa = locale === 'ja';
   const loc = (locale === 'en' ? 'en' : 'ja') as AppLocale;
-  const cityHref = `${BASE_PATH}/${locale}/${MIMA.prefectureSlug}/${MIMA.slug}/`;
+  const featureHref = muniHref(locale, FEATURE.pref, FEATURE.slug);
 
   return (
-    <div className="home-stage" data-home="">
+    <div className="door-page">
       <JsonLd data={homeGraph(loc)} />
-      <h1 className="sr-only">{t('h1')}</h1>
-      <div className="home-split">
-        <a className="home-featured" href={cityHref}>
-          <img
-            src={MIMA_PLACE_PHOTO.src}
-            alt={isJa ? MIMA_PLACE_PHOTO.altJa : MIMA_PLACE_PHOTO.altEn}
-            width={1600}
-            height={1067}
-          />
-          <span className="home-featured-copy">
-            <span className="home-featured-kicker">
-              {isJa ? MIMA.prefectureJa : MIMA.prefectureEn}
+      <header className="door-intro">
+        <h1>{t('h1')}</h1>
+        <p className="door-lede">{t('lede')}</p>
+      </header>
+
+      <section className="door-feature" aria-label={isJa ? FEATURE.placeJa : FEATURE.placeEn}>
+        <div className="door-frame">
+          <a className="door-frame-link" href={featureHref}>
+            <img
+              src={FEATURE.photo.src}
+              alt={isJa ? FEATURE.photo.altJa : FEATURE.photo.altEn}
+              width={1600}
+              height={1067}
+            />
+            <span className="door-pill">
+              <span>{isJa ? FEATURE.nameJa : FEATURE.nameEn}</span>
+              <span className="door-pill-go">{t('open')}</span>
             </span>
-            <span className="home-featured-name">{isJa ? MIMA.nameJa : MIMA.nameEn}</span>
-            <span className="home-featured-cite">
-              {isJa
-                ? `出典 ${MIMA_PLACE_PHOTO.altJa} · ${MIMA_PLACE_PHOTO.author} · ${MIMA_PLACE_PHOTO.license}`
-                : `Source ${MIMA_PLACE_PHOTO.altEn} · ${MIMA_PLACE_PHOTO.author} · ${MIMA_PLACE_PHOTO.license}`}
-            </span>
-          </span>
-        </a>
-        <JapanMap locale={locale} overlay={t('line')} />
+          </a>
+        </div>
+        <p className="door-cite">
+          <a href={FEATURE.photo.commons}>
+            {isJa ? FEATURE.photo.altJa : FEATURE.photo.altEn}
+            {' · '}
+            {FEATURE.photo.license}
+          </a>
+        </p>
+      </section>
+
+      <p className="door-explain">{t('explain')}</p>
+
+      <div className="door-rows">
+        {ROWS.map((row, i) => {
+          const href = muniHref(locale, row.pref, row.slug);
+          const flip = i % 2 === 1;
+          return (
+            <article className={flip ? 'door-row is-flip' : 'door-row'} key={row.slug}>
+              <a className="door-row-fig" href={href}>
+                <img
+                  src={row.photo.src}
+                  alt={isJa ? row.photo.altJa : row.photo.altEn}
+                  width={1200}
+                  height={800}
+                />
+              </a>
+              <div className="door-row-copy">
+                <h2>{isJa ? row.titleJa : row.titleEn}</h2>
+                <p>{isJa ? row.bodyJa : row.bodyEn}</p>
+                <a className="door-more" href={href}>
+                  {isJa ? row.linkJa : row.linkEn}
+                </a>
+                <p className="door-cite">
+                  <a href={row.photo.commons}>
+                    {isJa ? row.photo.altJa : row.photo.altEn}
+                    {' · '}
+                    {row.photo.license}
+                  </a>
+                </p>
+              </div>
+            </article>
+          );
+        })}
       </div>
+
+      <section className="door-directory" id="directory" aria-labelledby="directory-heading">
+        <h2 id="directory-heading">{t('directory')}</h2>
+        {PREF_GROUPS.map((group) => {
+          const towns = readyMunicipalities(group.id, group.list);
+          return (
+            <div className="door-pref" id={group.id} key={group.id}>
+              <h3>{isJa ? group.nameJa : group.nameEn}</h3>
+              <ul className="door-links">
+                {towns.map((m) => (
+                  <li key={m.slug}>
+                    <a href={muniHref(locale, group.id, m.slug)}>{isJa ? m.nameJa : m.nameEn}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
+      </section>
     </div>
   );
 }

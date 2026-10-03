@@ -4,8 +4,12 @@
     "unpublished": "Unpublished v0"
   },
   "home": {
-    "h1": "Japan Municipalities Guide",
-    "line": "Click a prefecture"
+    "h1": "Open a municipality.",
+    "line": "Click a prefecture",
+    "lede": "Tokushima, Kagawa, Kochi, Ehime, Hiroshima. In Okayama: Okayama, Kurashiki, and Tsuyama.",
+    "explain": "Each name opens that municipality page. The photographs are already on those pages.",
+    "directory": "Directory",
+    "open": "Open"
   },
   "pref": {
     "rolling": "The municipality layer for this prefecture is not wired yet. Start from the open Shikoku prefectures.",
