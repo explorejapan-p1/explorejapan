@@ -42,10 +42,10 @@ function wikiPhoto(
   file: string, commons: string, license: string, licenseUrl: string,
   author: string, authorUrl: string, taken: string, altJa: string, altEn: string
 ): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-08', altJa, altEn};
+  return {src:`/media/${file}`, commons, license, licenseUrl, author, authorUrl, taken, accessed:'2026-09-08', altJa, altEn};
 }
 function sourcePhoto(file: string, altJa: string, altEn: string, page: string, author: string): MimaPlacePhoto {
-  return {src:`/explorejapan/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-08', altJa, altEn};
+  return {src:`/media/${file}`, commons:page, license:'出典', licenseUrl:page, author, authorUrl:page, taken:'2026', accessed:'2026-09-08', altJa, altEn};
 }
 
 /** Cover: Cape Ashizuri. */

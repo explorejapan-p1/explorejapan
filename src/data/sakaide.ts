@@ -51,7 +51,7 @@ function wikiPhoto(
   altEn: string
 ): MimaPlacePhoto {
   return {
-    src: `/explorejapan/media/${file}`,
+    src: `/media/${file}`,
     commons,
     license,
     licenseUrl,
@@ -72,7 +72,7 @@ function sourcePhoto(
   author: string
 ): MimaPlacePhoto {
   return {
-    src: `/explorejapan/media/${file}`,
+    src: `/media/${file}`,
     commons: page,
     license: '出典',
     licenseUrl: page,

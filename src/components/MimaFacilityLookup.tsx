@@ -9,7 +9,7 @@ import {
   type FacilityRow,
   type MimaOfficialMap
 } from '@/data/facility-schema';
-import {BASE_PATH, isCommonsPhoto} from '@/data/mima';
+import {isCommonsPhoto, withBase} from '@/data/mima';
 import {
   TOP_CHIPS,
   TOP_CHIP_COUNTS,
@@ -166,7 +166,7 @@ function dedupeMapPoints(
 }
 
 function chipHref(next: FilterId, q: string, locale: string, slug: string, id?: string, prefectureSlug = 'tokushima'): string {
-  const path = `${BASE_PATH}/${locale}/${prefectureSlug}/${slug}/`;
+  const path = withBase(`/${locale}/${prefectureSlug}/${slug}/`);
   if (next === 'stay' && !q && !id) return path;
   const parts: string[] = [];
   if (next !== 'stay') parts.push(`c=${encodeURIComponent(next)}`);
@@ -589,7 +589,7 @@ export function MimaFacilityLookup({
         <form
           className="lookup-search-row"
           method="get"
-          action={`${BASE_PATH}/${locale}/${town.prefectureSlug}/${town.slug}/`}
+          action={withBase(`/${locale}/${town.prefectureSlug}/${town.slug}/`)}
           onSubmit={(event) => {
             const fd = new FormData(event.currentTarget);
             const submitted = String(fd.get('q') ?? '').trim();

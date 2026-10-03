@@ -1,7 +1,7 @@
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {TokushimaMap} from '@/components/TokushimaMap';
-import {MIMA_PLACE_PHOTO, BASE_PATH, type MimaPlacePhoto} from '@/data/mima';
+import {MIMA_PLACE_PHOTO, withBase, type MimaPlacePhoto} from '@/data/mima';
 import {TSURUGI_PLACE_PHOTO} from '@/data/tsurugi';
 import {YOSHINOGAWA_PLACE_PHOTO} from '@/data/yoshinogawa';
 import {MIYOSHI_PLACE_PHOTO} from '@/data/miyoshi';
@@ -88,6 +88,7 @@ import {HIROSHIMA_PLACE_PHOTO} from '@/data/hiroshima';
 import {OKAYAMA_PLACE_PHOTO} from '@/data/okayama';
 import {KURASHIKI_PLACE_PHOTO} from '@/data/kurashiki';
 import {TSUYAMA_PLACE_PHOTO} from '@/data/tsuyama';
+import {TAMANO_PLACE_PHOTO} from '@/data/tamano';
 import {KURE_PLACE_PHOTO} from '@/data/kure';
 import {TAKEHARA_PLACE_PHOTO} from '@/data/takehara';
 import {MIHARASHI_PLACE_PHOTO} from '@/data/miharashi';
@@ -255,6 +256,7 @@ const MUNI_CARD_PHOTO: Record<string, MimaPlacePhoto> = {
   okayama: OKAYAMA_PLACE_PHOTO,
   kurashiki: KURASHIKI_PLACE_PHOTO,
   tsuyama: TSUYAMA_PLACE_PHOTO,
+  tamano: TAMANO_PLACE_PHOTO,
 };
 
 type Props = {params: Promise<{locale: string; prefecture: string}>};
@@ -332,7 +334,7 @@ export default async function PrefecturePage({params}: Props) {
               const live = m.status === 'ready';
               const photo: MimaPlacePhoto =
                 MUNI_CARD_PHOTO[m.slug] ?? MIMA_PLACE_PHOTO;
-              const href = `${BASE_PATH}/${locale}/${pref.slug}/${m.slug}/`;
+              const href = withBase(`/${locale}/${pref.slug}/${m.slug}/`);
               return (
                 <li key={m.slug} className={live ? 'muni-card is-live' : 'muni-card is-hold'}>
                   {live ? (

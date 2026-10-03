@@ -797,6 +797,7 @@ import {JINSEIKOGEN, JINSEIKOGEN_PLACE_PHOTO, JINSEIKOGEN_FACILITIES, JINSEIKOGE
 import {OKAYAMA, OKAYAMA_PLACE_PHOTO, OKAYAMA_FACILITIES, OKAYAMA_EXPECTED_GEO_COUNT, OKAYAMA_EXPECTED_ROW_COUNT} from './okayama';
 import {KURASHIKI, KURASHIKI_PLACE_PHOTO, KURASHIKI_FACILITIES, KURASHIKI_EXPECTED_GEO_COUNT, KURASHIKI_EXPECTED_ROW_COUNT} from './kurashiki';
 import {TSUYAMA, TSUYAMA_PLACE_PHOTO, TSUYAMA_FACILITIES, TSUYAMA_EXPECTED_GEO_COUNT, TSUYAMA_EXPECTED_ROW_COUNT} from './tsuyama';
+import {TAMANO, TAMANO_PLACE_PHOTO, TAMANO_FACILITIES, TAMANO_EXPECTED_GEO_COUNT, TAMANO_EXPECTED_ROW_COUNT} from './tamano';
 import {
   OTSUKI_TRAVEL_DINING,
   OTSUKI_TRAVEL_STAY,
@@ -1133,6 +1134,13 @@ import {
   TSUYAMA_TRAVEL_COMMERCE,
   TSUYAMA_TRAVEL_ALL
 } from './tsuyama-travel';
+import {
+  TAMANO_TRAVEL_DINING,
+  TAMANO_TRAVEL_STAY,
+  TAMANO_TRAVEL_SHOPPING,
+  TAMANO_TRAVEL_COMMERCE,
+  TAMANO_TRAVEL_ALL
+} from './tamano-travel';
 
 
 
@@ -4231,6 +4239,37 @@ export const TSUYAMA_LOOKUP: LookupTown = {
   licenseSiteEn: 'Site display follows source attribution.'
 };
 
+export const TAMANO_LOOKUP: LookupTown = {
+  slug: 'tamano',
+  prefectureSlug: 'okayama',
+  jis: TAMANO.jis,
+  nameJa: TAMANO.nameJa,
+  nameEn: TAMANO.nameEn,
+  heroPhoto: TAMANO_PLACE_PHOTO,
+  photoCiteJa: '写真は渋川海水浴場。岡山観光WEB（accessed 2026-10-03）。',
+  photoCiteEn: 'Photo: Shibukawa beach. Okayama tourism WEB (accessed 2026-10-03).',
+  rows: TAMANO_FACILITIES,
+  expectedGeo: TAMANO_EXPECTED_GEO_COUNT,
+  expectedRows: TAMANO_EXPECTED_ROW_COUNT,
+  travelDining: TAMANO_TRAVEL_DINING,
+  travelStay: TAMANO_TRAVEL_STAY,
+  travelShopping: TAMANO_TRAVEL_SHOPPING,
+  travelCommerce: TAMANO_TRAVEL_COMMERCE,
+  travelAll: TAMANO_TRAVEL_ALL,
+  coverageJa:
+    '玉野市（JIS 33204・岡山県）。観光19・宿泊9・飲食1・温泉2・体験10。買物・商業は未掲載。',
+  coverageEn:
+    'Tamano City (JIS 33204), 19 tourism + 9 stay + 1 dining + 2 onsen + 10 experience with sourced photos. Shopping/commerce: 0.',
+  mapLabelJa: '玉野市の出典座標31件',
+  mapLabelEn: '31 sourced coordinates in Tamano City',
+  mapCitePackJa: '点は岡山観光WEBの地図座標（accessed 2026-10-03）。施設行は岡山観光WEBと各施設公式。',
+  mapCitePackEn: 'Points: Okayama tourism WEB map coordinates (accessed 2026-10-03). Facility rows from that site and each facility page.',
+  licenseNoteJa: '行は岡山観光WEB掲載・city.tamano.lg.jp由来。オープンデータ包とは混ぜません。',
+  licenseNoteEn: 'Rows are Okayama tourism WEB listings, hall facts from city.tamano.lg.jp, not under Our Open Data.',
+  licenseSiteJa: 'サイト表示は出典表記。',
+  licenseSiteEn: 'Site display follows source attribution.'
+};
+
 export const JINSEIKOGEN_LOOKUP: LookupTown = {
   slug: 'jinseikogen',
   prefectureSlug: 'hiroshima',
@@ -5346,6 +5385,7 @@ const BY_SLUG: Record<ReadySlug, LookupTown> = {
   okayama: OKAYAMA_LOOKUP,
   kurashiki: KURASHIKI_LOOKUP,
   tsuyama: TSUYAMA_LOOKUP,
+  tamano: TAMANO_LOOKUP,
   sera: SERA_LOOKUP
 };
 

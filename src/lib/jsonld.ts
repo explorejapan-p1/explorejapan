@@ -114,6 +114,7 @@ import {JINSEIKOGEN, JINSEIKOGEN_PLACE_PHOTO} from '@/data/jinseikogen';
 import {OKAYAMA, OKAYAMA_PLACE_PHOTO} from '@/data/okayama';
 import {KURASHIKI, KURASHIKI_PLACE_PHOTO} from '@/data/kurashiki';
 import {TSUYAMA, TSUYAMA_PLACE_PHOTO} from '@/data/tsuyama';
+import {TAMANO, TAMANO_PLACE_PHOTO} from '@/data/tamano';
 import {prefSlugForReady, type ReadySlug} from '@/data/lookup-town';
 import {KAIYO, KAIYO_PLACE_PHOTO} from '@/data/kaiyo';
 import {NARUTO, NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -304,6 +305,7 @@ function localityJa(slug: string): string {
   if (slug === 'okayama') return OKAYAMA.nameJa;
   if (slug === 'kurashiki') return KURASHIKI.nameJa;
   if (slug === 'tsuyama') return TSUYAMA.nameJa;
+  if (slug === 'tamano') return TAMANO.nameJa;
   return MIMA.nameJa;
 }
 
@@ -411,6 +413,7 @@ function localityEn(slug: string): string {
   if (slug === 'okayama') return OKAYAMA.nameEn;
   if (slug === 'kurashiki') return KURASHIKI.nameEn;
   if (slug === 'tsuyama') return TSUYAMA.nameEn;
+  if (slug === 'tamano') return TAMANO.nameEn;
   return MIMA.nameEn;
 }
 
@@ -5685,6 +5688,58 @@ export function tsuyamaGraph(locale: AppLocale) {
             {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
             {'@type': 'ListItem', position: 2, name: isJa ? TSUYAMA.prefectureJa : TSUYAMA.prefectureEn, item: canonicalUrl(locale, 'okayama')},
             {'@type': 'ListItem', position: 3, name: isJa ? TSUYAMA.nameJa : TSUYAMA.nameEn, item: url}
+          ]
+        }
+      }
+    ]
+  };
+}
+
+
+export function tamanoGraph(locale: AppLocale) {
+  const url = canonicalUrl(locale, 'okayama/tamano');
+  const origin = siteOrigin();
+  const isJa = locale === 'ja';
+  const featured = featuredListings('tamano');
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'TouristDestination',
+        '@id': `${url}#place`,
+        name: isJa ? TAMANO.nameJa : TAMANO.nameEn,
+        alternateName: isJa ? TAMANO.nameEn : TAMANO.nameJa,
+        identifier: TAMANO.jis,
+        url,
+        image: photoAbs(TAMANO_PLACE_PHOTO),
+        sameAs: [TAMANO.sameAs],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: isJa ? '宇野1-27-1' : '1-27-1 Uno',
+          addressLocality: isJa ? TAMANO.nameJa : TAMANO.nameEn,
+          addressRegion: isJa ? TAMANO.prefectureJa : TAMANO.prefectureEn,
+          postalCode: TAMANO.hall.postalCode,
+          addressCountry: 'JP'
+        },
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: isJa ? TAMANO.prefectureJa : TAMANO.prefectureEn
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url,
+        name: isJa ? TAMANO.nameJa : TAMANO.nameEn,
+        inLanguage: locale,
+        isPartOf: {'@id': `${origin}/#website`},
+        about: {'@id': `${url}#place`},
+        breadcrumb: {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {'@type': 'ListItem', position: 1, name: isJa ? '全国' : 'Japan', item: canonicalUrl(locale)},
+            {'@type': 'ListItem', position: 2, name: isJa ? TAMANO.prefectureJa : TAMANO.prefectureEn, item: canonicalUrl(locale, 'okayama')},
+            {'@type': 'ListItem', position: 3, name: isJa ? TAMANO.nameJa : TAMANO.nameEn, item: url}
           ]
         }
       }

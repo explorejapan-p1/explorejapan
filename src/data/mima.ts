@@ -90,7 +90,7 @@ export type MimaPlacePhoto = {
 };
 
 export const MIMA_PLACE_PHOTO = {
-  src: '/explorejapan/media/wakimachi-minami-machi-20250828.jpg',
+  src: '/media/wakimachi-minami-machi-20250828.jpg',
   commons: 'https://commons.wikimedia.org/wiki/File:Wakimati_minamimati_20250828_2.jpg',
   license: 'CC0 1.0',
   licenseUrl: 'https://creativecommons.org/publicdomain/zero/1.0/',
@@ -103,7 +103,7 @@ export const MIMA_PLACE_PHOTO = {
 } as const satisfies MimaPlacePhoto;
 
 const YOSHIDA_PHOTO = {
-  src: '/explorejapan/media/yoshida-ke-jutaku-20121212.jpg',
+  src: '/media/yoshida-ke-jutaku-20121212.jpg',
   commons: 'https://commons.wikimedia.org/wiki/File:吉田家住宅.jpg',
   license: 'CC BY-SA 3.0',
   licenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0/',
@@ -116,7 +116,7 @@ const YOSHIDA_PHOTO = {
 } as const satisfies MimaPlacePhoto;
 
 const YOSHINOGAWA_PHOTO = {
-  src: '/explorejapan/media/yoshinogawa-anabuki-mima-20080226.jpg',
+  src: '/media/yoshinogawa-anabuki-mima-20080226.jpg',
   commons:
     'https://commons.wikimedia.org/wiki/File:Rivieren_de_Yoshino_en_Anabuki_in_Mima,_Tokushima,_Japan.jpg',
   license: 'CC BY-SA 3.0',
@@ -131,7 +131,7 @@ const YOSHINOGAWA_PHOTO = {
 
 
 const IKEZUKI_PHOTO = {
-  src: '/explorejapan/media/ikezuki-park-mima-20091129.jpg',
+  src: '/media/ikezuki-park-mima-20091129.jpg',
   commons:
     'https://commons.wikimedia.org/wiki/File:Ikezuki_Park,_Mima_Town,_Mima_City,_Tokushima,_Japan.JPG',
   license: 'CC BY 3.0',
@@ -145,7 +145,7 @@ const IKEZUKI_PHOTO = {
 } as const satisfies MimaPlacePhoto;
 
 const MIKI_PHOTO = {
-  src: '/explorejapan/media/miki-ke-jutaku-koyadaira-20091207.jpg',
+  src: '/media/miki-ke-jutaku-koyadaira-20091207.jpg',
   commons: 'https://commons.wikimedia.org/wiki/File:Miki_Residence,_Mima_City,_Koyadaira.JPG',
   license: 'CC BY 3.0',
   licenseUrl: 'https://creativecommons.org/licenses/by/3.0/',
@@ -158,7 +158,7 @@ const MIKI_PHOTO = {
 } as const satisfies MimaPlacePhoto;
 
 const BLUE_VILLA_PHOTO = {
-  src: '/explorejapan/media/blue-villa-anabuki-20210725.jpg',
+  src: '/media/blue-villa-anabuki-20210725.jpg',
   commons: 'https://commons.wikimedia.org/wiki/File:Blue_Villa_Anabuki.jpeg',
   license: 'CC0 1.0',
   licenseUrl: 'https://creativecommons.org/publicdomain/zero/1.0/',
@@ -171,7 +171,7 @@ const BLUE_VILLA_PHOTO = {
 } as const satisfies MimaPlacePhoto;
 
 const TAOKA_PHOTO = {
-  src: '/explorejapan/media/kappo-ryokan-taoka-202208.jpg',
+  src: '/media/kappo-ryokan-taoka-202208.jpg',
   commons: 'https://commons.wikimedia.org/wiki/File:Kappo_Ryokan_Taoka_ac_(1).jpg',
   license: 'CC BY-SA 4.0',
   licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
@@ -184,7 +184,7 @@ const TAOKA_PHOTO = {
 } as const satisfies MimaPlacePhoto;
 
 const TSURUGI_YU_PHOTO = {
-  src: '/explorejapan/media/tsurugi-no-yu-ozakura-20091207.jpg',
+  src: '/media/tsurugi-no-yu-ozakura-20091207.jpg',
   commons:
     'https://commons.wikimedia.org/wiki/File:Tsurugi_no_yu_(onsen),_Mima_City,_Koyadaira.JPG',
   license: 'CC BY 3.0',
@@ -198,7 +198,7 @@ const TSURUGI_YU_PHOTO = {
 } as const satisfies MimaPlacePhoto;
 
 const TSURUGISAN_HUTTE_PHOTO = {
-  src: '/explorejapan/media/tsurugisan-chojo-hutte-20060727.jpg',
+  src: '/media/tsurugisan-chojo-hutte-20060727.jpg',
   commons: 'https://commons.wikimedia.org/wiki/File:TSURUGISAN-CHOJO-HUTTE.JPG',
   license: 'CC BY 3.0',
   licenseUrl: 'https://creativecommons.org/licenses/by/3.0/',
@@ -220,7 +220,7 @@ function rakutenPhoto(
   page: string
 ): MimaPlacePhoto {
   return {
-    src: `/explorejapan/media/${file}`,
+    src: `/media/${file}`,
     commons: page,
     license: '出典',
     licenseUrl: page,
@@ -241,7 +241,7 @@ function bureauPhoto(
   page: string
 ): MimaPlacePhoto {
   return {
-    src: `/explorejapan/media/${file}`,
+    src: `/media/${file}`,
     commons: page,
     license: '出典',
     licenseUrl: page,
@@ -262,7 +262,7 @@ function cityPhoto(
   page: string
 ): MimaPlacePhoto {
   return {
-    src: `/explorejapan/media/${file}`,
+    src: `/media/${file}`,
     commons: page,
     license: '出典',
     licenseUrl: page,
@@ -288,7 +288,7 @@ function wikiPhoto(
   altEn: string
 ): MimaPlacePhoto {
   return {
-    src: `/explorejapan/media/${file}`,
+    src: `/media/${file}`,
     commons,
     license,
     licenseUrl,
@@ -1285,5 +1285,9 @@ export const N03_CITATION = {
     '測量法に基づく国土地理院長承認（複製）R 7JHf 351。二次利用には国土地理院への申請が必要な場合があります。'
 } as const;
 
-export const BASE_PATH = '/explorejapan';
-export const SITE_URL = process.env.SITE_URL ?? 'https://explorejapan-p1.github.io/explorejapan';
+export const BASE_PATH = '';
+export function withBase(path: string): string {
+  const rest = path.startsWith('/') ? path : `/${path}`;
+  return `${BASE_PATH}${rest}`;
+}
+export const SITE_URL = process.env.SITE_URL ?? 'https://bokenjapan.com';

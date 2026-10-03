@@ -1,6 +1,6 @@
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {JsonLd} from '@/components/JsonLd';
-import {BASE_PATH, MIMA_PLACE_PHOTO} from '@/data/mima';
+import {MIMA_PLACE_PHOTO, withBase} from '@/data/mima';
 import {KURASHIKI_PLACE_PHOTO} from '@/data/kurashiki';
 import {MATSUYAMA_PLACE_PHOTO} from '@/data/matsuyama';
 import {NARUTO_PLACE_PHOTO} from '@/data/naruto';
@@ -133,7 +133,7 @@ export async function generateMetadata({params}: Props) {
 }
 
 function muniHref(locale: string, pref: string, slug: string) {
-  return `${BASE_PATH}/${locale}/${pref}/${slug}/`;
+  return withBase(`/${locale}/${pref}/${slug}/`);
 }
 
 export default async function HomePage({params}: Props) {

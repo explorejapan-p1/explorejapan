@@ -1323,6 +1323,17 @@ import {
   tsuyamaTopChipForRow,
   resolveTsuyamaFilter
 } from './tsuyama-travel';
+import {
+  isTamanoOnsenPackRow,
+  isTamanoExperiencePackRow,
+  isTamanoStayPackRow,
+  tamanoPackRowMatchesFilter,
+  rankTamanoSeeRows,
+  tamanoSightPhoto,
+  tamanoSourcedHook,
+  tamanoTopChipForRow,
+  resolveTamanoFilter
+} from './tamano-travel';
 
 
 
@@ -2370,6 +2381,18 @@ const TSUYAMA_HELPERS: LookupHelpers = {
   resolveFilter: resolveTsuyamaFilter
 };
 
+const TAMANO_HELPERS: LookupHelpers = {
+  isOnsenPackRow: isTamanoOnsenPackRow,
+  isExperiencePackRow: isTamanoExperiencePackRow,
+  isStayPackRow: isTamanoStayPackRow,
+  packRowMatchesFilter: tamanoPackRowMatchesFilter,
+  rankSeeRows: rankTamanoSeeRows,
+  sightPhoto: tamanoSightPhoto,
+  sourcedHook: tamanoSourcedHook,
+  topChipForRow: tamanoTopChipForRow,
+  resolveFilter: resolveTamanoFilter
+};
+
 const JINSEIKOGEN_HELPERS: LookupHelpers = {
   isOnsenPackRow: isJinseikogenOnsenPackRow,
   isExperiencePackRow: isJinseikogenExperiencePackRow,
@@ -3030,6 +3053,7 @@ export function townHelpers(slug: ReadySlug): LookupHelpers {
   if (slug === 'okayama') return OKAYAMA_HELPERS;
   if (slug === 'kurashiki') return KURASHIKI_HELPERS;
   if (slug === 'tsuyama') return TSUYAMA_HELPERS;
+  if (slug === 'tamano') return TAMANO_HELPERS;
   if (slug === 'sera') return SERA_HELPERS;
   return MIMA_HELPERS;
 }
