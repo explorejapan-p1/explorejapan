@@ -1,0 +1,23 @@
+Tokushima City (JIS 36201) capital densify 2026-09-07
+Pills L→R: 宿泊/飲食/温泉/体験/観光/買物/商業
+No frozen pack (capital photo-only).
+
+BEFORE: 宿泊35 / 飲食55 / 温泉0 / 体験0 / 観光5 / 買物0 / 商業0
+AFTER: 宿泊35 / 飲食55 / 温泉0 / 体験0 / 観光8 / 買物0 / 商業0
+
+宿泊 stay: 35 — prior Rakuten/hotel official (unchanged this pass)
+飲食 dining: 55 — prior Tabelog FOOD (unchanged)
+温泉 onsen: 0 — no sourced bath photo (眉山の湯 Commons miss; no IG CDN)
+体験 experience: 0 — no sourced experience photo
+観光 sights: 8 — prior 5 + 弁天山 / 文化の森総合公園 / 眉山公園 (city keikan + Commons)
+買物 shopping: 0 — no official list / attributable shop photo
+商業 commerce: 0 — no official list
+Fun!Fun! IG used as lead only → city HP / Commons. Not perfect.
+
+2026-09-07 pass: 温泉/体験/買物/商業 still honest 0 — no Commons/city bath or shop 出典 (眉山の湯 Commons miss; Fun!Fun! lead only).
+
+2026-09-07 pass2: capital 温泉 still honest 0 — 眉山の湯 Commons miss / no attributable bath 出典. 体験 already 1 (あわぎん眉山ロープウエイ).
+2026-09-07 pass3: HARD BAR fix すし瀬名波 wine-bottle → Tabelog sushi nigiri dish. Capital 温泉/買物 still honest 0 (眉山の湯 Commons miss). Instagram-first SIGHT_PINS reorder (ボードウォーク/弁天山 up). Not perfect.
+Capital experience densify pass4: +徳島城博物館 / +徳島ガラススタジオ / +とくしま動物園 / +ひょうたん島クルーズ Commons. Ropeway kept. 温泉/買物/商業 honest 0.
+
+2026-09-07 pass8: capital 買物4 (東新町/アミコ専門店街/両国本町/ボードウォーク・パラソル) + 商業2 (アミコビル/東館) Commons; 温泉1 天然温泉びざんの湯 bath from サンルート公式. そごう閉店→アミコ. stay0×6 still honest 0 (room miss; see /workspace/p1/data/tokushima-stay0-exhaustion.md). Not perfect.

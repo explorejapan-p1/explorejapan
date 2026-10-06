@@ -1,0 +1,8 @@
+kamiyama inland stay+onsen densify 2026-09-07
+BEFORE: 宿泊0 / 飲食14 / 温泉0 / 体験0 / 観光6 / 買物0 / 商業0
+AFTER target: 宿泊2 / 飲食14 / 温泉1 / 体験0 / 観光6 / 買物0 / 商業0
+
+宿泊 stay: 2 — pack 神山温泉ホテル四季の里 (楽天) + TRAVEL コットン・イン 神山通り (楽天).
+温泉 onsen: 1 — pack 神山温泉いやしの湯 bath from kamiyama-spa.com/onsen/ 出典.
+Skipped: 神山養鱒場スキーランド (no share).
+体験/買物/商業: honest 0. Not perfect.

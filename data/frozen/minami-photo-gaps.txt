@@ -1,0 +1,10 @@
+Minami Town (JIS 36387) stay harvest 2026-09-07
+Pills L→R: 宿泊/飲食/温泉/体験/観光/買物/商業
+
+BEFORE: 宿泊0 / 飲食42 / 温泉0 / 体験0 / 観光5 / 買物1 / 商業0
+AFTER target: 宿泊5 / 飲食42 / 温泉0 / 体験0 / 観光5 / 買物1 / 商業0
+
+宿泊 stay: 5 — NAVITIME 美波町宿泊 + 楽天シェア. Ranked strongest first.
+  Included: 白い燈台 / ケアンズ / サンラインモビレージ / 花乃宿 / 民宿 明山荘
+  Skipped stay name-collision with dining dish keys: さくら庵 / 樹園 (remain dining).
+温泉/体験/商業: 0 — honest

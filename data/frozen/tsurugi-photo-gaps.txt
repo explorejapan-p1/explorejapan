@@ -1,0 +1,4 @@
+tsurugi thin dining densify 2026-09-07
+BEFORE dining 7 → AFTER 13
+Added Tabelog FOOD close-ups: 善太楼, 蓮華, 阿波半田手のべ, 芝製麺, 古見茶屋, あづまや製菓 つるぎ町本店
+Skipped chains/convenience/no-dish. Not perfect.

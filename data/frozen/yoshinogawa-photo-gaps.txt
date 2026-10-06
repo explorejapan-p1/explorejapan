@@ -1,0 +1,4 @@
+yoshinogawa 宿泊 densify TG581 2026-09-07
+BEFORE stay1 — AFTER stay3
+Wired photos on existing city-list TRAVEL_STAY: セントラルホテル鴨島 (RK40401), ビジネスホテル ロードサイド (RK139435).
+アクセス鴨島 already had official room. Other list rows still lack attributable room/exterior share.

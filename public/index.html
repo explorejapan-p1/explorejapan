@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="robots" content="index, follow" />
+<title>Open a municipality.</title>
+<script>
+(function () {
+  var loc = 'en';
+  try {
+    var stored = localStorage.getItem('explorejapan-locale');
+    if (stored === 'ja' || stored === 'en') loc = stored;
+  } catch (e) {}
+  location.replace('./' + loc + '/');
+})();
+</script>
+</head>
+<body>
+<p><a href="./en/">English</a> · <a href="./ja/">日本語</a></p>
+</body>
+</html>

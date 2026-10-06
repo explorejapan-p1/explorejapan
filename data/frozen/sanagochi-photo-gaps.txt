@@ -1,0 +1,3 @@
+sanagochi 体験 hunt 2026-09-07 (pass7)
+BEFORE/AFTER: 宿泊0 / 飲食12 / 温泉0 / 体験0 / 観光5 / 買物0 / 商業0
+体験: honest 0 — 大川原放牧場 remap would drop 観光 below 5; no other place-named activity Commons. stay/onsen/shop honest 0. Not perfect.

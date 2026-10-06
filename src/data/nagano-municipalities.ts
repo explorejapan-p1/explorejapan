@@ -1,0 +1,95 @@
+import type {Municipality} from './kagawa-municipalities';
+
+/**
+ * Nagano municipalities (長野県).
+ * JIS X 0402 five-digit codes from the Ministry of Internal Affairs
+ * 「都道府県コード及び市区町村コード」令和6年1月1日更新, sheet R6.1.1現在の団体.
+ * https://www.soumu.go.jp/denshijiti/code.html
+ * https://www.soumu.go.jp/main_content/000925835.xlsx
+ * English names are Modified Hepburn of the official kana on that sheet
+ * (the sheet has no English column). The administrative suffix is removed.
+ * Every row is coming-soon: this list is not a facility page.
+ */
+export const NAGANO_MUNICIPALITIES: Municipality[] = [
+  {jis: '20201', slug: 'nagano', nameJa: '長野市', nameEn: 'Nagano', status: 'coming-soon'},
+  {jis: '20202', slug: 'matsumoto', nameJa: '松本市', nameEn: 'Matsumoto', status: 'coming-soon'},
+  {jis: '20203', slug: 'ueda', nameJa: '上田市', nameEn: 'Ueda', status: 'coming-soon'},
+  {jis: '20204', slug: 'okaya', nameJa: '岡谷市', nameEn: 'Okaya', status: 'coming-soon'},
+  {jis: '20205', slug: 'iida', nameJa: '飯田市', nameEn: 'Iida', status: 'coming-soon'},
+  {jis: '20206', slug: 'suwa', nameJa: '諏訪市', nameEn: 'Suwa', status: 'coming-soon'},
+  {jis: '20207', slug: 'suzaka', nameJa: '須坂市', nameEn: 'Suzaka', status: 'coming-soon'},
+  {jis: '20208', slug: 'komoro', nameJa: '小諸市', nameEn: 'Komoro', status: 'coming-soon'},
+  {jis: '20209', slug: 'ina', nameJa: '伊那市', nameEn: 'Ina', status: 'coming-soon'},
+  {jis: '20210', slug: 'komagane', nameJa: '駒ヶ根市', nameEn: 'Komagane', status: 'coming-soon'},
+  {jis: '20211', slug: 'nakano', nameJa: '中野市', nameEn: 'Nakano', status: 'coming-soon'},
+  {jis: '20212', slug: 'omachi', nameJa: '大町市', nameEn: 'Omachi', status: 'coming-soon'},
+  {jis: '20213', slug: 'iiyama', nameJa: '飯山市', nameEn: 'Iiyama', status: 'coming-soon'},
+  {jis: '20214', slug: 'chino', nameJa: '茅野市', nameEn: 'Chino', status: 'coming-soon'},
+  {jis: '20215', slug: 'shiojiri', nameJa: '塩尻市', nameEn: 'Shiojiri', status: 'coming-soon'},
+  {jis: '20217', slug: 'saku', nameJa: '佐久市', nameEn: 'Saku', status: 'coming-soon'},
+  {jis: '20218', slug: 'chikuma', nameJa: '千曲市', nameEn: 'Chikuma', status: 'coming-soon'},
+  {jis: '20219', slug: 'tomi', nameJa: '東御市', nameEn: 'Tomi', status: 'coming-soon'},
+  {jis: '20220', slug: 'azumino', nameJa: '安曇野市', nameEn: 'Azumino', status: 'coming-soon'},
+  {jis: '20303', slug: 'komi', nameJa: '小海町', nameEn: 'Komi', status: 'coming-soon'},
+  {jis: '20304', slug: 'kawakami', nameJa: '川上村', nameEn: 'Kawakami', status: 'coming-soon'},
+  {jis: '20305', slug: 'minamimaki', nameJa: '南牧村', nameEn: 'Minamimaki', status: 'coming-soon'},
+  {jis: '20306', slug: 'minamiaiki', nameJa: '南相木村', nameEn: 'Minamiaiki', status: 'coming-soon'},
+  {jis: '20307', slug: 'kitaaiki', nameJa: '北相木村', nameEn: 'Kitaaiki', status: 'coming-soon'},
+  {jis: '20309', slug: 'sakuho', nameJa: '佐久穂町', nameEn: 'Sakuho', status: 'coming-soon'},
+  {jis: '20321', slug: 'karuizawa', nameJa: '軽井沢町', nameEn: 'Karuizawa', status: 'coming-soon'},
+  {jis: '20323', slug: 'miyota', nameJa: '御代田町', nameEn: 'Miyota', status: 'coming-soon'},
+  {jis: '20324', slug: 'tateshina', nameJa: '立科町', nameEn: 'Tateshina', status: 'coming-soon'},
+  {jis: '20349', slug: 'aoki', nameJa: '青木村', nameEn: 'Aoki', status: 'coming-soon'},
+  {jis: '20350', slug: 'nagawa', nameJa: '長和町', nameEn: 'Nagawa', status: 'coming-soon'},
+  {jis: '20361', slug: 'shimosuwa', nameJa: '下諏訪町', nameEn: 'Shimosuwa', status: 'coming-soon'},
+  {jis: '20362', slug: 'fujimi', nameJa: '富士見町', nameEn: 'Fujimi', status: 'coming-soon'},
+  {jis: '20363', slug: 'hara', nameJa: '原村', nameEn: 'Hara', status: 'coming-soon'},
+  {jis: '20382', slug: 'tatsuno', nameJa: '辰野町', nameEn: 'Tatsuno', status: 'coming-soon'},
+  {jis: '20383', slug: 'minowa', nameJa: '箕輪町', nameEn: 'Minowa', status: 'coming-soon'},
+  {jis: '20384', slug: 'iijima', nameJa: '飯島町', nameEn: 'Iijima', status: 'coming-soon'},
+  {jis: '20385', slug: 'minamiminowa', nameJa: '南箕輪村', nameEn: 'Minamiminowa', status: 'coming-soon'},
+  {jis: '20386', slug: 'nakagawa', nameJa: '中川村', nameEn: 'Nakagawa', status: 'coming-soon'},
+  {jis: '20388', slug: 'miyada', nameJa: '宮田村', nameEn: 'Miyada', status: 'coming-soon'},
+  {jis: '20402', slug: 'matsukawa', nameJa: '松川町', nameEn: 'Matsukawa', status: 'coming-soon'},
+  {jis: '20403', slug: 'takamori', nameJa: '高森町', nameEn: 'Takamori', status: 'coming-soon'},
+  {jis: '20404', slug: 'anan', nameJa: '阿南町', nameEn: 'Anan', status: 'coming-soon'},
+  {jis: '20407', slug: 'achi', nameJa: '阿智村', nameEn: 'Achi', status: 'coming-soon'},
+  {jis: '20409', slug: 'hiraya', nameJa: '平谷村', nameEn: 'Hiraya', status: 'coming-soon'},
+  {jis: '20410', slug: 'neba', nameJa: '根羽村', nameEn: 'Neba', status: 'coming-soon'},
+  {jis: '20411', slug: 'shimojo', nameJa: '下條村', nameEn: 'Shimojo', status: 'coming-soon'},
+  {jis: '20412', slug: 'urugi', nameJa: '売木村', nameEn: 'Urugi', status: 'coming-soon'},
+  {jis: '20413', slug: 'tenryu', nameJa: '天龍村', nameEn: 'Tenryu', status: 'coming-soon'},
+  {jis: '20414', slug: 'yasuoka', nameJa: '泰阜村', nameEn: 'Yasuoka', status: 'coming-soon'},
+  {jis: '20415', slug: 'takagi', nameJa: '喬木村', nameEn: 'Takagi', status: 'coming-soon'},
+  {jis: '20416', slug: 'toyooka', nameJa: '豊丘村', nameEn: 'Toyooka', status: 'coming-soon'},
+  {jis: '20417', slug: 'oshika', nameJa: '大鹿村', nameEn: 'Oshika', status: 'coming-soon'},
+  {jis: '20422', slug: 'agematsu', nameJa: '上松町', nameEn: 'Agematsu', status: 'coming-soon'},
+  {jis: '20423', slug: 'nagiso', nameJa: '南木曽町', nameEn: 'Nagiso', status: 'coming-soon'},
+  {jis: '20425', slug: 'kiso', nameJa: '木祖村', nameEn: 'Kiso', status: 'coming-soon'},
+  {jis: '20429', slug: 'otaki', nameJa: '王滝村', nameEn: 'Otaki', status: 'coming-soon'},
+  {jis: '20430', slug: 'okuwa', nameJa: '大桑村', nameEn: 'Okuwa', status: 'coming-soon'},
+  {jis: '20432', slug: 'kisocho', nameJa: '木曽町', nameEn: 'Kisocho', status: 'coming-soon'},
+  {jis: '20446', slug: 'omi', nameJa: '麻績村', nameEn: 'Omi', status: 'coming-soon'},
+  {jis: '20448', slug: 'ikusaka', nameJa: '生坂村', nameEn: 'Ikusaka', status: 'coming-soon'},
+  {jis: '20450', slug: 'yamagata', nameJa: '山形村', nameEn: 'Yamagata', status: 'coming-soon'},
+  {jis: '20451', slug: 'asahi', nameJa: '朝日村', nameEn: 'Asahi', status: 'coming-soon'},
+  {jis: '20452', slug: 'chikuhoku', nameJa: '筑北村', nameEn: 'Chikuhoku', status: 'coming-soon'},
+  {jis: '20481', slug: 'ikeda', nameJa: '池田町', nameEn: 'Ikeda', status: 'coming-soon'},
+  {jis: '20482', slug: 'matsukawason', nameJa: '松川村', nameEn: 'Matsukawason', status: 'coming-soon'},
+  {jis: '20485', slug: 'hakuba', nameJa: '白馬村', nameEn: 'Hakuba', status: 'coming-soon'},
+  {jis: '20486', slug: 'otari', nameJa: '小谷村', nameEn: 'Otari', status: 'coming-soon'},
+  {jis: '20521', slug: 'sakaki', nameJa: '坂城町', nameEn: 'Sakaki', status: 'coming-soon'},
+  {jis: '20541', slug: 'obuse', nameJa: '小布施町', nameEn: 'Obuse', status: 'coming-soon'},
+  {jis: '20543', slug: 'takayama', nameJa: '高山村', nameEn: 'Takayama', status: 'coming-soon'},
+  {jis: '20561', slug: 'yamanouchi', nameJa: '山ノ内町', nameEn: 'Yamanouchi', status: 'coming-soon'},
+  {jis: '20562', slug: 'kijimadaira', nameJa: '木島平村', nameEn: 'Kijimadaira', status: 'coming-soon'},
+  {jis: '20563', slug: 'nozawaonsen', nameJa: '野沢温泉村', nameEn: 'Nozawaonsen', status: 'coming-soon'},
+  {jis: '20583', slug: 'shinano', nameJa: '信濃町', nameEn: 'Shinano', status: 'coming-soon'},
+  {jis: '20588', slug: 'ogawa', nameJa: '小川村', nameEn: 'Ogawa', status: 'coming-soon'},
+  {jis: '20590', slug: 'iizuna', nameJa: '飯綱町', nameEn: 'Iizuna', status: 'coming-soon'},
+  {jis: '20602', slug: 'sakae', nameJa: '栄村', nameEn: 'Sakae', status: 'coming-soon'},
+];
+
+export const NAGANO_MUNICIPALITY_BY_SLUG = new Map(
+  NAGANO_MUNICIPALITIES.map((m) => [m.slug, m])
+);

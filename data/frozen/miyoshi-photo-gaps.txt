@@ -1,0 +1,4 @@
+miyoshi 宿泊 densify TG581 2026-09-07
+BEFORE stay2 — AFTER stay7
+Pack stays kept: まんなか / 桃源郷.
+Added TRAVEL_STAY + 楽天シェア exterior: サボテンアパートメント, 阿波池田駅前ホテルイレブン, STAY ISHIWAKI, hostel大黒屋, もみじ.

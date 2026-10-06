@@ -1,0 +1,2945 @@
+{
+  "kind": "website-offer-log",
+  "not_the_frozen_pack": true,
+  "armed": true,
+  "send": false,
+  "accessed": "2026-08-27",
+  "drafts": [
+    {
+      "id": "mima-dining-01",
+      "name_ja": "うだつ emon 茶房",
+      "source_url": "https://mimakankou.or.jp/gourmet/",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "mima-dining-02",
+      "name_ja": "Cafe角屋",
+      "source_url": "https://mimakankou.or.jp/gourmet/",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "mima-dining-03",
+      "name_ja": "茶里庵(さりあん）",
+      "source_url": "https://mimakankou.or.jp/gourmet/",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "mima-dining-04",
+      "name_ja": "二代目 天竜",
+      "source_url": "https://mimakankou.or.jp/gourmet/",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "mima-dining-05",
+      "name_ja": "プランタン",
+      "source_url": "https://mimakankou.or.jp/gourmet/",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "mima-dining-06",
+      "name_ja": "PUNTA",
+      "source_url": "https://mimakankou.or.jp/gourmet/",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "mima-dining-07",
+      "name_ja": "四季料理 森友",
+      "source_url": "https://mimakankou.or.jp/gourmet/",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "mima-dining-08",
+      "name_ja": "皿そば楽庵",
+      "source_url": "https://mimakankou.or.jp/gourmet/",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "mima-dining-09",
+      "name_ja": "道の駅 藍蔵",
+      "source_url": "https://mimakankou.or.jp/gourmet/",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "mima-dining-10",
+      "name_ja": "和ぁさん家",
+      "source_url": "https://mimakankou.or.jp/gourmet/",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "mima-dining-11",
+      "name_ja": "割烹旅館田岡",
+      "source_url": "https://mimakankou.or.jp/gourmet/",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "mima-dining-12",
+      "name_ja": "ブルーヴィラあなぶき",
+      "source_url": "https://mimakankou.or.jp/gourmet/",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "mima-stay-01",
+      "name_ja": "ADLIV",
+      "source_url": "https://mimakankou.or.jp/hoteltop/",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "mima-stay-02",
+      "name_ja": "オートキャンプ場 四国三郎の郷",
+      "source_url": "https://mimakankou.or.jp/hoteltop/",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "mima-stay-03",
+      "name_ja": "清月屋敷",
+      "source_url": "https://mimakankou.or.jp/hoteltop/",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "mima-stay-04",
+      "name_ja": "剣山頂上ヒュッテ",
+      "source_url": "https://mimakankou.or.jp/hoteltop/",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "mima-stay-05",
+      "name_ja": "ビジネスホテル稲田苑",
+      "source_url": "https://mimakankou.or.jp/hoteltop/",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "mima-stay-06",
+      "name_ja": "ビジネスホテルマツカ",
+      "source_url": "https://mimakankou.or.jp/hoteltop/",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "mima-stay-07",
+      "name_ja": "Paysage Moriguchi",
+      "source_url": "https://mimakankou.or.jp/hoteltop/",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-dentou-01",
+      "name_ja": "脇町南町伝統的建造物群保存地区",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5315/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E9%81%B8%E5%AE%9A%E9%87%8D%E8%A6%81%E4%BC%9D%E7%B5%B1%E7%9A%84%E5%BB%BA%E9%80%A0%E7%89%A9%E7%BE%A4%E4%BF%9D%E5%AD%98%E5%9C%B0%E5%8C%BA.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-ken-01",
+      "name_ja": "別所の大クス",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5313/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E7%9C%8C%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-ken-02",
+      "name_ja": "地蔵来迎図",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5313/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E7%9C%8C%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-ken-03",
+      "name_ja": "木造阿弥陀如来坐像",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5313/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E7%9C%8C%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-ken-04",
+      "name_ja": "野村八幡古墳",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5313/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E7%9C%8C%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-ken-05",
+      "name_ja": "聖衆来迎図",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5313/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E7%9C%8C%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-ken-06",
+      "name_ja": "刀　表銘　横山大椽藤原裕定　裏銘　備州長船住人",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5313/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E7%9C%8C%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-ken-07",
+      "name_ja": "刀　表銘　津田越前守助広　裏銘　延宝七年八月　日",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5313/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E7%9C%8C%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-ken-08",
+      "name_ja": "滝の宮経塚出土品",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5313/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E7%9C%8C%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-ken-09",
+      "name_ja": "滝の宮経塚",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5313/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E7%9C%8C%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-ken-10",
+      "name_ja": "願勝寺庭園",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5313/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E7%9C%8C%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-ken-11",
+      "name_ja": "内田のエドヒガン",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5313/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E7%9C%8C%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-ken-12",
+      "name_ja": "内田のヤマザクラ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5313/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E7%9C%8C%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-ken-13",
+      "name_ja": "三木家文書",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5313/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E7%9C%8C%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-ken-14",
+      "name_ja": "松家家文書",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5313/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E7%9C%8C%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-ken-15",
+      "name_ja": "川井のエドヒガン",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5313/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E7%9C%8C%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-ken-16",
+      "name_ja": "八幡の大スギ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5313/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E7%9C%8C%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-ken-17",
+      "name_ja": "剣山並びに亜寒帯植物林",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5313/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E7%9C%8C%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-koku-01",
+      "name_ja": "段の塚穴",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5314/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E6%8C%87%E5%AE%9A%E9%87%8D%E8%A6%81%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-koku-02",
+      "name_ja": "木造毘沙門天立像",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5314/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E6%8C%87%E5%AE%9A%E9%87%8D%E8%A6%81%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-koku-03",
+      "name_ja": "三木家住宅",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5314/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E6%8C%87%E5%AE%9A%E9%87%8D%E8%A6%81%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-koku-04",
+      "name_ja": "郡里廃寺跡",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5314/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E6%8C%87%E5%AE%9A%E9%87%8D%E8%A6%81%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-koku-05",
+      "name_ja": "旧長岡家住宅",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5314/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E6%8C%87%E5%AE%9A%E9%87%8D%E8%A6%81%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-01",
+      "name_ja": "三味線もちつき（北崎組）（井内組）（うだつ）",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-02",
+      "name_ja": "東林寺庭園",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-03",
+      "name_ja": "東林寺山門",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-04",
+      "name_ja": "阿弥陀如来立像",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-05",
+      "name_ja": "十一面観音菩薩",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-06",
+      "name_ja": "火打所免許板",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-07",
+      "name_ja": "五大力明王像",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-08",
+      "name_ja": "阿弥陀如来仏像",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-09",
+      "name_ja": "真言八祖大師像",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-10",
+      "name_ja": "光明真言曼荼羅図",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-11",
+      "name_ja": "両界曼荼羅図",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-12",
+      "name_ja": "毛槍行列",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-13",
+      "name_ja": "拝中古墳",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-14",
+      "name_ja": "拝東古墳",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-15",
+      "name_ja": "貞眞寺山門",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-16",
+      "name_ja": "落久保の屋台",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-17",
+      "name_ja": "小星大師堂",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-18",
+      "name_ja": "木ノ内の獅子舞",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-19",
+      "name_ja": "屏風画",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-20",
+      "name_ja": "稲田墓所",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-21",
+      "name_ja": "小梵打金",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-22",
+      "name_ja": "藤若家住宅",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-23",
+      "name_ja": "聖宝尊者大護摩所跡",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-24",
+      "name_ja": "カスミサンショウウオの生息地",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-25",
+      "name_ja": "夏子の獅子舞",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-26",
+      "name_ja": "清水獅子連",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-27",
+      "name_ja": "冬畑獅子舞",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-28",
+      "name_ja": "広棚獅子連",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-29",
+      "name_ja": "馬頭観音立像",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-30",
+      "name_ja": "国中古墳",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-31",
+      "name_ja": "脇町劇場",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-32",
+      "name_ja": "吉田家住宅",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-33",
+      "name_ja": "武田千勝丸の位牌",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-34",
+      "name_ja": "重清城跡",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-35",
+      "name_ja": "中山路のイチョウ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-36",
+      "name_ja": "荒川衝上",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-37",
+      "name_ja": "神明神社",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-38",
+      "name_ja": "石尾神社",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-39",
+      "name_ja": "三島古墳群１号",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-40",
+      "name_ja": "三島古墳群２号",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-41",
+      "name_ja": "三島古墳群３号",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-42",
+      "name_ja": "薬師如来坐像",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-43",
+      "name_ja": "阿弥陀如来立像",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-44",
+      "name_ja": "尾山古墳",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-45",
+      "name_ja": "石尾神社のコウヤマキ群落",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-46",
+      "name_ja": "釈迦如来座像",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-47",
+      "name_ja": "阿弥陀如来立像",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-48",
+      "name_ja": "聖観音立像",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-49",
+      "name_ja": "不動明王立像",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-50",
+      "name_ja": "毘沙門天立像",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-51",
+      "name_ja": "阿弥陀如来座像",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-52",
+      "name_ja": "地蔵菩薩立像",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-53",
+      "name_ja": "聖観音立像",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-54",
+      "name_ja": "不動明王立像",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-55",
+      "name_ja": "毘沙門天立像",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-56",
+      "name_ja": "薬師如来立像",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-57",
+      "name_ja": "大般若経",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-58",
+      "name_ja": "梵鐘",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-shi-59",
+      "name_ja": "キレンゲショウマ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5317/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%B8%82%E6%8C%87%E5%AE%9A%E6%96%87%E5%8C%96%E8%B2%A1%E4%B8%80%E8%A6%A7.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-01",
+      "name_ja": "青木家住宅主屋",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-02",
+      "name_ja": "青木家住宅土蔵（一）",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-03",
+      "name_ja": "青木家住宅土蔵（二）",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-04",
+      "name_ja": "青木家住宅倉庫",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-05",
+      "name_ja": "青木家住宅納屋",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-06",
+      "name_ja": "青木家住宅門",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-07",
+      "name_ja": "青木家住宅土塀",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-08",
+      "name_ja": "青木家住宅煉瓦塀",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-09",
+      "name_ja": "大谷川堰堤",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-10",
+      "name_ja": "旅館たおか主屋",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-11",
+      "name_ja": "旅館たおか蔵屋",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-12",
+      "name_ja": "鎌村家住宅主屋",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-13",
+      "name_ja": "鎌村家住宅蔵",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-14",
+      "name_ja": "鎌村家住宅納屋",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-15",
+      "name_ja": "鎌村家住宅風呂",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-16",
+      "name_ja": "鎌村家住宅便所",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-17",
+      "name_ja": "鎌村家住宅北井戸",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-18",
+      "name_ja": "鎌村家住宅東井戸",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-19",
+      "name_ja": "鎌村家住宅中庭土塀",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-20",
+      "name_ja": "鎌村家住宅西土塀",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-21",
+      "name_ja": "西教寺本堂",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-22",
+      "name_ja": "西教寺経蔵",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-23",
+      "name_ja": "西教寺山門",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-24",
+      "name_ja": "願勝寺山門",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-25",
+      "name_ja": "安楽寺本堂",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-26",
+      "name_ja": "安楽寺書院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-27",
+      "name_ja": "安楽寺鐘楼",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-cultural-toroku-28",
+      "name_ja": "安楽寺山門",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/1998/resource/5316/%E7%BE%8E%E9%A6%AC%E5%B8%82_%E5%9B%BD%E7%99%BB%E9%8C%B2%E6%9C%89%E5%BD%A2%E6%96%87%E5%8C%96%E8%B2%A1.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-public-anabuki-hall",
+      "name_ja": "美馬市役所（穴吹庁舎）",
+      "source_url": "https://www.city.mima.lg.jp/gyosei/docs/23796.html",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-public-koyadaira-sc",
+      "name_ja": "木屋平市民サービスセンター",
+      "source_url": "https://www.city.mima.lg.jp/gyosei/docs/30062.html",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-public-mima-sc",
+      "name_ja": "美馬町市民サービスセンター",
+      "source_url": "https://www.city.mima.lg.jp/gyosei/docs/30062.html",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-public-wakimachi-sc",
+      "name_ja": "脇町市民サービスセンター",
+      "source_url": "https://www.city.mima.lg.jp/gyosei/docs/30062.html",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11486",
+      "name_ja": "吉野川、藍、うだつ",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11488",
+      "name_ja": "美馬市観光大使紹介",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11489",
+      "name_ja": "世界的外科医・三宅速",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11490",
+      "name_ja": "樺太開拓の志士・岡本監輔",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11492",
+      "name_ja": "美馬市伝統工芸体験館 美来工房",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11494",
+      "name_ja": "名馬「池月」伝説",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11495",
+      "name_ja": "三木家住宅",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11496",
+      "name_ja": "三木家資料館",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11498",
+      "name_ja": "民俗資料館（休館中）",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11501",
+      "name_ja": "天神ザクラ・世の中ザクラ",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11502",
+      "name_ja": "白人神社",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11503",
+      "name_ja": "神明神社",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11504",
+      "name_ja": "三島古墳群",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11505",
+      "name_ja": "本楽寺",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11506",
+      "name_ja": "うだつの町並み",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11507",
+      "name_ja": "吉田家住宅",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4991/resource/16326/11_%E8%A6%B3%E5%85%89%E6%96%BD%E8%A8%AD%E4%B8%80%E8%A6%A7.xlsx",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11508",
+      "name_ja": "美馬市観光交流センター",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11509",
+      "name_ja": "デ・レイケの堰堤／デ・レイケ公園",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11510",
+      "name_ja": "最明寺",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11511",
+      "name_ja": "大滝山",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11512",
+      "name_ja": "あんみつ館",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11514",
+      "name_ja": "三味線もちつき",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11518",
+      "name_ja": "「うだつ」があがった建物",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11519",
+      "name_ja": "寺町",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11520",
+      "name_ja": "寺町 - 常念寺",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11521",
+      "name_ja": "寺町 - 安楽寺",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11522",
+      "name_ja": "寺町 - 願勝寺",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11523",
+      "name_ja": "寺町 - 西教寺",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11524",
+      "name_ja": "寺町 - 林照寺",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11525",
+      "name_ja": "段の塚穴",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11527",
+      "name_ja": "郡里廃寺跡",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11530",
+      "name_ja": "青木家住宅",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11531",
+      "name_ja": "伊射奈美神社",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11532",
+      "name_ja": "川井のエドヒガンザクラ",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11535",
+      "name_ja": "藍のふるさと阿波スマートガイドを公開しました",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11536",
+      "name_ja": "脇町劇場",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-11539",
+      "name_ja": "美馬市穴吹川観光駐車場",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-1427600",
+      "name_ja": "美村総合交流促進施設「美村BASE」",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4991/resource/16326/11_%E8%A6%B3%E5%85%89%E6%96%BD%E8%A8%AD%E4%B8%80%E8%A6%A7.xlsx",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-1824550",
+      "name_ja": "重清八幡神社",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-1825569",
+      "name_ja": "三頭神社",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-1825570",
+      "name_ja": "倭大國魂神社",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-2759010",
+      "name_ja": "剣山",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-33687",
+      "name_ja": "旧長岡家住宅",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-385363",
+      "name_ja": "将棋名人 小野五平",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-3982",
+      "name_ja": "吉野川",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-3983",
+      "name_ja": "四国三郎の郷",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-3984",
+      "name_ja": "清流穴吹川",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-3985",
+      "name_ja": "ブルーベリー狩り",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-3986",
+      "name_ja": "ブルーベリー狩り - 穴吹／仕出原ブルーベリー観光農園",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-3987",
+      "name_ja": "ブルーベリー狩り - 脇町／ベリーベリーファームわきまち",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-3988",
+      "name_ja": "ブルーベリー狩り - 木屋平／とよ里農園",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-3989",
+      "name_ja": "リバーサイドしでの家",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-3990",
+      "name_ja": "美馬リバーサイドパーク",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-3991",
+      "name_ja": "水辺の楽校中鳥川公園",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-3992",
+      "name_ja": "ボートレース鳴門 オラレ美馬",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-3993",
+      "name_ja": "美馬スカイスポーツ",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-3994",
+      "name_ja": "美馬モーターランド",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-3995",
+      "name_ja": "中尾山高原",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-3996",
+      "name_ja": "剣山",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-3997",
+      "name_ja": "清流の郷 ブルーヴィラあなぶき",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4038",
+      "name_ja": "コテージ清流の郷",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4040",
+      "name_ja": "中尾山高原",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4041",
+      "name_ja": "つるぎの湯 大桜",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4042",
+      "name_ja": "市営 一の森ヒュッテ",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4043",
+      "name_ja": "段の塚穴（だんのつかあな） 〔国指定史跡〕",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4044",
+      "name_ja": "郡里廃寺跡（こおざとはいじあと） 〔国指定史跡〕",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4045",
+      "name_ja": "木造毘沙門天立像（もくぞうびしゃもんてんりゅうぞう） 〔国指定重要文化財〕",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4046",
+      "name_ja": "三木家住宅（みきけじゅうたく） 〔国指定重要文化財〕",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4047",
+      "name_ja": "旧長岡家住宅（きゅうながおかけじゅうたく） 〔国指定重要文化財〕",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4048",
+      "name_ja": "美馬市脇町南町重要伝統的建造物群保存地区",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4049",
+      "name_ja": "大谷川堰堤（おおたにがわえんてい） 〔国登録有形文化財〕",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4050",
+      "name_ja": "青木家住宅（あおきけじゅうたく） 〔国登録有形文化財〕",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4051",
+      "name_ja": "旅館たおか（りょかんたおか） 〔国登録有形文化財〕",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4052",
+      "name_ja": "鎌村家住宅（かまむらけじゅうたく） 〔国登録有形文化財〕",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4053",
+      "name_ja": "西教寺（さいきょうじ）〔国登録有形文化財〕",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4054",
+      "name_ja": "願勝寺（がんしょうじ） 〔国登録有形文化財〕",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4055",
+      "name_ja": "安楽寺（あんらくじ） 〔国登録有形文化財〕",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4056",
+      "name_ja": "滝の宮経塚",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4057",
+      "name_ja": "滝の宮経塚出土品",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4058",
+      "name_ja": "野村八幡古墳",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4059",
+      "name_ja": "願勝寺庭園",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4060",
+      "name_ja": "別所の大クス",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4061",
+      "name_ja": "川井のエドヒガン",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4062",
+      "name_ja": "八幡の大杉",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4063",
+      "name_ja": "内田のエドヒガン",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4064",
+      "name_ja": "内田のヤマザクラ",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4065",
+      "name_ja": "絹本著色聖衆来迎図",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4066",
+      "name_ja": "地蔵来迎図",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4067",
+      "name_ja": "木造阿弥陀如来坐像",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4068",
+      "name_ja": "拝東古墳",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4069",
+      "name_ja": "拝中古墳",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4070",
+      "name_ja": "国中古墳",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4071",
+      "name_ja": "三島古墳群1号墳",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4072",
+      "name_ja": "三島古墳群2号墳",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4073",
+      "name_ja": "三島古墳群3号墳",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4074",
+      "name_ja": "尾山古墳",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4075",
+      "name_ja": "重清城跡",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4076",
+      "name_ja": "稲田墓所",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4077",
+      "name_ja": "神明神社",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4078",
+      "name_ja": "石尾神社",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4079",
+      "name_ja": "東林寺庭園",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4080",
+      "name_ja": "カスミサンショウウオの生息地",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4081",
+      "name_ja": "中山路のイチョウ",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4082",
+      "name_ja": "石尾神社のコウヤマキ群落",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4083",
+      "name_ja": "荒川衝上",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4085",
+      "name_ja": "東林寺山門",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4086",
+      "name_ja": "貞真寺山門",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4087",
+      "name_ja": "小星大師堂",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4088",
+      "name_ja": "藤若家住宅",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4089",
+      "name_ja": "脇町劇場",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4090",
+      "name_ja": "吉田家住宅",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4991/resource/16326/11_%E8%A6%B3%E5%85%89%E6%96%BD%E8%A8%AD%E4%B8%80%E8%A6%A7.xlsx",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4094",
+      "name_ja": "脇城跡",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-map-4095",
+      "name_ja": "舞中島",
+      "source_url": "https://www.city.mima.lg.jp/kanko/map/list/",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-xlsx-01",
+      "name_ja": "美馬市観光交流センター（うだつの町並み）",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4991/resource/16326/11_%E8%A6%B3%E5%85%89%E6%96%BD%E8%A8%AD%E4%B8%80%E8%A6%A7.xlsx",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-xlsx-03",
+      "name_ja": "交流会館「ブルーヴィラ穴吹」",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4991/resource/16326/11_%E8%A6%B3%E5%85%89%E6%96%BD%E8%A8%AD%E4%B8%80%E8%A6%A7.xlsx",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-tourism-xlsx-05",
+      "name_ja": "美馬市うだつ未来館",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4991/resource/16326/11_%E8%A6%B3%E5%85%89%E6%96%BD%E8%A8%AD%E4%B8%80%E8%A6%A7.xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-childcare-0000130001",
+      "name_ja": "美馬市立江原認定こども園",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/2493/resource/7103/362077_preschool.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-childcare-0000130002",
+      "name_ja": "美馬市立美馬認定こども園",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/2493/resource/7103/362077_preschool.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-childcare-0000130003",
+      "name_ja": "美馬市立穴吹認定こども園",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/2493/resource/7103/362077_preschool.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-childcare-0000130004",
+      "name_ja": "美馬市立認定こども園　脇町保育所",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/2493/resource/7103/362077_preschool.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-childcare-0000130005",
+      "name_ja": "美馬市立岩倉認定こども園",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/2493/resource/7103/362077_preschool.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-childcare-0000130006",
+      "name_ja": "脇町小規模保育所　ワールドキッズmima",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/2493/resource/7103/362077_preschool.csv",
+      "reason": "weak-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-childcare-0000130008",
+      "name_ja": "脇町児童クラブ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/2493/resource/7103/362077_preschool.csv",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-childcare-0000130009",
+      "name_ja": "脇町第２児童クラブ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/2493/resource/7103/362077_preschool.csv",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-childcare-0000130010",
+      "name_ja": "江原南児童クラブ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/2493/resource/7103/362077_preschool.csv",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-childcare-0000130011",
+      "name_ja": "江原南第二児童クラブ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/2493/resource/7103/362077_preschool.csv",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-childcare-0000130012",
+      "name_ja": "岩倉児童クラブ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/2493/resource/7103/362077_preschool.csv",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-childcare-0000130013",
+      "name_ja": "美馬第一児童クラブ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/2493/resource/7103/362077_preschool.csv",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-childcare-0000130014",
+      "name_ja": "美馬第二児童クラブ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/2493/resource/7103/362077_preschool.csv",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-childcare-0000130015",
+      "name_ja": "病児保育所みーま",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/2493/resource/7103/362077_preschool.csv",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-childcare-0000130016",
+      "name_ja": "なかよし児童クラブ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/2493/resource/7103/362077_preschool.csv",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-hospital-01",
+      "name_ja": "岡内科病院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4990/resource/16325/10_%E5%8C%BB%E7%99%82%E6%A9%9F%E9%96%A2%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-hospital-02",
+      "name_ja": "桜木病院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4990/resource/16325/10_%E5%8C%BB%E7%99%82%E6%A9%9F%E9%96%A2%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-hospital-03",
+      "name_ja": "成田病院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4990/resource/16325/10_%E5%8C%BB%E7%99%82%E6%A9%9F%E9%96%A2%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-hospital-04",
+      "name_ja": "ホウエツ病院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4990/resource/16325/10_%E5%8C%BB%E7%99%82%E6%A9%9F%E9%96%A2%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-hospital-05",
+      "name_ja": "折野病院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4990/resource/16325/10_%E5%8C%BB%E7%99%82%E6%A9%9F%E9%96%A2%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-hospital-06",
+      "name_ja": "美馬リハビリテーション病院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4990/resource/16325/10_%E5%8C%BB%E7%99%82%E6%A9%9F%E9%96%A2%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-hospital-07",
+      "name_ja": "秦眼科",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4990/resource/16325/10_%E5%8C%BB%E7%99%82%E6%A9%9F%E9%96%A2%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-hospital-08",
+      "name_ja": "林クリニック",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4990/resource/16325/10_%E5%8C%BB%E7%99%82%E6%A9%9F%E9%96%A2%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-hospital-09",
+      "name_ja": "市橋内科医院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4990/resource/16325/10_%E5%8C%BB%E7%99%82%E6%A9%9F%E9%96%A2%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-hospital-10",
+      "name_ja": "おおた整形外科クリニック",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4990/resource/16325/10_%E5%8C%BB%E7%99%82%E6%A9%9F%E9%96%A2%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-hospital-11",
+      "name_ja": "脇町川島クリニック",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4990/resource/16325/10_%E5%8C%BB%E7%99%82%E6%A9%9F%E9%96%A2%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-hospital-12",
+      "name_ja": "酒巻耳鼻咽喉科医院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4990/resource/16325/10_%E5%8C%BB%E7%99%82%E6%A9%9F%E9%96%A2%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-hospital-13",
+      "name_ja": "多田クリニック",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4990/resource/16325/10_%E5%8C%BB%E7%99%82%E6%A9%9F%E9%96%A2%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-hospital-14",
+      "name_ja": "成田クリニック",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4990/resource/16325/10_%E5%8C%BB%E7%99%82%E6%A9%9F%E9%96%A2%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-hospital-15",
+      "name_ja": "成田診療所",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4990/resource/16325/10_%E5%8C%BB%E7%99%82%E6%A9%9F%E9%96%A2%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-hospital-16",
+      "name_ja": "吉川医院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4990/resource/16325/10_%E5%8C%BB%E7%99%82%E6%A9%9F%E9%96%A2%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-hospital-17",
+      "name_ja": "脇町中央医院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4990/resource/16325/10_%E5%8C%BB%E7%99%82%E6%A9%9F%E9%96%A2%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-hospital-18",
+      "name_ja": "国見医院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4990/resource/16325/10_%E5%8C%BB%E7%99%82%E6%A9%9F%E9%96%A2%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-hospital-19",
+      "name_ja": "美馬市国民健康保険木屋平診療所",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4990/resource/16325/10_%E5%8C%BB%E7%99%82%E6%A9%9F%E9%96%A2%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-hospital-20",
+      "name_ja": "木下医院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4990/resource/16325/10_%E5%8C%BB%E7%99%82%E6%A9%9F%E9%96%A2%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-hospital-21",
+      "name_ja": "木下内科・循環器科",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4990/resource/16325/10_%E5%8C%BB%E7%99%82%E6%A9%9F%E9%96%A2%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-hospital-22",
+      "name_ja": "佐々木医院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4990/resource/16325/10_%E5%8C%BB%E7%99%82%E6%A9%9F%E9%96%A2%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-hospital-23",
+      "name_ja": "サンクリニック",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4990/resource/16325/10_%E5%8C%BB%E7%99%82%E6%A9%9F%E9%96%A2%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-01",
+      "name_ja": "成田病院 介護医療院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-02",
+      "name_ja": "介護老人保健施設センターヴィレッジ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-03",
+      "name_ja": "介護老人保健施設ケアハイツさくらぎ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-04",
+      "name_ja": "老人保健施設健祥会ヘルス",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-05",
+      "name_ja": "介護老人保健施設恵愛荘",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-06",
+      "name_ja": "特別養護老人ホーム健祥会家康",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-07",
+      "name_ja": "特別養護老人ホームケアプラザみま",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-08",
+      "name_ja": "特別養護老人ホームはなのおか",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-09",
+      "name_ja": "グループホーム 成田",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-10",
+      "name_ja": "グループホーム サンファミリー",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-11",
+      "name_ja": "若宮の里 グループホーム",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-12",
+      "name_ja": "清流の里 グループホーム",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-13",
+      "name_ja": "グループホーム ほうらい",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-14",
+      "name_ja": "グループホーム のどか",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-15",
+      "name_ja": "ケアハウス 健祥会うだつ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-16",
+      "name_ja": "ケアハウス シャングリラ蓬寿",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-17",
+      "name_ja": "住宅型有料老人ホーム絆",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-18",
+      "name_ja": "住宅型有料老人ホーム桜林",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-19",
+      "name_ja": "住宅型有料老人ホームぽっかぽか",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-20",
+      "name_ja": "成田病院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-21",
+      "name_ja": "訪問看護ステーションみやの",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-22",
+      "name_ja": "訪問看護ステーションマリル",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-23",
+      "name_ja": "美馬市国民健康保険木屋平 診療所",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-24",
+      "name_ja": "折野病院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-25",
+      "name_ja": "成田病院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-26",
+      "name_ja": "岡内科病院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-27",
+      "name_ja": "介護老人保健施設 センターヴィレッジ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-28",
+      "name_ja": "ホウエツ病院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-29",
+      "name_ja": "林クリニック",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-30",
+      "name_ja": "老人保健施設 健祥会ヘルス",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-31",
+      "name_ja": "サンクリニック",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-32",
+      "name_ja": "美馬リハビリテーション病院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-33",
+      "name_ja": "美馬市社協脇町 ﾎｰﾑﾍﾙﾊﾟｰｽﾃｰｼｮﾝ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-34",
+      "name_ja": "訪問介護事業所 スミセ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-35",
+      "name_ja": "うだつ介護センター",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-36",
+      "name_ja": "若宮の里ヘルパー ステーション",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-37",
+      "name_ja": "健祥会デイサービスセンターうだつ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-38",
+      "name_ja": "ケアセンターことぶき",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-39",
+      "name_ja": "有限会社コスモス",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-40",
+      "name_ja": "訪問介護事業所 悠優徳",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-41",
+      "name_ja": "ケアサービス光",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-42",
+      "name_ja": "ケアセンター大和",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-43",
+      "name_ja": "成田病院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-44",
+      "name_ja": "岡内科病院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-45",
+      "name_ja": "介護老人保健施設 センターヴィレッジ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-46",
+      "name_ja": "ホウエツ病院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-47",
+      "name_ja": "林クリニック",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-48",
+      "name_ja": "老人保健施設 健祥会ヘルス",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-49",
+      "name_ja": "サンクリニック",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-50",
+      "name_ja": "介護老人保健施設 恵愛荘",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-51",
+      "name_ja": "ケアホームやすらぎの丘デイサービスセンター",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-52",
+      "name_ja": "デイサービス 若宮",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-53",
+      "name_ja": "デイサービス なかはちの丘",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-54",
+      "name_ja": "美馬市脇町西部 デイサービスセンター",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-55",
+      "name_ja": "美馬市木屋平デイサービスセンター 「つるぎの里」",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-56",
+      "name_ja": "デイサービスセンターぽっかぽか",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-57",
+      "name_ja": "美馬市脇町デイサービスセンター 「おちあい荘」",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-58",
+      "name_ja": "デイサービスセンター こはる脇町",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-59",
+      "name_ja": "健祥会デイサービス センターうだつ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-60",
+      "name_ja": "デイサービスココロ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-61",
+      "name_ja": "デイサービスセンター絆",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-62",
+      "name_ja": "美馬市穴吹デイサービスセンター「ライフケアたがた」",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-63",
+      "name_ja": "蓬莱会デイサービスセンターみま",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-64",
+      "name_ja": "デイサービスセンター つるぎの郷",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-65",
+      "name_ja": "美馬市美馬デイサービスセンター 「池月苑」",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-66",
+      "name_ja": "若宮の里小規模多機能ホー",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-67",
+      "name_ja": "わきの里小規模多機能ホーム",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-68",
+      "name_ja": "株式会社トーカイ 徳島西部営業所",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-69",
+      "name_ja": "有限会社 水野企画",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-70",
+      "name_ja": "ケア用具ココロ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-71",
+      "name_ja": "美馬市地域包括支援センター",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-72",
+      "name_ja": "居宅介護支援事業所ほのか",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-73",
+      "name_ja": "岡内科病院",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-74",
+      "name_ja": "ヴィレッジケアプランセンター",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-75",
+      "name_ja": "居宅介護支援事業所来夢",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-76",
+      "name_ja": "美馬市社協ケアプランセンター",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-77",
+      "name_ja": "ケアセンターことぶき",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-78",
+      "name_ja": "ケアステーションココロ",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-79",
+      "name_ja": "美馬市美馬在宅介護支援センター（愛）",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    },
+    {
+      "id": "36207-care-80",
+      "name_ja": "ケアサービス光",
+      "source_url": "https://opendata.pref.tokushima.lg.jp/dataset/4989/resource/16324/09_%E4%BB%8B%E8%AD%B7%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BA%8B%E6%A5%AD%E6%89%80%E4%B8%80%E8%A6%A7%20(%E9%95%B7%E5%AF%BF%E3%83%BB%E9%9A%9C%E3%81%8C%E3%81%84%E7%A6%8F%E7%A5%89%E8%AA%B2).xlsx",
+      "reason": "no-site",
+      "status": "held",
+      "accessed": "2026-08-27"
+    }
+  ]
+}

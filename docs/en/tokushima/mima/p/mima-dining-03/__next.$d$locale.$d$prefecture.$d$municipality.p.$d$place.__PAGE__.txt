@@ -1,0 +1,36 @@
+1:"$Sreact.fragment"
+2:I[77105,["/_next/static/chunks/3iggubicnbeth.js","/_next/static/chunks/3yr1wzf1p44wg.js"],"default"]
+3:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+8:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
+9:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
+:HL["/media/sarian.jpg","image"]
+7:X
+14:X
+14:C
+0:{"buildId":"eLYBPQf-Y_1sfKYGF1vlA","data":[{"rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"Restaurant\",\"@id\":\"https://bokenjapan.com/en/tokushima/mima/p/mima-dining-03/#place\",\"name\":\"茶里庵(さりあん）\",\"url\":\"https://bokenjapan.com/en/tokushima/mima/p/mima-dining-03/\",\"image\":\"https://bokenjapan.com/media/sarian.jpg\",\"sameAs\":[\"https://mimakankou.or.jp/gourmet/\"]},{\"@type\":\"WebPage\",\"@id\":\"https://bokenjapan.com/en/tokushima/mima/p/mima-dining-03/\",\"url\":\"https://bokenjapan.com/en/tokushima/mima/p/mima-dining-03/\",\"name\":\"茶里庵(さりあん）\",\"inLanguage\":\"en\",\"isPartOf\":{\"@id\":\"https://bokenjapan.com/#website\"}},{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Japan\",\"item\":\"https://bokenjapan.com/en/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Tokushima\",\"item\":\"https://bokenjapan.com/en/tokushima/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Mima City\",\"item\":\"https://bokenjapan.com/en/tokushima/mima/\"},{\"@type\":\"ListItem\",\"position\":4,\"name\":\"茶里庵(さりあん）\",\"item\":\"https://bokenjapan.com/en/tokushima/mima/p/mima-dining-03/\"}]}]}"}}],["$","nav",null,{"className":"crumbs","children":[["$","$L2",null,{"href":"/en","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Japan"}],["$","span",null,{"children":" / "}],["$","$L2",null,{"href":"/en/tokushima","localeCookie":"$0:data:0:rsc:props:children:0:1:props:children:0:props:localeCookie","children":"Tokushima"}],["$","span",null,{"children":" / "}],["$","$L2",null,{"href":"/en/tokushima/mima","localeCookie":"$0:data:0:rsc:props:children:0:1:props:children:0:props:localeCookie","children":"Mima City"}],["$","span",null,{"children":" / "}],["$","span",null,{"children":"茶里庵(さりあん）"}]]}],["$","article",null,{"className":"place-page","children":[["$","a",null,{"href":"https://mimakankou.or.jp/gourmet/","className":"facility-card-link place-photo-link","target":"_blank","rel":"noopener noreferrer","children":[["$","div",null,{"className":"card-photo","children":["$","img",null,{"src":"/media/sarian.jpg","alt":"Sarian restaurant, Mima","width":1200,"height":800}]}],["$","h1",null,{"children":"茶里庵(さりあん）"}]]}],["$","p",null,{"className":"card-score","children":"Unrated"}],null,null,null,["$","p",null,{"className":"place-card-meta","children":"2026-08-26"}]]}]],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":"$@6","staleTime":"$7","varyParams":null},{"rsc":["$","$1","h",{"children":[null,["$","$L8",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L9",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"茶里庵(さりあん） · BokenJapan"}],["$","meta","1",{"name":"description","content":"茶里庵(さりあん） in Mima City. Sourced listing only."}],["$","meta","2",{"name":"robots","content":"index, follow"}],["$","link","3",{"rel":"canonical","href":"https://bokenjapan.com/en/tokushima/mima/p/mima-dining-03/"}],["$","link","4",{"rel":"alternate","hrefLang":"ja","href":"https://bokenjapan.com/ja/tokushima/mima/p/mima-dining-03/"}],["$","link","5",{"rel":"alternate","hrefLang":"en","href":"https://bokenjapan.com/en/tokushima/mima/p/mima-dining-03/"}],["$","link","6",{"rel":"alternate","hrefLang":"x-default","href":"https://bokenjapan.com/en/tokushima/mima/p/mima-dining-03/"}],["$","meta","7",{"property":"og:title","content":"茶里庵(さりあん）"}],["$","meta","8",{"property":"og:description","content":"茶里庵(さりあん） in Mima City. Sourced listing only."}],["$","meta","9",{"property":"og:url","content":"https://bokenjapan.com/en/tokushima/mima/p/mima-dining-03/"}],["$","meta","10",{"property":"og:site_name","content":"BokenJapan"}],["$","meta","11",{"property":"og:locale","content":"en_US"}],["$","meta","12",{"property":"og:image","content":"https://bokenjapan.com/media/sarian.jpg"}],["$","meta","13",{"property":"og:image:alt","content":"Sarian restaurant, Mima"}],["$","meta","14",{"property":"og:locale:alternate","content":"ja_JP"}],["$","meta","15",{"property":"og:type","content":"article"}],["$","meta","16",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","17",{"name":"twitter:title","content":"茶里庵(さりあん）"}],"$La","$Lb","$Lc","$Ld","$Le","$Lf"]}]}]}],"$L10"]}],"isPartial":"$@11","staleTime":"$7","varyParams":null},{"rsc":"$L12","isPartial":"$@13","staleTime":"$7","varyParams":"$14"},{"rsc":"$L15","isPartial":"$@16","staleTime":"$7","varyParams":"$14"},{"rsc":"$L17","isPartial":"$@18","staleTime":"$7","varyParams":"$14"},{"rsc":"$L19","isPartial":"$@1a","staleTime":"$7","varyParams":"$14"}],"isUpgradeableISRFallback":false,"a":"$@1b","rootVaryParams":null,"needsRuntimeRequest":"$@1c"}
+1d:I[27201,["/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
+1e:I[39756,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+1f:I[37457,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+5:null
+a:["$","meta","18",{"name":"twitter:description","content":"茶里庵(さりあん） in Mima City. Sourced listing only."}]
+b:["$","meta","19",{"name":"twitter:image","content":"https://bokenjapan.com/media/sarian.jpg"}]
+c:["$","link","20",{"rel":"icon","href":"/favicon.ico"}]
+d:["$","link","21",{"rel":"icon","href":"/favicon-32.png","sizes":"32x32","type":"image/png"}]
+e:["$","link","22",{"rel":"apple-touch-icon","href":"/apple-touch-icon.png","sizes":"180x180"}]
+f:["$","$L1d","23",{}]
+10:["$","meta",null,{"name":"next-size-adjust","content":""}]
+12:["$","$1","c",{"children":[null,["$","$L1e",null,{"parallelRouterKey":"children","template":["$","$L1f",null,{}]}]]}]
+15:["$","$1","c",{"children":[null,["$","$L1e",null,{"parallelRouterKey":"children","template":["$","$L1f",null,{}]}]]}]
+17:["$","$1","c",{"children":[null,["$","$L1e",null,{"parallelRouterKey":"children","template":["$","$L1f",null,{}]}]]}]
+19:["$","$1","c",{"children":[null,["$","$L1e",null,{"parallelRouterKey":"children","template":["$","$L1f",null,{}]}]]}]
+1c:true
+7:300
+7:C
+1b:0
+11:"$undefined"
+13:"$undefined"
+16:"$undefined"
+18:"$undefined"
+1a:"$undefined"
+6:"$undefined"
