@@ -231,6 +231,26 @@ function SearchIcon() {
   );
 }
 
+
+/** English card hook from sourced photo altEn only. Never invent blurbs. */
+function englishHookFromPhoto(
+  photo: {altEn: string} | null | undefined,
+  fallback: string
+): string {
+  if (!photo?.altEn) return fallback;
+  const raw = photo.altEn.trim();
+  if (!raw) return fallback;
+  const cleaned = raw
+    .replace(/\s*(room photo|food photo|dish photo|bath photo|guest room photo)\s*$/i, '')
+    .replace(/\s*\((guest room|room|bath|food|dish)\)\s*$/i, '')
+    .trim();
+  const candidate = cleaned.length >= 8 ? cleaned : raw;
+  const ascii = [...candidate].filter((c) => c.charCodeAt(0) < 128).length / Math.max(candidate.length, 1);
+  // Prefer mostly-English sourced alt text as the facility explanation.
+  if (candidate.length >= 12 && ascii >= 0.55) return candidate;
+  return fallback;
+}
+
 function FacilityCard({
   row,
   locale,
@@ -247,7 +267,9 @@ function FacilityCard({
   const t = useTranslations('lookup');
   const h = townHelpers(town.slug);
   const photo = h.sightPhoto(row.name_ja);
-  const hook = h.sourcedHook(row, locale);
+  const sourced = h.sourcedHook(row, locale);
+  const hook =
+    locale === 'en' ? englishHookFromPhoto(photo, sourced) : sourced;
   const dest = destinationUrl(row);
   return (
     <article className="facility-card" data-id={row.id} data-category={row.category}>

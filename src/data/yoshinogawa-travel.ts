@@ -28,13 +28,10 @@ export const YOSHINOGAWA_TRAVEL_SOURCES = {
   rakutenTravel: 'https://travel.rakuten.co.jp/'
 } as const;
 
-/** Exact tourism-pack names shown on 温泉, not 観光. */
+/** Onsen pack (HARD BAR: bath still only). Deferred without photo: 鴨島温泉鴨の湯, 保養センター上桜温泉, ヘルスランド美郷 (facility-quality-2026-10-07). */
 export const YOSHINOGAWA_ONSEN_PACK_NAMES = [
-  '鴨島温泉鴨の湯',
   'ふいご温泉',
   '美郷の湯',
-  '保養センター上桜温泉',
-  'ヘルスランド美郷',
   '農家民宿どこも山 五右衛門風呂'
 ] as const;
 

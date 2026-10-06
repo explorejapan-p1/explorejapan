@@ -55,7 +55,8 @@ export const TSURUGI_ONSEN_PACK_NAME = TSURUGI_ONSEN_PACK_NAMES[0];
 export const TSURUGI_EXPERIENCE_PACK_NAMES = ['ラ・フォーレつるぎ山'] as const;
 export const TSURUGI_EXPERIENCE_PACK_SET: ReadonlySet<string> = new Set(TSURUGI_EXPERIENCE_PACK_NAMES);
 
-export const TSURUGI_SIGHT_PINS = ['二層うだつの町並み', '旧永井家庄屋屋敷', '織本屋'] as const;
+/** 旧永井家庄屋屋敷 deferred — no place-named Commons/attribution yet (facility-quality-2026-10-07). */
+export const TSURUGI_SIGHT_PINS = ['二層うだつの町並み', '織本屋'] as const;
 
 function extraStay(
   id: string,
