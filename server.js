@@ -65,11 +65,11 @@ wss.on('connection',(twilio,req,call)=>{
   if(start.accountSid!==ACCOUNT){log('unexpected-account');twilio.close();return;}
   streamSid=start.streamSid;call.callSid=start.callSid;byCall.set(start.callSid,call);
   call.status='live';log('twilio-stream-started');
-  xai=new WebSocket(`wss://api.x.ai/v1/realtime?model=${MODEL}`,{perMessageDeflate:false,headers:{Authorization:`Bearer ${process.env.XAI_API_KEY}`}});
+  xai=new WebSocket(`wss://api.x.ai/v1/realtime?model=${MODEL}`,{perMessageDeflate:false,headers:{Authorization:`Bearer ${process.env.XAI_API_KEY}`,Origin:'https://voice-bridge-rr0w.onrender.com'}});
   xai.on('error',(e)=>{console.error(JSON.stringify({event:'xai-socket-error',message:e.message}));});
   
   xai.on('unexpected-response',(req,res)=>{
-    console.error(JSON.stringify({event:'xai-handshake-rejected',status:res.statusCode,headers:res.headers}));
+    console.error(JSON.stringify({event:'xai-handshake-rejected',status:res.statusCode}));
     const chunks=[];res.on('data',d=>chunks.push(d));res.on('end',()=>console.error(JSON.stringify({event:'xai-handshake-detail',detail:Buffer.concat(chunks).toString('utf8').replace(/[bB]earer\s+\S+/g,'Bearer [redacted]').slice(0,600)})));
     twilio.close();finish();
   });
