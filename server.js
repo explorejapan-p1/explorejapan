@@ -66,7 +66,7 @@ wss.on('connection',(twilio,req,call)=>{
   streamSid=start.streamSid;call.callSid=start.callSid;byCall.set(start.callSid,call);
   call.status='live';log('twilio-stream-started');
   xai=new WebSocket(`wss://api.x.ai/v1/realtime?model=${MODEL}`,{perMessageDeflate:false,headers:{Authorization:`Bearer ${process.env.XAI_API_KEY}`}});
-  xai.on('open',()=>log('xai-open'));
+  xai.on('error',(e)=>{console.error(JSON.stringify({event:'xai-socket-error',message:e.message}));});
   
   xai.on('close',()=>log('xai-closed'));
   xai.on('message',data=>{
