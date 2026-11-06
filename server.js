@@ -68,6 +68,11 @@ wss.on('connection',(twilio,req,call)=>{
   xai=new WebSocket(`wss://api.x.ai/v1/realtime?model=${MODEL}`,{perMessageDeflate:false,headers:{Authorization:`Bearer ${process.env.XAI_API_KEY}`}});
   xai.on('error',(e)=>{console.error(JSON.stringify({event:'xai-socket-error',message:e.message}));});
   
+  xai.on('unexpected-response',(req,res)=>{
+    console.error(JSON.stringify({event:'xai-handshake-rejected',status:res.statusCode,headers:res.headers}));
+    const chunks=[];res.on('data',d=>chunks.push(d));res.on('end',()=>console.error(JSON.stringify({event:'xai-handshake-detail',detail:Buffer.concat(chunks).toString('utf8').replace(/[bB]earer\s+\S+/g,'Bearer [redacted]').slice(0,600)})));
+    twilio.close();finish();
+  });
   xai.on('close',()=>log('xai-closed'));
   xai.on('message',data=>{
    const event=JSON.parse(data.toString());
