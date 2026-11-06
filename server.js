@@ -2,6 +2,20 @@ const http=require('node:http');
 const crypto=require('node:crypto');
 const express=require('express');
 const WebSocket=require('ws');
+function resolveXaiApiKey(){
+  const direct=(process.env.XAI_API_KEY||'').trim();
+  if(direct.length>20 && !/^\*+$/.test(direct) && direct.startsWith('xai-')) return direct;
+  if(process.env.XAI_API_KEY_B64){
+    try{const d=Buffer.from(process.env.XAI_API_KEY_B64,'base64').toString('utf8').trim(); if(d) return d;}catch(_){}}
+  const p1=(process.env.XAI_KEY_P1||'').trim();
+  const p2=(process.env.XAI_KEY_P2||'').trim();
+  if(p1&&p2) return 'xai-'+p1+p2;
+  const body=(process.env.XAI_KEY_BODY||'').trim();
+  if(body) return body.startsWith('xai-')?body:'xai-'+body;
+  return direct;
+}
+const XAI_API_KEY=resolveXaiApiKey();
+
 const {MODEL,VOICE,sessionUpdate,greeting}=require('./lib/config');
 const PORT=Number(process.env.PORT||3000);
 const PUBLIC_URL=(process.env.PUBLIC_URL||`http://127.0.0.1:${PORT}`).replace(/\/$/,'');
@@ -14,7 +28,7 @@ app.set('trust proxy',true);
 app.disable('x-powered-by');
 app.use(express.urlencoded({extended:false,limit:'20kb'}));
 function validSecret(given) { if(!SECRET)return false;const a=Buffer.from(String(given||''));const b=Buffer.from(SECRET);return a.length===b.length&&crypto.timingSafeEqual(a,b); }
-app.get('/health',(_q,r)=>r.json({status:'ok',voice:VOICE,model:MODEL,bridge:'twilio-pcmu-xai-pcmu',activeSessions:sessions.size,twilioCredentials:!!(process.env.TWILIO_API_KEY&&process.env.TWILIO_API_SECRET),xaiCredential:!!process.env.XAI_API_KEY,operatorInstructions:!!process.env.ADDITIONAL_INSTRUCTIONS}));
+app.get('/health',(_q,r)=>r.json({status:'ok',voice:VOICE,model:MODEL,bridge:'twilio-pcmu-xai-pcmu',activeSessions:sessions.size,twilioCredentials:!!(process.env.TWILIO_API_KEY&&process.env.TWILIO_API_SECRET),xaiCredential:!!(XAI_API_KEY&&XAI_API_KEY.length>20&&XAI_API_KEY.startsWith("xai-")),operatorInstructions:!!process.env.ADDITIONAL_INSTRUCTIONS}));
 app.get('/healthz',(_q,r)=>r.sendStatus(200));
 function twiml(req,res){
  if(!validSecret(req.query.token))return res.sendStatus(404);
@@ -65,7 +79,8 @@ wss.on('connection',(twilio,req,call)=>{
   if(start.accountSid!==ACCOUNT){log('unexpected-account');twilio.close();return;}
   streamSid=start.streamSid;call.callSid=start.callSid;byCall.set(start.callSid,call);
   call.status='live';log('twilio-stream-started');
-  xai=new WebSocket(`wss://api.x.ai/v1/realtime?model=${MODEL}`,{perMessageDeflate:false,headers:{Authorization:`Bearer ${process.env.XAI_API_KEY}`,Origin:'https://voice-bridge-rr0w.onrender.com'}});
+  if(!XAI_API_KEY||XAI_API_KEY.length<20){console.error(JSON.stringify({event:'xai-key-missing'})); try{ws.close();}catch(_){} return;}
+  xai=new WebSocket(`wss://api.x.ai/v1/realtime?model=${MODEL}`,{perMessageDeflate:false,headers:{Authorization:`Bearer ${XAI_API_KEY}`,Origin:'https://voice-bridge-rr0w.onrender.com'}});
   xai.on('error',(e)=>{console.error(JSON.stringify({event:'xai-socket-error',message:e.message}));});
   
   xai.on('unexpected-response',(req,res)=>{
