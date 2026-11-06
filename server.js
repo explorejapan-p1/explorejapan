@@ -65,7 +65,7 @@ wss.on('connection',(twilio,req,call)=>{
   if(start.accountSid!==ACCOUNT){log('unexpected-account');twilio.close();return;}
   streamSid=start.streamSid;call.callSid=start.callSid;byCall.set(start.callSid,call);
   call.status='live';log('twilio-stream-started');
-  xai=new WebSocket(`wss://api.x.ai/v1/realtime?model=${MODEL}`,{headers:{Authorization:`Bearer ${process.env.XAI_API_KEY}`}});
+  xai=new WebSocket(`wss://api.x.ai/v1/realtime?model=${MODEL}`,{perMessageDeflate:false,headers:{Authorization:`Bearer ${process.env.XAI_API_KEY}`}});
   xai.on('open',()=>log('xai-open'));
   
   xai.on('close',()=>log('xai-closed'));
@@ -77,7 +77,8 @@ wss.on('connection',(twilio,req,call)=>{
      ready=true;log(`session-ready voice=${VOICE}`);
      for(const e of pending.splice(0))send(e);
      if(!greeted){greeted=true;send(greeting(call.direction,call.purpose));}
-     if(process.env.TWILIO_API_KEY&&process.env.TWILIO_API_SECRET&&start.callSid){
+     if(!ready)twilio.close();
+  if(process.env.TWILIO_API_KEY&&process.env.TWILIO_API_SECRET&&/^CA[a-f0-9]{32}$/i.test(start.callSid)){
       const body=new URLSearchParams({RecordingChannels:'dual',RecordingTrack:'both',RecordingStatusCallback:`${PUBLIC_URL}/recording-events?token=${encodeURIComponent(SECRET)}`,RecordingStatusCallbackEvent:'completed absent'});
       fetch(`https://api.twilio.com/2010-04-01/Accounts/${ACCOUNT}/Calls/${start.callSid}/Recordings.json`,{method:'POST',headers:{Authorization:'Basic '+Buffer.from(`${process.env.TWILIO_API_KEY}:${process.env.TWILIO_API_SECRET}`).toString('base64'),'Content-Type':'application/x-www-form-urlencoded'},body,signal:AbortSignal.timeout(12000)}).then(r=>console.log(JSON.stringify({event:'dual-recording-request',httpStatus:r.status,callSid:start.callSid}))).catch(e=>console.error(JSON.stringify({event:'recording-request-error',message:e.message})));
      }
